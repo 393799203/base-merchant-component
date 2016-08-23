@@ -1,0 +1,1 @@
+# meili-base-merchant-component
