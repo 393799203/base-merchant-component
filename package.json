@@ -1,0 +1,84 @@
+{
+  "name": "@meili/base-merchant-component",
+  "version": "0.0.1",
+  "description": "unified platform boilerplate generator.",
+  "repository": {
+    "type": "git",
+    "url": "http://gitlab.mogujie.org/Aveng/meili-base-merchant-component.git"
+  },
+  "keyword": "react,MyComponent",
+  "site": "",
+  "homepage": "",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node ./scripts/server.js",
+    "test": "mocha --compilers js:babel-core/register spec --recursive ./spec/setup.js -t 5000 --require ignore-styles",
+    "pretest-cov": "babel-node ./node_modules/istanbul/lib/cli cover node_modules/mocha/bin/_mocha -- --require ./spec/setup.js --bail spec --recursive -t 5000 --require ignore-styles --reporter mochawesome --reporter-options reportDir=coverage/result,reportName=unittest,inlineAssets=true",
+    "test-cov": "babel-node ./node_modules/istanbul/lib/cli cover --report json-summary node_modules/mocha/bin/_mocha -- --require ./spec/setup.js --bail spec --recursive -t 5000 --require ignore-styles --reporter mochawesome --reporter-options reportDir=coverage/result,reportName=unittest,inlineAssets=true",
+    "build": "webpack --optimize-minimize -p",
+    "rundemo": "webpack --optimize-minimize --config webpack.test.config.js",
+    "babel": "babel src --out-dir lib && node ./scripts/copy.js",
+    "pubnpm": "./scripts/publish.sh",
+    "result": "babel-node ./node_modules/.bin/isparta cover ./node_modules/.bin/_mocha --report text --check-coverage ./spec/**/*.spec.js --require ./spec/setup.js ",
+    "test-dev": "mocha --watch --compilers js:babel-core/register spec --recursive ./spec/setup.js -t 5000 --require ignore-styles",
+    "report": "./node_modules/.bin/babel-node node_modules/isparta/bin/isparta cover --root src/ ./node_modules/.bin/_mocha -- --compilers js:babel-core/register ./spec/**/*.spec.js --require ./spec/setup.js -t 5000 --reporter mochawesome --reporter-options reportDir=coverage/result,reportName=unittest,inlineAssets=true",
+    "pub": "npm run build && npm run babel && npm run pubnpm"
+  },
+  "dependencies": {
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-router": "^2.0.0-rc5",
+    "classnames": "^2.2.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.5.1",
+    "babel-core": "^6.3.26",
+    "babel-loader": "^6.2.1",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-plugin-transform-es2015-for-of": "^6.5.2",
+    "babel-plugin-transform-object-assign": "^6.8.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-2": "^6.3.13",
+    "chai": "^3.5.0",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "history": "^1.17.0",
+    "html-webpack-plugin": "^2.22.0",
+    "ignore-styles": "^4.0.0",
+    "isparta": "^4.0.0",
+    "istanbul": "^1.0.0-alpha",
+    "jsdom": "^9.3.0",
+    "less": "^2.6.0",
+    "less-loader": "^2.2.2",
+    "mocha": "^2.5.3",
+    "mochawesome": "^1.3.5",
+    "node-notifier": "^4.5.0",
+    "on-build-webpack": "^0.1.0",
+    "portfinder": "^0.4.0",
+    "postcss-loader": "^0.8.0",
+    "precss": "^1.4.0",
+    "react-addons-test-utils": "^0.14.8",
+    "react-hot-loader": "^1.3.0",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react",
+      "stage-2"
+    ],
+    "plugins": [
+      "add-module-exports"
+    ]
+  },
+  "testResult": {
+    "lines": 0,
+    "statements": 0,
+    "functions": 0,
+    "branches": 0
+  },
+  "author": "乾巧"
+}

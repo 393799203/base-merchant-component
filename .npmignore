@@ -1,0 +1,15 @@
+.idea
+node_modules
+coverage
+scripts
+spec
+public
+npm-debug.log
+.babelrc
+/webpack.*.js
+READMEUSE.md
+脚手架使用说明.md
+/demo
+!/demo/**/index.html
+!/demo/**/bundle.js
+!/demo/**/bundle.css

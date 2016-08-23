@@ -1,0 +1,12 @@
+.idea
+dist
+lib
+.DS_Store
+tmp
+node_modules
+/coverage
+npm-debug.log
+/demo/**/bundle.*
+
+
+
