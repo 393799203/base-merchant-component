@@ -4,6 +4,8 @@ coverage
 scripts
 spec
 public
+src
+test
 npm-debug.log
 .babelrc
 /webpack.*.js

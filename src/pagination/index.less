@@ -1,0 +1,110 @@
+@import "../../base/less/include/_variables";
+
+/**
+ * @name xd-pagination
+ * @desc xd module
+ * @create 2015-04-07 @yefei
+ */
+
+
+.xd-pagination {
+    margin: 0 auto;
+    border-radius: 0;
+    font-size: 0;
+    text-align: center;
+
+
+    & > li {
+        display: inline-block;
+        margin-left: 1px;
+        font-size: 12px;
+        &.disabled {
+            a {
+                cursor: not-allowed;
+
+                &:hover {
+                    background: none;
+                    color: #333;
+                }
+            }
+        }
+//
+//        &:first-child.disabled {
+//            a {
+//                border: 1px solid #c4c4c4;
+//                background: #f6f6f6;
+//                color: #d5d5d5;
+//            }
+//        }
+//        &:last-child.disabled {
+//            a {
+//                border: 1px solid #c4c4c4;
+//                background: #f6f6f6;
+//                color: #d5d5d5;
+//            }
+//        }
+    }
+
+//    & > li:first-child {
+//        margin-left: 0;
+//        a {
+//            border: 1px solid #c4c4c4;
+//            background: #fff;
+//            color: #333;
+//        }
+//    }
+
+    & > li.btn-opera {
+        margin-left: 0;
+        a {
+            border: 1px solid #c4c4c4;
+            background: #fff;
+            color: #333;
+        }
+    }
+
+//    & > li:last-child {
+//        margin-left: 0;
+//        a {
+//            border: 1px solid #c4c4c4;
+//            background: #fff;
+//            color: #333;
+//        }
+//    }
+
+    & > li > a, & > li > span {
+        float: none;
+        margin-left: 0;
+        border: 0;
+        display: block;
+        color: #333;
+        font-weight: 400;
+        border-radius: 2px;
+        background: none;
+        padding: 2px 10px;
+        margin-right: 10px;
+        font-size: 15px;
+    }
+
+    & > li:first-child > a, & > li:first-child > span, &-lg > li:first-child > a, &-lg > li:first-child > span, &-sm > li:first-child > a, &-sm > li:first-child > span, & > li:last-child > a, & > li:last-child > span, &-lg > li:last-child > a, &-lg > li:last-child > span, &-sm > li:last-child > a, &-sm > li:last-child > span {
+        border-radius: 2px
+    }
+//
+//    & > li > a:hover, & > li > span:hover
+//    ,
+//    & > li > a:focus, & > li > span:focus
+//    {
+//        background-color: #f55;
+//        color: #fff;
+//    }
+
+    & > .active > a, & > .active > span, & > .active > a:hover, & > .active > span:hover
+//    , & > .active > a:focus, & > .active > span:focus
+    {
+        background-color: #f55;
+        cursor: default;
+        color: #fff;
+    }
+}
+
+

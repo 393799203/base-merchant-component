@@ -1,0 +1,148 @@
+@import "../../base/less/include/_variables";
+
+@panel-width: 325px;
+//@detail-status-icons: '//s8.mogucdn.com/pic/150401/zixin_iezdandggfstoyzugazdambqmmyde_112x32.png';
+
+.J_Countdown {
+  display: inline-block;
+
+  strong {
+    font-weight: normal;
+    color: @color-primary;
+  }
+}
+
+.detail-process {
+  padding-bottom: 30px;
+  border-bottom: 1px dashed @color-border;
+}
+
+/* Override for .xd-panel */
+.xd-panel-header .xd-title {
+  font-size: 14px;
+  color: @color-text-helper;
+}
+
+.detail-apply {
+  width: @panel-width;
+
+  .label {
+    display: inline-block;
+    width: 72px;
+    color: @color-text-helper;
+    line-height: 26px;
+    text-align: right;
+  }
+}
+
+.detail-goods {
+  margin: 10px 0 15px;
+
+  .xd-title {
+    margin-bottom: 10px;
+    border-bottom: 1px solid @color-border;
+    font-size: 14px;
+    line-height: 26px;
+  }
+
+  a {
+    color: @color-text-primary;
+  }
+}
+
+.detail-goods-info {
+  p {
+    margin-left: 80px;
+  }
+}
+
+.detail-main {
+  margin-left: @panel-width;
+  padding: 80px 0 0 150px;
+
+  .label {
+    color: @color-text-secondary;
+  }
+}
+
+.detail-status {
+  margin-bottom: 20px;
+  font-size: 16px;
+
+  .xd-icon-status {
+    margin: 0 10px 0 -42px;
+  }
+}
+
+.detail-notice {
+  margin-bottom: 20px;
+  list-style-type: disc;
+
+  li {
+    line-height: 24px;
+  }
+}
+
+.detail-action {
+  margin-bottom: 30px;
+}
+
+.refund-detail-section {
+  width: 545px;
+  padding: 15px 20px;
+  border: 1px dashed @color-border;
+
+  .xd-title {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+
+  .label {
+    color: @color-text-helper;
+  }
+}
+
+.express-detail {
+
+  li:first-child {
+    color: @color-primary;
+  }
+
+  .detail-label {
+    width: 140px;
+  }
+  .detail-content {
+    margin-left: 140px;
+  }
+}
+
+.detail-negotiates {
+  margin-top: 20px;
+}
+.detail-negotiate {
+  margin-bottom: 30px;
+
+  & > div {
+    line-height: 26px;
+  }
+  .meta {
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed @color-border;
+    color: @color-text-secondary;
+  }
+  .msg {
+    margin-bottom: 5px;
+  }
+  .images {
+    margin-bottom: 20px;
+
+    img {
+      width: 120px;
+      height: 120px;
+      margin-right: 10px;
+      border: 1px solid @color-border;
+      vertical-align: middle;
+    }
+  }
+}
