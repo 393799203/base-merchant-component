@@ -8,9 +8,9 @@ then
 	functions=`cat $covpath | grep "\"total\": {" | awk -F"\"pct\":" '{print $4}' |awk -F"}," '{print $1}'`
 	branches=`cat $covpath | grep "\"total\": {" | awk -F"\"pct\":" '{print $5}' |awk -F"}}" '{print $1}'`
 	`sed -i "" 's/\"lines\":0/\"lines\":'$lines'/g' ./package.json`
-	`sed -i "" 's/\"statements\":0/\"lines\":'$statements'/g' ./package.json`
-	`sed -i "" 's/\"functions\":0/\"lines\":'$functions'/g' ./package.json`
-	`sed -i "" 's/\"branches\":0/\"lines\":'$branches'/g' ./package.json`
+	`sed -i "" 's/\"statements\":0/\"statements\":'$statements'/g' ./package.json`
+	`sed -i "" 's/\"functions\":0/\"functions\":'$functions'/g' ./package.json`
+	`sed -i "" 's/\"branches\":0/\"branches\":'$branches'/g' ./package.json`
 fi
 abPath=`pwd`
 path=$abPath"/package.json"
@@ -27,5 +27,6 @@ then
 else
 	npm publish
 fi
+echo "已经成功发布，您可以前往http://webnpm.f2e.mogujie.org/ 查看"
 #end
 

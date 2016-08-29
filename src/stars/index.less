@@ -1,0 +1,31 @@
+@star-img: 'http://s21.mogujie.com/pic/150420/1blhwf_ieytqnztha3tgzlbgazdambqmeyde_16x43.png';
+
+@width: 16px;
+
+.xd-stars-wrap, .xd-stars {
+  height: 13px;
+  background: url(@star-img) repeat-x;
+}
+
+.xd-stars-wrap {
+  display: inline-block;
+  width: @width * 3;
+  text-align: left;
+
+  .loop-wrap(0);
+}
+
+.loop-wrap(@num) when (@num <= 5) {
+  &.l@{num} {
+    width: @width * @num;
+  }
+
+  .loop-wrap(@num + 1);
+}
+
+.xd-stars {
+  display: block;
+  background-position: 0 -30px;
+
+  .loop-wrap(0);
+}

@@ -1,0 +1,250 @@
+/* 日期组件 */
+.rc-calendar-picker {
+  position: relative;
+}
+
+.rc-calendar-picker .xd-calendar {
+  position: absolute;
+  display: none;
+  left: -9999px;
+  top: -9999px;
+  z-index: 9;
+}
+
+.rc-calendar-picker-open .xd-calendar {
+  display: block;
+}
+
+.xd-calendar{
+    background: #ffffff;
+    border: 1px solid #c4c4c4;
+    width: 260px;
+    outline: none;
+    position: relative;
+    *{
+      box-sizing: border-box;
+    }
+    .xd-calendar-calendar-body, .xd-calendar-month-panel-body, .xd-calendar-year-panel-body{
+      padding: 10px 20px;
+    }
+    .xd-calendar-header,
+    .xd-calendar-month-panel-header,
+    .xd-calendar-year-panel-header,
+    .xd-calendar-decade-panel-header{
+      border-bottom: 1px solid #ccc;
+      height: 50px;
+      line-height: 50px;
+      position: relative;
+      text-align: center;
+    }
+
+    .xd-calendar-hidden,
+    .xd-calendar-month-panel-hidden,
+    .xd-calendar-year-panel-hidden,
+    .xd-calendar-decade-panel-hidden,
+    .xd-calendar-month-panel-year-select-arrow,
+    .xd-calendar-year-panel-decade-select-arrow,
+    .xd-calendar-month-select-arrow{
+      display: none;
+    }
+
+    .xd-calendar-prev-month-btn,
+    .xd-calendar-next-month-btn,
+    .xd-calendar-prev-year-btn,
+    .xd-calendar-next-year-btn,
+    .xd-calendar-month-panel-prev-year-btn,
+    .xd-calendar-month-panel-next-year-btn,
+    .xd-calendar-year-panel-prev-decade-btn,
+    .xd-calendar-year-panel-next-decade-btn,
+    .xd-calendar-decade-panel-prev-century-btn,
+    .xd-calendar-decade-panel-next-century-btn{
+      color: #888;
+      font-size: 26px;
+      width: 26px;
+      height: 26px;
+      line-height: 26px;
+      top: 10px;
+      position: absolute;
+    }
+
+    .xd-calendar-prev-month-btn,
+    .xd-calendar-month-panel-prev-year-btn, 
+    .xd-calendar-year-panel-prev-decade-btn,
+    .xd-calendar-decade-panel-prev-century-btn{
+      left: 24px;
+    }
+
+    .xd-calendar-prev-year-btn {
+      display: none;
+      left: 0;
+    }
+
+    .xd-calendar-next-month-btn,
+    .xd-calendar-month-panel-next-year-btn,
+    .xd-calendar-year-panel-next-decade-btn,
+    .xd-calendar-decade-panel-next-century-btn{
+      right: 24px;
+    }
+
+    .xd-calendar-next-year-btn {
+      display: none;
+      right: 0;
+    }
+
+    .xd-calendar-month-select,
+    .xd-calendar-month-panel-year-select-content,
+    .xd-calendar-year-panel-decade-select-content{
+      color: #333;
+    }
+
+    .xd-calendar-column-header {
+      width: 25px;
+      color: black;
+      font-weight: bold;
+      text-align: center;
+      padding: 4px 0;
+    }
+
+    .xd-calendar-table{
+        width: 100%;
+    }
+
+    .xd-calendar-column-header-inner {
+      display: block;
+      color: #ff5555;
+    }
+
+    .xd-calendar-cell, .xd-calendar-month-panel-cell, .xd-calendar-year-panel-cell, .xd-calendar-decade-panel-cell {
+      text-align: center;
+    }
+
+    .xd-calendar-date {
+      color: #333;
+      line-height: 22px;
+      display: inline-block;
+      border-radius: 50%;
+      outline: none;
+      height: 26px;
+      width: 26px;
+      line-height: 26px;
+      cursor: pointer;
+      margin-bottom: 5px;
+    }
+
+    .xd-calendar-last-month-cell .xd-calendar-date,
+    .xd-calendar-disabled-cell .xd-calendar-date,
+    .xd-calendar-next-month-btn-day .xd-calendar-date {
+      color: #bfbfbf;
+    }
+
+    .xd-calendar-date:hover,
+    .xd-calendar-month-panel-month:hover,
+    .xd-calendar-year-panel-year:hover,
+    .xd-calendar-decade-panel-decade:hover,
+    .xd-calendar-selected-day .xd-calendar-date,
+    .xd-calendar-month-panel-selected-cell .xd-calendar-month-panel-month,
+    .xd-calendar-year-panel-selected-cell .xd-calendar-year-panel-year,
+    .xd-calendar-decade-panel-selected-cell .xd-calendar-decade-panel-decade{
+      background-color: #ff5555;
+      color: #fff;
+    }
+
+    .xd-calendar-disabled-cell .xd-calendar-date:hover {
+      background-color: #ffffff;
+      border-color: transparent;
+    }
+
+    .xd-calendar-selected-day .xd-calendar-date,
+    .xd-calendar-month-panel-selected-cell .xd-calendar-month-panel-month,
+    .xd-calendar-year-panel-selected-cell .xd-calendar-year-panel-year {
+      color: #fff;
+      background-color: #ff5555;
+    }
+
+    .xd-calendar-month-panel, .xd-calendar-year-panel, .xd-calendar-decade-panel{
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      z-index: 10;
+      background: #ffffff;
+      position: absolute;
+      outline: none;
+    }
+
+    .xd-calendar .xd-calendar-month-panel-year-select, .xd-calendar-year-panel-decade-select, .xd-calendar-decade-panel-century {
+      color: #333;
+    }
+
+    .xd-calendar-month-panel-table, .xd-calendar-year-panel-table, .xd-calendar-decade-panel-table {
+      margin-top: 5px;
+      table-layout: fixed;
+      width: 100%;
+      border-collapse: separate;
+    }
+
+    .xd-calendar-month-panel-month {
+      color: #333;
+      width: 45px;
+      line-height: 45px;
+      height: 45px;
+      display: inline-block;
+      border-radius: 50%;
+      margin-bottom: 5px;
+    }
+
+    .xd-calendar-year-panel {
+      z-index: 20;
+    }
+
+    .xd-calendar-year-panel-year, .xd-calendar-decade-panel-decade {
+      color: #333;
+      line-height: 30px;
+      display: block;
+      border-radius: 2px;
+      margin-bottom: 20px;
+      margin-right: 10px;
+    }
+
+    .xd-calendar-year-panel-last-decade-cell .xd-calendar-year-panel-year,
+    .xd-calendar-year-panel-next-decade-cell .xd-calendar-year-panel-year,
+    .xd-calendar-decade-panel-last-century-cell .xd-calendar-decade-panel-decade,
+    .xd-calendar-decade-panel-next-century-cell .xd-calendar-decade-panel-decade {
+      color: #bfbfbf;
+    }
+
+    .xd-calendar-decade-panel {
+      z-index: 30;
+    }
+
+    .xd-calendar-decade-panel-decade{
+        line-height: 20px;
+    }
+
+    .xd-calendar-footer{
+      text-align: center;
+      padding-bottom: 10px;
+      .xd-calendar-time-input{
+        width: 30px;
+        text-align: center;
+        border: 1px solid #d7d7d7;
+        border-radius: 3px;
+        padding: 7px 0;
+      }
+      .xd-calendar-time-panel{
+        .xd-calendar-time-panel-body{
+          padding: 0 10px;
+        }
+        .xd-calendar-time-panel-table{
+          width: 100%;
+          .xd-calendar-time-panel-time{
+            color: #333;
+          }
+        }
+      }
+      .xd-calendar-today-btn{
+        color: #333;
+      }
+    }
+
+}

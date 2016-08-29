@@ -1,0 +1,21 @@
+@import "include/_variables";
+
+.xd-icon-status {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background: url(@icon-status) no-repeat;
+  vertical-align: middle;
+
+  &.warning {
+    background-position: 0 0;
+  }
+
+  &.success {
+    background-position: -40px 0;
+  }
+
+  &.waiting {
+    background-position: -80px 0;
+  }
+}

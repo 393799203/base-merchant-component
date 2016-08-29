@@ -1,0 +1,147 @@
+@import "../../base/less/include/_variables";
+/**
+ * @name xd-processbar
+ * @desc xd module
+ * @create 2015-04-01 @yefei
+ */
+
+@pink: @color-primary;
+
+.xd-process {
+    margin: 0 60px;
+
+    .xd-process-wrap {
+        position: relative;
+        height: 80px;
+        margin: 0 auto;
+        *zoom: 1;
+        background: url(http://s8.mogujie.com/pic/150401/13t2zv_ie2tmm3fha3doyzugazdambqhayde_45x8.png) repeat-x center left;
+    }
+
+    .xd-process-sd {
+        position: absolute;
+        top: 0;
+        left: 3px;
+        height: 100%;
+        background: url(http://s21.mogujie.com/pic/150401/13t2zv_ie2ggzjwgyztqyzugazdambqgiyde_44x4.png) repeat-x center left;
+        z-index: 1;
+        -webkit-transition: width ease-in-out 1s;
+        -moz-transition: width ease-in-out 1s;
+        -o-transition: width ease-in-out 1s;
+        transition: width ease-in-out 1s;
+    }
+
+    .xd-process-i {
+        position: absolute;
+        top: 23px;
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        font-size: 14px;
+        font-style: normal;
+        color: #fff;
+        text-align: center;
+        margin-left: -16px;
+        background: url(http://s6.mogujie.com/pic/150401/13t2zv_iezgcnrrgfqtoyzugazdambqmmyde_32x32.png) no-repeat;
+    }
+    .xd-process-i-c {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 11;
+    }
+    .xd-process-tip,
+    .xd-process-tip-bt {
+        position: absolute;
+        top: -22px;
+        width: 140px;
+        height: 20px;
+        left: 50%;
+        margin-left: -70px;
+        font-size: 12px;
+        font-style: normal;
+        line-height: 20px;
+        color: #999;
+    }
+
+    .xd-process-tip-bt {
+        top: auto;
+        bottom: -22px;
+    }
+
+  /* 递归至i1 */
+  .loop-process(@n, @i: 1) when (@i =< @n) {
+    .xd-process-step@{n} .xd-process-i@{i} .xd-process-tip {color: @pink; }
+    .xd-process-step@{n} .xd-process-i@{i} .hl {color: @pink; }
+    .xd-process-step@{n}-5 .xd-process-i@{i} .xd-process-tip {color: @pink; }
+
+    .xd-process-step@{n} .xd-process-i@{i} .xd-process-i-c {background: url(http://s7.mogujie.com/pic/150401/13t2zv_ieytonbwgyztqyzugazdambqmeyde_32x32.png) no-repeat; }
+
+    .loop-process(@n, @i + 1);
+  }
+
+    /**
+     * 循环生成step相关
+     * @space xd_process_i@{i}之间的距离
+     * @half-space1 一半进度前一段的距离
+     * @half-space2 一半进度后一段的距离
+     */
+    .generator-process(@space, @half-space1, @half-space2, @n, @i: 1) when (@i =< @n) {
+        @start-position: 0;
+
+        .xd-process-i-s(@i) when (@i = 1) {
+            .xd-process-i@{i} {left: 0; }
+        }
+
+        .xd-process-i-o(@i) when (@i > 1) {
+            .xd-process-i@{i} {left: (@i - 1) * @space; }
+        }
+
+        .xd-process-i-s(@i);
+        .xd-process-i-o(@i);
+
+        .xd-process-step@{i} .xd-process-sd {
+            width: (@half-space1 + @half-space2) * (@i - 1) + @start-position;
+            
+        }
+        .xd-process-step@{i}-5 .xd-process-sd {
+            width: (@half-space1 + @half-space2) * (@i - 1) + @start-position + @half-space1;
+        }
+
+        .loop-process(@i);
+        .generator-process(@space, @half-space1, @half-space2, @n, @i + 1);
+    }
+
+    /* step3 style */
+    &.xd-process-len3 {
+        .xd-process-wrap {
+            width: 100%;
+        }
+
+        .generator-process(50%, 25%, 25%, 3);
+    }
+
+    /* step4 style */
+    &.xd-process-len4 {
+        .xd-process-wrap {
+            width: 100%;
+        }
+        .generator-process(33.3%, 16%, 17.3%, 4);
+    }
+    /* step5 style */
+    &.xd-process-len5 {
+        .xd-process-wrap {
+            width: 100%;
+        }
+        .generator-process(25%, 12.5%, 12.5%, 5);
+    }
+    /* step6 style */
+    &.xd-process-len6 {
+        .xd-process-wrap {
+            width: 100%;
+        }
+        .generator-process(20%, 10%, 10%, 6);
+    }
+}
+

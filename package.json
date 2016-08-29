@@ -1,19 +1,20 @@
 {
   "name": "@meili/base-merchant-component",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "unified platform boilerplate generator.",
   "repository": {
     "type": "git",
-    "url": "http://gitlab.mogujie.org/Aveng/meili-base-merchant-component.git"
+    "url": "http://gitlab.mogujie.org/F2E-UP/up-npm-template.git"
   },
-  "keyword": "react,MyComponent",
+  "keyword": "react,component,label",
   "site": "",
   "homepage": "",
   "license": "MIT",
   "scripts": {
+    "pack": "webpack --optimize-minimize --config webpack.pack.config.js",
     "dev": "node ./scripts/server.js",
     "test": "mocha --compilers js:babel-core/register spec --recursive ./spec/setup.js -t 5000 --require ignore-styles",
-    "pretest-cov": "babel-node ./node_modules/istanbul/lib/cli cover node_modules/mocha/bin/_mocha -- --require ./spec/setup.js --bail spec --recursive -t 5000 --require ignore-styles --reporter mochawesome --reporter-options reportDir=coverage/result,reportName=unittest,inlineAssets=true",
+    "pretest-cov": "babel-node ./node_modules/istanbul/lib/cli cover --include-all-sources --root src/ node_modules/mocha/bin/_mocha -- --require ./spec/setup.js --bail spec --recursive -t 5000 --require ignore-styles --reporter mochawesome --reporter-options reportDir=coverage/result,reportName=unittest,inlineAssets=true",
     "test-cov": "babel-node ./node_modules/istanbul/lib/cli cover --report json-summary node_modules/mocha/bin/_mocha -- --require ./spec/setup.js --bail spec --recursive -t 5000 --require ignore-styles --reporter mochawesome --reporter-options reportDir=coverage/result,reportName=unittest,inlineAssets=true",
     "build": "webpack --optimize-minimize -p",
     "rundemo": "webpack --optimize-minimize --config webpack.test.config.js",
@@ -22,15 +23,20 @@
     "result": "babel-node ./node_modules/.bin/isparta cover ./node_modules/.bin/_mocha --report text --check-coverage ./spec/**/*.spec.js --require ./spec/setup.js ",
     "test-dev": "mocha --watch --compilers js:babel-core/register spec --recursive ./spec/setup.js -t 5000 --require ignore-styles",
     "report": "./node_modules/.bin/babel-node node_modules/isparta/bin/isparta cover --root src/ ./node_modules/.bin/_mocha -- --compilers js:babel-core/register ./spec/**/*.spec.js --require ./spec/setup.js -t 5000 --reporter mochawesome --reporter-options reportDir=coverage/result,reportName=unittest,inlineAssets=true",
-    "pub": "npm run build && npm run babel && npm run pubnpm"
+    "beforePub":"npm run babel && npm run build ",
+    "pub": " npm run babel && npm run build && npm run pubnpm"
   },
   "dependencies": {
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
-    "react-router": "^2.0.0-rc5",
-    "classnames": "^2.2.3"
+    "classnames": "^2.2.3",
+    "react-bootstrap": "^0.30.2",
+    "underscore": "^1.8.3",
+    "babel-plugin-add-module-exports": "^0.1.2"
   },
   "devDependencies": {
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
     "babel-cli": "^6.5.1",
     "babel-core": "^6.3.26",
     "babel-loader": "^6.2.1",
@@ -58,6 +64,7 @@
     "portfinder": "^0.4.0",
     "postcss-loader": "^0.8.0",
     "precss": "^1.4.0",
+    "pubsub-js": "^1.5.3",
     "react-addons-test-utils": "^0.14.8",
     "react-hot-loader": "^1.3.0",
     "style-loader": "^0.13.0",
@@ -75,10 +82,9 @@
     ]
   },
   "testResult": {
-    "lines": 0,
-    "statements": 0,
-    "functions": 0,
-    "branches": 0
-  },
-  "author": "乾巧"
+    "lines":0,
+    "statements":0,
+    "functions":0,
+    "branches":0
+  }
 }
