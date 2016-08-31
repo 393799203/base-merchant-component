@@ -35,7 +35,7 @@ export default class HomeView extends Component {
 				</p>
 				<p className="text-white text-base text-center wrapper-lg"
 					style={{ position: 'absolute', bottom: '0', width: '500px', left: '50%', marginLeft: '-250px' }}>
-					©copyright 美丽联合研发部 - 无线应用（会员&前端）
+					©copyright 美丽联合研发部 - 商家前端
 				</p>
 			</div>
 		)
