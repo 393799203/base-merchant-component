@@ -7,10 +7,10 @@ then
 	statements=`cat $covpath | grep "\"total\": {" | awk -F"\"pct\":" '{print $3}' |awk -F"}," '{print $1}'`
 	functions=`cat $covpath | grep "\"total\": {" | awk -F"\"pct\":" '{print $4}' |awk -F"}," '{print $1}'`
 	branches=`cat $covpath | grep "\"total\": {" | awk -F"\"pct\":" '{print $5}' |awk -F"}}" '{print $1}'`
-	`sed -i "" 's/\"lines\":0/\"lines\":'$lines'/g' ./package.json`
-	`sed -i "" 's/\"statements\":0/\"statements\":'$statements'/g' ./package.json`
-	`sed -i "" 's/\"functions\":0/\"functions\":'$functions'/g' ./package.json`
-	`sed -i "" 's/\"branches\":0/\"branches\":'$branches'/g' ./package.json`
+	`sed -i "" 's/\"lines\": 0/\"lines\":'$lines'/g' ./package.json`
+	`sed -i "" 's/\"statements\": 0/\"statements\":'$statements'/g' ./package.json`
+	`sed -i "" 's/\"functions\": 0/\"functions\":'$functions'/g' ./package.json`
+	`sed -i "" 's/\"branches\": 0/\"branches\":'$branches'/g' ./package.json`
 fi
 abPath=`pwd`
 path=$abPath"/package.json"

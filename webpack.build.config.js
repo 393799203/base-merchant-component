@@ -2,23 +2,14 @@ var path = require('path')
 var webpack = require('webpack')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-var devEntryBundle = [
-    'webpack/hot/dev-server',
-    'webpack-dev-server/client?http://localhost:5000',
-    './public/main.js'
-]
-
 module.exports = {
-
-    devtool: '#source-map',
-
     entry: {
-        bundle: devEntryBundle
+        bundle: './public/main.js'
     },
     output: {
         filename: '[name].js',
         chunkFilename: '[name].js',
-        path: path.resolve('./dist/'),
+        path: path.resolve('./demo/'),
         publicPath: '/'
     },
     resolve: {
@@ -52,7 +43,7 @@ module.exports = {
     },
 
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new ExtractTextPlugin("[name].css")
+        new ExtractTextPlugin("[name].css"),
+        new webpack.optimize.UglifyJsPlugin({minimize: true, compress: { warnings: false }})
     ]
 }
