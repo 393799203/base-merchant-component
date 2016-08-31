@@ -10,8 +10,7 @@ export default class DatepickerView extends Component {
 		};
 	}
 	onChange(value) {
-
-		console.log(value);
+		this.setState({ date: value})
 	}
 	componentDidMount () {
 		
@@ -31,9 +30,9 @@ export default class DatepickerView extends Component {
 				</h2>
 				<div className="m-t">
 					<UpDatePicker
-						value={ date }
-						format="yyyy-MM-dd"
-						onChange={ this.onChange.bind(this) } />
+						value={ date } 
+						format="yyyy/MM/dd"
+						onChange={this.onChange.bind(this)} />
 				</div>
 			</div>
 		)

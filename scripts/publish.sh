@@ -25,8 +25,15 @@ if test ${#arr[@]} -lt 3
 then
 	echo "package.json中的keyword需要3个或以上描述词汇，如技术选型(React,Vue,jQuery)、业务分组、组件分类(form,table等),请完善package.json中的keyword字段。";
 else
-	npm publish
+	npmstring=`npm publish`
+	echo $npmstring
+	teststring='+'
+	result=$(echo $npmstring | grep "${teststring}")
+	if [[ ${npmstring/${teststring}//} == $npmstring ]]
+	then 
+		echo ' 🌎  发布好像没有成功，请确认您已经执行npm adduser，修改了package.json里面的version字段，并有修改该项目的权限，若还有问题请联系丽熙'
+	else
+		echo " 🌎  已经成功发布，您可以前往http://webnpm.f2e.mogujie.org/ 查看"
+	fi
 fi
-echo "已经成功发布，您可以前往http://webnpm.f2e.mogujie.org/ 查看"
 #end
-

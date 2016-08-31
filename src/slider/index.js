@@ -7,6 +7,8 @@ export default class Slider extends Component {
 		super();
 	}
 	render () {
-		return <Carousel {...this.props} />
+		return <Carousel {...this.props} >
+			{ this.props.children }
+		</Carousel>
 	}
 }
