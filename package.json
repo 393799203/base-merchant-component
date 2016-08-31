@@ -11,6 +11,7 @@
   "homepage": "",
   "license": "MIT",
   "scripts": {
+    "buildDemo": "webpack --optimize-minimize --config webpack.build.config.js",
     "pack": "webpack --optimize-minimize --config webpack.pack.config.js",
     "dev": "node ./scripts/server.js",
     "test": "mocha --compilers js:babel-core/register spec --recursive ./spec/setup.js -t 5000 --require ignore-styles",
@@ -23,16 +24,20 @@
     "result": "babel-node ./node_modules/.bin/isparta cover ./node_modules/.bin/_mocha --report text --check-coverage ./spec/**/*.spec.js --require ./spec/setup.js ",
     "test-dev": "mocha --watch --compilers js:babel-core/register spec --recursive ./spec/setup.js -t 5000 --require ignore-styles",
     "report": "./node_modules/.bin/babel-node node_modules/isparta/bin/isparta cover --root src/ ./node_modules/.bin/_mocha -- --compilers js:babel-core/register ./spec/**/*.spec.js --require ./spec/setup.js -t 5000 --reporter mochawesome --reporter-options reportDir=coverage/result,reportName=unittest,inlineAssets=true",
-    "beforePub":"npm run babel && npm run build ",
+    "beforePub": "npm run babel && npm run build ",
     "pub": " npm run babel && npm run build && npm run pubnpm"
   },
   "dependencies": {
-    "react": "^0.14.0",
-    "react-dom": "^0.14.0",
+    "@mogu/up-components": "^2.0.0",
+    "babel-plugin-add-module-exports": "^0.1.2",
     "classnames": "^2.2.3",
+    "html-loader": "^0.4.3",
+    "markdown-loader": "^0.1.7",
+    "react": "^0.14.0",
     "react-bootstrap": "^0.30.2",
-    "underscore": "^1.8.3",
-    "babel-plugin-add-module-exports": "^0.1.2"
+    "react-dom": "^0.14.0",
+    "react-router": "^2.7.0",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "react": "^0.14.0",
@@ -82,9 +87,9 @@
     ]
   },
   "testResult": {
-    "lines":0,
-    "statements":0,
-    "functions":0,
-    "branches":0
+    "lines": 0,
+    "statements": 0,
+    "functions": 0,
+    "branches": 0
   }
 }
