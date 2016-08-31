@@ -9,7 +9,7 @@ module.exports = {
     output: {
         filename: '[name].js',
         chunkFilename: '[name].js',
-        path: path.resolve('./demo/'),
+        path: path.resolve('./demo/dist'),
         publicPath: '/'
     },
     resolve: {
