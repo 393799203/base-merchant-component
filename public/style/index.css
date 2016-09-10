@@ -119,6 +119,13 @@ blockquote {
 	font-weight: bold;
 }
 
+.primary{
+	background-color: #f55;
+    border-color: #f55;
+    color: #fff;
+    font-weight: 700;
+}
+
 table > tbody > tr > td,
 table > tfoot > tr > td {
   	padding: 8px 15px;
