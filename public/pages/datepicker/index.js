@@ -1,38 +1,59 @@
 import React, { Component } from 'react';
-import UpDatePicker from '@mogu/up-components/lib/DatePicker';
-import Datepicker from 'source_path/datepicker/index';
+import Datepicker from 'source_path/datepicker';
+import Readme from './README.md';
 
 export default class DatepickerView extends Component {
 	constructor () {
 		super();
 		this.state = {
-			date: ''
+			date: '',
+			dateTime: '',
+			dateDefaultTime: ''
 		};
 	}
-	onChange(value) {
-		this.setState({ date: value})
+	onChange(key, value) {
+		var copy = this.state;
+		copy[key] = value || '';
+		this.setState(copy);
 	}
 	componentDidMount () {
 		
 	}
 	render () {
-		var { date } = this.state;
+		var { date, dateTime, dateDefaultTime } = this.state;
 		return (
-			<div className="wrapper">
-				<h2 
-					className="font-thin b-b b-light line-dashed m-n" 
-					style={{ 
-						padding:'0 0 15px 0',
-						fontSize: '20px', 
-						color: '#58666e'
-					}}>
+			<div className="m-l m-r m-b-xxl">
+				<h1>
 					时间选择 - Datepicker
+				</h1>
+				<h2>
+					1. 示例
 				</h2>
 				<div className="m-t">
-					<UpDatePicker
+					<Datepicker
 						value={ date } 
-						format="yyyy/MM/dd"
-						onChange={this.onChange.bind(this)} />
+						format="yyyy-MM-dd"
+						onChange={this.onChange.bind(this, 'date')} />
+
+					<Datepicker
+						showTime
+						value={ dateTime } 
+						placeholder="有时间的日期控件"
+						style={{ marginLeft: '15px' }}
+						format="yyyy-MM-dd HH:mm:ss" 
+						onChange={this.onChange.bind(this, 'dateTime')} />
+
+					<Datepicker
+						showTime
+						value={ dateDefaultTime } 
+						placeholder="有默认时间的日期控件"
+						style={{ marginLeft: '15px' }}
+						format="yyyy-MM-dd HH:mm:ss" 
+						timeConfig={{defaultValue: "00:00:00"}}
+						onChange={this.onChange.bind(this, 'dateDefaultTime')} />
+				</div>
+				<div dangerouslySetInnerHTML={{ __html: Readme }}>
+					
 				</div>
 			</div>
 		)

@@ -1,5 +1,5 @@
 const merchantComponent = {
-    Modal : require('./modal/index'),
+    UpModal : require('./upModal/index'),
     Confirm : require('./confirm/index'),
     Datepicker : require('./datepicker/index'),
     Notification : require('./notification/index')

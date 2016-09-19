@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Confirm from 'source_path/confirm/index';
-import ConfirmReadme from './README.md';
+import Readme from './README.md';
 
 export default class ConfirmView extends Component {
 	constructor () {
@@ -59,7 +59,7 @@ export default class ConfirmView extends Component {
 							这是普通警告弹出层
 					</Confirm>
 				</div>
-				<div dangerouslySetInnerHTML={{ __html: ConfirmReadme }}>
+				<div dangerouslySetInnerHTML={{ __html: Readme }}>
 					
 				</div>
 			</div>

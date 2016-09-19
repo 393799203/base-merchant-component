@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Slider from 'source_path/slider/index';
-import SliderReadme from './README.md';
+import Readme from './README.md';
 
 const style = {
     background: '#fff',
@@ -13,10 +13,15 @@ const style = {
 export default class SliderView extends Component {
 	constructor () {
 		super();
-		this.state = {};
+		this.state = {
+			autoplay: true
+		};
 	}
 	componentDidMount () {
 		
+	}
+	componentWillUnmount () {
+		this.setState({ autoplay: false });
 	}
 	afterChange(current) {
       	console.log('afterChange', current);
@@ -25,6 +30,7 @@ export default class SliderView extends Component {
   		console.log('beforeChange', from, to);
   	}
 	render () {
+		var {autoplay} = this.state;
 		return (
 			<div className="m-b-lg m-l m-r">
 				<h1>
@@ -44,7 +50,7 @@ export default class SliderView extends Component {
 					</div>
 					<div className="col-sm-3">
 						<Slider 
-							autoplay="true"
+							autoplay={ autoplay }
 							afterChange={ this.afterChange } 
 							beforeChange={ this.beforeChange }>
 					        <div style={ style }><h3>滚动轮播图1</h3></div>
@@ -54,7 +60,7 @@ export default class SliderView extends Component {
 					    </Slider>
 					</div>
 					<div className="col-sm-3">
-						<Slider autoplay="true" effect="fade" afterChange={ this.afterChange } beforeChange={ this.beforeChange }>
+						<Slider autoplay={ autoplay } effect="fade" afterChange={ this.afterChange } beforeChange={ this.beforeChange }>
 					        <div style={ style }><h3>渐变轮播图1</h3></div>
 					        <div style={ style }><h3>渐变轮播图2</h3></div>
 					        <div style={ style }><h3>渐变轮播图3</h3></div>
@@ -62,7 +68,7 @@ export default class SliderView extends Component {
 					    </Slider>
 					</div>
 					<div className="col-sm-3">
-						<Slider autoplay="true" vertical="true" afterChange={ this.afterChange } beforeChange={ this.beforeChange }>
+						<Slider autoplay={ autoplay } vertical="true" afterChange={ this.afterChange } beforeChange={ this.beforeChange }>
 					        <div style={ style }><h3>垂直轮播图1</h3></div> 
 					        <div style={ style }><h3>垂直轮播图2</h3></div>
 					        <div style={ style }><h3>垂直轮播图3</h3></div>
@@ -70,7 +76,7 @@ export default class SliderView extends Component {
 					    </Slider>
 					</div>
 				</div>
-				<div dangerouslySetInnerHTML={{ __html: SliderReadme }}>
+				<div dangerouslySetInnerHTML={{ __html: Readme }}>
 					
 				</div>
 			</div>

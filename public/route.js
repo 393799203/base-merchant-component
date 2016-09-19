@@ -5,6 +5,7 @@ import LayoutView from './layout/index';
 import FullPageView from './layout/fullPage';
 import HomeView from './pages/home/index';
 import ModalView from './pages/modal/index';
+import UpModalView from './pages/upModal/index';
 import ConfirmView from './pages/confirm/index';
 import NotificationView from './pages/notification/index';
 import DatepickerView from './pages/datepicker/index';
@@ -22,6 +23,7 @@ export default (
         </Route>
         <Route component={LayoutView}>
             <Route path='modal' component={ModalView}/>
+            <Route path='upModal' component={UpModalView}/>
             <Route path='confirm' component={ConfirmView}/>
             <Route path='notification' component={NotificationView}/>
             <Route path='datepicker' component={DatepickerView}/>
