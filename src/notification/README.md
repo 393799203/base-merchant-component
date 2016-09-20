@@ -6,7 +6,7 @@
 ### 基本用法
 
 	import React, { Component } from 'react'
-	import Notification from 'widgets_path/notification/index'
+	import Notification from '@meili/base-merchant-component/notification'
 	
 	export default class TipView extends Component {
 		constructor () {

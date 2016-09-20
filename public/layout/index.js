@@ -30,7 +30,11 @@ export default class LayoutView extends Component {
 					<div className="pull-left" style={{marginLeft: "215px"}}>
 						<ul className="nav navbar-nav">
 							<li><a href="#/">首页</a></li>
-							<li><a>我要贡献代码</a></li>
+							<li>
+								<a href="http://gitlab.mogujie.org/Aveng/meili-base-merchant-component">
+									我要贡献代码
+								</a>
+							</li>
 							<li>
 								<a href="http://gitlab.mogujie.org/Aveng/meili-base-merchant-component">
 									组件源码

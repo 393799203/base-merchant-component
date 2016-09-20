@@ -1,7 +1,11 @@
 export default [
 	{
-		title: '弹框 - Modal',
+		title: '弹框（小店）- Modal',
 		link: '#/modal'
+	},
+	{
+		title: '弹框 - UpModal',
+		link: '#/upModal'
 	},
 	{
 		title: '确认弹出层 - Confirm',

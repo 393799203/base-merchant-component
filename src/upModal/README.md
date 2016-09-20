@@ -1,4 +1,4 @@
-# Modal
+# UpModal
 > 基础弹出层
 
 ## 使用
@@ -6,7 +6,7 @@
 ### 基本用法
 
 	import React, { Component } from 'react'
-	import Modal from 'widgets_path/modal/modal/index'
+	import UpModal from '@meili/base-merchant-component/upModal'
 	
 	export default class ModalView extends Component {
 		constructor () {
@@ -19,12 +19,12 @@
 			return (
 				<div>
 					<button onClick={ (e) => { this.showModal() }}>显示弹出框</button>
-					<Modal 
+					<UpModal 
 						ref='forModal'
 						size='large'				
 						title='弹出层' >
 						这个是弹出层
-					</Modal>
+					</UpModal>
 				</div>
 			)
 		}

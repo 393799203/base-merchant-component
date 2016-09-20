@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Notification from 'source_path/notification/index'
-import NotificationReadme from './README.md';
+import Notification from 'source_path/notification'
+import Readme from './README.md';
 
 export default class NotificationView extends Component {
 	constructor () {
@@ -57,7 +57,7 @@ export default class NotificationView extends Component {
 			 		自定义提示
 			 	</button>
 			</div>
-			<div dangerouslySetInnerHTML={{ __html: NotificationReadme }}>
+			<div dangerouslySetInnerHTML={{ __html: Readme }}>
 			</div>
 		</div>
 	}

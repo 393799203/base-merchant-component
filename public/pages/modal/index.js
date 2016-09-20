@@ -1,84 +1,80 @@
 import React, { Component } from 'react';
-import Modal from 'source_path/modal/index';
-import ModalReadme from './README.md';
+import Modal from 'source_path/modal';
+import Readme from './README.md';
 
 export default class ModalView extends Component {
 	constructor () {
-		super();
-		this.state = {};
+			super();
+			this.state = { modalId: ''}
 	}
 	showModal () {
-		this.refs.forModal.open();
+		Modal.alert('这是弹出提示');
 	}
 	showTipModal () {
-		this.refs.forTipModal.open();
+		Modal.tip('2000ms 后消失', 2000);
 	}
-	closeTipModal () {
-		this.refs.forTipModal.close();
+	showConfirmModal () {
+		Modal.confirm('msg', () => {
+			Modal.close();
+		});
 	}
-	closeCallback () {
-		alert( '点击关闭按钮时的回调函数' );
+	openModal () {
+		var modalId = Modal.open({
+			title: '自定义弹出层',
+			body: (
+				<div>
+					<p>这是内容区</p>
+					<button onClick={ (e) => this.closeModal(modalId) }>关闭</button>
+				</div>
+			)
+		});
+		this.setState({ modalId: modalId });
 	}
-	showTimeModal () {
-		this.refs.forTimeModal.open();
+	closeModal () {
+		var modalId = this.state.modalId;
+		if (!modalId) { return; }
+		Modal.close( modalId );
 	}
+	
 	render () {
 		var { md } = this.state;
 		return (
 			<div className="m-l m-r m-b-xxl">
 				<h1>
-					弹框 - Modal
+					弹框（小店） - Modal
 				</h1>
 				<h2>
 					1. 示例
 				</h2>
 				<div className="m-b m-t">
 					<button
-						className="btn btn-success-custom w-sm m-r" 
+						className="btn btn-success-custom w m-r" 
 						onClick={ (e) => { this.showModal() }}>
-						有标题 - Modal
+						Modal.alert()
 					</button>
-					<Modal 
-						ref='forModal'
-						size='normal'				
-						title='弹出层' >
-						这个是弹出层
-					</Modal>
+					
 
 					<button
-						className="btn btn-info-custom w-sm" 
+						className="btn btn-info-custom w" 
 						onClick={ (e) => { this.showTipModal() }}>
-						无标题 - Modal
+						Modal.tip()
 					</button>
-					<Modal
-						onClose={ this.closeCallback } 
-						ref='forTipModal'
-						size='small'>
-						
-						<p>无标题，有回调的弹出层</p>
-
-						<p className="text-center">
-							<button
-								onClick={ (e) => this.closeTipModal(e) } 
-								className="btn btn-default">
-								关闭
-							</button>
-						</p>
-					</Modal>
+					
 
 					<button
-						className="btn btn-warning-custom w-sm m-l" 
-						onClick={ (e) => { this.showTimeModal() }}>
-						定时关闭 - Modal
+						className="btn btn-danger-custom w m-l" 
+						onClick={ (e) => { this.showConfirmModal() }}>
+						Modal.confirm()
 					</button>
-					<Modal
-						duration='2000'
-						ref='forTimeModal'
-						size='small'>
-						2000ms后定时关闭 - 弹出层
-					</Modal>
+
+					<button
+						className="btn btn-primary-custom w m-l" 
+						onClick={ (e) => { this.openModal() }}>
+						Modal.open()
+					</button>
+					
 				</div>
-				<div dangerouslySetInnerHTML={{ __html: ModalReadme }}>
+				<div dangerouslySetInnerHTML={{ __html: Readme }}>
 					
 				</div>
 			</div>

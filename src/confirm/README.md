@@ -6,7 +6,7 @@
 ### 基本用法
 
 	import React, { Component } from 'react'
-	import Confirm from 'widgets_path/modal/confirm/index'
+	import Confirm from '@meili/base-merchant-component/confirm'
 	
 	export default class ConfirmView extends Component {
 		constructor () {
