@@ -6,7 +6,7 @@ module.exports = {
         right: 0,
         bottom: 0,
         left: 0,
-        zIndex: 1000
+        zIndex: 1025
     },
 
     modalWithoutMask: {
@@ -49,8 +49,8 @@ module.exports = {
         width: 40,
         top: 0,
         right: 0,
-        color: '#c4c4c4',
-        fontSize: 30,
+        color: '#333',
+        fontSize: 24,
         fontFamily: 'SimSun, sans-serif',
         textAlign: 'center'
     },
@@ -65,13 +65,15 @@ module.exports = {
         userSelect: 'none'
     },
     modalTitle: {
+        color: '#333',
         marginRight: 40,
-        fontSize: 16
+        fontSize: 15,
+        border: 'none'
     },
 
     modalBody: {
-        paddingTop: 40,
-        paddingBottom: 40
+        paddingTop: 20,
+        paddingBottom: 20
     },
 
     alertWrap: {

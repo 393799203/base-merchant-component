@@ -1,4 +1,4 @@
-.up-carousel .slick-slider {
+.mc-carousel .slick-slider {
   position: relative;
   display: block;
   box-sizing: border-box;
@@ -9,75 +9,75 @@
   touch-action: pan-y;
   -webkit-tap-highlight-color: transparent;
 }
-.up-carousel .slick-list {
+.mc-carousel .slick-list {
   position: relative;
   overflow: hidden;
   display: block;
   margin: 0;
   padding: 0;
 }
-.up-carousel .slick-list:focus {
+.mc-carousel .slick-list:focus {
   outline: none;
 }
-.up-carousel .slick-list.dragging {
+.mc-carousel .slick-list.dragging {
   cursor: pointer;
   cursor: hand;
 }
-.up-carousel .slick-slider .slick-track,
-.up-carousel .slick-slider .slick-list {
+.mc-carousel .slick-slider .slick-track,
+.mc-carousel .slick-slider .slick-list {
   transform: translate3d(0, 0, 0);
 }
-.up-carousel .slick-track {
+.mc-carousel .slick-track {
   position: relative;
   left: 0;
   top: 0;
   display: block;
 }
-.up-carousel .slick-track:before,
-.up-carousel .slick-track:after {
+.mc-carousel .slick-track:before,
+.mc-carousel .slick-track:after {
   content: "";
   display: table;
 }
-.up-carousel .slick-track:after {
+.mc-carousel .slick-track:after {
   clear: both;
 }
-.slick-loading .up-carousel .slick-track {
+.slick-loading .mc-carousel .slick-track {
   visibility: hidden;
 }
-.up-carousel .slick-slide {
+.mc-carousel .slick-slide {
   float: left;
   height: 100%;
   min-height: 1px;
   display: none;
 }
-[dir="rtl"] .up-carousel .slick-slide {
+[dir="rtl"] .mc-carousel .slick-slide {
   float: right;
 }
-.up-carousel .slick-slide img {
+.mc-carousel .slick-slide img {
   display: block;
 }
-.up-carousel .slick-slide.slick-loading img {
+.mc-carousel .slick-slide.slick-loading img {
   display: none;
 }
-.up-carousel .slick-slide.dragging img {
+.mc-carousel .slick-slide.dragging img {
   pointer-events: none;
 }
-.up-carousel .slick-initialized .slick-slide {
+.mc-carousel .slick-initialized .slick-slide {
   display: block;
 }
-.up-carousel .slick-loading .slick-slide {
+.mc-carousel .slick-loading .slick-slide {
   visibility: hidden;
 }
-.up-carousel .slick-vertical .slick-slide {
+.mc-carousel .slick-vertical .slick-slide {
   display: block;
   height: auto;
   border: 1px solid transparent;
 }
-.up-carousel .slick-arrow.slick-hidden {
+.mc-carousel .slick-arrow.slick-hidden {
   display: none;
 }
-.up-carousel .slick-prev,
-.up-carousel .slick-next {
+.mc-carousel .slick-prev,
+.mc-carousel .slick-next {
   position: absolute;
   display: block;
   height: 20px;
@@ -93,40 +93,40 @@
   border: 0;
   outline: none;
 }
-.up-carousel .slick-prev:hover,
-.up-carousel .slick-next:hover,
-.up-carousel .slick-prev:focus,
-.up-carousel .slick-next:focus {
+.mc-carousel .slick-prev:hover,
+.mc-carousel .slick-next:hover,
+.mc-carousel .slick-prev:focus,
+.mc-carousel .slick-next:focus {
   outline: none;
   background: transparent;
   color: transparent;
 }
-.up-carousel .slick-prev:hover:before,
-.up-carousel .slick-next:hover:before,
-.up-carousel .slick-prev:focus:before,
-.up-carousel .slick-next:focus:before {
+.mc-carousel .slick-prev:hover:before,
+.mc-carousel .slick-next:hover:before,
+.mc-carousel .slick-prev:focus:before,
+.mc-carousel .slick-next:focus:before {
   opacity: 1;
 }
-.up-carousel .slick-prev.slick-disabled:before,
-.up-carousel .slick-next.slick-disabled:before {
+.mc-carousel .slick-prev.slick-disabled:before,
+.mc-carousel .slick-next.slick-disabled:before {
   opacity: 0.25;
 }
-.up-carousel .slick-prev {
+.mc-carousel .slick-prev {
   left: -25px;
 }
-.up-carousel .slick-prev:before {
+.mc-carousel .slick-prev:before {
   content: "\2190";
 }
-.up-carousel .slick-next {
+.mc-carousel .slick-next {
   right: -25px;
 }
-.up-carousel .slick-next:before {
+.mc-carousel .slick-next:before {
   content: "\2192";
 }
-.up-carousel .slick-slider {
+.mc-carousel .slick-slider {
   padding-bottom: 45px;
 }
-.up-carousel .slick-dots {
+.mc-carousel .slick-dots {
   position: absolute;
   bottom: 45px;
   list-style: none;
@@ -135,7 +135,7 @@
   padding: 0;
   width: 100%;
 }
-.up-carousel .slick-dots li {
+.mc-carousel .slick-dots li {
   position: relative;
   display: inline-block;
   height: 20px;
@@ -144,7 +144,7 @@
   padding: 0;
   cursor: pointer;
 }
-.up-carousel .slick-dots li button {
+.mc-carousel .slick-dots li button {
   border: 0;
   background: transparent;
   display: block;
@@ -157,15 +157,15 @@
   padding: 5px;
   cursor: pointer;
 }
-.up-carousel .slick-dots li button:hover,
-.up-carousel .slick-dots li button:focus {
+.mc-carousel .slick-dots li button:hover,
+.mc-carousel .slick-dots li button:focus {
   outline: none;
 }
-.up-carousel .slick-dots li button:hover:before,
-.up-carousel .slick-dots li button:focus:before {
+.mc-carousel .slick-dots li button:hover:before,
+.mc-carousel .slick-dots li button:focus:before {
   opacity: 1;
 }
-.up-carousel .slick-dots li button:before {
+.mc-carousel .slick-dots li button:before {
   position: absolute;
   top: 0;
   left: 0;
@@ -181,14 +181,14 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.up-carousel .slick-dots li.slick-active button:before {
+.mc-carousel .slick-dots li.slick-active button:before {
   color: #f55;
   opacity: 1;
 }
-.up-carousel-vertical .slick-slider {
+.mc-carousel-vertical .slick-slider {
   padding-bottom: 0;
 }
-.up-carousel-vertical .slick-dots {
+.mc-carousel-vertical .slick-dots {
   width: 20px;
   bottom: auto;
   right: 10px;

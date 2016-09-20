@@ -4,53 +4,73 @@ import Readme from './README.md';
 
 export default class ModalView extends Component {
 	constructor () {
-		super();
-		this.state = {};
+			super();
+			this.state = { modalId: ''}
 	}
 	showModal () {
-		Modal.alert('aa');
+		Modal.alert('这是弹出提示');
 	}
 	showTipModal () {
-		
+		Modal.tip('2000ms 后消失', 2000);
 	}
-	closeTipModal () {
-		
+	showConfirmModal () {
+		Modal.confirm('msg', () => {
+			Modal.close();
+		});
 	}
-	closeCallback () {
-		
+	openModal () {
+		var modalId = Modal.open({
+			title: '自定义弹出层',
+			body: (
+				<div>
+					<p>这是内容区</p>
+					<button onClick={ (e) => this.closeModal(modalId) }>关闭</button>
+				</div>
+			)
+		});
+		this.setState({ modalId: modalId });
 	}
-	showTimeModal () {
-		
+	closeModal () {
+		var modalId = this.state.modalId;
+		if (!modalId) { return; }
+		Modal.close( modalId );
 	}
+	
 	render () {
 		var { md } = this.state;
 		return (
 			<div className="m-l m-r m-b-xxl">
 				<h1>
-					弹框 - Modal
+					弹框（小店） - Modal
 				</h1>
 				<h2>
 					1. 示例
 				</h2>
 				<div className="m-b m-t">
 					<button
-						className="btn btn-success-custom w-sm m-r" 
+						className="btn btn-success-custom w m-r" 
 						onClick={ (e) => { this.showModal() }}>
-						有标题 - Modal
+						Modal.alert()
 					</button>
 					
 
 					<button
-						className="btn btn-info-custom w-sm" 
+						className="btn btn-info-custom w" 
 						onClick={ (e) => { this.showTipModal() }}>
-						无标题 - Modal
+						Modal.tip()
 					</button>
 					
 
 					<button
-						className="btn btn-warning-custom w-sm m-l" 
-						onClick={ (e) => { this.showTimeModal() }}>
-						定时关闭 - Modal
+						className="btn btn-danger-custom w m-l" 
+						onClick={ (e) => { this.showConfirmModal() }}>
+						Modal.confirm()
+					</button>
+
+					<button
+						className="btn btn-primary-custom w m-l" 
+						onClick={ (e) => { this.openModal() }}>
+						Modal.open()
 					</button>
 					
 				</div>

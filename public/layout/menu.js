@@ -1,6 +1,6 @@
 export default [
 	{
-		title: '弹框（原） - Modal',
+		title: '弹框（小店）- Modal',
 		link: '#/modal'
 	},
 	{

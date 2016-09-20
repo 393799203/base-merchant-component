@@ -1,14 +1,33 @@
-import React, { Component } from 'react';
-import Carousel from '@mogu/up-components/lib/Carousel';
 import './style/index.less'
+import RCCarousel from 'react-slick';
+import React from 'react';
 
-export default class Slider extends Component {
-	constructor () {
-		super();
-	}
-	render () {
-		return <Carousel {...this.props} >
-			{ this.props.children }
-		</Carousel>
-	}
-}
+const Carousel = React.createClass({
+    getDefaultProps() {
+        return {
+            dots: true,
+            arrows: false
+        };
+    },
+    render() {
+        let props = Object.assign({}, this.props);
+
+        if (props.effect === 'fade') {
+            props.fade = true;
+            props.draggable = false;
+        }
+
+        let className = 'mc-carousel';
+        if (props.vertical) {
+            className = `${className} mc-carousel-vertical`;
+        }
+
+        return (
+            <div className={className}>
+                <RCCarousel {...props} />
+            </div>
+        );
+    }
+});
+
+module.exports = Carousel;

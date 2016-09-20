@@ -2,10 +2,11 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import _ from 'underscore';
 import styles from './style/index';
+import './style/index.less';
 
 var ModalController = React.createClass({
     statics: {
-        prefix: 'xd-',
+        prefix: 'mc-',
 
         instance: null,
         modals: [],
@@ -28,7 +29,7 @@ var ModalController = React.createClass({
                 // options for modal controller
                 isAbsolute: false,
                 showMask: true,
-                closeByMask: true
+                closeByMask: false
             };
 
             if (options.classes !== undefined) {
