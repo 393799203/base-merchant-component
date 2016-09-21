@@ -28,16 +28,20 @@ export default [
 		link: '#/slider'
 	},
 	{
-		title: '表格 - Table',
-		link: '#/table'
-	},
-	{
 		title: '分页 - Pagination',
 		link: '#/pagination'
 	},
 	{
 		title: '标签页 - Tab',
 		link: '#/tab'
+	},
+	{
+		title: '进度条 - ProcessBar',
+		link: '#/processBar'
+	},
+	{
+		title: '表格 - Table',
+		link: '#/table'
 	}
 ]
 

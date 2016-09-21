@@ -1,19 +1,20 @@
 import React from 'react';
 import { Router, Route, IndexRoute, Redirect, useRouterHistory,hashHistory } from 'react-router';
 import {createHashHistory} from 'history';
-import LayoutView from './layout/index';
+import LayoutView from './layout';
 import FullPageView from './layout/fullPage';
-import HomeView from './pages/home/index';
-import ModalView from './pages/modal/index';
-import UpModalView from './pages/upModal/index';
-import ConfirmView from './pages/confirm/index';
-import NotificationView from './pages/notification/index';
-import DatepickerView from './pages/datepicker/index';
-import FieldView from './pages/field/index';
-import PaginationView from './pages/pagination/index';
-import SliderView from './pages/slider/index';
-import TabView from './pages/tab/index';
-import TableView from './pages/table/index';
+import HomeView from './pages/home';
+import ModalView from './pages/modal';
+import UpModalView from './pages/upModal';
+import ConfirmView from './pages/confirm';
+import NotificationView from './pages/notification';
+import DatepickerView from './pages/datepicker';
+import FieldView from './pages/field';
+import PaginationView from './pages/pagination';
+import SliderView from './pages/slider';
+import TabView from './pages/tab';
+import ProcessBarView from './pages/processBar';
+import TableView from './pages/table';
 
 const history = useRouterHistory(createHashHistory)({queryKey: false});
 export default (
@@ -31,6 +32,7 @@ export default (
             <Route path='pagination' component={PaginationView}/>
             <Route path='slider' component={SliderView}/>
             <Route path='tab' component={TabView}/>
+            <Route path='processBar' component={ProcessBarView}/>
             <Route path='table' component={TableView}/>
         </Route>
     </Router>

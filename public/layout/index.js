@@ -59,7 +59,7 @@ export default class LayoutView extends Component {
 				</div>
 				<div>
 					<div className="app-aside bg-light">
-						<div className="aside-wrap">
+						<div className="aside-wrap" style={{overflow: "scroll"}}>
 							<ul className="nav" style={{background: '#edf1f2'}}>
 								{
 									menuData.map( (item, index) => {
