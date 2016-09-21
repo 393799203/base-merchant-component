@@ -1,6 +1,6 @@
 {
   "name": "@meili/base-merchant-component",
-  "version": "0.1.8",
+  "version": "0.1.10",
   "description": "unified platform boilerplate generator.",
   "repository": {
     "type": "git",
@@ -27,7 +27,7 @@
     "test-dev": "mocha --watch --compilers js:babel-core/register spec --recursive ./spec/setup.js -t 5000 --require ignore-styles",
     "report": "./node_modules/.bin/babel-node node_modules/isparta/bin/isparta cover --root src/ ./node_modules/.bin/_mocha -- --compilers js:babel-core/register ./spec/**/*.spec.js --require ./spec/setup.js -t 5000 --reporter mochawesome --reporter-options reportDir=coverage/result,reportName=unittest,inlineAssets=true",
     "beforePub": "npm run babel && npm run build ",
-    "pub": " npm run babel && npm run build && npm run pubnpm"
+    "pub": " npm run babel && npm run build && npm run buildDemo && npm run pubnpm"
   },
   "dependencies": {
     "@mogu/up-components": "^2.0.0",
