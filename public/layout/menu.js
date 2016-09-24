@@ -40,6 +40,10 @@ export default [
 		link: '#/processBar'
 	},
 	{
+		title: '上传图片 - UploadImg',
+		link: '#/uploadImg'
+	},
+	{
 		title: '表格 - Table',
 		link: '#/table'
 	}

@@ -1,12 +1,12 @@
 {
   "name": "@meili/base-merchant-component",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "unified platform boilerplate generator.",
   "repository": {
     "type": "git",
     "url": "http://gitlab.mogujie.org/F2E-UP/up-npm-template.git"
   },
-  "author":"qianqiao",
+  "author": "qianqiao",
   "maintainers": "qianqiao",
   "keyword": "react,component,label",
   "site": "",
@@ -32,6 +32,7 @@
   "dependencies": {
     "@mogu/up-components": "^2.0.0",
     "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-preset-stage-0": "^6.5.0",
     "classnames": "^2.2.3",
     "html-loader": "^0.4.3",
     "markdown-loader": "^0.1.7",
