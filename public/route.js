@@ -14,6 +14,7 @@ import PaginationView from './pages/pagination';
 import SliderView from './pages/slider';
 import TabView from './pages/tab';
 import ProcessBarView from './pages/processBar';
+import UploadImgView from './pages/uploadImg';
 import TableView from './pages/table';
 
 const history = useRouterHistory(createHashHistory)({queryKey: false});
@@ -33,6 +34,7 @@ export default (
             <Route path='slider' component={SliderView}/>
             <Route path='tab' component={TabView}/>
             <Route path='processBar' component={ProcessBarView}/>
+            <Route path='uploadImg' component={UploadImgView}/>
             <Route path='table' component={TableView}/>
         </Route>
     </Router>
