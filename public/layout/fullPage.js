@@ -5,16 +5,18 @@ export default class FullPageView extends Component {
 		super();
 	}
 	render () {
+		let isHome = window.location.href.indexOf('/css') > -1 ? false : true;
 		return (
 			<div>
 				<div className="app-header-fixed app-aside-fixed">
-					<div className="app-header navbar bg-white-only clearfix">
-						<div className="navbar-header bg-white-only">
+					<div className={isHome ? "app-header navbar bg-white-only clearfix" : "app-header navbar bg-danger clearfix"}>
+						<div className={isHome ? "navbar-header bg-white-only" : "navbar-header bg-danger"}>
 							<a href="#/" className="navbar-brand text-lt">商家后台组件</a>
 						</div>
 						<div className="pull-left" style={{marginLeft: "215px"}}>
 							<ul className="nav navbar-nav">
-								<li><a href="#/">首页</a></li>
+								<li><a href="#/css">CSS</a></li>
+								<li><a href="#/modal">组件</a></li>
 								<li><a>我要贡献代码</a></li>
 								<li>
 									<a href="http://gitlab.mogujie.org/Aveng/meili-base-merchant-component">
@@ -39,13 +41,18 @@ export default class FullPageView extends Component {
 						</div>
 					</div>
 				</div>
-				<div style={{
-					position: 'absolute',
-					width: '100%',
-					top: '0',
-					minHeight: '100%',
-					background: 'linear-gradient(135deg, #f52121, #f57272, #f5a6a6)'
-				}}>
+				<div style={
+					isHome ? 
+					{
+						position: 'absolute',
+						width: '100%',
+						top: '0',
+						minHeight: '100%',
+						background: 'linear-gradient(135deg, #f52121, #f57272, #f5a6a6)'
+					} : {
+						background: '#fefefe'
+					}
+				}>
 					{ this.props.children }
 				</div>
 			</div>
