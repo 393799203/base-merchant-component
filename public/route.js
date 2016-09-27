@@ -3,6 +3,7 @@ import { Router, Route, IndexRoute, Redirect, useRouterHistory,hashHistory } fro
 import {createHashHistory} from 'history';
 import LayoutView from './layout';
 import FullPageView from './layout/fullPage';
+import CSSView from './pages/css';
 import HomeView from './pages/home';
 import ModalView from './pages/modal';
 import UpModalView from './pages/upModal';
@@ -22,6 +23,7 @@ export default (
     <Router history={hashHistory}>
         <Route path='/' component={FullPageView}>
             <IndexRoute component={HomeView}/>
+            <Route path='css' component={CSSView}/>
         </Route>
         <Route component={LayoutView}>
             <Route path='modal' component={ModalView}/>
