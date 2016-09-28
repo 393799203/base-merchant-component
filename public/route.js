@@ -4,6 +4,8 @@ import {createHashHistory} from 'history';
 import LayoutView from './layout';
 import FullPageView from './layout/fullPage';
 import CSSView from './pages/css';
+import DocView from './pages/doc';
+
 import HomeView from './pages/home';
 import ModalView from './pages/modal';
 import UpModalView from './pages/upModal';
@@ -11,6 +13,7 @@ import ConfirmView from './pages/confirm';
 import NotificationView from './pages/notification';
 import DatepickerView from './pages/datepicker';
 import FieldView from './pages/field';
+import FormView from './pages/form';
 import PaginationView from './pages/pagination';
 import SliderView from './pages/slider';
 import TabView from './pages/tab';
@@ -24,6 +27,7 @@ export default (
         <Route path='/' component={FullPageView}>
             <IndexRoute component={HomeView}/>
             <Route path='css' component={CSSView}/>
+            <Route path='doc' component={DocView}/>
         </Route>
         <Route component={LayoutView}>
             <Route path='modal' component={ModalView}/>
@@ -32,6 +36,7 @@ export default (
             <Route path='notification' component={NotificationView}/>
             <Route path='datepicker' component={DatepickerView}/>
             <Route path='field' component={FieldView}/>
+            <Route path='form' component={FormView}/>
             <Route path='pagination' component={PaginationView}/>
             <Route path='slider' component={SliderView}/>
             <Route path='tab' component={TabView}/>
