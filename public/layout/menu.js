@@ -24,6 +24,10 @@ export default [
 		link: '#/field'
 	},
 	{
+		title: '表单 - Form',
+		link: '#/form'
+	},
+	{
 		title: '轮播图 - Slider',
 		link: '#/slider'
 	},

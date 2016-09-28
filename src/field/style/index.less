@@ -1,0 +1,377 @@
+@color-primary: #f55;
+@color-helper: #2ad;
+
+@color-table-header: #f4f5fa;
+@color-table-alter: #f9fafc;
+
+@color-primary-dark: #e53132;
+
+@color-text-primary: #333;
+@color-text-secondary: #666;
+@color-text-helper: #888;
+
+@color-border: #e2e2e2;
+
+@color-button: #fff;
+@color-button-border: #c4c4c4;
+@color-button-active: #f5f5f5;
+@color-button-disabled: #ddd;
+
+@font-family: Tahoma, "Hiragino Sans GB", "Microsoft yahei", serif;
+
+// 图片spirit
+@icon-spirit: "http://s16.mogucdn.com/p1/150629/upload_ie2tizdegjtdsnjrgizdambqhayde_20x320.png";
+
+// input控件样式
+@input-spirit: "http://s8.mogucdn.com/pic/150401/13t2zv_ieztkmzwgu4tcyrugazdambqgyyde_50x150.png";
+
+// 蘑菇街图标
+@icon-mogujie: "http://s6.mogucdn.com/pic/150403/13t2zv_ieytgnrygi2tmnjvgazdambqmeyde_50x18.png";
+
+//番茄炒蛋图标
+@icon-go: "http://s18.mogucdn.com/p1/151130/upload_ie4deoddgiygkzjsguzdambqgiyde_60x18.jpg";
+@icon-meilishuo: "http://s16.mogucdn.com/p1/160516/upload_ifrtgodbg5qwmzjyhazdambqhayde_50x18.png";
+
+// 小店图标
+@icon-xiaodian: "http://s7.mogucdn.com/pic/150403/13t2zv_iezwmzjygi2tmnjvgazdambqgyyde_40x18.png";
+@icon-warehouse: "http://s7.mogucdn.com/pic/150403/13t2zv_iezwmzjygi2tmnjvgazdambqgyyde_40x18.png";
+
+// 联系客服图标
+@icon-service: "http://s6.mogucdn.com/pic/150403/13t2zv_iezdqnzsge4dqnjvgazdambqmmyde_16x18.png";
+
+// 状态图标
+@icon-status: 'http://s21.mogucdn.com/pic/150401/zixin_iezdandggfstoyzugazdambqmmyde_112x32.png';
+
+.FocusStyle () {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-color: @color-primary;
+}
+
+.transition(@proper,@during) {
+    -webkit-transition: @proper ease-in-out @during;
+    -o-transition: @proper ease-in-out @during;
+    transition: @proper ease-in-out @during;
+}
+
+.mc-label {
+    display: inline-block;
+    line-height: 30px;
+    text-align: right;
+    vertical-align: top;
+
+    &.required {
+        padding-right: 10px;
+
+        &:after {
+            content: '*';
+            color: @color-primary;
+        }
+    }
+}
+
+.mc-option {
+    display: inline-block;
+    margin-right: 10px;
+    line-height: 30px;
+
+    &.block {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .mc-input, .mc-select {
+        margin: 0 5px;
+        width: 150px;
+    }
+}
+
+.mc-form-group {
+  margin-bottom: 20px;
+}
+
+.mc-form-inline {
+  .mc-form-group {
+    display: inline-block;
+  }
+}
+
+.mc-form-action {
+  margin-top: 30px;
+  padding-left: 80px;
+}
+
+.mc-field {
+    display: inline-block;
+    line-height: 30px;
+    position: relative;
+}
+
+.mc-form-tip {
+  display: none;
+  position: relative;
+  height: 30px;
+  margin-left: 10px;
+  padding-left: 20px;
+  line-height: 30px;
+  vertical-align: top;
+
+    &:before {
+        content: '';
+        position: absolute;
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        top: 6px;
+        left: 0;
+        background: url(@icon-spirit) no-repeat 0 0;
+        vertical-align: middle;
+    }
+
+    .invalid & {
+        display: inline-block;
+
+        &:before {
+          background-position: 0 0;
+        }
+    }
+    .valid &:before {
+        background-position: 0 -34px;
+    }
+}
+
+.invalid {
+  .mc-input, .mc-textarea, .mc-select {
+    border-color: @color-primary;
+  }
+}
+//i {
+//  background: url(@icon-spirit) no-repeat 0 0;
+//  display: block;
+//  width: 20px;
+//  height: 32px;
+////  position: absolute;
+////  right: -26px;
+////  top: 0;
+//
+//  &.icon-search {
+//    background-position: 0 -67px;
+//    right: 5px;
+//  }
+//}
+
+.mc-input, .mc-uploader {
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid @color-button-border;
+    color: @color-text-primary;
+    font-size: 14px;
+    padding: 0 10px;
+
+    outline: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    .transition(border-color, 0.15s);
+
+    &:focus {
+        .FocusStyle();
+    }
+}
+
+.mc-input.invalid {
+    border-color: @color-primary;
+    color: @color-text-primary;
+}
+
+.mc-input.disabled, .mc-input[disabled],
+.mc-select.disabled, .mc-select[disabled] {
+    background-color: @color-button-disabled;
+    cursor: not-allowed;
+    color: @color-text-helper;
+}
+
+.mc-select {
+    width: 150px;
+    height: 30px;
+    line-height: 1.5;
+    border: 1px solid @color-button-border;
+    border-radius: 0;
+    color: @color-text-primary;
+    font-size: 14px;
+    padding: 4px 35px 4px 10px;
+
+    padding-right: 4px\0;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    background: url(http://s7.mogucdn.com/pic/150410/1blhwf_ieywgzrrgy3tcyjxgazdambqmeyde_29x30.png) right center no-repeat #fff;
+    background-image: none\0;
+    outline: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    .transition(border-color, 0.15s);
+
+    &:focus {
+        .FocusStyle();
+    }
+}
+
+.mc-textarea {
+    display: block;
+    border: 1px solid @color-button-border;
+    color: @color-text-primary;
+    font-size: 14px;
+    padding: 10px;
+    background: #fff;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    outline: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    .transition(border-color, 0.15s);
+
+    &:focus {
+        .FocusStyle();
+    }
+}
+
+
+.mc-radio {
+    display: none;
+
+    & + span {
+        display: inline;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    & + span::before {
+        content: '';
+        width: 18px;
+        height: 18px;
+        background: url(@input-spirit) 0 -36px no-repeat;
+        display: inline-block;
+        cursor: pointer;
+        vertical-align: middle;
+    }
+    &:checked + span::before {
+        content: '';
+        background: url(@input-spirit) 0 0 no-repeat;
+    }
+    &:disabled + span,
+    &:disabled + span::before {
+        cursor: not-allowed;
+    }
+    &:disabled + span::before {
+        content: '';
+        background: url(@input-spirit) 0 -77px no-repeat;
+    }
+    &:disabled:checked + span::before {
+        content: '';
+        background: url(@input-spirit) 0 -121px no-repeat;
+    }
+}
+
+.mc-checkbox {
+    display: none;
+
+    & + span {
+        display: inline;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    & + span::before {
+        content: '';
+        width: 18px;
+        height: 18px;
+        background: url(@input-spirit) -34px -36px no-repeat;
+        display: inline-block;
+        cursor: pointer;
+        vertical-align: middle;
+    }
+
+    &:checked + span::before {
+        content: '';
+        background: url(@input-spirit) -34px 0 no-repeat;
+    }
+
+    &:disabled + span,
+    &:disabled + span::before {
+        cursor: not-allowed;
+    }
+
+    &:disabled + span::before {
+        content: '';
+        background: url(@input-spirit) -34px -77px no-repeat;
+    }
+
+    &:disabled:checked + span::before {
+        content: '';
+        background: url(@input-spirit) -34px -121px no-repeat;
+    }
+}
+
+.mc-uploader {
+    position: relative;
+    width: 212px;
+    height: 32px;
+    background: #fff;
+    overflow: hidden;
+    padding: 0;
+
+    .filename {
+        width: 70%;
+        color: @color-text-helper;
+        float: left;
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        cursor: default;
+        position: relative;
+        text-indent: 10px;
+    }
+    .action {
+        width: 30%;
+        text-align: center;
+        background-color: @color-table-header;
+        font-size: 14px;
+        float: left;
+        overflow: hidden;
+        cursor: pointer;
+        border-left: 1px solid @color-button-border;
+    }
+    input {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        float: right;
+        height: 100%;
+        border: none;
+        cursor: default;
+        width: 100%;
+        z-index: 111;
+    }
+}
+
+.mc-input, .mc-select {
+  &.block {
+    display: block;
+    width: 100%;
+  }
+}
+
+/** Yes, it's IE8 hack!**/
+.mc-ie8 {
+    .mc-radio,
+    .mc-checkbox {
+        display: inline;
+        position: relative;
+        top: 2px;
+    }
+}

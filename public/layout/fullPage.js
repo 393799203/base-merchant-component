@@ -5,19 +5,21 @@ export default class FullPageView extends Component {
 		super();
 	}
 	render () {
-		let isHome = window.location.href.indexOf('/css') > -1 ? false : true;
+		let curHash = window.location.hash ? window.location.hash.split("?")[0] : "";
+		let linkHash = ["#/doc", "#/css"];
+		let isHome = linkHash.indexOf(curHash) > -1 ? false : true;
+
 		return (
 			<div>
 				<div className="app-header-fixed app-aside-fixed">
 					<div className={isHome ? "app-header navbar bg-white-only clearfix" : "app-header navbar bg-danger clearfix"}>
 						<div className={isHome ? "navbar-header bg-white-only" : "navbar-header bg-danger"}>
-							<a href="#/" className="navbar-brand text-lt">商家后台组件</a>
+							<a href="#/" className="navbar-brand text-lt">商家后台</a>
 						</div>
 						<div className="pull-left" style={{marginLeft: "215px"}}>
 							<ul className="nav navbar-nav">
 								<li><a href="#/css">CSS</a></li>
 								<li><a href="#/modal">组件</a></li>
-								<li><a>我要贡献代码</a></li>
 								<li>
 									<a href="http://gitlab.mogujie.org/Aveng/meili-base-merchant-component">
 										组件源码
@@ -25,9 +27,11 @@ export default class FullPageView extends Component {
 								</li>
 								<li>
 									<a href="http://gitlab.mogujie.org/Aveng/meili-base-merchant-component/issues">
-										问题反馈
+										组件问题反馈
 									</a>
 								</li>
+								<li><a href="http://gitlab.mogujie.org/Aveng/meili-base-merchant-component">我要贡献代码</a></li>
+								<li><a href="#/doc">商家后台文档</a></li>
 							</ul>
 						</div>
 						<div className="pull-right">

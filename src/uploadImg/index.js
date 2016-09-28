@@ -1,6 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var Notification = require('../notification');
+// var Notification = require('source_path/notification');
 
 // 多传接口地址
 var UPLOAD_URL = window.location.href.indexOf("meilishuo.com") > -1 ? "http://media.meilishuo.com/image/put?appKey=11m" : "http://media.xiaodian.com/image/put?appKey=11m";
@@ -153,7 +153,8 @@ var UploadImg = React.createClass({
         // 对于ie9以下的浏览器
         if(!/\.(gif|jpg|jpeg|png|GIF|JPG|PNG)$/.test(e.target.value) ){
             e.target.value = '';
-            Notification.open({message: '不支持此种格式的图片'});
+            // Notification.open({message: '不支持此种格式的图片'});
+            console.error('不支持此种格式的图片');
             return
         }
         // 开始回调
