@@ -3,32 +3,31 @@
 
 ```
 import React, { Component } from 'react'
-import FieldComponent from 'source_path/field/index';
-import FieldReadme from './README.md';
+import FormComponent from 'source_path/field/index';
 
 //详细配置信息见test.js
 import testData from './test.js'
 import './index.less'
 
-export default class TipView extends Component {
+export default class FormComponentView extends Component {
 	constructor () {
 		super();
 	}
 	
 	//获取表单数据
 	getData(){
-		var data = FieldComponent.getData("textForm");
+		var data = FormComponent.getData("textForm");
 		console.info(data);
 	}
 
 	//初始化表单数据
 	resetData(){
-		FieldComponent.resetData("textForm");
+		FormComponent.resetData("textForm");
 	}
 
 	//清除表单数据
 	clearData(){
-		FieldComponent.clearData("textForm");
+		FormComponent.clearData("textForm");
 	}
 
 	//查询表单改变
@@ -61,7 +60,7 @@ export default class TipView extends Component {
 						onClick={ (e) => { this.clearData() }}>
 						清除数据
 					</button>
-					<FieldComponent 
+					<FormComponent 
 						data = {testData} 
 						onQuery={this.onQueryChange.bind(this)} 
 						prefixcls="field-test"
@@ -177,3 +176,8 @@ export default {
 | getData    |   获取表单数据    | form           | 表单中的数据       |
 | resetData   |  重置表单数据    | form        | 无      | 
 | clearData   |  清空表单数据    | form        | 无      | 
+
+
+
+
+

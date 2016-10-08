@@ -1,18 +1,17 @@
+/**
+ * Author : youyou
+ * Description : 表单组件
+ */
 import React, { Component } from 'react';
-
-import {Field} from '@mogu/up-components/lib/Form';
+import {Field} from '../field/index';
 import DatePicker from '@mogu/up-components/lib/DatePicker';
 import Notification from '@mogu/up-components/lib/Notification'
 
-import './style/index.less';
-
-import './style/field.less';
-
-export default class FieldComponent extends Component {
+export default class FormComponent extends Component {
     
     constructor(props){
         super(props);
-        FieldComponent.instance = this;
+        FormComponent.instance = this;
         this.state = {
             options: props.data && props.data.options ? props.data.options : [],
             btns: props.data && props.data.btns ? props.data.btns : [],
@@ -39,8 +38,8 @@ export default class FieldComponent extends Component {
     
     //对外提供的获取数据静态方法
     static getData(){
-        if(Field.validate(FieldComponent.instance.state.form)){
-            return Field.getData(FieldComponent.instance.state.form);
+        if(Field.validate(FormComponent.instance.state.form)){
+            return Field.getData(FormComponent.instance.state.form);
         }else{
             Notification.open({
                 message: '信息填写不完整！',
@@ -52,12 +51,12 @@ export default class FieldComponent extends Component {
 
     //对外提供的初始化数据静态方法
     static resetData(){
-        return Field.resetData(FieldComponent.instance.state.form);
+        return Field.resetData(FormComponent.instance.state.form);
     }
 
     //对外提供的清除数据静态方法
     static clearData(){
-        return Field.clearData(FieldComponent.instance.state.form);
+        return Field.clearData(FormComponent.instance.state.form);
     }
 
     //自定义Field组件向Field传值

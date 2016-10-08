@@ -50,6 +50,14 @@ export default [
 	{
 		title: '表格 - Table',
 		link: '#/table'
+	},
+	{
+		title: '下拉框 - Select',
+		link: '#/select'
+	},
+	{
+		title: '地址 - AddressSelector',
+		link: '#/address'
 	}
 ]
 

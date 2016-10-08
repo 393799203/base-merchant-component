@@ -54,324 +54,276 @@
     transition: @proper ease-in-out @during;
 }
 
-.mc-label {
-    display: inline-block;
-    line-height: 30px;
-    text-align: right;
-    vertical-align: top;
+.mc-module-field{
+    font-size:14px;
+    color:#333;
+    width:100%;
 
-    &.required {
-        padding-right: 10px;
+    .form-group{
+        margin-bottom:0px;
+    }
 
-        &:after {
-            content: '*';
-            color: @color-primary;
+    .col-lg{
+        float:left;
+        padding:0;
+        min-height: 1px;
+        margin: 10px 0px;
+        line-height: 30px;
+    }
+
+    .fa{
+        display: none;
+    }
+
+    .mc-field-label{
+        display: inline-block;
+        text-align: right;
+        vertical-align: top;
+        width:100px;
+        padding-right:10px;
+
+        &.required {
+            &:before {
+                padding-right: 10px;
+                content: '*';
+                color: #f55;
+            }
         }
     }
-}
 
-.mc-option {
-    display: inline-block;
-    margin-right: 10px;
-    line-height: 30px;
-
-    &.block {
-      display: block;
-      margin-bottom: 10px;
+    .radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"]{
+        margin-left:0px;
+        position:static;
     }
 
-    .mc-input, .mc-select {
-        margin: 0 5px;
-        width: 150px;
-    }
-}
-
-.mc-form-group {
-  margin-bottom: 20px;
-}
-
-.mc-form-inline {
-  .mc-form-group {
-    display: inline-block;
-  }
-}
-
-.mc-form-action {
-  margin-top: 30px;
-  padding-left: 80px;
-}
-
-.mc-field {
-    display: inline-block;
-    line-height: 30px;
-    position: relative;
-}
-
-.mc-form-tip {
-  display: none;
-  position: relative;
-  height: 30px;
-  margin-left: 10px;
-  padding-left: 20px;
-  line-height: 30px;
-  vertical-align: top;
-
-    &:before {
-        content: '';
-        position: absolute;
+    .form-control-inline-block{
         display: inline-block;
-        width: 18px;
-        height: 18px;
-        top: 6px;
-        left: 0;
-        background: url(@icon-spirit) no-repeat 0 0;
-        vertical-align: middle;
+        margin-right: 20px;
     }
 
-    .invalid & {
-        display: inline-block;
+    .radio-nice label,  .radio label, .checkbox label , .checkbox-nice label {
+        padding-left: 5px;
+    }
 
-        &:before {
-          background-position: 0 0;
+    textarea{
+        height: auto;
+    }
+
+    .form-control{
+        margin-top:10px;
+        min-width:173px;
+        height: 30px;
+        line-height: 30px;
+        border: 1px solid #c4c4c4;
+        color: #333;
+        font-size: 14px;
+        padding: 0 10px;
+        outline: 0;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-transition: border-color ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s;
+        transition: border-color ease-in-out .15s;
+    }
+
+    .form-btn{
+        margin:10px 0px;
+    }
+
+    .form-warn-tip {
+        display: none;
+        height: 20px;
+        line-height: 20px;
+        vertical-align: top;
+        font-size: 12px;
+        color: #ff5555;
+    }
+
+    .require{
+        color: #ff5555;
+        margin-right: 3px
+    }
+
+    .invaild {
+        .form-warn-tip {
+            display: inline-block;
+        }
+    
+        .fa-times-circle {
+            color: #ff5555;
+            font-size: 14px;
+            vertical-align: middle;
+        }
+
+        .checkbox-nice label:before {
+            border: 1px solid #f55;
+        }
+
+        .form-control {
+            border: 1px solid #f55;
+
+            &[disabled]{
+                background-color: #eee;
+            }
         }
     }
-    .valid &:before {
-        background-position: 0 -34px;
+
+    .mc-field-text , .mc-field-password , .mc-field-textarea{
+        float:left;
     }
-}
 
-.invalid {
-  .mc-input, .mc-textarea, .mc-select {
-    border-color: @color-primary;
-  }
-}
-//i {
-//  background: url(@icon-spirit) no-repeat 0 0;
-//  display: block;
-//  width: 20px;
-//  height: 32px;
-////  position: absolute;
-////  right: -26px;
-////  top: 0;
-//
-//  &.icon-search {
-//    background-position: 0 -67px;
-//    right: 5px;
-//  }
-//}
+    .mc-radio-input{
+        display:none;
 
-.mc-input, .mc-uploader {
-    width: 200px;
-    height: 30px;
-    line-height: 30px;
-    border: 1px solid @color-button-border;
-    color: @color-text-primary;
-    font-size: 14px;
-    padding: 0 10px;
-
-    outline: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    .transition(border-color, 0.15s);
-
-    &:focus {
-        .FocusStyle();
+        & + label {
+            display: inline;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        & + label::before {
+            content: '';
+            width: 18px;
+            height: 18px;
+            background: url(@input-spirit) 0 -36px no-repeat;
+            display: inline-block;
+            cursor: pointer;
+            vertical-align: middle;
+        }
+        &:checked + label::before {
+            content: '';
+            background: url(@input-spirit) 0 0 no-repeat;
+        }
+        &:disabled + label,
+        &:disabled + label::before {
+            cursor: not-allowed;
+        }
+        &:disabled + label::before {
+            content: '';
+            background: url(@input-spirit) 0 -77px no-repeat;
+        }
+        &:disabled:checked + label::before {
+            content: '';
+            background: url(@input-spirit) 0 -121px no-repeat;
+        }
     }
-}
 
-.mc-input.invalid {
-    border-color: @color-primary;
-    color: @color-text-primary;
-}
+    .mc-checkbox-input {
+        display: none;
 
-.mc-input.disabled, .mc-input[disabled],
-.mc-select.disabled, .mc-select[disabled] {
-    background-color: @color-button-disabled;
-    cursor: not-allowed;
-    color: @color-text-helper;
-}
+        & + label {
+            display: inline;
+            font-size: 14px;
+            cursor: pointer;
+        }
 
-.mc-select {
-    width: 150px;
-    height: 30px;
-    line-height: 1.5;
-    border: 1px solid @color-button-border;
-    border-radius: 0;
-    color: @color-text-primary;
-    font-size: 14px;
-    padding: 4px 35px 4px 10px;
+        & + label::before {
+            content: '';
+            width: 18px;
+            height: 18px;
+            background: url(@input-spirit) -34px -36px no-repeat;
+            display: inline-block;
+            cursor: pointer;
+            vertical-align: middle;
+        }
 
-    padding-right: 4px\0;
+        &:checked + label::before {
+            content: '';
+            background: url(@input-spirit) -34px 0 no-repeat;
+        }
 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+        &:disabled + label,
+        &:disabled + label::before {
+            cursor: not-allowed;
+        }
 
-    background: url(http://s7.mogucdn.com/pic/150410/1blhwf_ieywgzrrgy3tcyjxgazdambqmeyde_29x30.png) right center no-repeat #fff;
-    background-image: none\0;
-    outline: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    .transition(border-color, 0.15s);
+        &:disabled + label::before {
+            content: '';
+            background: url(@input-spirit) -34px -77px no-repeat;
+        }
 
-    &:focus {
-        .FocusStyle();
+        &:disabled:checked + label::before {
+            content: '';
+            background: url(@input-spirit) -34px -121px no-repeat;
+        }
     }
-}
 
-.mc-textarea {
-    display: block;
-    border: 1px solid @color-button-border;
-    color: @color-text-primary;
-    font-size: 14px;
-    padding: 10px;
-    background: #fff;
-
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-
-    outline: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    .transition(border-color, 0.15s);
-
-    &:focus {
-        .FocusStyle();
-    }
-}
-
-
-.mc-radio {
-    display: none;
-
-    & + span {
-        display: inline;
+    .mc-select-input {
+        width: 380px;
+        height: 30px;
+        line-height: 1.5;
+        border: 1px solid @color-button-border;
+        border-radius: 2px;
+        color: @color-text-primary;
         font-size: 14px;
-        cursor: pointer;
-    }
-    & + span::before {
-        content: '';
-        width: 18px;
-        height: 18px;
-        background: url(@input-spirit) 0 -36px no-repeat;
-        display: inline-block;
-        cursor: pointer;
-        vertical-align: middle;
-    }
-    &:checked + span::before {
-        content: '';
-        background: url(@input-spirit) 0 0 no-repeat;
-    }
-    &:disabled + span,
-    &:disabled + span::before {
-        cursor: not-allowed;
-    }
-    &:disabled + span::before {
-        content: '';
-        background: url(@input-spirit) 0 -77px no-repeat;
-    }
-    &:disabled:checked + span::before {
-        content: '';
-        background: url(@input-spirit) 0 -121px no-repeat;
-    }
-}
+        padding: 4px 35px 4px 10px;
 
-.mc-checkbox {
-    display: none;
+        padding-right: 4px\0;
 
-    & + span {
-        display: inline;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+
+        background: url(http://s7.mogucdn.com/pic/150410/1blhwf_ieywgzrrgy3tcyjxgazdambqmeyde_29x30.png) right center no-repeat #fff;
+        background-image: none\0;
+        outline: none;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        .transition(border-color, 0.15s);
+
+        &:focus {
+            .FocusStyle();
+        }
+    }
+
+    .mc-input, .mc-uploader {
+        width: 380px;
+        height: 30px;
+        line-height: 30px;
+        border: 1px solid @color-button-border;
+        color: @color-text-primary;
         font-size: 14px;
-        cursor: pointer;
+        padding: 0 10px;
+
+        outline: none;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        .transition(border-color, 0.15s);
+
+        &:focus {
+            .FocusStyle();
+        }
     }
 
-    & + span::before {
-        content: '';
-        width: 18px;
-        height: 18px;
-        background: url(@input-spirit) -34px -36px no-repeat;
-        display: inline-block;
-        cursor: pointer;
-        vertical-align: middle;
+    .mc-input .invalid {
+        border-color: @color-primary;
+        color: @color-text-primary;
     }
 
-    &:checked + span::before {
-        content: '';
-        background: url(@input-spirit) -34px 0 no-repeat;
-    }
-
-    &:disabled + span,
-    &:disabled + span::before {
+    .mc-input .disabled, .mc-input[disabled],
+    .mc-select .disabled, .mc-select[disabled] {
+        background-color: @color-button-disabled;
         cursor: not-allowed;
-    }
-
-    &:disabled + span::before {
-        content: '';
-        background: url(@input-spirit) -34px -77px no-repeat;
-    }
-
-    &:disabled:checked + span::before {
-        content: '';
-        background: url(@input-spirit) -34px -121px no-repeat;
-    }
-}
-
-.mc-uploader {
-    position: relative;
-    width: 212px;
-    height: 32px;
-    background: #fff;
-    overflow: hidden;
-    padding: 0;
-
-    .filename {
-        width: 70%;
         color: @color-text-helper;
-        float: left;
+    }
+
+    .mc-textarea-input {
         display: block;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        cursor: default;
-        position: relative;
-        text-indent: 10px;
-    }
-    .action {
-        width: 30%;
-        text-align: center;
-        background-color: @color-table-header;
+        border: 1px solid @color-button-border;
+        border-radius:2px;
+        color: @color-text-primary;
         font-size: 14px;
-        float: left;
-        overflow: hidden;
-        cursor: pointer;
-        border-left: 1px solid @color-button-border;
-    }
-    input {
-        opacity: 0;
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        float: right;
-        height: 100%;
-        border: none;
-        cursor: default;
-        width: 100%;
-        z-index: 111;
-    }
-}
+        padding: 10px;
+        background: #fff;
+        margin: 10px 0px;
+        width:380px;
 
-.mc-input, .mc-select {
-  &.block {
-    display: block;
-    width: 100%;
-  }
-}
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
 
-/** Yes, it's IE8 hack!**/
-.mc-ie8 {
-    .mc-radio,
-    .mc-checkbox {
-        display: inline;
-        position: relative;
-        top: 2px;
+        outline: none;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        .transition(border-color, 0.15s);
+
+        &:focus {
+            .FocusStyle();
+        }
     }
 }
