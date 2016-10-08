@@ -13,6 +13,7 @@ import ConfirmView from './pages/confirm';
 import NotificationView from './pages/notification';
 import DatepickerView from './pages/datepicker';
 import FieldView from './pages/field';
+
 import FormView from './pages/form';
 import PaginationView from './pages/pagination';
 import SliderView from './pages/slider';
@@ -20,6 +21,9 @@ import TabView from './pages/tab';
 import ProcessBarView from './pages/processBar';
 import UploadImgView from './pages/uploadImg';
 import TableView from './pages/table';
+
+import SelectView from './pages/select';
+import AddressView from './pages/addressSelector';
 
 const history = useRouterHistory(createHashHistory)({queryKey: false});
 export default (
@@ -43,6 +47,8 @@ export default (
             <Route path='processBar' component={ProcessBarView}/>
             <Route path='uploadImg' component={UploadImgView}/>
             <Route path='table' component={TableView}/>
+            <Route path='select' component={SelectView}/>
+            <Route path='address' component={AddressView}/>
         </Route>
     </Router>
 );

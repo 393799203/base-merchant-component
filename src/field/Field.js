@@ -1,412 +1,849 @@
-"use strict";
-
-var React = require('react');
-
-var FieldMixins = require('./Field.Mixins');
-
-var DEFAULT_FORM = 'default';
-
-var _ = require('underscore');
-
-require('./style/index.less');
-
-/**
- * @author nanzhu
- * @desc 表单组件 module/field/Field.jsx
-
- props:
- - label: label名
- - type: (radio|checkbox|select|raw|...)
- - name: 数据属性名
- - [form]: field所属form名称，默认为"default"
- - [options]: (radio|checkbox|select)必需字段
- - [value]: 默认值，checkbox需传入对象，KEY为对应checkbox的value，VALUE为该checkbox是否选中(bool)
- - [required]: 是否必填
- - [disabled]: 是否禁止，注意目前仅mc-input适用
- - [format]: 数据格式
- - [placeholder]: 默认值
- - [errorText]: 错误时提示文案
- - [onValidate]: 额外校验函数，[type='raw']时若未传入则该field需自行校验
- - [onData]: 用于[type='raw']时，若未传入则该field包含数据需自行处理
-
- 静态方法:
- - Field.validate([form]): 校验表单form数据合法性
- - Field.getData([form]): 获取表单form的所有数据
-
+/* Field.js 
+ * 	NOTICE:
+ * 	eventHandlers 写在组件绑定事件的后面,保证自己控件的事件先执行,然后通过回调调用用户绑定的事件
  */
 
-var returnTrue = function returnTrue() {
-    return true;
-};
+import 'js-object-clone';
+import React , { PropTypes, Component } from 'react';
+import FieldMixins from './Field.Mixins';
+import './style/index.less';
 
-var Field = React.createClass({
-    statics: {
-        forms: {},
+let DEFAULT_FORM = "defaultKey";
 
-        addField: function (field, form) {
-            if (Field.forms[form] === undefined) {
-                Field.forms[form] = {};
-            }
+if( typeof Array.isArray !== 'function'){
+	Array.isArray = function( array ){
+		return Object.prototype.toString.call( array ) === "[object Array]";
+	}
+}
 
-            Field.forms[form][field._id] = field;
-        },
+let Field = React.createClass({
+	statics: {  //静态方法和变量
+	    forms: {},  //所有的表单数据，表单名做key值，value值为对象，该对象为该表单名下所有input name:value的合集)
 
-        removeField: function (field, form) {
-            delete Field.forms[form][field._id];
-        },
+	    idCounter: 0,  //id计数器，用于uniqueId方法生成表单的_id标识
 
-        validate: function (form) {
-            form = form || DEFAULT_FORM;
+		uniqueId: function(prefix) { //生成唯一ID
+		    var id = ++(Field.idCounter) + '';
+		    return prefix ? prefix + id : id;
+	  	},
 
-            return _.all(Field.forms[form], function (field) {
-                return field.validate();
-            });
-        },
+	    add: function(field, name) {  //添加表单数据到forms对象中
+	        if (Field.forms[name] === undefined) {
+	            Field.forms[name] = {};
+	        }
 
-        getData: function (form) {
-            form = form || DEFAULT_FORM;
+	        Field.forms[name][field._id] = field;
+	    },
 
-            var data = {};
-            _.each(Field.forms[form], function (field, key) {
-                // use deep merge
-                _.merge(data, field.getData());
-            });
+	    remove: function(field, name) {  //删除某个表单
+	        delete Field.forms[name][field._id];
+	    },
 
-            return data;
-        },
+	    validate: function(form) {  //校验表单数据
+	        let formName = form || DEFAULT_FORM;
+	        let flag = true;
+	        let currentForm = Field.forms[formName];
 
-        objectToOptions: function (optionObject) {
-            return _.map(optionObject, function (val, key) {
-                return {
-                    text: val,
-                    value: key
-                };
-            });
-        },
+	        Object.keys(currentForm).map(function (key) {
+	        	let field = currentForm[key];
+	        	flag = flag && field.validate();
+	        });
 
-        Mixins: FieldMixins
-    },
+	        return flag;
+	    },
 
-    propTypes: {
-        label: React.PropTypes.string,
-        className: React.PropTypes.string,
-        type: React.PropTypes.string,
-        name: React.PropTypes.string,
-        form: React.PropTypes.string,
-        options: React.PropTypes.array,
-        //format: React.PropTypes.string,
-        placeholder: React.PropTypes.string,
-        errorText: React.PropTypes.string,
-        required: React.PropTypes.bool,
-        onValidate: React.PropTypes.func,
-        onData: React.PropTypes.func,
-        disabled: React.PropTypes.bool,
-    },
+	    getData: function(form) {  //获取所有或特定相同name表单的数据
+	        let formName = form || DEFAULT_FORM;
+	        let data = {};
+	        let currentForm = Field.forms[formName];
 
-    getDefaultProps: function () {
-        return {
-            type: 'text',
-            label: null,
-            form: DEFAULT_FORM,
-            required: false,
-            format: 'text',
-            options: [],
-            onValidate: returnTrue,
-            onData: function () {
-                return {};
-            }
-        };
-    },
+	        Object.keys(currentForm).map(function (key) {
+	        	let field = currentForm[key];
+				let value = field.getData();
 
-    getInitialState: function () {
-        var props = this.props,
-            state = {
-                error: props.error,
-                errorText: props.errorText
-            };
+				if( Object.prototype.toString.call( value ) === "[object Object]"){
+					//$.extend(true, data, value);
+					Object.assign( data , Object.clone( value , true ) );
+				}else{
+					//$.extend(true, data, { [ field.props.name ]: value });
+					Object.assign( data , Object.clone( { [ field.props.name ]: value }  , true ) );
+				}
+	        });
 
-        switch (this.props.type) {
-            case 'raw':
-                state.value = null;
-                break;
+	        return data;
+	    },
 
-            case 'checkbox':
-                var checked = {},
-                    values = this.props.value;
+		resetData: function( form ){
+			let formName = form || DEFAULT_FORM;
+			let currentForm = Field.forms[formName];
 
-                if (_.isArray(this.props.options)) {
-                    this.props.options.forEach(function (option) {
-                        checked[option.value] = _.indexOf(values, option.value) > -1;
+			Object.keys(currentForm).map(function (key) {
+
+				let field = currentForm[key];
+				let props = field.props;
+				let { type , defaultValue } = field.props;
+				let value = defaultValue || '';
+
+				if( props.attrs.disabled || props.attrs.readOnly ){
+					return;
+				}
+				if( type === 'radio' && Array.isArray(props.options) && props.options.length ){
+					let checked = {};
+					if( typeof props.value !== 'undefined' ){
+						checked[props.value] = true;
+						value = props.value
+					}else if( typeof props.defaultValue !== 'undefined' ){
+						checked[props.defaultValue] = true;
+						value = props.defaultValue
+					}else if(Array.isArray(props.options)) {  //遍历options，取出默认checked的值
+						let obj = {};
+						let options = props.options;
+
+						options.map(function(option) {
+							if(option.defaultChecked) {
+								obj.value = option.value;
+							}
+						});
+
+						if( typeof obj.value === 'undefined' && options.length > 0){
+							obj.value = options[0].value; //如果没有默认checked的值，则用第一个作为默认值
+						}
+						checked[obj.value] = true;
+						value = obj.value
+					}
+
+					field.setState({ value , checked });
+				}else if( type === 'checkbox' && Array.isArray(props.options) && props.options.length ){
+					let checked = {},
+						values = [],
+	                    options = props.options;
+
+					if( typeof props.value !== 'undefined' && Array.isArray( props.value ) ){
+						props.value.forEach( item => {
+							checked[ item ] = true;
+							values = item;
+						});
+					}else if( typeof props.defaultValue !== 'undefined' && Array.isArray( props.defaultValue )){
+						props.defaultValue.forEach( item => {
+							checked[ item ] = true;
+							values = item;
+						});
+					}else if (Array.isArray(props.options)) {
+	                    options.map(function(option) {
+	                    	if (option.defaultChecked) {
+	                    		checked[option.value] = true;
+	                    		values.push(option.value);
+	                    	}
+	                    });
+	                }
+					field.setState({ value , checked });
+				}else if( type === 'select' && Array.isArray(props.options) && props.options.length ){
+					if( props.defaultValue ){
+						value = props.defaultValue;
+					}else if( selected ){
+						let selected = props.options.find( item => item.defaultValue );
+						value = selected.value;
+					}else{
+						value = props.options[0].value;
+					}
+					field.setState({ value });
+				}else if( type === 'raw' ){
+					typeof props.onReset === 'function' && props.onReset();
+				}else{
+					field.setState({ value });
+				}
+			});
+		},
+
+		clearData: function ( form ) {
+			let formName = form || DEFAULT_FORM;
+			let currentForm = Field.forms[formName];
+
+			Object.keys(currentForm).map(function (key) {
+				let field = currentForm[key];
+				let props = field.props;
+				let { type } = field.props;
+				let value = '';
+
+				if( props.attrs.disabled || props.attrs.readOnly ){
+					return;
+				}
+
+				if( type === 'radio' && Array.isArray(props.options) && props.options.length ){
+					let selected = props.options[0];
+					let checked = {};
+					if( typeof selected !== 'undefined' ){
+						checked[selected.value] = true;
+						value = selected.value;
+					}
+
+					field.setState({ value , checked });
+				}else if( type === 'checkbox' ){
+					field.setState({ value : '' , checked : {} });
+				}else if( type === 'select' && Array.isArray(props.options) && props.options.length  ){
+					value = props.options[0].value;
+					field.setState({ value });
+				}else if( type === 'raw' ){
+					typeof props.onClear === 'function' && props.onClear();
+				}else{
+					field.setState({ value });
+				}
+			});
+		}
+	},
+
+	mixins: [FieldMixins],
+
+	getDefaultProps() {
+	    return {
+	    	form: DEFAULT_FORM,
+	        id: '',
+			attrs: {},
+			onValidate: function() {
+				return true;
+			}
+	    };
+	},
+
+	getInitialState() {
+		let props = this.props;
+		let inputValue = this.initValue(props.type);
+
+	    return Object.assign({
+	    	error: false,
+	    	errorMsg: ''
+	    }, inputValue);
+	},
+
+	initValue: function(type) {
+		let me = this,
+			props = me.props;
+
+		let handler = {  //获取input表单的值
+			text: function() {
+				return {
+					value: props.value || props.defaultValue || ''
+				}
+			},
+
+			textarea: function() {
+				return {
+					value: props.value || props.defaultValue || ''
+				}
+			},
+
+			password: function() {
+				return {
+					value: props.value || props.defaultValue || ''
+				}
+			},
+
+			radio: function() {
+
+				if( typeof props.value !== 'undefined' ){
+					return {
+						value : props.value
+					};
+
+				}else if( typeof props.defaultValue !== 'undefined' ){
+					return {
+						value : props.defaultValue
+					};
+
+				}else if(Array.isArray(props.options)) {  //遍历options，取出默认checked的值
+					let obj = {};
+					let options = props.options;
+
+					options.map(function(option) {
+						if(option.defaultChecked) {
+							obj.value = option.value;
+						}
+					});
+
+					if( typeof obj.value === 'undefined' && options.length > 0){
+						obj.value = options[0].value; //如果没有默认checked的值，则用第一个作为默认值
+					}
+
+					return obj;
+				}
+			},
+
+			checkbox: function() {
+				let checked = {},
+					values = [],
+                    options = props.options;
+
+				if( typeof props.value !== 'undefined' && Array.isArray( props.value ) ){
+					props.value.forEach( item => {
+						checked[ item ] = true;
+						values = item;
+					});
+
+				}else if( typeof props.defaultValue !== 'undefined' && Array.isArray( props.defaultValue )){
+					props.defaultValue.forEach( item => {
+						checked[ item ] = true;
+						values = item;
+					});
+
+				}else if (Array.isArray(props.options)) {
+                    options.map(function(option) {
+                    	if (option.defaultChecked) {
+                    		checked[option.value] = true;
+                    		values.push(option.value);
+                    	}
                     });
-                    state.checked = checked;
                 }
 
-                state.value = values;
+				return {
+					checked: checked,
+					value: values
+				};
+			},
+
+			select: function() {
+				if( typeof props.value !== 'undefined' ){
+					return {
+						value : props.value
+					};
+
+				}else if( typeof props.defaultValue !== 'undefined' ){
+					return {
+						value : props.defaultValue
+					};
+
+				}else if(Array.isArray(props.options)) {//props中没有再取options
+					let defaultValue;
+					let options = props.options;
+
+					options.forEach(function (option) {
+						if ( option.defaultValue ) {
+							defaultValue = option.value
+						}
+					});
+
+					if( options.length >= 1 ){
+						defaultValue = props.options[0].value;
+					}
+
+					return {
+						value: defaultValue
+					}
+				}
+			}
+		};
+
+		return handler[type] && handler[type]();
+	},
+
+	updateValue( nextProps ){
+		let newValue = nextProps.value;
+		if( newValue === this.props.value || newValue === this.state.value ){
+			return;
+		}
+
+		switch (this.props.type) {
+			case 'text':
+				this.setState({ value : newValue });
+				break;
+
+			case 'textarea':
+				this.setState({ value : newValue });
+				break;
+
+			case 'radio':
+				this.setState({ value : newValue });
+				break;
+
+			case 'select':
+				this.setState({ value : newValue });
+				break;
+
+			case 'checkbox':
+				let checked = {};
+				if (Array.isArray( newValue )) {
+					newValue.forEach( item => checked[ item ] = true );
+					this.setState({ value : newValue , checked });
+				}
+
+				break;
+
+			default :
+				this.setState({ value : newValue });
+		}
+	},
+
+	selectFirstOption( nextProps ){
+		if( !Array.isArray( nextProps.options ) || Object.equals( nextProps.options , this.props.options ) ){
+			return;
+		}
+
+		let type = nextProps.type;
+		let options = nextProps.options;
+
+		switch ( type ){
+			case 'select' :
+				this.setState({ value : options[0].value });
+				break;
+
+			case 'radio' :
+				this.setState({ value : options[0].value });
+				break;
+
+			default:
+				return ;
+		}
+	},
+
+	componentWillMount() {
+		let me = this,
+			props = me.props;
+
+		me._id = Field.uniqueId('form_');
+        Field.add(me, props.form);
+	},
+
+	componentDidMount() {
+
+	},
+
+	componentWillReceiveProps(nextProps) {//当Field里有raw类型的组件时这里性能好差
+		this.updateValue( nextProps );
+		this.selectFirstOption( nextProps );//用于options更新重置
+	},
+
+	componentWillUnmount() {
+		Field.remove(this, this.props.form);
+	},
+
+	getEvents() {  //获取props上绑定的事件
+		let props = this.props,
+			eventHandlers = {};
+
+		Object.keys( props ).forEach( key => {
+			if( key.indexOf('on') === 0 && (key.toLowerCase() in window) ){
+				eventHandlers[key] = props[ key ];
+			}
+		});
+
+		return eventHandlers;
+	},
+
+	getData() {  //获取表单的数据
+		let me = this,
+			props = me.props,
+			state = me.state,
+			data = {};
+
+        switch (props.type) {
+            case 'checkbox':
+                var values;
+
+                if (Array.isArray(props.options)) {  //遍历被选中的checkbox获取相关数据，返回数组
+                    values = [];
+                    var checked = state.checked;
+                    Object.keys(checked).map(function(key) {
+                    	if (checked[key]) {
+                    		values.push(key);
+                    	}
+                    });
+                } else {
+                    values = state.value;
+                }
+
+                me.setValueAt(values, data, props.name);
                 break;
 
-            case 'select':
-                var initialValue = this.props.value;
-                state.value = this.props.options.reduce(function (value, option) {
-                    return option.value == initialValue ? option.value : value;
-                }, (this.props.options[0] || {value: ''}).value);
+            case 'raw':  //自定义表单通过自定义的onData获取数据
+            	if ('function' === typeof(props.onData)) {
+            		data = props.onData();
+            	}
                 break;
 
-            default:
-                state.value = this.props.value;
+            default:  //其他类型表单获取value值
+           		me.setValueAt(state.value, data, props.name);
+                break;
         }
 
-        return state;
-    },
+        return data;
+	},
 
-    componentWillReceiveProps: function (props) {
-        var changedProps = {};
-        _.each(props, function (prop, key) {
-            if (prop != this.props[key]) {
-                changedProps[key] = prop;
-            }
-        }, this);
+	validate: function () {
+		let me = this;
+        let isValid = true;
+        let props = me.props;
+        let state = me.state;
+        let type = props.type;
+        let value = state.value;
 
-        this.setState(_.pick(changedProps, _.keys(this.state)));
+        switch(type) {
+        	case 'checkbox':
+        		if (props.required) {
+        			let checked = state.checked;
+                    let isOneChecked = false;  //需要用户至少选中一个
 
-        if (this.props.type === 'raw' && this.props.onValidate !== returnTrue && this.state.error) {
-            this.validate();
-        }
-    },
-
-    componentWillMount: function () {
-        this._id = _.uniqueId('fd_');
-        Field.addField(this, this.props.form);
-    },
-
-    componentWillUnmount: function () {
-        Field.removeField(this, this.props.form);
-    },
-
-    handleChange: function (event) {
-        var value = event.target.value;
-        this.setState({
-            value: value
-        }, function () {
-            if (_.isFunction(this.props.onChange)) {
-                this.props.onChange(value);
-            }
-
-            if (this.state.error) {
-                this.validate();
-            }
-        });
-    },
-
-    handleCheckboxChange: function (event) {
-        var newState = {};
-
-        if (_.isArray(this.props.options)) {
-            var checked = this.state.checked,
-                key = event.target.value;
-
-            checked[key] = event.target.checked;
-
-            newState.checked = checked;
-        }
-        else {
-            newState.value = event.target.checked;
-        }
-
-        this.setState(newState, function () {
-            if (_.isFunction(this.props.onChange)) {
-                this.props.onChange(_.pick(this.state, ['value', 'checked']));
-            }
-
-            if (this.state.error) {
-                this.validate();
-            }
-        });
-    },
-
-    validate: function () {
-        var isValid = true;
-        var type = this.props.type;
-
-        if (type !== 'raw') {
-            var value = this.state.value;
-
-            if (type === 'checkbox') {
-                if (this.props.required) {
-                    var isOneChecked = false;
-                    for (var valueKey in value) {
-                        if (value.hasOwnProperty(valueKey)) {
-                            isOneChecked = isOneChecked || value[valueKey];
-                        }
-                    }
+                    Object.keys(checked).map(function(key) {
+                    	isOneChecked = isOneChecked || checked[key];
+                    });
 
                     isValid = isOneChecked;
                 }
-            }
-            else {
-                value = value ? ('' + value).trim() : '';
+            	break;
+
+            case 'text':
+			case 'password':
+            case 'textarea':
+            case 'select':
+            	value = value ? ('' + value).trim() : '';
                 if (value === '') {
-                    if (this.props.required) {
+                    if (props.required) {
                         isValid = false;
                     }
+                } else {
+                    let format = props.format;
+                    isValid = me.checkFormat(value, format);
                 }
-                else {
-                    var format = this.props.format;
-                    isValid = FieldMixins.checkFormat(value, format);
-                }
-            }
+                break;
+
+            default:
+            	break;
         }
 
-        isValid = isValid && (!this.props.required || this.props.onValidate());
+        isValid = isValid && (!props.required || props.onValidate());
 
-        this.setState({
+        me.setState({
             error: !isValid
         });
 
         return isValid;
     },
 
-    getData: function () {
-        var data = {};
-        switch (this.props.type) {
-            case 'checkbox':
-                var values;
+	handleChange(e, type) {  //用户输入改变，触发onChange的函数
+		let me = this;
+		let props = me.props;
+		let state = me.state;
 
-                if (_.isArray(this.props.options)) {
-                    values = [];
-                    var checked = this.state.checked;
+		if(type === 'checkbox') {
+			let newState = {};
 
-                    for (var valueKey in checked) {
-                        if (checked.hasOwnProperty(valueKey) && checked[valueKey]) {
-                            values.push(valueKey);
-                        }
-                    }
-                }
-                else {
-                    values = this.state.value;
-                }
+			let checked = state.checked,
+					key = e.target.value;
 
-                _.setValueAt(values, data, this.props.name);
-                break;
+			checked[key] = !Boolean(checked[key]);//原值取反
+			newState.checked = checked;
 
-            case 'raw':
-                data = this.props.onData();
-                break;
+	        me.setState(newState, function() {
+	        	let {value, checked} = state;
 
-            default:
-                _.setValueAt(this.state.value, data, this.props.name);
-                break;
-        }
+	            if ('function' === typeof(props.onChange)) {
+	                props.onChange(value, checked);
+	            }
 
-        return data;
-    },
+	            if (state.error) {
+	                me.validate();
+	            }
+	        });
+		} else {
+			let value = e.target.value;
+	        me.setState({
+	            value: value
+	        }, function() {
+	            if ('function' === typeof(props.onChange)) {
+	            	props.onChange(value);
+	            }
 
-    renderChild: function () {
-        var eventHandlers = {};
-        _.each(this.props, function (value, key) {
-            if (key.indexOf('on') === 0 && (key.toLowerCase() in window)) {
-                eventHandlers[key] = value;
-            }
-        });
+	            if (state.error) {
+	                me.validate();
+	            }
+	        });
+		}
+	},
 
-        switch (this.props.type) {
-            case 'radio':
-                return this.props.options.map(function (option, index) {
-                    return (
-                        <label className="mc-option" key={index}>
-                            <input className="mc-radio"
-                                type="radio"
-                                value={option.value}
-                                checked={this.state.value == option.value}
-                                {...eventHandlers}
-                                onChange={this.handleChange} />
-                            {option.text}
-                        </label>
-                    )
-                }.bind(this));
-
-            case 'checkbox':
-                return _.isArray(this.props.options) ? (
-                    this.props.options.map(function (option, index) {
-                        return (
-                            <label className="mc-option" key={index}>
-                                <input className="mc-checkbox"
-                                    type="checkbox"
-                                    value={option.value}
-                                    checked={this.state.checked[option.value]}
-                                    {...eventHandlers}
-                                    onChange={this.handleCheckboxChange} />
-                                {option.text}
-                            </label>
-                        )
-                    }.bind(this))
-                ) : (
-                    <label className="mc-option">
-                        <input className="mc-checkbox"
-                            type="checkbox"
-                            checked={this.state.value}
-                            {...eventHandlers}
-                            onChange={this.handleCheckboxChange} />
-                        {this.props.options}
-                    </label>
-                );
-
-            case 'select':
-                return (
-                    <select className="mc-select"
-                        value={this.state.value}
-                        disabled={this.props.disabled}
-                        {...eventHandlers}
-                        onChange={this.handleChange}>
-                    {this.props.options.map(function (option, index) {
-                        return (
-                            <option key={index} value={option.value}>{option.text}</option>
-                        );
-                    }.bind(this))}
-                    </select>
-                );
-
-            case 'textarea':
-                return (
-                    <textarea className="mc-textarea"
-                        placeholder={this.props.placeholder}
-                        value={this.state.value}
-                        {...eventHandlers}
-                        onChange={this.handleChange}></textarea>
-                );
-
-            case 'raw':
-                return this.props.children;
-
-            default:
-                return (
-                    <input className="mc-input" type={this.props.type} disabled={this.props.disabled}
-                        placeholder={this.props.placeholder}
-                        value={this.state.value}
-                        {...eventHandlers}
-                        onChange={this.handleChange} />
-                )
-        }
-    },
-
-    render: function () {
-        var props = this.props,
-            state = this.state,
-            classNames = ['mc-form-group', props.className];
-        if (state.error) {
-            classNames.push('invalid');
-        }
+	renderRaw() {  //渲染空白表单
+		let me = this,
+			props = me.props,
+			state = me.state;
+		let { name, placeholder} = props;
 
         return (
-            <div className={classNames.join(' ')}>
-                {props.label ? <label className={props.required ? 'mc-label required' : 'mc-label'}>{props.label}</label> : null}
-                <div className="mc-field">
-                    {this.renderChild()}
-                </div>
-                <div className="mc-form-tip">{state.errorText}</div>
+        	<div className="mc-field-raw col-lg">
+	        	{
+	        		this.props.children
+	        	}
+        		<div className="form-warn-tip abs">
+					<span className="fa fa-times-circle" />
+					{props.errorMsg}
+				</div>
+        	</div>
+        )
+	},
+
+	renderText() {  //渲染text类型表单
+		let me = this,
+			props = me.props,
+			state = me.state,
+			eventHandlers = me.getEvents();
+
+		let {
+            id,
+            className,
+            label,
+            name,
+            placeholder,
+            defaultValue,
+            attrs = {}
+        } = props;
+
+		return (
+			<div className="mc-field-text">
+				<input type="text"
+					id={id}
+					{...attrs}
+					{...eventHandlers}
+					className="form-control mc-input"
+					name={name || ''}
+                    value={ state.value || ''}
+					placeholder={placeholder || ''}
+					onChange={(e) => me.handleChange(e)}/>
+
+				<div className="form-warn-tip abs">
+					<span className="fa fa-times-circle"></span>
+					{props.errorMsg}
+				</div>
+			</div>
+		)
+	},
+
+	renderPassword() {  //渲染text类型表单
+		let me = this,
+				props = me.props,
+				state = me.state,
+				eventHandlers = me.getEvents();
+
+		let {
+				id,
+				className,
+				label,
+				name,
+				placeholder,
+				defaultValue,
+				attrs = {}
+				} = props;
+
+		return (
+				<div className="mc-field-password">
+					<input type="password"
+						   id={id}
+							{...attrs}
+							{...eventHandlers}
+						   className="form-control mc-input"
+						   name={name || ''}
+						   value={ state.value || ''}
+						   placeholder={placeholder || ''}
+						   onChange={(e) => me.handleChange(e)} />
+
+					<div className="form-warn-tip abs">
+						<span className="fa fa-times-circle"></span>
+						{props.errorMsg}
+					</div>
+				</div>
+		)
+	},
+
+	renderRadio() { //渲染单选表单组
+		let me = this;
+		let state = me.state;
+		let props = me.props;
+		let	eventHandlers = me.getEvents();
+		let {className, label, options , name, placeholder , attrs } = props;
+
+		if( !Array.isArray(options) ){
+			options = [];
+		}
+
+		return (
+			<div className="mc-field-radio col-lg">
+				{
+					options.map(function (option){
+						let id = Field.uniqueId();
+						console.info(state.value == option.value);
+						return (
+							<div className={`radio-nice form-control-inline-block ${option.className || ''}`} key={option.value}>
+		                        <input type="radio" 
+		                        	className="mc-radio-input" 
+									checked={ state.value == option.value }
+									{...eventHandlers}
+									{...attrs}
+		                        	name={name}
+		                        	id={option.id || id}
+		                        	value={ typeof option.value !== 'undefined' ? String(option.value) : ''}
+		                        	onChange={(e) => me.handleChange(e)} />
+
+		                        <label htmlFor={option.id || id}>{option.label}</label>
+		                    </div>
+						)
+					})
+				}
+				<div className="form-warn-tip abs">
+					<span className="fa fa-times-circle"></span>
+					{props.errorMsg}
+				</div>
+			</div>
+		)
+	},
+
+	renderCheckbox() {  //渲染checkbox
+		let me = this;
+		let state = me.state;
+		let props = me.props;
+		let eventHandlers = me.getEvents();
+		let {className = '', label, options , name, placeholder , attrs} = props;
+
+		if( !Array.isArray(options) ){
+			options = [];
+		}
+
+		return (
+			<div className="mc-field-checkbox col-lg">
+				{
+					options.map(function(option) {
+						let id = Field.uniqueId();
+						return (
+							<div className={`checkbox-nice form-control-inline-block ${option.className || ''}`} key={option.value}>
+				                <input type="checkbox" 
+				                	className="mc-checkbox-input"
+									{...eventHandlers}
+									{...attrs}
+				                	name={name}
+				                	id={option.id || id}
+				                	value={ String(option.value) }
+				                	checked={ Boolean(state.checked[option.value]) }
+									onChange={(e) => me.handleChange(e, 'checkbox')} />
+
+				                <label htmlFor={option.id || id}>{option.label}</label>
+				            </div>
+			            )
+					})
+				}
+				<div className="form-warn-tip abs">
+					<span className="fa fa-times-circle"></span>
+					{props.errorMsg}
+				</div>
+			</div>
+		)
+	},
+
+	renderSelect() {  //渲染select
+		let me = this;
+		let state = me.state;
+		let props = me.props;
+		let eventHandlers = me.getEvents();
+		let {className = '', label, options, name, placeholder , attrs} = props;
+
+		if( !Array.isArray(options) ){
+			options = [];
+		}
+
+		return (
+            <div className="mc-field-select" >
+                <select
+					{...eventHandlers}
+					{...attrs}
+                	className="form-control mc-select-input"
+                	name={name}
+                	value={state.value}
+                	onChange={(e) => me.handleChange(e)}>
+                {
+                	options.map(function(option, index) {
+                		return <option key={index} value={option.value}>{option.text}</option>
+                	})
+                }
+                </select>
+				<div className="form-warn-tip abs">
+					<span className="fa fa-times-circle"></span>
+					{props.errorMsg}
+				</div>
             </div>
-        );
-    }
+		)
+	},
+
+	renderTextarea() {  //渲染textarea
+		let me = this;
+		let state = me.state;
+		let props = me.props;
+		let eventHandlers = me.getEvents();
+		let {
+            id,
+            className,
+            label,
+            name,
+            placeholder,
+            rows = 3,
+            defaultValue,
+			attrs
+        } = props;
+
+		return (
+            <div className="mc-field-textarea">
+                <textarea 
+                	className="mc-textarea-input"
+					{...eventHandlers}
+                	id={id}
+                	rows={rows}
+                	placeholder={placeholder}
+					{...attrs}
+					onChange={(e) => me.handleChange(e)}
+                    value={ state.value || ''} >
+                </textarea>
+				<div className="form-warn-tip abs">
+					<span className="fa fa-times-circle"></span>
+					{props.errorMsg}
+				</div>
+            </div>
+		)
+	},
+
+	renderEntry() {  //渲染入口函数
+		let me = this;
+		let type = me.props.type;
+
+		switch(type) {
+			case 'text':
+				return me.renderText();
+			case 'radio':
+				return me.renderRadio();
+			case 'checkbox':
+				return me.renderCheckbox();
+			case 'select':
+				return me.renderSelect();
+			case 'textarea':
+				return me.renderTextarea();
+			case 'password':
+				return me.renderPassword();
+			case 'raw':
+				return me.renderRaw();
+			default:
+				break;
+		}
+	},
+
+	render() {
+		let me = this;
+		let state = me.state;
+		let props = me.props;
+		let {id, className, label, required} = props;
+
+		return (
+			<div className="mc-module-field">
+				<div dataId={ this._id } className={`form-group clearfix ${className || ''} ${state.error ? 'invaild' : ''}`}>
+	                <label className={` mc-field-label  col-lg`} htmlFor={id}>
+						{ required ? <span className="require">*</span> : ''}
+	                	{label}
+	                </label>
+					{me.renderEntry()}
+				</div>
+			</div>
+		)
+	}
 });
 
-module.exports = Field;
-
+export default Field;
