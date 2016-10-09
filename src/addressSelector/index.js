@@ -3,7 +3,7 @@ import './style/index.less';
 import citys from './citys';
 import districts from './districts';
 import provinces from './provinces';
-import {Select} from '../select/McSelect';
+import Select from '../select/McSelect';
 
 var LEVEL_PROVINCE = 1,
     LEVEL_CITY = 2,
