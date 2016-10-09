@@ -52,10 +52,6 @@ export default [
 		link: '#/table'
 	},
 	{
-		title: '下拉框 - Select',
-		link: '#/select'
-	},
-	{
 		title: '地址 - AddressSelector',
 		link: '#/address'
 	}

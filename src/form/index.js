@@ -4,7 +4,6 @@
  */
 import React, { Component } from 'react';
 import Field from '../field/Field';
-// import {Field} from '../field/index';
 import DatePicker from '@mogu/up-components/lib/DatePicker';
 import Notification from '@mogu/up-components/lib/Notification'
 
