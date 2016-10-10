@@ -3,7 +3,7 @@
 
 ```
 import React, { Component } from 'react'
-import FormComponent from '@meili/base-merchant-component/lib/field/index';
+import FormComponent from '@meili/base-merchant-component/lib/field';
 
 //详细配置信息见test.js
 import testData from './test.js'

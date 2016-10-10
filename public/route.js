@@ -24,6 +24,7 @@ import TableView from './pages/table';
 
 import SelectView from './pages/select';
 import AddressView from './pages/addressSelector';
+import AreaCodeView from './pages/areaCode';
 
 const history = useRouterHistory(createHashHistory)({queryKey: false});
 export default (
@@ -49,6 +50,7 @@ export default (
             <Route path='table' component={TableView}/>
             <Route path='select' component={SelectView}/>
             <Route path='address' component={AddressView}/>
+            <Route path='areaCode' component={AreaCodeView}/>
         </Route>
     </Router>
 );

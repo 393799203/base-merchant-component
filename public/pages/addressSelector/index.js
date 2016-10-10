@@ -20,7 +20,7 @@ export default class AddressSelectorView extends Component {
         return (
             <div className="m-l m-r m-b-xxl">
                 <h1>
-                    表单 - Form
+                    地址 - AddressSelector
                 </h1>
                 <h2>
                     1. 示例

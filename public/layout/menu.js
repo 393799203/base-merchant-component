@@ -54,6 +54,10 @@ export default [
 	{
 		title: '地址 - AddressSelector',
 		link: '#/address'
+	},
+	{
+		title: '区号 - AreaCode',
+		link: '#/areaCode'
 	}
 ]
 

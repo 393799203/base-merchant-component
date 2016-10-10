@@ -3,7 +3,7 @@
 #### 2.1 各种轮播图使用
 
 	import React, { Component } from 'react'
-	import Slider from '@meili/base-merchant-component/lib/slider/index'
+	import Slider from '@meili/base-merchant-component/lib/slider'
 	
 	const style = {
 	    background: '#fff',
