@@ -3,7 +3,8 @@
 
 ```
 import React, { Component } from 'react'
-import {Field} from 'source_path/field/index';
+import {Field} from '@meili/base-merchant-component/lib/field/index';
+import Datepicker from '@meili/base-merchant-component/lib/datepicker'
 
 //详细配置信息见test.js
 import testData from './test.js'
@@ -11,6 +12,9 @@ import testData from './test.js'
 export default class FieldComponentView extends Component {
 	constructor () {
 		super();
+		this.state = {
+			date:""
+		}
 	}
 
 	//获取表单数据
@@ -29,79 +33,98 @@ export default class FieldComponentView extends Component {
 		Field.clearData("FieldName");
 	}
 
-	//查询表单改变
-    onQueryChange(data){
-        console.info(data);
-    }
+	getFieldData(){
+		return this.state.date;
+	}
+
+	validateField(){
+		if( this.state.date ){
+			return true;
+		}
+	}
+
+	handleDateChange( date ){
+		this.setState({ date });
+	}
 
 	render () {
-		return <div className="m-l m-r m-b-xxl">
-			<h1>
-				表单组件 - Field
-			</h1>
-			<h2>
-				1. 示例
-			</h2>
-			<div className="m-b m-t">
-				<button
-					className="btn btn-success-custom w-sm m-r" 
-					onClick={ (e) => { this.getData() }}>
-					获取数据
-				</button>
-				<button
-					className="btn btn-info-custom w-sm m-r" 
-					onClick={ (e) => { this.resetData() }}>
-					初始化数据
-				</button>
-				<button
-					className="btn btn-warning-custom w-sm m-r" 
-					onClick={ (e) => { this.clearData() }}>
-					清除数据
-				</button>
+		return (
+			<div className="m-l m-r m-b-xxl">
+				<div className="m-b m-t">
+					<button
+						className="btn btn-success-custom w-sm m-r" 
+						onClick={ (e) => { this.getData() }}>
+						获取数据
+					</button>
+					<button
+						className="btn btn-info-custom w-sm m-r" 
+						onClick={ (e) => { this.resetData() }}>
+						初始化数据
+					</button>
+					<button
+						className="btn btn-warning-custom w-sm m-r" 
+						onClick={ (e) => { this.clearData() }}>
+						清除数据
+					</button>
 
-				<Field type="checkbox"
-			        name="checkbox"
-			        form="FieldName"
-			        defaultValue={['1','2']}
-			        options={testData.checkboxOptions}
-			        label="checkbox:">
-			    </Field>
+					<Field type="checkbox"
+				        name="checkbox"
+				        form="FieldName"
+				        defaultValue={['1','2']}
+				        options={testData.checkboxOptions}
+				        label="checkbox：">
+				    </Field>
 
-			    <Field type="radio"
-			        name="radio"
-			        form="FieldName"
-			        defaultValue={2}
-			        options={testData.radioOptions}
-			        label="radio:">
-			    </Field>
+				    <Field type="radio"
+				        name="radio"
+				        form="FieldName"
+				        options={testData.radioOptions}
+				        label="radio：">
+				    </Field>
 
-			    <Field type="text"
-			        name="text"
-			        form="FieldName"
-			        label="text:">
-			    </Field>
+				    <Field type="text"
+				        name="text"
+				        form="FieldName"
+				        label="text：">
+				    </Field>
 
-			    <Field type="select"
-			        name="select"
-			        form="FieldName"
-			        defaultValue='1'
-			        options = {testData.selectOptions}
-			        label="select:">
-			    </Field>
+				    <Field type="select"
+				        name="select"
+				        form="FieldName"
+				        defaultValue='1'
+				        options = {testData.selectOptions}
+				        label="select：">
+				    </Field>
 
-			    <Field type="textarea"
-			        name="textarea"
-			        form="FieldName"
-			        label="textarea:">
-			    </Field>
+				    <Field type="textarea"
+				        name="textarea"
+				        form="FieldName"
+				        label="textarea：">
+				    </Field>
 
-			    <Field type="password"
-			        name="password"
-			        form="FieldName"
-			        label="password:">
-			    </Field>
+				    <Field type="password"
+				        name="password"
+				        form="FieldName"
+				        label="password：">
+				    </Field>
+
+				    <Field type="raw"
+						label="自定义表单："
+						name="date"
+						onData={ this.getFieldData }
+						onValidate={ this.validateField }
+						errorMsg="请选择时间" 
+						required>
+						<Datepicker 
+							onChange={ (e) => this.handleDateChange(e) }
+							format="yyyy-MM-dd HH:mm:ss"
+							value={ this.state.date }
+							style={{width: "365px"}}
+							showTime/>
+					</Field>
+				</div>
 			</div>
-		</div>
+		)
 	}
 }
 

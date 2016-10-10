@@ -23,7 +23,11 @@ export default class AddressSelector extends Component {
             onChange:this.props.onChange || null,
             style:this.props.style || {},
             className : this.props.className || "",
-            orInit:false
+            orInit:false,
+
+            provinceList:{},
+            cityList:{},
+            areaList:{}
         }
     }
 
@@ -32,45 +36,49 @@ export default class AddressSelector extends Component {
 
         //初始化地址信息
         this.renderProvice();
-        if(this.state.province != "-1"){
-            this.renderCity(this.state.province , "init");
-        }else{
-            return;
-        }
-
-        if(this.state.city != "-1"){
-            this.renderArea(this.state.city , "init");
-        }else{
-            return;
-        }
     }
 
     //对外提供的获取数据静态方法
     static getData(){
-        return {province:AddressSelector.instance.state.province , 
-                city:AddressSelector.instance.state.city,
-                area:AddressSelector.instance.state.area}
+        return {
+            province:{
+                id:AddressSelector.instance.state.provinceList.key,
+                name:AddressSelector.instance.state.provinceList.value
+            },
+            city:{
+                id:AddressSelector.instance.state.cityList.key,
+                name:AddressSelector.instance.state.cityList.value
+            },
+            area:{
+                id:AddressSelector.instance.state.areaList.key,
+                name:AddressSelector.instance.state.areaList.value
+            }
+        }  
     }
 
     handleChange(e , level) {
-        if(level == LEVEL_PROVINCE){
-            this.renderCity(e);
-        }
-        else if(level == LEVEL_CITY){
-            this.renderArea(e);
-        }
-        else{
-            this.setState({
-                area:e
-            },function(){
-                var result = {  
-                    province:this.state.province,
-                    city:this.state.city,
-                    area:this.state.area
-                }
-
-                this.state.onChange(result);
-            })
+        if(e){
+            if(level == LEVEL_PROVINCE){
+                this.renderCity(e);
+            }
+            else if(level == LEVEL_CITY){
+                this.renderArea(e);
+            }
+            else{
+                this.setState({
+                    area:e.value,
+                    areaList:e
+                },function(){
+                    var result = {  
+                        province:{id:this.state.provinceList.key,name:this.state.provinceList.value},
+                        city:{id:this.state.cityList.key,name:this.state.cityList.value},
+                        area:{id:this.state.areaList.key,name:this.state.areaList.value}
+                    }
+                    if(this.state.onChange){
+                        this.state.onChange(result);
+                    }
+                })
+            }
         }
     }
 
@@ -78,9 +86,30 @@ export default class AddressSelector extends Component {
     renderProvice(){
         var provinceOptions = this.state.provinceOptions;
         provinceOptions[0] = {text:"省",value:"-1"};
+
+        var province = this.state.province;
         for(var i = 0;i<provinces.length ; i++){
             var j = i+1;
-            provinceOptions[j] = {text:provinces[i].name,value:provinces[i].id};
+            provinceOptions[j] = {
+                text:provinces[i].name,
+                value:provinces[i].name,
+                key:provinces[i].id
+            };
+
+            //判断默认的省级的id
+            if(province == provinces[i].name){
+                var provinceList = {
+                    text:provinces[i].name,
+                    value:provinces[i].name,
+                    key:provinces[i].id
+                }
+
+                this.setState({
+                    provinceList : provinceList
+                },() => {
+                    this.renderCity(provinceList , "init");
+                })
+            }
         }
 
         this.setState({
@@ -92,53 +121,87 @@ export default class AddressSelector extends Component {
     }
 
     //渲染city
-    renderCity(provinceid,type){
+    renderCity(province,type){
         var cityOptions = citys.filter(function (element) {
-            if(element.provinceid == provinceid){
+            if(element.provinceid == province.key){
                 return element
             }
         });
 
-        cityOptions = cityOptions.map(function(options){
-            return {text:options.name,value:options.id}
+        var city = this.state.city;
+        cityOptions = cityOptions.map((options) => {
+            //如果是初始化，将传入的defultvalue的名称转换成对象
+            if(city == options.name && type == "init"){
+                var cityList = {text:options.name,value:options.name,key:options.id}
+                this.setState({
+                    cityList : cityList
+                },() => {
+                    this.renderArea(cityList , "init");
+                })
+            }
+            return {
+                text:options.name,
+                value:options.name,
+                key:options.id
+            }
         })
 
         cityOptions.unshift({text:"市",value:"-1"})
 
         if(type == "init"){
             this.setState({
-                cityOptions:cityOptions
+                cityOptions:cityOptions,
             })
         }
         else{
             this.setState({
                 cityOptions:cityOptions,
                 areaOptions:[{text:"区",value:"-1"}],
-                province:provinceid,
+                province:province.value,
                 city: "-1",
-                area:"-1"
+                area:"-1",
+                provinceList:province,
+                cityList:{},
+                areaList:{}
             },function(){
                 var result = {  
-                    province:this.state.province,
-                    city:this.state.city,
-                    area:this.state.area
+                    province:{id:this.state.provinceList.key,name:this.state.provinceList.value},
+                    city:{},
+                    area:{}
                 }
-
-                this.state.onChange(result);
+                if(this.state.onChange){
+                    this.state.onChange(result);
+                }
             })
         }
     }
 
     //渲染area
-    renderArea(cityid,type){
+    renderArea(city,type){
         var areaOptions = districts.filter(function (element) {
-            if(element.cityid == cityid){
+            if(element.cityid == city.key){
                 return element
             }
         });
 
-        areaOptions = areaOptions.map(function(options){
-            return {text:options.name,value:options.id}
+        var area = this.state.area;
+        areaOptions = areaOptions.map((options) => {
+            //如果是初始化，将传入的defultvalue的名称转换成对象
+            if(area == options.name && type == "init"){
+                var areaList = {
+                    text:options.name,
+                    value:options.name,
+                    key:options.id
+                }
+                this.setState({
+                    areaList : areaList
+                })
+            }
+            return {
+                text:options.name,
+                value:options.name,
+                key:options.id
+            };
         })
 
         areaOptions.unshift({text:"区",value:"-1"})
@@ -151,16 +214,19 @@ export default class AddressSelector extends Component {
         else{
             this.setState({
                 areaOptions:areaOptions,
-                city:cityid,
-                area:"-1"
+                city:city.value,
+                area:"-1",
+                cityList : city,
+                areaList:{}
             },function(){
                 var result = {  
-                    province:this.state.province,
-                    city:this.state.city,
-                    area:this.state.area
+                    province:{id:this.state.provinceList.key,name:this.state.provinceList.value},
+                    city:{id:this.state.cityList.key,name:this.state.cityList.value},
+                    area:{}
                 }
-
-                this.state.onChange(result);
+                if(this.state.onChange){
+                    this.state.onChange(result);
+                }
             })
         }
     }

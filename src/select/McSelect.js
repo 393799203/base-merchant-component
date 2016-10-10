@@ -12,7 +12,7 @@ export default class McSelect extends Component {
             defaultValue: props.defaultValue || "",
             value:props.value || "",
             selectOptions:props.selectOptions || [],
-            selectValue : [],
+            selectValue : {},
             orInit:false,
             onChange:props.onChange || null,
             style:props.style || {},
@@ -36,8 +36,6 @@ export default class McSelect extends Component {
     }
 
     componentDidMount() {
-        let state = this.state;
-
         //初始化defaultValue
         this.initData();
     }
@@ -49,13 +47,23 @@ export default class McSelect extends Component {
             var options = this.state.selectOptions;
             for(var i = 0 ; i<options.length;i++){
                 if(options[i].value == value){
-                    value = options[i].value+";"+options[i].text;
+                    if(options[i].key){
+                        value = options[i].value+";"+options[i].text+";"+options[i].key;
+                    }
+                    else{
+                        value = options[i].value+";"+options[i].text;
+                    }
                     orexit = true
                     break;
                 }
             }
             if(!orexit){//如果下拉框中不存在value，则将value设置为默认值
-                value = options[0].value+";"+options[0].text;
+                if(options[0].key){
+                    value = options[0].value+";"+options[0].text+";"+options[0].key;
+                }
+                else{
+                    value = options[0].value+";"+options[0].text;
+                }
             }
         }
 
@@ -72,24 +80,52 @@ export default class McSelect extends Component {
 
     handleChange(e){
         if(e){
-            var value = e.split(";");
-            if(value.length>1){
-                this.setState({
-                    selectValue : value[0],
-                    value:e
-                })
-                this.state.onChange(value[0]);
+            var selectlist = e.split(";");
+            
+            var selectValue = {};
+            switch(selectlist.length){
+                case 2 : 
+                    selectValue = {
+                        value:selectlist[0],
+                        text:selectlist[1]
+                    }; 
+                    break;
+                case 3 : 
+                    selectValue = {
+                        value:selectlist[0],
+                        text:selectlist[1],
+                        key:selectlist[2]
+                    };
+                    break;
+                default : 
+                    selectValue = {};
+            }
+                
+            this.setState({
+                selectValue : selectValue,
+                value:e
+            })
+            if(this.state.onChange){
+                this.state.onChange(selectValue);
             }
         }
         else{
-            this.state.onChange();
+            if(this.state.onChange){
+                this.state.onChange();
+            }
         }
     }
 
     renderOptions(options){
         return options.map(function (option) {
-            var value = option.value+";"+option.text;
-            var key = option.value;
+            var value = "";
+            if(option.key){
+                value = option.value+";"+option.text+";"+option.key;
+            }
+            else{
+                value = option.value+";"+option.text;
+            }
+            var key = option.key || option.value;
             return (
                 <Option value={value} key={key}>{option.text}</Option>
             );

@@ -36,9 +36,9 @@ export default class AddressSelectorView extends Component {
                         style={{width:"200px"}}
                         className="mc-addressSelector"
                         onChange = {(e) => this.addressChange(e)}
-                        defaultProvince="5" 
-                        defaultCity = "27"
-                        defaultArea="3480" />
+                        defaultProvince="山西省" 
+                        defaultCity = "大同市"
+                        defaultArea="南郊区" />
                 </div>
                 <div dangerouslySetInnerHTML={{ __html: Readme }}>
                     
