@@ -2,7 +2,7 @@
 #### 2.1 自定义 Confirm
 
 	import React, { Component } from 'react'
-	import Confirm from '@meili/base-merchant-component/lib/confirm/index'
+	import Confirm from '@meili/base-merchant-component/lib/confirm'
 	
 	export default class ConfirmView extends Component {
 		constructor () {
@@ -44,7 +44,7 @@
 #### 2.2 普通 Confirm
 
 	import React, { Component } from 'react'
-	import Confirm from '@meili/base-merchant-component/lib/confirm/index'
+	import Confirm from '@meili/base-merchant-component/lib/confirm'
 	
 	export default class ConfirmView extends Component {
 		constructor () {

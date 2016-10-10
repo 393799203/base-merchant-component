@@ -1,8 +1,8 @@
 ## 2. 使用说明
-#### 2.1 有标题 Modal 使用
+#### 2.1 有标题 UpModal 使用
 
 	import React, { Component } from 'react'
-	import Modal from '@meili/base-merchant-component/lib/modal/index'
+	import UpModal from '@meili/base-merchant-component/lib/upModal'
 	
 	export default class ModalView extends Component {
 		constructor () {
@@ -15,22 +15,22 @@
 			return (
 				<div>
 					<button onClick={ (e) => { this.showModal() }}>显示弹出框</button>
-					<Modal 
+					<UpModal 
 						ref='forModal'
 						size='large'				
 						title='弹出层' >
 						这个是弹出层
-					</Modal>
+					</UpModal>
 				</div>
 			)
 		}
 	}
 
-#### 2.2 无标题 Modal 使用
+#### 2.2 无标题 UpModal 使用
 > 如果没有设置title，则不显示默认的头部; 如果设置onClose属性，关闭弹出层时则执行该回调函数。
 
 	import React, { Component } from 'react'
-	import Modal from '@meili/base-merchant-component/lib/modal/index'
+	import UpModal from '@meili/base-merchant-component/lib/upModal'
 	
 	export default class ModalView extends Component {
 		constructor () {
@@ -46,22 +46,22 @@
 			return (
 				<div>
 					<button onClick={ (e) => { this.showModal() }}>显示弹出框</button>
-					<Modal
+					<UpModal
 						onClose={ this.closeCallback } 
 						ref='forModal'
 						size='small'>
 						无标题弹出层
-					</Modal>
+					</UpModal>
 				</div>
 			)
 		}
 	}
 
-#### 2.3 定时关闭 Modal 使用
+#### 2.3 定时关闭 UpModal 使用
 > 如果传入定时关闭属性 duration, 单位毫秒（ms）, 则执行定时关闭功能; 否则不执行定时关闭功能。
 
 	import React, { Component } from 'react'
-	import Modal from '@meili/base-merchant-component/lib/modal/index'
+	import UpModal from '@meili/base-merchant-component/lib/upModal'
 	
 	export default class ModalView extends Component {
 		constructor () {
@@ -74,12 +74,12 @@
 			return (
 				<div>
 					<button onClick={ (e) => { this.showModal() }}>显示弹出框</button>
-					<Modal
+					<UpModal
 						duration='2000'
 						ref='forModal'
 						size='small'>
 						定时关闭
-					</Modal>
+					</UpModal>
 				</div>
 			)
 		}
