@@ -3,7 +3,7 @@
 ```
 
 import React, { Component } from 'react'
-import AddressSelector from 'source_path/addressSelector/index';
+import AddressSelector from '@meili/base-merchant-component/lib/addressSelector/index';
 
 export default class AddressSelectorView extends Component {
     constructor () {
@@ -39,9 +39,9 @@ export default class AddressSelectorView extends Component {
                         style={{width:"200px"}}
                         className="mc-addressSelector"
                         onChange = {(e) => this.addressChange(e)}
-                        defaultProvince="5" 
-                        defaultCity = "27"
-                        defaultArea="3480" />
+                        defaultProvince="山西省" 
+                        defaultCity = "大同市"
+                        defaultArea="南郊区" />
                 </div>
             </div>
         )

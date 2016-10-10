@@ -15,6 +15,8 @@ export default class TextareaComponentView extends Component {
 			<div className="m-b m-t">
 			    <Field type="textarea"
 			        name="textarea2"
+			        required={true}
+			        placeholder="我是水印"
 			        defaultValue="我是默认的textarea文案"
 			        form="FieldName"
 			        label="textarea:">

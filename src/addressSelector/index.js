@@ -74,7 +74,9 @@ export default class AddressSelector extends Component {
                         city:{id:this.state.cityList.key,name:this.state.cityList.value},
                         area:{id:this.state.areaList.key,name:this.state.areaList.value}
                     }
-                    this.state.onChange(result);
+                    if(this.state.onChange){
+                        this.state.onChange(result);
+                    }
                 })
             }
         }
@@ -167,7 +169,9 @@ export default class AddressSelector extends Component {
                     city:{},
                     area:{}
                 }
-                this.state.onChange(result);
+                if(this.state.onChange){
+                    this.state.onChange(result);
+                }
             })
         }
     }
@@ -220,7 +224,9 @@ export default class AddressSelector extends Component {
                     city:{id:this.state.cityList.key,name:this.state.cityList.value},
                     area:{}
                 }
-                this.state.onChange(result);
+                if(this.state.onChange){
+                    this.state.onChange(result);
+                }
             })
         }
     }

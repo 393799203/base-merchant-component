@@ -105,10 +105,14 @@ export default class McSelect extends Component {
                 selectValue : selectValue,
                 value:e
             })
-            this.state.onChange(selectValue);
+            if(this.state.onChange){
+                this.state.onChange(selectValue);
+            }
         }
         else{
-            this.state.onChange();
+            if(this.state.onChange){
+                this.state.onChange();
+            }
         }
     }
 

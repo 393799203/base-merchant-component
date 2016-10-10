@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Field} from 'source_path/field/index';
+import Datepicker from 'source_path/datepicker';
 import Readme from './README.md';
 import PROPS from './PROPS.md';
 
@@ -12,10 +13,15 @@ import PasswordComponentView from './password/index.js';
 import SelectComponentView from './select/index.js';
 import RadioComponentView from './radio/index.js';
 import CheckboxComponentView from './checkbox/index.js';
+import RawComponentView from './raw/index.js';
+
 
 export default class FieldComponentView extends Component {
 	constructor () {
 		super();
+		this.state = {
+			date:""
+		}
 	}
 
 	//获取表单数据
@@ -32,6 +38,20 @@ export default class FieldComponentView extends Component {
 	//清除表单数据
 	clearData(){
 		Field.clearData("FieldName");
+	}
+
+	getFieldData(){
+		return this.state.date;
+	}
+
+	validateField(){
+		if( this.state.date ){
+			return true;
+		}
+	}
+
+	handleDateChange( date ){
+		this.setState({ date });
 	}
 
 	render () {
@@ -52,6 +72,7 @@ export default class FieldComponentView extends Component {
 			<RadioComponentView />
 			<PasswordComponentView />
 			<CheckboxComponentView />
+			<RawComponentView />
 
 			<h2>
 				4. 表单示例－FieldDemo
@@ -78,20 +99,20 @@ export default class FieldComponentView extends Component {
 			        form="FieldName"
 			        defaultValue={['1','2']}
 			        options={testData.checkboxOptions}
-			        label="checkbox:">
+			        label="checkbox：">
 			    </Field>
 
 			    <Field type="radio"
 			        name="radio"
 			        form="FieldName"
 			        options={testData.radioOptions}
-			        label="radio:">
+			        label="radio：">
 			    </Field>
 
 			    <Field type="text"
 			        name="text"
 			        form="FieldName"
-			        label="text:">
+			        label="text：">
 			    </Field>
 
 			    <Field type="select"
@@ -99,20 +120,35 @@ export default class FieldComponentView extends Component {
 			        form="FieldName"
 			        defaultValue='1'
 			        options = {testData.selectOptions}
-			        label="select:">
+			        label="select：">
 			    </Field>
 
 			    <Field type="textarea"
 			        name="textarea"
 			        form="FieldName"
-			        label="textarea:">
+			        label="textarea：">
 			    </Field>
 
 			    <Field type="password"
 			        name="password"
 			        form="FieldName"
-			        label="password:">
+			        label="password：">
 			    </Field>
+
+			    <Field type="raw"
+					label="自定义表单："
+					name="date"
+					onData={ this.getFieldData }
+					onValidate={ this.validateField }
+					errorMsg="请选择时间" 
+					required>
+					<Datepicker 
+						onChange={ (e) => this.handleDateChange(e) }
+						format="yyyy-MM-dd HH:mm:ss"
+						value={ this.state.date }
+						style={{width: "365px"}}
+						showTime/>
+				</Field>
 			</div>
 			<div dangerouslySetInnerHTML={{ __html: Readme }}></div>
 		</div>
