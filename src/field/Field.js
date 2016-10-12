@@ -43,10 +43,17 @@ let Field = React.createClass({
 	        let formName = form || DEFAULT_FORM;
 	        let flag = true;
 	        let currentForm = Field.forms[formName];
-
+	        let id = true;
 	        Object.keys(currentForm).map(function (key) {
 	        	let field = currentForm[key];
 	        	flag = flag && field.validate();
+	        	if(!flag && id){
+	        		id = false;
+	        		if(field.props.id){
+	        			document.getElementById(field.props.id).scrollIntoView();
+	        			document.getElementById(field.props.id).focus();
+	        		}
+	        	}
 	        });
 
 	        return flag;
@@ -592,7 +599,6 @@ let Field = React.createClass({
             defaultValue,
             attrs = {}
         } = props;
-
 		return (
 			<div className="mc-field-text">
 				<input type="text"
@@ -601,6 +607,7 @@ let Field = React.createClass({
 					{...eventHandlers}
 					className="form-control mc-input"
 					name={name || ''}
+					ref={name}
                     value={ state.value || ''}
 					placeholder={placeholder || ''}
 					onChange={(e) => me.handleChange(e)}/>
@@ -635,8 +642,9 @@ let Field = React.createClass({
 						   id={id}
 							{...attrs}
 							{...eventHandlers}
-						   className="form-control mc-input"
-						   name={name || ''}
+						   	className="form-control mc-input"
+						   	name={name || ''}
+                			ref={name}
 						   value={ state.value || ''}
 						   placeholder={placeholder || ''}
 						   onChange={(e) => me.handleChange(e)} />
@@ -665,7 +673,6 @@ let Field = React.createClass({
 				{
 					options.map(function (option){
 						let id = Field.uniqueId();
-						console.info(state.value == option.value);
 						return (
 							<div className={`radio-nice form-control-inline-block ${option.className || ''}`} key={option.value}>
 		                        <input type="radio" 
@@ -674,6 +681,7 @@ let Field = React.createClass({
 									{...eventHandlers}
 									{...attrs}
 		                        	name={name}
+                					ref={name}
 		                        	id={option.id || id}
 		                        	value={ typeof option.value !== 'undefined' ? String(option.value) : ''}
 		                        	onChange={(e) => me.handleChange(e)} />
@@ -714,6 +722,7 @@ let Field = React.createClass({
 									{...eventHandlers}
 									{...attrs}
 				                	name={name}
+				                	ref={name}
 				                	id={option.id || id}
 				                	value={ String(option.value) }
 				                	checked={ Boolean(state.checked[option.value]) }
@@ -750,6 +759,7 @@ let Field = React.createClass({
 					{...attrs}
                 	className="form-control mc-select-input"
                 	name={name}
+                	ref={name}
                 	value={state.value}
                 	onChange={(e) => me.handleChange(e)}>
                 {
@@ -789,6 +799,7 @@ let Field = React.createClass({
 					{...eventHandlers}
                 	id={id}
                 	rows={rows}
+                	ref={name}
                 	placeholder={placeholder}
 					{...attrs}
 					onChange={(e) => me.handleChange(e)}
