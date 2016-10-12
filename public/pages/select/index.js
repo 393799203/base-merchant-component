@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {Select , Selects} from 'source_path/select/index';
 import Readme from './README.md';
-import './index.less'
+import './index.less';
 
 const selectOptions = [
     {text:"选择一",value:"1"},

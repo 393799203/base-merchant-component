@@ -16,6 +16,10 @@ export default [
 		link: '#/notification'
 	},
 	{
+		title: '唤醒多多花朵 - TeamTalk',
+		link: '#/teamtalk'
+	},
+	{
 		title: '时间选择 - Datepicker',
 		link: '#/datepicker'
 	},

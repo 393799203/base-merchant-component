@@ -1,4 +1,4 @@
-import './style/index.less'
+import './style/index.less';
 import RCCarousel from 'react-slick';
 import React from 'react';
 

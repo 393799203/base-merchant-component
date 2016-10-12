@@ -9,6 +9,8 @@ import DocView from './pages/doc';
 import HomeView from './pages/home';
 import ModalView from './pages/modal';
 import UpModalView from './pages/upModal';
+import TeamTalk from './pages/teamTalk';
+
 import ConfirmView from './pages/confirm';
 import NotificationView from './pages/notification';
 import DatepickerView from './pages/datepicker';
@@ -38,6 +40,7 @@ export default (
             <Route path='modal' component={ModalView}/>
             <Route path='upModal' component={UpModalView}/>
             <Route path='confirm' component={ConfirmView}/>
+            <Route path='teamtalk' component={TeamTalk}/>
             <Route path='notification' component={NotificationView}/>
             <Route path='datepicker' component={DatepickerView}/>
             <Route path='field' component={FieldView}/>
