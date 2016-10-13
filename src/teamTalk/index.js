@@ -1,5 +1,5 @@
 import React from 'react';
-import ModalController from '../modal/modal';
+import ModalController from '../modal/Modal';
 
 /**
  * [teamtalk组件]联系客服组件 两种应用场景

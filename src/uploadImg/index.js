@@ -3,8 +3,9 @@ var ReactDOM = require('react-dom');
 // var Notification = require('source_path/notification');
 
 // 多传接口地址
-var UPLOAD_URL = window.location.href.indexOf("meilishuo.com") > -1 ? "http://media.meilishuo.com/image/put?appKey=11m" : "http://media.xiaodian.com/image/put?appKey=11m";
-
+var UPLOAD_URL = window.location.href.indexOf("meilishuo.com") > -1 ? 
+    "http://media.meilishuo.com/image/put?appKey=11m" : 
+    "http://media.xiaodian.com/image/put?appKey=11m";
 // 获取回调方法名（单传）
 var getCallBackFuncName = function(){
     var prefix = 'upload_callback_';
