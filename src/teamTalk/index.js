@@ -1,5 +1,5 @@
 import React from 'react';
-import Modal from '../../src/modal';
+import ModalController from '../modal/Modal';
 
 /**
  * [teamtalk组件]联系客服组件 两种应用场景
@@ -51,11 +51,11 @@ const TeamTalk = React.createClass({
                         //为了让他能正常的编译HTML
                         msg.push(<span key={1}>{result.failedMessage},</span>);
                         msg.push(<a href={result.downloadUrl} key={2} style={{color:"#189ec8"}} target="_blank"> &nbsp;去下载	&rarr;</a>);
-                        Modal.alert(<div>{msg}</div>);
+                        ModalController.alert(<div>{msg}</div>);
                     }
                 } else {
                     //错误情况下，提示错误信息
-                    Modal.alert(resData.status.msg);
+                    ModalController.alert(resData.status.msg);
                 }
 
             }

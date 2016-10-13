@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import {Field} from 'source_path/field/index';
 import Datepicker from 'source_path/datepicker';
 import Readme from './README.md';
@@ -22,12 +23,16 @@ export default class FieldComponentView extends Component {
 		this.state = {
 			date:""
 		}
+		FieldComponentView.instance = this;
 	}
 
 	//获取表单数据
 	getData(){
+		if(!Field.validate("shopInfo")){
+            return false;
+        }
+        
 		var data = Field.getData("FieldName");
-		console.info(data);
 	}
 
 	//初始化表单数据
@@ -94,31 +99,38 @@ export default class FieldComponentView extends Component {
 					清除数据
 				</button>
 
-				<Field type="checkbox"
-			        name="checkbox"
-			        form="FieldName"
-			        defaultValue={['1','2']}
-			        options={testData.checkboxOptions}
-			        label="checkbox：">
-			    </Field>
+					<Field type="checkbox"
+				        name="checkbox"
+				        id="checkbox"
+				        form="FieldName"
+				        required
+				        defaultValue={['1','2']}
+				        options={testData.checkboxOptions}
+				        label="checkbox：">
+				    </Field>
 
-			    <Field type="radio"
-			        name="radio"
-			        form="FieldName"
-			        options={testData.radioOptions}
-			        label="radio：">
-			    </Field>
+				    <Field type="radio"
+				        name="radio"
+				        id="radio"
+				        form="FieldName"
+				        required
+				        options={testData.radioOptions}
+				        label="radio：">
+				    </Field>
 
-			    <Field type="text"
-			        name="text"
-			        form="FieldName"
-			        label="text：">
-			    </Field>
+				    <Field type="text"
+				        name="text"
+				        id="text"
+				        form="FieldName"
+				        required
+				        label="text：">
+				    </Field>
 
 			    <Field type="select"
 			        name="select"
 			        form="FieldName"
 			        defaultValue='1'
+			        required
 			        options = {testData.selectOptions}
 			        label="select：">
 			    </Field>
@@ -126,12 +138,14 @@ export default class FieldComponentView extends Component {
 			    <Field type="textarea"
 			        name="textarea"
 			        form="FieldName"
+			        required
 			        label="textarea：">
 			    </Field>
 
 			    <Field type="password"
 			        name="password"
 			        form="FieldName"
+			        required
 			        label="password：">
 			    </Field>
 
