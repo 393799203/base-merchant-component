@@ -9,6 +9,7 @@ const Carousel = React.createClass({
             arrows: false
         };
     },
+
     render() {
         let props = Object.assign({}, this.props);
 

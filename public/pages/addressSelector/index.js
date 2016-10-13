@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import AddressSelector from 'source_path/addressSelector/index';
+import Address from 'source_path/address/Address';
 import Readme from './README.md';
 
 export default class AddressSelectorView extends Component {
@@ -8,7 +8,7 @@ export default class AddressSelectorView extends Component {
     }
 
     getData(){
-        var data = AddressSelector.getData();
+        var data = Address.getData();
         console.info(data);
     }
 
@@ -20,7 +20,7 @@ export default class AddressSelectorView extends Component {
         return (
             <div className="m-l m-r m-b-xxl">
                 <h1>
-                    地址 - AddressSelector
+                    地址 - Address
                 </h1>
                 <h2>
                     1. 示例
@@ -32,7 +32,7 @@ export default class AddressSelectorView extends Component {
                         获取数据
                     </button>
 
-                    <AddressSelector 
+                    <Address 
                         style={{width:"200px"}}
                         className="mc-addressSelector"
                         onChange = {(e) => this.addressChange(e)}

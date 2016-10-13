@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import FormComponent from 'source_path/form/index';
+import Form from 'source_path/form/Form';
 import Readme from './README.md';
 
 //详细配置信息见test.js
@@ -13,18 +13,18 @@ export default class FormComponentView extends Component {
 	
 	//获取表单数据
 	getData(){
-		var data = FormComponent.getData("textForm");
+		var data = Form.getData("textForm");
 		console.info(data);
 	}
 
 	//初始化表单数据
 	resetData(){
-		FormComponent.resetData("textForm");
+		Form.resetData("textForm");
 	}
 
 	//清除表单数据
 	clearData(){
-		FormComponent.clearData("textForm");
+		Form.clearData("textForm");
 	}
 
 	//查询表单改变
@@ -57,7 +57,7 @@ export default class FormComponentView extends Component {
 						onClick={ (e) => { this.clearData() }}>
 						清除数据
 					</button>
-					<FormComponent 
+					<Form 
 						data = {testData} 
 						onQuery={this.onQueryChange.bind(this)} 
 						prefixcls="field-test"

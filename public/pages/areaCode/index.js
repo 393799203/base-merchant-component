@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import AreaCode from 'source_path/areaCode';
+import AreaCode from 'source_path/area-code/AreaCode';
 import Readme from './README.md';
 
 export default class AreaCodeView extends Component {

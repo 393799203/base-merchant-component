@@ -1,4 +1,4 @@
 
 module.exports = {
-  modal : require('./Modal'),
+  Modal : require('./Modal'),
 };

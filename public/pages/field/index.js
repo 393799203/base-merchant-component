@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {Field} from 'source_path/field/index';
-import Datepicker from 'source_path/datepicker';
+import Datepicker from 'source_path/datepicker/Datepicker';
 import Readme from './README.md';
 import PROPS from './PROPS.md';
 

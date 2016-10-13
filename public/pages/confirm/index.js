@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Confirm from 'source_path/confirm/index';
+import Confirm from 'source_path/confirm/Confirm';
 import Readme from './README.md';
 
 export default class ConfirmView extends Component {

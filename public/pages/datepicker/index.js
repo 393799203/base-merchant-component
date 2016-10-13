@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Datepicker from 'source_path/datepicker';
+import Datepicker from 'source_path/datepicker/Datepicker';
 import Readme from './README.md';
 
 export default class DatepickerView extends Component {

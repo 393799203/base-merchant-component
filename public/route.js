@@ -18,7 +18,7 @@ import FieldView from './pages/field';
 
 import FormView from './pages/form';
 import PaginationView from './pages/pagination';
-import SliderView from './pages/slider';
+import CarouselView from './pages/carousel';
 import TabView from './pages/tab';
 import ProcessBarView from './pages/processBar';
 import UploadImgView from './pages/uploadImg';
@@ -46,7 +46,7 @@ export default (
             <Route path='field' component={FieldView}/>
             <Route path='form' component={FormView}/>
             <Route path='pagination' component={PaginationView}/>
-            <Route path='slider' component={SliderView}/>
+            <Route path='carousel' component={CarouselView}/>
             <Route path='tab' component={TabView}/>
             <Route path='processBar' component={ProcessBarView}/>
             <Route path='uploadImg' component={UploadImgView}/>
