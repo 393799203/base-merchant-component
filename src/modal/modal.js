@@ -7,10 +7,8 @@ import './style/index.less';
 var ModalController = React.createClass({
     statics: {
         prefix: 'mc-',
-
         instance: null,
         modals: [],
-
         layoutStyle: {},
 
         /**
