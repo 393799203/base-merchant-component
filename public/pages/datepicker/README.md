@@ -1,7 +1,7 @@
 ## 2. 使用说明
 
 	import React, { Component } from 'react'
-	import Datepicker from '@meili/base-merchant-component/lib/datepicker'
+	import Datepicker from '@meili/base-merchant-component/lib/datepicker/Datepicker';
 	
 	export default class DatepickerView extends Component {
 		constructor () {

@@ -21,7 +21,7 @@
 
 #### 2.2 使用示例
 	import React, { Component } from 'react';
-	import UploadImg from '@meili/base-merchant-component/lib/uploadImg';
+	import UploadImg from '@meili/base-merchant-component/lib/upload-img/UploadImg';
 
 	export default class UploadImgView extends Component {
 		constructor () {

@@ -2,7 +2,7 @@
 #### 2.1 有标题 UpModal 使用
 
 	import React, { Component } from 'react'
-	import UpModal from '@meili/base-merchant-component/lib/upModal'
+	import UpModal from '@meili/base-merchant-component/lib/upmodal/upModal';
 	
 	export default class ModalView extends Component {
 		constructor () {

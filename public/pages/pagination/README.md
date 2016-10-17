@@ -12,7 +12,7 @@
 
 #### 2.2 使用示例
 	import React, { Component } from 'react';
-	import Pagination from '@meili/base-merchant-component/lib/pagination';
+	import Pagination from '@meili/base-merchant-component/lib/pagination/Pagination';
 	export default class PaginationView extends Component {
 		constructor () {
 			super();

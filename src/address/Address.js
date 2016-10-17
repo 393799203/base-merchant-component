@@ -24,7 +24,6 @@ export default class Address extends Component {
             style:this.props.style || {},
             className : this.props.className || "",
             orInit:false,
-
             provinceList:{},
             cityList:{},
             areaList:{}

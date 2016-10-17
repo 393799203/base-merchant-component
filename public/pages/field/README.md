@@ -4,7 +4,7 @@
 ```
 import React, { Component } from 'react'
 import {Field} from '@meili/base-merchant-component/lib/field/index';
-import Datepicker from '@meili/base-merchant-component/lib/datepicker'
+import Datepicker from '@meili/base-merchant-component/lib/datepicker/Datepicker'
 
 //详细配置信息见test.js
 import testData from './test.js'

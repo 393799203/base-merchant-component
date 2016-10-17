@@ -3,7 +3,7 @@
 ```
 
 import React, { Component } from 'react'
-import AddressSelector from '@meili/base-merchant-component/lib/addressSelector';
+import Address from '@meili/base-merchant-component/lib/address/Address';
 
 export default class AddressSelectorView extends Component {
     constructor () {
@@ -11,7 +11,7 @@ export default class AddressSelectorView extends Component {
     }
 
     getData(){
-        var data = AddressSelector.getData();
+        var data = Address.getData();
         console.info(data);
     }
 
@@ -35,7 +35,7 @@ export default class AddressSelectorView extends Component {
                         获取数据
                     </button>
 
-                    <AddressSelector 
+                    <Address 
                         style={{width:"200px"}}
                         className="mc-addressSelector"
                         onChange = {(e) => this.addressChange(e)}
