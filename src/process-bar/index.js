@@ -3,5 +3,5 @@
  */
 
 module.exports = {
-    Notification : require('./Notification'),
+    ProcessBar : require('./ProcessBar'),
 };

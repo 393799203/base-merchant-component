@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import './style/index.less';
 
-import Select from '@mogu/up-components/lib/Select/Select';
-const Option = Select.Option;
+import UPSelect from '@mogu/up-components/lib/Select/Select';
+const Option = UPSelect.Option;
 
-export default class McSelect extends Component {
+export default class Select extends Component {
     constructor(props){
         super(props);
-        McSelect.instance = this;
+        Select.instance = this;
         this.state = {
             defaultValue: props.defaultValue || "",
             value:props.value || "",
@@ -75,7 +75,7 @@ export default class McSelect extends Component {
 
     //对外提供的获取数据静态方法
     static getData(){
-        return McSelect.instance.state.selectValue;
+        return Select.instance.state.selectValue;
     }
 
     handleChange(e){
@@ -136,14 +136,14 @@ export default class McSelect extends Component {
         return (
             <div>
                 {this.state.orInit ? 
-                    <Select prefixCls = {"mc-select"} style = {this.state.style}
+                    <UPSelect prefixCls = {"mc-select"} style = {this.state.style}
                         value={this.state.value}
                         className={this.state.className}
                         onChange={(e) => this.handleChange(e)} 
                         defaultValue={this.state.defaultValue}
                         showSearch={true}>
                         {this.renderOptions(this.state.selectOptions)}
-                    </Select>:
+                    </UPSelect>:
                     null
                 }
             </div>

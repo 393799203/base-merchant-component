@@ -1,5 +1,5 @@
 
 module.exports = {
-  Select : require('./McSelect'),
-  Selects : require('./McSelects')
+  Select : require('./Select'),
+  Selects : require('./Selects')
 };

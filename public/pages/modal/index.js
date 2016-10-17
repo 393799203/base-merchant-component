@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Modal from 'source_path/modal';
+import Modal from 'source_path/modal/Modal';
 import Readme from './README.md';
 
 export default class ModalView extends Component {

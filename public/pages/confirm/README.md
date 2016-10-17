@@ -2,7 +2,7 @@
 #### 2.1 自定义 Confirm
 
 	import React, { Component } from 'react'
-	import Confirm from '@meili/base-merchant-component/lib/confirm'
+	import Confirm from '@meili/base-merchant-component/lib/confirm/Confirm';
 	
 	export default class ConfirmView extends Component {
 		constructor () {

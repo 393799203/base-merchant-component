@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Notification from 'source_path/notification'
+import Notification from 'source_path/notification/Notification'
 import Readme from './README.md';
 
 export default class NotificationView extends Component {

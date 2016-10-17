@@ -32,8 +32,8 @@ export default [
 		link: '#/form'
 	},
 	{
-		title: '轮播图 - Slider',
-		link: '#/slider'
+		title: '轮播图 - Carousel',
+		link: '#/carousel'
 	},
 	{
 		title: '分页 - Pagination',
@@ -62,6 +62,10 @@ export default [
 	{
 		title: '区号 - AreaCode',
 		link: '#/areaCode'
+	},
+	{
+		title: '下拉框 - Select',
+		link: '#/select'
 	}
 ]
 

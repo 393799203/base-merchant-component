@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TeamTalk from 'source_path/teamTalk/index';
+import TeamTalk from 'source_path/team-talk/TeamTalk';
 import Readme from './README.md';
 
 export default class TeamTalkView extends Component {

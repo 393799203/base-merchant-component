@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Pagination from 'source_path/pagination';
+import Pagination from 'source_path/pagination/Pagination';
 import Readme from './README.md';
 
 export default class PaginationView extends Component {

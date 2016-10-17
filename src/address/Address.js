@@ -3,16 +3,16 @@ import './style/index.less';
 import citys from './citys';
 import districts from './districts';
 import provinces from './provinces';
-import Select from '../select/McSelect';
+import Select from '../select/Select';
 
 var LEVEL_PROVINCE = 1,
     LEVEL_CITY = 2,
     LEVEL_AREA = 3;
 
-export default class AddressSelector extends Component {
+export default class Address extends Component {
     constructor(props){
         super(props);
-        AddressSelector.instance = this;
+        Address.instance = this;
         this.state = {
             provinceOptions: [],
             province:props.defaultProvince || "-1",
@@ -24,7 +24,6 @@ export default class AddressSelector extends Component {
             style:this.props.style || {},
             className : this.props.className || "",
             orInit:false,
-
             provinceList:{},
             cityList:{},
             areaList:{}
@@ -42,16 +41,16 @@ export default class AddressSelector extends Component {
     static getData(){
         return {
             province:{
-                id:AddressSelector.instance.state.provinceList.key,
-                name:AddressSelector.instance.state.provinceList.value
+                id:Address.instance.state.provinceList.key,
+                name:Address.instance.state.provinceList.value
             },
             city:{
-                id:AddressSelector.instance.state.cityList.key,
-                name:AddressSelector.instance.state.cityList.value
+                id:Address.instance.state.cityList.key,
+                name:Address.instance.state.cityList.value
             },
             area:{
-                id:AddressSelector.instance.state.areaList.key,
-                name:AddressSelector.instance.state.areaList.value
+                id:Address.instance.state.areaList.key,
+                name:Address.instance.state.areaList.value
             }
         }  
     }

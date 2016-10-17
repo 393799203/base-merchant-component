@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Tab from 'source_path/tab';
+import Tab from 'source_path/tab/Tab';
 import Readme from './README.md';
 
 export default class TabView extends Component {
