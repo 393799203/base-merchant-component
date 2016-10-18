@@ -3,7 +3,7 @@
 ```
 
 import React, { Component } from 'react'
-import Address from '@meili/base-merchant-component/lib/address/Address';
+import Address from '@meili/base-merchant-component/lib/address';
 
 export default class AddressSelectorView extends Component {
     constructor () {

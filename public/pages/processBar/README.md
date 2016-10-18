@@ -12,7 +12,7 @@
 #### 2.2 使用示例
 
 	import React, { Component } from 'react';
-	import ProcessBar from '@meili/base-merchant-component/lib/process-bar/ProcessBar';
+	import ProcessBar from '@meili/base-merchant-component/lib/process-bar';
 
 	export default class ProcessBarView extends Component {
 		constructor () {

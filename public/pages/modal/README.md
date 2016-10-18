@@ -27,7 +27,7 @@
 ##### 3.1.3 使用示例
 	
 	import React, { Component } from 'react'
-	import Modal from '@meili/base-merchant-component/lib/modal/Modal';
+	import Modal from '@meili/base-merchant-component/lib/modal';
 	
 	export default class ModalView extends Component {
 		constructor () {

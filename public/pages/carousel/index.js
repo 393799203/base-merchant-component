@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Carousel from 'source_path/carousel/Carousel';
+import Carousel from 'source_path/carousel';
 import Readme from './README.md';
 
 const style = {

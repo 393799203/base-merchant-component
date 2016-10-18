@@ -1,7 +1,12 @@
-/**
- * Description : 
- */
+import React, { Component } from 'react';
+import UpDatePicker from '@mogu/up-components/lib/DatePicker';
+import './style/index.less'
 
-module.exports = {
-    Datepicker : require('./Datepicker'),
-};
+export default class Datepicker extends Component {
+	constructor () {
+		super();
+	}
+	render () {
+		return <UpDatePicker { ...this.props }/>
+	}
+}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Field} from 'source_path/field/index';
+import {Field} from 'source_path/field';
 import Readme from './README.md';
 
 export default class PasswordComponentView extends Component {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UploadImg from 'source_path/upload-img/UploadImg';
+import UploadImg from 'source_path/upload-img';
 import Readme from './README.md';
 
 export default class UploadImgView extends Component {

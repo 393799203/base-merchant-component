@@ -71,7 +71,7 @@ function getEntries(){
     var floders = getDirectories(srcpath);
     entries = {};
     floders.forEach(function(i){
-        entries['./dist/'+i+'/'] = path.resolve(__dirname,'./src/'+i+'/'+'index.js');
+        entries['./dist/'+i+'/'] =[ path.resolve(__dirname,'./src/'+i+'/'+'index.js') ];
     });
     console.log(entries)
     return entries;

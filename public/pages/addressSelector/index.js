@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Address from 'source_path/address/Address';
+import Address from 'source_path/address';
 import Readme from './README.md';
 
 export default class AddressSelectorView extends Component {
