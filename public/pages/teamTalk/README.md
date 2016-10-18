@@ -4,7 +4,7 @@
 ```javascript
 
 import React, { Component } from 'react';
-import TeamTalk from '@meili/base-merchant-component/lib/team-talk/TeamTalk';
+import TeamTalk from '@meili/base-merchant-component/lib/team-talk';
 export default class TeamTalkView extends Component {
 	constructor() {
 		super();

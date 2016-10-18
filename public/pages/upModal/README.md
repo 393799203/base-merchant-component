@@ -2,7 +2,7 @@
 #### 2.1 有标题 UpModal 使用
 
 	import React, { Component } from 'react'
-	import UpModal from '@meili/base-merchant-component/lib/upmodal/upModal';
+	import UpModal from '@meili/base-merchant-component/lib/up-modal';
 	
 	export default class ModalView extends Component {
 		constructor () {
@@ -30,7 +30,7 @@
 > 如果没有设置title，则不显示默认的头部; 如果设置onClose属性，关闭弹出层时则执行该回调函数。
 
 	import React, { Component } from 'react'
-	import UpModal from '@meili/base-merchant-component/lib/upModal'
+	import UpModal from '@meili/base-merchant-component/lib/up-modal'
 	
 	export default class ModalView extends Component {
 		constructor () {
@@ -61,7 +61,7 @@
 > 如果传入定时关闭属性 duration, 单位毫秒（ms）, 则执行定时关闭功能; 否则不执行定时关闭功能。
 
 	import React, { Component } from 'react'
-	import UpModal from '@meili/base-merchant-component/lib/upModal'
+	import UpModal from '@meili/base-merchant-component/lib/up-modal'
 	
 	export default class ModalView extends Component {
 		constructor () {

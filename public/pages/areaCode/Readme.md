@@ -9,7 +9,7 @@
 ## 3. 使用示例
 
 	import React, { Component } from 'react'
-	import AreaCode from '@meili/base-merchant-component/lib/area-code/AreaCode';
+	import AreaCode from '@meili/base-merchant-component/lib/area-code';
 
 	export default class AreaCodeView extends Component {
 	    constructor () {

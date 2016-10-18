@@ -10,7 +10,7 @@
 #### 2.2 使用示例
 	
 	import React, { Component } from 'react';
-	import Tab from '@meili/base-merchant-component/lib/tab/Tab';
+	import Tab from '@meili/base-merchant-component/lib/tab';
 
 	export default class TabView extends Component {
 		constructor () {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Form from 'source_path/form/Form';
+import Form from 'source_path/form';
 import Readme from './README.md';
 
 //详细配置信息见test.js

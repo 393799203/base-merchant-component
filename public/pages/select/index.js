@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Select , Selects} from 'source_path/select/index';
+import {Select , Selects} from 'source_path/select';
 import Readme from './README.md';
 import './index.less';
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UpModal from 'source_path/upmodal/upModal';
+import UpModal from 'source_path/up-modal';
 import Readme from './README.md';
 
 export default class UpModalView extends Component {

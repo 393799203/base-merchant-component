@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ProcessBar from 'source_path/process-bar/ProcessBar';
+import ProcessBar from 'source_path/process-bar';
 import Readme from './README.md';
 
 export default class ProcessBarView extends Component {

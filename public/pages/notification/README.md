@@ -3,7 +3,7 @@
 #### 2.1 中间提示
 
 	import React, { Component } from 'react'
-	import Notification from '@meili/base-merchant-component/lib/notification/Notification'
+	import Notification from '@meili/base-merchant-component/lib/notification'
 	
 	export default class TipView extends Component {
 		constructor () {
