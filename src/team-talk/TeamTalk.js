@@ -51,7 +51,7 @@ const TeamTalk = React.createClass({
                         //为了让他能正常的编译HTML
                         msg.push(<span key={1}>{result.failedMessage},</span>);
                         msg.push(<a href={result.downloadUrl} key={2} style={{color:"#189ec8"}} target="_blank"> &nbsp;去下载	&rarr;</a>);
-                        ModalController.alert(<div>{msg}</div>);
+                        result.failedMessage ? ModalController.alert(<div>{msg}</div>) : '';
                     }
                 } else {
                     //错误情况下，提示错误信息
