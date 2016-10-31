@@ -18,8 +18,9 @@ const TeamTalk = React.createClass({
             this.props.onClick(evt);
         }
         const userId = this.props.userId;
-        // IM请求接口
-        let postImUrl = this.props.callToBusiness ? 'http://imapi.mogujie.com/call/business' : 'http://imapi.mogujie.com/call/talk';
+        // IM请求接口,增加美丽说蘑菇街的判断
+        let hostName = window.isMeilishuo ? 'meilishuo' : 'mogujie';
+        let postImUrl = this.props.callToBusiness ? 'http://imapi.' + hostName + '.com/call/business' : 'http://imapi.' + hostName + '.com/call/talk';
         $.ajax({
             url: postImUrl,
             type: 'post',
