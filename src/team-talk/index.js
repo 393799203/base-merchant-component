@@ -34,7 +34,7 @@ const TeamTalk = React.createClass({
                 if (resData.status.code == 4005) {
 
                     let meilishuoLoginUrl = 'http://xd.meilishuo.com/user/login'; //meilishuo的登陆，登陆完成后，自动跳转会refer页面 http://www.meilishuo.com/user/login
-                    let xiaodianLoginUrl = 'http://www.xiaodian.com/pc/user/login?refer=' + encodeURIComponent('http://www.xiaodian.com/pc/shopadmin/help/callCustomer?problemCategorId=-3');
+                    let xiaodianLoginUrl = 'http://www.xiaodian.com/pc/user/login?refer=' + encodeURIComponent('http://service.xiaodian.com/callCustomer.html?problemCategorId=-3');
                     let loginUrl = window.isMeilishuo ? meilishuoLoginUrl : xiaodianLoginUrl;
                     //区分蘑菇街和美丽说小店登陆
                     window.location.href = loginUrl;
