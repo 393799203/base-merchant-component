@@ -8,7 +8,13 @@ html, body {
 .app-aside .nav > li.active {
 	border-left: 4px solid #fad733 !important;
 }
-
+.app-header.bg-danger, .navbar-header.bg-danger {
+	background: url(http://s16.mogucdn.com/p1/161019/idid_ie4wkzjsg5qtemtcmizdambqgqyde_1100x50.png) no-repeat;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 .btn {
 	border-radius: 2px;
 }

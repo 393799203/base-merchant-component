@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Table from 'source_path/table';
 
 export default class TableView extends Component {
 	constructor () {
@@ -10,7 +11,9 @@ export default class TableView extends Component {
 	}
 	render () {
 		return (
-			<div>table</div>
+			<div>
+				aa
+			</div>
 		)
 	}
 }
