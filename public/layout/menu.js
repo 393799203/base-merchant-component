@@ -4,8 +4,8 @@ export default [
 		link: '#/tab'
 	},
 	{
-		title: '表格 - Table',
-		link: '#/table'
+		title: '分页 - Pagination',
+		link: '#/pagination'
 	}
 ]
 

@@ -27,7 +27,6 @@ module.exports = {
         },
         extensions: ['', '.js', '.jsx']
     },
-
     module: {
         loaders: [
             {

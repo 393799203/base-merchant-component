@@ -9,8 +9,7 @@ import CSSView from './pages/css';
 import DocView from './pages/doc';
 
 import TabView from './pages/tab';
-import TableView from './pages/table';
-
+import PaginationView from './pages/pagination';
 
 const history = useRouterHistory(createHashHistory)({queryKey: false});
 export default (
@@ -22,7 +21,7 @@ export default (
         </Route>
         <Route component={LayoutView}>
             <Route path='tab' component={TabView}/>
-            <Route path='table' component={TableView}/>
+            <Route path='pagination' component={PaginationView}/>
         </Route>
     </Router>
 );

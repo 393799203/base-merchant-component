@@ -2,10 +2,108 @@
 
 该node包为小店公用组件，基于MFP平台生成，依赖React@0.14.x。
 
+#### 组件说明
 
-#### 组件使用
+目前维护两个版本：
 
-1. $ npm install @meili/base-merchant-component
+* 0.x.x -- develop 分支
+* 1.0.0 -- v1.0.0 分支
+
+v1.0.0的版本是使用商家后台新的UI规范开发的一套新的组件，api不兼容0.x.x版本。
+
+#### 组件开发
+
+##### 1、gitlab代码提交规范
+
+[fork & mr](http://doc.f2e.meili-inc.com/merchant/gitlab.html)
+
+组件开发不用关注打包
+
+##### 2、本地环境搭建
+	# 进入项目
+	$ cd your-project-name
+
+	# 如果开发0.x.x版本，请从远程切出develop分支
+	# 如果开发v1.0.0 版本，请从远程切出v1.0.0分支；	
+	# 假设远程主仓库以 main 命名
+	$ git checkout -b develop main/develop
+	$ git checkout -b v1.0.0 main/v1.0.0
+	
+	
+	# 安装依赖
+	$ npm install
+	
+##### 3、项目目录说明
+
+	├── README.md 
+	├── demo/      # 组件文档说明打包后文件，原文件在 public/ 下，使用webpack.build.config.js打包生成
+	├── dist/      # 使用cdn方式引用，暂时没有提供  
+	├── lib/       # 编译后组件，提供给用户使用，使用webpack.config.js打包
+	├── node_modules/
+	├── package.json/
+	├── public/    # 组件文档api站点源码
+	├── scripts/   # 一些脚本
+	├── spec/      # 测试用例					
+	├── src/       # 组件源码
+	├── webpack.build.config.js
+	├── webpack.config.js
+	├── webpack.dev.config.js
+	├── webpack.pack.config.js
+	├── webpack.pub.config.js
+	└── webpack.test.config.js
+	
+##### 4、组件源码说明
+
+    src
+	├── index.js  # 组件注册文件，开发一个组件后在此文件注册，
+	│             # 用户可以通过 import {xx} from @meili/base-merchant-component 引用，
+	│             # 尽管不推荐此种用法
+	│       
+	└── tab
+    	├── index.js    # 组件入口文件
+    	└── style       # 样式
+        	  └── index.less
+        	  
+##### 5、组件API 
+
+组件API站点为react单页应用，最后打包生产一个js,一个css，具体组件API写法可以参考 pages/tab
+  
+	public
+	├── index.html
+	├── layout
+	│   ├── headNav.js
+	│   ├── menu.js
+	│   ├── tpl.fullPage.js
+	│   └── tpl.sidePage.js
+	├── main.js    
+	├── pages
+	│   ├── home
+	│   │   └── index.js
+	│   └── tab    # tab 组件 api 页面
+	│       ├── README.md
+	│       └── index.js
+	├── route.js   # 路由
+	└── style
+    	└── index.css
+	
+##### 6、启动组件文档API站点
+
+	$ npm run dev
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
 
 
 
