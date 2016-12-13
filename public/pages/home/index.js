@@ -23,7 +23,7 @@ export default class HomeView extends Component {
 				</p>
 				<p className="m-t-xxl">
 					<a className="btn"
-						href="#/modal"
+						href="#/tab"
 						style={{
 							padding: '12px 40px',
 							color: '#fff',

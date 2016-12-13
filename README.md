@@ -1,65 +1,111 @@
-####项目简介
+#### 项目简介
 
 该node包为小店公用组件，基于MFP平台生成，依赖React@0.14.x。
 
-[在线地址](http://aveng.meili-inc.com/packages/@meili/base-merchant-component_0.1.0/package/demo//test/index.html#/?_k=ks263i)
+#### 组件说明
 
-[MFP项目地址](http://aveng.meili-inc.com/#/doc/%40meili%2Fbase-merchant-component?_k=479u84)
+目前维护两个版本：
 
-[git仓库地址](http://gitlab.mogujie.org/Aveng/meili-base-merchant-component)
+* 0.x.x -- develop 分支
+* 1.0.0 -- v1.0.0 分支
 
-####组件使用
+v1.0.0的版本是使用商家后台新的UI规范开发的一套新的组件，api不兼容0.x.x版本。
 
-1. $ npm install @meili/base-merchant-component
+#### 组件开发
 
-2. 安装完毕后，在项目中引用lib中的组件即可。eg：
+##### 1、gitlab代码提交规范
 
-	import { AddressEditor }  from '@meili/base-merchant-component/lib/index.js';
+[fork & mr](http://doc.f2e.meili-inc.com/merchant/gitlab.html)
+
+组件开发不用关注打包
+
+##### 2、本地环境搭建
+	# 进入项目
+	$ cd your-project-name
+
+	# 如果开发0.x.x版本，请从远程切出develop分支
+	# 如果开发v1.0.0 版本，请从远程切出v1.0.0分支；	
+	# 假设远程主仓库以 main 命名
+	$ git checkout -b develop main/develop
+	$ git checkout -b v1.0.0 main/v1.0.0
 	
-####组件开发
+	
+	# 安装依赖
+	$ npm install
+	
+##### 3、项目目录说明
 
-##### 目录结构规范
+	├── README.md 
+	├── demo/      # 组件文档说明打包后文件，原文件在 public/ 下，使用webpack.build.config.js打包生成
+	├── dist/      # 使用cdn方式引用，暂时没有提供  
+	├── lib/       # 编译后组件，提供给用户使用，使用webpack.config.js打包
+	├── node_modules/
+	├── package.json/
+	├── public/    # 组件文档api站点源码
+	├── scripts/   # 一些脚本
+	├── spec/      # 测试用例					
+	├── src/       # 组件源码
+	├── webpack.build.config.js
+	├── webpack.config.js
+	├── webpack.dev.config.js
+	├── webpack.pack.config.js
+	├── webpack.pub.config.js
+	└── webpack.test.config.js
+	
+##### 4、组件源码说明
 
-```
-  meili/base-merchant-component
-  	|-- base								    组件所依赖的公共js和less
-    |-- demo
-    |    |-- test  	                            组件的运行示例demo
-    |        |-- index.html                  	入口文件
-    |        |-- bundle.js                      组件运行示例的js源码
-    |        |-- app.css                        组件运行示例的css源码
-    |-- public                                  
-    |    |-- index.html                         用于调试组件功能的html页面，可以通过localhost:5000访问
-    |    |-- main.js                            用于调试组件功能的js代码
-    |    |-- route.js                           用于一个项目多个组件时方便地添加页面和路由
-    |-- scripts                                 脚本目录
-    |    |-- publish.sh                         发布脚本,可根据需要自行调整
-    |    |-- server.js                          本地起port为5000的服务，可以根据需要自行修改
-    |-- spec
-    |    |-- index.spec.js                      组件的测试用例
-    |    |-- setup.js                           
-    |-- src                                     源码目录
-    |    |-- pagenav                      		以PageNav名字命名的组件
-    |        |-- index.js                       PageNav业务组件的源码
-    |        |-- index.less                     PageNav业务组件的样式源码
-    |    |-- address                            以Address名字命名的组件
-    |-- .gitignore
-    |-- .npmignore								$npm run pub 时忽略的文件
-    |-- package.json
-    |-- README.md                               项目整体的说明比如项目背景，项目的CHANGELOG等
-    |-- webpack.config.js                       组件打包webpack基础配置文件
-    |-- webpack.dev.config.js                   组件跑server时的webpack配置文件
-    |-- webpack.test.config.js                  组件打包运行示例的webpack配置文件
-    |-- webpack.pack.config.js                  组件统一打包的webpack配置文件
-    
-```
+    src
+	├── index.js  # 组件注册文件，开发一个组件后在此文件注册，
+	│             # 用户可以通过 import {xx} from @meili/base-merchant-component 引用，
+	│             # 尽管不推荐此种用法
+	│       
+	└── tab
+    	├── index.js    # 组件入口文件
+    	└── style       # 样式
+        	  └── index.less
+        	  
+##### 5、组件API 
 
-#####注意事项
+组件API站点为react单页应用，最后打包生产一个js,一个css，具体组件API写法可以参考 pages/tab
+  
+	public
+	├── index.html
+	├── layout
+	│   ├── headNav.js
+	│   ├── menu.js
+	│   ├── tpl.fullPage.js
+	│   └── tpl.sidePage.js
+	├── main.js    
+	├── pages
+	│   ├── home
+	│   │   └── index.js
+	│   └── tab    # tab 组件 api 页面
+	│       ├── README.md
+	│       └── index.js
+	├── route.js   # 路由
+	└── style
+    	└── index.css
+	
+##### 6、启动组件文档API站点
 
-1. 每一个组件文件都需要一个index.js，index.css/less。在编译过程中index.js文件是入口文件，如果index.css/less未被index.js引用则不会被编译并保存。
+	$ npm run dev
+	
 
-2. 在 $npm run pub 时会统一将jsx文件转为js文件。因此组件文件建议统一使用.js后缀，避免被其他组件引用导致报错的情况。
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
-3. 如果组件依赖其他组件，请引入lib文件夹下对应的组件。$npm run babel 的时候并不会对文件的依赖路径进行修改，如果依赖路径是src下的文件，因为src下的文件并不会被发布至MFP，那么$npm run pub上去的组件文件在使用时会有未找到文件的报错。
+
+
+
+
+
+
  
  
