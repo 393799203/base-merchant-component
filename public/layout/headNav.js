@@ -1,17 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 export default class HeadNav extends Component {
-    constructor (props) {
-        super(props);
-    }
     render () {
-        let isHome = this.props.isHome;
+        const isHome = this.props.isHome;
         return (
             <div className={isHome ? 'app-header navbar bg-white-only clearfix' : 'app-header navbar bg-danger clearfix'}>
                 <div className={isHome ? 'navbar-header bg-white-only' : 'navbar-header bg-danger'}>
                     <a href='#/' className='navbar-brand text-lt'>商家后台</a>
                 </div>
-                <div className='pull-left' style={{marginLeft: '215px'}}>
+                <div className='pull-left' style={{ marginLeft: '215px' }}>
                     <ul className='nav navbar-nav'>
                         <li><a href='#/css'>CSS</a></li>
                         <li><a href='#/tab'>组件</a></li>
@@ -36,9 +33,13 @@ export default class HeadNav extends Component {
                                 返回Aveng
                             </a>
                         </li>
-                    </ul> 
+                    </ul>
                 </div>
-            </div>  
-        )
+            </div>
+        );
     }
 }
+
+HeadNav.propTypes = {
+    isHome: PropTypes.boolean
+};

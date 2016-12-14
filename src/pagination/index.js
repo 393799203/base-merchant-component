@@ -7,17 +7,17 @@ export default class Pagination extends Component {
         this.state = this.formatProps(props);
     }
     componentWillReceiveProps (props) {
-        var newProps = this.formatProps(props);
+        const newProps = this.formatProps(props);
         this.setState(newProps);
     }
     formatProps (props) {
-        var totalPage = props.totalPage;
+        let totalPage = props.totalPage;
 
-        //不显示最后一页，显示点点点
-        if(props.hideEnd) {
+        // 不显示最后一页，显示点点点
+        if (props.hideEnd) {
             totalPage = props.currentPage + 2;
         }
-        var props = {
+        let newProps = {
             current: parseInt(props.currentPage),                // 当前页码
             totalPage: totalPage || parseInt(props.currentPage), // 总共有多少页
             display_num: parseInt(props.display_num),            // 显示数字的页码数
@@ -26,7 +26,7 @@ export default class Pagination extends Component {
             hideEnd: props.hideEnd
         };
 
-        return props;
+        return newProps;
     }
     // 显示数字的区间
     getInterval (current) {
@@ -115,20 +115,20 @@ export default class Pagination extends Component {
 };
 
 Pagination.defaultProps = {
-    currentPage : 1,     // 当前页码
-    totalPage : 1,   // 总共有多少页
-    display_num : 4, // 显示数字的页码数
-    link : '',       // 页面直接跳转链接
-    onChangePage : '', // 页码选中回调
-    hideEnd : false  // 是否显示最后
+    currentPage: 1,     // 当前页码
+    totalPage: 1,   // 总共有多少页
+    display_num: 4, // 显示数字的页码数
+    link: '',       // 页面直接跳转链接
+    onChangePage: '', // 页码选中回调
+    hideEnd: false  // 是否显示最后
 };
 
-Pagination.PropTypes = {
-    currentPage : PropTypes.number.isRequired,
-    totalPage : PropTypes.number.isRequired,
+Pagination.propTypes = {
+    currentPage: PropTypes.number.isRequired,
+    totalPage: PropTypes.number.isRequired,
     display_num: PropTypes.number,
-    link : PropTypes.string, 
-    onChangePage : PropTypes.func,  
-    hideEnd : PropTypes.boolean
+    link: PropTypes.string,
+    onChangePage: PropTypes.func,
+    hideEnd: PropTypes.boolean
 };
 

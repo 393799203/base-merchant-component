@@ -11,11 +11,11 @@ export default class PaginationView extends Component {
 			onChangePage: this.changePage.bind(this)
 		};
 	}
-	changePage (current){
-		this.setState({ currentPage: current })
-	}
 	componentDidMount () {
 		
+	}
+	changePage (current){
+		this.setState({ currentPage: current });
 	}
 	render () {
 		return (
@@ -26,7 +26,7 @@ export default class PaginationView extends Component {
 				<h2>
 					1. 示例
 				</h2>
-				<Pagination {...this.state}/> 
+				<Pagination {...this.state} /> 
 				<br/>
 				<div dangerouslySetInnerHTML={{ __html: Readme }}>
 				</div>
@@ -34,3 +34,4 @@ export default class PaginationView extends Component {
 		)
 	}
 }
+
