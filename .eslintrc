@@ -11,7 +11,7 @@
 		"jsx-quotes": ["error", "prefer-single"],
 		"indent": ["error", 4],
 		"space-before-function-paren": ["error", "always"],
-		"prefer-stateless-function": [0],
+		"react/prefer-stateless-function": [0],
 		"comma-dangle": ["error", "never"],
 		"react/forbid-prop-types": ["error", { "forbid": [] }],
 		"arrow-body-style": ["error", "as-needed"]

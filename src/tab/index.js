@@ -8,24 +8,23 @@ export default class Tab extends Component {
         return (
             <ul className='cm-page-nav clearfix'>
                 {
-                    list.map((item, i) => {
-                        return (
-                            <li className={i === active ? 'active' : ''} key={i}>
-                                {
-                                    typeof item.link === 'function' ?
+                    list.map((item, i) => (
+                        <li className={i === active ? 'active' : ''} key={i}>
+                            {
+                                typeof item.link === 'function' ?
                                     <a href='' onClick={() => item.link(item, i)}>{item.text}</a> :
                                     <a href={item.link}>{item.text}</a>
-                                }
-                            </li>
-                        );
-                    })
+                            }
+                        </li>
+                    ))
                 }
             </ul>
         );
     }
 }
 
-Tab.PropTypes = {
+
+Tab.propTypes = {
     list: React.PropTypes.array.isRequired,
     active: React.PropTypes.number
 };
