@@ -12,7 +12,7 @@ export default class Tab extends Component {
                         <li className={i === active ? 'active' : ''} key={i}>
                             {
                                 typeof item.link === 'function' ?
-                                    <a href='' onClick={() => item.link(item, i)}>{item.text}</a> :
+                                    <a href='' onClick={(e) => { item.link(e, item, i); }}>{item.text}</a> :
                                     <a href={item.link}>{item.text}</a>
                             }
                         </li>
