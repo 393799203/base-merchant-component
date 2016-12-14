@@ -10,6 +10,15 @@ export default class Pagination extends Component {
         const newProps = this.formatProps(props);
         this.setState(newProps);
     }
+    // 显示数字的区间
+    getInterval (current) {
+        const state = this.state;
+        const half_display_num = Math.floor(state.display_num / 2);
+        var upper_limit = state.totalPage - state.display_num;
+        var start = current > half_display_num ? Math.max(Math.min(current - half_display_num, upper_limit), 1) : 1;
+        var end = current > half_display_num ? Math.min(current + half_display_num + (state.display_num % 2), state.totalPage) : Math.min(state.display_num, state.totalPage);
+        return {start: start, end: end}
+    }
     formatProps (props) {
         let totalPage = props.totalPage;
 
@@ -27,15 +36,6 @@ export default class Pagination extends Component {
         };
 
         return newProps;
-    }
-    // 显示数字的区间
-    getInterval (current) {
-        var state = this.state;
-        var half_display_num = Math.floor(state.display_num/2);
-        var upper_limit = state.totalPage - state.display_num;
-        var start = current > half_display_num ? Math.max(Math.min(current - half_display_num, upper_limit), 1) : 1;
-        var end = current > half_display_num ? Math.min(current + half_display_num + (state.display_num % 2), state.totalPage) : Math.min(state.display_num, state.totalPage);
-        return {start: start, end: end}
     }
     changePage (page) {
         if(this.state.changePage && typeof this.state.changePage == 'function') {
