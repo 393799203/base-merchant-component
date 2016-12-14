@@ -1,8 +1,7 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
-import routes from './route.js';
+import routes from './route';
 import './style/index.css';
 
-var root = document.getElementById('main-wrapper');
+const root = document.getElementById('main-wrapper');
 
-ReactDOM.render( routes , root);
+ReactDOM.render(routes, root);
