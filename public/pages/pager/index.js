@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Pagination from 'source_path/pagination';
+import Pager from 'source_path/pager';
 import Readme from './README.md';
 
-export default class PaginationView extends Component {
-    constructor () {
-        super();
+export default class PagerView extends Component {
+    constructor (props) {
+        super(props);
         this.state = {
             currentPage: 1,
             totalPage: 20,
@@ -13,19 +13,24 @@ export default class PaginationView extends Component {
     }
     componentDidMount () {
     }
-    changePage (current) {
-        this.setState({ currentPage: current });
+    changePage (currentPage) {
+        this.setState({ currentPage });
     }
     render () {
+        const { currentPage, totalPage, onChangePage } = this.state;
         return (
             <div className='m-b-lg m-l m-r'>
                 <h1>
-                    分页 - Pagination
+                    分页简化版 - Pager
                 </h1>
                 <h2>
                     1. 示例
                 </h2>
-                <Pagination />
+                <Pager
+                  currentPage={currentPage}
+                  totalPage={totalPage}
+                  onChangePage={onChangePage}
+                />
                 <br />
                 <div dangerouslySetInnerHTML={{ __html: Readme }} />
             </div>

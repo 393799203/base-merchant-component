@@ -13,8 +13,8 @@
 	import Tab from '@meili/base-merchant-component/lib/tab';
 
 	export default class TabView extends Component {
-		constructor () {
-			super();
+		constructor (props) {
+			super(props);
 			this.state = {
 				tabId: 0,
 				options:[

@@ -13,17 +13,14 @@ export default class HeadNav extends Component {
                         <li><a href='#/css'>CSS</a></li>
                         <li><a href='#/tab'>组件</a></li>
                         <li>
-                            <a href='http://gitlab.mogujie.org/Aveng/meili-base-merchant-component'>
-                                组件源码
-                            </a>
-                        </li>
-                        <li>
                             <a href='http://gitlab.mogujie.org/Aveng/meili-base-merchant-component/issues'>
                                 组件问题反馈
                             </a>
                         </li>
-                        <li><a href='http://gitlab.mogujie.org/Aveng/meili-base-merchant-component'>我要贡献代码</a></li>
-                        <li><a href='#/doc'>商家后台文档</a></li>
+                        <li><a href='http://gitlab.mogujie.org/Aveng/meili-base-merchant-component'>我要贡献组件</a></li>
+                        <li><a href='#/doc'>商家文档</a></li>
+                        <li><a href='#/data'>商家数据</a></li>
+                        <li><a href='#/rule'>商家规范</a></li>
                     </ul>
                 </div>
                 <div className='pull-right'>
@@ -41,5 +38,5 @@ export default class HeadNav extends Component {
 }
 
 HeadNav.propTypes = {
-    isHome: PropTypes.boolean
+    isHome: PropTypes.bool
 };

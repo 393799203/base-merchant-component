@@ -1,0 +1,188 @@
+.mc-notification-error,
+.mc-notification-success,
+.mc-notification-warn,
+.mc-notification-info {
+    position: fixed;
+    z-index: 1000;
+    width: 335px;
+    margin-right: 24px;
+}
+.mc-notification-error-notice,
+.mc-notification-success-notice,
+.mc-notification-warn-notice,
+.mc-notification-info-notice {
+    padding: 16px;
+    border-radius: 3px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.17);
+    border: none;
+    line-height: 1.5;
+    position: relative;
+    margin-bottom: 10px;
+    overflow: hidden;
+    background: #fff;
+    color: #666;
+}
+.mc-notification-error-notice {
+    background: #FDF6F6;
+    border: 1px solid #EDDDDD;
+}
+.mc-notification-success-notice {
+    background: #F1FBF7;
+    border: 1px solid #D0EBE7;
+}
+.mc-notification-warn-notice {
+    background: #FEFAF4;
+    border: 1px solid #EFE3D2;
+}
+.mc-notification-info-notice {
+    background: #F1F8FF;
+    border: 1px solid #D6EAFF;
+}
+
+.mc-notification-description {
+  font-size: 14px;
+  color: #666;
+}
+.mc-notification-error-icon,
+.mc-notification-success-icon,
+.mc-notification-warn-icon,
+.mc-notification-info-icon {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    color: #fff;
+    text-align: center;
+    margin-right: 5px;
+    line-height: 18px;
+    font-style: normal;
+}
+.mc-notification-error-icon {
+    background: #FF2555;
+}
+.mc-notification-error-icon:after {
+    content: '×';
+}
+.mc-notification-success-icon {
+    line-height: 20px;
+    background: #63C8A9;
+}
+.mc-notification-success-icon:after {
+    content: '✓';
+}
+.mc-notification-warn-icon {
+    background: #FDBC5B;
+}
+.mc-notification-warn-icon:after {
+    content: '!';
+}
+.mc-notification-info-icon {
+    background: #419BF9;
+}
+.mc-notification-info-icon:after {
+    content: 'i';
+}
+
+.mc-notification-error-notice-close-x:after,
+.mc-notification-success-notice-close-x:after,
+.mc-notification-warn-notice-close-x:after,
+.mc-notification-info-notice-close-x:after {
+  font-size: 12px;
+  content: "\D7";
+  font-family: "upicon";
+  cursor: pointer;
+}
+.mc-notification-error-notice-close,
+.mc-notification-success-notice-close,
+.mc-notification-warn-notice-close,
+.mc-notification-info-notice-close {
+  position: absolute;
+  right: 5px;
+  top: 0px;
+  color: #666;
+  outline: none;
+}
+.mc-notification-error-notice-content-btn,
+.mc-notification-success-notice-content-btn,
+.mc-notification-warn-notice-content-btn,
+.mc-notification-info-notice-content-btn {
+  float: right;
+  margin-top: 16px;
+}
+.mc-notification-error .notification-fade-effect,
+.mc-notification-success .notification-fade-success,
+.mc-notification-warn .notification-fade-warn,
+.mc-notification-info .notification-fade-info {
+  animation-duration: 0.1s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.mc-notification-error-fade-enter,
+.mc-notification-error-fade-appear,
+.mc-notification-success-fade-enter,
+.mc-notification-success-fade-appear,
+.mc-notification-warn-fade-enter,
+.mc-notification-warn-fade-appear,
+.mc-notification-info-fade-enter,
+.mc-notification-info-fade-appear {
+  opacity: 0;
+  animation-duration: 0.1s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.mc-notification-error-fade-leave,
+.mc-notification-success-fade-leave,
+.mc-notification-warn-fade-leave,
+.mc-notification-info-fade-leave {
+  animation-duration: 0.1s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.mc-notification-error-fade-enter.mc-notification-error-fade-enter-active,
+.mc-notification-success-fade-appear.mc-notification-success-fade-appear-active,
+.mc-notification-warn-fade-appear.mc-notification-warn-fade-appear-active,
+.mc-notification-info-fade-appear.mc-notification-info-fade-appear-active {
+  animation-name: NotificationFadeIn;
+  animation-play-state: running;
+}
+.mc-notification-error-fade-leave.mc-notification-error-fade-leave-active,
+.mc-notification-success-fade-leave.mc-notification-success-fade-leave-active,
+.mc-notification-warn-fade-leave.mc-notification-warn-fade-leave-active,
+.mc-notification-info-fade-leave.mc-notification-info-fade-leave-active {
+  animation-name: NotificationFadeOut;
+  animation-play-state: running;
+}
+@keyframes NotificationFadeIn {
+  0% {
+    opacity: 0;
+    left: 335px;
+  }
+  30% {
+    left: 0;
+    opacity: 0.6;
+  }
+  60% {
+    left: 0;
+    opacity: 0.8;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+@keyframes NotificationFadeOut {
+  0% {
+    opacity: 1;
+    margin-bottom: 10px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    max-height: 150px;
+  }
+  100% {
+    opacity: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    max-height: 0;
+  }
+}

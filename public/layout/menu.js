@@ -6,6 +6,14 @@ export default [
     {
         title: '分页 - Pagination',
         link: '#/pagination'
+    },
+    {
+        title: '分页简化版 - Pager',
+        link: '#/pager'
+    },
+    {
+        title: '消息提示 - Notification',
+        link: '#/notification'
     }
 ];
 
