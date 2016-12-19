@@ -8,6 +8,7 @@ import RangePicker from './RangePicker';
 import PickerMixin from './PickerMixin';
 import TimePicker from 'rc-time-picker';
 import classNames from 'classnames';
+import './style/index.less';
 
 function createPicker(TheCalendar, defaultFormat) {
 	return React.createClass({
