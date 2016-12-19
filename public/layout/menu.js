@@ -30,6 +30,10 @@ export default [
     {
         title: '选项卡 - Tab',
         link: '#/switchtab'
+    },
+    {
+        title: '时间选择器 - DatePicker',
+        link: '#/datepicker'
     }
 ];
 

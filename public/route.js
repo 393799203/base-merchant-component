@@ -18,6 +18,8 @@ import SwitchTabView from './pages/compontents/tab';
 import PanelView from './pages/compontents/panel';
 import GridView from './pages/layout/grid';
 
+import DatePickerView from './pages/datepicker';
+
 export default (
     <Router history={hashHistory}>
         <Route path='/' component={FullPageView}>
@@ -36,6 +38,7 @@ export default (
             <Route path='notification' component={NotificationView} />
             <Route path='tooltip' component={TooltipView} />
             <Route path='switchtab' component={SwitchTabView} />
+            <Route path='datepicker' component={DatePickerView} />
         </Route>
     </Router>
 );
