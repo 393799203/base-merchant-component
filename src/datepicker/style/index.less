@@ -73,24 +73,24 @@ textarea.@{datepicker-prefix-cls}-picker-input {
 	position: absolute;
 	z-index: 1070;
 }
-.@{datepicker-prefix-cls}-picker-container.slide-up-enter.slide-up-enter-active.@{datepicker-prefix-cls}-picker-container-placement-topLeft,
-.@{datepicker-prefix-cls}-picker-container.slide-up-enter.slide-up-enter-active.@{datepicker-prefix-cls}-picker-container-placement-topRight,
-.@{datepicker-prefix-cls}-picker-container.slide-up-appear.slide-up-appear-active.@{datepicker-prefix-cls}-picker-container-placement-topLeft,
-.@{datepicker-prefix-cls}-picker-container.slide-up-appear.slide-up-appear-active.@{datepicker-prefix-cls}-picker-container-placement-topRight {
+.@{datepicker-prefix-cls}-picker-container.slide-mc-enter.slide-mc-enter-active.@{datepicker-prefix-cls}-picker-container-placement-topLeft,
+.@{datepicker-prefix-cls}-picker-container.slide-mc-enter.slide-mc-enter-active.@{datepicker-prefix-cls}-picker-container-placement-topRight,
+.@{datepicker-prefix-cls}-picker-container.slide-mc-appear.slide-mc-appear-active.@{datepicker-prefix-cls}-picker-container-placement-topLeft,
+.@{datepicker-prefix-cls}-picker-container.slide-mc-appear.slide-mc-appear-active.@{datepicker-prefix-cls}-picker-container-placement-topRight {
 	animation-name: antSlideDownIn;
 }
-.@{datepicker-prefix-cls}-picker-container.slide-up-enter.slide-up-enter-active.@{datepicker-prefix-cls}-picker-container-placement-bottomLeft,
-.@{datepicker-prefix-cls}-picker-container.slide-up-enter.slide-up-enter-active.@{datepicker-prefix-cls}-picker-container-placement-bottomRight,
-.@{datepicker-prefix-cls}-picker-container.slide-up-appear.slide-up-appear-active.@{datepicker-prefix-cls}-picker-container-placement-bottomLeft,
-.@{datepicker-prefix-cls}-picker-container.slide-up-appear.slide-up-appear-active.@{datepicker-prefix-cls}-picker-container-placement-bottomRight {
+.@{datepicker-prefix-cls}-picker-container.slide-mc-enter.slide-mc-enter-active.@{datepicker-prefix-cls}-picker-container-placement-bottomLeft,
+.@{datepicker-prefix-cls}-picker-container.slide-mc-enter.slide-mc-enter-active.@{datepicker-prefix-cls}-picker-container-placement-bottomRight,
+.@{datepicker-prefix-cls}-picker-container.slide-mc-appear.slide-mc-appear-active.@{datepicker-prefix-cls}-picker-container-placement-bottomLeft,
+.@{datepicker-prefix-cls}-picker-container.slide-mc-appear.slide-mc-appear-active.@{datepicker-prefix-cls}-picker-container-placement-bottomRight {
 	animation-name: antSlideUpIn;
 }
-.@{datepicker-prefix-cls}-picker-container.slide-up-leave.slide-up-leave-active.@{datepicker-prefix-cls}-picker-container-placement-topLeft,
-.@{datepicker-prefix-cls}-picker-container.slide-up-leave.slide-up-leave-active.@{datepicker-prefix-cls}-picker-container-placement-topRight {
+.@{datepicker-prefix-cls}-picker-container.slide-mc-leave.slide-mc-leave-active.@{datepicker-prefix-cls}-picker-container-placement-topLeft,
+.@{datepicker-prefix-cls}-picker-container.slide-mc-leave.slide-mc-leave-active.@{datepicker-prefix-cls}-picker-container-placement-topRight {
 	animation-name: antSlideDownOut;
 }
-.@{datepicker-prefix-cls}-picker-container.slide-up-leave.slide-up-leave-active.@{datepicker-prefix-cls}-picker-container-placement-bottomLeft,
-.@{datepicker-prefix-cls}-picker-container.slide-up-leave.slide-up-leave-active.@{datepicker-prefix-cls}-picker-container-placement-bottomRight {
+.@{datepicker-prefix-cls}-picker-container.slide-mc-leave.slide-mc-leave-active.@{datepicker-prefix-cls}-picker-container-placement-bottomLeft,
+.@{datepicker-prefix-cls}-picker-container.slide-mc-leave.slide-mc-leave-active.@{datepicker-prefix-cls}-picker-container-placement-bottomRight {
 	animation-name: antSlideUpOut;
 }
 .@{datepicker-prefix-cls}-picker {
@@ -142,7 +142,7 @@ textarea.@{datepicker-prefix-cls}-picker-input {
 	text-align: left;
 	background-color: #fff;
 	border-radius: 4px;
-	box-shadow: 0 3px 6px 0px #000000;
+	box-shadow: 0 3px 6px 0px rgba(0,0,0,0.5);
 	background-clip: padding-box;
 	line-height: 1.5;
 }
@@ -525,12 +525,12 @@ fieldset[disabled] .@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-ok-btn.ac
 	border-radius: 3px;
 }
 .@{datepicker-prefix-cls}-range .@{datepicker-prefix-cls}-input,
-.@{datepicker-prefix-cls}-range .up-time-picker-input {
+.@{datepicker-prefix-cls}-range .mc-time-picker-input {
 	padding: 1px 7px;
 	height: 28px;
 	width: 96px;
 }
-.@{datepicker-prefix-cls}-range .up-time-picker-icon {
+.@{datepicker-prefix-cls}-range .mc-time-picker-icon {
 	display: none;
 }
 .@{datepicker-prefix-cls}-range .@{datepicker-prefix-cls}-calendar-body,
@@ -584,12 +584,12 @@ fieldset[disabled] .@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-ok-btn.ac
 	direction: ltr;
 	display: inline-block;
 }
-.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input-wrap .up-time-picker-panel,
+.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input-wrap .mc-time-picker-panel,
 .@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input-wrap .@{datepicker-prefix-cls}-clear-btn {
 	direction: ltr;
 }
 .@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input,
-.@{datepicker-prefix-cls}-time .up-time-picker-input {
+.@{datepicker-prefix-cls}-time .mc-time-picker-input {
 	position: relative;
 	display: inline-block;
 	padding: 4px 7px;
@@ -611,60 +611,60 @@ fieldset[disabled] .@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-ok-btn.ac
 	margin-right: 6px;
 }
 .@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input::-moz-placeholder,
-.@{datepicker-prefix-cls}-time .up-time-picker-input::-moz-placeholder {
+.@{datepicker-prefix-cls}-time .mc-time-picker-input::-moz-placeholder {
 	color: #ccc;
 	opacity: 1;
 }
 .@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input:-ms-input-placeholder,
-.@{datepicker-prefix-cls}-time .up-time-picker-input:-ms-input-placeholder {
+.@{datepicker-prefix-cls}-time .mc-time-picker-input:-ms-input-placeholder {
 	color: #ccc;
 }
 .@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input::-webkit-input-placeholder,
-.@{datepicker-prefix-cls}-time .up-time-picker-input::-webkit-input-placeholder {
+.@{datepicker-prefix-cls}-time .mc-time-picker-input::-webkit-input-placeholder {
 	color: #ccc;
 }
 .@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input:hover,
-.@{datepicker-prefix-cls}-time .up-time-picker-input:hover {
+.@{datepicker-prefix-cls}-time .mc-time-picker-input:hover {
 	border-color: #FF2555;
 }
 .@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input:focus,
-.@{datepicker-prefix-cls}-time .up-time-picker-input:focus {
+.@{datepicker-prefix-cls}-time .mc-time-picker-input:focus {
 	border-color: #FF2555;
 	outline: 0;
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(52, 151, 219, 0.6);
 }
 .@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input[disabled],
-.@{datepicker-prefix-cls}-time .up-time-picker-input[disabled],
+.@{datepicker-prefix-cls}-time .mc-time-picker-input[disabled],
 fieldset[disabled] .@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input,
-fieldset[disabled] .@{datepicker-prefix-cls}-time .up-time-picker-input {
+fieldset[disabled] .@{datepicker-prefix-cls}-time .mc-time-picker-input {
 	background-color: #f3f5f7;
 	opacity: 1;
 	cursor: not-allowed;
 }
 .@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input[disabled]:hover,
-.@{datepicker-prefix-cls}-time .up-time-picker-input[disabled]:hover,
+.@{datepicker-prefix-cls}-time .mc-time-picker-input[disabled]:hover,
 fieldset[disabled] .@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input:hover,
-fieldset[disabled] .@{datepicker-prefix-cls}-time .up-time-picker-input:hover {
+fieldset[disabled] .@{datepicker-prefix-cls}-time .mc-time-picker-input:hover {
 	border-color: #e1e1e1;
 }
 textarea.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input,
-textarea.@{datepicker-prefix-cls}-time .up-time-picker-input {
+textarea.@{datepicker-prefix-cls}-time .mc-time-picker-input {
 	max-width: 100%;
 	height: auto;
 	vertical-align: bottom;
 }
 .@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input-lg,
-.@{datepicker-prefix-cls}-time .up-time-picker-input-lg {
+.@{datepicker-prefix-cls}-time .mc-time-picker-input-lg {
 	padding: 6px 7px;
 	height: 40px;
 }
 .@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input-sm,
-.@{datepicker-prefix-cls}-time .up-time-picker-input-sm {
+.@{datepicker-prefix-cls}-time .mc-time-picker-input-sm {
 	padding: 1px 7px;
 	height: 28px;
 	border-radius: 4px;
 }
-.@{datepicker-prefix-cls}-time .up-time-picker-icon {
+.@{datepicker-prefix-cls}-time .mc-time-picker-icon {
 	display: none;
 }
 .@{datepicker-prefix-cls}-month-panel {
@@ -1025,48 +1025,48 @@ textarea.@{datepicker-prefix-cls}-time .up-time-picker-input {
 }
 
 
-.up-time-picker {
+.mc-time-picker {
 	box-sizing: border-box;
 }
-.up-time-picker * {
+.mc-time-picker * {
 	box-sizing: border-box;
 }
-.up-time-picker-panel {
+.mc-time-picker-panel {
 	max-width: 168px;
 	z-index: 1070;
 	position: absolute;
 }
-.up-time-picker-panel.slide-up-enter.slide-up-enter-active.up-time-picker-panel-placement-topLeft,
-.up-time-picker-panel.slide-up-enter.slide-up-enter-active.up-time-picker-panel-placement-topRight,
-.up-time-picker-panel.slide-up-appear.slide-up-appear-active.up-time-picker-panel-placement-topLeft,
-.up-time-picker-panel.slide-up-appear.slide-up-appear-active.up-time-picker-panel-placement-topRight {
+.mc-time-picker-panel.slide-mc-enter.slide-mc-enter-active.mc-time-picker-panel-placement-topLeft,
+.mc-time-picker-panel.slide-mc-enter.slide-mc-enter-active.mc-time-picker-panel-placement-topRight,
+.mc-time-picker-panel.slide-mc-appear.slide-mc-appear-active.mc-time-picker-panel-placement-topLeft,
+.mc-time-picker-panel.slide-mc-appear.slide-mc-appear-active.mc-time-picker-panel-placement-topRight {
 	animation-name: antSlideDownIn;
 }
-.up-time-picker-panel.slide-up-enter.slide-up-enter-active.up-time-picker-panel-placement-bottomLeft,
-.up-time-picker-panel.slide-up-enter.slide-up-enter-active.up-time-picker-panel-placement-bottomRight,
-.up-time-picker-panel.slide-up-appear.slide-up-appear-active.up-time-picker-panel-placement-bottomLeft,
-.up-time-picker-panel.slide-up-appear.slide-up-appear-active.up-time-picker-panel-placement-bottomRight {
+.mc-time-picker-panel.slide-mc-enter.slide-mc-enter-active.mc-time-picker-panel-placement-bottomLeft,
+.mc-time-picker-panel.slide-mc-enter.slide-mc-enter-active.mc-time-picker-panel-placement-bottomRight,
+.mc-time-picker-panel.slide-mc-appear.slide-mc-appear-active.mc-time-picker-panel-placement-bottomLeft,
+.mc-time-picker-panel.slide-mc-appear.slide-mc-appear-active.mc-time-picker-panel-placement-bottomRight {
 	animation-name: antSlideUpIn;
 }
-.up-time-picker-panel.slide-up-leave.slide-up-leave-active.up-time-picker-panel-placement-topLeft,
-.up-time-picker-panel.slide-up-leave.slide-up-leave-active.up-time-picker-panel-placement-topRight {
+.mc-time-picker-panel.slide-mc-leave.slide-mc-leave-active.mc-time-picker-panel-placement-topLeft,
+.mc-time-picker-panel.slide-mc-leave.slide-mc-leave-active.mc-time-picker-panel-placement-topRight {
 	animation-name: antSlideDownOut;
 }
-.up-time-picker-panel.slide-up-leave.slide-up-leave-active.up-time-picker-panel-placement-bottomLeft,
-.up-time-picker-panel.slide-up-leave.slide-up-leave-active.up-time-picker-panel-placement-bottomRight {
+.mc-time-picker-panel.slide-mc-leave.slide-mc-leave-active.mc-time-picker-panel-placement-bottomLeft,
+.mc-time-picker-panel.slide-mc-leave.slide-mc-leave-active.mc-time-picker-panel-placement-bottomRight {
 	animation-name: antSlideUpOut;
 }
-.@{datepicker-prefix-cls}-time .up-time-picker-panel {
+.@{datepicker-prefix-cls}-time .mc-time-picker-panel {
 	min-width: 168px;
 }
-.up-time-picker {
+.mc-time-picker {
 	position: relative;
 	display: inline-block;
 	outline: none;
 	font-size: 14px;
 	transition: opacity 0.3s ease;
 }
-.up-time-picker-input {
+.mc-time-picker-input {
 	position: relative;
 	display: inline-block;
 	padding: 4px 7px;
@@ -1085,61 +1085,61 @@ textarea.@{datepicker-prefix-cls}-time .up-time-picker-input {
 	transition: border .2s cubic-bezier(0.645, 0.045, 0.355, 1), background .2s cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow .2s cubic-bezier(0.645, 0.045, 0.355, 1);
 	width: 120px;
 }
-.up-time-picker-input::-moz-placeholder {
+.mc-time-picker-input::-moz-placeholder {
 	color: #ccc;
 	opacity: 1;
 }
-.up-time-picker-input:-ms-input-placeholder {
+.mc-time-picker-input:-ms-input-placeholder {
 	color: #ccc;
 }
-.up-time-picker-input::-webkit-input-placeholder {
+.mc-time-picker-input::-webkit-input-placeholder {
 	color: #ccc;
 }
-.up-time-picker-input:hover {
+.mc-time-picker-input:hover {
 	border-color: rgba(127, 189, 232, 0.68);
 }
-.up-time-picker-input:focus {
+.mc-time-picker-input:focus {
 	border-color: rgba(127, 189, 232, 0.68);
 	outline: 0;
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(52, 151, 219, 0.6);
 }
-.up-time-picker-input[disabled],
-fieldset[disabled] .up-time-picker-input {
+.mc-time-picker-input[disabled],
+fieldset[disabled] .mc-time-picker-input {
 	background-color: #f3f5f7;
 	opacity: 1;
 	cursor: not-allowed;
 }
-.up-time-picker-input[disabled]:hover,
-fieldset[disabled] .up-time-picker-input:hover {
+.mc-time-picker-input[disabled]:hover,
+fieldset[disabled] .mc-time-picker-input:hover {
 	border-color: #e1e1e1;
 }
-textarea.up-time-picker-input {
+textarea.mc-time-picker-input {
 	max-width: 100%;
 	height: auto;
 	vertical-align: bottom;
 }
-.up-time-picker-input-lg {
+.mc-time-picker-input-lg {
 	padding: 6px 7px;
 	height: 40px;
 }
-.up-time-picker-input-sm {
+.mc-time-picker-input-sm {
 	padding: 1px 7px;
 	height: 28px;
 	border-radius: 4px;
 }
-.up-time-picker-large .up-time-picker-input {
+.mc-time-picker-large .mc-time-picker-input {
 	padding: 6px 7px;
 	height: 40px;
 }
-.up-time-picker-small .up-time-picker-input {
+.mc-time-picker-small .mc-time-picker-input {
 	padding: 1px 7px;
 	height: 28px;
 	border-radius: 4px;
 }
-.up-time-picker-open {
+.mc-time-picker-open {
 	opacity: 0;
 }
-.up-time-picker-icon {
+.mc-time-picker-icon {
 	position: absolute;
 	user-select: none;
 	-webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -1153,7 +1153,7 @@ textarea.up-time-picker-input {
 	top: 50%;
 	margin-top: -6px;
 }
-.up-time-picker-icon:before {
+.mc-time-picker-icon:before {
 	content: "\F017";
 	font: normal normal normal 14px/1 FontAwesome;
 	font-size: 12px;
@@ -1162,7 +1162,7 @@ textarea.up-time-picker-input {
 	line-height: 1;
 	vertical-align: bottom;
 }
-.up-time-picker-panel-inner {
+.mc-time-picker-panel-inner {
 	display: inline-block;
 	position: relative;
 	outline: none;
@@ -1177,7 +1177,7 @@ textarea.up-time-picker-input {
 	border: 1px solid #ccc;
 	line-height: 1.5;
 }
-.up-time-picker-panel-input {
+.mc-time-picker-panel-input {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -1186,16 +1186,16 @@ textarea.up-time-picker-input {
 	line-height: 1.5;
 	outline: 0;
 }
-.up-time-picker-panel-input-wrap {
+.mc-time-picker-panel-input-wrap {
 	box-sizing: border-box;
 	position: relative;
 	padding: 6px;
 	border-bottom: 1px solid #e9e9e9;
 }
-.up-time-picker-panel-input-invalid {
+.mc-time-picker-panel-input-invalid {
 	border-color: red;
 }
-.up-time-picker-panel-clear-btn {
+.mc-time-picker-panel-clear-btn {
 	position: absolute;
 	right: 5px;
 	cursor: pointer;
@@ -1207,7 +1207,7 @@ textarea.up-time-picker-input {
 	top: 5px;
 	margin: 0;
 }
-.up-time-picker-panel-clear-btn:after {
+.mc-time-picker-panel-clear-btn:after {
 	content: "\F00D";
 	font: normal normal normal 14px/1 FontAwesome;
 	font-size: 12px;
@@ -1217,13 +1217,13 @@ textarea.up-time-picker-input {
 	width: 20px;
 	transition: color 0.3s ease;
 }
-.up-time-picker-panel-clear-btn:hover:after {
+.mc-time-picker-panel-clear-btn:hover:after {
 	color: #999;
 }
-.up-time-picker-panel-narrow .up-time-picker-panel-input-wrap {
+.mc-time-picker-panel-narrow .mc-time-picker-panel-input-wrap {
 	max-width: 111px;
 }
-.up-time-picker-panel-select {
+.mc-time-picker-panel-select {
 	float: left;
 	font-size: 12px;
 	border: 1px solid #e9e9e9;
@@ -1234,17 +1234,17 @@ textarea.up-time-picker-input {
 	overflow: hidden;
 	position: relative;
 }
-.up-time-picker-panel-select:hover {
+.mc-time-picker-panel-select:hover {
 	overflow-y: auto;
 }
-.up-time-picker-panel-select:first-child {
+.mc-time-picker-panel-select:first-child {
 	border-left: 0;
 	margin-left: 0;
 }
-.up-time-picker-panel-select:last-child {
+.mc-time-picker-panel-select:last-child {
 	border-right: 0;
 }
-.up-time-picker-panel-select ul {
+.mc-time-picker-panel-select ul {
 	list-style: none;
 	box-sizing: border-box;
 	margin: 0;
@@ -1252,7 +1252,7 @@ textarea.up-time-picker-input {
 	width: 100%;
 	max-height: 144px;
 }
-.up-time-picker-panel-select li {
+.mc-time-picker-panel-select li {
 	list-style: none;
 	box-sizing: content-box;
 	margin: 0;
@@ -1265,16 +1265,16 @@ textarea.up-time-picker-input {
 	user-select: none;
 	transition: background 0.3s ease;
 }
-.up-time-picker-panel-select li:hover {
+.mc-time-picker-panel-select li:hover {
 	background: #f9caca;
 }
-.up-time-picker-panel-select li.up-time-picker-panel-select-option-selected {
+.mc-time-picker-panel-select li.mc-time-picker-panel-select-option-selected {
 	background: #ffbebe;
 }
-.up-time-picker-panel-select li.up-time-picker-panel-select-option-disabled {
+.mc-time-picker-panel-select li.mc-time-picker-panel-select-option-disabled {
 	color: #ccc;
 }
-.up-time-picker-panel-select li.up-time-picker-panel-select-option-disabled:hover {
+.mc-time-picker-panel-select li.mc-time-picker-panel-select-option-disabled:hover {
 	background: transparent;
 	cursor: not-allowed;
 }

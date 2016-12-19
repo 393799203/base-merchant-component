@@ -20,7 +20,7 @@ export default class DatepickerView extends Component {
                 <h2>
                     1. 示例
                 </h2>
-                <DatePicker />
+                <DatePicker showTime/>
                 <br />
             </div>
         );
