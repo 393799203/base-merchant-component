@@ -16,7 +16,7 @@ export default class Pager extends Component {
     handlePage (e, type, currentPage) {
         e.preventDefault();
         let caculatedPage = currentPage + 1;
-        if (type === 'pre') { caculatedPage = currentPage - 1; }
+        if (type === 'pre') { caculatedPage = currentPage - 1;}
         this.props.onChangePage(caculatedPage);
     }
     render () {
