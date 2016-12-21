@@ -13,10 +13,14 @@ const formatLink = function (link, linkParam, currentPage) {
 };
 
 export default class Pager extends Component {
-    handlePage (e, type, currentPage) {
+    handlePage (e, type, currentPage, totalPage) {
         e.preventDefault();
         let caculatedPage = currentPage + 1;
         if (type === 'pre') { caculatedPage = currentPage - 1; }
+        // 如果上一页是0，则return
+        if (caculatedPage === 0) { return; }
+        // 如果下一页大于totalPage，则return
+        if (caculatedPage > totalPage) { return; }
         this.props.onChangePage(caculatedPage);
     }
     render () {
@@ -34,7 +38,7 @@ export default class Pager extends Component {
                         </a>
                     :
                         <a
-                          onClick={(e) => { this.handlePage(e, 'pre', currentPage); }}
+                          onClick={(e) => { this.handlePage(e, 'pre', currentPage, totalPage); }}
                           className={currentPage === 1 ? 'btn btn-pre disabled' : 'btn btn-pre'}
                         >
                             {preText}
@@ -50,7 +54,7 @@ export default class Pager extends Component {
                         </a>
                     :
                         <a
-                          onClick={(e) => { this.handlePage(e, 'next', currentPage); }}
+                          onClick={(e) => { this.handlePage(e, 'next', currentPage, totalPage); }}
                           className={currentPage === totalPage ? 'btn btn-next disabled' : 'btn btn-next'}
                         >
                             {nextText}
