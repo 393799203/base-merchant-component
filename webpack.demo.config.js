@@ -6,21 +6,27 @@ var fs = require('fs')
 
 module.exports = {
     entry: getEntries(),
-    output : {
-            filename: '[name]bundle.js',
-            chunkFilename: "[name]bundle.js"
-        },
+    output: {
+        filename: '[name]bundle.js',
+        chunkFilename: "[name]bundle.js"
+    },
+    externals: {
+        'react': 'React',
+        'react-dom': 'ReactDOM',
+        './React': 'React',
+        './React-dom': 'ReactDOM'
+    },
     //plugins: [new HtmlWebpackPlugin()],
     module: {
-        
+
         loaders: [
             {
                 test: /\.jsx?$/,
                 exclude: /(node_modules|bower_components)/,
                 loader: 'babel',
                 query: {
-                    presets: ['react', 'es2015','stage-2'],
-                    plugins: ['add-module-exports', 'transform-object-assign','transform-object-assign','transform-decorators-legacy', 'transform-es3-member-expression-literals', 'transform-es3-property-literals']
+                    presets: ['react', 'es2015', 'stage-2'],
+                    plugins: ['add-module-exports']
                 }
             },
             {
@@ -32,7 +38,7 @@ module.exports = {
             },
             {
                 test: /\.less$/,
-                include: [path.resolve(__dirname, 'node_modules'), path.resolve(__dirname, 'demo'),path.resolve(__dirname, 'src')],
+                include: [path.resolve(__dirname, 'node_modules'), path.resolve(__dirname, 'demo'), path.resolve(__dirname, 'src')],
                 loader: ExtractTextPlugin.extract(
                     'css?sourceMap&-minimize!' + 'postcss-loader!' + 'less?sourceMap'
                 )
@@ -43,19 +49,19 @@ module.exports = {
     plugins: [
         new ExtractTextPlugin("[name]bundle.css")
     ]
-};    
+};
 
 function getDirectories(srcpath) {
-  return fs.readdirSync(srcpath).filter(function(file) {
-    return fs.statSync(path.join(srcpath, file)).isDirectory();
-  });
+    return fs.readdirSync(srcpath).filter(function (file) {
+        return fs.statSync(path.join(srcpath, file)).isDirectory();
+    });
 }
-function getEntries(){
+function getEntries() {
     var srcpath = './demo';
     var floders = getDirectories(srcpath);
     entries = {};
-    floders.forEach(function(i){
-        entries['./demo/'+i+'/'] = path.resolve(__dirname,'./demo/'+i+'/'+'index.js');
+    floders.forEach(function (i) {
+        entries['./demo/' + i + '/'] = path.resolve(__dirname, './demo/' + i + '/' + 'index.js');
     });
     return entries;
 }

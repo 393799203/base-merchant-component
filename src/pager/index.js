@@ -28,14 +28,14 @@ export default class Pager extends Component {
                     link ?
                         <a
                           href={link && currentPage !== 1 ? preLink : ''}
-                          className={currentPage === 1 ? 'btn btn-pre disabled' : 'btn pre-btn'}
+                          className={currentPage === 1 ? 'btn btn-pre disabled' : 'btn btn-pre'}
                         >
                             {preText}
                         </a>
                     :
                         <a
                           onClick={(e) => { this.handlePage(e, 'pre', currentPage); }}
-                          className={currentPage === 1 ? 'btn btn-pre disabled' : 'btn pre-btn'}
+                          className={currentPage === 1 ? 'btn btn-pre disabled' : 'btn btn-pre'}
                         >
                             {preText}
                         </a>
@@ -44,14 +44,14 @@ export default class Pager extends Component {
                     link ?
                         <a
                           href={link && currentPage !== totalPage ? nextLink : ''}
-                          className={currentPage === totalPage ? 'btn btn-next disabled' : 'btn pre-next'}
+                          className={currentPage === totalPage ? 'btn btn-next disabled' : 'btn btn-next'}
                         >
                             {nextText}
                         </a>
                     :
                         <a
                           onClick={(e) => { this.handlePage(e, 'next', currentPage); }}
-                          className={currentPage === totalPage ? 'btn btn-next disabled' : 'btn pre-next'}
+                          className={currentPage === totalPage ? 'btn btn-next disabled' : 'btn btn-next'}
                         >
                             {nextText}
                         </a>

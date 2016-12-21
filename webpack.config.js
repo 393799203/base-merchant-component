@@ -15,6 +15,12 @@ module.exports = {
         libraryTarget: "umd",
         filename: '[name]bundle.js'
     },
+    externals: {
+        'react': 'React',
+        'react-dom': 'ReactDOM',
+        './React': 'React',
+        './React-dom': 'ReactDOM'
+    },
     //plugins: [new HtmlWebpackPlugin()],
     module: {
         loaders: [
@@ -24,7 +30,7 @@ module.exports = {
                 loader: 'babel',
                 query: {
                     presets: ['react', 'es2015','stage-2'],
-                    plugins: ['add-module-exports', 'transform-object-assign', 'transform-decorators-legacy', 'transform-es3-member-expression-literals', 'transform-es3-property-literals']
+                    plugins: ['add-module-exports', 'transform-object-assign']
                 }
             },
             {
@@ -44,20 +50,6 @@ module.exports = {
                 // )
             }
         ]
-    },
-    externals: {
-      'react': {
-        root: 'React',
-        commonjs2: 'react',
-        commonjs: 'react',
-        amd: 'react'
-      },
-      'react-dom': {
-        root: 'ReactDOM',
-        commonjs2: 'react-dom',
-        commonjs: 'react-dom',
-        amd: 'react-dom'
-      }
     }
 
 }
@@ -71,7 +63,7 @@ function getEntries(){
     var floders = getDirectories(srcpath);
     entries = {};
     floders.forEach(function(i){
-        entries['./dist/'+i+'/'] =[ path.resolve(__dirname,'./src/'+i+'/'+'index.js') ];
+        entries['./dist/'+i+'/'] = path.resolve(__dirname,'./src/'+i+'/'+'index.js');
     });
     console.log(entries)
     return entries;

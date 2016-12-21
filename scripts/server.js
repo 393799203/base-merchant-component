@@ -1,17 +1,16 @@
 var path = require('path');
 var WebpackDevServer = require("webpack-dev-server");
 var webpack = require("webpack");
-var webpackConfig = require('../webpack.dev.config');
-
 var portfinder = require('portfinder');
-var path = require('path');
+
+var webpackConfig = require('../webpack.dev.config');
 
 portfinder.basePort = 5000;//防止端口冲突
 
 portfinder.getPort(function(portFinderErr, port){
     var devEntryBundle = [
-        'webpack/hot/dev-server',
-        'webpack-dev-server/client?http://localhost:' + port,
+        //'webpack/hot/dev-server',
+        //'webpack-dev-server/client?http://localhost:' + port,
         './public/main.js'
     ];
     webpackConfig.entry.bundle = devEntryBundle;

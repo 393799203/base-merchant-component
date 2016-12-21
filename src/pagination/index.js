@@ -19,7 +19,7 @@ Pagination.defaultProps = {
     totalPage: 1,   // 总共有多少页
     display_num: 4, // 显示数字的页码数
     link: '',       // 页面直接跳转链接
-    onChangePage: '', // 页码选中回调
+    onChangePage: () => {}, // 页码选中回调
     hideEnd: false  // 是否显示最后
 };
 

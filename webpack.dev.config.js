@@ -42,7 +42,13 @@ module.exports = {
                 loader: 'babel',
                 query: {
                     presets: ['react', 'es2015', 'stage-2'],
-                    plugins: ['add-module-exports','transform-object-assign','transform-decorators-legacy', 'transform-es3-member-expression-literals', 'transform-es3-property-literals']
+                    plugins: [
+                        'add-module-exports',
+                        'transform-object-assign',
+                        'transform-decorators-legacy',
+                        'transform-es3-member-expression-literals',
+                        'transform-es3-property-literals'
+                    ]
                 }
             },
             {
