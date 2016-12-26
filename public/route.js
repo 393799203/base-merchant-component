@@ -13,6 +13,7 @@ import TabView from './pages/tab';
 import PagerView from './pages/pager';
 import PaginationView from './pages/pagination';
 import NotificationView from './pages/notification';
+import TooltipView from './pages/tooltip';
 
 export default (
     <Router history={hashHistory}>
@@ -28,6 +29,7 @@ export default (
             <Route path='pager' component={PagerView} />
             <Route path='pagination' component={PaginationView} />
             <Route path='notification' component={NotificationView} />
+            <Route path='tooltip' component={TooltipView} />
         </Route>
     </Router>
 );
