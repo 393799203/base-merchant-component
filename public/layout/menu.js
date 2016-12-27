@@ -14,6 +14,10 @@ export default [
     {
         title: '消息提示 - Notification',
         link: '#/notification'
+    },
+    {
+        title: '提示层信息 - Tooltip',
+        link: '#/tooltip'
     }
 ];
 
