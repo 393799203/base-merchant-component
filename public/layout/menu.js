@@ -18,6 +18,10 @@ export default [
     {
         title: '提示层信息 - Tooltip',
         link: '#/tooltip'
+    },
+    {
+        title: '选项卡 - Tab',
+        link: '#/switchtab'
     }
 ];
 

@@ -21,6 +21,11 @@
 		"import/no-extraneous-dependencies": [0],
 		"import/no-unresolved": [0],
 		"import/extensions": [0],
-		"max-len": ["error", 200]
+		"max-len": ["error", 200],
+		"func-names": ["error", "as-needed"],
+		"no-script-url": [0],
+		"react/no-unused-prop-types": [0],
+		"no-nested-ternary": [0],
+		"react/no-multi-comp": [0]
 	}
 }
