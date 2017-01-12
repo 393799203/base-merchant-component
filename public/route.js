@@ -15,6 +15,7 @@ import PaginationView from './pages/pagination';
 import NotificationView from './pages/notification';
 import TooltipView from './pages/tooltip';
 import SwitchTabView from './pages/compontents/switch-tab';
+import PanelView from './pages/compontents/panel';
 
 export default (
     <Router history={hashHistory}>
@@ -26,6 +27,7 @@ export default (
             <Route path='rule' component={RuleView} />
         </Route>
         <Route component={LayoutView}>
+            <Route path='panel' component={PanelView} />
             <Route path='tab' component={TabView} />
             <Route path='pager' component={PagerView} />
             <Route path='pagination' component={PaginationView} />

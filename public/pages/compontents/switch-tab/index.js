@@ -34,6 +34,24 @@ const nav2 = [{
     }
 }];
 
+class LazyExample extends Component {
+    static propTypes = {
+        index: PropTypes.number
+    };
+
+    componentDidMount () {
+        Notification.success({
+            message: `第${this.props.index}组件加载完毕`,
+            duration: 2000
+        });
+    }
+    render () {
+        return (
+            <div>我是第{this.props.index}个组件，我是懒加载进来的，component mounted的时候我弹出了提示</div>
+        );
+    }
+}
+
 class TabDemo extends Component {
     static clickHanler (i) {
         Notification.info({
@@ -54,27 +72,6 @@ class TabDemo extends Component {
             message: '点击tab内容的时候触发了事件',
             duration: 3000
         });
-    }
-
-    constructor () {
-        super();
-        this.LazyExample = class LazyExample extends Component {
-            static propTypes = {
-                index: PropTypes.number
-            };
-
-            componentDidMount () {
-                Notification.success({
-                    message: `第${this.props.index}组件加载完毕`,
-                    duration: 2000
-                });
-            }
-            render () {
-                return (
-                    <div>我是第{this.props.index}个组件，我是懒加载进来的，component mounted的时候我弹出了提示</div>
-                );
-            }
-        };
     }
 
     render () {
@@ -133,8 +130,8 @@ class TabDemo extends Component {
                         <h4>懒加载-lazyload</h4>
                         <TabWrapper navs={nav1} lazyLoad>
                             <Tab key='0'>第一个组件的内容</Tab>
-                            <Tab key='1'><this.LazyExample index={2} /></Tab>
-                            <Tab key='2'><this.LazyExample index={3} /></Tab>
+                            <Tab key='1'><LazyExample index={2} /></Tab>
+                            <Tab key='2'><LazyExample index={3} /></Tab>
                         </TabWrapper>
                     </div>
                 </div>

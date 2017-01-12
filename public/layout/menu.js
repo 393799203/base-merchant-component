@@ -12,6 +12,10 @@ export default [
         link: '#/pager'
     },
     {
+        title: '面板 - Panel',
+        link: '#/panel'
+    },
+    {
         title: '消息提示 - Notification',
         link: '#/notification'
     },

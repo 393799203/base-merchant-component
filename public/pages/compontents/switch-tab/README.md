@@ -1,11 +1,11 @@
-## 2. - 示例
+## 2. - 使用说明
 * 引入方式:
 
 ```
 import { Tab, TabWrapper } from 'your path of npm package';
 ```
 
-* 常规用法
+* 用法示例
 
 ```
 const navs = [{
@@ -135,13 +135,13 @@ singleTabClick () {
 ```
 
 ## 3. - 参数说明
-### 3.1 - TabWrapper
+#### 3.1 - TabWrapper
 | 参数        |  必填        |说明           | 类型         |  备注       |   默认值      |  
 | ------------ |------------ | ------------- | ------------ | ------------  |------------  |
-| navs |  YES  | 标签页列表  | [Object] | 需要重写样式时使用 | '' |
-| className |  No  | 组件顶层样式  | string | 需要重写样式时使用 | '' |
-| trigger |  No  | 组件Tab切换触发方式  | string | 驼峰式写法，如mouseOver | 'click' |
-| lazyLoad |  No  | 子组件是否需要懒加载  | bool |  | false |
+| navs |  Y  | 标签页列表  | [Object] | 需要重写样式时使用 | '' |
+| className |  N  | 组件顶层样式  | string | 需要重写样式时使用 | '' |
+| trigger |  N  | 组件Tab切换触发方式  | string | 驼峰式写法，如mouseOver | 'click' |
+| lazyLoad |  N  | 子组件是否需要懒加载  | bool |  | false |
 
 
 备注：
@@ -153,11 +153,11 @@ singleTabClick () {
 
 2. TabWrapper 上还支持onChange，onClick等事件的绑定和处理，这些函数绑定对象为所有nav.当单个nav也在attrs绑定同样的事件时，先触发触发nav自己独有绑定的事件，再触发全局绑定的事件。
  
-### 3.2 - Tab
+#### 3.2 - Tab
 | 参数        |  必填        |说明           | 类型         |  备注       |   默认值      |  
 | ------------ |------------ | ------------- | ------------ | ------------  |------------  |
-| className |  No  | 组件顶层样式  | string | 需要重写样式时使用 | '' |
-| lazyLoad |  No  | 本组件是否需要懒加载  | bool |  | false |
+| className |  N  | 组件顶层样式  | string | 需要重写样式时使用 | '' |
+| lazyLoad |  N  | 本组件是否需要懒加载  | bool |  | false |
 
 
 备注：
