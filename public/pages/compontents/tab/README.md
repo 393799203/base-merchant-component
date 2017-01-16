@@ -138,7 +138,7 @@ singleTabClick () {
 #### 3.1 - TabWrapper
 | 参数        |  必填        |说明           | 类型         |  备注       |   默认值      |  
 | ------------ |------------ | ------------- | ------------ | ------------  |------------  |
-| navs |  Y  | 标签页列表  | [Object] | 需要重写样式时使用 | '' |
+| navs |  Y  | 标签页列表  | [Object] | 需要重写样式时使用 | [] |
 | className |  N  | 组件顶层样式  | string | 需要重写样式时使用 | '' |
 | trigger |  N  | 组件Tab切换触发方式  | string | 驼峰式写法，如mouseOver | 'click' |
 | lazyLoad |  N  | 子组件是否需要懒加载  | bool |  | false |
