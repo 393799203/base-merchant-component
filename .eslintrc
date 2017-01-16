@@ -26,6 +26,7 @@
 		"no-script-url": [0],
 		"react/no-unused-prop-types": [0],
 		"no-nested-ternary": [0],
-		"react/no-multi-comp": [0]
+		"react/no-multi-comp": [0],
+		no-plusplus: [2, { "allowForLoopAfterthoughts": true }]
 	}
 }

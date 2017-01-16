@@ -17,6 +17,7 @@ export default class PaginationView extends Component {
         this.setState({ currentPage: current });
     }
     render () {
+        const {currentPage, totalPage, onChangePage } = this.state;
         return (
             <div className='m-b-lg m-l m-r'>
                 <h1>
@@ -25,7 +26,11 @@ export default class PaginationView extends Component {
                 <h2>
                     1. 示例
                 </h2>
-                <Pagination />
+                <Pagination
+                  totalPage={totalPage}
+                  currentPage={currentPage}
+                  onChangePage={onChangePage}
+                />
                 <br />
                 <div dangerouslySetInnerHTML={{ __html: Readme }} />
             </div>

@@ -28,6 +28,7 @@ export default class Pager extends Component {
         const { preLink, nextLink } = formatLink(link, linkParam, currentPage);
         return (
             <div className={className}>
+                <span className='page-count'>{currentPage}/{totalPage}页</span>
                 { /* 上一页 */
                     link ?
                         <a
@@ -72,8 +73,8 @@ Pager.defaultProps = {
     link: '',            // 页面直接跳转链接
     linkParam: 'page',   // 页面直接跳转时的拼接参数
     onChangePage: noop,  // 页码选中回调
-    preText: '上一页',
-    nextText: '下一页'
+    preText: '<',
+    nextText: '>'
 };
 
 Pager.propTypes = {
