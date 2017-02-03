@@ -4,8 +4,8 @@
 *   2、年月日 时分秒，默认为当前时间
 **/
 import React, { Component, PropTypes } from 'react';
-import RCCalendar from 'rc-calendar';
 import RCDatePicker from 'rc-calendar/lib/Picker';
+import MonthCalendar from 'rc-calendar/lib/MonthCalendar';
 import GregorianCalendar from 'gregorian-calendar';
 import TimePicker from 'rc-time-picker';
 import classNames from 'classnames';
@@ -15,9 +15,9 @@ import defaultLocale from './locale/zh_CN';
 
 import './style/index.less';
 
-export default class DatePicker extends Component {
+export default class MonthPicker extends Component {
     static defaultProps = {
-        format: '',
+        format: 'yyyy-MM',
         popmcStyle: {},
         align: { offset: [0, -9] },
         style: {},
@@ -46,8 +46,8 @@ export default class DatePicker extends Component {
         disabledDate: PropTypes.func,
         onChange: PropTypes.func,
         placeholder: PropTypes.string,
-        defaultValue: PropTypes.oneOfType([PropTypes.string,PropTypes.instanceOf(Date)]),
-        value: PropTypes.oneOfType([PropTypes.string,PropTypes.instanceOf(Date)])
+        defaultValue: PropTypes.oneOfType([PropTypes.string,PropTypes.instanceOf(Date)]), 
+        value: PropTypes.oneOfType([PropTypes.string,PropTypes.instanceOf(Date)]) 
     };
 
     constructor (props) {
@@ -94,8 +94,7 @@ export default class DatePicker extends Component {
 
     getFormatter () {
         const formats = this.formats = this.formats || {};
-        const defaultFormat = this.props.showTime ? 'yyyy-MM-dd HH:mm:ss' : 'yyyy-MM-dd';
-        const format = this.props.format || defaultFormat;
+        const format = this.props.format;
         if (formats[format]) {
             return formats[format];
         }
@@ -143,25 +142,14 @@ export default class DatePicker extends Component {
         const placeholder = ('placeholder' in this.props) ? this.props.placeholder : locale.lang.placeholder;
         defaultCalendarValue.setTime(this.getFormatTime(defaultValue || value));
 
-        //判断是否展示时分秒
-        const timePicker = this.props.showTime ?
-            (<TimePicker
-              prefixCls='mc-time-picker'
-              placeholder={locale.lang.timePlaceholder}
-              transitionName='slide-mc'
-              {...timeConfig}
-            />)
-            : null;
-
         const calendarClassName = classNames({
-            'mc-calendar-time': this.props.showTime
+            'mc-calendar-month': true
         });
 
         const calendar = (
-            <RCCalendar
+            <MonthCalendar
               disabledDate={this.props.disabledDate}
               locale={locale.lang}
-              timePicker={timePicker}
               defaultValue={defaultCalendarValue}
               dateInputPlaceholder={placeholder}
               prefixCls='mc-calendar'
