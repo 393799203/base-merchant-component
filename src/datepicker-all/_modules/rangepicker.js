@@ -17,7 +17,7 @@ import './style/index.less';
 export default class MonthPicker extends Component {
     static defaultProps = {
         defaultValue: [],
-        format: '',
+        format: 'yyyy-MM-dd',
         startPlaceholder: '开始日期',
         endPlaceholder: '结束日期',
         transitionName: 'slide-up',
@@ -106,8 +106,7 @@ export default class MonthPicker extends Component {
 
     getFormatter () {
         const formats = this.formats = this.formats || {};
-        const defaultFormat = this.props.showTime ? 'yyyy-MM-dd HH:mm:ss' : 'yyyy-MM-dd';
-        const format = this.props.format || defaultFormat;
+        const format = this.props.format;
         if (formats[format]) {
             return formats[format];
         }
@@ -134,11 +133,6 @@ export default class MonthPicker extends Component {
                 const date = new GregorianCalendar(this.getLocale());
                 date.setTime(+value);
                 return date;
-            } else if (typeof value === 'number') {
-                const valueDate = new Date(value);
-                const date = new GregorianCalendar(this.getLocale());
-                date.setTime(+valueDate);
-                return date;
             }
         } else if (value === null) {
             return value;
@@ -152,8 +146,6 @@ export default class MonthPicker extends Component {
         });
     }
 
-    handleInputChange () {}
-    
     render () {
         const locale = this.getLocale();
         // 以下两行代码

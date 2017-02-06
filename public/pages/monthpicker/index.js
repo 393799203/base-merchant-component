@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Datepicker from 'source_path/datepicker';
+import Monthpicker from 'source_path/monthpicker';
 import Notification from 'source_path/notification';
 import Readme from './README.md';
 import './style/index.less';
 
-export default class DatepickerView extends Component {
+export default class MonthpickerView extends Component {
 	constructor () {
 		super();
 		this.state = {
@@ -25,14 +25,14 @@ export default class DatepickerView extends Component {
 
 	disabledDate(value){
 		var currenDate = new Date();
-		return value.getTime() < currenDate.getTime();
+		return value.getTime() > currenDate.getTime();
 	}
 
 	render () {
 		return (
 			<div className="m-l m-r m-b-xxl mc-date-picker">
 				<h1>
-					时间选择 - Datepicker
+					月份选择 - Monthpicker
 				</h1>
 				<h2>
 					1. 示例
@@ -41,30 +41,14 @@ export default class DatepickerView extends Component {
 					<div className="date-picker-demo clearfix">
 						<div className='f-l'>
 							<h4>默认情况时间选择器</h4>
-							<Datepicker />
+							<Monthpicker />
 						</div>
 
 						<div className='f-l sub-demo'>
-							<h4>禁用时间选择器（disabled）</h4>
-							<Datepicker disabled/>
-						</div>
-					</div>
-
-					<div className="date-picker-demo clearfix">
-						<h4>展示时分秒（showTime），设置水印（placeholder）</h4>
-						<div className='f-l'>
-							<h5>默认为当前时间</h5>
-							<Datepicker 
-								showTime
+							<h4>禁用时间选择器（disabled）、添加水印（placeholder）</h4>
+							<Monthpicker 
+								disabled 
 								placeholder="请设置水印" />
-						</div>
-
-						<div className="f-l sub-demo">
-							<h5>设置默认时分秒（timeConfig）</h5>
-							<Datepicker
-								showTime
-								placeholder="请设置水印" 
-								timeConfig={{defaultValue: "00:00:00"}} />
 						</div>
 					</div>
 
@@ -72,21 +56,21 @@ export default class DatepickerView extends Component {
 						<h4>配置的日期格式（format），设置默认值（defaultValue）</h4>
 						<div className='f-l'>
 							<h5>默认时间格式：yyyy-MM-dd</h5>
-							<Datepicker 
-								defaultValue={"2016-11-11"} />
+							<Monthpicker 
+								defaultValue={"2016-11"} />
 						</div>
 
 						<div className="f-l sub-demo">
 							<h5>设置时间格式：yyyy/MM/dd</h5>
-							<Datepicker 
-								format={"yyyy/MM/dd"}
+							<Monthpicker 
+								format={"yyyy/MM"}
 								defaultValue={1486197669000}/>
 						</div>
 
 						<div className="f-l sub-demo">
 							<h5>设置时间格式：yyyy年MM月dd日</h5>
-							<Datepicker 
-								format={"yyyy年MM月dd日"}
+							<Monthpicker 
+								format={"yyyy年MM月"}
 								defaultValue={new Date()}/>
 						</div>
 					</div>
@@ -95,13 +79,13 @@ export default class DatepickerView extends Component {
 						<h4>事件：不可选择的日期（disabledDate），回调函数（onChange）</h4>
 						<div className='f-l'>
 							<h5>设置不可选择的日期</h5>
-							<Datepicker
+							<Monthpicker
 								disabledDate={(value) => this.disabledDate(value)} />
 						</div>
 
 						<div className="f-l sub-demo">
 							<h5>时间发生变化的回调，发生在用户选择时间时</h5>
-							<Datepicker 
+							<Monthpicker 
 								onChange={value => this.onChange(value)} />
 						</div>
 					</div>
