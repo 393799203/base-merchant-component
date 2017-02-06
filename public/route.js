@@ -22,6 +22,7 @@ import DatepickerView from './pages/datepicker';
 import MonthpickerView from './pages/monthpicker';
 import RangepickerView from './pages/rangepicker';
 import TimepickerView from './pages/timepicker';
+import ModalView from './pages/modal';
 
 export default (
     <Router history={hashHistory}>
@@ -39,6 +40,7 @@ export default (
             <Route path='pager' component={PagerView} />
             <Route path='pagination' component={PaginationView} />
             <Route path='notification' component={NotificationView} />
+            <Route path='modal' component={ModalView} />
             <Route path='tooltip' component={TooltipView} />
             <Route path='datepicker' component={DatepickerView} />
             <Route path='monthpicker' component={MonthpickerView} />
