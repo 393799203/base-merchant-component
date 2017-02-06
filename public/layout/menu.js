@@ -30,6 +30,22 @@ export default [
     {
         title: '选项卡 - Tab',
         link: '#/switchtab'
+    },
+    {
+        title: '日期 - Datepicker',
+        link: '#/datepicker'
+    },
+    {
+        title: '月份 - Monthpicker',
+        link: '#/monthpicker'
+    },
+    {
+        title: '日期区间 - Rangepicker',
+        link: '#/rangepicker'
+    },
+    {
+        title: '时间 - Timepicker',
+        link: '#/timepicker'
     }
 ];
 
