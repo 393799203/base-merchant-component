@@ -1,0 +1,36 @@
+import React, { Component, PropTypes } from 'react';
+import Notification from 'source_path/notification';
+import ImageUploader from 'source_path/image-uploader';
+
+import SingleUpload from './modules/single-upload';
+import MultiUpload from './modules/multi-upload';
+import SingleUploadWithProgress from './modules/single-upload-with-progress';
+import MultiUploadWithProgress from './modules/multi-upload-with-progress';
+import AbortUploadfile from './modules/abort-upload-file';
+
+import Readme from './Readme.md';
+
+import './style/index.less';
+
+class ImageUploaderDemo extends Component {
+    render () {
+        return (
+            <div className="m-b-lg m-l m-r image-uploader-demo">
+                <h1>
+                    图片上传 - ImageUploader
+                </h1>
+                <h2>
+                    1. 示例
+                </h2>
+                <SingleUpload />
+                <MultiUpload />
+                <SingleUploadWithProgress />
+                <MultiUploadWithProgress />
+                <AbortUploadfile />
+                <div dangerouslySetInnerHTML={{ __html: Readme }} />
+            </div>
+        );
+    }
+}
+
+export default ImageUploaderDemo;

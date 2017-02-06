@@ -3,16 +3,20 @@ import 'source_path/less/grid.less';
 import './style/index.less';
 
 class GridDemo extends Component {
-    getChildren (num, className = '') {
+    getChildren (num = 0, className = '') {
         const columns = 12;
         let colsWidth = columns / num;
-        let item =
-            <div className={`col-lg-${colsWidth} ${className}`}>
-                <p>{`col-lg-${colsWidth}`}</p>
-            </div>;
-        
-        let arr = new Array(num);
-        return arr.fill(item);
+        let arr = [];
+
+        for (let i = 0 ; i < num; i++) {
+            arr.push(
+                <div className={`col-lg-${colsWidth} ${className}`} key={`${i}${+new Date()}`}>
+                    <p>{`col-lg-${colsWidth}`}</p>
+                </div>
+            );
+        }
+            
+        return arr;
     }
 
     render () {

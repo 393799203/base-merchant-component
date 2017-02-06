@@ -2,7 +2,8 @@
 * 引入方式:
 
 ```
-import { Tab, TabWrapper } from 'your path of npm package';
+import React, { Component } from 'react';
+import { Tab, TabWrapper } from '@meili/base-merchant-component/lib/tab';
 ```
 
 * 用法示例

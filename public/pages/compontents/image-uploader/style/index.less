@@ -1,0 +1,56 @@
+.image-uploader-demo {
+    .one-line {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .image-list {
+        margin: 0 -15px;
+        padding: 0;
+        li {
+            list-style: none;
+            float: left;
+            margin: 8px 15px;
+            width: 100px;
+            height: 100px;
+            &.upload-entry {
+                .uploading-img {
+                    width: 100px;
+                    height: 100px;
+                    border: 1px solid #E2E2E2;
+                    border-radius: 5px;
+                    position: relative;
+                    .del-btn {
+                        position: absolute;
+                        top: -5px;
+                        right: -5px;
+                        width: 16px;
+                        height: 16px;
+                        background-color: #FE5655;
+                        color: #FFF;
+                        border-radius: 50%;
+                        text-align: center;
+                        line-height: 16px;
+                    }
+                }
+                p {
+                    line-height: 100px;
+                    font-size: 13px;
+                    text-align: center;
+                }
+            }
+            .uploading-item {
+                width: 100px;
+                height: 100px;
+                border: 1px solid #E2E2E2;
+                border-radius: 5px;
+                text-align: center;
+            }
+            img {
+                width: 100px;
+                height: 100px;
+                border-radius: 5px;
+            }
+        }
+    }
+}

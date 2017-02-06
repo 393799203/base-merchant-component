@@ -9,14 +9,14 @@ import DocView from './pages/doc';
 import DataView from './pages/data';
 import RuleView from './pages/rule';
 
-import TabView from './pages/tab';
+import GridView from './pages/layout/grid';
 import PagerView from './pages/pager';
 import PaginationView from './pages/pagination';
 import NotificationView from './pages/notification';
 import TooltipView from './pages/tooltip';
-import SwitchTabView from './pages/compontents/tab';
+import TabView from './pages/compontents/tab';
 import PanelView from './pages/compontents/panel';
-import GridView from './pages/layout/grid';
+import ImageUploaderView from './pages/compontents/image-uploader';
 
 import DatepickerView from './pages/datepicker';
 import MonthpickerView from './pages/monthpicker';
@@ -40,11 +40,11 @@ export default (
             <Route path='pagination' component={PaginationView} />
             <Route path='notification' component={NotificationView} />
             <Route path='tooltip' component={TooltipView} />
-            <Route path='switchtab' component={SwitchTabView} />
             <Route path='datepicker' component={DatepickerView} />
             <Route path='monthpicker' component={MonthpickerView} />
             <Route path='rangepicker' component={RangepickerView} />
             <Route path='timepicker' component={TimepickerView} />
+            <Route path='image-uploader' component={ImageUploaderView} />
         </Route>
     </Router>
 );

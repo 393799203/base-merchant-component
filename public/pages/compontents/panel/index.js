@@ -5,10 +5,10 @@ import Readme from './Readme.md';
 
 class PanelDemo extends Component {
     render () {
-        const elem = [
-            <span className='panel-header-option-1'>时间:2017-01-01</span>,
+        const elem = <span>
+            <span className='panel-header-option-1'>时间:2017-01-01</span>
             <a className='panel-header-option-2' target='_blank' href='http://www.xiaodian.com'>查看更多</a>
-        ]
+        </span>;
         
         return (
             <div className='m-b-lg m-l m-r'>

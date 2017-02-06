@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Notification from 'source_path/notification';
-import { TabWrapper, Tab } from 'source_path/switch-tab';
+import { TabWrapper, Tab } from 'source_path/tab';
 import './style/index.less';
 import Readme from './Readme.md';
 

@@ -4,7 +4,7 @@ export default [
         link: '#/grid'
     },
     {
-        title: '标签页 - Tab',
+        title: '选项卡 - Tab',
         link: '#/tab'
     },
     {
@@ -28,10 +28,6 @@ export default [
         link: '#/tooltip'
     },
     {
-        title: '选项卡 - Tab',
-        link: '#/switchtab'
-    },
-    {
         title: '日期 - Datepicker',
         link: '#/datepicker'
     },
@@ -46,6 +42,10 @@ export default [
     {
         title: '时间 - Timepicker',
         link: '#/timepicker'
+    },
+    {
+        title: '图片上传 - ImageUploader',
+        link: '#/image-uploader'
     }
 ];
 
