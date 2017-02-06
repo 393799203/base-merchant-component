@@ -11,9 +11,10 @@ import TimePicker from 'rc-time-picker';
 import classNames from 'classnames';
 import objectAssign from 'object-assign';
 import DateTimeFormat from 'gregorian-calendar-format';
-import defaultLocale from './locale/zh_CN';
+import defaultLocale from '../_module/js/locale/zh_CN';
 
-import './style/index.less';
+import '../_module/less/datepicker.less';
+import '../_module/less/timepicker.less';
 
 export default class DatePicker extends Component {
     static defaultProps = {

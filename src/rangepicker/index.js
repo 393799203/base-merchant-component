@@ -9,10 +9,11 @@ import DatePicker from 'rc-calendar/lib/Picker';
 import TimePicker from 'rc-time-picker';
 import classNames from 'classnames';
 import objectAssign from 'object-assign';
-import defaultLocale from './locale/zh_CN';
+import defaultLocale from '../_module/js/locale/zh_CN';
 
-
-import './style/index.less';
+import '../_module/less/datepicker.less';
+import '../_module/less/rangepicker.less';
+import '../_module/less/timepicker.less';
 
 export default class MonthPicker extends Component {
     static defaultProps = {

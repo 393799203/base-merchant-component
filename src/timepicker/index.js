@@ -3,7 +3,9 @@ import DateTimeFormat from 'gregorian-calendar-format';
 import RCTimePicker from 'rc-time-picker/lib/TimePicker';
 import objectAssign from 'object-assign';
 import classNames from 'classnames';
-import defaultLocale from './locale/zh_CN';
+import defaultLocale from '../_module/js/locale/zh_CN';
+
+import '../_module/less/timepicker.less';
 
 export default class TimePicker extends Component {
     static defaultProps = {
@@ -18,7 +20,8 @@ export default class TimePicker extends Component {
         hideDisabledOptions: false,
         size: 'default',
         placement: 'bottomLeft',
-        transitionName: 'slide-up'
+        transitionName: 'slide-up',
+        onChange () {}
     };
 
     static propTypes = {

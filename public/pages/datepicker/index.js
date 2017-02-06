@@ -32,7 +32,7 @@ export default class DatepickerView extends Component {
 		return (
 			<div className="m-l m-r m-b-xxl mc-date-picker">
 				<h1>
-					时间选择 - Datepicker
+					日期选择 - Datepicker
 				</h1>
 				<h2>
 					1. 示例
