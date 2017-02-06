@@ -147,11 +147,11 @@ export default class DatePicker extends Component {
         // 否则会以周日开始排
         const defaultCalendarValue = new GregorianCalendar(locale);
         const timeFullConfig = this.props.timeConfig;
-        let { defaultValue, value, ...timeConfig } = timeFullConfig;
+        const { defaultValue, value, ...timeConfig } = timeFullConfig;
         const placeholder = ('placeholder' in this.props) ? this.props.placeholder : locale.lang.placeholder;
         defaultCalendarValue.setTime(this.getFormatTime(defaultValue || value));
 
-        //判断是否展示时分秒
+        // 判断是否展示时分秒
         const timePicker = this.props.showTime ?
             (<TimePicker
               prefixCls='mc-time-picker'
@@ -198,15 +198,15 @@ export default class DatePicker extends Component {
                   onChange={e => this.handleChange(e)}
                 >
 
-                    {({ value }) => {
+                    {() => {
                         return (
                             <span>
                                 <input
                                   disabled={this.props.disabled}
-                                  value={value && this.getFormatter().format(value)}
+                                  value={this.state.value && this.getFormatter().format(this.state.value)}
                                   placeholder={placeholder}
                                   style={this.props.style}
-                                  className={`mc-calendar-picker-input`}
+                                  className={'mc-calendar-picker-input'}
                                   onChange={e => this.handleInputChange(e)}
                                 />
                                 <span className='mc-calendar-picker-icon' />
