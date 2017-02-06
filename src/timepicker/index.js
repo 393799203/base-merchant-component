@@ -118,7 +118,7 @@ export default class TimePicker extends Component {
               className={className}
               gregorianCalendarLocale={this.getLocale()}
               formatter={this.getFormatter()}
-              onChange={(value) => this.handleChange(value)}
+              onChange={value => this.handleChange(value)}
             />
         );
     }

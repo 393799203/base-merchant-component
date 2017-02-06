@@ -154,7 +154,7 @@ export default class MonthPicker extends Component {
     }
 
     handleInputChange () {}
-    
+
     render () {
         const locale = this.getLocale();
         // 以下两行代码
@@ -162,7 +162,7 @@ export default class MonthPicker extends Component {
         // 否则会以周日开始排
         const defaultCalendarValue = new GregorianCalendar(locale);
         const timeFullConfig = this.props.timeConfig;
-        let { defaultValue, value, ...timeConfig } = timeFullConfig;
+        const { defaultValue, value, ...timeConfig } = timeFullConfig;
 
         defaultCalendarValue.setTime(this.getFormatTime(defaultValue || value));
 
@@ -221,9 +221,9 @@ export default class MonthPicker extends Component {
                   onChange={e => this.handleChange(e)}
                 >
 
-                    {({ value }) => {
-                        const start = value[0];
-                        const end = value[1];
+                    {() => {
+                        const start = this.state.value[0];
+                        const end = this.state.value[1];
                         return (
                             <span className={pickerInputClass} disabled={disabled}>
                                 <span className='mc-calendar-range-picker-input'>
