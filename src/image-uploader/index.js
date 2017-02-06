@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import './style/index.less';
 
+/** @constant AppKey upload appkey for server authorization */
 const AppKey = '12a';
 const generateId = (prefix = 'v') => {
     const timestamp = +new Date();
@@ -24,7 +25,7 @@ class ImageUploader extends Component {
 
     componentDidMount () {
         /**
-         * @desc bind a global uploaded callback function on window
+         * @func bind a global uploaded callback function on window
         */
         const { success, fail } = this.props;
 
@@ -53,7 +54,7 @@ class ImageUploader extends Component {
 
     enQueue (queue, items = []) {
         /**
-         * @desc add the files into the upload queue
+         * @func add the files into the upload queue
         */
         const isEqual = (o, type) => {
             return Object.prototype.toString.call(o) === `[object ${type}]`;
@@ -72,12 +73,15 @@ class ImageUploader extends Component {
 
     outQueue (queue) {
         /**
-         * @desc the front file out of the queue
+         * @desc delete the front file in the queue
         */
         return queue.splice(0, 1).length;
     }
 
     isEmptyQueue (queue) {
+        /**
+         * @desc is the queue an empty queue
+        */
         return queue.length === 0;
     }
 
@@ -88,6 +92,9 @@ class ImageUploader extends Component {
     }
 
     delete (fid) {
+        /**
+         * @func delete the file with passed fid in the queue
+        */
         const queue = this.queue;
         let index;
 
@@ -103,6 +110,9 @@ class ImageUploader extends Component {
         }
 
         if (index === 0) {
+            /**
+             * @desc when the file is uploading, stop the transportation
+            */
             this.xhr.abort();
         }
         queue.splice(index, 1);
