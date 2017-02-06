@@ -26,6 +26,7 @@ import TimepickerView from './pages/timepicker';
 import ModalView from './pages/modal';
 import TableView from './pages/table';
 import SelectView from './pages/select';
+import FieldView from './pages/field';
 
 export default (
     <Router history={hashHistory}>
@@ -53,6 +54,7 @@ export default (
             <Route path='image-uploader' component={ImageUploaderView} />
             <Route path='table' component={TableView} />
             <Route path='select' component={SelectView} />
+            <Route path='field' component={FieldView} />
         </Route>
     </Router>
 );

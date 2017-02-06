@@ -8,5 +8,4 @@ node_modules
 npm-debug.log
 /demo/*
 report
-
-
+/src/_theme/*
