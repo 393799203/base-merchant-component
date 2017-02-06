@@ -66,6 +66,10 @@ export default [
     {
         title: '表单 - Field',
         link: '#/field'
+    },
+    {
+        title: 'TT - teamtalk',
+        link: '#/teamtalk'
     }
 ];
 
