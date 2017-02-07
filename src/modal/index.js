@@ -1,283 +1,289 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 import _ from 'underscore';
 import styles from './style/index';
 import './style/index.less';
 
-const ModalController = React.createClass({
-    statics: {
-        prefix: 'mc-',
-        instance: null,
-        modals: [],
-        layoutStyle: {},
+class ModalController extends Component {
 
-        /**
-         * Open a modal
-         * @param {object} options Modal设置（title、class、id等）
-         */
-        open: function (options) {
-            let defaultOptions = {
-                // options for modal
-                title: null,
-                body: null,
-                footer: null,
-                className: null,
-                callback: null,
-                beforeClose: null,
-                // options for modal controller
-                isAbsolute: false,
-                showMask: true,
-                closeByMask: false
-            };
+    static modals = [];
+    static prefix = 'mc-';
+    static instance = null;
+    static layoutStyle = {};
+    static v = '0.2.0';
 
-            if (options.classes !== undefined) {
-                console.log('Option `classes` is deprecated, use className instead');
-                options.className = options.classes;
-                delete options.classes;
+    /**
+     * Open a modal
+     * @param {object} options Modal设置（title、class、id等）
+     */
+    static open (options) {
+
+        let defaultOptions = {
+            // options for modal
+            title: null,
+            body: null,
+            footer: null,
+            className: null,
+            callback: null,
+            beforeClose: null,
+            // options for modal controller
+            isAbsolute: false,
+            showMask: true,
+            closeByMask: false
+        };
+
+        if (options.classes !== undefined) {
+            console.log('Option `classes` is deprecated, use className instead');
+            options.className = options.classes;
+            delete options.classes;
+        }
+
+        options = _.extend(defaultOptions, options);
+
+        if (options.id !== undefined) {
+            options.id = String(options.id);
+            if (ModalController._findComponent(options.id) !== null) {
+                console.log('A modal with ID %s has existed', options.id);
+                return null;
             }
+        }
+        else {
+            options.id = _.uniqueId('ReactModal-');
+        }
 
-            options = _.extend(defaultOptions, options);
+        ModalController.modals.push(options);
+        ModalController._forceUpdate();
 
-            if (options.id !== undefined) {
-                options.id = String(options.id);
-                if (ModalController._findComponent(options.id) !== null) {
-                    console.log('A modal with ID %s has existed', options.id);
-                    return null;
-                }
-            }
-            else {
-                options.id = _.uniqueId('ReactModal-');
-            }
+        return options.id;
+    };
 
-            ModalController.modals.push(options);
-            ModalController._forceUpdate();
+    /**
+     * Close a modal
+     * @param {string} [id] - Modal ID (optional)
+     * @return {ModalController}
+     */
+    static close (id) {
+        var index = -1;
 
-            return options.id;
-        },
-
-        /**
-         * Close a modal
-         * @param {string} [id] - Modal ID (optional)
-         * @return {ModalController}
-         */
-        close: function (id) {
-            var index = -1;
-
-            if (_.isString(id)) {
-                index = _.findIndex(ModalController.modals, function (modal) {
-                    return modal.id === id;
-                });
-
-                if (index < 0) {
-                    console.log('modal with ID %s not found', id);
-                    return ModalController;
-                }
-            }
-
-            var modalComponent = ModalController._findComponent(id);
-            if (modalComponent && modalComponent.handleBeforeClose()) {
-                ModalController.modals.splice(index, 1);
-                ModalController._forceUpdate();
-            }
-            return ModalController;
-        },
-
-        closeAll: function () {
-            var activeComponent = ModalController._activeComponent();
-            if (activeComponent && activeComponent.handleBeforeClose()) {
-                ModalController.modals = [];
-                ModalController._forceUpdate();
-            }
-
-            return ModalController;
-        },
-
-        /**
-         * Open a alert modal
-         * @param {string} msg
-         * @param {function} [callback=Modal.close]
-         * @param {object} [options] Modal设置（title、class、id等）
-         */
-        alert: function (msg, callback, options) {
-            if (!_.isFunction(callback)) {
-                options = options || callback;
-                callback = ModalController.close;
-            }
-
-            var defaultOptions = {
-                body: (
-                    <div style={styles.alertWrap}>
-                        <div style={styles.alertContent}>{msg}</div>
-                    </div>
-                ),
-                footer: (
-                    <div>
-                        <button className={ModalController.prefix + 'btn primary'} style={{marginRight:0}} onClick={callback}>{options && options.confirm?options.confirm:"确定"}</button>
-                    </div>
-                ),
-                closeByMask: false,
-                callback: callback
-            };
-
-            options = _.extend(defaultOptions, options);
-
-            return ModalController.open(options);
-        },
-        /**
-         * Open a confirm modal
-         * @param {string} msg
-         * @param {function} [callback=_.noop]
-         * @param {object} [options] Modal设置（title、class、id等）
-         */
-        confirm: function (msg, callback, options) {
-            if (!_.isFunction(callback)) {
-                options = options || callback;
-                callback = _.noop;
-            }
-
-            var defaultOptions = {
-                body: (
-                    <div style={styles.alertWrap}>
-                        <div style={styles.alertContent}>{msg}</div>
-                    </div>
-                ),
-                footer: (
-                    <div>
-                        <button className={ModalController.prefix + 'btn'} onClick={ModalController.close}>取消
-                        </button>
-                        <button className={ModalController.prefix + 'btn primary'} style={{marginRight: 0}} onClick={callback}>{(options && options.confirm) || '确定'}
-                        </button>
-                    </div>
-                ),
-                closeByMask: false,
-                callback: callback
-            };
-
-            options = _.extend(defaultOptions, options);
-
-            return ModalController.open(options);
-        },
-
-        /**
-         * Open a tip modal
-         * @param {string} msg
-         * @param {function|int} [callback]
-         * @param {int|object} [delay=800] time before the tip dismisses
-         * @param {object} [options] Modal设置（title、class、id等）
-         */
-        tip: function (msg, callback, delay, options) {
-            if (!_.isFunction(callback)) {
-                options = delay;
-                delay = callback;
-                callback = _.noop;
-            }
-            if (!_.isNumber(delay)) {
-                options = delay;
-                delay = 800;
-            }
-
-            let defaultOptions = {
-                body: (
-                    <div style={styles.alertWrap}>{msg}</div>
-                ),
-                closeByMask: false
-            };
-
-            options = _.extend(defaultOptions, options);
-
-            let modalId = ModalController.open(options);
-
-            callback = _.compose(callback, ModalController.close.bind(ModalController, modalId));
-
-            if (delay > 0) {
-                setTimeout(function () {
-                    callback();
-                }, delay);
-            }
-
-            return modalId;
-        },
-
-        update: function (id) {
-            var modalComponent = ModalController._findComponent(id);
-
-            if (!modalComponent) {
-                return;
-            }
-
-            modalComponent.forceUpdate();
-        },
-
-        updateTitle: function (title, id) {
-            var modalComponent = id ? ModalController._findComponent(id) : ModalController._activeComponent();
-
-            if (!modalComponent) {
-                return;
-            }
-
-            modalComponent.setState({
-                title: title
+        if (_.isString(id)) {
+            index = _.findIndex(ModalController.modals, function (modal) {
+                return modal.id === id;
             });
-        },
 
-        v: '0.2.0',
-        noConflict: function () {
-            window.ReactModal = _previousReactModal;
-
-            return ModalController;
-        },
-        withPrefix: function (prefix) {
-            if (ModalController.prefix !== prefix) {
-                ModalController.prefix = prefix;
-                ModalController._forceUpdate();
+            if (index < 0) {
+                console.log('modal with ID %s not found', id);
+                return ModalController;
             }
+        }
 
-            return ModalController;
-        },
+        var modalComponent = ModalController._findComponent(id);
+        if (modalComponent && modalComponent.handleBeforeClose()) {
+            ModalController.modals.splice(index, 1);
+            ModalController._forceUpdate();
+        }
+        return ModalController;
+    };
 
-        // Private method
-        _activeComponent: function () {
+    static closeAll () {
+        var activeComponent = ModalController._activeComponent();
+        if (activeComponent && activeComponent.handleBeforeClose()) {
+            ModalController.modals = [];
+            ModalController._forceUpdate();
+        }
+
+        return ModalController;
+    };
+
+    /**
+     * Open a alert modal
+     * @param {string} msg
+     * @param {function} [callback=Modal.close]
+     * @param {object} [options] Modal设置（title、class、id等）
+     */
+    static alert (msg, callback, options) {
+        if (!_.isFunction(callback)) {
+            options = options || callback;
+            callback = ModalController.close;
+        }
+
+        var defaultOptions = {
+            body: (
+                <div style={styles.alertWrap}>
+                    <div style={styles.alertContent}>{msg}</div>
+                </div>
+            ),
+            footer: (
+                <div>
+                    <button className={ModalController.prefix + 'btn primary'} style={{ marginRight: 0 }} onClick={callback} > {options && options.confirm ? options.confirm : '确定'}</button>
+                </div>
+            ),
+            closeByMask: false,
+            callback: callback
+        };
+
+        options = _.extend(defaultOptions, options);
+
+        return ModalController.open(options);
+    };
+
+    /**
+     * Open a confirm modal
+     * @param {string} msg
+     * @param {function} [callback=_.noop]
+     * @param {object} [options] Modal设置（title、class、id等）
+     */
+    static confirm (msg, callback, options) {
+        if (!_.isFunction(callback)) {
+            options = options || callback;
+            callback = _.noop;
+        }
+
+        var defaultOptions = {
+            body: (
+                <div style={styles.alertWrap}>
+                    <div style={styles.alertContent}>{msg}</div>
+                </div>
+            ),
+            footer: (
+                <div>
+                    <button className={ModalController.prefix + 'btn'} onClick={ModalController.close}>取消
+                    </button>
+                    <button className={ModalController.prefix + 'btn primary'} style={{marginRight: 0}} onClick={callback}>{(options && options.confirm) || '确定'}
+                    </button>
+                </div>
+            ),
+            closeByMask: false,
+            callback: callback
+        };
+
+        options = _.extend(defaultOptions, options);
+
+        return ModalController.open(options);
+    }
+    /**
+     * Open a tip modal
+     * @param {string} msg
+     * @param {function|int} [callback]
+     * @param {int|object} [delay=800] time before the tip dismisses
+     * @param {object} [options] Modal设置（title、class、id等）
+     */
+    static tip (msg, callback, delay, options) {
+        if (!_.isFunction(callback)) {
+            options = delay;
+            delay = callback;
+            callback = _.noop;
+        }
+        if (!_.isNumber(delay)) {
+            options = delay;
+            delay = 800;
+        }
+
+        let defaultOptions = {
+            body: (
+                <div style={styles.alertWrap}>{msg}</div>
+            ),
+            closeByMask: false
+        };
+
+        options = _.extend(defaultOptions, options);
+
+        let modalId = ModalController.open(options);
+
+        callback = _.compose(callback, ModalController.close.bind(ModalController, modalId));
+
+        if (delay > 0) {
+            setTimeout(function () {
+                callback();
+            }, delay);
+        }
+
+        return modalId;
+    };
+
+    static update (id) {
+    var modalComponent = ModalController._findComponent(id);
+
+    if (!modalComponent) {
+        return;
+    }
+
+    modalComponent.forceUpdate();
+};
+
+    static updateTitle (title, id) {
+        var modalComponent = id ? ModalController._findComponent(id) : ModalController._activeComponent();
+            if (!modalComponent) {
+            return;
+        }
+
+        modalComponent.setState({
+            title: title
+        });
+    };
+
+    static noConflict () {
+        window.ReactModal = _previousReactModal;
+
+        return ModalController;
+    };
+
+    static withPrefix (prefix) {
+        if (ModalController.prefix !== prefix) {
+            ModalController.prefix = prefix;
+            ModalController._forceUpdate();
+        }
+
+        return ModalController;
+    };
+    // Private method
+    static _activeComponent () {
+        try {
+            var activeID = _.last(ModalController.modals).id;
+        } catch (e) {
+            return null;
+        }
+
+        return ModalController.instance.refs[activeID] || null;
+    };
+
+    static _findComponent (id) {
+        if (ModalController.instance === null) {
+            return null;
+        }
+
+        if (!_.isString(id)) {
             try {
-                var activeID = _.last(ModalController.modals).id;
+                id = _.last(ModalController.modals).id;
             } catch (e) {
                 return null;
             }
-
-            return ModalController.instance.refs[activeID] || null;
-        },
-
-        _findComponent: function (id) {
-            if (ModalController.instance === null) {
-                return null;
-            }
-
-            if (!_.isString(id)) {
-                try {
-                    id = _.last(ModalController.modals).id;
-                } catch (e) {
-                    return null;
-                }
-            }
-
-            return ModalController.instance.refs[id] || null;
-        },
-
-        _forceUpdate: function () {
-            if (ModalController.instance === null) {
-                return;
-            }
-
-            ModalController.instance.forceUpdate();
         }
-    },
 
-    componentDidMount: function () {
+        return ModalController.instance.refs[id] || null;
+    };
+
+    static _forceUpdate () {
+        if (ModalController.instance === null) {
+            return;
+        }
+
+        ModalController.instance.forceUpdate();
+    }
+
+    constructor (props) {
+        super(props);
+        this.state = {
+
+        };
+    }
+
+    componentDidMount () {
         ModalController.instance = this;
-    },
+    }
 
-    componentWillUnmount: function () {
+    componentWillUnmount () {
         ModalController.instance = null;
-    },
+    }
 
     /*componentWillUpdate() {
      console.time('ModalController render');
@@ -287,7 +293,7 @@ const ModalController = React.createClass({
      console.timeEnd('ModalController render');
      },*/
 
-    render: function () {
+    render () {
         ModalController.layoutStyle = {};
 
         var modals = ModalController.modals,
@@ -323,9 +329,9 @@ const ModalController = React.createClass({
                 }, this)}
             </div>
         );
-    },
+    }
 
-    handleMaskClick: function () {
+    handleMaskClick () {
         var activeModal = _.last(ModalController.modals);
         if (!activeModal.closeByMask) {
             return;
@@ -333,31 +339,27 @@ const ModalController = React.createClass({
 
         ModalController.closeAll();
     }
-});
+}
 
-var Modal = React.createClass({
-    getDefaultProps: function () {
-        return {
-            active: false
-        };
-    },
-
-    getInitialState: function () {
-        var modal = this.props.data;
-
-        return {
+class Modal extends Component {
+    static defaultProps = {
+        active: false
+    };
+    constructor (props) {
+        super(props);
+        const modal = this.props.data;
+        this.state = {
             title: modal.title,
             body: modal.body,
             footer: modal.footer,
             style: {},
             width: 0,
             height: 0
-        };
-    },
-
-    componentDidMount: function () {
+        }
+    }
+    componentDidMount () {
         this.locate();
-    },
+    }
 
     shouldComponentUpdate(nextProps, nextState) {
         if (nextProps.active !== this.props.active) {
@@ -376,22 +378,13 @@ var Modal = React.createClass({
         }
 
         return false;
-    },
+    }
 
-    /*componentWillUpdate() {
-     //console.time('Modal ' + this.props.data.id + ' render');
-     },*/
-
-    componentDidUpdate: function () {
+    componentDidUpdate () {
         this.locate();
-        //console.timeEnd('Modal ' + this.props.data.id + ' render');
-    },
+    }
 
-    /*componentWillUnmount: function () {
-     //console.log('Modal with ID %s will unmount', this.props.data.id);
-     },*/
-
-    render: function () {
+    render () {
         var prefix = ModalController.prefix;
 
         var {id, className} = this.props.data,
@@ -413,7 +406,7 @@ var Modal = React.createClass({
                     <div className={prefix + 'modal-header'} style={styles.modalHeader}>
                         <h2 className={prefix + 'title'} style={styles.modalTitle}>{title}</h2>
                         <a className={prefix + 'modal-close'} style={styles.modalClose} href="javascript:"
-                           onClick={this.close}>×</a>
+                           onClick={this.close.bind(this)}>×</a>
                     </div>
                 )}
 
@@ -423,9 +416,9 @@ var Modal = React.createClass({
                 )}
             </div>
         );
-    },
+    }
 
-    locate: function () {
+    locate () {
         //console.time('Modal ' + this.props.data.id + ' locate');
 
         var modalDOM = ReactDom.findDOMNode(this);
@@ -462,24 +455,24 @@ var Modal = React.createClass({
         }
 
         //console.timeEnd('Modal ' + this.props.data.id + ' locate');
-    },
+    }
 
-    close: function () {
+    close () {
         ModalController.close(this.props.data.id);
-    },
+    }
 
-    handleBeforeClose: function () {
+    handleBeforeClose () {
         var modal = this.props.data;
         return !(modal.beforeClose && modal.beforeClose() === false);
     }
-});
+}
 
-var _previousReactModal = window.ReactModal;
+const _previousReactModal = window.ReactModal;
 
 if (_previousReactModal === undefined || _previousReactModal !== ModalController) {
     window.ReactModal = ModalController;
 
-    var modalContainer = document.createElement('div');
+    const modalContainer = document.createElement('div');
 
     document.body.appendChild(modalContainer);
     ReactDom.render(<ModalController />, modalContainer);
