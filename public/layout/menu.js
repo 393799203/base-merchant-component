@@ -46,6 +46,10 @@ export default [
     {
         title: '图片上传 - ImageUploader',
         link: '#/image-uploader'
+    },
+    {
+        title: '表格 - Table',
+        link: '#/table'
     }
 ];
 

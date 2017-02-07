@@ -174,10 +174,10 @@ table > thead > tr > th {
   	border:1px solid #eaeff0;
 }
 
-table > tbody > tr:nth-child(odd) > td,
-table > tbody > tr:nth-child(odd) > th {
-  	background-color: #fafbfc;
-}
+// table > tbody > tr:nth-child(odd) > td,
+// table > tbody > tr:nth-child(odd) > th {
+//   	background-color: #fafbfc;
+// }
 
 table > thead > th {
   	background-color: #fafbfc;
