@@ -17,8 +17,7 @@ class ModalController extends Component {
      * @param {object} options Modal设置（title、class、id等）
      */
     static open (options) {
-
-        let defaultOptions = {
+        const defaultOptions = {
             // options for modal
             title: null,
             body: null,
@@ -33,7 +32,7 @@ class ModalController extends Component {
         };
 
         if (options.classes !== undefined) {
-            console.log('Option `classes` is deprecated, use className instead');
+            // console.log('Option `classes` is deprecated, use className instead');
             options.className = options.classes;
             delete options.classes;
         }
@@ -46,8 +45,7 @@ class ModalController extends Component {
                 console.log('A modal with ID %s has existed', options.id);
                 return null;
             }
-        }
-        else {
+        } else {
             options.id = _.uniqueId('ReactModal-');
         }
 
@@ -63,7 +61,7 @@ class ModalController extends Component {
      * @return {ModalController}
      */
     static close (id) {
-        var index = -1;
+        let index = -1;
 
         if (_.isString(id)) {
             index = _.findIndex(ModalController.modals, function (modal) {
@@ -71,12 +69,12 @@ class ModalController extends Component {
             });
 
             if (index < 0) {
-                console.log('modal with ID %s not found', id);
+                // console.log('modal with ID %s not found', id);
                 return ModalController;
             }
         }
 
-        var modalComponent = ModalController._findComponent(id);
+        const modalComponent = ModalController._findComponent(id);
         if (modalComponent && modalComponent.handleBeforeClose()) {
             ModalController.modals.splice(index, 1);
             ModalController._forceUpdate();
@@ -85,7 +83,7 @@ class ModalController extends Component {
     };
 
     static closeAll () {
-        var activeComponent = ModalController._activeComponent();
+        const activeComponent = ModalController._activeComponent();
         if (activeComponent && activeComponent.handleBeforeClose()) {
             ModalController.modals = [];
             ModalController._forceUpdate();
@@ -106,7 +104,7 @@ class ModalController extends Component {
             callback = ModalController.close;
         }
 
-        var defaultOptions = {
+        const defaultOptions = {
             body: (
                 <div style={styles.alertWrap}>
                     <div style={styles.alertContent}>{msg}</div>
@@ -138,7 +136,7 @@ class ModalController extends Component {
             callback = _.noop;
         }
 
-        var defaultOptions = {
+        const defaultOptions = {
             body: (
                 <div style={styles.alertWrap}>
                     <div style={styles.alertContent}>{msg}</div>
@@ -148,7 +146,7 @@ class ModalController extends Component {
                 <div>
                     <button className={ModalController.prefix + 'btn'} onClick={ModalController.close}>取消
                     </button>
-                    <button className={ModalController.prefix + 'btn primary'} style={{marginRight: 0}} onClick={callback}>{(options && options.confirm) || '确定'}
+                    <button className={ModalController.prefix + 'btn primary'} style={{ marginRight: 0 }} onClick={callback}>{(options && options.confirm) || '确定'}
                     </button>
                 </div>
             ),
@@ -178,7 +176,7 @@ class ModalController extends Component {
             delay = 800;
         }
 
-        let defaultOptions = {
+        const defaultOptions = {
             body: (
                 <div style={styles.alertWrap}>{msg}</div>
             ),
@@ -187,7 +185,7 @@ class ModalController extends Component {
 
         options = _.extend(defaultOptions, options);
 
-        let modalId = ModalController.open(options);
+        const modalId = ModalController.open(options);
 
         callback = _.compose(callback, ModalController.close.bind(ModalController, modalId));
 
@@ -201,18 +199,18 @@ class ModalController extends Component {
     };
 
     static update (id) {
-    var modalComponent = ModalController._findComponent(id);
+        const modalComponent = ModalController._findComponent(id);
 
-    if (!modalComponent) {
-        return;
-    }
+        if (!modalComponent) {
+            return;
+        }
 
-    modalComponent.forceUpdate();
-};
+        modalComponent.forceUpdate();
+    };
 
     static updateTitle (title, id) {
         var modalComponent = id ? ModalController._findComponent(id) : ModalController._activeComponent();
-            if (!modalComponent) {
+        if (!modalComponent) {
             return;
         }
 
@@ -237,8 +235,9 @@ class ModalController extends Component {
     };
     // Private method
     static _activeComponent () {
+        let activeID;
         try {
-            var activeID = _.last(ModalController.modals).id;
+            activeID = _.last(ModalController.modals).id;
         } catch (e) {
             return null;
         }
@@ -296,12 +295,13 @@ class ModalController extends Component {
     render () {
         ModalController.layoutStyle = {};
 
-        var modals = ModalController.modals,
-            activeModal = _.last(modals),
-            modalsCount = modals.length;
+        const modals = ModalController.modals;
+        const activeModal = _.last(modals);
+        const modalsCount = modals.length;
 
-        var modalWrapStyle = _.extend({}, styles.modalWrap),
-            modalMaskStyle = _.extend({}, styles.modalMask);
+        let modalWrapStyle = _.extend({}, styles.modalWrap);
+        let modalMaskStyle = _.extend({}, styles.modalMask);
+
         if (modalsCount > 0) {
             modalWrapStyle.display = 'block';
 
@@ -311,9 +311,10 @@ class ModalController extends Component {
 
             if (activeModal.isAbsolute) {
                 modalWrapStyle.position = 'absolute';
-                let scrollTop = window.pageYOffset || document.body.scrollTop,
-                    windowHeight = window.innerHeight || document.documentElement.clientHeight;
-                ModalController.layoutStyle.top = scrollTop + windowHeight / 2;
+
+                const scrollTop = window.pageYOffset || document.body.scrollTop;
+                const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+                ModalController.layoutStyle.top = scrollTop + (windowHeight / 2);
             }
         }
 
@@ -324,7 +325,7 @@ class ModalController extends Component {
 
                 {modals.map(function (modal) {
                     return (
-                        <Modal key={modal.id} ref={modal.id} data={modal} active={modal === activeModal}/>
+                        <Modal key={modal.id} ref={modal.id} data={modal} active={modal === activeModal} />
                     );
                 }, this)}
             </div>
@@ -332,7 +333,7 @@ class ModalController extends Component {
     }
 
     handleMaskClick () {
-        var activeModal = _.last(ModalController.modals);
+        const activeModal = _.last(ModalController.modals);
         if (!activeModal.closeByMask) {
             return;
         }
@@ -355,7 +356,7 @@ class Modal extends Component {
             style: {},
             width: 0,
             height: 0
-        }
+        };
     }
     componentDidMount () {
         this.locate();
@@ -366,7 +367,7 @@ class Modal extends Component {
             return true;
         }
 
-        var state = this.state;
+        let state = this.state;
         if (nextState.title !== state.title
             || nextState.width !== state.width
             || nextState.height !== state.height) {
@@ -385,28 +386,27 @@ class Modal extends Component {
     }
 
     render () {
-        var prefix = ModalController.prefix;
+        const prefix = ModalController.prefix;
 
-        var {id, className} = this.props.data,
-            {title, body,footer, style} = this.state;
+        const { id, className } = this.props.data;
+        const { title, body, footer, style } = this.state;
 
         this.layoutStyle = ModalController.layoutStyle;
 
-        var modalStyle = _.extend({}, styles.modal, ModalController.layoutStyle, style);
+        let modalStyle = _.extend({}, styles.modal, ModalController.layoutStyle, style);
 
         if (this.props.active) {
             _.extend(modalStyle, styles.modalActive);
         }
 
-        var modalClassName = _.compact([prefix + 'modal', className]).join(' ');
+        const modalClassName = _.compact([prefix + 'modal', className]).join(' ');
 
         return (
             <div id={id} className={modalClassName} style={modalStyle}>
                 {title && (
                     <div className={prefix + 'modal-header'} style={styles.modalHeader}>
                         <h2 className={prefix + 'title'} style={styles.modalTitle}>{title}</h2>
-                        <a className={prefix + 'modal-close'} style={styles.modalClose} href="javascript:"
-                           onClick={this.close.bind(this)}>×</a>
+                        <a className={prefix + 'modal-close'} style={styles.modalClose} href='javascript:' onClick={this.close.bind(this)}>×</a>
                     </div>
                 )}
 
@@ -419,15 +419,15 @@ class Modal extends Component {
     }
 
     locate () {
-        //console.time('Modal ' + this.props.data.id + ' locate');
+        // console.time('Modal ' + this.props.data.id + ' locate');
 
-        var modalDOM = ReactDom.findDOMNode(this);
-        var height = modalDOM.offsetHeight,
-            width = modalDOM.offsetWidth;
-        var state = this.state;
+        const modalDOM = ReactDom.findDOMNode(this);
+        const height = modalDOM.offsetHeight;
+        const width = modalDOM.offsetWidth;
+        const state = this.state;
 
         if (Math.abs(width - state.width) > 3 || Math.abs(height - state.height) > 3) {
-            //console.log('Modal ' + this.props.data.id + ' need relocate');
+            // console.log('Modal ' + this.props.data.id + ' need relocate');
             let marginTop = height / -2;
             if (marginTop + ModalController.layoutStyle.top < 0) {
                 marginTop = -ModalController.layoutStyle.top;
@@ -447,14 +447,13 @@ class Modal extends Component {
                 height: height,
                 style: {
                     marginTop: marginTop,
-                    marginLeft: width / -2,
+                    marginLeft: width / -2
                     // maxHeight: screenHeight,
                     // overflowY: 'scroll'
-                },
+                }
             });
         }
-
-        //console.timeEnd('Modal ' + this.props.data.id + ' locate');
+        // console.timeEnd('Modal ' + this.props.data.id + ' locate');
     }
 
     close () {
