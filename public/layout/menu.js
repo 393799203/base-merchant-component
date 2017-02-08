@@ -20,6 +20,10 @@ export default [
         link: '#/panel'
     },
     {
+        title: '弹框 - Modal',
+        link: '#/modal'
+    },
+    {
         title: '消息提示 - Notification',
         link: '#/notification'
     },
