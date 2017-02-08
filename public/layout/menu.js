@@ -20,6 +20,10 @@ export default [
         link: '#/panel'
     },
     {
+        title: '弹框 - Modal',
+        link: '#/modal'
+    },
+    {
         title: '消息提示 - Notification',
         link: '#/notification'
     },
@@ -46,6 +50,13 @@ export default [
     {
         title: '图片上传 - ImageUploader',
         link: '#/image-uploader'
+    },
+    {
+        title: '表格 - Table',
+        link: '#/table'
+    },{
+        title: '下拉框 - Select',
+        link: '#/select'
     }
 ];
 

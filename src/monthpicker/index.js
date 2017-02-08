@@ -23,7 +23,7 @@ export default class MonthPicker extends Component {
         transitionName: 'slide-mc',
         locale: {},
         placeholder: '',
-        defaultValue: '',
+        defaultValue: ''
     };
 
     static propTypes = {
@@ -119,7 +119,7 @@ export default class MonthPicker extends Component {
             }
         } else if (value === null) {
             return value;
-        } 
+        }
         return undefined;
     }
 
@@ -181,7 +181,7 @@ export default class MonthPicker extends Component {
                                   placeholder={placeholder}
                                   onChange={e => this.handleInputChange(e)}
                                   style={this.props.style}
-                                  className={`mc-calendar-picker-input`}
+                                  className={'mc-calendar-picker-input'}
                                 />
                                 <span className='mc-calendar-picker-icon' />
                             </span>

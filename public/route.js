@@ -22,6 +22,9 @@ import DatepickerView from './pages/datepicker';
 import MonthpickerView from './pages/monthpicker';
 import RangepickerView from './pages/rangepicker';
 import TimepickerView from './pages/timepicker';
+import ModalView from './pages/modal';
+import TableView from './pages/table';
+import SelectView from './pages/select';
 
 export default (
     <Router history={hashHistory}>
@@ -39,12 +42,15 @@ export default (
             <Route path='pager' component={PagerView} />
             <Route path='pagination' component={PaginationView} />
             <Route path='notification' component={NotificationView} />
+            <Route path='modal' component={ModalView} />
             <Route path='tooltip' component={TooltipView} />
             <Route path='datepicker' component={DatepickerView} />
             <Route path='monthpicker' component={MonthpickerView} />
             <Route path='rangepicker' component={RangepickerView} />
             <Route path='timepicker' component={TimepickerView} />
             <Route path='image-uploader' component={ImageUploaderView} />
+            <Route path='table' component={TableView} />
+            <Route path='select' component={SelectView} />
         </Route>
     </Router>
 );
