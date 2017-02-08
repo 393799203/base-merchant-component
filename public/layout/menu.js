@@ -70,6 +70,10 @@ export default [
     {
         title: 'TT - teamtalk',
         link: '#/teamtalk'
+    },
+    {
+        title: '手机区号 - AreaCode',
+        link: '#/areacode'
     }
 ];
 

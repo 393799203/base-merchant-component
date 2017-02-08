@@ -1,275 +1,276 @@
-import React, { Component } from 'react';
-// import './style/index.less';
+import React, { Component, PropTypes } from 'react';
+import { Select } from 'source_path/select';
 
-const _noop = function(){};
+const noop = function () {};
 
 export default class AreaCode extends Component {
-	constructor (props) {
-		super(props);
-		this.state = {
-			value: props.value || '86',
-			className: props.className || 'mc-area-select',
-		}
-        AreaCode.instance = this;
-	}
-
-    static clearData(){
-        AreaCode.instance.setState({
-            value : '86'
-        },()=>{
-            AreaCode.instance.props.onChange( String(Math.abs(+'86')) )
-        })
+    constructor () {
+        super();
+        this.state = {
+            options: [
+                { text: '- 请选择 -', value: '-1' },
+                { text: '+93 ‫افغانستان‬‎ (Afghanistan)', value: '93' },
+                { text: '+355 Shqipëri (Albania)', value: '355' },
+                { text: '+213 Algeria', value: '213' },
+                { text: '+1684 American Samoa', value: '1684' },
+                { text: '+376 Andorra', value: '376' },
+                { text: '+244 Angola', value: '244' },
+                { text: '+1264 Anguilla', value: '1264' },
+                { text: '+1268 Antigua & Barbuda', value: '1268' },
+                { text: '+54 Argentina', value: '54' },
+                { text: '+374 Հայաստան (Armenia)', value: '374' },
+                { text: '+297 Aruba', value: '297' },
+                { text: '+247 Ascension Island', value: '247' },
+                { text: '+61 Australia', value: '61' },
+                { text: '+43 Österreich (Austria)', value: '43' },
+                { text: '+994 Azərbaycan (Azerbaijan)', value: '994' },
+                { text: '+1242 Bahamas', value: '1242' },
+                { text: '+973 ‫البحرين‬‎ (Bahrain)', value: '973' },
+                { text: '+880 বাংলাদেশ (Bangladesh)', value: '880' },
+                { text: '+1246 Barbados', value: '1246' },
+                { text: '+375 Беларусь (Belarus)', value: '375' },
+                { text: '+32 België (Belgium)', value: '32' },
+                { text: '+501 Belize', value: '501' },
+                { text: '+229 Bénin (Benin)', value: '229' },
+                { text: '+1441 Bermuda', value: '1441' },
+                { text: '+975 འབྲུག (Bhutan)', value: '975' },
+                { text: '+591 Bolivia', value: '591' },
+                { text: '+387 Босна и Херцеговина (Bosnia & Herzegovina)', value: '387' },
+                { text: '+267 Botswana', value: '267' },
+                { text: '+55 Brasil (Brazil)', value: '55' },
+                { text: '+246 British Indian Ocean Territory', value: '246' },
+                { text: '+1284 British Virgin Islands', value: '1284' },
+                { text: '+673 Brunei', value: '673' },
+                { text: '+359 България (Bulgaria)', value: '359' },
+                { text: '+226 Burkina Faso', value: '226' },
+                { text: '+257 Uburundi (Burundi)', value: '257' },
+                { text: '+855 កម្ពុជា (Cambodia)', value: '855' },
+                { text: '+237 Cameroun (Cameroon)', value: '237' },
+                { text: '+1 Canada', value: '1' },
+                { text: '+238 Kabu Verdi (Cape Verde)', value: '238' },
+                { text: '+599 Caribbean Netherlands', value: '599' },
+                { text: '+1345 Cayman Islands', value: '1345' },
+                { text: '+236 République centrafricaine (Central African Republic)', value: '236' },
+                { text: '+235 Tchad (Chad)', value: '235' },
+                { text: '+56 Chile', value: '56' },
+                { text: '+86 中国 (China)', value: '86' },
+                { text: '+57 Colombia', value: '57' },
+                { text: '+269 ‫جزر القمر‬‎ (Comoros)', value: '269' },
+                { text: '+243 Jamhuri ya Kidemokrasia ya Kongo (Congo (DRC))', value: '243' },
+                { text: '+242 Congo-Brazzaville (Congo (Republic))', value: '242' },
+                { text: '+682 Cook Islands', value: '682' },
+                { text: '+506 Costa Rica', value: '506' },
+                { text: '+225 Côte d’Ivoire', value: '225' },
+                { text: '+385 Hrvatska (Croatia)', value: '385' },
+                { text: '+53 Cuba', value: '53' },
+                { text: '+599 Curaçao', value: '599' },
+                { text: '+357 Κύπρος (Cyprus)', value: '357' },
+                { text: '+420 Česká republika (Czech Republic)', value: '420' },
+                { text: '+45 Danmark (Denmark)', value: '45' },
+                { text: '+253 Djibouti', value: '253' },
+                { text: '+1767 Dominica', value: '1767' },
+                { text: '+1809 República Dominicana (Dominican Republic)', value: '1809' },
+                { text: '+593 Ecuador', value: '593' },
+                { text: '+20 ‫مصر‬‎ (Egypt)', value: '20' },
+                { text: '+503 El Salvador', value: '503' },
+                { text: '+240 Guinea Ecuatorial (Equatorial Guinea)', value: '240' },
+                { text: '+291 Eritrea', value: '291' },
+                { text: '+372 Eesti (Estonia)', value: '372' },
+                { text: '+251 Ethiopia', value: '251' },
+                { text: '+500 Islas Malvinas (Falkland Islands)', value: '500' },
+                { text: '+298 Føroyar (Faroe Islands)', value: '298' },
+                { text: '+679 Fiji', value: '679' },
+                { text: '+358 Suomi (Finland)', value: '358' },
+                { text: '+33 France', value: '33' },
+                { text: '+594 Guyane française (French Guiana)', value: '594' },
+                { text: '+689 Polynésie française (French Polynesia)', value: '689' },
+                { text: '+241 Gabon', value: '241' },
+                { text: '+220 Gambia', value: '220' },
+                { text: '+995 საქართველო (Georgia)', value: '995' },
+                { text: '+49 Deutschland (Germany)', value: '49' },
+                { text: '+233 Gaana (Ghana)', value: '233' },
+                { text: '+350 Gibraltar', value: '350' },
+                { text: '+30 Ελλάδα (Greece)', value: '30' },
+                { text: '+299 Kalaallit Nunaat (Greenland)', value: '299' },
+                { text: '+1473 Grenada', value: '1473' },
+                { text: '+590 Guadeloupe', value: '590' },
+                { text: '+1671 Guam', value: '1671' },
+                { text: '+502 Guatemala', value: '502' },
+                { text: '+224 Guinée (Guinea)', value: '224' },
+                { text: '+245 Guiné Bissau (Guinea-Bissau)', value: '245' },
+                { text: '+592 Guyana', value: '592' },
+                { text: '+509 Haiti', value: '509' },
+                { text: '+504 Honduras', value: '504' },
+                { text: '+852 香港 (Hong Kong)', value: '852' },
+                { text: '+36 Magyarország (Hungary)', value: '36' },
+                { text: '+354 Ísland (Iceland)', value: '354' },
+                { text: '+91 भारत (India)', value: '91' },
+                { text: '+62 Indonesia', value: '62' },
+                { text: '+98 ‫ایران‬‎ (Iran)', value: '98' },
+                { text: '+964 ‫العراق‬‎ (Iraq)', value: '964' },
+                { text: '+353 Ireland', value: '353' },
+                { text: '+972 ‫ישראל‬‎ (Israel)', value: '972' },
+                { text: '+39 Italia (Italy)', value: '39' },
+                { text: '+1876 Jamaica', value: '1876' },
+                { text: '+81 日本 (Japan)', value: '81' },
+                { text: '+962 ‫الأردن‬‎ (Jordan)', value: '962' },
+                { text: '+7 Казахстан (Kazakhstan)', value: '7' },
+                { text: '+254 Kenya', value: '254' },
+                { text: '+686 Kiribati', value: '686' },
+                { text: '+965 ‫الكويت‬‎ (Kuwait)', value: '965' },
+                { text: '+996 Кыргызстан (Kyrgyzstan)', value: '996' },
+                { text: '+856 ລາວ (Laos)', value: '856' },
+                { text: '+371 Latvija (Latvia)', value: '371' },
+                { text: '+961 ‫لبنان‬‎ (Lebanon)', value: '961' },
+                { text: '+266 Lesotho', value: '266' },
+                { text: '+231 Liberia', value: '231' },
+                { text: '+218 ‫ليبيا‬‎ (Libya)', value: '218' },
+                { text: '+423 Liechtenstein', value: '423' },
+                { text: '+370 Lietuva (Lithuania)', value: '370' },
+                { text: '+352 Luxembourg', value: '352' },
+                { text: '+853 澳門 (Macau)', value: '853' },
+                { text: '+389 Македонија (Macedonia (FYROM))', value: '389' },
+                { text: '+261 Madagasikara (Madagascar)', value: '261' },
+                { text: '+265 Malawi', value: '265' },
+                { text: '+60 Malaysia', value: '60' },
+                { text: '+960 Maldives', value: '960' },
+                { text: '+223 Mali', value: '223' },
+                { text: '+356 Malta', value: '356' },
+                { text: '+692 Marshall Islands', value: '692' },
+                { text: '+596 Martinique', value: '596' },
+                { text: '+222 ‫موريتانيا‬‎ (Mauritania)', value: '222' },
+                { text: '+230 Moris (Mauritius)', value: '230' },
+                { text: '+52 México (Mexico)', value: '52' },
+                { text: '+691 Micronesia', value: '691' },
+                { text: '+373 Republica Moldova (Moldova)', value: '373' },
+                { text: '+377 Monaco', value: '377' },
+                { text: '+976 Монгол (Mongolia)', value: '976' },
+                { text: '+382 Crna Gora (Montenegro)', value: '382' },
+                { text: '+1664 Montserrat', value: '1664' },
+                { text: '+212 Morocco', value: '212' },
+                { text: '+258 Moçambique (Mozambique)', value: '258' },
+                { text: '+95 မြန်မာ (Myanmar (Burma))', value: '95' },
+                { text: '+264 Namibië (Namibia)', value: '264' },
+                { text: '+674 Nauru', value: '674' },
+                { text: '+977 नेपाल (Nepal)', value: '977' },
+                { text: '+31 Nederland (Netherlands)', value: '31' },
+                { text: '+687 Nouvelle-Calédonie (New Caledonia)', value: '687' },
+                { text: '+64 New Zealand', value: '64' },
+                { text: '+505 Nicaragua', value: '505' },
+                { text: '+227 Nijar (Niger)', value: '227' },
+                { text: '+234 Nigeria', value: '234' },
+                { text: '+683 Niue', value: '683' },
+                { text: '+6723 Norfolk Island', value: '6723' },
+                { text: '+1 Northern Mariana Islands', value: '1' },
+                { text: '+850 조선 민주주의 인민 공화국 (North Korea)', value: '850' },
+                { text: '+47 Norge (Norway)', value: '47' },
+                { text: '+968 ‫عُمان‬‎ (Oman)', value: '968' },
+                { text: '+92 ‫پاکستان‬‎ (Pakistan)', value: '92' },
+                { text: '+680 Palau', value: '680' },
+                { text: '+970 ‫فلسطين‬‎ (Palestine)', value: '970' },
+                { text: '+507 Panamá (Panama)', value: '507' },
+                { text: '+675 Papua New Guinea', value: '675' },
+                { text: '+595 Paraguay', value: '595' },
+                { text: '+51 Perú (Peru)', value: '51' },
+                { text: '+63 Philippines', value: '63' },
+                { text: '+48 Polska (Poland)', value: '48' },
+                { text: '+351 Portugal', value: '351' },
+                { text: '+1787 Puerto Rico', value: '1787' },
+                { text: '+974 ‫قطر‬‎ (Qatar)', value: '974' },
+                { text: '+262 La Réunion (Réunion)', value: '262' },
+                { text: '+40 România (Romania)', value: '40' },
+                { text: '+7 Россия (Russia)', value: '7' },
+                { text: '+250 Rwanda', value: '250' },
+                { text: '+685 Samoa', value: '685' },
+                { text: '+378 San Marino', value: '378' },
+                { text: '+239 São Tomé e Príncipe (São Tomé & Príncipe)', value: '239' },
+                { text: '+966 ‫المملكة العربية السعودية‬‎ (Saudi Arabia)', value: '966' },
+                { text: '+221 Senegal', value: '221' },
+                { text: '+381 Србија (Serbia)', value: '381' },
+                { text: '+248 Seychelles', value: '248' },
+                { text: '+232 Sierra Leone', value: '232' },
+                { text: '+65 Singapore', value: '65' },
+                { text: '+1721 Sint Maarten', value: '1721' },
+                { text: '+421 Slovensko (Slovakia)', value: '421' },
+                { text: '+386 Slovenija (Slovenia)', value: '386' },
+                { text: '+677 Solomon Islands', value: '677' },
+                { text: '+252 Soomaaliya (Somalia)', value: '252' },
+                { text: '+27 South Africa', value: '27' },
+                { text: '+82 대한민국 (South Korea)', value: '82' },
+                { text: '+211 ‫جنوب السودان‬‎ (South Sudan)', value: '211' },
+                { text: '+34 España (Spain)', value: '34' },
+                { text: '+94 ශ්‍රී ලංකාව (Sri Lanka)', value: '94' },
+                { text: '+590 Saint-Barthélemy (St. Barthélemy)', value: '590' },
+                { text: '+290 St. Helena', value: '290' },
+                { text: '+1869 St. Kitts & Nevis', value: '1869' },
+                { text: '+1758 St. Lucia', value: '1758' },
+                { text: '+590 partie française) (St. Martin (Saint-Martin)', value: '590' },
+                { text: '+508 Saint-Pierre-et-Miquelon (St. Pierre & Miquelon)', value: '508' },
+                { text: '+1784 St. Vincent & Grenadines', value: '1784' },
+                { text: '+249 ‫السودان‬‎ (Sudan)', value: '249' },
+                { text: '+597 Suriname', value: '597' },
+                { text: '+268 Swaziland', value: '268' },
+                { text: '+46 Sverige (Sweden)', value: '46' },
+                { text: '+41 Schweiz (Switzerland)', value: '41' },
+                { text: '+963 ‫سوريا‬‎ (Syria)', value: '963' },
+                { text: '+886 台灣 (Taiwan)', value: '886' },
+                { text: '+992 Tajikistan', value: '992' },
+                { text: '+255 Tanzania', value: '255' },
+                { text: '+66 ไทย (Thailand)', value: '66' },
+                { text: '+670 Timor-Leste', value: '670' },
+                { text: '+228 Togo', value: '228' },
+                { text: '+690 Tokelau', value: '690' },
+                { text: '+676 Tonga', value: '676' },
+                { text: '+1868 Trinidad & Tobago', value: '1868' },
+                { text: '+216 Tunisia', value: '216' },
+                { text: '+90 Türkiye (Turkey)', value: '90' },
+                { text: '+993 Turkmenistan', value: '993' },
+                { text: '+1649 Turks & Caicos Islands', value: '1649' },
+                { text: '+688 Tuvalu', value: '688' },
+                { text: '+1340 U.S. Virgin Islands', value: '1340' },
+                { text: '+256 Uganda', value: '256' },
+                { text: '+380 Україна (Ukraine)', value: '380' },
+                { text: '+971 ‫الإمارات العربية المتحدة‬‎ (United Arab Emirates)', value: '971' },
+                { text: '+44 United Kingdom', value: '44' },
+                { text: '+1 United States', value: '-1' },
+                { text: '+598 Uruguay', value: '598' },
+                { text: '+998 Oʻzbekiston (Uzbekistan)', value: '998' },
+                { text: '+678 Vanuatu', value: '678' },
+                { text: '+379 Città del Vaticano (Vatican City)', value: '379' },
+                { text: '+58 Venezuela', value: '58' },
+                { text: '+84 Việt Nam (Vietnam)', value: '84' },
+                { text: '+681 Wallis & Futuna', value: '681' },
+                { text: '+967 ‫اليمن‬‎ (Yemen)', value: '967' },
+                { text: '+260 Zambia', value: '260' },
+                { text: '+263 Zimbabwe', value: '263' }
+            ]
+        };
     }
-
-	handleChange (e) {
-		let value = e.target.value || '86';
-		this.setState({
-			value: value
-		}, () => {
-			this.props.onChange( String(Math.abs(+value)) )
-		})
-	}
-
-	render () {
-		let { value, className } = this.state;
-        let disabled = this.props.disabled || false;
-		return (
-            <select value={value} className={disabled ? className+' disabled' : className} onChange={disabled ? _noop : (e) => this.handleChange(e)}>
-                <option value='93'>+93&nbsp;‫افغانستان‬‎ (Afghanistan)</option>
-                <option value='355'>+355&nbsp;Shqipëri (Albania)</option>
-                <option value='213'>+213&nbsp;Algeria</option>
-                <option value='1684'>+1684&nbsp;American Samoa</option>
-                <option value='376'>+376&nbsp;Andorra</option>
-                <option value='244'>+244&nbsp;Angola</option>
-                <option value='1264'>+1264&nbsp;Anguilla</option>
-                <option value='1268'>+1268&nbsp;Antigua &amp; Barbuda</option>
-                <option value='54'>+54&nbsp;Argentina</option>
-                <option value='374'>+374&nbsp;Հայաստան (Armenia)</option>
-                <option value='297'>+297&nbsp;Aruba</option>
-                <option value='247'>+247&nbsp;Ascension Island</option>
-                <option value='61'>+61&nbsp;Australia</option>
-                <option value='43'>+43&nbsp;Österreich (Austria)</option>
-                <option value='994'>+994&nbsp;Azərbaycan (Azerbaijan)</option>
-                <option value='1242'>+1242&nbsp;Bahamas</option>
-                <option value='973'>+973&nbsp;‫البحرين‬‎ (Bahrain)</option>
-                <option value='880'>+880&nbsp;বাংলাদেশ (Bangladesh)</option>
-                <option value='1246'>+1246&nbsp;Barbados</option>
-                <option value='375'>+375&nbsp;Беларусь (Belarus)</option>
-                <option value='32'>+32&nbsp;België (Belgium)</option>
-                <option value='501'>+501&nbsp;Belize</option>
-                <option value='229'>+229&nbsp;Bénin (Benin)</option>
-                <option value='1441'>+1441&nbsp;Bermuda</option>
-                <option value='975'>+975&nbsp;འབྲུག (Bhutan)</option>
-                <option value='591'>+591&nbsp;Bolivia</option>
-                <option value='387'>+387&nbsp;Босна и Херцеговина (Bosnia &amp; Herzegovina)</option>
-                <option value='267'>+267&nbsp;Botswana</option>
-                <option value='55'>+55&nbsp;Brasil (Brazil)</option>
-                <option value='246'>+246&nbsp;British Indian Ocean Territory</option>
-                <option value='1284'>+1284&nbsp;British Virgin Islands</option>
-                <option value='673'>+673&nbsp;Brunei</option>
-                <option value='359'>+359&nbsp;България (Bulgaria)</option>
-                <option value='226'>+226&nbsp;Burkina Faso</option>
-                <option value='257'>+257&nbsp;Uburundi (Burundi)</option>
-                <option value='855'>+855&nbsp;កម្ពុជា (Cambodia)</option>
-                <option value='237'>+237&nbsp;Cameroun (Cameroon)</option>
-                <option value='1'>+1&nbsp;Canada</option>
-                <option value='238'>+238&nbsp;Kabu Verdi (Cape Verde)</option>
-                <option value='599'>+599&nbsp;Caribbean Netherlands</option>
-                <option value='1345'>+1345&nbsp;Cayman Islands</option>
-                <option value='236'>+236&nbsp;République centrafricaine (Central African Republic)</option>
-                <option value='235'>+235&nbsp;Tchad (Chad)</option>
-                <option value='56'>+56&nbsp;Chile</option>
-                <option value='86'>+86&nbsp;中国 (China)</option>
-                <option value='57'>+57&nbsp;Colombia</option>
-                <option value='269'>+269&nbsp;‫جزر القمر‬‎ (Comoros)</option>
-                <option value='243'>+243&nbsp;Jamhuri ya Kidemokrasia ya Kongo (Congo (DRC))</option>
-                <option value='242'>+242&nbsp;Congo-Brazzaville (Congo (Republic))</option>
-                <option value='682'>+682&nbsp;Cook Islands</option>
-                <option value='506'>+506&nbsp;Costa Rica</option>
-                <option value='225'>+225&nbsp;Côte d’Ivoire</option>
-                <option value='385'>+385&nbsp;Hrvatska (Croatia)</option>
-                <option value='53'>+53&nbsp;Cuba</option>
-                <option value='599'>+599&nbsp;Curaçao</option>
-                <option value='357'>+357&nbsp;Κύπρος (Cyprus)</option>
-                <option value='420'>+420&nbsp;Česká republika (Czech Republic)</option>
-                <option value='45'>+45&nbsp;Danmark (Denmark)</option>
-                <option value='253'>+253&nbsp;Djibouti</option>
-                <option value='1767'>+1767&nbsp;Dominica</option>
-                <option value='1809'>+1809&nbsp;República Dominicana (Dominican Republic)</option>
-                <option value='593'>+593&nbsp;Ecuador</option>
-                <option value='20'>+20&nbsp;‫مصر‬‎ (Egypt)</option>
-                <option value='503'>+503&nbsp;El Salvador</option>
-                <option value='240'>+240&nbsp;Guinea Ecuatorial (Equatorial Guinea)</option>
-                <option value='291'>+291&nbsp;Eritrea</option>
-                <option value='372'>+372&nbsp;Eesti (Estonia)</option>
-                <option value='251'>+251&nbsp;Ethiopia</option>
-                <option value='500'>+500&nbsp;Islas Malvinas (Falkland Islands)</option>
-                <option value='298'>+298&nbsp;Føroyar (Faroe Islands)</option>
-                <option value='679'>+679&nbsp;Fiji</option>
-                <option value='358'>+358&nbsp;Suomi (Finland)</option>
-                <option value='33'>+33&nbsp;France</option>
-                <option value='594'>+594&nbsp;Guyane française (French Guiana)</option>
-                <option value='689'>+689&nbsp;Polynésie française (French Polynesia)</option>
-                <option value='241'>+241&nbsp;Gabon</option>
-                <option value='220'>+220&nbsp;Gambia</option>
-                <option value='995'>+995&nbsp;საქართველო (Georgia)</option>
-                <option value='49'>+49&nbsp;Deutschland (Germany)</option>
-                <option value='233'>+233&nbsp;Gaana (Ghana)</option>
-                <option value='350'>+350&nbsp;Gibraltar</option>
-                <option value='30'>+30&nbsp;Ελλάδα (Greece)</option>
-                <option value='299'>+299&nbsp;Kalaallit Nunaat (Greenland)</option>
-                <option value='1473'>+1473&nbsp;Grenada</option>
-                <option value='590'>+590&nbsp;Guadeloupe</option>
-                <option value='1671'>+1671&nbsp;Guam</option>
-                <option value='502'>+502&nbsp;Guatemala</option>
-                <option value='224'>+224&nbsp;Guinée (Guinea)</option>
-                <option value='245'>+245&nbsp;Guiné Bissau (Guinea-Bissau)</option>
-                <option value='592'>+592&nbsp;Guyana</option>
-                <option value='509'>+509&nbsp;Haiti</option>
-                <option value='504'>+504&nbsp;Honduras</option>
-                <option value='852'>+852&nbsp;香港 (Hong Kong)</option>
-                <option value='36'>+36&nbsp;Magyarország (Hungary)</option>
-                <option value='354'>+354&nbsp;Ísland (Iceland)</option>
-                <option value='91'>+91&nbsp;भारत (India)</option>
-                <option value='62'>+62&nbsp;Indonesia</option>
-                <option value='98'>+98&nbsp;‫ایران‬‎ (Iran)</option>
-                <option value='964'>+964&nbsp;‫العراق‬‎ (Iraq)</option>
-                <option value='353'>+353&nbsp;Ireland</option>
-                <option value='972'>+972&nbsp;‫ישראל‬‎ (Israel)</option>
-                <option value='39'>+39&nbsp;Italia (Italy)</option>
-                <option value='1876'>+1876&nbsp;Jamaica</option>
-                <option value='81'>+81&nbsp;日本 (Japan)</option>
-                <option value='962'>+962&nbsp;‫الأردن‬‎ (Jordan)</option>
-                <option value='7'>+7&nbsp;Казахстан (Kazakhstan)</option>
-                <option value='254'>+254&nbsp;Kenya</option>
-                <option value='686'>+686&nbsp;Kiribati</option>
-                <option value='965'>+965&nbsp;‫الكويت‬‎ (Kuwait)</option>
-                <option value='996'>+996&nbsp;Кыргызстан (Kyrgyzstan)</option>
-                <option value='856'>+856&nbsp;ລາວ (Laos)</option>
-                <option value='371'>+371&nbsp;Latvija (Latvia)</option>
-                <option value='961'>+961&nbsp;‫لبنان‬‎ (Lebanon)</option>
-                <option value='266'>+266&nbsp;Lesotho</option>
-                <option value='231'>+231&nbsp;Liberia</option>
-                <option value='218'>+218&nbsp;‫ليبيا‬‎ (Libya)</option>
-                <option value='423'>+423&nbsp;Liechtenstein</option>
-                <option value='370'>+370&nbsp;Lietuva (Lithuania)</option>
-                <option value='352'>+352&nbsp;Luxembourg</option>
-                <option value='853'>+853&nbsp;澳門 (Macau)</option>
-                <option value='389'>+389&nbsp;Македонија (Macedonia (FYROM))</option>
-                <option value='261'>+261&nbsp;Madagasikara (Madagascar)</option>
-                <option value='265'>+265&nbsp;Malawi</option>
-                <option value='60'>+60&nbsp;Malaysia</option>
-                <option value='960'>+960&nbsp;Maldives</option>
-                <option value='223'>+223&nbsp;Mali</option>
-                <option value='356'>+356&nbsp;Malta</option>
-                <option value='692'>+692&nbsp;Marshall Islands</option>
-                <option value='596'>+596&nbsp;Martinique</option>
-                <option value='222'>+222&nbsp;‫موريتانيا‬‎ (Mauritania)</option>
-                <option value='230'>+230&nbsp;Moris (Mauritius)</option>
-                <option value='52'>+52&nbsp;México (Mexico)</option>
-                <option value='691'>+691&nbsp;Micronesia</option>
-                <option value='373'>+373&nbsp;Republica Moldova (Moldova)</option>
-                <option value='377'>+377&nbsp;Monaco</option>
-                <option value='976'>+976&nbsp;Монгол (Mongolia)</option>
-                <option value='382'>+382&nbsp;Crna Gora (Montenegro)</option>
-                <option value='1664'>+1664&nbsp;Montserrat</option>
-                <option value='212'>+212&nbsp;Morocco</option>
-                <option value='258'>+258&nbsp;Moçambique (Mozambique)</option>
-                <option value='95'>+95&nbsp;မြန်မာ (Myanmar (Burma))</option>
-                <option value='264'>+264&nbsp;Namibië (Namibia)</option>
-                <option value='674'>+674&nbsp;Nauru</option>
-                <option value='977'>+977&nbsp;नेपाल (Nepal)</option>
-                <option value='31'>+31&nbsp;Nederland (Netherlands)</option>
-                <option value='687'>+687&nbsp;Nouvelle-Calédonie (New Caledonia)</option>
-                <option value='64'>+64&nbsp;New Zealand</option>
-                <option value='505'>+505&nbsp;Nicaragua</option>
-                <option value='227'>+227&nbsp;Nijar (Niger)</option>
-                <option value='234'>+234&nbsp;Nigeria</option>
-                <option value='683'>+683&nbsp;Niue</option>
-                <option value='6723'>+6723&nbsp;Norfolk Island</option>
-                <option value='1'>+1&nbsp;Northern Mariana Islands</option>
-                <option value='850'>+850&nbsp;조선 민주주의 인민 공화국 (North Korea)</option>
-                <option value='47'>+47&nbsp;Norge (Norway)</option>
-                <option value='968'>+968&nbsp;‫عُمان‬‎ (Oman)</option>
-                <option value='92'>+92&nbsp;‫پاکستان‬‎ (Pakistan)</option>
-                <option value='680'>+680&nbsp;Palau</option>
-                <option value='970'>+970&nbsp;‫فلسطين‬‎ (Palestine)</option>
-                <option value='507'>+507&nbsp;Panamá (Panama)</option>
-                <option value='675'>+675&nbsp;Papua New Guinea</option>
-                <option value='595'>+595&nbsp;Paraguay</option>
-                <option value='51'>+51&nbsp;Perú (Peru)</option>
-                <option value='63'>+63&nbsp;Philippines</option>
-                <option value='48'>+48&nbsp;Polska (Poland)</option>
-                <option value='351'>+351&nbsp;Portugal</option>
-                <option value='1787'>+1787&nbsp;Puerto Rico</option>
-                <option value='974'>+974&nbsp;‫قطر‬‎ (Qatar)</option>
-                <option value='262'>+262&nbsp;La Réunion (Réunion)</option>
-                <option value='40'>+40&nbsp;România (Romania)</option>
-                <option value='7'>+7&nbsp;Россия (Russia)</option>
-                <option value='250'>+250&nbsp;Rwanda</option>
-                <option value='685'>+685&nbsp;Samoa</option>
-                <option value='378'>+378&nbsp;San Marino</option>
-                <option value='239'>+239&nbsp;São Tomé e Príncipe (São Tomé &amp; Príncipe)</option>
-                <option value='966'>+966&nbsp;‫المملكة العربية السعودية‬‎ (Saudi Arabia)</option>
-                <option value='221'>+221&nbsp;Senegal</option>
-                <option value='381'>+381&nbsp;Србија (Serbia)</option>
-                <option value='248'>+248&nbsp;Seychelles</option>
-                <option value='232'>+232&nbsp;Sierra Leone</option>
-                <option value='65'>+65&nbsp;Singapore</option>
-                <option value='1721'>+1721&nbsp;Sint Maarten</option>
-                <option value='421'>+421&nbsp;Slovensko (Slovakia)</option>
-                <option value='386'>+386&nbsp;Slovenija (Slovenia)</option>
-                <option value='677'>+677&nbsp;Solomon Islands</option>
-                <option value='252'>+252&nbsp;Soomaaliya (Somalia)</option>
-                <option value='27'>+27&nbsp;South Africa</option>
-                <option value='82'>+82&nbsp;대한민국 (South Korea)</option>
-                <option value='211'>+211&nbsp;‫جنوب السودان‬‎ (South Sudan)</option>
-                <option value='34'>+34&nbsp;España (Spain)</option>
-                <option value='94'>+94&nbsp;ශ්‍රී ලංකාව (Sri Lanka)</option>
-                <option value='590'>+590&nbsp;Saint-Barthélemy (St. Barthélemy)</option>
-                <option value='290'>+290&nbsp;St. Helena</option>
-                <option value='1869'>+1869&nbsp;St. Kitts &amp; Nevis</option>
-                <option value='1758'>+1758&nbsp;St. Lucia</option>
-                <option value='590'>+590&nbsp;partie française) (St. Martin (Saint-Martin)</option>
-                <option value='508'>+508&nbsp;Saint-Pierre-et-Miquelon (St. Pierre &amp; Miquelon)</option>
-                <option value='1784'>+1784&nbsp;St. Vincent &amp; Grenadines</option>
-                <option value='249'>+249&nbsp;‫السودان‬‎ (Sudan)</option>
-                <option value='597'>+597&nbsp;Suriname</option>
-                <option value='268'>+268&nbsp;Swaziland</option>
-                <option value='46'>+46&nbsp;Sverige (Sweden)</option>
-                <option value='41'>+41&nbsp;Schweiz (Switzerland)</option>
-                <option value='963'>+963&nbsp;‫سوريا‬‎ (Syria)</option>
-                <option value='886'>+886&nbsp;台灣 (Taiwan)</option>
-                <option value='992'>+992&nbsp;Tajikistan</option>
-                <option value='255'>+255&nbsp;Tanzania</option>
-                <option value='66'>+66&nbsp;ไทย (Thailand)</option>
-                <option value='670'>+670&nbsp;Timor-Leste</option>
-                <option value='228'>+228&nbsp;Togo</option>
-                <option value='690'>+690&nbsp;Tokelau</option>
-                <option value='676'>+676&nbsp;Tonga</option>
-                <option value='1868'>+1868&nbsp;Trinidad &amp; Tobago</option>
-                <option value='216'>+216&nbsp;Tunisia</option>
-                <option value='90'>+90&nbsp;Türkiye (Turkey)</option>
-                <option value='993'>+993&nbsp;Turkmenistan</option>
-                <option value='1649'>+1649&nbsp;Turks &amp; Caicos Islands</option>
-                <option value='688'>+688&nbsp;Tuvalu</option>
-                <option value='1340'>+1340&nbsp;U.S. Virgin Islands</option>
-                <option value='256'>+256&nbsp;Uganda</option>
-                <option value='380'>+380&nbsp;Україна (Ukraine)</option>
-                <option value='971'>+971&nbsp;‫الإمارات العربية المتحدة‬‎ (United Arab Emirates)</option>
-                <option value='44'>+44&nbsp;United Kingdom</option>
-                <option value='-1'>+1&nbsp;United States</option>
-                <option value='598'>+598&nbsp;Uruguay</option>
-                <option value='998'>+998&nbsp;Oʻzbekiston (Uzbekistan)</option>
-                <option value='678'>+678&nbsp;Vanuatu</option>
-                <option value='379'>+379&nbsp;Città del Vaticano (Vatican City)</option>
-                <option value='58'>+58&nbsp;Venezuela</option>
-                <option value='84'>+84&nbsp;Việt Nam (Vietnam)</option>
-                <option value='681'>+681&nbsp;Wallis &amp; Futuna</option>
-                <option value='967'>+967&nbsp;‫اليمن‬‎ (Yemen)</option>
-                <option value='260'>+260&nbsp;Zambia</option>
-                <option value='263'>+263&nbsp;Zimbabwe</option>
-            </select>
+    render () {
+        const { options } = this.state;
+        const { defaultValue, onChange, disabled, className } = this.props;
+        return (
+            <Select
+                className={className}
+                options={options}
+                defaultValue={defaultValue}
+                onChange={onChange}
+                disabled={disabled}
+            />
         );
-	}
+    }
 }
+
+AreaCode.defaultProps = {
+    defaultValue: '86',
+    onChange: noop,
+    disabled: false
+};
+
+AreaCode.propTypes = {
+    className: PropTypes.string,
+    defaultValue: PropTypes.string,
+    onChange: PropTypes.func,
+    disabled: PropTypes.bool
+};
+

@@ -56,7 +56,7 @@ export default class Select extends Component {
                 selectData,
                 text: '',
                 value: ''
-            }
+            };
         }
         const arr = defaultValue.split(',');
         // 取默认值
@@ -134,9 +134,9 @@ export default class Select extends Component {
                                             ? select.map((item, index) => {
                                                 return (
                                                     <Option
-                                                    key={index}
-                                                    optionData={item}
-                                                    handleChange={data => this.handleChange(data)}
+                                                        key={index}
+                                                        optionData={item}
+                                                        handleChange={data => this.handleChange(data)}
                                                     />
                                                 );
                                             })

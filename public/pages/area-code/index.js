@@ -10,7 +10,7 @@ export default class AreaCodeView extends Component {
         }
     }
     handleChange(code){
-        this.setState({ code: code })
+        this.setState({ code: code });
     }
     render () {
         let {code} = this.state;
@@ -25,8 +25,9 @@ export default class AreaCodeView extends Component {
                 </h2>
                 <div className="m-l m-r m-t m-b">
                     <AreaCode
-                        value={code}
-                        onChange = {(code) => this.handleChange(code)} />
+                        defaultValue={code}
+                        onChange = {(code) => this.handleChange(code)} 
+                    />
                 </div>
                 <div dangerouslySetInnerHTML={{ __html: Readme }}>
                     

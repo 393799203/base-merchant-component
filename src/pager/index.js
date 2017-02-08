@@ -32,15 +32,15 @@ export default class Pager extends Component {
                 { /* 上一页 */
                     link ?
                         <a
-                          href={link && currentPage !== 1 ? preLink : ''}
-                          className={currentPage === 1 ? 'btn btn-pre disabled' : 'btn btn-pre'}
+                            href={link && currentPage !== 1 ? preLink : ''}
+                            className={currentPage === 1 ? 'btn btn-pre disabled' : 'btn btn-pre'}
                         >
                             {preText}
                         </a>
                     :
                         <a
-                          onClick={(e) => { this.handlePage(e, 'pre', currentPage, totalPage); }}
-                          className={currentPage === 1 ? 'btn btn-pre disabled' : 'btn btn-pre'}
+                            onClick={(e) => { this.handlePage(e, 'pre', currentPage, totalPage); }}
+                            className={currentPage === 1 ? 'btn btn-pre disabled' : 'btn btn-pre'}
                         >
                             {preText}
                         </a>
@@ -48,15 +48,15 @@ export default class Pager extends Component {
                 { /* 下一页 */
                     link ?
                         <a
-                          href={link && currentPage !== totalPage ? nextLink : ''}
-                          className={currentPage === totalPage ? 'btn btn-next disabled' : 'btn btn-next'}
+                            href={link && currentPage !== totalPage ? nextLink : ''}
+                            className={currentPage === totalPage ? 'btn btn-next disabled' : 'btn btn-next'}
                         >
                             {nextText}
                         </a>
                     :
                         <a
-                          onClick={(e) => { this.handlePage(e, 'next', currentPage, totalPage); }}
-                          className={currentPage === totalPage ? 'btn btn-next disabled' : 'btn btn-next'}
+                            onClick={(e) => { this.handlePage(e, 'next', currentPage, totalPage); }}
+                            className={currentPage === totalPage ? 'btn btn-next disabled' : 'btn btn-next'}
                         >
                             {nextText}
                         </a>
