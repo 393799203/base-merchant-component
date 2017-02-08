@@ -1,0 +1,98 @@
+@import "../../_theme/less/include/_variables";
+@modal-prefix-cls: up-table;
+.@{modal-prefix-cls} {
+    font-family: Tahoma,"Hiragino Sans GB","Microsoft yahei",serif;
+    thead{
+        background:@color-light-lt;
+        color:@color-dark-dk;
+        th{
+            padding: 10px 16px;
+            border: 1px solid @color-light-dk;
+            padding: 10px 16px;
+            font-weight: normal;
+            margin-right:1px;
+        }
+        .arrow, .arrow:after{
+            display: inline;
+            width: 0;
+            height: 0;
+            border-color: transparent;
+            border-style: solid;
+            position: relative;
+        }
+        .arrowup{
+            top: 2px;
+            border-width: 0 4px 6px;
+            border-color: transparent transparent #ddd;
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid
+        }
+        .arrowup_active{
+            border-color:transparent transparent #555;
+            top: 2px;
+            border-width: 0 4px 6px;
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid
+        }
+        .arrowdown{
+            position: absolute;
+            top: 10px;
+            border-width: 6px 4px 0;
+            border-color: #ddd transparent transparent;
+            width: 0;
+            height: 0;
+            border-style: solid
+        }
+        .arrowdown_active{
+            position: absolute;
+            top: 10px;
+            border-width: 6px 4px 0;
+            border-color: #555 transparent transparent;
+            width: 0;
+            height: 0;
+            border-style: solid
+        }
+    }
+    tbody{
+        color:@color-dark-dk;
+        tr:hover{
+            background-color: @color-light-lter;
+        }
+        td{
+            border: 1px solid @color-light-dk;
+            padding: 10px 16px;
+            font-weight: normal;
+        }
+    }
+    .table-title-content{
+        width:100%;
+        height:100%;
+        font-weight: normal;
+    }
+    .table-title-sort{
+        cursor:pointer;
+    }
+    .nullinfo{
+        text-align: center;
+        padding: 15px;
+        font-size: 13px;
+        color: @color-dark-primary;
+    }
+    .icon-help{
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        color: #ccc;
+        border: 1px solid #ccc;
+        font-size: 12px;
+        text-align: center;
+        line-height: 14px;
+        font-weight: normal;
+        margin-left: 3px;
+    }
+}
