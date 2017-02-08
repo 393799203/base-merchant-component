@@ -24,6 +24,7 @@ import RangepickerView from './pages/rangepicker';
 import TimepickerView from './pages/timepicker';
 import ModalView from './pages/modal';
 import TableView from './pages/table';
+import SelectView from './pages/select';
 
 export default (
     <Router history={hashHistory}>
@@ -49,6 +50,7 @@ export default (
             <Route path='timepicker' component={TimepickerView} />
             <Route path='image-uploader' component={ImageUploaderView} />
             <Route path='table' component={TableView} />
+            <Route path='select' component={SelectView} />
         </Route>
     </Router>
 );
