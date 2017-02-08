@@ -29,6 +29,7 @@
 		"react/no-multi-comp": [0],
 		"no-plusplus": [2, { "allowForLoopAfterthoughts": true }],
 		"class-methods-use-this": ["off"],
-		"no-unused-expressions": ["error", {"allowShortCircuit": true, "allowTernary": true }]
+		"no-unused-expressions": ["error", {"allowShortCircuit": true, "allowTernary": true }],
+		"react/jsx-indent-props": ["warn", 4]
 	}
 }
