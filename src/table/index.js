@@ -23,10 +23,10 @@ export default class Table extends Component {
                     { showIndex ? <th>{ indexTitle }</th> : null }
                     { columns.map((item, index) =>
                         <th
-                          key={item.title || item.key || index}
-                          className={`md-table-${item.key}`}
-                          {...item.colAttrs}
-                          {...item.thAttrs}
+                            key={item.title || item.key || index}
+                            className={`md-table-${item.key}`}
+                            {...item.colAttrs}
+                            {...item.thAttrs}
                         >
                             {/* 如果有排序，则在头部添加排序*/}
                             <div>
@@ -43,8 +43,9 @@ export default class Table extends Component {
                                         {/* 如果有提示框，则在头部添加提示框*/}
                                         {item.tpl ?
                                             <Tooltip
-                                              tooltip={item.tplData}
-                                              position='bottom'>
+                                                tooltip={item.tplData}
+                                                position='bottom'
+                                            >
                                                 <span className='icon-help'>?</span>
                                             </Tooltip> :
                                             null
@@ -59,8 +60,9 @@ export default class Table extends Component {
                                         {/* 如果有提示框，则在头部添加提示框*/}
                                         {item.tpl ?
                                             <Tooltip
-                                              tooltip={item.tplData}
-                                              position='bottom'>
+                                                tooltip={item.tplData}
+                                                position='bottom'
+                                            >
                                                 <span className='icon-help'>?</span>
                                             </Tooltip> :
                                             null
@@ -87,9 +89,9 @@ export default class Table extends Component {
                         {showIndex ? <td> {rowIndex + 1}</td> : null}
                         {columns.map((col, index) =>
                             <td
-                              key={col.title || item[col.key] || index}
-                              {...col.colAttrs}
-                              {...col.tdAttrs}
+                                key={col.title || item[col.key] || index}
+                                {...col.colAttrs}
+                                {...col.tdAttrs}
                             >
                                 {(typeof col.renderBody === 'function') ? col.renderBody(item[col.key], item, tbodyCbs, forRender, rowIndex) : item[col.key]}
                             </td>
