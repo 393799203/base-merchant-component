@@ -44,7 +44,8 @@ export default class Table extends Component {
                                         {item.tpl ?
                                             <Tooltip
                                               tooltip={item.tplData}
-                                              position='bottom'>
+                                              position='bottom'
+                                            >
                                                 <span className='icon-help'>?</span>
                                             </Tooltip> :
                                             null
@@ -60,7 +61,8 @@ export default class Table extends Component {
                                         {item.tpl ?
                                             <Tooltip
                                               tooltip={item.tplData}
-                                              position='bottom'>
+                                              position='bottom'
+                                            >
                                                 <span className='icon-help'>?</span>
                                             </Tooltip> :
                                             null
