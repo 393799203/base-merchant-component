@@ -1,9 +1,4 @@
-# Tag
-> 标签组件
-
-## 使用
-
-### 基本用法
+### 2.基本用法
 
 	import React, { Component } from 'react'
     import Tag  from 'modules_path/tag/index';
@@ -40,7 +35,7 @@
         }
     }
 
-## Tag参数说明
+## 3.Tag参数说明
 | 参数          | 说明                  | 类型         |默认值        |是否必需
 | ----------   | -------------------- | ----------- |------------ | 
 | color        | 颜色（red,green,blue) |    string   |   default   | false
