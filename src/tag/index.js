@@ -8,20 +8,22 @@ export default class Tag extends Component {
     }
 
     close (e) {
-        e.target.parentNode.style.display = 'none';
-        this.props.afterClose ? this.props.afterClose() : null;
+        const event = e;
+        event.target.parentNode.style.display = 'none';
+        this.props.afterClose(event);
     }
 
     render () {
-        let { color, afterClose, circle, closeable } = this.props;
+        const me = this;
+        const { color, circle, closeable, children } = me.props;
         let clsName = 'wrap ';
         clsName += ['red', 'blue', 'green'].indexOf(color) === -1 ? 'default' : color;
         clsName += circle ? ' circle' : '';
         return (<div className={clsName}>
-          { this.props.children }
-          {
-            closeable ? (<span className = 'closeBtn' onClick = { this.close.bind(this) }>x</span>) : null
-          }
+            { children }
+            {
+                closeable ? (<span className='closeBtn' onClick={() => { me.close(); }}>x</span>) : null
+            }
         </div>);
     }
 }
