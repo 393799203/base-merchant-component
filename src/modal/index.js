@@ -413,7 +413,6 @@ class Modal extends Component {
         // console.time('Modal ' + this.props.data.id + ' locate');
 
         const modalDOM = ReactDom.findDOMNode(this);
-        // const modalDOM = this.refs.mymodal;
         const height = modalDOM.offsetHeight;
         const width = modalDOM.offsetWidth;
         const state = this.state;
