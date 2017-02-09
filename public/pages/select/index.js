@@ -81,13 +81,13 @@ export default class SelectView extends Component {
                                 <h2>
                                     1. 普通下拉菜单
                                 </h2>
-                                <Select ref="select1" selectData={selectData1} onChange={this.getResult.bind(this)}/>
+                                <Select ref="select1" options={selectData1} onChange={this.getResult.bind(this)}/>
                             </td>
                             <td>
                                 <h2>
                                     2. 禁止点击、有默认值的下拉菜单
                                 </h2>
-                                <Select selectData={selectData1} defaultValue="1" disabled={true} onChange={this.getResult.bind(this)}/>
+                                <Select options={selectData1} defaultValue="1" disabled={true} onChange={this.getResult.bind(this)}/>
                             </td>
                         </tr>
                         <tr>
@@ -95,14 +95,14 @@ export default class SelectView extends Component {
                                 <h2>
                                     3. 分组的下拉菜单
                                 </h2>
-                                <Select selectData={selectData2} defaultValue="4" onChange={this.getResult.bind(this)}/>
+                                <Select options={selectData2} defaultValue="4" onChange={this.getResult.bind(this)}/>
                             </td>
                             <td>
                                 <h2>
                                     4. 有二级选项的下拉菜单
                                 </h2>
                                 <div style={{width: '150px'}}>
-                                    <Select selectData={selectData3} defaultValue="2,22" onChange={this.getResult.bind(this)}/>
+                                    <Select options={selectData3} defaultValue="2,22" onChange={this.getResult.bind(this)}/>
                                 </div>
                             </td>
                         </tr>

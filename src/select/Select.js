@@ -4,7 +4,7 @@ import Option from './Option';
 export default class Select extends Component {
     static defaultProps = {
         defaultValue: '',
-        selectData: [],
+        options: [],
         className: '',
         onChange: null,
         disabled: false,
@@ -13,7 +13,7 @@ export default class Select extends Component {
     };
     static propTypes = {
         defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-        selectData: PropTypes.array.isRequired,
+        options: PropTypes.array.isRequired,
         className: PropTypes.string,
         onChange: PropTypes.func,
         disabled: PropTypes.bool,
@@ -22,8 +22,8 @@ export default class Select extends Component {
     };
     constructor (props) {
         super(props);
-        const { selectData, defaultValue } = props;
-        const data = this.formData(selectData, defaultValue);
+        const { options, defaultValue } = props;
+        const data = this.formData(options, defaultValue);
         this.state = {
             isDropDown: false,
             text: data.text,
@@ -34,8 +34,8 @@ export default class Select extends Component {
     // 更新属性
     componentWillReceiveProps (nextProps) {
         const state = this.state;
-        if ('selectData' in nextProps || 'defaultValue' in nextProps) {
-            const data = this.formData(nextProps.selectData || state.selectData, nextProps.defaultValue || state.defaultValue);
+        if ('options' in nextProps || 'defaultValue' in nextProps) {
+            const data = this.formData(nextProps.options || state.selectData, nextProps.defaultValue || state.defaultValue);
             this.setState({
                 text: data.text,
                 value: data.value,
@@ -46,12 +46,19 @@ export default class Select extends Component {
     formData (data, defaultValue) {
         let text = '';
         const value = [];
-        const arr = defaultValue.split(',');
         let selectData = data;
         // 分组下拉菜单
         if (data && data.length && !(data[0] instanceof Array)) {
             selectData = [data];
         }
+        if (!defaultValue) {
+            return {
+                selectData,
+                text: '',
+                value: ''
+            }
+        }
+        const arr = defaultValue.split(',');
         // 取默认值
         selectData.map((item) => {
             for (let i = 0, l = item.length; i < l; i++) {

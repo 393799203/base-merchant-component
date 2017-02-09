@@ -45,10 +45,10 @@ export default class Option extends Component {
         const hasSubOption = optionData.options && optionData.options.length;
         return (<li onClick={e => this.handleChange(optionData, '', e)} onMouseEnter={() => this.toggleValue('showSubOption')} onMouseLeave={() => this.toggleValue('showSubOption')}>
             {optionData.text}
-            <span className={hasSubOption ? 'sub-arrow' : 'hide'}><em /></span>
+            <span className={hasSubOption ? 'sub-arrow' : ''}><em /></span>
             {
                 hasSubOption
-                ? <ol className={showSubOption ? '' : 'hide'}>
+                ? <ol className={showSubOption ? '' : ''}>
                     {optionData.options.map((item, index) => {
                         return (<li key={index} onClick={e => this.handleChange(optionData, item, e)}>
                             {item.text}
