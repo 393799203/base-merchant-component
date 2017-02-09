@@ -24,14 +24,16 @@
         -moz-box-shadow:2px 2px 3px #eee,-2px 2px 3px #eee; 
         -webkit-box-shadow:2px 2px 3px #eee,-2px 2px 3px #eee; 
         box-shadow:2px 2px 3px #eee,-2px 2px 3px #eee;
-        max-height: 400px;
-        overflow-y: auto;
     }
     ul{
         width: 100%; 
         padding-left: 0;
         border-bottom: 1px solid #DEDEDE;
         margin-bottom: 0;
+        max-height: 100px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        display: inline-table;
         &:last-child{
             border-bottom: 0;
         }
@@ -42,6 +44,9 @@
         position: relative;
         &:hover{
             background: #F3F5F8; 
+            .sub-arrow em{
+                border-left: 5px solid #F3F5F8;
+            }
         }
     }
     ol{
