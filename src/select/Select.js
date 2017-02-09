@@ -46,12 +46,19 @@ export default class Select extends Component {
     formData (data, defaultValue) {
         let text = '';
         const value = [];
-        const arr = defaultValue.split(',');
         let selectData = data;
         // 分组下拉菜单
         if (data && data.length && !(data[0] instanceof Array)) {
             selectData = [data];
         }
+        if (!defaultValue) {
+            return {
+                selectData,
+                text: '',
+                value: ''
+            }
+        }
+        const arr = defaultValue.split(',');
         // 取默认值
         selectData.map((item) => {
             for (let i = 0, l = item.length; i < l; i++) {
