@@ -24,6 +24,8 @@
         -moz-box-shadow:2px 2px 3px #eee,-2px 2px 3px #eee; 
         -webkit-box-shadow:2px 2px 3px #eee,-2px 2px 3px #eee; 
         box-shadow:2px 2px 3px #eee,-2px 2px 3px #eee;
+        max-height: 400px;
+        overflow-y: auto;
     }
     ul{
         width: 100%; 
@@ -57,8 +59,27 @@
     }
     .sub-arrow{
         position: absolute;
-        right: 15px;
-        top: 0px;
+        right: 8px;
+        top: 12px;
+        display: block;
+        width: 0;
+        height: 0;
+        border-left: 5px solid #666;
+        border-top: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        em{
+            position: absolute;
+            right: -3px;
+            top: -5px;
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 5px solid #fff;
+            border-top: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+        }
     }
     .select-arrow{
         display: block;
