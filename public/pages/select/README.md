@@ -4,11 +4,15 @@
 
 | 参数        | 说明           | 类型         |  备注       |   默认       |  
 | ------------ | ------------- | ------------ | ------------  |------------  |
-| defaultValue   | 默认值    | string       |  -   |   请选择  |
+| defaultValue   | 默认值    | string       |  默认选中项的value,如果有子选项，请用逗号隔开   |   请选择  |
 | selectData       | 选项数据    | array       | -    |  []   |
 | onChange       | 取实际选中的选项    | function       | 默认参数是选中的选项，如{text:'选项1',value:0}  |     |
 | className       | css选择器    | string       | -    |     |
 | disabled     | 禁止下拉菜单点击   | bool | - |  false | 
+| id     | id   | string | - |   | 
+| attrs     | 其他属性   | object | - |   | 
+
+
 
 #### 2.2 使用示例
 	
