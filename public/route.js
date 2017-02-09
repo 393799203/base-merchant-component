@@ -15,6 +15,7 @@ import PaginationView from './pages/pagination';
 import NotificationView from './pages/notification';
 import TooltipView from './pages/tooltip';
 import TabView from './pages/compontents/tab';
+import TagView from './pages/tag';
 import PanelView from './pages/compontents/panel';
 import ImageUploaderView from './pages/compontents/image-uploader';
 
@@ -24,6 +25,7 @@ import RangepickerView from './pages/rangepicker';
 import TimepickerView from './pages/timepicker';
 import ModalView from './pages/modal';
 import TableView from './pages/table';
+import SelectView from './pages/select';
 
 export default (
     <Router history={hashHistory}>
@@ -38,6 +40,7 @@ export default (
             <Route path='grid' component={GridView} />
             <Route path='panel' component={PanelView} />
             <Route path='tab' component={TabView} />
+            <Route path='tag' component={TagView} />
             <Route path='pager' component={PagerView} />
             <Route path='pagination' component={PaginationView} />
             <Route path='notification' component={NotificationView} />
@@ -49,6 +52,7 @@ export default (
             <Route path='timepicker' component={TimepickerView} />
             <Route path='image-uploader' component={ImageUploaderView} />
             <Route path='table' component={TableView} />
+            <Route path='select' component={SelectView} />
         </Route>
     </Router>
 );

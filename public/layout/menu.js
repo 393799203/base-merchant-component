@@ -8,6 +8,10 @@ export default [
         link: '#/tab'
     },
     {
+        title: '标签 - Tag',
+        link: '#/tag'
+    },
+    {
         title: '分页 - Pagination',
         link: '#/pagination'
     },
@@ -54,6 +58,9 @@ export default [
     {
         title: '表格 - Table',
         link: '#/table'
+    },{
+        title: '下拉框 - Select',
+        link: '#/select'
     }
 ];
 
