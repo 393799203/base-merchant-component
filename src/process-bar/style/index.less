@@ -1,0 +1,194 @@
+@import "../../_theme/less/include/_variables";
+// icon小font图标
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?lg0zs9');
+  src:  url('fonts/icomoon.eot?lg0zs9#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?lg0zs9') format('truetype'),
+    url('fonts/icomoon.woff?lg0zs9') format('woff'),
+    url('fonts/icomoon.svg?lg0zs9#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-check:before {
+  content: "\e116";
+}
+
+.mc-process {
+    margin: 0 60px;
+    .mc-process-cont {
+        position: relative;
+        min-height: 100px;
+    }
+    .mc-process-wrap {
+        position: absolute;
+        height: 0px;
+        margin: 0 auto;
+        *zoom: 1;
+        top: 50%;
+        border-top: 1px solid #eee;
+    }
+
+    .mc-process-sd {
+        position: absolute;
+        top: 50%;
+        height: 0px;
+        z-index: 1;
+        -webkit-transition: width ease-in-out 1s;
+        -moz-transition: width ease-in-out 1s;
+        -o-transition: width ease-in-out 1s;
+        transition: width ease-in-out 1s;
+    }
+
+    .mc-process-i {
+        position: absolute;
+        top: 20px;
+        width: 60px;
+        height: 60px;
+        line-height: 48px;
+        font-size: 18px;
+        font-style: normal;
+        color: #fff;
+        text-align: center;
+        margin-left: -16px;
+        background-color: #fff;
+        z-index: 2;
+    }
+    .mc-process-i-c {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background-color: #D8D8D8;
+        z-index: 3;
+    }
+    .mc-process-tip-tp,
+    .mc-process-tip-bt {
+        position: absolute;
+        top: -22px;
+        width: 140px;
+        height: 20px;
+        left: 50%;
+        margin-left: -70px;
+        font-size: 12px;
+        font-style: normal;
+        line-height: 20px;
+        color: #999;
+    }
+
+    .mc-process-tip-bt {
+        top: auto;
+        bottom: -22px;
+    }
+    
+    .mc-process-before {
+        .mc-process-i-c {
+            border: 1px solid @color-primary;
+            background-color: #fff;
+            color: @color-primary;
+            font-size: 20px;
+        }
+    }
+
+    .mc-process-cur {
+        .mc-process-i-c {
+            background-color: @color-primary;
+        }
+        .mc-process-tip-tp,
+        .mc-process-tip-bt {
+            color: @color-primary;
+        }
+
+    }
+  /* 递归至i1 */
+  .loop-process(@n, @i: 1) when (@i =< @n) {
+    .mc-process-step@{n} .mc-process-sd {border-top: 1px solid @color-primary;; }
+    .loop-process(@n, @i + 1);
+  }
+
+    /**
+     * 循环生成step相关
+     * @space xd_process_i@{i}之间的距离
+     * @half-space1 一半进度前一段的距离
+     * @half-space2 一半进度后一段的距离
+     */
+    .generator-process(@space, @half-space1, @half-space2, @n, @i: 1) when (@i =< @n) {
+        @start-position: 0;
+
+        .mc-process-i-s(@i) when (@i = 1) {
+            .mc-process-i@{i} {left: 0; }
+        }
+
+        .mc-process-i-o(@i) when (@i > 1) {
+            .mc-process-i@{i} {left: (@i - 1) * @space; }
+        }
+
+        .mc-process-i-s(@i);
+        .mc-process-i-o(@i);
+
+        .mc-process-step@{i} .mc-process-sd {
+            width: (@half-space1 + @half-space2) * (@i - 1) + @start-position;
+            
+        }
+        .mc-process-step@{i}-5 .mc-process-sd {
+            width: (@half-space1 + @half-space2) * (@i - 1) + @start-position + @half-space1;
+        }
+
+        .loop-process(@i);
+        .generator-process(@space, @half-space1, @half-space2, @n, @i + 1);
+    }
+
+    /* step3 style */
+    &.mc-process-len3 {
+        .mc-process-wrap {
+            width: 100%;
+        }
+
+        .generator-process(50%, 25%, 25%, 3);
+    }
+
+    /* step4 style */
+    &.mc-process-len4 {
+        .mc-process-wrap {
+            width: 100%;
+        }
+        .generator-process(33.3%, 16%, 17.3%, 4);
+    }
+    /* step5 style */
+    &.mc-process-len5 {
+        .mc-process-wrap {
+            width: 100%;
+        }
+        .generator-process(25%, 12.5%, 12.5%, 5);
+    }
+    /* step6 style */
+    &.mc-process-len6 {
+        .mc-process-wrap {
+            width: 100%;
+        }
+        .generator-process(20%, 10%, 10%, 6);
+    }
+}
+
+
+
+
+
