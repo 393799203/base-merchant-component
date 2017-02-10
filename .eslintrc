@@ -30,6 +30,7 @@
 		"no-plusplus": [2, { "allowForLoopAfterthoughts": true }],
 		"class-methods-use-this": ["off"],
 		"no-unused-expressions": ["error", {"allowShortCircuit": true, "allowTernary": true }],
-		"react/jsx-indent-props": ["warn", 4]
+		"react/jsx-indent-props": ["warn", 4],
+		"react/no-find-dom-node": ["off"]
 	}
 }
