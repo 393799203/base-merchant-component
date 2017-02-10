@@ -200,7 +200,7 @@ export default class CheckboxView extends Component {
 					        onChange={(value)=>this.onChange(value)}
 					        options={checkboxOptions}
 					        className='field-text'
-					        subInfo="onChange方法">
+					        subInfo="数据回调onChange方法">
 					    </Field>
 					    <Field 
 							type="checkbox"
@@ -212,7 +212,7 @@ export default class CheckboxView extends Component {
 					        onValidate={(value) => this.onCheckboxValidate(value)}
 					        options={checkboxOptions}
 					        className='field-text'
-					        subInfo="onValidate方法">
+					        subInfo="校验onValidate方法">
 					    </Field>
 					    <div style={{height:"40px"}}></div>
 					</div>

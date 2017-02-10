@@ -138,7 +138,6 @@ export default class RawView extends Component {
 	                    >
 	                        <Datepicker 
 	                            onChange={ (e) => this.handleDateChange(e,'date3') }
-	                            format="yyyy-MM-dd HH:mm:ss"
 	                            value={ this.state.date3 }
 	                            showTime/>
 	                    </Field>
