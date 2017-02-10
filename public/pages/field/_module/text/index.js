@@ -95,7 +95,7 @@ export default class TextView extends Component {
 					        label="配置属性2："
 					        required
 					        error={true}
-					        errorMsg="我是一个校验错误提示"
+					        errorMsg="我是一个校验错误提示我是一个校验错误提示我是一个校验错误提示"
 					        subInfo="我是一个表单信息">
 					    </Field>
 					</div>

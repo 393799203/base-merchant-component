@@ -37,6 +37,9 @@ export default class TextView extends Component {
 
     textChange(value){
     }
+
+    onClick(){
+    }
 	
 	render () {
 		return (
@@ -79,7 +82,7 @@ export default class TextView extends Component {
 					        label="配置属性2："
 					        required
 					        error={true}
-					        errorMsg="我是一个校验错误提示"
+					        errorMsg="我是一个校验错误提示我是一个校验错误提示我是一个校验错误提示"
 					        subInfo="我是一个表单信息">
 					    </Field>
 					</div>
@@ -113,7 +116,7 @@ export default class TextView extends Component {
 
 					<div className="f-l field-demo">
 						<h5>方法：校验（onValidate）、修改数据回调（onChange）</h5>
-						<Field
+						<Field 
 							type="text"
 					        name="test6"
 					        form="text"
@@ -123,6 +126,34 @@ export default class TextView extends Component {
 					        onChange={(value) => this.textChange(value)}
 					        errorMsg="请输入整数"
 					        subInfo="我是一个表单信息">
+					    </Field>
+					</div>
+
+					<div className="f-l field-demo">
+						<h5>{"自定义属性：attrs={{style: {width:'100px'}}}"}</h5>
+						<Field 
+							type="text"
+					        name="test7"
+					        form="text"
+					        label="自定义属性："
+					        required
+					        attrs={{style: {width:"100px"}}}
+					        errorMsg="请输入整数"
+					        subInfo="用attrs修改了文本框的宽度">
+					    </Field>
+					</div>
+
+					<div className="f-l field-demo">
+						<h5>{"自定义方法：events={{onClick:()=>{}}}"}</h5>
+						<Field 
+							type="text"
+					        name="test8"
+					        form="text"
+					        label="自定义方法："
+					        required
+					        events={{onClick:()=>this.onClick()}}
+					        errorMsg="请输入整数"
+					        subInfo="用events自定义onClick事件">
 					    </Field>
 					</div>
 				</div>

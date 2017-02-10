@@ -4,6 +4,7 @@
 import React, { Component } from 'react';
 import Field from '@meili/base-merchant-component/lib/field';
 
+
 export default class PasswordView extends Component {
 	constructor () {
 		super();
@@ -35,6 +36,9 @@ export default class PasswordView extends Component {
     }
 
     textChange(value){
+    }
+
+    onClick(){
     }
 
 	render () {
@@ -122,6 +126,34 @@ export default class PasswordView extends Component {
 					        onChange={(value) => this.textChange(value)}
 					        errorMsg="我是一个校验错误提示"
 					        subInfo="我是一个表单信息">
+					    </Field>
+					</div>
+
+					<div className="f-l field-demo">
+						<h5>{"自定义属性：attrs={{style: {width:'100px'}}}"}</h5>
+						<Field 
+							type="password"
+					        name="password7"
+					        form="password"
+					        label="自定义属性："
+					        required
+					        attrs={{style: {width:"100px"}}}
+					        errorMsg="请输入整数"
+					        subInfo="用attrs修改了文本框的宽度">
+					    </Field>
+					</div>
+
+					<div className="f-l field-demo">
+						<h5>{"自定义方法：events={{onClick:()=>{}}}"}</h5>
+						<Field 
+							type="password"
+					        name="password8"
+					        form="password"
+					        label="自定义方法："
+					        required
+					        events={{onClick:()=>this.onClick()}}
+					        errorMsg="请输入整数"
+					        subInfo="用events自定义onClick事件">
 					    </Field>
 					</div>
 				</div>

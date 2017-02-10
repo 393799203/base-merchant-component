@@ -49,35 +49,58 @@
 
 	.mc-field-errorMsg{
 		display: inline-table;
-	    font-size: 13px;
-	    color: #555555;
-	    height: 40px;
-	    min-width: 100px;
-	    border: 1px solid #FFA425;
-	    background-color: #FFA425;
-	    border-radius: 4px;
-	    position: absolute;
-	    top: -2px;
+		position: absolute;
+		top: -2px;
 	    z-index: 99;
-	    padding-left: 5px;
-	    line-height: 40px;
-	    margin-left: 10px;
-
-	    .mc-field-errormsg{
-    	    padding-right: 10px;
-    	    display:inline-block
-	    }
+	    width:300px;
     }
 
-	.mc-field-arrow{
-		position: relative;
-	    width: 10px;
-	    display: inline-block;
-	    border-width: 8px;
-	    border-color: transparent #FFA425 transparent transparent;
-	    border-style: dashed solid dashed dashed;
-	    border-left: none;
-	    top: 6px;
-	    left: -16px;
-	}
+    .mc-field-errormsg{
+    	font-size: 13px;
+	    color: #BA7F22;
+	    background: #FFEB9A;
+		border: 1px solid rgba(136,79,25,0.10);
+		border-radius: 4px;
+	    padding: 5px;
+	    line-height: 25px;
+	    margin-left: 10px;
+	    display:inline-block;
+	    position:absolute;
+	    width:auto;
+    }
+
+    .mc-field-error-arrow{
+    	position: absolute;
+    	z-index: 100;
+
+    	.mc-field-arrow-color{
+		    width: 10px;
+		    display: inline-block;
+		    border-width: 8px;
+		    border-color: transparent #FFEB9A transparent transparent;
+		    border-style: dashed solid dashed dashed;
+		    border-left: none;
+		    margin-top: 8px;
+		}
+
+		.mc-field-arrow-border{
+		    width: 10px;
+		    display: inline-block;
+		    border-width: 8px;
+		    border-color: transparent rgba(136,79,25,0.10) transparent transparent;
+		    border-style: dashed solid dashed dashed;
+		    border-left: none;
+		    margin-left: -10px;
+		}
+
+		.mc-field-arrow{
+		    width: 10px;
+		    display: inline-block;
+		    border-width: 8px;
+		    border-color: transparent #FFEB9A transparent transparent;
+		    border-style: dashed solid dashed dashed;
+		    border-left: none;
+		    margin-left: -9px;
+		}
+    }
 }

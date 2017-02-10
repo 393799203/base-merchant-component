@@ -3,7 +3,6 @@
 ```
 import React, { Component } from 'react';
 import Field from '@meili/base-merchant-component/lib/field';
-
 const selectOptions = [
     {
         text:'单选1',    //选项文案
@@ -66,6 +65,9 @@ export default class SelectView extends Component {
 
     textChange(value){
     }
+
+    onClick(){
+    }
 	
 	render () {
 		return (
@@ -101,7 +103,7 @@ export default class SelectView extends Component {
 					    </Field>
 					</div>
 					<div className="f-l field-demo">
-						<h5>其他配置属性：必填（required）、校验错误信息（errorMsg）、校验是否展示（error,默认会自动失去焦点校验）</h5>
+						<h5>其他配置属性：必填（required）、校验错误信息（errorMsg）、校验是否展示（error）</h5>
 						<Field 
 							type="select"
 					        name="select3"
@@ -124,7 +126,8 @@ export default class SelectView extends Component {
 					        form="select"
 					        required
 					        errorMsg="我是错误提示信息"
-					        subInfo="我是一个小信息"
+					        attrs={{style: {width:"200px"}}}
+					        subInfo="为设置error时，默认为下拉框失去焦点进行校验"
 					        options = {selectOptions}
 					        className="field-select"
 					        label="必填属性：">
@@ -132,18 +135,18 @@ export default class SelectView extends Component {
 					</div>
 
 					<div className="f-l field-demo">
-						<h5>赋值属性：value、defaultValue</h5>
+						<h5>赋值属性：value、defaultValue、defaultChecked</h5>
 						<Field 
 							type="select"
 					        name="select5"
 					        form="select"
 					        required
 					        errorMsg="我是错误提示信息"
-					        subInfo="我是一个小信息"
+					        subInfo="设置defaultValue来赋默认值"
 					        defaultValue='1'
 					        options = {selectOptions}
 					        className="field-select"
-					        label="必填属性：">
+					        label="赋值属性：">
 					    </Field>
 					    <Field 
 							type="select"
@@ -151,10 +154,10 @@ export default class SelectView extends Component {
 					        form="select"
 					        required
 					        errorMsg="我是错误提示信息"
-					        subInfo="我是一个小信息"
+					        subInfo="在options中添加defaultValue来赋默认值"
 					        options = {selectOptions2}
 					        className="field-select"
-					        label="必填属性：">
+					        label="赋值属性：">
 					    </Field>
 					    <Field 
 							type="select"
@@ -162,7 +165,7 @@ export default class SelectView extends Component {
 					        form="select"
 					        required
 					        errorMsg="我是错误提示信息"
-					        subInfo="我是一个小信息"
+					        subInfo="以value来赋默认值"
 					        value={"1"}
 					        options = {selectOptions}
 					        className="field-select"
@@ -195,6 +198,35 @@ export default class SelectView extends Component {
 					        onValidate={(value) => this.onValidate(value)}
 					        className="field-select"
 					        label="必填属性：">
+					    </Field>
+					    <div style={{height:"40px"}}></div>
+					</div>
+
+					<div className="f-l field-demo">
+						<h5>{"自定义属性：attrs={{style: {width:'100px'}}}"}</h5>
+						<Field 
+							type="select"
+					        name="select9"
+					        form="select"
+					        label="自定义属性："
+					        options = {selectOptions}
+					        attrs={{style: {width:"100px"}}}
+					        errorMsg="请输入整数"
+					        subInfo="用attrs修改了文本框的宽度">
+					    </Field>
+					</div>
+
+					<div className="f-l field-demo">
+						<h5>{"自定义方法：events={{onClick:()=>{}}}"}</h5>
+						<Field 
+							type="select"
+					        name="select10"
+					        form="select"
+					        label="自定义方法："
+					        options = {selectOptions}
+					        events={{onClick:()=>this.onClick()}}
+					        errorMsg="请输入整数"
+					        subInfo="用events自定义onClick事件">
 					    </Field>
 					</div>
 				</div>

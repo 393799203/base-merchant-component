@@ -47,7 +47,7 @@ const DatepickerMinix = {
             return value;
         }
 
-        if (typeof value === 'string') {
+        if (typeof value === 'string' && value !== '') {
             return DatepickerMinix.getFormatter(props).parse(value, { locale: DatepickerMinix.getLocale(locale) });
         }
 
