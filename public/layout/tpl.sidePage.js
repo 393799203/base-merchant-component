@@ -81,7 +81,7 @@ export default class LayoutView extends Component {
                                           key={index}
                                           onClick={() => this.activeMenu(item)}
                                         >
-                                            <a href={item.link}>{item.title}</a>
+                                            <a href={item.link} style={{padding: "15px 12px"}}>{item.title}</a>
                                         </li>);
                                     })
                                 }

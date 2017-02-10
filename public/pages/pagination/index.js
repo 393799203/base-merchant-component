@@ -22,14 +22,17 @@ export default class PaginationView extends Component {
             <div className='m-b-lg m-l m-r'>
                 <h1>
                     分页 - Pagination
+                    <a href="mactt://message/user/00639" style={{border: 'none'}} className="m-l-lg btn-info-custom btn">
+                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
+                    </a>
                 </h1>
                 <h2>
                     1. 示例
                 </h2>
                 <Pagination
-                  totalPage={totalPage}
-                  currentPage={currentPage}
-                  onChangePage={onChangePage}
+                    totalPage={totalPage}
+                    currentPage={currentPage}
+                    onChangePage={onChangePage}
                 />
                 <br />
                 <div dangerouslySetInnerHTML={{ __html: Readme }} />

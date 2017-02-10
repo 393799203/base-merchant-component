@@ -51,6 +51,9 @@ export default class FieldView extends Component {
 			<div className="m-l m-r m-b-xxl mc-field">
 				<h1>
 					表单 - Field
+					<a href="mactt://message/user/01825" style={{border: 'none'}} className="m-l-lg btn-info-custom btn">
+                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
+                    </a>
 				</h1>
 				<div className="m-t-30 mc-field-demo-body">
 					<TabWrapper navs={nav}>
