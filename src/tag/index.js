@@ -10,7 +10,7 @@ export default class Tag extends Component {
     close (e) {
         const event = e;
         event.target.parentNode.style.display = 'none';
-        this.props.afterClose(event);
+        this.props.afterClose();
     }
 
     render () {
@@ -22,7 +22,7 @@ export default class Tag extends Component {
         return (<div className={clsName}>
             { children }
             {
-                closeable ? (<span className='closeBtn' onClick={() => { me.close(); }}>x</span>) : null
+                closeable ? (<span className='closeBtn' onClick={e => me.close(e)}>x</span>) : null
             }
         </div>);
     }
