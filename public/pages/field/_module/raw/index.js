@@ -36,8 +36,8 @@ export default class RawView extends Component {
 		}
 	}
 
-	getFieldData(){
-        return this.state.date3;
+	getFieldData(key){
+        return this.state[key];
     }
 
     validateField(){
@@ -62,6 +62,7 @@ export default class RawView extends Component {
     }    
 
     handleDateChange( date , type ){
+    	console.info(date);
     	var error = false;
     	if(!date && type=="date2"){
     		error = true
@@ -93,6 +94,7 @@ export default class RawView extends Component {
 	                        label="必填属性："
 	                        name="date"
 	                        form="raw"
+	                        onData={ () => this.getFieldData("date") }
 	                    >
 	                        <Datepicker 
 	                            onChange={ (e) => this.handleDateChange(e,'date') }
@@ -110,6 +112,7 @@ export default class RawView extends Component {
 	                        form="raw"
 	                        subInfo="我是表单信息"
 	                        required
+	                        onData={ () => this.getFieldData("date2") }
 	                        error={this.state.error}
 	                        errorMsg="我是错误提示信息"
 	                    >
@@ -127,7 +130,7 @@ export default class RawView extends Component {
 	                        label="方法onData："
 	                        name="date3"
 	                        form="raw"
-	                        onData={ () => this.getFieldData() }
+	                        onData={ () => this.getFieldData("date3") }
 	                        onValidate={ () => this.validateField() }
 	                        onReset={ () => this.resetField() }
 	                        onClear={ () => this.clearField() }

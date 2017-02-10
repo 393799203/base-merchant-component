@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import 'js-object-clone';
 
 export default class Raw extends Component {
     static defaultProps = {

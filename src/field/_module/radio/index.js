@@ -5,6 +5,7 @@ import './index.less';
 export default class Radio extends Component {
     static defaultProps = {
         attrs: {},
+        events: {},
         onValidate: () => {
             return true;
         },
@@ -15,6 +16,7 @@ export default class Radio extends Component {
 
     static propTypes = {
         attrs: PropTypes.object,
+        events: PropTypes.object,
         onValidate: PropTypes.func,
         defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
         name: PropTypes.string,
@@ -113,10 +115,6 @@ export default class Radio extends Component {
     resetData () {
         const props = this.props;
         let value = '';
-        if (props.disabled || props.attrs.readOnly) {
-            return;
-        }
-
         if (typeof props.value !== 'undefined') {
             value = props.value;
         } else if (typeof props.defaultValue !== 'undefined') {
@@ -176,7 +174,7 @@ export default class Radio extends Component {
     }
 
     render () {
-        const { name, attrs, options, disabled, fieldId } = this.props;
+        const { name, attrs, events, options, disabled, fieldId } = this.props;
 
         return (
             <div className='mc-field-radio'>
@@ -187,6 +185,7 @@ export default class Radio extends Component {
                             <div
                                 className={`mc-radio-nice ${option.className || ''}`}
                                 key={optionValue}
+                                {...events}
                                 onClick={disabled ? () => {} : () => this.handleChange(optionValue)}
                             >
                                 <input

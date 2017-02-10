@@ -3,14 +3,12 @@
 **/
 import React, { Component, PropTypes } from 'react';
 import GregorianCalendar from 'gregorian-calendar';
-import DateTimeFormat from 'gregorian-calendar-format';
 import RangeCalendar from 'rc-calendar/lib/RangeCalendar';
 import DatePicker from 'rc-calendar/lib/Picker';
 import TimePicker from 'rc-time-picker';
 import classNames from 'classnames';
-import objectAssign from 'object-assign';
-import defaultLocale from '../_module/js/locale/zh_CN';
 
+import DatepickerMinix from '../_module/js/datepicker';
 import '../_module/less/datepicker.less';
 import '../_module/less/rangepicker.less';
 import '../_module/less/timepicker.less';
@@ -62,8 +60,8 @@ export default class MonthPicker extends Component {
         const end = (value && value[1]) || defaultValue[1];
         this.state = {
             value: [
-                this.parseDateFromValue(start),
-                this.parseDateFromValue(end)
+                DatepickerMinix.parseDateFromValue(props, start),
+                DatepickerMinix.parseDateFromValue(props, end)
             ],
             open: false
         };
@@ -71,49 +69,12 @@ export default class MonthPicker extends Component {
 
     componentWillReceiveProps (nextProps) {
         if ('value' in nextProps) {
-            const start = this.parseDateFromValue(nextProps.value[0]);
-            const end = this.parseDateFromValue(nextProps.value[1]);
+            const start = DatepickerMinix.parseDateFromValue(nextProps, nextProps.value[0]);
+            const end = DatepickerMinix.parseDateFromValue(nextProps, nextProps.value[1]);
             this.setState({
                 value: [start, end]
             });
         }
-    }
-
-    getFormatTime (value) {
-        const defaultDate = new Date();
-        const timeReg = /^(\d{2}):(\d{2}):(\d{2})$/;
-
-        if (!value) {
-            return defaultDate.getTime();
-        }
-
-        if (!timeReg.test(value)) {
-            return defaultDate.getTime();
-        }
-
-        defaultDate.setHours(Number(RegExp.$1));
-        defaultDate.setMinutes(Number(RegExp.$2));
-        defaultDate.setSeconds(Number(RegExp.$3));
-
-        return defaultDate.getTime();
-    }
-
-    getLocale () {
-        // 统一合并为完整的 Locale
-        const locale = objectAssign({}, defaultLocale, this.props.locale);
-        locale.lang = objectAssign({}, defaultLocale.lang, this.props.locale.lang);
-        return locale;
-    }
-
-    getFormatter () {
-        const formats = this.formats = this.formats || {};
-        const defaultFormat = this.props.showTime ? 'yyyy-MM-dd HH:mm:ss' : 'yyyy-MM-dd';
-        const format = this.props.format || defaultFormat;
-        if (formats[format]) {
-            return formats[format];
-        }
-        formats[format] = new DateTimeFormat(format, this.getLocale().lang.format);
-        return formats[format];
     }
 
     handleChange (value) {
@@ -127,36 +88,14 @@ export default class MonthPicker extends Component {
         }
     }
 
-    parseDateFromValue (value) {
-        if (value) {
-            if (typeof value === 'string') {
-                return this.getFormatter().parse(value, { locale: this.getLocale() });
-            } else if (value instanceof Date) {
-                const date = new GregorianCalendar(this.getLocale());
-                date.setTime(+value);
-                return date;
-            } else if (typeof value === 'number') {
-                const valueDate = new Date(value);
-                const date = new GregorianCalendar(this.getLocale());
-                date.setTime(+valueDate);
-                return date;
-            }
-        } else if (value === null) {
-            return value;
-        }
-        return undefined;
-    }
-
     toggleOpen (e) {
         this.setState({
             open: e.open
         });
     }
 
-    handleInputChange () {}
-
     render () {
-        const locale = this.getLocale();
+        const locale = DatepickerMinix.getLocale(this.props.locale);
         // 以下两行代码
         // 给没有初始值的日期选择框提供本地化信息
         // 否则会以周日开始排
@@ -164,7 +103,7 @@ export default class MonthPicker extends Component {
         const timeFullConfig = this.props.timeConfig;
         const { defaultValue, value, ...timeConfig } = timeFullConfig;
 
-        defaultCalendarValue.setTime(this.getFormatTime(defaultValue || value));
+        defaultCalendarValue.setTime(DatepickerMinix.getFormatTime(defaultValue || value));
 
         const { disabledDate, showTime, size, startPlaceholder, endPlaceholder,
             transitionName, disabled, popupStyle, align, style } = this.props;
@@ -179,13 +118,9 @@ export default class MonthPicker extends Component {
             />)
             : null;
 
-        const calendarClassName = classNames({
-            'mc-calendar-time': this.props.showTime
-        });
-
         const calendar = (<RangeCalendar
             prefixCls='mc-calendar'
-            className={calendarClassName}
+            className={this.props.showTime ? 'mc-calendar-time' : ''}
             timePicker={timePicker}
             disabledDate={disabledDate}
             dateInputPlaceholder={[startPlaceholder, endPlaceholder]}
@@ -229,8 +164,8 @@ export default class MonthPicker extends Component {
                                 <span className='mc-calendar-range-picker-input'>
                                     <input
                                         disabled={disabled}
-                                        onChange={this.handleInputChange}
-                                        value={start && this.getFormatter().format(start)}
+                                        onChange={() => {}}
+                                        value={start && DatepickerMinix.getFormatter(this.props).format(start)}
                                         placeholder={startPlaceholder}
                                         className='mc-calendar-picker-input'
                                     />
@@ -240,8 +175,8 @@ export default class MonthPicker extends Component {
                                 <span className='mc-calendar-range-picker-input'>
                                     <input
                                         disabled={disabled}
-                                        onChange={this.handleInputChange}
-                                        value={end && this.getFormatter().format(end)}
+                                        onChange={() => {}}
+                                        value={end && DatepickerMinix.getFormatter(this.props).format(end)}
                                         placeholder={endPlaceholder}
                                         className='mc-calendar-picker-input'
                                     />

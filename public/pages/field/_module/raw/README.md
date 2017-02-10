@@ -3,7 +3,6 @@
 ```
 import React, { Component } from 'react';
 import Field from '@meili/base-merchant-component/lib/field';
-import Notification from '@meili/base-merchant-component/lib/notification';
 import Datepicker from '@meili/base-merchant-component/lib/datepicker';
 
 export default class RawView extends Component {
@@ -21,10 +20,6 @@ export default class RawView extends Component {
 
 	getData(form){
 		var data = Field.getData(form);
-		Notification.info({
-		    message: '获取文本框的信息为：'+JSON.stringify(data),
-		    duration: 2000 // 单位毫秒
-		});
 	}
 
 	clearData(form){

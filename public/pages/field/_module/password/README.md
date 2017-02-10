@@ -3,7 +3,6 @@
 ```
 import React, { Component } from 'react';
 import Field from '@meili/base-merchant-component/lib/field';
-import Notification from '@meili/base-merchant-component/lib/notification';
 
 export default class PasswordView extends Component {
 	constructor () {
@@ -14,10 +13,6 @@ export default class PasswordView extends Component {
 
 	getData(form){
 		var data = Field.getData(form);
-		Notification.info({
-		    message: '获取文本框的信息为：'+JSON.stringify(data),
-		    duration: 2000 // 单位毫秒
-		});
 	}
 
 	clearData(form){
@@ -40,10 +35,6 @@ export default class PasswordView extends Component {
     }
 
     textChange(value){
-    	Notification.info({
-		    message: '回调函数表单的值为：'+value,
-		    duration: 2000 // 单位毫秒
-		});
     }
 
 	render () {
