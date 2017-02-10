@@ -4,6 +4,8 @@ import _ from 'underscore';
 import styles from './style/index';
 import './style/index.less';
 
+const previousReactModal = window.ReactModal;
+
 class ModalController extends Component {
 
     static modals = [];
@@ -14,9 +16,10 @@ class ModalController extends Component {
 
     /**
      * Open a modal
-     * @param {object} options Modal设置（title、class、id等）
+     * @param {object} params Modal设置（title、class、id等）
      */
-    static open (options) {
+    static open (params) {
+        let options = params;
         const defaultOptions = {
             // options for modal
             title: null,
@@ -41,8 +44,8 @@ class ModalController extends Component {
 
         if (options.id !== undefined) {
             options.id = String(options.id);
-            if (ModalController._findComponent(options.id) !== null) {
-                console.log('A modal with ID %s has existed', options.id);
+            if (ModalController.findComponent(options.id) !== null) {
+                // console.log('A modal with ID %s has existed', options.id);
                 return null;
             }
         } else {
@@ -50,10 +53,10 @@ class ModalController extends Component {
         }
 
         ModalController.modals.push(options);
-        ModalController._forceUpdate();
+        ModalController.forceUpdate();
 
         return options.id;
-    };
+    }
 
     /**
      * Close a modal
@@ -64,9 +67,7 @@ class ModalController extends Component {
         let index = -1;
 
         if (_.isString(id)) {
-            index = _.findIndex(ModalController.modals, function (modal) {
-                return modal.id === id;
-            });
+            index = _.findIndex(ModalController.modals, (modal) => { return modal.id === id; });
 
             if (index < 0) {
                 // console.log('modal with ID %s not found', id);
@@ -74,34 +75,38 @@ class ModalController extends Component {
             }
         }
 
-        const modalComponent = ModalController._findComponent(id);
+        const modalComponent = ModalController.findComponent(id);
         if (modalComponent && modalComponent.handleBeforeClose()) {
             ModalController.modals.splice(index, 1);
-            ModalController._forceUpdate();
+            ModalController.forceUpdate();
         }
         return ModalController;
-    };
+    }
 
     static closeAll () {
-        const activeComponent = ModalController._activeComponent();
+        const activeComponent = ModalController.activeComponent();
         if (activeComponent && activeComponent.handleBeforeClose()) {
             ModalController.modals = [];
-            ModalController._forceUpdate();
+            ModalController.forceUpdate();
         }
 
         return ModalController;
-    };
+    }
 
     /**
      * Open a alert modal
      * @param {string} msg
      * @param {function} [callback=Modal.close]
-     * @param {object} [options] Modal设置（title、class、id等）
+     * @param {object} [params] Modal设置（title、class、id等）
      */
-    static alert (msg, callback, options) {
-        if (!_.isFunction(callback)) {
-            options = options || callback;
-            callback = ModalController.close;
+    static alert (msg, callback, params) {
+        let options = params;
+        let cb = callback;
+        const cls = `${ModalController.prefix} btn primary`;
+
+        if (!_.isFunction(cb)) {
+            options = options || cb;
+            cb = ModalController.close;
         }
 
         const defaultOptions = {
@@ -112,30 +117,32 @@ class ModalController extends Component {
             ),
             footer: (
                 <div>
-                    <button className={ModalController.prefix + 'btn primary'} style={{ marginRight: 0 }} onClick={callback} > {options && options.confirm ? options.confirm : '确定'}</button>
+                    <button className={cls} style={{ marginRight: 0 }} onClick={cb} > {options && options.confirm ? options.confirm : '确定'}</button>
                 </div>
             ),
             closeByMask: false,
-            callback: callback
+            callback: cb
         };
 
         options = _.extend(defaultOptions, options);
 
         return ModalController.open(options);
-    };
+    }
 
     /**
      * Open a confirm modal
      * @param {string} msg
-     * @param {function} [callback=_.noop]
-     * @param {object} [options] Modal设置（title、class、id等）
+     * @param {function} [cb=_.noop]
+     * @param {object} [params] Modal设置（title、class、id等）
      */
-    static confirm (msg, callback, options) {
+    static confirm (msg, cb, params) {
+        let options = params;
+        let callback = cb;
         if (!_.isFunction(callback)) {
             options = options || callback;
             callback = _.noop;
         }
-
+        const prefix = ModalController.prefix;
         const defaultOptions = {
             body: (
                 <div style={styles.alertWrap}>
@@ -144,14 +151,14 @@ class ModalController extends Component {
             ),
             footer: (
                 <div>
-                    <button className={ModalController.prefix + 'btn'} onClick={ModalController.close}>取消
+                    <button className={`${prefix}btn`} onClick={ModalController.close}>取消
                     </button>
-                    <button className={ModalController.prefix + 'btn primary'} style={{ marginRight: 0 }} onClick={callback}>{(options && options.confirm) || '确定'}
+                    <button className={`${prefix}btn primary`} style={{ marginRight: 0 }} onClick={callback}>{(options && options.confirm) || '确定'}
                     </button>
                 </div>
             ),
             closeByMask: false,
-            callback: callback
+            callback
         };
 
         options = _.extend(defaultOptions, options);
@@ -161,11 +168,14 @@ class ModalController extends Component {
     /**
      * Open a tip modal
      * @param {string} msg
-     * @param {function|int} [callback]
-     * @param {int|object} [delay=800] time before the tip dismisses
-     * @param {object} [options] Modal设置（title、class、id等）
+     * @param {function|int} [cb]
+     * @param {int|object} [delays=800] time before the tip dismisses
+     * @param {object} [params] Modal设置（title、class、id等）
      */
-    static tip (msg, callback, delay, options) {
+    static tip (msg, cb, delays, params) {
+        let options = params;
+        let callback = cb;
+        let delay = delays;
         if (!_.isFunction(callback)) {
             options = delay;
             delay = callback;
@@ -190,51 +200,49 @@ class ModalController extends Component {
         callback = _.compose(callback, ModalController.close.bind(ModalController, modalId));
 
         if (delay > 0) {
-            setTimeout(function () {
-                callback();
-            }, delay);
+            setTimeout(() => { callback(); }, delay);
         }
 
         return modalId;
-    };
+    }
 
     static update (id) {
-        const modalComponent = ModalController._findComponent(id);
+        const modalComponent = ModalController.findComponent(id);
 
         if (!modalComponent) {
             return;
         }
 
         modalComponent.forceUpdate();
-    };
+    }
 
     static updateTitle (title, id) {
-        var modalComponent = id ? ModalController._findComponent(id) : ModalController._activeComponent();
+        const modalComponent = id ? ModalController.findComponent(id) : ModalController.activeComponent();
         if (!modalComponent) {
             return;
         }
 
         modalComponent.setState({
-            title: title
+            title
         });
-    };
+    }
 
     static noConflict () {
-        window.ReactModal = _previousReactModal;
+        window.ReactModal = previousReactModal;
 
         return ModalController;
-    };
+    }
 
     static withPrefix (prefix) {
         if (ModalController.prefix !== prefix) {
             ModalController.prefix = prefix;
-            ModalController._forceUpdate();
+            ModalController.forceUpdate();
         }
 
         return ModalController;
-    };
+    }
     // Private method
-    static _activeComponent () {
+    static activeComponent () {
         let activeID;
         try {
             activeID = _.last(ModalController.modals).id;
@@ -243,9 +251,12 @@ class ModalController extends Component {
         }
 
         return ModalController.instance.refs[activeID] || null;
-    };
-
-    static _findComponent (id) {
+    }
+    /*
+    * 私有方法
+    */
+    static findComponent (Id) {
+        let id = Id;
         if (ModalController.instance === null) {
             return null;
         }
@@ -259,9 +270,11 @@ class ModalController extends Component {
         }
 
         return ModalController.instance.refs[id] || null;
-    };
-
-    static _forceUpdate () {
+    }
+    /*
+     * 私有方法
+     */
+    static forceUpdate () {
         if (ModalController.instance === null) {
             return;
         }
@@ -284,13 +297,24 @@ class ModalController extends Component {
         ModalController.instance = null;
     }
 
-    /*componentWillUpdate() {
+    /*
+    componentWillUpdate() {
      console.time('ModalController render');
      },
 
      componentDidUpdate() {
      console.timeEnd('ModalController render');
-     },*/
+     },
+     */
+
+    handleMaskClick () {
+        const activeModal = _.last(ModalController.modals);
+        if (!activeModal.closeByMask) {
+            return;
+        }
+
+        ModalController.closeAll();
+    }
 
     render () {
         ModalController.layoutStyle = {};
@@ -299,8 +323,8 @@ class ModalController extends Component {
         const activeModal = _.last(modals);
         const modalsCount = modals.length;
 
-        let modalWrapStyle = _.extend({}, styles.modalWrap);
-        let modalMaskStyle = _.extend({}, styles.modalMask);
+        const modalWrapStyle = _.extend({}, styles.modalWrap);
+        const modalMaskStyle = _.extend({}, styles.modalMask);
 
         if (modalsCount > 0) {
             modalWrapStyle.display = 'block';
@@ -318,34 +342,34 @@ class ModalController extends Component {
             }
         }
 
+        const modalsArr = modals.map((modal) => {
+            return (
+                <Modal key={modal.id} ref={modal.id} data={modal} active={modal === activeModal} />
+            );
+        });
+
         return (
-            <div className={ModalController.prefix + 'modal-wrap'} style={modalWrapStyle}>
+            <div className={`${ModalController.prefix}modal-wrap`} style={modalWrapStyle}>
 
-                <div style={modalMaskStyle} onClick={this.handleMaskClick}></div>
+                <div style={modalMaskStyle} onClick={this.handleMaskClick} />
 
-                {modals.map(function (modal) {
-                    return (
-                        <Modal key={modal.id} ref={modal.id} data={modal} active={modal === activeModal} />
-                    );
-                }, this)}
+                {modalsArr}
             </div>
         );
-    }
-
-    handleMaskClick () {
-        const activeModal = _.last(ModalController.modals);
-        if (!activeModal.closeByMask) {
-            return;
-        }
-
-        ModalController.closeAll();
     }
 }
 
 class Modal extends Component {
     static defaultProps = {
-        active: false
+        active: false,
+        data: {}
     };
+
+    static propTypes = {
+        active: React.PropTypes.bool,
+        data: React.PropTypes.object
+    };
+
     constructor (props) {
         super(props);
         const modal = this.props.data;
@@ -362,12 +386,12 @@ class Modal extends Component {
         this.locate();
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
+    shouldComponentUpdate (nextProps, nextState) {
         if (nextProps.active !== this.props.active) {
             return true;
         }
 
-        let state = this.state;
+        const state = this.state;
         if (nextState.title !== state.title
             || nextState.width !== state.width
             || nextState.height !== state.height) {
@@ -383,39 +407,6 @@ class Modal extends Component {
 
     componentDidUpdate () {
         this.locate();
-    }
-
-    render () {
-        const prefix = ModalController.prefix;
-
-        const { id, className } = this.props.data;
-        const { title, body, footer, style } = this.state;
-
-        this.layoutStyle = ModalController.layoutStyle;
-
-        let modalStyle = _.extend({}, styles.modal, ModalController.layoutStyle, style);
-
-        if (this.props.active) {
-            _.extend(modalStyle, styles.modalActive);
-        }
-
-        const modalClassName = _.compact([prefix + 'modal', className]).join(' ');
-
-        return (
-            <div id={id} className={modalClassName} style={modalStyle}>
-                {title && (
-                    <div className={prefix + 'modal-header'} style={styles.modalHeader}>
-                        <h2 className={prefix + 'title'} style={styles.modalTitle}>{title}</h2>
-                        <a className={prefix + 'modal-close'} style={styles.modalClose} href='javascript:' onClick={this.close.bind(this)}>×</a>
-                    </div>
-                )}
-
-                <div className={prefix + 'modal-body'} style={styles.modalBody}>{body}</div>
-                {footer && (
-                    <div className={prefix + 'modal-footer'} style={styles.modalFooter}>{footer}</div>
-                )}
-            </div>
-        );
     }
 
     locate () {
@@ -443,10 +434,10 @@ class Modal extends Component {
             // }
 
             this.setState({
-                width: width,
-                height: height,
+                width,
+                height,
                 style: {
-                    marginTop: marginTop,
+                    marginTop,
                     marginLeft: width / -2
                     // maxHeight: screenHeight,
                     // overflowY: 'scroll'
@@ -461,14 +452,46 @@ class Modal extends Component {
     }
 
     handleBeforeClose () {
-        var modal = this.props.data;
+        const modal = this.props.data;
         return !(modal.beforeClose && modal.beforeClose() === false);
+    }
+
+    render () {
+        const prefix = ModalController.prefix;
+
+        const { id, className } = this.props.data;
+        const { title, body, footer, style } = this.state;
+
+        this.layoutStyle = ModalController.layoutStyle;
+
+        const modalStyle = _.extend({}, styles.modal, ModalController.layoutStyle, style);
+
+        if (this.props.active) {
+            _.extend(modalStyle, styles.modalActive);
+        }
+
+        const cls = `${prefix}modal`;
+        const modalClassName = _.compact([cls, className]).join(' ');
+
+        return (
+            <div id={id} className={modalClassName} style={modalStyle}>
+                {title && (
+                    <div className={`${prefix}modal-header`} style={styles.modalHeader}>
+                        <h2 className={`${prefix}title`} style={styles.modalTitle}>{title}</h2>
+                        <a className={`${prefix}modal-close`} style={styles.modalClose} href='javascript:' onClick={e => this.close(e)}>×</a>
+                    </div>
+                )}
+
+                <div className={`${prefix}modal-body`} style={styles.modalBody}>{body}</div>
+                {footer && (
+                    <div className={`${prefix}modal-footer`} style={styles.modalFooter}>{footer}</div>
+                )}
+            </div>
+        );
     }
 }
 
-const _previousReactModal = window.ReactModal;
-
-if (_previousReactModal === undefined || _previousReactModal !== ModalController) {
+if (previousReactModal === undefined || previousReactModal !== ModalController) {
     window.ReactModal = ModalController;
 
     const modalContainer = document.createElement('div');
