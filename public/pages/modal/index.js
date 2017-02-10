@@ -48,6 +48,9 @@ export default class ModalView extends Component {
 			<div className="m-l m-r m-b-xxl">
 				<h1>
 					弹框（小店） - Modal
+					<a href="mactt://message/user/03084" style={{border: 'none'}} className="m-l-lg btn-info-custom btn">
+                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
+                    </a>
 				</h1>
 				<h2>
 					1. 示例

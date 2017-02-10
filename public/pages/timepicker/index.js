@@ -31,6 +31,9 @@ export default class TimepickerView extends Component {
 			<div className="m-l m-r m-b-xxl mc-date-picker">
 				<h1>
 					时间选择 - Timepicker
+					<a href="mactt://message/user/01825" style={{border: 'none'}} className="m-l-lg btn-info-custom btn">
+                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
+                    </a>
 				</h1>
 				<h2>
 					1. 示例

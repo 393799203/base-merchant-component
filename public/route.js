@@ -29,7 +29,8 @@ import ModalView from './pages/modal';
 import TableView from './pages/table';
 import SelectView from './pages/select';
 import FieldView from './pages/field';
-import ProcessBar from './pages/process-bar';
+import ProcessBarView from './pages/process-bar';
+import WrapperView from './pages/wrapper';
 
 export default (
     <Router history={hashHistory}>
@@ -60,7 +61,8 @@ export default (
             <Route path='field' component={FieldView} />
             <Route path='teamtalk' component={TeamtalkView} />
             <Route path='areacode' component={AreaCodeView} />
-            <Route path='process-bar' component={ProcessBar} />
+            <Route path='process-bar' component={ProcessBarView} />
+            <Route path='wrapper' component={WrapperView} />
         </Route>
     </Router>
 );

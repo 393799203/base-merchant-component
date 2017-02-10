@@ -4,8 +4,8 @@ import { Select } from 'source_path/select';
 const noop = function () {};
 
 export default class AreaCode extends Component {
-    constructor () {
-        super();
+    constructor (props) {
+        super(props);
         this.state = {
             options: [
                 { text: '- 请选择 -', value: '-1' },

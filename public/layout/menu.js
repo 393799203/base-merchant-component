@@ -68,7 +68,7 @@ export default [
         link: '#/field'
     },
     {
-        title: 'TT - teamtalk',
+        title: 'TT - Teamtalk',
         link: '#/teamtalk'
     },
     {
@@ -78,6 +78,10 @@ export default [
     {
         title: '步骤条 - ProcessBar',
         link: '#/process-bar'
+    },
+    {
+        title: '加载容器 - Wrapper',
+        link: '#/wrapper'
     }
 ];
 

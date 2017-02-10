@@ -17,6 +17,9 @@ export default class ProcessBarView extends Component {
             <div className='m-b-lg m-l m-r'>
                 <h1>
                     进度条 - ProcessBar
+                    <a href="mactt://message/user/02017" style={{border: 'none'}} className="m-l-lg btn-info-custom btn">
+                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
+                    </a>
                 </h1>
                 <h2>
                     1. 示例

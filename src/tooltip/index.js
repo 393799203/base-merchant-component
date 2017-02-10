@@ -1,7 +1,3 @@
-/**
- * @author youyou
- * @desc 提示信息
- */
 import React, { Component } from 'react';
 import RcTooltip from 'rc-tooltip';
 
