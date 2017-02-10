@@ -172,10 +172,10 @@ export default class MonthPicker extends Component {
 
         const timePicker = showTime ?
             (<TimePicker
-              prefixCls='mc-time-picker'
-              placeholder={locale.lang.timePlaceholder}
-              transitionName='slide-up'
-              {...timeConfig}
+                prefixCls='mc-time-picker'
+                placeholder={locale.lang.timePlaceholder}
+                transitionName='slide-up'
+                {...timeConfig}
             />)
             : null;
 
@@ -184,14 +184,14 @@ export default class MonthPicker extends Component {
         });
 
         const calendar = (<RangeCalendar
-          prefixCls='mc-calendar'
-          className={calendarClassName}
-          timePicker={timePicker}
-          disabledDate={disabledDate}
-          dateInputPlaceholder={[startPlaceholder, endPlaceholder]}
-          locale={locale.lang}
-          defaultValue={[defaultCalendarValue, defaultCalendarValue]}
-          showClear
+            prefixCls='mc-calendar'
+            className={calendarClassName}
+            timePicker={timePicker}
+            disabledDate={disabledDate}
+            dateInputPlaceholder={[startPlaceholder, endPlaceholder]}
+            locale={locale.lang}
+            defaultValue={[defaultCalendarValue, defaultCalendarValue]}
+            showClear
         />);
 
         const pickerClass = classNames({
