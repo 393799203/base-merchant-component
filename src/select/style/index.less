@@ -30,6 +30,10 @@
         padding-left: 0;
         border-bottom: 1px solid #DEDEDE;
         margin-bottom: 0;
+        max-height: 100px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        display: inline-table;
         &:last-child{
             border-bottom: 0;
         }
@@ -40,6 +44,9 @@
         position: relative;
         &:hover{
             background: #F3F5F8; 
+            .sub-arrow em{
+                border-left: 5px solid #F3F5F8;
+            }
         }
     }
     ol{
@@ -57,8 +64,27 @@
     }
     .sub-arrow{
         position: absolute;
-        right: 15px;
-        top: 0px;
+        right: 8px;
+        top: 12px;
+        display: block;
+        width: 0;
+        height: 0;
+        border-left: 5px solid #666;
+        border-top: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        em{
+            position: absolute;
+            right: -3px;
+            top: -5px;
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 5px solid #fff;
+            border-top: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+        }
     }
     .select-arrow{
         display: block;

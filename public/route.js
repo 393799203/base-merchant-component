@@ -15,6 +15,7 @@ import PaginationView from './pages/pagination';
 import NotificationView from './pages/notification';
 import TooltipView from './pages/tooltip';
 import TabView from './pages/compontents/tab';
+import TagView from './pages/tag';
 import PanelView from './pages/compontents/panel';
 import ImageUploaderView from './pages/compontents/image-uploader';
 
@@ -39,6 +40,7 @@ export default (
             <Route path='grid' component={GridView} />
             <Route path='panel' component={PanelView} />
             <Route path='tab' component={TabView} />
+            <Route path='tag' component={TagView} />
             <Route path='pager' component={PagerView} />
             <Route path='pagination' component={PaginationView} />
             <Route path='notification' component={NotificationView} />

@@ -8,6 +8,10 @@ export default [
         link: '#/tab'
     },
     {
+        title: '标签 - Tag',
+        link: '#/tag'
+    },
+    {
         title: '分页 - Pagination',
         link: '#/pagination'
     },
