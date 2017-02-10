@@ -66,6 +66,14 @@ export default [
     {
         title: '表单 - Field',
         link: '#/field'
+    },
+    {
+        title: 'TT - teamtalk',
+        link: '#/teamtalk'
+    },
+    {
+        title: '手机区号 - AreaCode',
+        link: '#/areacode'
     }
 ];
 

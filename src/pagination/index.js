@@ -51,10 +51,10 @@ const renderPageBtn = function (pageBtns, currentPage, totalPage, onChangePage, 
                             btnElem = <a className='btn btn-pre disabled' key={index}>{item}</a>;
                         } else {
                             btnElem = (<a
-                              className='btn btn-pre'
-                              href={link ? link + (currentPage - 1) : '#'}
-                              onClick={(e) => { if (!link) { e.preventDefault(); onChangePage(currentPage - 1); } }}
-                              key={index}
+                                className='btn btn-pre'
+                                href={link ? link + (currentPage - 1) : '#'}
+                                onClick={(e) => { if (!link) { e.preventDefault(); onChangePage(currentPage - 1); } }}
+                                key={index}
                             >
                                 {item}
                             </a>);
@@ -65,10 +65,10 @@ const renderPageBtn = function (pageBtns, currentPage, totalPage, onChangePage, 
                             btnElem = <a className='btn btn-next disabled' key={index}>{item}</a>;
                         } else {
                             btnElem = (<a
-                              className='btn btn-next'
-                              href={link ? link + (currentPage + 1) : '#'}
-                              onClick={(e) => { if (!link) { e.preventDefault(); onChangePage(currentPage + 1); } }}
-                              key={index}
+                                className='btn btn-next'
+                                href={link ? link + (currentPage + 1) : '#'}
+                                onClick={(e) => { if (!link) { e.preventDefault(); onChangePage(currentPage + 1); } }}
+                                key={index}
                             >
                                 {item}
                             </a>);
@@ -76,20 +76,20 @@ const renderPageBtn = function (pageBtns, currentPage, totalPage, onChangePage, 
                     /* 视图情况4: 当前页高亮 */
                     } else if (item === currentPage) {
                         btnElem = (<a
-                          className='btn btn-current'
-                          href={link ? link + item : '#'}
-                          onClick={(e) => { if (!link) { e.preventDefault(); onChangePage(item); } }}
-                          key={index}
+                            className='btn btn-current'
+                            href={link ? link + item : '#'}
+                            onClick={(e) => { if (!link) { e.preventDefault(); onChangePage(item); } }}
+                            key={index}
                         >
                             {item}
                         </a>);
                     /* 视图情况5: 其他 */
                     } else {
                         btnElem = (<a
-                          className='btn'
-                          href={link ? link + item : '#'}
-                          onClick={(e) => { if (!link) { e.preventDefault(); onChangePage(item); } }}
-                          key={index}
+                            className='btn'
+                            href={link ? link + item : '#'}
+                            onClick={(e) => { if (!link) { e.preventDefault(); onChangePage(item); } }}
+                            key={index}
                         >
                             {item}
                         </a>);

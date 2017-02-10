@@ -1,3 +1,7 @@
+#### 使用
+
+	npm install @meili/base-merchant-component --save
+
 #### 项目简介
 
 该node包为小店公用组件，基于MFP平台生成，依赖React@0.14.x。
@@ -9,7 +13,7 @@
 * 0.x.x -- develop 分支
 * 1.0.0 -- v1.0.0 分支
 
-v1.0.0的版本是使用商家后台新的UI规范开发的一套新的组件，api不兼容0.x.x版本。
+v1.0.0的版本是使用商家后台新的UI规范开发的一套新的组件，api兼容0.x.x版本。
 
 #### 组件开发
 
