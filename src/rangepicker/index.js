@@ -209,16 +209,16 @@ export default class MonthPicker extends Component {
         return (
             <span className={pickerClass} style={style}>
                 <DatePicker
-                  transitionName={transitionName}
-                  disabled={disabled}
-                  calendar={calendar}
-                  value={state.value}
-                  prefixCls='mc-calendar-picker-container'
-                  style={popupStyle}
-                  align={align}
-                  onOpen={e => this.toggleOpen(e)}
-                  onClose={e => this.toggleOpen(e)}
-                  onChange={e => this.handleChange(e)}
+                    transitionName={transitionName}
+                    disabled={disabled}
+                    calendar={calendar}
+                    value={state.value}
+                    prefixCls='mc-calendar-picker-container'
+                    style={popupStyle}
+                    align={align}
+                    onOpen={e => this.toggleOpen(e)}
+                    onClose={e => this.toggleOpen(e)}
+                    onChange={e => this.handleChange(e)}
                 >
 
                     {() => {
@@ -228,22 +228,22 @@ export default class MonthPicker extends Component {
                             <span className={pickerInputClass} disabled={disabled}>
                                 <span className='mc-calendar-range-picker-input'>
                                     <input
-                                      disabled={disabled}
-                                      onChange={this.handleInputChange}
-                                      value={start && this.getFormatter().format(start)}
-                                      placeholder={startPlaceholder}
-                                      className='mc-calendar-picker-input'
+                                        disabled={disabled}
+                                        onChange={this.handleInputChange}
+                                        value={start && this.getFormatter().format(start)}
+                                        placeholder={startPlaceholder}
+                                        className='mc-calendar-picker-input'
                                     />
                                     <span className='mc-calendar-picker-icon' />
                                 </span>
                                 <span className='mc-calendar-range-picker-separator'>~</span>
                                 <span className='mc-calendar-range-picker-input'>
                                     <input
-                                      disabled={disabled}
-                                      onChange={this.handleInputChange}
-                                      value={end && this.getFormatter().format(end)}
-                                      placeholder={endPlaceholder}
-                                      className='mc-calendar-picker-input'
+                                        disabled={disabled}
+                                        onChange={this.handleInputChange}
+                                        value={end && this.getFormatter().format(end)}
+                                        placeholder={endPlaceholder}
+                                        className='mc-calendar-picker-input'
                                     />
                                     <span className='mc-calendar-picker-icon' />
                                 </span>

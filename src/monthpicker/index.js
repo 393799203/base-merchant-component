@@ -144,12 +144,12 @@ export default class MonthPicker extends Component {
 
         const calendar = (
             <MonthCalendar
-              disabledDate={this.props.disabledDate}
-              locale={locale.lang}
-              dateInputPlaceholder={placeholder}
-              prefixCls='mc-calendar'
-              className={calendarClassName}
-              showClear
+                disabledDate={this.props.disabledDate}
+                locale={locale.lang}
+                dateInputPlaceholder={placeholder}
+                prefixCls='mc-calendar'
+                className={calendarClassName}
+                showClear
             />
         );
 
@@ -160,28 +160,28 @@ export default class MonthPicker extends Component {
         return (
             <span className={pickerClass}>
                 <RCDatePicker
-                  transitionName={this.props.transitionName}
-                  disabled={this.props.disabled}
-                  calendar={calendar}
-                  value={this.state.value}
-                  prefixCls='mc-calendar-picker-container'
-                  style={this.props.popmcStyle}
-                  align={this.props.align}
-                  onOpen={e => this.toggleOpen(e)}
-                  onClose={e => this.toggleOpen(e)}
-                  onChange={e => this.handleChange(e)}
+                    transitionName={this.props.transitionName}
+                    disabled={this.props.disabled}
+                    calendar={calendar}
+                    value={this.state.value}
+                    prefixCls='mc-calendar-picker-container'
+                    style={this.props.popmcStyle}
+                    align={this.props.align}
+                    onOpen={e => this.toggleOpen(e)}
+                    onClose={e => this.toggleOpen(e)}
+                    onChange={e => this.handleChange(e)}
                 >
 
                     {({ value }) => {
                         return (
                             <span>
                                 <input
-                                  disabled={this.props.disabled}
-                                  value={value && this.getFormatter().format(value)}
-                                  placeholder={placeholder}
-                                  onChange={e => this.handleInputChange(e)}
-                                  style={this.props.style}
-                                  className={'mc-calendar-picker-input'}
+                                    disabled={this.props.disabled}
+                                    value={value && this.getFormatter().format(value)}
+                                    placeholder={placeholder}
+                                    onChange={e => this.handleInputChange(e)}
+                                    style={this.props.style}
+                                    className={'mc-calendar-picker-input'}
                                 />
                                 <span className='mc-calendar-picker-icon' />
                             </span>

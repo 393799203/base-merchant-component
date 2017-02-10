@@ -154,10 +154,10 @@ export default class DatePicker extends Component {
         // 判断是否展示时分秒
         const timePicker = this.props.showTime ?
             (<TimePicker
-              prefixCls='mc-time-picker'
-              placeholder={locale.lang.timePlaceholder}
-              transitionName='slide-mc'
-              {...timeConfig}
+                prefixCls='mc-time-picker'
+                placeholder={locale.lang.timePlaceholder}
+                transitionName='slide-mc'
+                {...timeConfig}
             />)
             : null;
 
@@ -167,15 +167,15 @@ export default class DatePicker extends Component {
 
         const calendar = (
             <RCCalendar
-              disabledDate={this.props.disabledDate}
-              locale={locale.lang}
-              timePicker={timePicker}
-              defaultValue={defaultCalendarValue}
-              dateInputPlaceholder={placeholder}
-              prefixCls='mc-calendar'
-              className={calendarClassName}
-              showOk={this.props.showTime}
-              showClear
+                disabledDate={this.props.disabledDate}
+                locale={locale.lang}
+                timePicker={timePicker}
+                defaultValue={defaultCalendarValue}
+                dateInputPlaceholder={placeholder}
+                prefixCls='mc-calendar'
+                className={calendarClassName}
+                showOk={this.props.showTime}
+                showClear
             />
         );
 
@@ -186,28 +186,28 @@ export default class DatePicker extends Component {
         return (
             <span className={pickerClass}>
                 <RCDatePicker
-                  transitionName={this.props.transitionName}
-                  disabled={this.props.disabled}
-                  calendar={calendar}
-                  value={this.state.value}
-                  prefixCls='mc-calendar-picker-container'
-                  style={this.props.popupStyle}
-                  align={this.props.align}
-                  onOpen={e => this.toggleOpen(e)}
-                  onClose={e => this.toggleOpen(e)}
-                  onChange={e => this.handleChange(e)}
+                    transitionName={this.props.transitionName}
+                    disabled={this.props.disabled}
+                    calendar={calendar}
+                    value={this.state.value}
+                    prefixCls='mc-calendar-picker-container'
+                    style={this.props.popupStyle}
+                    align={this.props.align}
+                    onOpen={e => this.toggleOpen(e)}
+                    onClose={e => this.toggleOpen(e)}
+                    onChange={e => this.handleChange(e)}
                 >
 
                     {() => {
                         return (
                             <span>
                                 <input
-                                  disabled={this.props.disabled}
-                                  value={this.state.value && this.getFormatter().format(this.state.value)}
-                                  placeholder={placeholder}
-                                  style={this.props.style}
-                                  className={'mc-calendar-picker-input'}
-                                  onChange={e => this.handleInputChange(e)}
+                                    disabled={this.props.disabled}
+                                    value={this.state.value && this.getFormatter().format(this.state.value)}
+                                    placeholder={placeholder}
+                                    style={this.props.style}
+                                    className={'mc-calendar-picker-input'}
+                                    onChange={e => this.handleInputChange(e)}
                                 />
                                 <span className='mc-calendar-picker-icon' />
                             </span>

@@ -1,0 +1,83 @@
+.mc-field-group{
+	.mc-field-label{
+		float:left;
+		min-width:120px;
+		text-align:right;
+		font-size:13px;
+		color:#555555;
+		height:40px;
+		line-height:40px;
+	}
+
+	.mc-field-body{
+		float:left;
+		position:relative;
+		display: -webkit-inline-box;
+	}
+
+	.mc-field-subInfo{
+		float:left;
+		height:40px;
+		line-height:40px;
+		font-size:12px;
+		color:#999;
+		margin-left:10px;
+	}
+
+	.mc-field-errorMsg{
+		display:none;
+	}
+
+	:-moz-placeholder, ::-moz-placeholder, input:-ms-input-placeholder, textarea:-ms-input-placeholder, input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+	    color: #999999;  
+	}
+
+	.require{
+		font-size:20px;
+		color:#FF4666;
+		margin-right:5px;
+		vertical-align: sub;
+	}
+}
+
+.mc-field-invaild {
+	.mc-field-error{
+		box-shadow: 0px 0px 5px #FF8D8D;
+	    border-color: #FF8D8D;
+	    background-color:#FCF5F4;
+	}
+
+	.mc-field-errorMsg{
+		display: inline-table;
+	    font-size: 13px;
+	    color: #555555;
+	    height: 40px;
+	    min-width: 100px;
+	    border: 1px solid #FFA425;
+	    background-color: #FFA425;
+	    border-radius: 4px;
+	    position: absolute;
+	    top: -2px;
+	    z-index: 99;
+	    padding-left: 5px;
+	    line-height: 40px;
+	    margin-left: 10px;
+
+	    .mc-field-errormsg{
+    	    padding-right: 10px;
+    	    display:inline-block
+	    }
+    }
+
+	.mc-field-arrow{
+		position: relative;
+	    width: 10px;
+	    display: inline-block;
+	    border-width: 8px;
+	    border-color: transparent #FFA425 transparent transparent;
+	    border-style: dashed solid dashed dashed;
+	    border-left: none;
+	    top: 6px;
+	    left: -16px;
+	}
+}

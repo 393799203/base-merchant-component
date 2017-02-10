@@ -32,5 +32,6 @@
 		"no-unused-expressions": ["error", {"allowShortCircuit": true, "allowTernary": true }],
 		"react/jsx-indent-props": ["warn", 4],
 		"react/no-find-dom-node": ["off"]
+		"no-restricted-syntax": ["error", "WithStatement"]
 	}
 }
