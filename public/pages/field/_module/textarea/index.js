@@ -44,6 +44,13 @@ export default class TextareaView extends Component {
 		    duration: 2000 // 单位毫秒
 		});
     }
+
+    onClick(){
+    	Notification.info({
+		    message: '我是自定义的onClick事件',
+		    duration: 2000 // 单位毫秒
+		});
+    }
 	
 	render () {
 		return (
@@ -133,6 +140,34 @@ export default class TextareaView extends Component {
 					        onChange={(value) => this.textChange(value)}
 					        errorMsg="我是一个校验错误提示"
 					        subInfo="我是一个表单信息">
+					    </Field>
+					</div>
+
+					<div className="f-l field-demo">
+						<h5>{"自定义属性：attrs={{style: {width:'100px'}}}"}</h5>
+						<Field 
+							type="textarea"
+					        name="textarea7"
+					        form="textarea"
+					        label="自定义属性："
+					        required
+					        attrs={{style: {width:"100px"}}}
+					        errorMsg="请输入整数"
+					        subInfo="用attrs修改了文本框的宽度100px">
+					    </Field>
+					</div>
+
+					<div className="f-l field-demo">
+						<h5>{"自定义方法：events={{onClick:()=>{}}}"}</h5>
+						<Field 
+							type="textarea"
+					        name="textarea8"
+					        form="textarea"
+					        label="自定义方法："
+					        required
+					        events={{onClick:()=>this.onClick()}}
+					        errorMsg="请输入整数"
+					        subInfo="用events自定义onClick事件">
 					    </Field>
 					</div>
 				</div>

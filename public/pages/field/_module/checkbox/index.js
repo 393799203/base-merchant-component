@@ -80,6 +80,13 @@ export default class CheckboxView extends Component {
     	}
     	return true
     }
+
+    onMouseOver(){
+    	Notification.info({
+		    message: '我是自定义的onMouseOver事件',
+		    duration: 2000 // 单位毫秒
+		});
+    }
 	
 	render () {
 		return (
@@ -206,6 +213,35 @@ export default class CheckboxView extends Component {
 					        options={checkboxOptions}
 					        className='field-text'
 					        subInfo="onValidate方法">
+					    </Field>
+					    <div style={{height:"40px"}}></div>
+					</div>
+
+					<div className="f-l field-demo">
+						<h5>{"自定义属性：attrs={{style: {width:'100px'}}}"}</h5>
+						<Field 
+							type="checkbox"
+					        name="checkbox9"
+					        form="checkbox"
+					        label="自定义属性："
+					        required
+					        options={checkboxOptions}
+					        attrs={{readOnly: 'readOnly'}}
+					        className='field-text'>
+					    </Field>
+					</div>
+
+					<div className="f-l field-demo">
+						<h5>{"自定义方法：events={{onMouseOver:()=>{}}}"}</h5>
+						<Field 
+							type="checkbox"
+					        name="checkbox10"
+					        form="checkbox"
+					        label="配置属性6："
+					        required
+					        options={checkboxOptions}
+					        events={{onMouseOver:()=>this.onMouseOver()}}
+					        className='field-text'>
 					    </Field>
 					</div>
 				</div>

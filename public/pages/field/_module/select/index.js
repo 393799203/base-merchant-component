@@ -73,6 +73,13 @@ export default class SelectView extends Component {
 		    duration: 2000 // 单位毫秒
 		});
     }
+
+    onClick(){
+    	Notification.info({
+		    message: '我是自定义的onClick事件',
+		    duration: 2000 // 单位毫秒
+		});
+    }
 	
 	render () {
 		return (
@@ -205,6 +212,35 @@ export default class SelectView extends Component {
 					        onValidate={(value) => this.onValidate(value)}
 					        className="field-select"
 					        label="必填属性：">
+					    </Field>
+					    <div style={{height:"40px"}}></div>
+					</div>
+
+					<div className="f-l field-demo">
+						<h5>{"自定义属性：attrs={{style: {width:'100px'}}}"}</h5>
+						<Field 
+							type="select"
+					        name="select9"
+					        form="select"
+					        label="自定义属性："
+					        options = {selectOptions}
+					        attrs={{style: {width:"100px"}}}
+					        errorMsg="请输入整数"
+					        subInfo="用attrs修改了文本框的宽度">
+					    </Field>
+					</div>
+
+					<div className="f-l field-demo">
+						<h5>{"自定义方法：events={{onClick:()=>{}}}"}</h5>
+						<Field 
+							type="select"
+					        name="select10"
+					        form="select"
+					        label="自定义方法："
+					        options = {selectOptions}
+					        events={{onClick:()=>this.onClick()}}
+					        errorMsg="请输入整数"
+					        subInfo="用events自定义onClick事件">
 					    </Field>
 					</div>
 				</div>

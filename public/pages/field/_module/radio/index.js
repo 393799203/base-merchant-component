@@ -72,6 +72,13 @@ export default class RadioView extends Component {
 		});
     }
 	
+    onMouseOver(){
+    	Notification.info({
+		    message: '我是自定义的onMouseOver事件',
+		    duration: 2000 // 单位毫秒
+		});
+    }
+
 	render () {
 		return (
 			<div className="field-demo clearfix">
@@ -188,6 +195,35 @@ export default class RadioView extends Component {
 					        onValidate={(value) => this.onValidate(value)}
 					        options={radioOptions}
 					        subInfo="onChange事件获取当前值">
+					    </Field>
+					    <div style={{height:"80px"}}></div>
+					</div>
+
+					<div className="f-l field-demo">
+						<h5>{"自定义属性：attrs={{readOnly: 'readOnly'}}"}</h5>
+						<Field 
+							type="radio"
+					        name="radio9"
+					        form="radio"
+					        label="自定义属性："
+					        required
+					        options={radioOptions}
+					        attrs={{readOnly: 'readOnly'}}
+					        className='field-text'>
+					    </Field>
+					</div>
+
+					<div className="f-l field-demo">
+						<h5>{"自定义方法：events={{onMouseOver:()=>{}}}"}</h5>
+						<Field 
+							type="radio"
+					        name="radio10"
+					        form="radio"
+					        label="配置属性6："
+					        required
+					        options={radioOptions}
+					        events={{onMouseOver:()=>this.onMouseOver()}}
+					        className='field-text'>
 					    </Field>
 					</div>
 				</div>

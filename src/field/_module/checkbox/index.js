@@ -5,6 +5,7 @@ import './index.less';
 export default class Checkbox extends Component {
     static defaultProps = {
         attrs: {},
+        events: {},
         onValidate: () => {
             return true;
         },
@@ -16,6 +17,7 @@ export default class Checkbox extends Component {
 
     static propTypes = {
         attrs: PropTypes.object,
+        events: PropTypes.object,
         onValidate: PropTypes.func,
         defaultValue: PropTypes.array,
         placeholder: PropTypes.string,
@@ -196,7 +198,7 @@ export default class Checkbox extends Component {
     }
 
     render () {
-        const { options, name, attrs, fieldId, disabled } = this.props;
+        const { options, name, attrs, events, fieldId, disabled } = this.props;
 
         return (
             <div className='mc-field-checkbox'>
@@ -207,6 +209,7 @@ export default class Checkbox extends Component {
                             <div
                                 className={`mc-checkbox-nice ${option.className || ''}`}
                                 key={optionValue}
+                                {...events}
                                 onClick={disabled ? () => {} : () => this.handleChange(optionValue)}
                             >
                                 <input

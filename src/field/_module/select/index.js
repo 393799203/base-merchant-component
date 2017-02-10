@@ -5,6 +5,7 @@ import './index.less';
 export default class Select extends Component {
     static defaultProps = {
         attrs: {},
+        events: {},
         onValidate: () => {
             return true;
         },
@@ -19,6 +20,7 @@ export default class Select extends Component {
 
     static propTypes = {
         attrs: PropTypes.object,
+        events: PropTypes.object,
         onValidate: PropTypes.func,
         defaultValue: PropTypes.string,
         placeholder: PropTypes.string,
@@ -138,14 +140,19 @@ export default class Select extends Component {
     }
 
     clearData () {
+        const props = this.props;
+        if (props.disabled || props.attrs.readOnly) {
+            return;
+        }
+
         let value = '';
-        if (this.props.options.length) {
-            value = this.props.options[0].value;
+        if (props.options.length) {
+            value = props.options[0].value;
         }
 
         this.setState({ value }, () => {
-            if (typeof this.props.onChange === 'function') {
-                this.props.onChange('');
+            if (typeof props.onChange === 'function') {
+                props.onChange('');
             }
         });
     }
@@ -176,12 +183,13 @@ export default class Select extends Component {
     }
 
     render () {
-        const { options, id, name, placeholder, attrs, disabled, fieldId } = this.props;
+        const { options, id, name, placeholder, attrs, events, disabled, fieldId } = this.props;
 
         return (
             <div className='mc-field-select' >
                 <select
                     {...attrs}
+                    {...events}
                     className='mc-field-error mc-select-input'
                     name={name}
                     ref={name}
@@ -201,6 +209,7 @@ export default class Select extends Component {
                 {/*
                     <SelectComponent
                         {...attrs}
+                        {...events}
                         className='mc-field-error mc-select-input'
                         name={name}
                         ref={name}

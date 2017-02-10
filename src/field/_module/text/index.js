@@ -6,6 +6,7 @@ import './textarea.less';
 export default class Text extends Component {
     static defaultProps = {
         attrs: {},
+        events: {},
         onValidate: () => {
             return true;
         },
@@ -19,6 +20,7 @@ export default class Text extends Component {
 
     static propTypes = {
         attrs: PropTypes.object,
+        events: PropTypes.object,
         onValidate: PropTypes.func,
         defaultValue: PropTypes.string,
         placeholder: PropTypes.string,
@@ -108,11 +110,16 @@ export default class Text extends Component {
     }
 
     clearData () {
+        const props = this.props;
+        if (props.disabled || props.attrs.readOnly) {
+            return;
+        }
+
         this.setState({
             value: ''
         }, () => {
-            if (typeof this.props.onChange === 'function') {
-                this.props.onChange('');
+            if (typeof props.onChange === 'function') {
+                props.onChange('');
             }
         });
     }
@@ -143,7 +150,7 @@ export default class Text extends Component {
     }
 
     render () {
-        const { type, id, name, placeholder, disabled, fieldId, attrs = { } } = this.props;
+        const { type, id, name, placeholder, disabled, fieldId, attrs = { }, events = { } } = this.props;
         return (
             <div className='mc-field-text'>
                 {type === 'textarea' ?
@@ -151,6 +158,7 @@ export default class Text extends Component {
                         id={id || fieldId}
                         disabled={disabled}
                         {...attrs}
+                        {...events}
                         className='mc-field-error mc-textarea-input'
                         name={name || ''}
                         ref={name}
@@ -164,6 +172,7 @@ export default class Text extends Component {
                         id={id || fieldId}
                         disabled={disabled}
                         {...attrs}
+                        {...events}
                         className='mc-field-error mc-text-input'
                         name={name || ''}
                         ref={name}

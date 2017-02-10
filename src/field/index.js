@@ -143,6 +143,7 @@ export default class Field extends Component {
         Field.remove(this, this.props.form);
     }
 
+    // 失去焦点对表单进行校验，但是checkbox无法出发onBlur事件，raw无法确定他的结构所以这两种类型浮掠
     onBlurField () {
         const type = this.props.type;
 
@@ -153,12 +154,14 @@ export default class Field extends Component {
         this.validate();
     }
 
+    // 获取表单数据
     getData () {
         const type = this.props.type;
         const data = TYPE[type] && TYPE[type].getData ? TYPE[type].getData(this.fieldId) : {};
         return data;
     }
 
+    // 点击表单则删除校验失败的提示，对于checkbox则点击出发校验
     clearError () {
         const type = this.props.type;
 
@@ -173,6 +176,7 @@ export default class Field extends Component {
         });
     }
 
+    // 重置表单数据
     resetData () {
         const type = this.props.type;
         if (TYPE[type] && TYPE[type].resetData) {
@@ -183,6 +187,7 @@ export default class Field extends Component {
         }
     }
 
+    // 清空表单数据
     clearData () {
         const type = this.props.type;
         if (TYPE[type] && TYPE[type].clearData) {
@@ -193,6 +198,7 @@ export default class Field extends Component {
         }
     }
 
+    // 表单校验
     validate () {
         const type = this.props.type;
         const isValid = TYPE[type] && TYPE[type].validate ? TYPE[type].validate(this.fieldId) : true;
@@ -233,6 +239,7 @@ export default class Field extends Component {
                 onClick={() => this.clearError()}
             >
                 <div className={`mc-field-group clearfix ${className || ''} ${error ? 'mc-field-invaild' : ''}`} dataId={this.fieldId}>
+                    {/* 标题 */}
                     {label ?
                         <div className='mc-field-label'>
                             <label htmlFor={this.fieldId}>
@@ -243,6 +250,7 @@ export default class Field extends Component {
                         : null
                     }
 
+                    {/* 表单 */}
                     <div className='mc-field-body'>
                         {this.renderEntry()}
 
@@ -255,6 +263,7 @@ export default class Field extends Component {
                         }
                     </div>
 
+                    {/* 校验错误提示 */}
                     <div className='mc-field-subInfo'>
                         <label htmlFor={this.fieldId}> {subInfo} </label>
                     </div>
