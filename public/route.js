@@ -28,6 +28,7 @@ import TimepickerView from './pages/timepicker';
 import ModalView from './pages/modal';
 import TableView from './pages/table';
 import SelectView from './pages/select';
+import ButtonView from './pages/button';
 import FieldView from './pages/field';
 import ProcessBarView from './pages/process-bar';
 import WrapperView from './pages/wrapper';
@@ -58,6 +59,7 @@ export default (
             <Route path='image-uploader' component={ImageUploaderView} />
             <Route path='table' component={TableView} />
             <Route path='select' component={SelectView} />
+            <Route path='button' component={ButtonView} />
             <Route path='field' component={FieldView} />
             <Route path='teamtalk' component={TeamtalkView} />
             <Route path='areacode' component={AreaCodeView} />
