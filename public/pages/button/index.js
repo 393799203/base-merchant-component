@@ -54,7 +54,7 @@ export default class ButtonView extends Component {
                                 <h2>
                                     4. 红色皮肤，尺寸大的按钮
                                 </h2>
-                                <Button value='点击我'  className="red-btn large" isLoading = {isLoading} handleChange = {this.changeStatus.bind(this)}/>
+                                <Button value='点击我'  className="red-btn large" handleChange = {this.handleChange.bind(this)}/>
                             </td>
                         </tr>
                         <tr>
@@ -62,7 +62,7 @@ export default class ButtonView extends Component {
                                 <h2>
                                     5. 蓝色皮肤,尺寸小的按钮
                                 </h2>
-                                <Button value='点击我' className="blue-btn small" isLoading = {isLoading} handleChange = {this.changeStatus.bind(this)}/>
+                                <Button value='点击我' className="blue-btn small" handleChange = {this.handleChange.bind(this)}/>
                             </td>
                         </tr>
                     </tbody>
