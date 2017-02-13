@@ -134,6 +134,7 @@ export default class Select extends Component {
                                                     <Option
                                                         key={index}
                                                         optionData={item}
+                                                        index={index}
                                                         handleChange={data => this.handleChange(data)}
                                                     />
                                                 );

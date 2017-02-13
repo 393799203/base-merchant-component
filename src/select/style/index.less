@@ -30,10 +30,8 @@
         padding-left: 0;
         border-bottom: 1px solid #DEDEDE;
         margin-bottom: 0;
-        max-height: 100px;
-        overflow-y: scroll;
-        overflow-x: hidden;
-        display: inline-table;
+        max-height: 300px;
+        overflow-y: auto;
         &:last-child{
             border-bottom: 0;
         }
@@ -41,7 +39,6 @@
     li{
         list-style-type: none;
         padding-left: 15px;
-        position: relative;
         &:hover{
             background: #F3F5F8; 
             .sub-arrow em{
@@ -61,6 +58,7 @@
         -moz-box-shadow:2px 2px 3px #eee; 
         -webkit-box-shadow:2px 2px 3px #eee; 
         box-shadow:2px 2px 3px #eee;
+
     }
     .sub-arrow{
         position: absolute;
