@@ -58,20 +58,20 @@ export default class MonthpickerView extends Component {
 					<div className="date-picker-demo clearfix">
 						<h4>配置的日期格式（format），设置默认值（defaultValue）</h4>
 						<div className='f-l'>
-							<h5>默认时间格式：yyyy-MM-dd</h5>
+							<h5>默认时间格式：yyyy-MM</h5>
 							<Monthpicker 
 								defaultValue={"2016-11"} />
 						</div>
 
 						<div className="f-l sub-demo">
-							<h5>设置时间格式：yyyy/MM/dd</h5>
+							<h5>设置时间格式：yyyy/MM</h5>
 							<Monthpicker 
 								format={"yyyy/MM"}
 								defaultValue={1486197669000}/>
 						</div>
 
 						<div className="f-l sub-demo">
-							<h5>设置时间格式：yyyy年MM月dd日</h5>
+							<h5>设置时间格式：yyyy年MM月</h5>
 							<Monthpicker 
 								format={"yyyy年MM月"}
 								defaultValue={new Date()}/>

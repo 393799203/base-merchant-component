@@ -235,8 +235,6 @@ export default class Field extends Component {
             <div
                 className='mc-module-field'
                 id={this.fieldId}
-                onBlur={() => this.onBlurField()}
-                onClick={() => this.clearError()}
             >
                 <div className={`mc-field-group clearfix ${className || ''} ${error ? 'mc-field-invaild' : ''}`} dataId={this.fieldId}>
                     {/* 标题 */}
@@ -252,8 +250,12 @@ export default class Field extends Component {
 
                     {/* 表单 */}
                     <div className='mc-field-body'>
-                        {this.renderEntry()}
-
+                        <div
+                            onBlur={() => this.onBlurField()}
+                            onClick={() => this.clearError()}
+                        >
+                            {this.renderEntry()}
+                        </div>
                         {errorMsg ?
                             <div className='mc-field-errorMsg'>
                                 <div className='mc-field-error-arrow'>
