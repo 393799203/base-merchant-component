@@ -1,0 +1,106 @@
+.mc-field-group{
+	.mc-field-label{
+		float:left;
+		min-width:120px;
+		text-align:right;
+		font-size:13px;
+		color:#555555;
+		height:40px;
+		line-height:40px;
+	}
+
+	.mc-field-body{
+		float:left;
+		position:relative;
+		display: -webkit-inline-box;
+	}
+
+	.mc-field-subInfo{
+		float:left;
+		height:40px;
+		line-height:40px;
+		font-size:12px;
+		color:#999;
+		margin-left:10px;
+	}
+
+	.mc-field-errorMsg{
+		display:none;
+	}
+
+	:-moz-placeholder, ::-moz-placeholder, input:-ms-input-placeholder, textarea:-ms-input-placeholder, input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+	    color: #999999;  
+	}
+
+	.require{
+		font-size:20px;
+		color:#FF4666;
+		margin-right:5px;
+		vertical-align: sub;
+	}
+}
+
+.mc-field-invaild {
+	.mc-field-error{
+		box-shadow: 0px 0px 5px #FF8D8D;
+	    border-color: #FF8D8D;
+	    background-color:#FCF5F4;
+	}
+
+	.mc-field-errorMsg{
+		display: inline-table;
+		position: absolute;
+		top: -2px;
+	    z-index: 99;
+	    width:300px;
+    }
+
+    .mc-field-errormsg{
+    	font-size: 13px;
+	    color: #BA7F22;
+	    background: #FFEB9A;
+		border: 1px solid rgba(136,79,25,0.10);
+		border-radius: 4px;
+	    padding: 5px;
+	    line-height: 25px;
+	    margin-left: 10px;
+	    display:inline-block;
+	    position:absolute;
+	    width:auto;
+    }
+
+    .mc-field-error-arrow{
+    	position: absolute;
+    	z-index: 100;
+
+    	.mc-field-arrow-color{
+		    width: 10px;
+		    display: inline-block;
+		    border-width: 8px;
+		    border-color: transparent #FFEB9A transparent transparent;
+		    border-style: dashed solid dashed dashed;
+		    border-left: none;
+		    margin-top: 8px;
+		}
+
+		.mc-field-arrow-border{
+		    width: 10px;
+		    display: inline-block;
+		    border-width: 8px;
+		    border-color: transparent rgba(136,79,25,0.10) transparent transparent;
+		    border-style: dashed solid dashed dashed;
+		    border-left: none;
+		    margin-left: -10px;
+		}
+
+		.mc-field-arrow{
+		    width: 10px;
+		    display: inline-block;
+		    border-width: 8px;
+		    border-color: transparent #FFEB9A transparent transparent;
+		    border-style: dashed solid dashed dashed;
+		    border-left: none;
+		    margin-left: -9px;
+		}
+    }
+}

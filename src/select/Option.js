@@ -3,11 +3,13 @@ import React, { Component, PropTypes } from 'react';
 export default class Option extends Component {
     static defaultProps = {
         optionData: {},
-        handleChange: null
+        handleChange: null,
+        index: ''
     };
     static propTypes = {
         optionData: PropTypes.object.isRequired,
-        handleChange: PropTypes.func
+        handleChange: PropTypes.func,
+        index: PropTypes.number
     };
     static timer = null;
     constructor (props, context) {
@@ -39,18 +41,19 @@ export default class Option extends Component {
         }
     }
     render () {
-        const { optionData } = this.props;
+        const { optionData, index } = this.props;
         const { showSubOption } = this.state;
+        const leftValue = index * 36;
         // 判断当前是否有子选项
         const hasSubOption = optionData.options && optionData.options.length;
         return (<li onClick={e => this.handleChange(optionData, '', e)} onMouseEnter={() => this.toggleValue('showSubOption')} onMouseLeave={() => this.toggleValue('showSubOption')}>
             {optionData.text}
-            <span className={hasSubOption ? 'sub-arrow' : ''}><em /></span>
+            <span className={hasSubOption ? 'sub-arrow' : ''} style={{ top: `${leftValue + 12}px` }}><em /></span>
             {
                 hasSubOption
-                ? <ol className={showSubOption ? '' : ''}>
-                    {optionData.options.map((item, index) => {
-                        return (<li key={index} onClick={e => this.handleChange(optionData, item, e)}>
+                ? <ol className={showSubOption ? '' : 'hide'} style={{ top: `${leftValue}px` }}>
+                    {optionData.options.map((item, i) => {
+                        return (<li key={i} onClick={e => this.handleChange(optionData, item, e)}>
                             {item.text}
                         </li>);
                     })

@@ -1,5 +1,6 @@
 const merchantComponent = { 
-    Tab : require('./tab/index')
+    AreaCode: require('./area-code'),
+    Tab : require('./tab')
 };
 
 module.exports = merchantComponent;

@@ -8,9 +8,9 @@
 | options       | 选项数据    | array       | -    |  []   |
 | onChange       | 取实际选中的选项    | function       | 默认参数是选中的选项，如{text:'选项1',value:0}  |     |
 | className       | css选择器    | string       | -    |     |
-| disabled     | 禁止下拉菜单点击   | bool | - |  false | 
+| disabled     | 禁止下拉菜单点击   | boolean | - |  false | 
 | id     | id   | string | - |   | 
-| attrs     | 其他属性   | object | - |   | 
+| ...other     | 支持扩展属性   | object | - |   | 
 
 
 

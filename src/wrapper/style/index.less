@@ -1,0 +1,27 @@
+.mc-loading-wrapper {
+	position: relative;
+	top: 0;
+	left: 0;
+	.inner-wrapper-show {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+        width: 100%;
+        z-index: 1024;
+        min-height: 100px;
+        background: rgb(234, 234, 234);    /*不支持rgba的浏览器*/
+		background: rgba(234, 234, 234, .8);  /*支持rgba的浏览器*/
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#C8EAEAEA,endColorstr=#C8EAEAEA);    /*IE8支持*/
+    	.loading-img {
+			position: relative;
+			top: 35%;
+			left: 50%;
+			margin-left: -16px;
+		} 
+	}
+	.inner-wrapper-hide {
+		display: none;
+	}
+}
