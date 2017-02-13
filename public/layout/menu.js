@@ -82,6 +82,10 @@ export default [
     {
         title: '加载容器 - Wrapper',
         link: '#/wrapper'
+    },
+    {
+        title: '按钮 - Button',
+        link: '#/button'
     }
 ];
 
