@@ -108,7 +108,7 @@ export default class Select extends Component {
         });
     }
     render () {
-        const { className, disabled, id , ...others } = this.props;
+        const { className, disabled, id, ...others } = this.props;
         const { isDropDown, text, selectData } = this.state;
         // 计算下拉框的样式
         const selectClass = ['mc-select-box'];
