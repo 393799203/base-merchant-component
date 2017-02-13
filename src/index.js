@@ -1,4 +1,4 @@
-const merchantComponent = { 
+const merchantComponent = {
     AreaCode: require('./area-code'),
     Button: require('./button'),
     Datepicker: require('./datepicker'),
@@ -13,7 +13,7 @@ const merchantComponent = {
     ProcessBar: require('./process-bar'),
     Rangepicker: require('./rangepicker'),
     Select: require('./select'),
-    Tab : require('./tab'),
+    Tab: require('./tab'),
     Table: require('./table'),
     Tag: require('./tag'),
     Timepicker: require('./timepicker'),
