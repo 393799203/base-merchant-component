@@ -1,0 +1,20 @@
+.mc-slider {
+    .clearfix {
+        &:before, &:after {
+            content: '';
+            display: table;
+            overflow: hidden;
+        }
+        &:after {
+            clear: both;
+        }
+    }
+    .slider-list-wrapper {
+        position: relative;
+        overflow: hidden;
+    }
+    .slider-list {
+        position: relative;
+        left: 0;
+    }
+}

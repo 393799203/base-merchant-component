@@ -18,6 +18,7 @@ import TabView from './pages/compontents/tab';
 import TagView from './pages/tag';
 import PanelView from './pages/compontents/panel';
 import ImageUploaderView from './pages/compontents/image-uploader';
+import SliderView from './pages/compontents/slider';
 
 import DatepickerView from './pages/datepicker';
 import MonthpickerView from './pages/monthpicker';
@@ -53,6 +54,7 @@ export default (
             <Route path='image-uploader' component={ImageUploaderView} />
             <Route path='table' component={TableView} />
             <Route path='select' component={SelectView} />
+            <Route path='slider' component={SliderView} />
         </Route>
     </Router>
 );
