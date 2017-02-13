@@ -29,6 +29,7 @@ var config = {
     extensions: ['', '.js', '.jsx'],
     alias: {
       'node_modules_path': path.resolve(__dirname, 'node_modules') ,
+      'source_path': path.resolve(__dirname + '/src'),
       'module_path': path.resolve(__dirname + '/src'),
       'base_path': path.resolve(__dirname + '/src/base'),
       'lib_path': path.resolve(__dirname + '/lib')
@@ -38,11 +39,7 @@ var config = {
     loaders: [
             {
                 test: /\.jsx?$/,
-                loader: 'babel',
-                query: {
-                    presets: ['react', 'es2015', 'stage-2'],
-                    plugins: ['add-module-exports', 'transform-object-assign','transform-object-assign','transform-decorators-legacy', 'transform-es3-member-expression-literals', 'transform-es3-property-literals']
-                }
+                loader: 'babel'
             },
             {
                 test: /\.css$/,
