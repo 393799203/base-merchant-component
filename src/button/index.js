@@ -20,7 +20,7 @@ export default class Button extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            currentClass: 'xd-btn',
+            currentClass: 'xd-btn ',
             disabled: props.disabled,
             isLoading: props.isLoading
         };
