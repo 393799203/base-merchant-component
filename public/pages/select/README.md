@@ -10,7 +10,7 @@
 | className       | css选择器    | string       | -    |     |
 | disabled     | 禁止下拉菜单点击   | boolean | - |  false | 
 | id     | id   | string | - |   | 
-| attrs     | 其他属性   | object | - |   | 
+| ...other     | 支持扩展属性   | object | - |   | 
 
 
 
