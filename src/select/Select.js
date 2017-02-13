@@ -8,7 +8,6 @@ export default class Select extends Component {
         className: '',
         onChange: null,
         disabled: false,
-        attrs: {},
         id: ''
     };
     static propTypes = {
@@ -17,7 +16,6 @@ export default class Select extends Component {
         className: PropTypes.string,
         onChange: PropTypes.func,
         disabled: PropTypes.bool,
-        attrs: PropTypes.object,
         id: PropTypes.string
     };
     constructor (props) {
@@ -110,7 +108,7 @@ export default class Select extends Component {
         });
     }
     render () {
-        const { className, disabled, attrs, id } = this.props;
+        const { className, disabled, id , ...others } = this.props;
         const { isDropDown, text, selectData } = this.state;
         // 计算下拉框的样式
         const selectClass = ['mc-select-box'];
@@ -119,7 +117,7 @@ export default class Select extends Component {
             selectClass.push('select-disabled');
         }
         return (
-            <div className={className} id={id} {...attrs}>
+            <div className={className} id={id} {...others}>
                 <div className={selectClass.join(' ')} onClick={e => this.toggleValue('isDropDown', e)}>
                     {text}
                     <span className='select-arrow' />
