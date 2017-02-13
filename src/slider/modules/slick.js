@@ -100,12 +100,16 @@ class Slick extends Component {
         let nextIndex;
         let targetIndex;
 
-        if (currIndex - slideMove < 0) {
-            targetIndex = currIndex - slideMove;
-            nextIndex = count + (currIndex - slideMove);
-            sliderListDOM.style.left = `${me.calcLeft(currIndex)}px`;
+        targetIndex = currIndex - slideMove;
+
+        if (targetIndex < 0) {
+            if (currIndex === 0 ) {
+                nextIndex = count + targetIndex;
+            } else {
+                targetIndex = nextIndex = 0;
+            }
         } else {
-            nextIndex = targetIndex = currIndex - slideMove;
+            nextIndex = targetIndex;
         }
 
         const nextLeft = me.calcLeft(nextIndex);
@@ -139,14 +143,17 @@ class Slick extends Component {
         targetIndex = currIndex + slideMove;
         if (targetIndex + slideShow > count) {
             if (targetIndex > count) {
-                nextIndex = currIndex + slideShow - (targetIndex - count);
+                nextIndex = count - slideShow;   // currIndex + slideShow - (targetIndex - count);
+            } else if (targetIndex === count) {
+                nextIndex = 0;
             } else {
-                nextIndex = currIndex + count % slideMove;
+                targetIndex = nextIndex = currIndex + count - targetIndex;
             }
         } else {
             nextIndex = targetIndex;
         }
-        console.log(nextIndex, targetIndex);
+        
+        console.log('targetIndex', targetIndex, 'nextIndex:', nextIndex);
         
         /*if (currIndex + slideMove >= count) {
             targetIndex = nextIndex = (currIndex + slideMove) - count;
@@ -156,12 +163,12 @@ class Slick extends Component {
             nextIndex = targetIndex = currIndex + slideMove;
         }*/
 
+        const targetLeft = me.calcLeft(targetIndex);
         const nextLeft = me.calcLeft(nextIndex);
-        console.log(nextLeft);
         // const targetLeft = me.calcLeft(targetIndex);
 
         Velocity(sliderListDOM, {
-            left: `${nextLeft}px`
+            left: `${targetLeft}px`
         }, {
             duration: speed
         }).then(() => {

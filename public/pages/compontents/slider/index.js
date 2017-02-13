@@ -7,7 +7,7 @@ class SliderDemo extends Component {
     render() {
         return (
             <div>
-                <Slider className='slider-demo' slideShow={4} slideMove={4}>
+                <Slider className='slider-demo' slideShow={1} slideMove={1}>
                     <div className='list-item fl'>第1个</div>
                     <div className='list-item fl'>第2个</div>
                     <div className='list-item fl'>第3个</div>
