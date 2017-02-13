@@ -2,6 +2,14 @@ import React, { Component, PropTypes } from 'react';
 import _menuData from './menu';
 import HeadNav from './headNav';
 
+_menuData.sort((item1, item2) => {
+    let temp1 = item1.link.slice(2, 3).toLowerCase();
+    let temp2 = item2.link.slice(2, 3).toLowerCase();
+    if (temp1 > temp2) {return 1;}
+    if (temp1 < temp2) {return -1;}
+    return 0;
+});
+
 const OriginMenuData = _menuData;
 
 export default class LayoutView extends Component {
@@ -73,7 +81,7 @@ export default class LayoutView extends Component {
                                           key={index}
                                           onClick={() => this.activeMenu(item)}
                                         >
-                                            <a href={item.link}>{item.title}</a>
+                                            <a href={item.link} style={{padding: "15px 12px"}}>{item.title}</a>
                                         </li>);
                                     })
                                 }

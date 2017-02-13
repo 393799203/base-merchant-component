@@ -11,6 +11,9 @@ export default class TagView extends Component {
         return <div className='m-b-lg m-l m-r'>
         	<h1>
                 标签 - Tag
+                <a href="mactt://message/user/01385" style={{border: 'none'}} className="m-l-lg btn-info-custom btn">
+                    <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
+                </a>
             </h1>
             <h2>
                 1. 示例

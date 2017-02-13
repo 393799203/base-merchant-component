@@ -1,9 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import DateTimeFormat from 'gregorian-calendar-format';
 import RCTimePicker from 'rc-time-picker/lib/TimePicker';
-import objectAssign from 'object-assign';
 import classNames from 'classnames';
-import defaultLocale from '../_module/js/locale/zh_CN';
+import DatepickerMinix from '../_module/js/datepicker';
 
 import '../_module/less/timepicker.less';
 
@@ -60,13 +59,6 @@ export default class TimePicker extends Component {
         return sizeClass;
     }
 
-    getLocale () {
-        // 统一合并为完整的 Locale
-        const locale = objectAssign({}, defaultLocale, this.props.locale);
-        locale.lang = objectAssign({}, defaultLocale.lang, this.props.locale.lang);
-        return locale;
-    }
-
     handleChange (value) {
         this.props.onChange(value ? new Date(value.getTime()) : null);
     }
@@ -77,7 +69,7 @@ export default class TimePicker extends Component {
     parseTimeFromValue (value) {
         if (value) {
             return this.getFormatter().parse(value, {
-                locale: this.getLocale(),
+                locale: DatepickerMinix.getLocale(this.props.locale),
                 obeyCount: true
             });
         }
@@ -85,9 +77,9 @@ export default class TimePicker extends Component {
     }
 
     render () {
-        const props = objectAssign({}, this.props);
+        const props = Object.assign({}, this.props);
         props.placeholder = ('placeholder' in this.props)
-          ? props.placeholder : this.getLocale().lang.placeholder;
+          ? props.placeholder : DatepickerMinix.getLocale(this.props.locale).lang.placeholder;
         if (props.defaultValue) {
             props.defaultValue = this.parseTimeFromValue(props.defaultValue);
         } else {
@@ -114,11 +106,11 @@ export default class TimePicker extends Component {
 
         return (
             <RCTimePicker
-              {...props}
-              className={className}
-              gregorianCalendarLocale={this.getLocale()}
-              formatter={this.getFormatter()}
-              onChange={value => this.handleChange(value)}
+                {...props}
+                className={className}
+                gregorianCalendarLocale={DatepickerMinix.getLocale(this.props.locale)}
+                formatter={this.getFormatter()}
+                onChange={value => this.handleChange(value)}
             />
         );
     }

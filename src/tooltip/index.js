@@ -1,7 +1,3 @@
-/**
- * @author youyou
- * @desc 提示信息
- */
 import React, { Component } from 'react';
 import RcTooltip from 'rc-tooltip';
 
@@ -46,11 +42,11 @@ class ToolTip extends Component {
 
         return (
             <RcTooltip
-              transitionName={transitionName}
-              overlay={this.props.tooltip}
-              visible={visible}
-              onVisibleChange={this.onVisibleChange}
-              {...this.props}
+                transitionName={transitionName}
+                overlay={this.props.tooltip}
+                visible={visible}
+                onVisibleChange={this.onVisibleChange}
+                {...this.props}
             >
                 {this.props.children}
             </RcTooltip>
@@ -65,7 +61,7 @@ ToolTip.propTypes = {
 };
 
 ToolTip.defaultProps = {
-    prefixCls: 'md-tooltip',
+    prefixCls: 'mc-tooltip',
     placement: 'top',
     mouseEnterDelay: 0.1,
     mouseLeaveDelay: 0.1

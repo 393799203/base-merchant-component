@@ -22,7 +22,7 @@ export default class Tag extends Component {
         return (<div className={clsName}>
             { children }
             {
-                closeable ? (<span className='closeBtn' onClick={e => me.close(e)}>x</span>) : null
+                closeable ? (<span className='closeBtn' onClick={e => me.close(e)}>×</span>) : null
             }
         </div>);
     }

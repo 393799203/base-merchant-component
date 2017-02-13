@@ -48,6 +48,26 @@ module.exports = {
                 // loader: ExtractTextPlugin.extract(
                 //     'css?sourceMap&-minimize!' + 'postcss-loader!' + 'less?sourceMap'
                 // )
+            },
+            {
+                test: /\.svg(\?.+)?$/,
+                loader: 'file-loader?mimetype=image/svg+xml'
+            },
+            {
+                test: /\.woff(\?.+)?$/,
+                loader: 'file-loader?mimetype=application/font-woff'
+            },
+            {
+                test: /\.woff2(\?.+)?$/,
+                loader: 'file-loader?mimetype=application/font-woff'
+            },
+            {
+                test: /\.ttf(\?.+)?$/,
+                loader: 'file-loader?mimetype=application/octet-stream'
+            },
+            {
+                test: /\.eot(\?.+)?$/,
+                loader: 'file-loader'
             }
         ]
     }

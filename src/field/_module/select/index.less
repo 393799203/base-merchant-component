@@ -1,0 +1,37 @@
+.mc-field-select{
+	select::-ms-expand { 
+        display: none; 
+    }
+
+	.mc-select-input{
+		width: auto;
+        height: 36px;
+        line-height: 1.5;
+        border: 1px solid #DEDEDE;
+        border-radius: 4px;
+        color: #555555;
+        font-size:13px;
+        padding:0px 20px 0px 5px;
+
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+
+        background: url(http://s16.mogucdn.com/p1/161130/idid_ifrdsztemy4tqyrymmzdambqmeyde_8x4.png) no-repeat #fff;
+        background-position: 95% 15px;
+        outline: none;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+        &:focus {
+            box-shadow: 0px 0px 5px #8CC4FF;
+		    border-color: #8CC4FF;
+		    background-color:#fff;
+        }
+	}
+
+	.mc-select-input .disabled, .mc-select-input[disabled] {
+        background-color: #F3F5F8;
+        cursor: not-allowed;
+        color: #BBBBBB;
+    }
+}

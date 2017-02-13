@@ -19,6 +19,8 @@ import TagView from './pages/tag';
 import PanelView from './pages/compontents/panel';
 import ImageUploaderView from './pages/compontents/image-uploader';
 import SliderView from './pages/compontents/slider';
+import TeamtalkView from './pages/teamtalk';
+import AreaCodeView from './pages/area-code';
 
 import DatepickerView from './pages/datepicker';
 import MonthpickerView from './pages/monthpicker';
@@ -27,6 +29,10 @@ import TimepickerView from './pages/timepicker';
 import ModalView from './pages/modal';
 import TableView from './pages/table';
 import SelectView from './pages/select';
+import ButtonView from './pages/button';
+import FieldView from './pages/field';
+import ProcessBarView from './pages/process-bar';
+import WrapperView from './pages/wrapper';
 
 export default (
     <Router history={hashHistory}>
@@ -55,6 +61,12 @@ export default (
             <Route path='table' component={TableView} />
             <Route path='select' component={SelectView} />
             <Route path='slider' component={SliderView} />
+            <Route path='button' component={ButtonView} />
+            <Route path='field' component={FieldView} />
+            <Route path='teamtalk' component={TeamtalkView} />
+            <Route path='areacode' component={AreaCodeView} />
+            <Route path='process-bar' component={ProcessBarView} />
+            <Route path='wrapper' component={WrapperView} />
         </Route>
     </Router>
 );
