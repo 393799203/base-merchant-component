@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'slider';
+    src: url('http://s16.mogucdn.com/new1/v1/bmisc/6e5d3e7e43baff2843616ae2aaa44967/197891662265.eot');
+    src: url('http://s16.mogucdn.com/new1/v1/bmisc/6e5d3e7e43baff2843616ae2aaa44967/197891662265.eot?#iefix') format('embedded-opentype'),
+    url('http://s17.mogucdn.com/new1/v1/bmisc/00f54b6299a1f980b851d7f040e9edf4/197891710875.woff') format('woff'),
+    url('http://s17.mogucdn.com/new1/v1/bmisc/af96cbb7902ed893b3221d8f1718275b/197891726134.ttf') format('truetype'),
+    url('http://s17.mogucdn.com/new1/v1/bmisc/c6715186e4eb4c7d3c44afcc62d806d9/197891739625.svg#iconfont') format('svg');
+}
 .mc-slider {
     .clearfix {
         &:before, &:after {
@@ -16,5 +24,36 @@
     .slider-list {
         position: relative;
         left: 0;
+    }
+    .dot-list {
+        .dot-active {
+            
+        }
+        li button {
+            border: 0;
+            background: transparent;
+            display: block;
+            height: 20px;
+            width: 20px;
+            outline: none;
+            line-height: 0px;
+            font-size: 0px;
+            color: transparent;
+            padding: 5px;
+            cursor: pointer;
+            &:before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                content: '&#xe613';
+                font-family: 'slider';
+                width: 20px;
+                height: 20px;
+                text-align: center;
+                color: black;
+                opacity: 0.25;
+                -webkit-font-smoothing: antialiased;
+            }
+        }
     }
 }

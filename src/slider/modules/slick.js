@@ -4,6 +4,8 @@ import Velocity from 'velocity-animate';
 import Dot from './dot';
 import SliderList from './slider-list';
 
+let tc = null;
+
 class Slick extends Component {
     constructor (props, context) {
         super(props, context);
@@ -30,6 +32,7 @@ class Slick extends Component {
 
     componentDidMount () {
         this.calcStyle();
+        this.autoplay(); // whether autoplay
     }
 
     getWidth (elem) {
@@ -49,13 +52,20 @@ class Slick extends Component {
 
     calcStyle () {
         const me = this;
-        const { slideShow } = me.props;
-        const { count } = me.state;
+        const { slideShow, infinite } = me.props;
+        const { count, currIndex } = me.state;
         const wrapper = me.sliderWrapper;
         const wrapperWidth = me.getWidth(wrapper);
         const slideWidth = wrapperWidth / slideShow;
-        const total = (slideShow * 2) + count;
+        const total = infinite ? (slideShow * 2) + count : count;
         const listWidth = slideWidth * total;
+        let left;
+
+        if (infinite) {
+            left = -(currIndex + slideShow) * slideWidth;
+        } else {
+            left = -currIndex * slideWidth;
+        }
 
         this.setState({
             slideStyle: {
@@ -63,7 +73,7 @@ class Slick extends Component {
             },
             listStyle: {
                 width: listWidth,
-                left: -slideWidth * slideShow
+                left
             }
         });
     }
@@ -72,60 +82,73 @@ class Slick extends Component {
         this[key] = instance;
     }
 
-    run () {
+    autoplay () {
+        const me = this;
+        const { autoplay, autoplaySpeed, duration } = me.props;
 
+        if (autoplay) {
+            tc = setInterval(me.next.bind(me), autoplaySpeed + duration);
+        }
     }
 
     calcLeft (index) {
         const me = this;
-        const { slideStyle, count } = me.state;
-        const { slideShow, slideMove, infinite } = me.props;
+        const { slideStyle } = me.state;
+        const { slideShow, infinite } = me.props;
         const slideWidth = slideStyle.width; // width of single slide item
+        const left = infinite ? -(index + slideShow) * slideWidth : -index * slideWidth;
 
-        if (infinite) {
-            if (index + slideMove > count) {
-
-            }
-        }
-        return -(index + slideShow) * slideWidth;
+        return left;
     }
 
     prev () {
         const me = this;
         const { state, props } = me;
-        const { currIndex } = state;
-        const { count } = state;
-        const { slideMove, slideShow, speed } = props;
+        const { slideMove, duration, infinite, beforeChange, afterChange } = props;
+        const { currIndex, count } = state;
         const sliderListDOM = ReactDOM.findDOMNode(me.sliderList);
         let nextIndex;
-        let targetIndex;
+        let targetIndex = currIndex - slideMove;
 
-        targetIndex = currIndex - slideMove;
+        if (tc) {
+            tc = clearInterval(tc);
+        }
 
-        if (targetIndex < 0) {
-            if (currIndex === 0 ) {
-                nextIndex = count + targetIndex;
+        beforeChange && beforeChange(currIndex);
+
+        if (infinite) {
+            if (targetIndex < 0) {
+                if (currIndex === 0) {
+                    nextIndex = count + targetIndex;
+                } else {
+                    targetIndex = nextIndex = 0;
+                }
             } else {
-                targetIndex = nextIndex = 0;
+                nextIndex = targetIndex;
             }
+        } else if (targetIndex < 0) {
+            nextIndex = targetIndex = 0;
         } else {
             nextIndex = targetIndex;
         }
 
         const nextLeft = me.calcLeft(nextIndex);
         const targetLeft = me.calcLeft(targetIndex);
-        
-        console.log('prev->', 'currIndex:', currIndex, 'nextIndex:', nextIndex, 'targetIndex:', targetIndex);
 
-        Velocity(sliderListDOM, {
-            left: targetLeft
-        }, {
-            duration: speed
-        }).then(() => {
-            sliderListDOM.style.left = `${nextLeft}px`;
-            me.setState({
-                currIndex: nextIndex,
-                targetIndex
+        console.log('prev->', 'currIndex:', currIndex, 'nextIndex:', nextIndex, 'targetIndex:', targetIndex);
+        return new Promise(function (resolve) {
+            Velocity(sliderListDOM, {
+                left: targetLeft
+            }, {
+                duration
+            }).then(() => {
+                sliderListDOM.style.left = `${nextLeft}px`;
+                me.setState({
+                    currIndex: nextIndex
+                }, () => {
+                    afterChange && afterChange(nextIndex);
+                    resolve();
+                });
             });
         });
     }
@@ -133,68 +156,118 @@ class Slick extends Component {
     next () {
         const me = this;
         const { state, props } = me;
-        let { currIndex } = state;
+        const { currIndex } = state;
         const { count } = state;
-        const { slideMove, slideShow, speed } = props;
+        const { slideMove, slideShow, duration, infinite, beforeChange, afterChange } = props;
         const sliderListDOM = ReactDOM.findDOMNode(me.sliderList);
         let nextIndex;
-        let targetIndex;
+        let targetIndex = currIndex + slideMove;
 
-        targetIndex = currIndex + slideMove;
-        if (targetIndex + slideShow > count) {
-            if (targetIndex > count) {
-                nextIndex = count - slideShow;   // currIndex + slideShow - (targetIndex - count);
-            } else if (targetIndex === count) {
-                nextIndex = 0;
+        beforeChange && beforeChange(currIndex);
+
+        if (infinite) {
+            if (targetIndex + slideShow > count) {
+                if (targetIndex > count) {
+                    nextIndex = count - slideShow;
+                } else if (targetIndex === count) {
+                    nextIndex = 0;
+                } else {
+                    targetIndex = nextIndex = currIndex + (count - targetIndex);
+                }
             } else {
-                targetIndex = nextIndex = currIndex + count - targetIndex;
+                nextIndex = targetIndex;
             }
+        } else if (targetIndex >= count - slideShow) {
+            targetIndex = nextIndex = count - slideShow;
         } else {
             nextIndex = targetIndex;
         }
-        
+
         console.log('targetIndex', targetIndex, 'nextIndex:', nextIndex);
-        
-        /*if (currIndex + slideMove >= count) {
+
+        /* if (currIndex + slideMove >= count) {
             targetIndex = nextIndex = (currIndex + slideMove) - count;
             currIndex = nextIndex - slideMove; // 校准currIndex
             sliderListDOM.style.left = `${me.calcLeft(currIndex)}px`;
         } else {
             nextIndex = targetIndex = currIndex + slideMove;
-        }*/
+        } */
 
         const targetLeft = me.calcLeft(targetIndex);
         const nextLeft = me.calcLeft(nextIndex);
-        // const targetLeft = me.calcLeft(targetIndex);
 
-        Velocity(sliderListDOM, {
-            left: `${targetLeft}px`
-        }, {
-            duration: speed
-        }).then(() => {
-            sliderListDOM.style.left = `${nextLeft}px`;
-            me.setState({
-                currIndex: nextIndex,
-                targetIndex
+        return new Promise(function (resolve) {
+            Velocity(sliderListDOM, {
+                left: `${targetLeft}px`
+            }, {
+                duration
+            }).then(() => {
+                sliderListDOM.style.left = `${nextLeft}px`;
+                me.setState({
+                    currIndex: nextIndex,
+                    targetIndex
+                }, () => {
+                    afterChange && afterChange(nextIndex);
+                    resolve();
+                });
             });
         });
     }
 
-    goto () {
+    prevClick () {
+        const me = this;
 
+        if (tc) {
+            tc = clearInterval(tc);
+            me.prev().then(() => {
+                me.autoplay();
+            });
+        }
+    }
+
+    nextClick () {
+        const me = this;
+
+        if (tc) {
+            tc = clearInterval(tc);
+            me.next().then(() => {
+                me.autoplay();
+            });
+        }
+    }
+
+    mouseEnterHandler () {
+        if (this.props.pauseOnHover && tc) {
+            tc = clearInterval(tc);
+        }
+    }
+
+    mouseLeaveHandler () {
+        if (this.props.pauseOnHover && !tc) {
+            this.autoplay();
+        }
+    }
+
+    goto (i) {
+        
     }
 
     render () {
         const me = this;
         /* eslint-disable no-unused-vars */
         const { children, ...otherAttrs } = me.props;
-        const { currIndex, slideStyle, listStyle } = me.state;
+        const { currIndex, slideStyle, listStyle, count } = me.state;
         const nodes = me.getChildrens();
 
         return (
             <div className=''>
-                <button onClick={() => me.prev()}>上一个</button>
-                <div className='slider-list-wrapper' ref={c => this.initRef(c, 'sliderWrapper')}>
+                <button onClick={() => me.prevClick()}>上一个</button>
+                <div
+                    className='slider-list-wrapper'
+                    ref={c => this.initRef(c, 'sliderWrapper')}
+                    onMouseEnter={() => me.mouseEnterHandler()}
+                    onMouseLeave={() => me.mouseLeaveHandler()}
+                >
                     <SliderList
                         ref={c => this.initRef(c, 'sliderList')}
                         currIndex={currIndex}
@@ -205,21 +278,27 @@ class Slick extends Component {
                         {nodes}
                     </SliderList>
                 </div>
-                <button onClick={() => me.next()}>下一个</button>
+                <button onClick={() => me.nextClick()}>下一个</button>
                 {/* <NextArrow /> */}
-                <Dot onClick={i => me.goto(i)} />
+                <Dot onClick={i => me.goto(i)} {...otherAttrs} currIndex={currIndex} count={count} />
             </div>
         );
     }
 }
 
 Slick.propTypes = {
+    autoplay: PropTypes.bool,
+    autoplaySpeed: PropTypes.number,
+    duration: PropTypes.number,
     arrows: PropTypes.bool,
+    pauseOnHover: PropTypes.bool,
     initial: PropTypes.number,
     children: PropTypes.oneOfType([
         PropTypes.element,
         PropTypes.array
-    ])
+    ]),
+    beforeChange: PropTypes.func,
+    afterChange: PropTypes.func
 };
 
 export default Slick;

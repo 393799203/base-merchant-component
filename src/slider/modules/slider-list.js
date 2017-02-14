@@ -7,18 +7,6 @@ class SliderList extends Component {
         };
     }
 
-    componentWillMount () {
-    }
-
-    componentDidMount () {
-    }
-
-    prev () {
-    }
-
-    next () {
-    }
-
     renderSildes () {
         const { children, slideShow, infinite, slideStyle } = this.props;
         const count = React.Children.count(children);
