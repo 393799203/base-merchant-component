@@ -19,40 +19,41 @@
 	    }
 
 	    & + label:before {
-		    content: "";
+		    content: "\e648";
+		    font-size: 16px;
+		    color:#DEDEDE;
 		    display: inline-block;
-		    width: 16px;
-		    height: 16px;
-		    border: 1px solid #DEDEDE;
-		    border-radius: 50%;
 		    cursor: pointer;
-            vertical-align: text-top;
             margin-right: 3px;
 		}
 
 		&:checked + label:before {
-		    content: "\2022";
-		    color: #419BF9;
-		    font-size: 30px;
-		    text-align: center;
-		    line-height: 13px;
-		    border: 1px solid #419BF9;
+			content: "\e64b";
+		    font-size: 16px;
+		    color:#419BF9;
+		    display: inline-block;
+		    cursor: pointer;
+            margin-right: 3px;
 		}
 
 	    &:disabled + label,
 	    &:disabled + label::before {
 	        cursor: not-allowed;
 	    }
-	    &:disabled + label::before {
-	        background-color:#F5F5F5;
-	        border:1px solid #DEDEDE;
-	    }
 	    &:disabled:checked + label::before {
-	        content: "\2022";
 		    color: #DEDEDE;
-		    font-size: 30px;
-		    text-align: center;
-		    line-height: 13px;
 	    }
+	}
+}
+
+.mc-field-invaild {
+	.mc-radio-error{
+		& + label:before {
+			color: #FF8D8D;
+		}
+
+		&:checked + label:before {
+		    color: #FF8D8D;
+		}
 	}
 }

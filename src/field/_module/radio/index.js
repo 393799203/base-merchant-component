@@ -190,7 +190,7 @@ export default class Radio extends Component {
                             >
                                 <input
                                     type='radio'
-                                    className='mc-radio-input'
+                                    className='mc-radio-error mc-radio-input'
                                     checked={this.state.value.toString() === optionValue}
                                     {...attrs}
                                     name={name}
@@ -200,7 +200,7 @@ export default class Radio extends Component {
                                     value={optionValue}
                                     onChange={() => this.handleChange(optionValue)}
                                 />
-                                <label htmlFor={option.id || fieldId}>{option.label}</label>
+                                <label className='yy-iconfont' htmlFor={option.id || fieldId}>{option.label}</label>
                             </div>
                         );
                     })
