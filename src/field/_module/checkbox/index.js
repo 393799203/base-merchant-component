@@ -225,7 +225,7 @@ export default class Checkbox extends Component {
                                     onChange={() => this.handleChange(optionValue)}
                                 />
 
-                                <label htmlFor={option.id || fieldId}>{option.label}</label>
+                                <label className='yy-iconfont' htmlFor={option.id || fieldId}>{option.label}</label>
                             </div>
                         );
                     })
