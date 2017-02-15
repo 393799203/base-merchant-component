@@ -1,12 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
 class SliderList extends Component {
-    constructor (props, context) {
-        super(props, context);
-        this.state = {
-        };
-    }
-
     renderSildes () {
         const { children, slideShow, infinite, slideStyle } = this.props;
         const count = React.Children.count(children);

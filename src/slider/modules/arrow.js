@@ -1,17 +1,29 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 
-class PrevArrow extends Component {
-    render() {
+export class PrevArrow extends Component {
+    render () {
+        const { onClick } = this.props;
+
         return (
-            <div>
-                
-            </div>
+            <span className='slider-icon prev-arrow' onClick={onClick}>&#xe61d;</span>
         );
     }
 }
 
 PrevArrow.propTypes = {
-
+    onClick: PropTypes.func
 };
 
-export default PrevArrow;
+export class NextArrow extends Component {
+    render () {
+        const { onClick } = this.props;
+
+        return (
+            <span className='slider-icon next-arrow' onClick={onClick}>&#xe613;</span>
+        );
+    }
+}
+
+NextArrow.propTypes = {
+    onClick: PropTypes.func
+};

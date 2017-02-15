@@ -4,17 +4,51 @@ import './style/index.less';
 import Readme from './Readme.md';
 
 class SliderDemo extends Component {
-    render() {
+    renderList (index) {
+        const arr = Array.apply(null, new Array(index));
+        return arr.map((item, i) => {
+            return (
+                <div className='list-item fl' key={i}>第{i + 1}个</div>
+            )
+        });
+    }
+    render () {
+        const me = this;
         return (
-            <div>
-                <Slider className='slider-demo' slideShow={1} slideMove={1} autoplay initial={2} pauseOnHover>
-                    <div className='list-item fl'>第1个</div>
-                    <div className='list-item fl'>第2个</div>
-                    <div className='list-item fl'>第3个</div>
-                    <div className='list-item fl'>第4个</div>
-                    <div className='list-item fl'>第5个</div>
-                    <div className='list-item fl'>第6个</div>
-                </Slider>
+            <div className='m-b-lg m-l m-r'>
+                <h1>
+                    轮播器 - Slider
+                    <a href="mactt://message/user/01173" style={{border: 'none'}} className="m-l-lg btn-info-custom btn">
+                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
+                    </a>
+                </h1>
+                <h2>
+                    1. 示例
+                </h2>
+                {/*<div>
+                    <h4>1. 带箭头的轮播器</h4>
+                    <Slider className='slider-demo' arrows>
+                        {me.renderList(6)}
+                    </Slider>
+                </div>
+                <div>
+                    <h4>2. 自动播放-无限轮播器</h4>
+                    <Slider className='slider-demo' infinite autoplay>
+                        {me.renderList(6)}
+                    </Slider>
+                </div>
+                <div>
+                    <h4>3. 自动播放-多张显示-无限轮播器</h4>
+                    <Slider className='slider-demo' slideShow={2} slideMove={2} infinite autoplay>
+                        {me.renderList(6)}
+                    </Slider>
+                </div>*/}
+                <div>
+                    <h4>4. 自动播放-非偶数组-多张显示-无限轮播器</h4>
+                    <Slider className='slider-demo' slideShow={3} slideMove={3} arrows>
+                        {me.renderList(7)}
+                    </Slider>
+                </div>
             </div>
         );
     }
