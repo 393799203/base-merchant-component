@@ -17,12 +17,12 @@ class Slider extends Component {
 }
 
 Slider.defaultProps = {
-    arrows: false,
     className: '',
     initial: 0,
     slideShow: 1,
     slideMove: 1,
     duration: 300,
+    arrows: false,
     prevArrow: null,
     nextArrow: null,
     autoplay: false,
@@ -30,16 +30,18 @@ Slider.defaultProps = {
     infinite: false,
     pauseOnHover: false,
     beforeChange: null,
-    afterChange: null
+    afterChange: null,
+    dotsShow: true,
+    dots: null
 };
 
 Slider.propTypes = {
-    arrows: PropTypes.bool,
     className: PropTypes.string,
     initial: PropTypes.number,
     slideShow: PropTypes.number,
     slideMove: PropTypes.number,
     duration: PropTypes.number,
+    arrows: PropTypes.bool,
     prevArrow: PropTypes.element,
     nextArrow: PropTypes.element,
     autoplay: PropTypes.bool,
@@ -48,6 +50,8 @@ Slider.propTypes = {
     pauseOnHover: PropTypes.bool,
     beforeChange: PropTypes.func,
     afterChange: PropTypes.func,
+    dotsShow: PropTypes.bool,
+    dots: PropTypes.element,
     children: PropTypes.oneOfType([
         PropTypes.element,
         PropTypes.array

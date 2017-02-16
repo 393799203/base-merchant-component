@@ -3,7 +3,7 @@
 * 引入方式
 
 ```
-import Panel from 'your path of npm package';
+import Panel from '@meili/base-merchant-component/lib/panel';
 ```
 
 * 用法示例

@@ -8,7 +8,7 @@ class SliderDemo extends Component {
         const arr = Array.apply(null, new Array(index));
         return arr.map((item, i) => {
             return (
-                <div className='list-item fl' key={i}>第{i + 1}个</div>
+                <div className='list-item fl' key={i}>第{i + 1}张</div>
             )
         });
     }
@@ -25,15 +25,15 @@ class SliderDemo extends Component {
                 <h2>
                     1. 示例
                 </h2>
-                {/*<div>
+                <div>
                     <h4>1. 带箭头的轮播器</h4>
                     <Slider className='slider-demo' arrows>
                         {me.renderList(6)}
                     </Slider>
                 </div>
                 <div>
-                    <h4>2. 自动播放-无限轮播器</h4>
-                    <Slider className='slider-demo' infinite autoplay>
+                    <h4>2. 自动播放-无圆点-无限轮播器</h4>
+                    <Slider className='slider-demo' infinite autoplay dotsShow={false}>
                         {me.renderList(6)}
                     </Slider>
                 </div>
@@ -42,13 +42,14 @@ class SliderDemo extends Component {
                     <Slider className='slider-demo' slideShow={2} slideMove={2} infinite autoplay>
                         {me.renderList(6)}
                     </Slider>
-                </div>*/}
+                </div>
                 <div>
-                    <h4>4. 自动播放-非偶数组-多张显示-无限轮播器</h4>
-                    <Slider className='slider-demo' slideShow={3} slideMove={3} arrows>
+                    <h4>4. 带箭头-非偶数组-多张显示-无限轮播器</h4>
+                    <Slider className='slider-demo' slideShow={3} slideMove={3} arrows infinite>
                         {me.renderList(7)}
                     </Slider>
                 </div>
+                <div dangerouslySetInnerHTML={{ __html: Readme }} />
             </div>
         );
     }

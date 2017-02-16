@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import Velocity from 'velocity-animate';
 import { PrevArrow, NextArrow } from './arrow';
-import Dot from './dot';
+import Dots from './dots';
 import SliderList from './slider-list';
 
 class Slick extends Component {
@@ -22,7 +22,12 @@ class Slick extends Component {
 
     componentWillMount () {
         const me = this;
-        const { initial } = me.props;
+        const { initial, slideMove, slideShow } = me.props;
+
+        if (slideMove > slideShow) {
+            /* eslint-disable no-console */
+            console.warn('slideShow must be greater than slideMove');
+        }
 
         me.setState({
             currIndex: initial,
@@ -67,6 +72,22 @@ class Slick extends Component {
             return !!node;
         });
         return nodes;
+    }
+
+    getDotsProps () {
+        const me = this;
+        const { dots, dotsShow, slideMove, slideShow } = me.props;
+        const { currIndex, count } = me.state;
+
+        return {
+            dots,
+            dotsShow,
+            onClick: (e, i) => me.goto(e, i),
+            currIndex,
+            count,
+            slideMove,
+            slideShow
+        };
     }
 
     calcStyle () {
@@ -122,11 +143,12 @@ class Slick extends Component {
     prev () {
         const me = this;
         const { state, props } = me;
-        const { slideMove, duration, infinite, beforeChange, afterChange } = props;
+        const { slideMove, slideShow, duration, infinite, beforeChange, afterChange } = props;
         const { currIndex, count } = state;
         const sliderListDOM = ReactDOM.findDOMNode(me.sliderList);
-        let nextIndex;
+        const indexOffset = (count - slideShow) % slideMove;
         let targetIndex = currIndex - slideMove;
+        let nextIndex;
 
         if (me.tc) {
             me.tc = clearInterval(me.tc);
@@ -146,16 +168,22 @@ class Slick extends Component {
             }
         } else if (targetIndex < 0) {
             nextIndex = targetIndex = 0;
+        } else if (currIndex + slideShow === count && indexOffset) {
+            nextIndex = targetIndex = currIndex - indexOffset;
         } else {
             nextIndex = targetIndex;
         }
 
-        const nextLeft = me.calcLeft(nextIndex);
-        const targetLeft = me.calcLeft(targetIndex);
+        return new Promise((resolve, reject) => {
+            if (currIndex === nextIndex) { // 无变更
+                reject();
+            }
 
-        return new Promise((resolve) => {
+            const nextLeft = me.calcLeft(nextIndex);
+            const targetLeft = me.calcLeft(targetIndex);
+
             Velocity(sliderListDOM, {
-                left: targetLeft
+                left: `${targetLeft}px`
             }, {
                 duration
             }).then(() => {
@@ -177,8 +205,9 @@ class Slick extends Component {
         const { count } = state;
         const { slideMove, slideShow, duration, infinite, beforeChange, afterChange } = props;
         const sliderListDOM = ReactDOM.findDOMNode(me.sliderList);
-        let nextIndex;
+
         let targetIndex = currIndex + slideMove;
+        let nextIndex;
 
         beforeChange && beforeChange(currIndex);
 
@@ -199,11 +228,15 @@ class Slick extends Component {
         } else {
             nextIndex = targetIndex;
         }
-        console.log(nextIndex, targetIndex);
-        const targetLeft = me.calcLeft(targetIndex);
-        const nextLeft = me.calcLeft(nextIndex);
 
-        return new Promise((resolve) => {
+        return new Promise((resolve, reject) => {
+            if (currIndex === nextIndex) { // 无变更
+                reject();
+            }
+
+            const targetLeft = me.calcLeft(targetIndex);
+            const nextLeft = me.calcLeft(nextIndex);
+
             Velocity(sliderListDOM, {
                 left: `${targetLeft}px`
             }, {
@@ -226,9 +259,10 @@ class Slick extends Component {
         if (me.tc) {
             me.tc = clearInterval(me.tc);
         }
+
         me.prev().then(() => {
             me.autoplay();
-        });
+        }, () => {});
     }
 
     nextClick () {
@@ -236,9 +270,10 @@ class Slick extends Component {
         if (me.tc) {
             me.tc = clearInterval(me.tc);
         }
+
         me.next().then(() => {
             me.autoplay();
-        });
+        }, () => {});
     }
 
     mouseEnterHandler () {
@@ -297,15 +332,16 @@ class Slick extends Component {
     render () {
         const me = this;
         /* eslint-disable no-unused-vars */
-        const { children, arrows, prevArrow, nextArrow, ...otherAttrs } = me.props;
+        const { children, arrows, prevArrow, nextArrow, dots, dotsShow, ...otherAttrs } = me.props;
         const { currIndex, slideStyle, listStyle, count } = me.state;
         const nodes = me.getChildrens();
+        const dotsProps = me.getDotsProps();
 
         return (
             <div className='slider-container'>
                 {
                     arrows ?
-                    prevArrow || <PrevArrow onClick={() => me.prevClick()} />
+                        <PrevArrow onClick={() => me.prevClick()} prevArrow={prevArrow} />
                     : null
                 }
                 <div
@@ -326,10 +362,10 @@ class Slick extends Component {
                 </div>
                 {
                     arrows ?
-                    nextArrow || <NextArrow onClick={() => me.nextClick()} />
+                        <NextArrow onClick={() => me.nextClick()} nextArrow={nextArrow} />
                     : null
                 }
-                <Dot onClick={(e, i) => me.goto(e, i)} {...otherAttrs} currIndex={currIndex} count={count} />
+                <Dots {...dotsProps} />
             </div>
         );
     }
