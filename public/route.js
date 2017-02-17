@@ -53,20 +53,21 @@ export default (
             <Route path='notification' component={NotificationView} />
             <Route path='modal' component={ModalView} />
             <Route path='tooltip' component={TooltipView} />
-            <Route path='datepicker' component={DatepickerView} />
-            <Route path='monthpicker' component={MonthpickerView} />
-            <Route path='rangepicker' component={RangepickerView} />
-            <Route path='timepicker' component={TimepickerView} />
             <Route path='image-uploader' component={ImageUploaderView} />
             <Route path='table' component={TableView} />
             <Route path='select' component={SelectView} />
             <Route path='slider' component={SliderView} />
             <Route path='button' component={ButtonView} />
-            <Route path='field' component={FieldView} />
             <Route path='teamtalk' component={TeamtalkView} />
             <Route path='areacode' component={AreaCodeView} />
             <Route path='process-bar' component={ProcessBarView} />
             <Route path='wrapper' component={WrapperView} />
+
+            <Route path='field' component={FieldView} />
+            <Route path='datepicker' component={DatepickerView} />
+            <Route path='monthpicker' component={MonthpickerView} />
+            <Route path='rangepicker' component={RangepickerView} />
+            <Route path='timepicker' component={TimepickerView} />
         </Route>
     </Router>
 );
