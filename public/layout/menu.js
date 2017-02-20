@@ -60,14 +60,6 @@ export default [
         link: '#/field'
     },
     {
-        title: 'TT - Teamtalk',
-        link: '#/teamtalk'
-    },
-    {
-        title: '手机区号 - AreaCode',
-        link: '#/areacode'
-    },
-    {
         title: '步骤条 - ProcessBar',
         link: '#/process-bar'
     },

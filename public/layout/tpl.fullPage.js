@@ -12,17 +12,18 @@ export default class FullPageView extends Component {
                     <HeadNav isHome={isHome} />
                 </div>
                 <div
-                  style={
-                      isHome ?
-                          {
-                              position: 'absolute',
-                              width: '100%',
-                              top: '0',
-                              minHeight: '100%',
-                              background: 'linear-gradient(135deg, #f52121, #f57272, #f5a6a6)'
-                          } :
-                          { background: '#fefefe' }
-                  }
+                    style={
+                        isHome ?
+                            {
+                                position: 'absolute',
+                                width: '100%',
+                                top: '0',
+                                minHeight: '100%',
+                                background: 'linear-gradient(135deg, #f52121, #f57272, #f5a6a6)'
+                            } 
+                            :
+                            { background: '#fefefe' }
+                    }
                 >
                     {this.props.children}
                 </div>

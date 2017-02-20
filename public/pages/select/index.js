@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Select} from 'source_path/select';
+import Select from 'source_path/selector';
 import Readme from './README.md';
 
 export default class SelectView extends Component {
@@ -21,19 +21,20 @@ export default class SelectView extends Component {
             selectData2: [
                 [{
                     text: '选项1',
-                    value: '0',
-                },{
+                    value: '0'
+                }, {
                     text: '选项2',
-                    value: '1',
-                },{
+                    value: '1'
+                }, {
                     text: '选项3',
-                    value: '2',
-                }],[{
+                    value: '2'
+                }],
+                [{
                     text: '选项4',
-                    value: '3',
-                },{
+                    value: '3'
+                }, {
                     text: '选项5',
-                    value: '4',
+                    value: '4'
                 }]
             ],
             selectData3: [
@@ -65,7 +66,6 @@ export default class SelectView extends Component {
         };
     }
     getResult (value) {
-        console.log(value);
     }
     render () {
         let {selectData1, selectData2, selectData3} = this.state;

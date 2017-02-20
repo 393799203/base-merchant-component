@@ -1,35 +1,88 @@
 import React, { Component, PropTypes } from 'react';
 import _menuData from './menu';
+import _busMenuData from './business-menu';
 import HeadNav from './headNav';
 
 _menuData.sort((item1, item2) => {
-    let temp1 = item1.link.slice(2, 3).toLowerCase();
-    let temp2 = item2.link.slice(2, 3).toLowerCase();
-    if (temp1 > temp2) {return 1;}
-    if (temp1 < temp2) {return -1;}
+    const temp1 = item1.link.slice(2, 3).toLowerCase();
+    const temp2 = item2.link.slice(2, 3).toLowerCase();
+    if (temp1 > temp2) {
+        return 1;
+    }
+    if (temp1 < temp2) {
+        return -1;
+    }
     return 0;
 });
 
-const OriginMenuData = _menuData;
+_busMenuData.sort((item1, item2) => {
+    const temp1 = item1.link.slice(2, 3).toLowerCase();
+    const temp2 = item2.link.slice(2, 3).toLowerCase();
+    if (temp1 > temp2) {
+        return 1;
+    }
+    if (temp1 < temp2) {
+        return -1;
+    }
+    return 0;
+});
 
 export default class LayoutView extends Component {
     constructor () {
         super();
         this.state = {
             keywords: '',
-            menuData: _menuData,
+            menuData: [],
+            OriginMenuData: [],
             activeUrl: window.location.hash.slice(0, window.location.hash.indexOf('?'))
         };
     }
+
     componentDidMount () {
+        // 判断默认为哪种类型组件
+        this.getCompType();
     }
-    activeMenu (item) {
-        this.setState({ activeUrl: item.link });
+
+    onChangeType (e) {
+        if (e) {
+            this.setState({
+                menuData: _busMenuData,
+                OriginMenuData: _busMenuData,
+                activeUrl: _busMenuData && _busMenuData[0] ? _busMenuData[0].link : ''
+            }, () => {
+                location.href = _busMenuData && _busMenuData[0] ? _busMenuData[0].link : '';
+            });
+        } else {
+            this.setState({
+                menuData: _menuData,
+                OriginMenuData: _menuData,
+                activeUrl: _menuData && _menuData[0] ? _menuData[0].link : ''
+            }, () => {
+                location.href = _menuData && _menuData[0] ? _menuData[0].link : '';
+            });
+        }
     }
+
+    getCompType () {
+        const activeUrl = window.location.hash.slice(0, window.location.hash.indexOf('?'));
+        let menu = false;
+        for (let i = 0; i < _busMenuData.length; i++) {
+            if (_busMenuData[i].link === activeUrl) {
+                menu = true;
+                break;
+            }
+        }
+
+        this.setState({
+            menuData: menu ? _busMenuData : _menuData,
+            OriginMenuData: menu ? _busMenuData : _menuData
+        });
+    }
+
     filterData (e) {
         const filterKey = e.target.value;
         const resultData = [];
-        OriginMenuData.map((item) => {
+        this.state.OriginMenuData.map((item) => {
             if (item.title.toLowerCase().indexOf(filterKey) > -1) {
                 resultData.push(item);
             }
@@ -39,21 +92,26 @@ export default class LayoutView extends Component {
             menuData: resultData
         });
     }
+
+    activeMenu (item) {
+        this.setState({ activeUrl: item.link });
+    }
+
     render () {
         const { menuData, activeUrl, keywords } = this.state;
         return (
             <div className='app-header-fixed app-aside-fixed'>
-                <HeadNav isHome={false} />
+                <HeadNav isHome={false} onChangeType={e => this.onChangeType(e)} />
                 <div>
                     <div className='app-aside bg-light'>
                         <div className='aside-wrap' style={{ overflow: 'scroll', paddingBottom: '40px' }}>
                             <div className='input-group wrapper'>
                                 <input
-                                  value={keywords}
-                                  onChange={(e) => { this.filterData(e); }}
-                                  type='text'
-                                  className='form-control bg-white-only no-border padder ng-pristine ng-valid ng-touched'
-                                  placeholder='搜索'
+                                    value={keywords}
+                                    onChange={(e) => { this.filterData(e); }}
+                                    type='text'
+                                    className='form-control bg-white-only no-border padder ng-pristine ng-valid ng-touched'
+                                    placeholder='搜索'
                                 />
                                 <span className='input-group-btn'>
                                     <button type='submit' className='btn bg-white-only'>
@@ -76,13 +134,15 @@ export default class LayoutView extends Component {
                             <ul className='nav' style={{ background: '#edf1f2' }}>
                                 {
                                     menuData.map((item, index) => {
-                                        return (<li
-                                          className={activeUrl === item.link ? 'active' : ''}
-                                          key={index}
-                                          onClick={() => this.activeMenu(item)}
-                                        >
-                                            <a href={item.link} style={{padding: "15px 12px"}}>{item.title}</a>
-                                        </li>);
+                                        return (
+                                            <li
+                                                className={activeUrl === item.link ? 'active' : ''}
+                                                key={index}
+                                                onClick={() => this.activeMenu(item)}
+                                            >
+                                                <a href={item.link}>{item.title}</a>
+                                            </li>
+                                        );
                                     })
                                 }
                             </ul>

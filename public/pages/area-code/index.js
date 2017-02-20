@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import AreaCode from 'source_path/area-code';
 import Readme from './README.md';
 
