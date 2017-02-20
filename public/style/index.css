@@ -187,3 +187,27 @@ table > thead > th {
 table > thead > th:last-child {
   	border-right: none;
 }
+
+.mc-head-hidden{
+	display:none;
+}
+
+.mc-head-display{
+	display: block;
+    position: absolute;
+    background-color: #ef3b60;
+    font-size:12px;
+    width: 100px;
+    height: 60px;
+    left:-25px;
+
+    a{
+    	display: block;
+	    text-align: center;
+	    line-height: 30px;
+    }
+
+    a:hover{
+    	text-decoration: underline;
+    }
+}

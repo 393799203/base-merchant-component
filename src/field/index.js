@@ -10,6 +10,7 @@ import Select from './_module/select';
 import Text from './_module/text';
 import './style/index.less';
 import '../_module/less/icon-font/iconfont.less';
+import Util from '../_module/js/util.js';
 
 const DEFAULT_FORM = 'defaultKey';
 
@@ -79,9 +80,9 @@ export default class Field extends Component {
             const value = field.getData();
 
             if (Object.prototype.toString.call(value) === '[object Object]') {
-                Object.assign(data, Object.clone(value, true));
+                Object.assign(data, Util.deepClone(value));
             } else {
-                Object.assign(data, Object.clone({ [field.props.name]: value }, true));
+                Object.assign(data, Util.deepClone({ [field.props.name]: value }));
             }
         });
 

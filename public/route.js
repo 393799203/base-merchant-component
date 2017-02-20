@@ -21,6 +21,8 @@ import ImageUploaderView from './pages/compontents/image-uploader';
 import SliderView from './pages/compontents/slider';
 import TeamtalkView from './pages/teamtalk';
 import AreaCodeView from './pages/area-code';
+import AddressView from './pages/address';
+import FullAddressView from './pages/full-address';
 
 import DatepickerView from './pages/datepicker';
 import MonthpickerView from './pages/monthpicker';
@@ -60,6 +62,8 @@ export default (
             <Route path='button' component={ButtonView} />
             <Route path='teamtalk' component={TeamtalkView} />
             <Route path='areacode' component={AreaCodeView} />
+            <Route path='address' component={AddressView} />
+            <Route path='fulladdress' component={FullAddressView} />
             <Route path='process-bar' component={ProcessBarView} />
             <Route path='wrapper' component={WrapperView} />
 

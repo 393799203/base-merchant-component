@@ -1,0 +1,35 @@
+.full-address-select{
+
+	.clearfix{
+		&:before,
+		&:after {
+		    content: " "; // 1
+		    display: table; // 2
+		}
+		&:after {
+		    clear: both;
+		}
+	}
+	
+	.address-select{
+		float:left;
+	}
+
+	.address-location{
+		float:left;
+
+	  	.input-location{
+	    	label{
+	      		width:0px !important;
+	    	}
+	    	input {
+	      		width: 200px;
+	      		margin-top: 0px;
+	    	}
+	  	}
+	}
+
+	.mgL15{
+		margin-left:15px;
+	}
+}
