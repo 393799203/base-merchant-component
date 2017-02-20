@@ -58,7 +58,7 @@ const style = {
     modalHeader: {
         position: 'relative',
         height: 50,
-        paddingLeft: 20,
+        paddingLeft: 15,
         fontSize: '14px',
         background: '#fff',
         lineHeight: '50px',
@@ -74,7 +74,7 @@ const style = {
     },
 
     modalBody: {
-        padding: 20
+        padding: 15
     },
     modalFooter: {
         position: 'relative',
@@ -82,8 +82,8 @@ const style = {
         left: 0,
         width: '100%',
         height: 50,
-        paddingLeft: 20,
-        paddingRight: 20,
+        paddingLeft: 15,
+        paddingRight: 15,
         background: '#fff',
         lineHeight: '50px',
         textAlign: 'right',

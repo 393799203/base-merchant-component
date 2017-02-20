@@ -102,7 +102,7 @@ class ModalController extends Component {
     static alert (msg, callback, params) {
         let options = params;
         let cb = callback;
-        const cls = `${ModalController.prefix} btn primary`;
+        const cls = `${ModalController.prefix}btn primary`;
 
         if (!_.isFunction(cb)) {
             options = options || cb;
