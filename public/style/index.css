@@ -211,3 +211,19 @@ table > thead > th:last-child {
     	text-decoration: underline;
     }
 }
+
+.navbar-nav{
+	li{
+		a:hover{
+			background-color: #f8945b !important;
+			color: #fff;
+		}
+	}
+
+	.active{
+		a{
+			background-color: #f8945b !important;
+			color: #fff;
+		}
+	}
+}

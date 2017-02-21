@@ -20,27 +20,19 @@ export default class AddressSelectorView extends Component {
     render () {
         return (
             <div className="m-l m-r m-b-xxl">
-                <h1>
-                    表单 - Form
-                </h1>
-                <h2>
-                    1. 示例
-                </h2>
-                <div className="m-l m-r m-t m-b">
-                    <button
-                        className="btn btn-success-custom w-sm m-b" 
-                        onClick={ (e) => { this.getData(e) }}>
-                        获取数据
-                    </button>
+                <button
+                    className="btn btn-success-custom w-sm m-b" 
+                    onClick={ (e) => { this.getData(e) }}>
+                    获取数据
+                </button>
 
-                    <Address 
-                        style={{width:"200px"}}
-                        className="mc-addressSelector"
-                        onChange = {(e) => this.addressChange(e)}
-                        defaultProvince="山西省" 
-                        defaultCity = "大同市"
-                        defaultArea="南郊区" />
-                </div>
+                <Address 
+                    style={{width:"200px"}}
+                    className="mc-addressSelector"
+                    onChange = {(e) => this.addressChange(e)}
+                    defaultProvince="山西省" 
+                    defaultCity = "大同市"
+                    defaultArea="南郊区" />
             </div>
         )
     }

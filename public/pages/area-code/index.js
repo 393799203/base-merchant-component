@@ -12,6 +12,11 @@ export default class AreaCodeView extends Component {
     handleChange(code){
         this.setState({ code: code });
     }
+
+    clearData(){
+        AreaCode.clearData();
+    }
+
     render () {
         let {code} = this.state;
 
@@ -26,6 +31,9 @@ export default class AreaCodeView extends Component {
                 <h2>
                     1. 示例
                 </h2>
+                <div className="title">
+                    <button className="m-b btn btn-warning-custom m-r" onClick={() => this.clearData()}>清空文文本框信息</button>
+                </div>
                 <div className="m-l m-r m-t m-b">
                     <AreaCode
                         defaultValue={code}

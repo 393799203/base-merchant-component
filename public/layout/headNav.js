@@ -1,29 +1,68 @@
 import React, { Component, PropTypes } from 'react';
 
+const liOptions = [{
+    text:"基础组件",
+    href:"#/button"
+},{
+    text:"业务组件",
+    href:"#/areacode"
+},{
+    text:"组件问题反馈",
+    href:"http://gitlab.mogujie.org/Aveng/meili-base-merchant-component/issues"
+},{
+    text:"CSS",
+    href:"#/css"
+},{
+    text:"我要贡献组件",
+    href:"http://gitlab.mogujie.org/Aveng/meili-base-merchant-component"
+},{
+    text:"商家文档",
+    href:"#/doc"
+},{
+    text:"商家数据",
+    href:"#/data"
+},{
+    text:"商家规范",
+    href:"#/rule"
+}];
+
 export default class HeadNav extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            orOpen: 'mc-head-hidden'
+            orOpen: 'mc-head-hidden',
+            options: liOptions
         };
     }
 
-    openComponent () {
-        this.setState({
-            orOpen: 'mc-head-display'
+    componentDidMount () {
+        const activeUrl = window.location.hash.slice(0, window.location.hash.indexOf('?'));
+        const options = this.state.options;
+
+        options.map((item, index) => {
+            if(item.href == activeUrl){
+                options[index].active = true;
+            }
         });
+
+        this.setState({
+            options
+        })
     }
 
-    closeComponent () {
-        this.setState({
-            orOpen: 'mc-head-hidden'
+    changeTab (item,index) {
+        const options = this.state.options;
+        options.map((item,index) => {
+            options[index].active = false;
         });
-    }
 
-    choiceBussinss (e) {
-        if (typeof this.props.onChangeType === 'function') {
-            this.props.onChangeType(e);
-        }
+        options[index].active = true;
+
+        this.setState({
+            options
+        }, () => {
+            location.href=item.href;
+        })
     }
 
     render () {
@@ -37,26 +76,13 @@ export default class HeadNav extends Component {
                 </div>
                 <div className='pull-left' style={{ marginLeft: '215px' }}>
                     <ul className='nav navbar-nav'>
-                        <li><a href='#/css'>CSS</a></li>
-                        <li
-                            onMouseOver={() => this.openComponent()}
-                            onMouseOut={() => this.closeComponent()}
-                        >
-                            <a onClick={() => this.choiceBussinss('')}>组件</a>
-                            <div className={orOpen}>
-                                <a onClick={() => this.choiceBussinss('')}>基础组件</a>
-                                <a onClick={() => this.choiceBussinss('buss')}>业务组件</a>
-                            </div>
-                        </li>
-                        <li>
-                            <a href='http://gitlab.mogujie.org/Aveng/meili-base-merchant-component/issues'>
-                                组件问题反馈
-                            </a>
-                        </li>
-                        <li><a href='http://gitlab.mogujie.org/Aveng/meili-base-merchant-component'>我要贡献组件</a></li>
-                        <li><a href='#/doc'>商家文档</a></li>
-                        <li><a href='#/data'>商家数据</a></li>
-                        <li><a href='#/rule'>商家规范</a></li>
+                        {liOptions.map((item, index) => {
+                            return (
+                                <li key={index} className={item.active ? 'active' : ''}>
+                                    <a onClick={() => this.changeTab(item,index)}>{item.text}</a>
+                                </li>
+                            );
+                        })}
                     </ul>
                 </div>
                 <div className='pull-right'>

@@ -43,26 +43,6 @@ export default class LayoutView extends Component {
         this.getCompType();
     }
 
-    onChangeType (e) {
-        if (e) {
-            this.setState({
-                menuData: _busMenuData,
-                OriginMenuData: _busMenuData,
-                activeUrl: _busMenuData && _busMenuData[0] ? _busMenuData[0].link : ''
-            }, () => {
-                location.href = _busMenuData && _busMenuData[0] ? _busMenuData[0].link : '';
-            });
-        } else {
-            this.setState({
-                menuData: _menuData,
-                OriginMenuData: _menuData,
-                activeUrl: _menuData && _menuData[0] ? _menuData[0].link : ''
-            }, () => {
-                location.href = _menuData && _menuData[0] ? _menuData[0].link : '';
-            });
-        }
-    }
-
     getCompType () {
         const activeUrl = window.location.hash.slice(0, window.location.hash.indexOf('?'));
         let menu = false;
@@ -101,7 +81,7 @@ export default class LayoutView extends Component {
         const { menuData, activeUrl, keywords } = this.state;
         return (
             <div className='app-header-fixed app-aside-fixed'>
-                <HeadNav isHome={false} onChangeType={e => this.onChangeType(e)} />
+                <HeadNav isHome={false} />
                 <div>
                     <div className='app-aside bg-light'>
                         <div className='aside-wrap' style={{ overflow: 'scroll', paddingBottom: '40px' }}>

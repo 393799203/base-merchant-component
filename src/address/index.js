@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import './style/index.less';
-import Selector from '../selector/index.js';
+import Select from '../select/Select.js';
 import Util from '../_module/js/util.js';
 
 const LEVEL_PROVINCE = 1;
@@ -317,30 +317,33 @@ export default class Address extends Component {
                 {this.state.orInit ?
                     <div className='clearfix' >
                         <div className='address-province float-left'>
-                            <Selector
+                            <Select
+                                name='province'
                                 style={this.state.style ? this.state.style : { width: '200px' }}
                                 className={this.state.className}
-                                defaultValue={this.state.province}
+                                value={this.state.province}
                                 options={this.state.provinceOptions}
                                 onChange={e => this.handleChange(e, LEVEL_PROVINCE)}
                             />
                         </div>
 
                         <div className='address-city float-left mgL15'>
-                            <Selector
+                            <Select
+                                name='city'
                                 style={this.state.style ? this.state.style : { width: '200px' }}
                                 className={this.state.className}
-                                defaultValue={this.state.city}
+                                value={this.state.city}
                                 options={this.state.cityOptions}
                                 onChange={e => this.handleChange(e, LEVEL_CITY)}
                             />
                         </div>
 
                         <div className='address-area float-left mgL15'>
-                            <Selector
+                            <Select
+                                name='area'
                                 style={this.state.style ? this.state.style : { width: '200px' }}
                                 className={this.state.className}
-                                defaultValue={this.state.area}
+                                value={this.state.area}
                                 options={this.state.areaOptions}
                                 onChange={e => this.handleChange(e, LEVEL_AREA)}
                             />
