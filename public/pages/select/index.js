@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Select from 'source_path/selector';
+import {Select} from 'source_path/select';
 import Readme from './README.md';
+import Notification from 'source_path/notification';
 
 export default class SelectView extends Component {
     constructor () {
@@ -40,7 +41,7 @@ export default class SelectView extends Component {
             selectData3: [
                 {
                     text: '选项1',
-                    value: '0',
+                    value: '0'
                 },{
                     text: '选项2',
                     value: '1',
@@ -62,13 +63,33 @@ export default class SelectView extends Component {
                         value: '22'
                     }]
                 }
-            ]
+            ],
+            selectData1Value: "0"
         };
     }
     getResult (value) {
+        this.setState({
+            selectData1Value: "0"
+        })
     }
+    getData(){
+        var data = Select.getData();
+        Notification.info({
+            message: '获取文本框的信息为：'+JSON.stringify(data),
+            duration: 2000 // 单位毫秒
+        });
+    }
+
+    clearData(){
+        Select.clearData();
+    }
+
+    resetData(){
+        Select.resetData();
+    }
+
     render () {
-        let {selectData1, selectData2, selectData3} = this.state;
+        let {selectData1, selectData2, selectData3, selectData1Value} = this.state;
         return (
             <div className='m-b-lg m-l m-r'>
                 <h1>
@@ -77,6 +98,11 @@ export default class SelectView extends Component {
                         <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
                     </a>
                 </h1>
+                <div className="title">
+                    <button className="m-b btn btn-success-custom m-r" onClick={() => this.getData()}>获取文本框信息</button>
+                    <button className="m-b btn btn-warning-custom m-r" onClick={() => this.clearData()}>清空文文本框信息</button>
+                    <button className="m-b btn btn-info-custom m-r" onClick={() => this.resetData()}>重置文本框信息</button>
+                </div>
                 <table>
                     <tbody>
                         <tr>
@@ -84,13 +110,26 @@ export default class SelectView extends Component {
                                 <h2>
                                     1. 普通下拉菜单
                                 </h2>
-                                <Select ref="select1" options={selectData1} onChange={this.getResult.bind(this)}/>
+                                <Select 
+                                    name="select1"
+                                    selectId="select1"
+                                    defaultValue = {selectData1Value}
+                                    ref="select1"
+                                    options={selectData1}
+                                    onChange={this.getResult.bind(this)}
+                                />
                             </td>
                             <td>
                                 <h2>
                                     2. 禁止点击、有默认值的下拉菜单
                                 </h2>
-                                <Select options={selectData1} defaultValue="1" disabled={true} onChange={this.getResult.bind(this)}/>
+                                <Select
+                                    options={selectData1}
+                                    selectId="select2"
+                                    defaultValue="1"
+                                    disabled={true}
+                                    name="select2"
+                                    onChange={this.getResult.bind(this)}/>
                             </td>
                         </tr>
                         <tr>
@@ -98,14 +137,22 @@ export default class SelectView extends Component {
                                 <h2>
                                     3. 分组的下拉菜单
                                 </h2>
-                                <Select options={selectData2} defaultValue="4" onChange={this.getResult.bind(this)}/>
+                                <Select
+                                    options={selectData2}
+                                    defaultValue="4"
+                                    name="select3"
+                                    onChange={this.getResult.bind(this)}/>
                             </td>
                             <td>
                                 <h2>
                                     4. 有二级选项的下拉菜单
                                 </h2>
                                 <div style={{width: '150px'}}>
-                                    <Select options={selectData3} defaultValue="2,22" onChange={this.getResult.bind(this)}/>
+                                    <Select
+                                        options={selectData3}
+                                        defaultValue="22"
+                                        name="select4"
+                                        onChange={this.getResult.bind(this)}/>
                                 </div>
                             </td>
                         </tr>

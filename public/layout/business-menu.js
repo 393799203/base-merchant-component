@@ -10,5 +10,11 @@ export default [{
 }, {
     title: '全地址 - FullAddress',
     link: '#/fulladdress'
+}, {
+    title: '身份认证 - VerifyIdenty',
+    link: '#/verifyidenty'
+}, {
+    title: '手机验证 - VerifyPhone',
+    link: '#/verifyphone'
 }];
 

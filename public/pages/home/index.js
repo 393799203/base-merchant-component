@@ -21,7 +21,7 @@ export default class HomeView extends Component {
                 <p className='m-t-xxl'>
                     <a
                       className='btn'
-                      href='#/tab'
+                      href='#/button'
                       style={{
                           padding: '12px 40px',
                           color: '#fff',
