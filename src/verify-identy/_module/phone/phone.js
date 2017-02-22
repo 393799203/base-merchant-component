@@ -148,6 +148,7 @@ export default class Phone extends Component {
                         name='msgCode'
                         form={form || 'phone'}
                         required
+                        className='identy-phoneCode'
                         attrs={{ disabled }}
                         errorMsg='请输入手机验证码'
                         label='手机验证码：'
