@@ -41,9 +41,9 @@ class Slick extends Component {
         me.autoplay(); // whether autoplay
 
         if (window.addEventListener) {
-            window.addEventListener('resize', me.onWindowResized.bind(me));
+            window.addEventListener('resize', me.onWindowResized);
         } else {
-            window.attachEvent('onresize', me.onWindowResized.bind(me));
+            window.attachEvent('onresize', me.onWindowResized);
         }
     }
 
@@ -52,16 +52,16 @@ class Slick extends Component {
         if (me.tc) {
             window.clearInterval(me.tc);
         }
-
         if (window.removeEventListener) {
-            window.removeEventListener('resize', this.onWindowResized);
+            window.removeEventListener('resize', me.onWindowResized);
         } else {
-            window.detachEvent('onresize', this.onWindowResized);
+            window.detachEvent('onresize', me.onWindowResized);
         }
     }
 
     onWindowResized () {
-        this.calcStyle();
+        const me = this;
+        me.calcStyle();
     }
 
     getWidth (elem) {
