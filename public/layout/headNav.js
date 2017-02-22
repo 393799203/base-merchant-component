@@ -62,6 +62,7 @@ export default class HeadNav extends Component {
             options
         }, () => {
             location.href=item.href;
+            this.props.onClick && this.props.onClick();
         })
     }
 
