@@ -21,10 +21,6 @@ export default class AreaCode extends Component {
         name: PropTypes.string
     };
 
-    static clearData () {
-        AreaCode.instance.clearData();
-    }
-
     constructor (props) {
         super(props);
         this.state = {
@@ -34,20 +30,20 @@ export default class AreaCode extends Component {
         AreaCode.instance = this;
     }
 
+    componentWillReceiveProps (nextProps) {
+        if ('value' in nextProps) {
+            this.setState({
+                value: nextProps.value
+            });
+        }
+    }
+
     handleChange (e) {
         const value = e.value || '86';
         this.setState({
             value
         }, () => {
             this.props.onChange(String(Math.abs(+value)));
-        });
-    }
-
-    clearData () {
-        this.setState({
-            value: '86'
-        }, () => {
-            this.props.onChange(String(Math.abs(+'86')));
         });
     }
 

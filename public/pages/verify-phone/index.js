@@ -12,7 +12,7 @@ export default class VerifyPhoneView extends Component {
     }
 
     clearData(){
-        VerifyPhone.clearData("phone");
+        VerifyPhone.clearData();
     }
     
     render () {
