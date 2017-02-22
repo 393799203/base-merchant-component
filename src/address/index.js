@@ -42,12 +42,41 @@ export default class Address extends Component {
             const address = currentForm[key];
             const value = address.getData();
 
-            if (Object.prototype.toString.call(value) === '[object Object]') {
-                Object.assign(data, Util.deepClone(value));
-            }
+            Object.assign(data, { [address.props.name]: value });
         });
         return data;
     }
+
+    static clearData (form) {
+        const formName = form || DEFAULT_FORM;
+        const data = {};
+        const currentForm = Address.forms[formName] || {};
+
+        Object.keys(currentForm).map((key) => {
+            const address = currentForm[key];
+            address.clearData();
+        });
+        return data;
+    }
+
+    static resetData (form) {
+        const formName = form || DEFAULT_FORM;
+        const data = {};
+        const currentForm = Address.forms[formName] || {};
+
+        Object.keys(currentForm).map((key) => {
+            const address = currentForm[key];
+            address.resetData();
+        });
+        return data;
+    }
+
+    static defaultProps = {
+        form: DEFAULT_FORM,
+        defaultProvince: '-1',
+        defaultCity: '-1',
+        defaultArea: '-1'
+    };
 
     static propTypes = {
         defaultProvince: PropTypes.string,
@@ -56,7 +85,11 @@ export default class Address extends Component {
         onChange: PropTypes.func,
         style: PropTypes.object,
         className: PropTypes.string,
-        name: PropTypes.string
+        form: PropTypes.string,
+        provinceDisabled: PropTypes.bool,
+        cityDisabled: PropTypes.bool,
+        areaDisabled: PropTypes.bool,
+        name: PropTypes.string.isRequired
     };
 
     constructor (props) {
@@ -69,7 +102,7 @@ export default class Address extends Component {
             onChange: this.props.onChange || null,
             style: this.props.style || {},
             className: this.props.className || '',
-            name: this.props.name || DEFAULT_FORM,
+            form: this.props.form,
             provinceOptions: [],
             cityOptions: [],
             areaOptions: [],
@@ -83,7 +116,7 @@ export default class Address extends Component {
     componentWillMount () {
         const props = this.props;
         this.addressId = Address.uniqueId('form_');
-        Address.add(this, props.name || DEFAULT_FORM);
+        Address.add(this, props.form);
     }
 
     componentDidMount () {
@@ -92,7 +125,7 @@ export default class Address extends Component {
     }
 
     componentWillUnmount () {
-        Address.remove(this, this.props.name || DEFAULT_FORM);
+        Address.remove(this, this.props.form);
     }
 
     getData () {
@@ -111,6 +144,27 @@ export default class Address extends Component {
                 name: state.areaList.value
             }
         };
+    }
+
+    clearData () {
+        this.setState({
+            province: '-1',
+            city: '-1',
+            area: '-1'
+        }, () => {
+            this.renderProvice();
+        });
+    }
+
+    resetData () {
+        const props = this.props;
+        this.setState({
+            province: props.defaultProvince || '-1',
+            city: props.defaultProvince && props.defaultCity ? props.defaultCity : '-1',
+            area: props.defaultProvince && props.defaultCity && props.defaultArea ? props.defaultArea : '-1'
+        }, () => {
+            this.renderProvice();
+        });
     }
 
     handleChange (e, level) {
@@ -318,6 +372,7 @@ export default class Address extends Component {
                     <div className='clearfix' >
                         <div className='address-province float-left'>
                             <Select
+                                disabled={this.props.provinceDisabled}
                                 name='province'
                                 style={this.state.style ? this.state.style : { width: '200px' }}
                                 className={this.state.className}
@@ -329,6 +384,7 @@ export default class Address extends Component {
 
                         <div className='address-city float-left mgL15'>
                             <Select
+                                disabled={this.props.cityDisabled}
                                 name='city'
                                 style={this.state.style ? this.state.style : { width: '200px' }}
                                 className={this.state.className}
@@ -340,6 +396,7 @@ export default class Address extends Component {
 
                         <div className='address-area float-left mgL15'>
                             <Select
+                                disabled={this.props.areaDisabled}
                                 name='area'
                                 style={this.state.style ? this.state.style : { width: '200px' }}
                                 className={this.state.className}
