@@ -18,6 +18,7 @@ class Slick extends Component {
         this.sliderList = null;
         this.sliderWrapper = null;
         this.tc = null;
+        this.mounted = false;
     }
 
     componentWillMount () {
@@ -37,9 +38,10 @@ class Slick extends Component {
 
     componentDidMount () {
         const me = this;
+
         me.calcStyle();
         me.autoplay(); // whether autoplay
-
+        me.mounted = true;
         if (window.addEventListener) {
             window.addEventListener('resize', me.onWindowResized);
         } else {
@@ -49,6 +51,8 @@ class Slick extends Component {
 
     componentWillUnmount () {
         const me = this;
+
+        me.mounted = false;
         if (me.tc) {
             window.clearInterval(me.tc);
         }
@@ -192,13 +196,15 @@ class Slick extends Component {
             }, {
                 duration
             }).then(() => {
-                sliderListDOM.style.left = `${nextLeft}px`;
-                me.setState({
-                    currIndex: nextIndex
-                }, () => {
-                    afterChange && afterChange(nextIndex);
-                    resolve();
-                });
+                if (me.mounted) {
+                    sliderListDOM.style.left = `${nextLeft}px`;
+                    me.setState({
+                        currIndex: nextIndex
+                    }, () => {
+                        afterChange && afterChange(nextIndex);
+                        resolve();
+                    });
+                }
             });
         });
     }
@@ -247,13 +253,15 @@ class Slick extends Component {
             }, {
                 duration
             }).then(() => {
-                sliderListDOM.style.left = `${nextLeft}px`;
-                me.setState({
-                    currIndex: nextIndex
-                }, () => {
-                    afterChange && afterChange(nextIndex);
-                    resolve();
-                });
+                if (me.mounted) {
+                    sliderListDOM.style.left = `${nextLeft}px`;
+                    me.setState({
+                        currIndex: nextIndex
+                    }, () => {
+                        afterChange && afterChange(nextIndex);
+                        resolve();
+                    });
+                }
             });
         });
     }
