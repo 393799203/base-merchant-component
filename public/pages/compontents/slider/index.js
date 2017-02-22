@@ -44,7 +44,7 @@ class SliderDemo extends Component {
                     </Slider>
                 </div>
                 <div>
-                    <h4>4. 带箭头-非偶数组-多张显示-无限轮播器</h4>
+                    <h4>4. 带箭头-非偶数集-多张显示-无限轮播器</h4>
                     <Slider className='slider-demo' slideShow={3} slideMove={3} arrows infinite>
                         {me.renderList(7)}
                     </Slider>

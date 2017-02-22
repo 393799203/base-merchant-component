@@ -48,7 +48,12 @@ class Slick extends Component {
     }
 
     componentWillUnmount () {
-        if (window.addEventListener) {
+        const me = this;
+        if (me.tc) {
+            window.clearInterval(me.tc);
+        }
+
+        if (window.removeEventListener) {
             window.removeEventListener('resize', this.onWindowResized);
         } else {
             window.detachEvent('onresize', this.onWindowResized);
