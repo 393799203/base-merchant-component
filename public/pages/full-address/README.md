@@ -33,7 +33,7 @@ export default class FullAddressView extends Component {
                     defaultProvince="山西省" 
                     defaultCity = "大同市"
                     defaultArea="南郊区"
-                    defaultLocation="test" />
+                    defaultStreet="test" />
             </div>
         )
     }
@@ -51,7 +51,8 @@ export default class FullAddressView extends Component {
 | defaultProvince     | 默认省级 | string | " "   |
 | defaultCity     | 默认城市 | string | " "   |
 | defaultArea     | 默认区域 | string | " "   |
-| defaultLocation     | 默认详细地址 | string | " "   |
+| defaultStreet     | 默认详细地址 | string | " "   |
+| name | 表单描述字段的名称 | String  | - |
 
 ## 4. 方法 - Function
 
@@ -59,4 +60,5 @@ export default class FullAddressView extends Component {
 
 | 方法名        |   说明    | 参数          | 返回值         |
 | ------------ | ------------- | ------------- | ------------ |
+| getData    |   获取地址信息    | 无参数           | 对象       |
 | getData    |   获取地址信息    | 无参数           | 对象       |
