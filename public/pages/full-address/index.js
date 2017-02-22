@@ -1,29 +1,39 @@
 import React, { Component } from 'react'
 import FullAddress from 'source_path/full-address';
 import Readme from './README.md';
+import Notification from 'source_path/notification';
 
 export default class FullAddressView extends Component {
     constructor () {
         super();
     }
 
-    getData1(){
-        var data = FullAddress.getData("test1");
-        console.info(data);
+    getData(){
+        var data = FullAddress.getData();
+        Notification.info({
+            message: '获取地址的信息为：'+JSON.stringify(data),
+            duration: 4000 // 单位毫秒
+        });
     }
 
-    getData2(){
-        var data = FullAddress.getData("test2");
-        console.info(data);
+    resetData () {
+        FullAddress.resetData();
+    }
+
+    clearData () {
+        FullAddress.clearData();
     }
 
     addressChange(e){
-        console.info(e);
+        Notification.info({
+            message: '获取地址的信息为：'+JSON.stringify(e),
+            duration: 4000 // 单位毫秒
+        });
     }
 
     render () {
         return (
-            <div className="m-l m-r m-b-xxl">
+            <div className="m-l m-r m-b-xxl mc-field">
                 <h1>
                     全地址 - FullAddress
                     <a href="mactt://message/user/01825" style={{border: 'none'}} className="m-l-lg btn-info-custom btn">
@@ -33,40 +43,53 @@ export default class FullAddressView extends Component {
                 <h2>
                     1. 示例
                 </h2>
-                <div className="m-l m-r m-t m-b">
-                    <button
-                        className="btn btn-success-custom w-sm m-b" 
-                        onClick={ (e) => { this.getData1(e) }}>
-                        获取数据1
-                    </button>
+                <div className='title'>
+                    <button className="m-b btn btn-success-custom m-r" onClick={() => this.getData()}>获取数据</button>
+                    <button className="m-b btn btn-warning-custom m-r" onClick={() => this.clearData()}>清空数据</button>
+                    <button className="m-b btn btn-info-custom m-r" onClick={() => this.resetData()}>重置数据</button>
+                </div>
 
-                    <button
-                        className="btn btn-success-custom w-sm m-b m-l" 
-                        onClick={ (e) => { this.getData2(e) }}>
-                        获取数据2
-                    </button>
+                <div className='demo clearfix'>
+                    <div className='f-l field-demo'>
+                        <h5>默认情况：</h5>
+                        <FullAddress name="test"/>
+                    </div>
+                    <div className="f-l field-demo">
+                        <h5>基础配置属性：禁用（provinceDisabled、cityDisabled、areaDisabled、streetDisabled）、样式（className、style）</h5>
+                        <FullAddress 
+                            provinceDisabled={true}
+                            cityDisabled={true}
+                            areaDisabled={true}
+                            streetDisabled={true}
+                            name="test1"
+                        />
+                    </div>
+                    <div className="f-l field-demo">
+                        <h5>赋值属性：defaultProvince、defaultCity、defaultArea、defaultStreet</h5>
+                        <FullAddress 
+                            defaultProvince="山西省" 
+                            defaultCity = "大同市"
+                            defaultArea="南郊区"
+                            defaultStreet="test"
+                            name="test2"
+                        />
+                    </div>
 
-                    <FullAddress 
-                        style={{width:"200px"}}
-                        className="mc-addressSelector"
-                        onChange = {(e) => this.addressChange(e)}
-                        defaultProvince="山西省" 
-                        defaultCity = "大同市"
-                        name="test1"
-                        defaultArea="南郊区"
-                        defaultStreet="test" />
+                    <div className="f-l field-demo">
+                        <h5>回调函数：onChange</h5>
+                        <FullAddress
+                            onChange = {(e) => this.addressChange(e)}
+                            name="test3"
+                        />
+                    </div>
 
-                    <div style={{marginTop:"20px"}}></div>
-
-                    <FullAddress 
-                        style={{width:"200px"}}
-                        className="mc-addressSelector"
-                        onChange = {(e) => this.addressChange(e)}
-                        defaultProvince="重庆" 
-                        defaultCity = "重庆市"
-                        defaultArea="巴南区"
-                        name="test2"
-                        defaultStreet="test2" />
+                    <div className="f-l field-demo">
+                        <h5>表单属性：form（多个address同时使用时，通过form进行划分，可用于获取数据、清空、重置中,如果没有设置form，则默认为defaultForm，在数据、清空、重置方法中不传入form则是处理整个defaultForm）</h5>
+                        <FullAddress 
+                            name="test4"
+                            form="formtest"
+                        />
+                    </div>
                 </div>
                 <div dangerouslySetInnerHTML={{ __html: Readme }}>
                     

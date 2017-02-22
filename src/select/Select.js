@@ -2,14 +2,15 @@ import React, { Component, PropTypes } from 'react';
 import Option from './Option';
 import './style/index.less';
 
+const DEFAULT_FORM = 'defaultForm';
 export default class Select extends Component {
     static defaultProps = {
         defaultValue: '',
-        value: '',
         options: [],
         className: '',
         onChange: null,
         disabled: false,
+        form: DEFAULT_FORM,
         id: ''
     };
 
@@ -21,7 +22,7 @@ export default class Select extends Component {
         onChange: PropTypes.func,
         disabled: PropTypes.bool,
         id: PropTypes.string,
-        selectId: PropTypes.string,
+        form: PropTypes.string,
         name: PropTypes.string.isRequired
     };
 
@@ -35,64 +36,55 @@ export default class Select extends Component {
         return id;
     }
 
-    static add (select) {  // 添加表单数据到forms对象中
-        Select.forms[select.selectId] = select;
-    }
-
-    static remove (select) {  // 删除某个表单
-        delete Select.forms[select.selectId];
-    }
-
-    static getData (selectId) {
-        const resultValue = {};
-        if (selectId) {
-            const currentSelect = Select.forms[selectId];
-            Object.assign(resultValue, { [currentSelect.state.name]: currentSelect.state.value });
-        } else {
-            const currentSelect = Select.forms || {};
-
-            Object.keys(currentSelect).map((key) => {
-                const select = currentSelect[key];
-                const value = select.state.value;
-                Object.assign(resultValue, { [select.state.name]: value });
-            });
+    static add (name, select) {  // 添加表单数据到forms对象中
+        if (Select.forms[name] === undefined) {
+            Select.forms[name] = {};
         }
 
+        Select.forms[name][select.selectId] = select;
+    }
+
+    static remove (name, select) {  // 删除某个表单
+        delete Select.forms[name][select.selectId];
+    }
+
+    static getData (form) {
+        const formName = form || DEFAULT_FORM;
+        const resultValue = {};
+        const currentSelect = Select.forms[formName] || {};
+
+        Object.keys(currentSelect).map((key) => {
+            const select = currentSelect[key];
+            const value = select.state.value;
+            Object.assign(resultValue, { [select.state.name]: value });
+        });
         return resultValue;
     }
 
-    static clearData (selectId) {
-        if (selectId) {
-            const currentSelect = Select.forms[selectId];
-            currentSelect.clearData();
-        } else {
-            const currentSelect = Select.forms || {};
+    static clearData (form) {
+        const formName = form || DEFAULT_FORM;
+        const currentSelect = Select.forms[formName] || {};
 
-            Object.keys(currentSelect).map((key) => {
-                const select = currentSelect[key];
-                select.clearData();
-            });
-        }
+        Object.keys(currentSelect).map((key) => {
+            const select = currentSelect[key];
+            select.clearData();
+        });
     }
 
-    static resetData (selectId) {
-        if (selectId) {
-            const currentSelect = Select.forms[selectId];
-            currentSelect.resetData();
-        } else {
-            const currentSelect = Select.forms || {};
+    static resetData (form) {
+        const formName = form || DEFAULT_FORM;
+        const currentSelect = Select.forms[formName] || {};
 
-            Object.keys(currentSelect).map((key) => {
-                const select = currentSelect[key];
-                select.resetData();
-            });
-        }
+        Object.keys(currentSelect).map((key) => {
+            const select = currentSelect[key];
+            select.resetData();
+        });
     }
 
     constructor (props) {
         super(props);
         const { options, defaultValue, value, name } = props;
-        const data = this.formData(options, defaultValue, value);
+        const data = this.initData(options, value, defaultValue);
 
         this.state = {
             inputFocus: false, // input是否获取焦点
@@ -107,26 +99,79 @@ export default class Select extends Component {
     }
 
     componentWillMount () {
-        this.selectId = this.props.selectId || Select.uniqueId();
-        Select.add(this);
+        this.selectId = Select.uniqueId('select_');
+        Select.add(this.props.form, this);
     }
 
     // 更新属性
     componentWillReceiveProps (nextProps) {
-        const state = this.state;
         if ('value' in nextProps || 'options' in nextProps) {
-            const data = this.formData(nextProps.options, state.defaultValue, nextProps.value);
-            this.setState({
-                selectData: data.selectData,
-                defaultData: data.selectData,
-                inputText: data.inputText,
-                value: data.value
-            });
+            this.updateData(nextProps.options, nextProps.value);
         }
     }
 
     componentWillUnmount () {
-        Select.remove(this);
+        Select.remove(this.props.form, this);
+    }
+
+    initData (options, value, defaultValue) {
+        let selectData = options;
+
+        // 如果不是分组下拉框，则将数据拼装成分组下拉的数据结构
+        if (options && options.length && !(options[0] instanceof Array)) {
+            selectData = [options];
+        }
+
+        // 如果没有默认值则返回
+        if (!defaultValue && !value) {
+            return {
+                selectData,
+                inputText: '',
+                value: '',
+                selectItem: {}
+            };
+        }
+
+        // 取默认值
+        const arr = value || defaultValue;
+        const item = this.formData(selectData, arr);
+
+        return {
+            selectData,
+            inputText: item.text || '',
+            value: item.value || '',
+            selectItem: item || {}
+        };
+    }
+
+    updateData (options, value) {
+        let selectData = options;
+        // 如果不是分组下拉框，则将数据拼装成分组下拉的数据结构
+        if (options && options.length && !(options[0] instanceof Array)) {
+            selectData = [options];
+        }
+
+        if (JSON.stringify(selectData) === JSON.stringify(this.state.defaultData) && (!value || value === this.state.value)) {
+            return;
+        }
+
+        if (JSON.stringify(selectData) !== JSON.stringify(this.state.defaultData) && !value) {
+            this.setState({
+                selectData,
+                defaultData: selectData,
+                inputText: '',
+                value: ''
+            });
+            return;
+        }
+
+        const item = this.formData(selectData, value);
+        this.setState({
+            selectData,
+            defaultData: selectData,
+            inputText: item.text || '',
+            value: item.value || ''
+        });
     }
 
     clearData () {
@@ -141,50 +186,31 @@ export default class Select extends Component {
     }
 
     resetData () {
-        const { options, defaultValue } = this.props;
+        const defaultValue = this.props.defaultValue;
+        const options = this.state.defaultData;
         const data = this.formData(options, defaultValue);
+
         this.setState({
-            inputText: data.inputText,
-            value: data.value
+            inputText: data.text || '',
+            value: data.value || ''
         }, () => {
             if (typeof this.props.onChange === 'function') {
-                this.props.onChange(data.item);
+                this.props.onChange(data);
             }
         });
     }
 
     // 初始化数据
-    formData (data, defaultValue, value) {
-        let inputText = '';
-        let inputValue = '';
-        let selectItem = {};
-        let selectData = data;
+    formData (options, value) {
+        let result = {};
+        let orFinish = false;
 
-        // 如果不是分组下拉框，则将数据拼装成分组下拉的数据结构
-        if (data && data.length && !(data[0] instanceof Array)) {
-            selectData = [data];
-        }
-
-        // 如果没有默认值则返回
-        if (!defaultValue && !value) {
-            return {
-                selectData,
-                inputText: this.state.inputText,
-                value: this.state.value,
-                selectItem: {}
-            };
-        }
-
-        const arr = value || defaultValue;
-
-        // 取默认值
-        selectData.map((item) => {
+        options.map((item) => {
             for (let i = 0, l = item.length; i < l; i++) {
-                if (item[i].value === arr) {
+                if (item[i].value === value) {
                     // 取一级选项的默认值
-                    inputText = item[i].text;
-                    inputValue = item[i].value;
-                    selectItem = item[i];
+                    result = item[i];
+                    orFinish = true;
                     break;
                 }
 
@@ -192,28 +218,21 @@ export default class Select extends Component {
                 const optionsValue = item[i].options;
                 if (optionsValue && optionsValue.length) {
                     for (let index = 0; index < optionsValue.length; index++) {
-                        if (optionsValue[index].value === arr) {
-                            inputText = optionsValue[index].text;
-                            inputValue = optionsValue[index].value;
-                            selectItem = optionsValue[index];
+                        if (optionsValue[index].value === value) {
+                            result = optionsValue[index];
+                            orFinish = true;
                             break;
                         }
                     }
                 }
 
-                // 如果获取了默认值，则退出循环
-                if (inputText) {
+                if (orFinish) {
                     break;
                 }
             }
         });
 
-        return {
-            selectData,
-            inputText,
-            value: inputValue,
-            item: selectItem
-        };
+        return result;
     }
 
     // 点击文本框，展开下拉列表

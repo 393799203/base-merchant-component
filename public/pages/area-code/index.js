@@ -6,9 +6,10 @@ export default class AreaCodeView extends Component {
     constructor () {
         super();
         this.state = {
-            code: '86'
+            code: '93'
         }
     }
+
     handleChange(code){
         this.setState({ code: code });
     }
@@ -21,7 +22,7 @@ export default class AreaCodeView extends Component {
         let {code} = this.state;
 
         return (
-            <div className="m-l m-r m-b-xxl">
+            <div className="m-l m-r m-b-xxl  mc-field">
                 <h1>
                     手机区号 - AreaCode
                     <a href="mactt://message/user/00639" style={{border: 'none'}} className="m-l-lg btn-info-custom btn">
@@ -31,14 +32,30 @@ export default class AreaCodeView extends Component {
                 <h2>
                     1. 示例
                 </h2>
-                <div className="title">
-                    <button className="m-b btn btn-warning-custom m-r" onClick={() => this.clearData()}>清空文文本框信息</button>
+                <div className='demo clearfix'>
+                    <div className='f-l field-demo'>
+                        <h5>默认属性</h5>
+                        <AreaCode />
+                    </div>
+                    <div className="f-l field-demo">
+                        <h5>默认值：defaultValue，禁用（disabled）,样式（className）</h5>
+                        <AreaCode
+                            disabled={true}
+                            className={"area-code-class"}
+                            defaultValue={'1684'}
+                        />
+                    </div>
+                    <div className="f-l field-demo">
+                        <h5>赋值：value（展示的数值以传递的value值为主）,与onChange共用</h5>
+                        <AreaCode
+                            value={code}
+                            onChange = {(code) => this.handleChange(code)} 
+                        />
+                    </div>
                 </div>
+
                 <div className="m-l m-r m-t m-b">
-                    <AreaCode
-                        defaultValue={code}
-                        onChange = {(code) => this.handleChange(code)} 
-                    />
+                    
                 </div>
                 <div dangerouslySetInnerHTML={{ __html: Readme }}>
                     

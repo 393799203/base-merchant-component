@@ -3,7 +3,17 @@ import './style/index.less';
 import Field from '../field';
 import Address from '../address';
 
+const DEFAULT_FORM = 'defaultKey';
+
 export default class FullAddress extends Component {
+    static defaultProps = {
+        form: DEFAULT_FORM,
+        defaultProvince: '-1',
+        defaultCity: '-1',
+        defaultArea: '-1',
+        defaultStreet: ''
+    };
+
     static propTypes = {
         defaultProvince: PropTypes.string,
         defaultCity: PropTypes.string,
@@ -12,16 +22,75 @@ export default class FullAddress extends Component {
         onChange: PropTypes.func,
         style: PropTypes.object,
         className: PropTypes.string,
-        name: PropTypes.string,
-        placeholder: PropTypes.string
+        name: PropTypes.string.isRequired,
+        placeholder: PropTypes.string,
+        form: PropTypes.string,
+        provinceDisabled: PropTypes.bool,
+        cityDisabled: PropTypes.bool,
+        areaDisabled: PropTypes.bool,
+        streetDisabled: PropTypes.bool
     };
 
     // 对外提供的获取数据静态方法
-    static getData (name) {
-        const street = Field.getData(name || 'fullAddress') || {};
-        const address = Address.getData(name || 'fullAddress') || {};
+    static forms = {}
 
-        return Object.assign(street, address);
+    static idCounter = 0  // id计数器，用于uniqueId方法生成表单的addressId标识
+
+    static uniqueId (prefix) { // 生成唯一ID
+        FullAddress.idCounter += 1;
+        const id = FullAddress.idCounter.toString();
+        return prefix ? prefix + id : id;
+    }
+
+    static add (fullAddress, name) {  // 添加表单数据到forms对象中
+        if (FullAddress.forms[name] === undefined) {
+            FullAddress.forms[name] = {};
+        }
+
+        FullAddress.forms[name][fullAddress.fullAddressId] = fullAddress;
+    }
+
+    static remove (fullAddress, name) {  // 删除某个表单
+        delete FullAddress.forms[name][fullAddress.fullAddressId];
+    }
+
+    // 对外提供的获取数据静态方法
+    static getData (form) {
+        const formName = form || DEFAULT_FORM;
+        const data = {};
+        const currentForm = FullAddress.forms[formName] || {};
+
+        Object.keys(currentForm).map((key) => {
+            const fullAddress = currentForm[key];
+            const value = fullAddress.getData();
+
+            Object.assign(data, { [fullAddress.props.name]: value });
+        });
+        return data;
+    }
+
+    static clearData (form) {
+        const formName = form || DEFAULT_FORM;
+        const data = {};
+        const currentForm = FullAddress.forms[formName] || {};
+
+        Object.keys(currentForm).map((key) => {
+            const fullAddress = currentForm[key];
+            fullAddress.clearData();
+        });
+        return data;
+    }
+
+    static resetData (form) {
+        const formName = form || DEFAULT_FORM;
+        const data = {};
+        const currentForm = FullAddress.forms[formName] || {};
+
+        Object.keys(currentForm).map((key) => {
+            const fullAddress = currentForm[key];
+            fullAddress.resetData();
+        });
+        return data;
     }
 
     constructor (props) {
@@ -34,14 +103,50 @@ export default class FullAddress extends Component {
             defaultCity: props.defaultCity || '',
             defaultArea: props.defaultArea || '',
             defaultStreet: props.defaultStreet || '',
-            name: props.name || 'fullAddress',
+            name: props.name,
             placeholder: props.placeholder || '请填写详细地址'
         };
     }
 
+    componentWillMount () {
+        const props = this.props;
+        this.fullAddressId = FullAddress.uniqueId('form_');
+        FullAddress.add(this, props.form);
+    }
+
+    componentWillUnmount () {
+        FullAddress.remove(this, this.props.form);
+    }
+
+    getData () {
+        const form = this.props.form;
+        const name = this.props.name;
+
+        const address = Address.getData(form) || {};
+        const fullAddress = address[name] || {};
+
+        const street = Field.getData(form) || {};
+
+        Object.assign(fullAddress, street);
+
+        return fullAddress;
+    }
+
+    clearData () {
+        const form = this.props.form;
+        Address.clearData(form);
+        Field.clearData(form);
+    }
+
+    resetData () {
+        const form = this.props.form;
+        Address.resetData(form);
+        Field.resetData(form);
+    }
+
     changeAddress (e) {
-        const name = this.props.name || 'fullAddress';
-        const street = Field.getData(name) || {};
+        const form = this.props.form;
+        const street = Field.getData(form) || {};
         Object.assign(street, e);
 
         const onChange = this.props.onChange;
@@ -51,14 +156,17 @@ export default class FullAddress extends Component {
     }
 
     changeStreet (e) {
-        const name = this.props.name || 'fullAddress';
+        const form = this.props.form;
+        const name = this.props.name;
 
-        const address = Address.getData(name) || {};
-        Object.assign(address, { street: e });
+        const address = Address.getData(form) || {};
+        const fullAddress = address[name] || {};
+
+        Object.assign(fullAddress, { street: e });
 
         const onChange = this.props.onChange;
         if (typeof onChange === 'function') {
-            this.props.onChange(address);
+            this.props.onChange(fullAddress);
         }
     }
 
@@ -70,20 +178,30 @@ export default class FullAddress extends Component {
             defaultCity,
             defaultArea,
             defaultStreet,
+            form,
             name,
             placeholder
         } = this.state;
 
+        const {
+            provinceDisabled,
+            cityDisabled,
+            areaDisabled,
+            streetDisabled
+        } = this.props;
+
         return (
-            <div className='full-address-select clearfix'>
+            <div className={`${className} full-address-select clearfix`} style={style}>
                 <Address
-                    style={style}
-                    className={`${className} float-left`}
                     onChange={e => this.changeAddress(e)}
                     defaultProvince={defaultProvince}
                     defaultCity={defaultCity}
-                    name={name}
                     defaultArea={defaultArea}
+                    form={form}
+                    provinceDisabled={provinceDisabled}
+                    cityDisabled={cityDisabled}
+                    areaDisabled={areaDisabled}
+                    name={name}
                 />
 
                 <div className='address-location mgL15'>
@@ -94,7 +212,8 @@ export default class FullAddress extends Component {
                         defaultValue={defaultStreet}
                         onChange={e => this.changeStreet(e)}
                         placeholder={placeholder}
-                        form={name}
+                        disabled={streetDisabled}
+                        form={form}
                     />
                 </div>
             </div>

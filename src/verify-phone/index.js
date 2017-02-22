@@ -57,7 +57,9 @@ export default class VerifyPhone extends Component {
     static clearData (form) {
         const formName = (form || VerifyPhone.instance.props.form) || 'verifyPhone';
         Field.clearData(formName);
-        AreaCode.clearData();
+        VerifyPhone.instance.setState({
+            zoneCode: '86'
+        });
         VerifyPhone.instance.setState({
             lastTime: 0,
             orSend: false
