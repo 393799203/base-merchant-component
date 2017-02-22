@@ -44,30 +44,22 @@ export default [
     }, {
         title: '表格 - Table',
         link: '#/table'
-    }, {
-        title: '下拉框 - Select',
-        link: '#/select'
-    }, {
+    },{
         title: '图片轮播 - Slider',
         link: '#/slider'
-    },
-    {
+    }, {
         title: '下拉框 - Select',
         link: '#/select'
-    },
-    {
+    }, {
         title: '表单 - Field',
         link: '#/field'
-    },
-    {
+    }, {
         title: '步骤条 - ProcessBar',
         link: '#/process-bar'
-    },
-    {
+    }, {
         title: '加载容器 - Wrapper',
         link: '#/wrapper'
-    },
-    {
+    }, {
         title: '按钮 - Button',
         link: '#/button'
     }
