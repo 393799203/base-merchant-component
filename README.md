@@ -1,3 +1,18 @@
+### @meili/base-merchant-component Changelog
+
+* v1.0.1
+	* Modal 弹出层组件：修复样式字符串bug，webapck@1.12.1 版本打包
+	* Select 下拉组件：
+    	* 添加getData、clearData、resetData方法
+		* 添加下拉框内容搜索功能、添加键盘上下键监听功能
+
+	* AreaCode 手机区号组件：
+    	* 添加clearData方法
+    	* 添加下拉列表搜索功能
+
+	* Field 表单组件
+    	* 修复错误提示样式问题
+
 #### 使用
 
 	npm install @meili/base-merchant-component --save
@@ -28,26 +43,26 @@ v1.0.0的版本是使用商家后台新的UI规范开发的一套新的组件，
 	$ cd your-project-name
 
 	# 如果开发0.x.x版本，请从远程切出develop分支
-	# 如果开发v1.0.0 版本，请从远程切出v1.0.0分支；	
+	# 如果开发v1.0.0 版本，请从远程切出v1.0.0分支；
 	# 假设远程主仓库以 main 命名
 	$ git checkout -b develop main/develop
 	$ git checkout -b v1.0.0 main/v1.0.0
-	
-	
+
+
 	# 安装依赖
 	$ npm install
-	
+
 ##### 3、项目目录说明
 
-	├── README.md 
+	├── README.md
 	├── demo/      # 组件文档说明打包后文件，原文件在 public/ 下，使用webpack.build.config.js打包生成
-	├── dist/      # 使用cdn方式引用，暂时没有提供  
+	├── dist/      # 使用cdn方式引用，暂时没有提供
 	├── lib/       # 编译后组件，提供给用户使用，使用webpack.config.js打包
 	├── node_modules/
 	├── package.json/
 	├── public/    # 组件文档api站点源码
 	├── scripts/   # 一些脚本
-	├── spec/      # 测试用例					
+	├── spec/      # 测试用例
 	├── src/       # 组件源码
 	├── webpack.build.config.js
 	├── webpack.config.js
@@ -55,23 +70,23 @@ v1.0.0的版本是使用商家后台新的UI规范开发的一套新的组件，
 	├── webpack.pack.config.js
 	├── webpack.pub.config.js
 	└── webpack.test.config.js
-	
+
 ##### 4、组件源码说明
 
     src
 	├── index.js  # 组件注册文件，开发一个组件后在此文件注册，
 	│             # 用户可以通过 import {xx} from @meili/base-merchant-component 引用，
 	│             # 尽管不推荐此种用法
-	│       
+	│  
 	└── tab
     	├── index.js    # 组件入口文件
     	└── style       # 样式
         	  └── index.less
-        	  
-##### 5、组件API 
+
+##### 5、组件API
 
 组件API站点为react单页应用，最后打包生产一个js,一个css，具体组件API写法可以参考 pages/tab
-  
+
 	public
 	├── index.html
 	├── layout
@@ -79,7 +94,7 @@ v1.0.0的版本是使用商家后台新的UI规范开发的一套新的组件，
 	│   ├── menu.js
 	│   ├── tpl.fullPage.js
 	│   └── tpl.sidePage.js
-	├── main.js    
+	├── main.js
 	├── pages
 	│   ├── home
 	│   │   └── index.js
@@ -89,21 +104,10 @@ v1.0.0的版本是使用商家后台新的UI规范开发的一套新的组件，
 	├── route.js   # 路由
 	└── style
     	└── index.css
-	
+
 ##### 6、启动组件文档API站点
 
 	$ npm run dev
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 
 
@@ -111,5 +115,16 @@ v1.0.0的版本是使用商家后台新的UI规范开发的一套新的组件，
 
 
 
- 
- 
+
+
+
+
+
+
+
+
+
+
+
+
+

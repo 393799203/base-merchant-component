@@ -21,17 +21,19 @@ module.exports = {
         './React': 'React',
         './React-dom': 'ReactDOM'
     },
+    resolve: {
+        alias: {
+            'source_path': path.resolve(__dirname + '/src'),
+        },
+        extensions: ['', '.js', '.jsx']
+    },
     //plugins: [new HtmlWebpackPlugin()],
     module: {
         loaders: [
             {
                 test: /\.jsx?$/,
                 exclude: /(node_modules|bower_components)/,
-                loader: 'babel',
-                query: {
-                    presets: ['react', 'es2015','stage-2'],
-                    plugins: ['add-module-exports', 'transform-object-assign']
-                }
+                loader: 'babel'
             },
             {
                 test: /\.css$/,
@@ -83,7 +85,8 @@ function getEntries(){
     var floders = getDirectories(srcpath);
     entries = {};
     floders.forEach(function(i){
-        entries['./dist/'+i+'/'] = path.resolve(__dirname,'./src/'+i+'/'+'index.js');
+        if (['_module', '_theme', 'less'].indexOf(i) > -1) {return;}
+        entries['./dist/'+i+'/'] = [path.resolve(__dirname,'./src/'+i+'/'+'index.js')];
     });
     console.log(entries)
     return entries;
