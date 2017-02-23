@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Select } from 'source_path/select';
+import { Select } from '../select';
 import config from './config.js';
 
 const noop = function () {};

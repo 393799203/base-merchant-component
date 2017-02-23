@@ -1,17 +1,27 @@
 ### @meili/base-merchant-component Changelog
 
-* v1.0.1
-	* Modal 弹出层组件：修复样式字符串bug，webapck@1.12.1 版本打包
-	* Select 下拉组件：
-    	* 添加getData、clearData、resetData方法
-		* 添加下拉框内容搜索功能、添加键盘上下键监听功能
+#### v1.1.1
+* AreaCode 手机区号组件：修复组件内部依赖路径
+* Table 表格组件：修复组件内部依赖路径
+* Slider 轮播组件：修复组件resize window 方法找不到
 
-	* AreaCode 手机区号组件：
-    	* 添加clearData方法
-    	* 添加下拉列表搜索功能
+#### v1.1.0
+* 增加基础组件 － 轮播组件：Slider
+* 增加业务组件 － 地址组件：Address
+* 增加业务组件 － 全地址组件：FullAddress
+* 增加业务组件 － 身份认证组件：VerifyIdenty
+* 增加业务组件 － 手机验证组件：VerifyPhone
 
-	* Field 表单组件
-    	* 修复错误提示样式问题
+#### v1.0.1
+* Modal 弹出层组件：修复样式字符串bug，webapck@1.12.1 版本打包
+* Select 下拉组件：
+	* 添加getData、clearData、resetData方法
+	* 添加下拉框内容搜索功能、添加键盘上下键监听功能
+* AreaCode 手机区号组件：
+	* 添加clearData方法
+	* 添加下拉列表搜索功能
+* Field 表单组件
+	* 修复错误提示样式问题
 
 #### 使用
 

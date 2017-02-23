@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import Pagination from 'source_path/pagination';
-import Tooltip from 'source_path/tooltip';
+import Pagination from '../pagination';
+import Tooltip from '../tooltip';
 import './style/index.less';
 
 export default class Table extends Component {
