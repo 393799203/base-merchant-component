@@ -210,6 +210,7 @@ export default class Field extends Component {
         return isValid;
     }
 
+    // 渲染表单
     renderEntry () {
         const type = this.props.type;
         switch (type) {
@@ -258,6 +259,8 @@ export default class Field extends Component {
                         >
                             {this.renderEntry()}
                         </div>
+
+                        {/* 校验错误提示 */}
                         {errorMsg ?
                             <div className='mc-field-errorMsg'>
                                 <div className='mc-field-error-arrow'>
@@ -271,7 +274,7 @@ export default class Field extends Component {
                         }
                     </div>
 
-                    {/* 校验错误提示 */}
+                    {/* 子标题 */}
                     <div className='mc-field-subInfo'>
                         <label htmlFor={this.fieldId}> {subInfo} </label>
                     </div>

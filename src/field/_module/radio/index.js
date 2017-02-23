@@ -200,7 +200,7 @@ export default class Radio extends Component {
                                     value={optionValue}
                                     onChange={() => this.handleChange(optionValue)}
                                 />
-                                <label className='yy-iconfont' htmlFor={option.id || fieldId}>{option.label}</label>
+                                <label className='yy-iconfont' htmlFor={option.id || fieldId}>{option.label || option.text}</label>
                             </div>
                         );
                     })
