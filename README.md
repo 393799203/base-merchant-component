@@ -1,8 +1,9 @@
 ### @meili/base-merchant-component Changelog
 
 #### v1.1.1
-* AreaCode 手机区号组件：修复组件内部依赖路径bug
-* Table 表格组件：修复组件内部依赖路径bug
+* AreaCode 手机区号组件：修复组件内部依赖路径
+* Table 表格组件：修复组件内部依赖路径
+* Slider 轮播组件：修复组件resize window 方法找不到
 
 #### v1.1.0
 * 增加基础组件 － 轮播组件：Slider
