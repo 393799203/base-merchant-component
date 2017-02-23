@@ -35,6 +35,7 @@ import TableView from './pages/table';
 import SelectView from './pages/select';
 import ButtonView from './pages/button';
 import FieldView from './pages/field';
+import FormView from './pages/form';
 import ProcessBarView from './pages/process-bar';
 import WrapperView from './pages/wrapper';
 
@@ -66,6 +67,7 @@ export default (
             <Route path='wrapper' component={WrapperView} />
 
             <Route path='field' component={FieldView} />
+            <Route path='form' component={FormView} />
             <Route path='datepicker' component={DatepickerView} />
             <Route path='monthpicker' component={MonthpickerView} />
             <Route path='rangepicker' component={RangepickerView} />

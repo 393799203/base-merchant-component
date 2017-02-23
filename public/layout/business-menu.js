@@ -16,5 +16,8 @@ export default [{
 }, {
     title: '手机验证 - VerifyPhone',
     link: '#/verifyphone'
+}, {
+    title: '表单配置 - Form',
+    link: '#/form'
 }];
 

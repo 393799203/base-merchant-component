@@ -201,26 +201,10 @@ export default class Select extends Component {
                 >
                     {options.map((option, index) => {
                         return (
-                            <option key={index} value={option.value}>{option.text}</option>
+                            <option key={index} value={option.value}>{option.text || option.label}</option>
                         );
                     })}
                 </select>
-
-                {/*
-                    <SelectComponent
-                        {...attrs}
-                        {...events}
-                        className='mc-field-error mc-select-input'
-                        name={name}
-                        ref={name}
-                        placeholder={placeholder}
-                        id={id || fieldId}
-                        disabled={disabled}
-                        value={this.state.value}
-                        selectData={options}
-                        onChange={e => this.handleChange(e)}
-                    />
-                */}
             </div>
         );
     }
