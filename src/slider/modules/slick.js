@@ -15,6 +15,7 @@ class Slick extends Component {
             slideStyle: {},
             listStyle: {}
         };
+        this.onWindowResized = () => this.onWindowResized;
         this.sliderList = null;
         this.sliderWrapper = null;
         this.tc = null;
