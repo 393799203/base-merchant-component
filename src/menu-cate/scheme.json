@@ -1,0 +1,161 @@
+{
+  "category": [
+    {
+      "id": 16,
+      "title": "新手开店",
+      "link": "http://www.mogujie.com/",
+      "items": [
+        {
+          "id": 29,
+          "title": "基础运营",
+          "link": "http://www.mogujie.com/",
+          "titleColor": "#FF0077"
+        },
+        {
+          "id": 1,
+          "title": "开店流程",
+          "link": "http://www.mogujie.com/",
+          "titleColor": "#FF0077"
+        },
+        {
+          "id": 30,
+          "title": "营销推广",
+          "link": "http://www.mogujie.com/"
+        },
+        {
+          "id": 2,
+          "title": "店铺设置",
+          "link": "http://www.mogujie.com/"
+        },
+        {
+          "id": 3,
+          "items": null,
+          "title": "店铺装修",
+          "link": "http://www.mogujie.com/"
+        },
+        {
+          "id": 4,
+          "items": null,
+          "title": "平台规则",
+          "link": "http://www.mogujie.com/"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "items": [
+        {
+          "id": 25,
+          "items": null,
+          "title": "直播回顾"
+        },
+        {
+          "id": 26,
+          "items": null,
+          "title": "蘑菇小课"
+        },
+        {
+          "id": 27,
+          "items": null,
+          "title": "时尚频道"
+        }
+      ],
+      "title": "特色课程"
+    },
+    {
+      "id": 21,
+      "items": [
+        {
+          "id": 22,
+          "items": null,
+          "title": "商品规则"
+        },
+        {
+          "id": 15,
+          "items": null,
+          "title": "平台规则"
+        }
+      ],
+      "title": "规则解读"
+    },
+    {
+      "id": 20,
+      "items": [
+        {
+          "id": 23,
+          "items": null,
+          "title": "数据分析"
+        }
+      ],
+      "title": "数据分析"
+    },
+    {
+      "id": 19,
+      "items": [
+        {
+          "id": 13,
+          "items": null,
+          "title": "店铺设计"
+        },
+        {
+          "id": 12,
+          "items": null,
+          "title": "宝贝拍摄"
+        }
+      ],
+      "title": "视觉美工"
+    },
+    {
+      "id": 18,
+      "items": [
+        {
+          "id": 11,
+          "items": null,
+          "title": "搜索引流"
+        },
+        {
+          "id": 10,
+          "items": null,
+          "title": "广告产品"
+        },
+        {
+          "id": 9,
+          "items": null,
+          "title": "粉丝营销"
+        }
+      ],
+      "title": "营销推广"
+    },
+    {
+      "id": 17,
+      "items": [
+        {
+          "id": 5,
+          "items": null,
+          "title": "活动相关"
+        },
+        {
+          "id": 28,
+          "items": null,
+          "title": "大促专题"
+        },
+        {
+          "id": 8,
+          "items": null,
+          "title": "实拍操作"
+        },
+        {
+          "id": 7,
+          "items": null,
+          "title": "运营技巧"
+        },
+        {
+          "id": 6,
+          "items": null,
+          "title": "客服技巧"
+        }
+      ],
+      "title": "日常运营"
+    }
+  ]
+}
