@@ -110,7 +110,7 @@ export default class FullAddress extends Component {
 
     componentWillMount () {
         const props = this.props;
-        this.fullAddressId = FullAddress.uniqueId('form_');
+        this.fullAddressId = FullAddress.uniqueId('fullAddress_');
         FullAddress.add(this, props.form);
     }
 
@@ -145,6 +145,7 @@ export default class FullAddress extends Component {
     }
 
     changeAddress (e) {
+        console.info(e);
         const form = this.props.form;
         const street = Field.getData(form) || {};
         Object.assign(street, e);
@@ -156,6 +157,7 @@ export default class FullAddress extends Component {
     }
 
     changeStreet (e) {
+        debugger
         const form = this.props.form;
         const name = this.props.name;
 

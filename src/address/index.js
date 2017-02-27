@@ -115,7 +115,7 @@ export default class Address extends Component {
 
     componentWillMount () {
         const props = this.props;
-        this.addressId = Address.uniqueId('form_');
+        this.addressId = Address.uniqueId('address_');
         Address.add(this, props.form);
     }
 

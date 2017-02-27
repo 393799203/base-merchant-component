@@ -191,8 +191,6 @@ export default class Select extends Component {
                     {...attrs}
                     {...events}
                     className='mc-field-error mc-select-input'
-                    name={name}
-                    ref={name}
                     placeholder={placeholder}
                     id={id || fieldId}
                     disabled={disabled}

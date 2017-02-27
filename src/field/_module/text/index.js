@@ -174,8 +174,6 @@ export default class Text extends Component {
                         {...attrs}
                         {...events}
                         className='mc-field-error mc-text-input'
-                        name={name || ''}
-                        ref={name}
                         value={this.state.value || ''}
                         placeholder={placeholder || ''}
                         onChange={e => this.handleChange(e)}

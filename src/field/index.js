@@ -133,7 +133,7 @@ export default class Field extends Component {
     }
 
     componentWillMount () {
-        this.fieldId = Field.uniqueId('form_');
+        this.fieldId = Field.uniqueId('field_');
         Field.add(this, this.props.form);
     }
 

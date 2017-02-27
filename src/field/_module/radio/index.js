@@ -193,8 +193,6 @@ export default class Radio extends Component {
                                     className='mc-radio-error mc-radio-input'
                                     checked={this.state.value.toString() === optionValue}
                                     {...attrs}
-                                    name={name}
-                                    ref={name}
                                     disabled={disabled}
                                     id={option.id}
                                     value={optionValue}

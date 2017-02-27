@@ -14,7 +14,9 @@ export default class FormComponentView extends Component {
 	//获取表单数据
 	getData(){
 		var data = Form.getData("textForm");
+		var data2 = Form.getData("textForm2");
 		console.info(data);
+		console.info(data2);
 	}
 
 	//初始化表单数据
@@ -58,9 +60,14 @@ export default class FormComponentView extends Component {
 						清除数据
 					</button>
 					<Form 
-						data = {testData.options} 
+						data = {testData.options.concat()} 
 						prefixcls="field-test"
 						form='textForm'/>
+
+					<Form 
+						data = {testData.options.concat()} 
+						prefixcls="field-test"
+						form='textForm2'/>
 				</div>
 				<div dangerouslySetInnerHTML={{ __html: Readme }}>
 					

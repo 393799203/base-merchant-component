@@ -217,8 +217,6 @@ export default class Checkbox extends Component {
                                     className='mc-checkbox-error mc-checkbox-input'
                                     checked={Boolean(this.state.checked[optionValue])}
                                     {...attrs}
-                                    name={name}
-                                    ref={name}
                                     disabled={disabled}
                                     id={option.id}
                                     value={optionValue}
