@@ -74,7 +74,9 @@ export default class Form extends Component {
         const address = Address.getData(this.props.form);
         const datepicker = Datepicker.getData(this.props.form);
         const deadline = Deadline.getData(this.props.form);
-        return Object.assign(filed, address, datepicker, deadline);
+        const uploadbox = UploadBox.getData(this.props.form);
+        const uploadList = UploadList.getData(this.props.form);
+        return Object.assign(filed, address, datepicker, deadline, uploadbox, uploadList);
     }
 
     resetData () {

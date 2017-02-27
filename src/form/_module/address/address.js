@@ -33,17 +33,36 @@ export default class Address extends Component {
 
     // 对外暴露获取表单数据的方法
     static getData (form) {
-        return AddressCom.getData(form)
+        const type = Address.instance.props.type;
+        if(type === 'address'){
+            return AddressCom.getData(form)
+        }
+        else {
+            return FullAddressCom.getData(form)
+        }
     }
 
     // 对外暴露重置表单的方法
     static resetData (form) {
-        AddressCom.resetData(form);
+        const type = Address.instance.props.type;
+        if(type === 'address'){
+            AddressCom.resetData(form);
+        }
+        else {
+            FullAddressCom.resetData(form);
+        }
     }
 
     // 对外暴露清空表单的方法
     static clearData (form) {
-        AddressCom.clearData(form);
+        const type = Address.instance.props.type;
+        if(type === 'address'){
+            AddressCom.clearData(form);
+        }
+        else {
+            FullAddressCom.clearData(form);
+        }
+        
     }
 
     constructor (props) {

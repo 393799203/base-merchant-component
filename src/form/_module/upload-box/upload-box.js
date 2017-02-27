@@ -1,10 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-import uploadImgBox from './upload/uploadImgBox';
+import UploadImgBox from './upload/uploadImgBox.js';
+import Util from '../../../_module/js/util.js';
 
 export default class UploadBox extends Component {
     static defaultProps = {
         label: '',
-        defaultValue: {},
+        defaultValue: '',
         className: '',
         disabled: false,
         style: {},
@@ -12,36 +13,62 @@ export default class UploadBox extends Component {
         errorMsg: '',
         required: false,
         subInfo: '',
-        form: ''
+        form: '',
+        mostImg: ''
     };
 
     static propTypes = {
         label: PropTypes.string,
-        defaultValue: PropTypes.object,
+        defaultValue: PropTypes.any,
         className: PropTypes.string,
         disabled: PropTypes.bool,
         style: PropTypes.object,
-        name: PropTypes.string,
+        name: PropTypes.string.isRequired,
         error: PropTypes.bool,
         errorMsg: PropTypes.string,
         required: PropTypes.bool,
         subInfo: PropTypes.string,
-        form: PropTypes.string
+        form: PropTypes.string,
+        mostImg: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     };
+
+    
+    // 设置表单唯一标示
+    static boxs = {};
+
+    static idCounter = 0;
+
+    static uniqueId (prefix) { // 生成唯一ID
+        UploadBox.idCounter += 1;
+        const id = UploadBox.idCounter.toString();
+        return prefix ? prefix + id : id;
+    }
+
+    static add (uploadBox, name) {  // 添加到forms对象中
+        if (UploadBox.boxs[name] === undefined) {
+            UploadBox.boxs[name] = {};
+        }
+
+        UploadBox.boxs[name][uploadBox.boxId] = uploadBox;
+    }
+
+    static remove (uploadBox, name) {  // 删除某个表单
+        delete UploadBox.boxs[name][uploadBox.boxId];
+    }
 
     // 对外暴露获取表单数据的方法
     static getData (form) {
-        return AddressCom.getData(form)
-    }
+        const formName = form || DEFAULT_FORM;
+        const data = {};
+        const currentForm = UploadBox.boxs[formName] || {};
 
-    // 对外暴露重置表单的方法
-    static resetData (form) {
-        AddressCom.resetData(form);
-    }
+        Object.keys(currentForm).map((key) => {
+            const UploadBox = currentForm[key];
+            const value = UploadBox.getData();
+            Object.assign(data, Util.deepClone({ [UploadBox.props.name]: value }));
+        });
 
-    // 对外暴露清空表单的方法
-    static clearData (form) {
-        AddressCom.clearData(form);
+        return data;
     }
 
     constructor (props) {
@@ -49,44 +76,28 @@ export default class UploadBox extends Component {
         this.state = {
             error: props.error,
             errorMsg: props.errorMsg,
-            address: props.defaultValue
+            value: props.defaultValue
         };
 
         UploadBox.instance = this;
     }
 
-    addressChange (e) {
-        const province = e.province || {};
-        const city = e.city || {};
-        const area = e.area || {};
-        const required = this.props.required;
+    componentWillMount () {
+        this.boxId = UploadBox.uniqueId('uploadBox_');
+        UploadBox.add(this, this.props.form);
+    }
 
-        if (!province.name && required) {
-            this.setState({
-                error: true,
-                errorMsg: "省不可为空"
-            })
-            return;
-        }
+    componentWillUnmount () {
+        UploadBox.remove(this, this.props.form);
+    }
 
-        if (!city.name && required) {
-            this.setState({
-                error: true,
-                errorMsg: "市不可为空"
-            })
-            return;
-        }
+    getData () {
+        return this.state.value;
+    }
 
-        if (!area.name && required){
-            this.setState({
-                error: true,
-                errorMsg: "区不可为空"
-            })
-            return;
-        }
-
+    picChange (e) {
         this.setState({
-            error: false
+            value: e
         })
     }
 
@@ -101,7 +112,8 @@ export default class UploadBox extends Component {
             name,
             required ,
             subInfo,
-            form
+            form,
+            mostImg
         } = this.props;
 
         const {
@@ -125,18 +137,10 @@ export default class UploadBox extends Component {
 
                     {/* 表单 */}
                     <div className='mc-field-body'>
-                        <AddressCom
-                            defaultProvince={defaultValue.province}
-                            defaultCity={defaultValue.city}
-                            defaultArea={defaultValue.area}
-                            onChange={(e) => this.addressChange(e)}
-                            style={style}
-                            form={form}
-                            provinceDisabled={disabled.provice}
-                            cityDisabled={disabled.city}
-                            areaDisabled={disabled.area}
-                            name={name}
-                        />
+                        <UploadImgBox 
+                            imgList={defaultValue} 
+                            mostImg = {mostImg}
+                            onChange={(e) => this.picChange(e)}/>
 
                         {/* 校验错误提示 */}
                         {errorMsg ?

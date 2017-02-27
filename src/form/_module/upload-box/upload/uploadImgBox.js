@@ -1,7 +1,7 @@
 /**
 ** 上传照片
 */
-import React , { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Modal from '../../../../modal';
 import UploadImg from '../../../../image-uploader';
 
@@ -9,9 +9,9 @@ import './uploadImgBox.less';
 
 const noop = function () {};
 
-export default class UploadImgBox extends Component {
+export default class uploadImgBox extends Component {
     static propTypes = {
-        imgList: PropTypes.array,
+        imgList: PropTypes.any,
         onChange: PropTypes.func,
         className: PropTypes.string,
         demoImg: PropTypes.string,
@@ -96,8 +96,7 @@ export default class UploadImgBox extends Component {
         }
     }
 
-    //开始上传
-    handleUploadStart (index) {
+    before (files, index) {
         let imgList = this.state.imgList;
         imgList.splice(index, 1, {isUploading: true});
         this.setState({
@@ -105,27 +104,17 @@ export default class UploadImgBox extends Component {
         });
     }
 
-    //上传结束
-    handleUploadFinish ( index, resData) {
+    success (uploadList, index) {
+        let url = uploadList && uploadList[0].url;
         let imgList = this.state.imgList;
-        if(resData && resData.length && resData[0].result){
-            let img = resData[0].result.url || '';
-            imgList.splice(index, 1, {img: img});
-            let returnData = this.clearEmptyData(imgList);
-            this.setState({
-                imgList : imgList
-            },function () {
-                this.state.onChange(returnData);
-                this.addImg(index);
-            });
-        }else{
-            Modal.alert('上传失败，请重新上传，建议jpg、jpeg、bmp格式，最大不超过5M。');
-            let imgList = this.state.imgList;
-            imgList.splice(index, 1, '');
-            this.setState({
-                imgList : imgList
-            });
-        }
+        imgList.splice(index, 1, {img: url});
+        let returnData = this.clearEmptyData(imgList);
+        this.setState({
+            imgList : imgList
+        },function () {
+            this.state.onChange(returnData);
+            this.addImg(index);
+        });
     }
 
     clearEmptyData (imgList) {
@@ -139,9 +128,10 @@ export default class UploadImgBox extends Component {
         return returnData;
     }
 
-    //上传失败
-    handleUploadFailed (index) {
-        Modal.alert('上传失败，请重新上传，建议jpg、jpeg、bmp格式，最大不超过5M。');
+    fail (failList, successList, index) {
+        Notification.error({
+            message: '图片上传失败'
+        });
         let imgList = this.state.imgList;
         imgList.splice(index, 1, '');
         this.setState({
@@ -150,47 +140,65 @@ export default class UploadImgBox extends Component {
     }
 
     render () {
-        let {imgList , className , mostImg , demoImg} = this.state;
+        const {
+            imgList,
+            className,
+            mostImg,
+            demoImg
+        } = this.state;
+
         return (
-            <div className={className ? className+' fl upload-img-box-wrapper' : 'fl upload-img-box-wrapper'}>
+            <div className={`${className} fl upload-img-box-wrapper`} >
                 {
-                    imgList.map( (item, index) => {
+                    imgList.map((item, index) => {
                         return (
                             <div className='upload-container-box' key={index}>
-                                {item.isUploading ? 
+                                {item.isUploading ?
                                     <div className='upload-update-btn'>
-                                        <img src='//s10.mogujie.com/img/fpay/ubzlo_ieyden3fha3teobtmiytambqgqyde_24x24.gif' className='loading-img'/>
+                                        <img src='//s10.mogujie.com/img/fpay/ubzlo_ieyden3fha3teobtmiytambqgqyde_24x24.gif' className='loading-img' />
                                     </div>
-                                    : 
+                                    :
                                     <div className='upload-update-btn'>
                                         <UploadImg
-                                            onStart={ this.handleUploadStart.bind(this, index) } 
-                                            onFinish={ this.handleUploadFinish.bind(this, index) }
-                                            onFailed={ this.handleUploadFailed.bind(this, index) }/>
+                                            before={(files) => this.before(files, index)}
+                                            success={(a) => this.success(a, index)}
+                                            fail={(a, b) => this.fail(a, b, index)}
+                                        />
                                         {item.img ?
                                             <img
                                                 src={item.img}
                                                 className='img-thumb'
                                                 width='100px'
-                                                height='100px'/>
+                                                height='100px'
+                                            />
                                             :
                                             <span className='upload-btn'>上传图片</span>
                                         }
                                     </div>
                                 }
-                                <span 
-                                    className='delete-btn' 
-                                    onClick={ (e) => { this.deleteImg(e, index) } }>
+                                <span
+                                    className='delete-btn'
+                                    onClick={e => this.deleteImg(e, index)}
+                                >
                                     ×
                                 </span>
-                                { demoImg ? <a className='demoImg' href={demoImg} target='_block'>查看示例></a> : null }
+                                {demoImg ?
+                                    <a
+                                        className='demoImg'
+                                        href={demoImg}
+                                        target='_block'
+                                    >
+                                        查看示例
+                                    </a>
+                                    : null
+                                }
                             </div>
                         );
                     })
                 }
-                {imgList.length < mostImg || mostImg == '-1' ?
+                {imgList.length < mostImg || mostImg === '-1' ?
                     <div className='upload-container-box'>
-                        <span className='upload-add' onClick={ () => { this.addImg() } }>+</span>
+                        <span className='upload-add' onClick={() => this.addImg()}>+</span>
                     </div>
                     :
                     null
@@ -198,4 +206,4 @@ export default class UploadImgBox extends Component {
             </div>
         );
     }
-}    
+}

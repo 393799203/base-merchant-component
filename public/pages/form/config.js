@@ -1,5 +1,19 @@
 export default {
     options:[{
+        type:'uploadList',  //类型
+        text:'上传列表',  //文案
+        subInfo:'我是一个小文案',
+        required: true,
+        defaultValue:["http://s2.mogucdn.com/p2/170227/67813645_7al3ek6hl0keklag08jbe4ccf108a_167x167.png"],
+        key: 'uploadListtest'    //生成数据对应的字段
+    },{
+        type:'uploadBox',  //类型
+        text:'上传',  //文案
+        subInfo:'我是一个小文案',
+        required: true,
+        defaultValue:["http://s2.mogucdn.com/p2/170227/67813645_7al3ek6hl0keklag08jbe4ccf108a_167x167.png"],
+        key: 'uploadBoxtest'    //生成数据对应的字段
+    },{
         type:'fullAddress',  //类型
         text:'地址组件',  //文案
         subInfo:'我是一个小文案',

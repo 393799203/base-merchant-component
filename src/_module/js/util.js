@@ -90,6 +90,39 @@ const util = {
 
         // Return the modified object
         return target;
+    },
+    dateFormat ( timestamp, fmt ) { // 时间格式化
+        if (timestamp) { // 后端存储的时间戳单位为秒
+            let d = new Date(timestamp * 1000);
+            let month = d.getMonth();
+            let day = d.getDate();
+            let hour = d.getHours();
+            let minute = d.getMinutes();
+            let seconds = d.getSeconds();
+            let yy = d.getFullYear();
+            let mm = month < 9 ? '0' + parseInt(month + 1,10) : month + 1;
+            let dd = day < 10 ? '0' + day : day;
+            let h = hour < 10 ? '0' + hour : hour;
+            let m = minute < 10 ? '0' + minute : minute;
+            let s = seconds < 10 ? '0' + seconds : seconds;
+
+            let time = {
+                'yy-mm-dd h:m:s': `${yy}-${mm}-${dd} ${h}:${m}:${s}`,
+                'yy-mm-dd': `${yy}-${mm}-${dd}`,
+                'yy/mm/dd': `${yy}/${mm}/${dd}`,
+                'yy/mm/dd h:m:s': `${yy}/${mm}/${dd} ${h}:${m}:${s}`,
+                'yy.mm.dd': `${yy}.${mm}.${dd}`,
+                'yy-mm-dd h:m': `${yy}-${mm}-${dd} ${h}:${m}`
+            };
+            return time[fmt] || time['yy.mm.dd'];
+        }
+    },
+    urlParamToJson (params) {
+        let search = params || window.location.search.substring(1);
+        return search ? JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g, '":"') + '"}',
+            function (key, value) {
+                return key === '' ? value : decodeURIComponent(value);
+            }) : {};
     }
 };
 

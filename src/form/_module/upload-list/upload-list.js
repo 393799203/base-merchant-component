@@ -1,10 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-import AddressCom from '../../../address';
+import UploadImgList from './upload/uploadImgList.js';
+import Util from '../../../_module/js/util.js';
 
 export default class UploadList extends Component {
     static defaultProps = {
         label: '',
-        defaultValue: {},
+        defaultValue: '',
         className: '',
         disabled: false,
         style: {},
@@ -12,36 +13,62 @@ export default class UploadList extends Component {
         errorMsg: '',
         required: false,
         subInfo: '',
-        form: ''
+        form: '',
+        mostImg: ''
     };
 
     static propTypes = {
         label: PropTypes.string,
-        defaultValue: PropTypes.object,
+        defaultValue: PropTypes.any,
         className: PropTypes.string,
         disabled: PropTypes.bool,
         style: PropTypes.object,
-        name: PropTypes.string,
+        name: PropTypes.string.isRequired,
         error: PropTypes.bool,
         errorMsg: PropTypes.string,
         required: PropTypes.bool,
         subInfo: PropTypes.string,
-        form: PropTypes.string
+        form: PropTypes.string,
+        mostImg: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     };
+
+    
+    // 设置表单唯一标示
+    static boxs = {};
+
+    static idCounter = 0;
+
+    static uniqueId (prefix) { // 生成唯一ID
+        UploadList.idCounter += 1;
+        const id = UploadList.idCounter.toString();
+        return prefix ? prefix + id : id;
+    }
+
+    static add (uploadList, name) {  // 添加到forms对象中
+        if (UploadList.boxs[name] === undefined) {
+            UploadList.boxs[name] = {};
+        }
+
+        UploadList.boxs[name][uploadList.boxId] = uploadList;
+    }
+
+    static remove (uploadList, name) {  // 删除某个表单
+        delete UploadList.boxs[name][uploadList.boxId];
+    }
 
     // 对外暴露获取表单数据的方法
     static getData (form) {
-        return AddressCom.getData(form)
-    }
+        const formName = form || DEFAULT_FORM;
+        const data = {};
+        const currentForm = UploadList.boxs[formName] || {};
 
-    // 对外暴露重置表单的方法
-    static resetData (form) {
-        AddressCom.resetData(form);
-    }
+        Object.keys(currentForm).map((key) => {
+            const UploadList = currentForm[key];
+            const value = UploadList.getData();
+            Object.assign(data, Util.deepClone({ [UploadList.props.name]: value }));
+        });
 
-    // 对外暴露清空表单的方法
-    static clearData (form) {
-        AddressCom.clearData(form);
+        return data;
     }
 
     constructor (props) {
@@ -49,44 +76,28 @@ export default class UploadList extends Component {
         this.state = {
             error: props.error,
             errorMsg: props.errorMsg,
-            address: props.defaultValue
+            value: props.defaultValue
         };
 
         UploadList.instance = this;
     }
 
-    addressChange (e) {
-        const province = e.province || {};
-        const city = e.city || {};
-        const area = e.area || {};
-        const required = this.props.required;
+    componentWillMount () {
+        this.boxId = UploadList.uniqueId('uploadList_');
+        UploadList.add(this, this.props.form);
+    }
 
-        if (!province.name && required) {
-            this.setState({
-                error: true,
-                errorMsg: "省不可为空"
-            })
-            return;
-        }
+    componentWillUnmount () {
+        UploadList.remove(this, this.props.form);
+    }
 
-        if (!city.name && required) {
-            this.setState({
-                error: true,
-                errorMsg: "市不可为空"
-            })
-            return;
-        }
+    getData () {
+        return this.state.value;
+    }
 
-        if (!area.name && required){
-            this.setState({
-                error: true,
-                errorMsg: "区不可为空"
-            })
-            return;
-        }
-
+    picChange (e) {
         this.setState({
-            error: false
+            value: e
         })
     }
 
@@ -101,7 +112,8 @@ export default class UploadList extends Component {
             name,
             required ,
             subInfo,
-            form
+            form,
+            mostImg
         } = this.props;
 
         const {
@@ -125,18 +137,10 @@ export default class UploadList extends Component {
 
                     {/* 表单 */}
                     <div className='mc-field-body'>
-                        <AddressCom
-                            defaultProvince={defaultValue.province}
-                            defaultCity={defaultValue.city}
-                            defaultArea={defaultValue.area}
-                            onChange={(e) => this.addressChange(e)}
-                            style={style}
-                            form={form}
-                            provinceDisabled={disabled.provice}
-                            cityDisabled={disabled.city}
-                            areaDisabled={disabled.area}
-                            name={name}
-                        />
+                        <UploadImgList 
+                            imgList={defaultValue} 
+                            mostImg = {mostImg}
+                            onChange={(e) => this.picChange(e)}/>
 
                         {/* 校验错误提示 */}
                         {errorMsg ?
