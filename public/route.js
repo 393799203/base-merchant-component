@@ -38,6 +38,7 @@ import FieldView from './pages/field';
 import FormView from './pages/form';
 import ProcessBarView from './pages/process-bar';
 import WrapperView from './pages/wrapper';
+import MenuCateView from './pages/menu-cate';
 
 export default (
     <Router history={hashHistory}>
@@ -79,6 +80,7 @@ export default (
             <Route path='fulladdress' component={FullAddressView} />
             <Route path='verifyidenty' component={VerifyIdentyView} />
             <Route path='verifyphone' component={VerifyPhoneView} />
+            <Route path='menu' component={MenuCateView} />
 
         </Route>
     </Router>
