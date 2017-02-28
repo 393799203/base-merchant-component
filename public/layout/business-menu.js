@@ -19,5 +19,8 @@ export default [{
 }, {
     title: '表单配置 - Form',
     link: '#/form'
+}, {
+    title: '类目菜单 - MenuCate',
+    link: '#/menucate'
 }];
 
