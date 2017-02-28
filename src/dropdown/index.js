@@ -37,12 +37,12 @@ export default class Dropdown extends Component {
                 onBlur={() => { this.hideMenu(); }}
             >
                 <div
-                    className={showMenu ? 'mc-trigger active': 'mc-trigger'}
+                    className={showMenu ? 'mc-trigger active' : 'mc-trigger'}
                     onClick={() => { this.toggleMenu(); }}
                 >
                     {this.props.children}
                 </div>
-                <div className={showMenu ? 'mc-menu active': 'mc-menu'}>
+                <div className={showMenu ? 'mc-menu active' : 'mc-menu'}>
                     {
                         options.map((item, index) => {
                             return (
@@ -55,8 +55,11 @@ export default class Dropdown extends Component {
                                     <a
                                         className={item.options ? 'mc-item-name has-options' : 'mc-item-name'}
                                         href={item.link ? item.link : ''}
-                                        target={item.target ? '_blank': ''}
-                                        onClick={(e) => { e.preventDefault(); handleClick(item, index); }}
+                                        target={item.target ? '_blank' : ''}
+                                        onClick={(e) => {
+                                            if (!item.link) { e.preventDefault(); }
+                                            handleClick(item, index);
+                                        }}
                                     >
                                         {item.text}
                                     </a>
@@ -70,8 +73,11 @@ export default class Dropdown extends Component {
                                                                 key={subIndex}
                                                                 className='mc-sub-menu-item'
                                                                 href={subItem.link ? subItem.link : ''}
-                                                                target={item.target ? '_blank': ''}
-                                                                onClick={(e) => { e.preventDefault(); handleClick(item, index, subItem, subIndex); }}
+                                                                target={item.target ? '_blank' : ''}
+                                                                onClick={(e) => {
+                                                                    if (!subItem.link) { e.preventDefault(); }
+                                                                    handleClick(item, index, subItem, subIndex);
+                                                                }}
                                                             >
                                                                 {subItem.text}
                                                             </a>
@@ -102,3 +108,4 @@ Dropdown.propTypes = {
     handleClick: PropTypes.func,
     className: PropTypes.string
 };
+
