@@ -1,7 +1,8 @@
 @import "../../_theme/less/include/_variables";
-@modal-prefix-cls: up-table;
+@modal-prefix-cls: mc-table;
 .@{modal-prefix-cls} {
     font-family: Tahoma,"Hiragino Sans GB","Microsoft yahei",serif;
+    width: 100%;
     thead{
         background:@color-light-lt;
         color:@color-dark-dk;
@@ -12,7 +13,7 @@
             font-weight: normal;
             margin-right:1px;
         }
-        .arrow, .arrow:after{
+        .sort, .sort:after{
             display: inline;
             width: 0;
             height: 0;
@@ -20,7 +21,7 @@
             border-style: solid;
             position: relative;
         }
-        .arrowup{
+        .up{
             top: 2px;
             border-width: 0 4px 6px;
             border-color: transparent transparent #ddd;
@@ -29,7 +30,7 @@
             height: 0;
             border-style: solid
         }
-        .arrowup_active{
+        .up_active{
             border-color:transparent transparent #555;
             top: 2px;
             border-width: 0 4px 6px;
@@ -38,7 +39,7 @@
             height: 0;
             border-style: solid
         }
-        .arrowdown{
+        .down{
             position: absolute;
             top: 10px;
             border-width: 6px 4px 0;
@@ -47,7 +48,7 @@
             height: 0;
             border-style: solid
         }
-        .arrowdown_active{
+        .down_active{
             position: absolute;
             top: 10px;
             border-width: 6px 4px 0;
@@ -93,6 +94,6 @@
         text-align: center;
         line-height: 14px;
         font-weight: normal;
-        margin-left: 3px;
+        margin-left: 10px;
     }
 }
