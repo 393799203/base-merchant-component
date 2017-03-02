@@ -20,6 +20,10 @@ import PanelView from './pages/compontents/panel';
 import ImageUploaderView from './pages/compontents/image-uploader';
 import SliderView from './pages/compontents/slider';
 import TeamtalkView from './pages/teamtalk';
+import BarCharts from './pages/barcharts';
+import ChinaMapCharts from './pages/chinamapcharts';
+import PieCharts from './pages/piecharts';
+import LineCharts from './pages/linecharts';
 import AreaCodeView from './pages/area-code';
 import AddressView from './pages/address';
 import FullAddressView from './pages/full-address';
@@ -75,6 +79,10 @@ export default (
             <Route path='timepicker' component={TimepickerView} />
 
             <Route path='teamtalk' component={TeamtalkView} />
+            <Route path='charts-bar' component={BarCharts} />
+            <Route path='charts-chinamap' component={ChinaMapCharts} />
+            <Route path='charts-pie' component={PieCharts} />
+            <Route path='charts-line' component={LineCharts} />
             <Route path='areacode' component={AreaCodeView} />
             <Route path='address' component={AddressView} />
             <Route path='fulladdress' component={FullAddressView} />

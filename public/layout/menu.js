@@ -44,7 +44,7 @@ export default [
     }, {
         title: '表格 - Table',
         link: '#/table'
-    },{
+    }, {
         title: '图片轮播 - Slider',
         link: '#/slider'
     }, {
@@ -53,7 +53,32 @@ export default [
     }, {
         title: '表单 - Field',
         link: '#/field'
-    }, {
+    },
+    {
+        title: 'TT - Teamtalk',
+        link: '#/teamtalk'
+    },
+    {
+        title: '折线图表 - LineCharts',
+        link: '#/charts-line'
+    },
+    {
+        title: '柱状图表 - BarCharts',
+        link: '#/charts-bar'
+    },
+    {
+        title: '饼状图表 - PieCharts',
+        link: '#/charts-pie'
+    },
+    {
+        title: '中国地图图表 - ChinaMapCharts',
+        link: '#/charts-chinamap'
+    },
+    {
+        title: '手机区号 - AreaCode',
+        link: '#/areacode'
+    },
+    {
         title: '步骤条 - ProcessBar',
         link: '#/process-bar'
     }, {
