@@ -24,7 +24,7 @@ export default class Table extends Component {
                     { columns.map((item, index) =>
                         <th
                             key={item.title || item.key || index}
-                            className={`md-table-${item.key}`}
+                            className={`mc-table-${item.key}`}
                             {...item.colAttrs}
                             {...item.thAttrs}
                         >
@@ -36,9 +36,9 @@ export default class Table extends Component {
                                             item.renderHead(item.key, item, theadCbs, forRender)
                                             : item.title
                                         }
-                                        <span className='arrow'>
-                                            <i className={((self.state.sortType === 'ASC' && self.state.flagKey === item.key) ? 'arrowup arrowup_active' : 'arrowup')} />
-                                            <i className={((self.state.sortType === 'DESC' && self.state.flagKey === item.key) ? 'arrowdown arrowdown_active' : 'arrowdown')} />
+                                        <span className='sort'>
+                                            <i className={((self.state.sortType === 'ASC' && self.state.flagKey === item.key) ? 'up up_active' : 'up')} />
+                                            <i className={((self.state.sortType === 'DESC' && self.state.flagKey === item.key) ? 'down down_active' : 'down')} />
                                         </span>
                                         {/* 如果有提示框，则在头部添加提示框*/}
                                         {item.tpl ?
@@ -129,8 +129,8 @@ export default class Table extends Component {
         const { tableExtend, theadCbs, tbodyCbs, pageConfig } = this.props;
 
         return (
-            <div className='md-module-table'>
-                <table className={`${prefixCls}-table ${tableClass}`} {...tableExtend}>
+            <div className='mc-module-table'>
+                <table className={`${prefixCls} ${tableClass}`} {...tableExtend}>
                     { this.getThead(columns, theadCbs) }
                     { this.getTbody(columns, datas, tbodyCbs) }
                 </table>
@@ -147,7 +147,7 @@ Table.defaultProps = {
     datas: [],
     showIndex: false,
     indexTitle: '序号',
-    prefixCls: 'up'
+    prefixCls: 'mc-table'
 };
 
 Table.propTypes = {
@@ -157,8 +157,8 @@ Table.propTypes = {
     showIndex: PropTypes.bool,
     indexTitle: PropTypes.string,
     prefixCls: PropTypes.string,
-    theadCbs: PropTypes.func,
-    tbodyCbs: PropTypes.func,
+    theadCbs: PropTypes.array,
+    tbodyCbs: PropTypes.array,
     tableExtend: PropTypes.object,
     sort: PropTypes.func,
     forRender: PropTypes.object,
