@@ -1,5 +1,5 @@
 ### 2. 基本用法
-    
+
     import React, { Component } from 'react'
     import Table  from '@meili/base-merchant-component/lib/table';
 

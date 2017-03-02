@@ -44,15 +44,15 @@ const renderPageBtn = function (pageBtns, currentPage, totalPage, onChangePage, 
                     let btnElem;
                     /* 视图情况1: ... 不可点击 */
                     if (item === '...') {
-                        btnElem = <a className='btn disabled' key={index}>{item}</a>;
+                        btnElem = <a className='btn disabled' key={index} href='javascript:;'>{item}</a>;
                     /* 视图情况2: 上一页按钮，当前页与首页相等时，不可点击 */
                     } else if (item === '<') {
                         if (currentPage === 1) {
-                            btnElem = <a className='btn btn-pre disabled' key={index}>{item}</a>;
+                            btnElem = <a className='btn btn-pre disabled' key={index} href='javascript:;'>{item}</a>;
                         } else {
                             btnElem = (<a
                                 className='btn btn-pre'
-                                href={link ? link + (currentPage - 1) : '#'}
+                                href={link ? link + (currentPage - 1) : 'javascript:;'}
                                 onClick={(e) => { if (!link) { e.preventDefault(); onChangePage(currentPage - 1); } }}
                                 key={index}
                             >
@@ -62,11 +62,11 @@ const renderPageBtn = function (pageBtns, currentPage, totalPage, onChangePage, 
                     /* 视图情况3: 下一页按钮，当前页与尾页相等时，不可点击 */
                     } else if (item === '>') {
                         if (currentPage === totalPage) {
-                            btnElem = <a className='btn btn-next disabled' key={index}>{item}</a>;
+                            btnElem = <a className='btn btn-next disabled' key={index} href='javascript:;'>{item}</a>;
                         } else {
                             btnElem = (<a
                                 className='btn btn-next'
-                                href={link ? link + (currentPage + 1) : '#'}
+                                href={link ? link + (currentPage + 1) : 'javascript:;'}
                                 onClick={(e) => { if (!link) { e.preventDefault(); onChangePage(currentPage + 1); } }}
                                 key={index}
                             >
@@ -77,7 +77,7 @@ const renderPageBtn = function (pageBtns, currentPage, totalPage, onChangePage, 
                     } else if (item === currentPage) {
                         btnElem = (<a
                             className='btn btn-current'
-                            href={link ? link + item : '#'}
+                            href={link ? link + item : 'javascript:;'}
                             onClick={(e) => { if (!link) { e.preventDefault(); onChangePage(item); } }}
                             key={index}
                         >
@@ -87,7 +87,7 @@ const renderPageBtn = function (pageBtns, currentPage, totalPage, onChangePage, 
                     } else {
                         btnElem = (<a
                             className='btn'
-                            href={link ? link + item : '#'}
+                            href={link ? link + item : 'javascript:;'}
                             onClick={(e) => { if (!link) { e.preventDefault(); onChangePage(item); } }}
                             key={index}
                         >

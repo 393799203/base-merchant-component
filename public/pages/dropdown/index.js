@@ -7,6 +7,22 @@ export default class DropdownView extends Component {
     constructor (props) {
         super(props);
         this.state = {
+            options1: [
+                {
+                    id: 1,
+                    text: '下拉选项1'
+                }, {
+                    id: 2,
+                    text: '下拉选项2'
+                }, {
+                    id: 3,
+                    text: '下拉选项3',
+                    link: 'http://xiaodian.com'
+                }, {
+                    id: 4,
+                    text: '下拉选项4'
+                }
+            ],
             options: [
                 {
                     id: 1,
@@ -52,7 +68,7 @@ export default class DropdownView extends Component {
         Notification.info({message: str});
     }
     render () {
-        const { options } = this.state;
+        const { options, options1 } = this.state;
 
         return (
             <div className='m-b-lg m-l m-r'>
@@ -65,9 +81,14 @@ export default class DropdownView extends Component {
                 <h2>
                     1. 示例
                 </h2>
-                <div className='w-sm'>
+                <div className='w-sm inline'>
+                    <Dropdown options={options1} handleClick={this.handleClick}>
+                        <a className='btn btn-danger-custom'>我是下拉</a>
+                    </Dropdown>
+                </div>
+                <div className='w-sm inline'>
                     <Dropdown options={options} handleClick={this.handleClick}>
-                        <a className='btn btn-danger'>下拉</a>
+                        <a className='btn btn-danger'>我有子选项</a>
                     </Dropdown>
                 </div>
                 <div style={{ clear: 'both' }} dangerouslySetInnerHTML={{ __html: Readme }} />

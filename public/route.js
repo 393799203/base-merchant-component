@@ -90,7 +90,7 @@ export default (
             <Route path='fulladdress' component={FullAddressView} />
             <Route path='verifyidenty' component={VerifyIdentyView} />
             <Route path='verifyphone' component={VerifyPhoneView} />
-            <Route path='menu' component={MenuCateView} />
+            <Route path='menucate' component={MenuCateView} />
 
         </Route>
     </Router>
