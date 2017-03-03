@@ -174,7 +174,13 @@ export default class Radio extends Component {
     }
 
     render () {
-        const { name, attrs, events, options, disabled, fieldId } = this.props;
+        const {
+            attrs,
+            events,
+            options,
+            disabled,
+            fieldId
+        } = this.props;
 
         return (
             <div className='mc-field-radio'>

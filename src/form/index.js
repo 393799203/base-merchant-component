@@ -14,6 +14,15 @@ import UploadList from './_module/upload-list/upload-list';
 import './style/index.less';
 import './style/grid.less';
 
+const modules = {
+    fullAddress: Address,
+    address: Address,
+    datepicker: Datepicker,
+    deadline: Deadline,
+    uploadBox: UploadBox,
+    uploadList: UploadList
+};
+
 export default class Form extends Component {
     static propTypes = {
         data: PropTypes.array,
@@ -24,11 +33,13 @@ export default class Form extends Component {
     // 设置表单唯一标示
     static forms = {};
 
-    static add (form, key) {  // 添加表单数据到forms对象中
+    // 添加表单数据到forms对象中
+    static add (form, key) {
         Form.forms[key] = form;
     }
 
-    static remove (key) {  // 删除某个表单
+    // 删除某个表单
+    static remove (key) {
         delete Form.forms[key];
     }
 
@@ -70,27 +81,15 @@ export default class Form extends Component {
     }
 
     getData () {
-        const filed = Field.getData(this.props.form);
-        const address = Address.getData(this.props.form);
-        const datepicker = Datepicker.getData(this.props.form);
-        const deadline = Deadline.getData(this.props.form);
-        const uploadbox = UploadBox.getData(this.props.form);
-        const uploadList = UploadList.getData(this.props.form);
-        return Object.assign(filed, address, datepicker, deadline, uploadbox, uploadList);
+        return Field.getData(this.props.form);
     }
 
     resetData () {
         Field.resetData(this.props.form);
-        Address.resetData(this.props.form);
-        Datepicker.resetData(this.props.form);
-        Deadline.resetData(this.props.form);
     }
 
     clearData () {
         Field.clearData(this.props.form);
-        Address.clearData(this.props.form);
-        Datepicker.clearData(this.props.form);
-        Deadline.clearData(this.props.form);
     }
 
     validate () {
@@ -100,132 +99,26 @@ export default class Form extends Component {
     render () {
         const state = this.state;
         const options = state.options;
-
         return (
             <div className={`${state.prefixcls} mc-form mc-form-row`}>
                 {options.length > 0 ?
                     options.map((item, index) => {
-                        if (item.type === 'address' || item.type === 'fullAddress') {
-                            return (
-                                <div key={index} className={`mc-form-${item.key} mc-form-col-lg-${item.grid || 12} mc-form-field`}>
-                                    {/* 地址 */}
-                                    <Address
-                                        label={item.label || item.text}
-                                        defaultValue={item.defaultValue}
-                                        className={item.className}
-                                        disabled={item.disabled}
-                                        style={item.style}
-                                        required={item.required}
-                                        subInfo={item.subInfo}
-                                        type={item.type}
-                                        name={item.key}
+                        const FormCom = modules[item.type] || null;
+                        return (
+                            <div key={index} className={`mc-form-${item.key} mc-form-col-lg-${item.grid || 12} mc-form-field`}>
+                                {FormCom ?
+                                    <FormCom
+                                        {...item}
                                         form={state.form}
                                     />
-                                </div>
-                            );
-                        } else if (item.type === 'datepicker') {
-                            return (
-                                <div key={index} className={`mc-form-${item.key} mc-form-col-lg-${item.grid || 12} mc-form-field`}>
-                                    {/* 时间 */}
-                                    <Datepicker
-                                        label={item.label || item.text}
-                                        defaultValue={item.defaultValue}
-                                        className={item.className}
-                                        disabled={item.disabled}
-                                        style={item.style}
-                                        required={item.required}
-                                        subInfo={item.subInfo}
-                                        type={item.type}
-                                        name={item.key}
-                                        form={state.form}
-                                        placeholder={item.placeholder}
-                                        timeConfig={item.timeConfig}
-                                    />
-                                </div>
-                            );
-                        } else if (item.type === 'deadline') {
-                            return (
-                                <div key={index} className={`mc-form-${item.key} mc-form-col-lg-${item.grid || 12} mc-form-field`}>
-                                    {/* 截止时间 */}
-                                    <Deadline
-                                        label={item.label || item.text}
-                                        defaultValue={item.defaultValue}
-                                        className={item.className}
-                                        disabled={item.disabled}
-                                        style={item.style}
-                                        required={item.required}
-                                        subInfo={item.subInfo}
-                                        type={item.type}
-                                        name={item.key}
-                                        form={state.form}
-                                        placeholder={item.placeholder}
-                                        timeConfig={item.timeConfig}
-                                    />
-                                </div>
-                            );
-                        } else if (item.type === 'uploadBox') {
-                            return (
-                                <div key={index} className={`mc-form-${item.key} mc-form-col-lg-${item.grid || 12} mc-form-field`}>
-                                    {/* 单个上传 */}
-                                    <UploadBox
-                                        label={item.label || item.text}
-                                        defaultValue={item.defaultValue}
-                                        className={item.className}
-                                        disabled={item.disabled}
-                                        style={item.style}
-                                        required={item.required}
-                                        subInfo={item.subInfo}
-                                        type={item.type}
-                                        name={item.key}
-                                        form={state.form}
-                                        placeholder={item.placeholder}
-                                        timeConfig={item.timeConfig}
-                                    />
-                                </div>
-                            );
-                        } else if (item.type === 'uploadList') {
-                            return (
-                                <div key={index} className={`mc-form-${item.key} mc-form-col-lg-${item.grid || 12} mc-form-field`}>
-                                    {/* 上传列表 */}
-                                    <UploadList
-                                        label={item.label || item.text}
-                                        defaultValue={item.defaultValue}
-                                        className={item.className}
-                                        disabled={item.disabled}
-                                        style={item.style}
-                                        required={item.required}
-                                        subInfo={item.subInfo}
-                                        type={item.type}
-                                        name={item.key}
-                                        form={state.form}
-                                        placeholder={item.placeholder}
-                                        timeConfig={item.timeConfig}
-                                    />
-                                </div>
-                            );
-                        } else {
-                            return (
-                                <div key={index} className={`mc-form-${item.key} mc-form-col-lg-${item.grid || 12} mc-form-field`}>
-                                    {/* 基础表单 */}
+                                    :
                                     <Field
+                                        {...item}
                                         form={state.form}
-                                        type={item.type}
-                                        label={item.text || item.label}
-                                        subInfo={item.subInfo}
-                                        attrs={{ style: { width: item.width, height: item.height } }}
-                                        errorMsg={item.errorMsg}
-                                        error={item.error}
-                                        required={item.required}
-                                        className={item.className}
-                                        defaultValue={item.defaultValue}
-                                        disabled={item.disabled}
-                                        options={item.options}
-                                        name={item.key}
-                                        placeholder={item.placeholder}
-                                    /> 
-                                </div>
-                            );
-                        }
+                                    />
+                                }
+                            </div>
+                        );
                     })
                     :
                     null

@@ -2,10 +2,9 @@
 ** 上传照片
 */
 import React, { Component, PropTypes } from 'react';
-import Modal from '../../../../modal';
 import UploadImg from '../../../../image-uploader';
 import Datepicker from '../../../../datepicker';
-import Util from '../../../../_module/js/util.js';
+import Notification from '../../../../notification';
 
 import './uploadImgList.less';
 
@@ -17,233 +16,270 @@ export default class UploadImgList extends Component {
         onChange: PropTypes.func,
         className: PropTypes.string,
         demoImg: PropTypes.string,
-        mostImg: PropTypes.oneOfType([PropTypes.string,PropTypes.number]),
-        leastImg: PropTypes.oneOfType([PropTypes.string,PropTypes.number]),
-        disabledDate: PropTypes.func
+        mostImg: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+        leastImg: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+        disabledDate: PropTypes.func,
+        disabled: PropTypes.bool
     };
 
     constructor (props) {
         super(props);
         this.state = {
-            imgList: props.imgList && props.imgList.length ? props.imgList : [{}],//默认图片列表
-            onChange : props.onChange || noop,//图片变化事件
-            className : props.className || '',
-            demoImg : props.demoImg || '',//模版图片
-            mostImg : props.mostImg || -1,
-            leastImg : props.leastImg || 1,
-            disabledDate : props.disabledDate || noop
+            imgList: props.imgList && props.imgList.length ? props.imgList : [{}], // 默认图片列表
+            onChange: props.onChange || noop, // 图片变化事件
+            className: props.className || '',
+            demoImg: props.demoImg || '', // 模版图片
+            mostImg: props.mostImg || -1,
+            leastImg: props.leastImg || 1,
+            disabledDate: props.disabledDate || noop
         };
     }
 
-    // //数据改变后更新state
+    // 初始化获取数据
+    componentDidMount () {
+        // 初始话imgList
+        this.initImgList();
+    }
+
+    // 数据改变后更新state
     componentWillReceiveProps (nextProps) {
         this.setState({
-            imgList : nextProps.imgList && nextProps.imgList.length ? nextProps.imgList : [{}]
-        },function () {
+            imgList: nextProps.imgList && nextProps.imgList.length ? nextProps.imgList : [{}]
+        }, () => {
             this.initImgList();
         });
     }
 
-    //初始化获取数据
-    componentDidMount () {
-        //初始话imgList
-        this.initImgList();
-        
-    }
-
-    initImgList () {
-        let {leastImg , imgList} = this.state;
-        if(leastImg){
-            if(imgList.length < leastImg){
-                for(let i = imgList.length;i<leastImg ; i++){
-                    imgList[i] = {};
-                }
-            }
-            this.setState({
-                imgList : imgList
-            });
-        }
-    }
-
-    //删除图片
-    deleteImg (e, index) {
-        let imgList = this.state.imgList;
-        let leastImg = this.state.leastImg;
-        imgList.splice(index, 1);
-        if(imgList.length < leastImg){
-            imgList.push({});
+    onChange (date, index) {
+        const imgList = this.state.imgList;
+        if (date) {
+            const time = parseInt(date.getTime().toString(), 10);
+            imgList[index].endTime = parseInt(time / 1000, 10);
+        } else {
+            imgList[index].endTime = '';
         }
         this.setState({
-            imgList : imgList
-        }, function (){
+            imgList
+        }, () => {
             this.state.onChange(this.state.imgList);
         });
-    }
-
-    //添加图片
-    addImg (index) {
-        let state = this.state;
-        if(index < state.imgList.length-1 || state.imgList.length == state.mostImg ){
-            return false;
-        }else{
-            let imgList = this.state.imgList;
-            imgList.push({});
-            this.setState({
-                imgList : imgList
-            });
-        }
-    }
-
-    before (files, index) {
-        let imgList = this.state.imgList;
-        imgList.splice(index, 1, {isUploading: true});
-        this.setState({
-            imgList:imgList
-        });
-    }
-
-    success (uploadList, index) {
-        let url = uploadList && uploadList[0].url;
-        let imgList = this.state.imgList;
-        imgList.splice(index, 1, {img: url});
-        let returnData = this.clearEmptyData(imgList);
-        this.setState({
-            imgList : imgList
-        },function () {
-            this.state.onChange(returnData);
-            this.addImg(index);
-        });
-    }
-
-    clearEmptyData (imgList) {
-        let returnData = [];
-        let list = JSON.parse(JSON.stringify(imgList));
-        for(let i = 0 ; i < list.length ; i++){
-            if(list[i].img){
-                returnData[returnData.length] = list[i];
-            }
-        }
-        return returnData;
     }
 
     fail (failList, successList, index) {
         Notification.error({
             message: '图片上传失败'
         });
-        let imgList = this.state.imgList;
+        const imgList = this.state.imgList;
         imgList.splice(index, 1, '');
         this.setState({
-            imgList : imgList
+            imgList
         });
     }
 
-    //切换到期时间
+    // 切换到期时间
     changeType (index, e) {
-        let imgList = this.state.imgList;
+        const imgList = this.state.imgList;
         imgList[index].endTime = e;
         this.setState({
-            imgList : imgList
-        }, function (){
+            imgList
+        }, () => {
             this.state.onChange(this.state.imgList);
         });
     }
 
-    onChange (date, index) {
-        let imgList = this.state.imgList;
-        if(date){
-            imgList[index].endTime = parseInt(parseInt(date.getTime().toString(),10)/1000,10);
-        }else{
-            imgList[index].endTime = '';
+    clearEmptyData (imgList) {
+        const returnData = [];
+        const list = JSON.parse(JSON.stringify(imgList));
+        for (let i = 0; i < list.length; i++) {
+            if (list[i].img) {
+                returnData[returnData.length] = list[i];
+            }
+        }
+        return returnData;
+    }
+
+    success (uploadList, index) {
+        const url = uploadList && uploadList[0].url;
+        const imgList = this.state.imgList;
+        imgList.splice(index, 1, { img: url });
+        const returnData = this.clearEmptyData(imgList);
+        this.setState({
+            imgList
+        }, () => {
+            this.state.onChange(returnData);
+            this.addImg(index);
+        });
+    }
+
+    before (files, index) {
+        const imgList = this.state.imgList;
+        imgList.splice(index, 1, { isUploading: true });
+        this.setState({
+            imgList
+        });
+    }
+
+    // 添加图片
+    addImg (index) {
+        const state = this.state;
+        if (index < state.imgList.length - 1 || state.imgList.length === state.mostImg) {
+            return;
+        }
+
+        const imgList = this.state.imgList;
+        imgList.push({});
+        this.setState({
+            imgList
+        });
+    }
+
+    // 删除图片
+    deleteImg (e, index) {
+        const imgList = this.state.imgList;
+        const leastImg = this.state.leastImg;
+        imgList.splice(index, 1);
+        if (imgList.length < leastImg) {
+            imgList.push({});
         }
         this.setState({
-            imgList : imgList
-        }, function (){
+            imgList
+        }, () => {
             this.state.onChange(this.state.imgList);
         });
+    }
+
+    initImgList () {
+        const { leastImg, imgList } = this.state;
+        if (leastImg) {
+            if (imgList.length < leastImg) {
+                for (let i = imgList.length; i < leastImg; i++) {
+                    imgList[i] = {};
+                }
+            }
+            this.setState({
+                imgList
+            });
+        }
     }
 
     disabledDate (current) {
-        let disabledDate = this.state.disabledDate;
-        return disabledDate(current);
+        const disabledDateFuc = this.state.disabledDate;
+        if (typeof disabledDateFuc === 'function') {
+            return disabledDateFuc(current);
+        }
+        return false;
     }
 
     render () {
-        let { imgList, className, demoImg, mostImg }=this.state;
+        const {
+            imgList,
+            className,
+            demoImg,
+            mostImg
+        } = this.state;
+
+        const {
+            disabled
+        } = this.props;
+
         return (
-            <div className={className ? className+' fl upload-img-list-wrapper' : 'fl upload-img-list-wrapper'}>
+            <div className={className ? `${className} fl upload-img-list-wrapper` : 'fl upload-img-list-wrapper'}>
                 {
-                    imgList.map( (item, index) => {
+                    imgList.map((item, index) => {
                         let endTime = item.endTime;
-                        if(isNaN(endTime)){
+                        if (isNaN(endTime)) {
                             endTime = '';
                         }
                         return (
                             <div className='upload-container-list mr20' key={index}>
                                 {item.isUploading ?
                                     <div className='upload-update-btn'>
-                                        <img src='//s10.mogujie.com/img/fpay/ubzlo_ieyden3fha3teobtmiytambqgqyde_24x24.gif' className='loading-img'/>
+                                        <img
+                                            alt='loading'
+                                            src='//s10.mogujie.com/img/fpay/ubzlo_ieyden3fha3teobtmiytambqgqyde_24x24.gif'
+                                            className='loading-img'
+                                        />
                                     </div>
                                     :
                                     <div className='upload-update-btn'>
                                         <UploadImg
-                                            before={(files) => this.before(files, index)}
-                                            success={(a) => this.success(a, index)}
+                                            before={files => this.before(files, index)}
+                                            success={a => this.success(a, index)}
                                             fail={(a, b) => this.fail(a, b, index)}
                                         />
                                         {item.img ?
                                             <img
+                                                alt={item.img}
                                                 src={item.img}
                                                 className='img-thumb'
                                                 width='100px'
-                                                height='100px'/>
+                                                height='100px'
+                                            />
                                             :
                                             <span className='upload-btn'>上传图片</span>
-                                        }  
+                                        }
                                     </div>
                                 }
 
                                 <span
                                     className='delete-btn'
-                                    onClick={ (e) => { this.deleteImg(e, index) } }>
+                                    onClick={e => this.deleteImg(e, index)}
+                                >
                                     ×
                                 </span>
-                                
-                                { demoImg && index == 0 ?
-                                    <a className='demoImg' href={demoImg} target='_block'>查看示例></a>
+
+                                { demoImg && index === 0 ?
+                                    <a className='demoImg' href={demoImg} target='_block'>
+                                        {'查看示例>'}
+                                    </a>
                                     :
-                                    <div className='demoImg'></div>
+                                    <div className='demoImg' />
                                 }
 
                                 <div className='item-group'>
-                                    <label className='endtime-label fl'>
-                                        <span className='text-primary'>*</span>
+                                    <label htmlFor='endtime' className='endtime-label fl'>
+                                        <span className='require'>*</span>
                                         到期时间:
                                     </label>
                                     <div className='brand-tab clearfix'>
-                                        <div className='fl mr10'>
+                                        <div
+                                            className='mc-radio-nice'
+                                            onClick={() => this.changeType(index, '-1')}
+                                        >
                                             <input
-                                                className='xd-radio'
-                                                type='checkbox'
-                                                onChange={ noop }
-                                                checked={ endTime == '-1' ? true : false }/>
-                                            <span onClick={ () => this.changeType(index, '-1') }>长期</span>
+                                                type='radio'
+                                                className='mc-radio-error mc-radio-input'
+                                                checked={(endTime === '-1')}
+                                                disabled={disabled}
+                                                onChange={noop}
+                                            />
+                                            <label htmlFor='长期' className='yy-iconfont'>长期</label>
                                         </div>
-                                        <div className='fl'>
+
+                                        <div
+                                            className='mc-radio-nice'
+                                            onClick={() => this.changeType(index, '')}
+                                        >
                                             <input
-                                                className='xd-radio'
-                                                type='checkbox'
-                                                onChange={ noop }
-                                                checked={ endTime == '-1' ? false : true }/>
-                                            <span onClick={ () => this.changeType(index, '') }>短期</span>
+                                                type='radio'
+                                                className='mc-radio-error mc-radio-input'
+                                                checked={!(endTime === '-1')}
+                                                disabled={disabled}
+                                                onChange={noop}
+                                            />
+                                            <label htmlFor={'短期'} className='yy-iconfont'>短期</label>
                                         </div>
-                                        {endTime == '-1' ? 
-                                            null:
+
+                                        {endTime === '-1' ?
+                                            null
+                                            :
                                             <Datepicker
                                                 className='ml40 mt10'
-                                                value={Util.dateFormat(endTime, 'yy-mm-dd')}
+                                                value={endTime}
                                                 format='yyyy-MM-dd'
-                                                onChange={(date) => this.onChange(date, index)} 
-                                                disabledDate = {(e) => this.disabledDate(e)}/>
+                                                onChange={date => this.onChange(date, index)}
+                                                disabledDate={e => this.disabledDate(e)}
+                                            />
                                         }
                                     </div>
                                 </div>
@@ -251,9 +287,9 @@ export default class UploadImgList extends Component {
                         );
                     })
                 }
-                {imgList.length < mostImg  || mostImg == '-1' ?
+                {imgList.length < mostImg || mostImg === '-1' ?
                     <div className='upload-container-list'>
-                        <span className='upload-add' onClick={ () => { this.addImg() } }>+</span>
+                        <span className='upload-add' onClick={() => this.addImg()}>+</span>
                     </div>
                     :
                     null

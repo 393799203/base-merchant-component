@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import Form from 'source_path/form';
 import Readme from './README.md';
 
+import SellerInfo from './demo/sellerInfo';
+import CompanyLegal from './demo/companyLegal';
+import CompanyCert from './demo/companyCert';
+
 //详细配置信息见test.js
 import testData from './config.js'
 import './index.less'
@@ -14,9 +18,7 @@ export default class FormComponentView extends Component {
 	//获取表单数据
 	getData(){
 		var data = Form.getData("textForm");
-		var data2 = Form.getData("textForm2");
 		console.info(data);
-		console.info(data2);
 	}
 
 	//初始化表单数据
@@ -27,6 +29,10 @@ export default class FormComponentView extends Component {
 	//清除表单数据
 	clearData(){
 		Form.clearData("textForm");
+	}
+
+	validate(){
+		console.info(Form.validate("textForm"));
 	}
 
 	//查询表单改变
@@ -44,7 +50,12 @@ export default class FormComponentView extends Component {
 					1. 示例
 				</h2>
 				<div className="m-b m-t">
-					<button
+					<SellerInfo />
+
+					<CompanyLegal />
+
+					<CompanyCert />
+					{/*<button
 						className="btn btn-success-custom w-sm m-r" 
 						onClick={ (e) => { this.getData() }}>
 						获取数据
@@ -59,15 +70,15 @@ export default class FormComponentView extends Component {
 						onClick={ (e) => { this.clearData() }}>
 						清除数据
 					</button>
+					<button
+						className="btn btn-danger-custom w-sm m-r" 
+						onClick={ (e) => { this.validate() }}>
+						校验数据
+					</button>
 					<Form 
 						data = {testData.options.concat()} 
 						prefixcls="field-test"
-						form='textForm'/>
-
-					<Form 
-						data = {testData.options.concat()} 
-						prefixcls="field-test"
-						form='textForm2'/>
+						form='textForm'/>*/}
 				</div>
 				<div dangerouslySetInnerHTML={{ __html: Readme }}>
 					

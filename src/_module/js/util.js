@@ -91,22 +91,22 @@ const util = {
         // Return the modified object
         return target;
     },
-    dateFormat ( timestamp, fmt ) { // 时间格式化
+    dateFormat (timestamp, fmt) { // 时间格式化
         if (timestamp) { // 后端存储的时间戳单位为秒
-            let d = new Date(timestamp * 1000);
-            let month = d.getMonth();
-            let day = d.getDate();
-            let hour = d.getHours();
-            let minute = d.getMinutes();
-            let seconds = d.getSeconds();
-            let yy = d.getFullYear();
-            let mm = month < 9 ? '0' + parseInt(month + 1,10) : month + 1;
-            let dd = day < 10 ? '0' + day : day;
-            let h = hour < 10 ? '0' + hour : hour;
-            let m = minute < 10 ? '0' + minute : minute;
-            let s = seconds < 10 ? '0' + seconds : seconds;
+            const d = new Date(timestamp * 1000);
+            const month = d.getMonth();
+            const day = d.getDate();
+            const hour = d.getHours();
+            const minute = d.getMinutes();
+            const seconds = d.getSeconds();
+            const yy = d.getFullYear();
+            const mm = month < 9 ? `0${parseInt(month + 1, 10)}` : month + 1;
+            const dd = day < 10 ? `0${day}` : day;
+            const h = hour < 10 ? `0${hour}` : hour;
+            const m = minute < 10 ? `0${minute}` : minute;
+            const s = seconds < 10 ? `0${seconds}` : seconds;
 
-            let time = {
+            const time = {
                 'yy-mm-dd h:m:s': `${yy}-${mm}-${dd} ${h}:${m}:${s}`,
                 'yy-mm-dd': `${yy}-${mm}-${dd}`,
                 'yy/mm/dd': `${yy}/${mm}/${dd}`,
@@ -116,11 +116,12 @@ const util = {
             };
             return time[fmt] || time['yy.mm.dd'];
         }
+        return fmt;
     },
     urlParamToJson (params) {
-        let search = params || window.location.search.substring(1);
-        return search ? JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g, '":"') + '"}',
-            function (key, value) {
+        const search = params || window.location.search.substring(1);
+        return search ? JSON.parse(`{"${search.replace(/&/g, '","').replace(/=/g, '":"')}"}`,
+            (key, value) => {
                 return key === '' ? value : decodeURIComponent(value);
             }) : {};
     }

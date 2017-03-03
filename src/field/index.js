@@ -78,12 +78,7 @@ export default class Field extends Component {
         Object.keys(currentForm).map((key) => {
             const field = currentForm[key];
             const value = field.getData();
-
-            if (Object.prototype.toString.call(value) === '[object Object]') {
-                Object.assign(data, Util.deepClone(value));
-            } else {
-                Object.assign(data, Util.deepClone({ [field.props.name]: value }));
-            }
+            Object.assign(data, Util.deepClone({ [field.props.name]: value }));
         });
 
         return data;
@@ -119,7 +114,7 @@ export default class Field extends Component {
         let flag = true;
         Object.keys(currentForm).map((key) => {
             const field = currentForm[key];
-            flag = flag && field.validate();
+            flag = field.validate() && flag;
         });
         return flag;
     }
@@ -127,7 +122,7 @@ export default class Field extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            error: false,
+            error: props.error || false,
             value: ''
         };
     }
@@ -138,7 +133,15 @@ export default class Field extends Component {
     }
 
     componentWillReceiveProps (nextProps) { // 当Field里有raw类型的组件时这里性能好差
-        this.props = nextProps;
+        if (nextProps.error !== this.props.error) {
+            this.setState({
+                error: nextProps.error
+            }, () => {
+                this.props = nextProps;
+            });
+        } else {
+            this.props = nextProps;
+        }
     }
 
     componentWillUnmount () {
@@ -224,15 +227,13 @@ export default class Field extends Component {
             return <Checkbox {...this.props} fieldId={this.fieldId} />;
         case 'select':
             return <Select {...this.props} fieldId={this.fieldId} />;
-        case 'raw':
-            return <Raw {...this.props} fieldId={this.fieldId} />;
         default:
             return null;
         }
     }
 
     render () {
-        const { className, required, label, subInfo, errorMsg } = this.props;
+        const { className, required, label, subInfo, errorMsg, type } = this.props;
         const error = this.props.error || this.state.error;
         return (
             <div
@@ -253,12 +254,16 @@ export default class Field extends Component {
 
                     {/* 表单 */}
                     <div className='mc-field-body'>
-                        <div
-                            onBlur={() => this.onBlurField()}
-                            onClick={() => this.clearError()}
-                        >
-                            {this.renderEntry()}
-                        </div>
+                        {type === 'raw' ?
+                            <Raw {...this.props} fieldId={this.fieldId} />
+                            :
+                            <div
+                                onBlur={() => this.onBlurField()}
+                                onClick={() => this.clearError()}
+                            >
+                                {this.renderEntry()}
+                            </div>
+                        }
 
                         {/* 校验错误提示 */}
                         {errorMsg ?

@@ -2,8 +2,8 @@
 ** 上传照片
 */
 import React, { Component, PropTypes } from 'react';
-import Modal from '../../../../modal';
 import UploadImg from '../../../../image-uploader';
+import Notification from '../../../../notification';
 
 import './uploadImgBox.less';
 
@@ -15,113 +15,114 @@ export default class uploadImgBox extends Component {
         onChange: PropTypes.func,
         className: PropTypes.string,
         demoImg: PropTypes.string,
-        mostImg: PropTypes.oneOfType([PropTypes.string,PropTypes.number]),
-        leastImg: PropTypes.oneOfType([PropTypes.string,PropTypes.number]),
+        mostImg: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+        leastImg: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     };
 
     constructor (props) {
         super(props);
         this.state = {
             imgList: this.changeImgList(props.imgList || [{}]),
-            onChange : props.onChange || noop,
-            className : props.className || '',
-            mostImg : props.mostImg || '-1',
-            leastImg : props.leastImg || 1,
-            demoImg:props.demoImg || '',
-            returnData : this.changeImgList(props.imgList) || []
+            onChange: props.onChange || noop,
+            className: props.className || '',
+            mostImg: props.mostImg || '-1',
+            leastImg: props.leastImg || 1,
+            demoImg: props.demoImg || '',
+            returnData: this.changeImgList(props.imgList) || []
         };
     }
 
-    //初始化获取数据
+    // 初始化获取数据
     componentDidMount () {
-        let {leastImg , imgList} = this.state;
-        if(leastImg){
-            if(imgList.length < leastImg){
-                for(let i = imgList.length;i<leastImg ; i++){
+        const { leastImg, imgList } = this.state;
+        if (leastImg) {
+            if (imgList.length < leastImg) {
+                for (let i = imgList.length; i < leastImg; i++) {
                     imgList[i] = {};
                 }
             }
-            this.setState({
-                imgList : imgList
-            });
+            this.state.imgList = imgList;
         }
     }
 
+    // 数据改变后更新state
+    componentWillReceiveProps (nextProps) {
+        this.setState({
+            imgList: this.changeImgList(nextProps.imgList || [{}])
+        });
+    }
 
     changeImgList (list) {
         let result = [];
-        if(list && typeof list == 'string'){
-            result[0] = {img : list};
-        }
-        else if(list && list.length && typeof list[0] == 'string'){
-            for(let i = 0 ; i<list.length ; i++){
-                result[i] = {img : list[i]};
+        if (list && typeof list === 'string') {
+            result[0] = { img: list };
+        } else if (list && list.length && typeof list[0] === 'string') {
+            for (let i = 0; i < list.length; i++) {
+                result[i] = { img: list[i] };
             }
-        }
-        else{
+        } else {
             result = list;
         }
         return result;
     }
 
-    //删除图片
+    // 删除图片
     deleteImg (e, index) {
-        let imgList = this.state.imgList;
-        let leastImg = this.state.leastImg;
+        const imgList = this.state.imgList;
+        const leastImg = this.state.leastImg;
         imgList.splice(index, 1);
 
-        if(imgList.length < leastImg){
+        if (imgList.length < leastImg) {
             imgList.push({});
         }
 
         this.setState({
-            imgList : imgList
-        },()=>{
-            let returnData = this.clearEmptyData(imgList);
+            imgList
+        }, () => {
+            const returnData = this.clearEmptyData(imgList);
             this.state.onChange(returnData);
         });
     }
 
-    //添加图片
+    // 添加图片
     addImg (index) {
-        let state = this.state;
-        if(index < state.imgList.length-1 || state.imgList.length == state.mostImg ){
-            return false;
-        }else{
-            let imgList = this.state.imgList;
-            imgList.push({});
-            this.setState({
-                imgList : imgList
-            });
+        const state = this.state;
+        if (index < state.imgList.length - 1 || state.imgList.length === state.mostImg) {
+            return;
         }
+        const imgList = this.state.imgList;
+        imgList.push({});
+        this.setState({
+            imgList
+        });
     }
 
     before (files, index) {
-        let imgList = this.state.imgList;
-        imgList.splice(index, 1, {isUploading: true});
+        const imgList = this.state.imgList;
+        imgList.splice(index, 1, { isUploading: true });
         this.setState({
-            imgList:imgList
+            imgList
         });
     }
 
     success (uploadList, index) {
-        let url = uploadList && uploadList[0].url;
-        let imgList = this.state.imgList;
-        imgList.splice(index, 1, {img: url});
-        let returnData = this.clearEmptyData(imgList);
+        const url = uploadList && uploadList[0].url;
+        const imgList = this.state.imgList;
+        imgList.splice(index, 1, { img: url });
+        const returnData = this.clearEmptyData(imgList);
         this.setState({
-            imgList : imgList
-        },function () {
+            imgList
+        }, () => {
             this.state.onChange(returnData);
             this.addImg(index);
         });
     }
 
     clearEmptyData (imgList) {
-        let returnData = [];
-        let list = JSON.parse(JSON.stringify(imgList));
-        for(let i = 0 ; i < list.length ; i++){
-            if(list[i].img){
+        const returnData = [];
+        const list = JSON.parse(JSON.stringify(imgList));
+        for (let i = 0; i < list.length; i++) {
+            if (list[i].img) {
                 returnData[returnData.length] = list[i];
             }
         }
@@ -132,10 +133,10 @@ export default class uploadImgBox extends Component {
         Notification.error({
             message: '图片上传失败'
         });
-        let imgList = this.state.imgList;
+        const imgList = this.state.imgList;
         imgList.splice(index, 1, '');
         this.setState({
-            imgList : imgList
+            imgList
         });
     }
 
@@ -146,7 +147,6 @@ export default class uploadImgBox extends Component {
             mostImg,
             demoImg
         } = this.state;
-
         return (
             <div className={`${className} fl upload-img-box-wrapper`} >
                 {
@@ -155,17 +155,22 @@ export default class uploadImgBox extends Component {
                             <div className='upload-container-box' key={index}>
                                 {item.isUploading ?
                                     <div className='upload-update-btn'>
-                                        <img src='//s10.mogujie.com/img/fpay/ubzlo_ieyden3fha3teobtmiytambqgqyde_24x24.gif' className='loading-img' />
+                                        <img
+                                            alt={'loading'}
+                                            src='//s10.mogujie.com/img/fpay/ubzlo_ieyden3fha3teobtmiytambqgqyde_24x24.gif'
+                                            className='loading-img'
+                                        />
                                     </div>
                                     :
                                     <div className='upload-update-btn'>
                                         <UploadImg
-                                            before={(files) => this.before(files, index)}
-                                            success={(a) => this.success(a, index)}
+                                            before={files => this.before(files, index)}
+                                            success={a => this.success(a, index)}
                                             fail={(a, b) => this.fail(a, b, index)}
                                         />
                                         {item.img ?
                                             <img
+                                                alt={item.img}
                                                 src={item.img}
                                                 className='img-thumb'
                                                 width='100px'
@@ -188,7 +193,7 @@ export default class uploadImgBox extends Component {
                                         href={demoImg}
                                         target='_block'
                                     >
-                                        查看示例
+                                        {'查看示例>'}
                                     </a>
                                     : null
                                 }

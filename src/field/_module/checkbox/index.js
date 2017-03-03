@@ -198,7 +198,13 @@ export default class Checkbox extends Component {
     }
 
     render () {
-        const { options, name, attrs, events, fieldId, disabled } = this.props;
+        const {
+            options,
+            attrs,
+            events,
+            fieldId,
+            disabled
+        } = this.props;
 
         return (
             <div className='mc-field-checkbox'>

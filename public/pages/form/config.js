@@ -1,21 +1,21 @@
 export default {
     options:[{
         type:'uploadList',  //类型
-        text:'上传列表',  //文案
+        label:'上传列表',  //文案
         subInfo:'我是一个小文案',
         required: true,
-        defaultValue:["http://s2.mogucdn.com/p2/170227/67813645_7al3ek6hl0keklag08jbe4ccf108a_167x167.png"],
-        key: 'uploadListtest'    //生成数据对应的字段
+        defaultValue:[{url:"http://s2.mogucdn.com/p2/170227/67813645_7al3ek6hl0keklag08jbe4ccf108a_167x167.png"}],
+        name: 'uploadListtest'    //生成数据对应的字段
     },{
         type:'uploadBox',  //类型
-        text:'上传',  //文案
+        label:'上传',  //文案
         subInfo:'我是一个小文案',
         required: true,
         defaultValue:["http://s2.mogucdn.com/p2/170227/67813645_7al3ek6hl0keklag08jbe4ccf108a_167x167.png"],
-        key: 'uploadBoxtest'    //生成数据对应的字段
+        name: 'uploadBoxtest'    //生成数据对应的字段
     },{
         type:'fullAddress',  //类型
-        text:'地址组件',  //文案
+        label:'地址组件',  //文案
         subInfo:'我是一个小文案',
         required: true,
         defaultValue:{
@@ -24,25 +24,25 @@ export default {
             area:"卢湾区",
             street:"测试测试"
         },
-        key: 'addresstest'    //生成数据对应的字段
+        name: 'addresstest'    //生成数据对应的字段
     },{
         type:'datepicker',  //类型
-        text:'时间组件',  //文案
+        label:'时间组件',  //文案
         subInfo:'我是一个小文案',
         required: true,
         defaultValue:1486197669000,
-        key: 'datepickertest'    //生成数据对应的字段
+        name: 'datepickertest'    //生成数据对应的字段
     },{
         type:'deadline',  //类型
-        text:'身份证截止日期',  //文案
+        label:'身份证截止日期',  //文案
         subInfo:'我是一个小文案',
         required: true,
         defaultValue:1486197669000,
-        key: 'deadlinetest'    //生成数据对应的字段
+        name: 'deadlinetest'    //生成数据对应的字段
     },{
         type:'radio',  //类型
-        text:'单选条件',  //文案
-        key: 'radiotest',    //生成数据对应的字段
+        label:'单选条件',  //文案
+        name: 'radiotest',    //生成数据对应的字段
         defaultValue: 1,    //默认选中的值，如果不填默认选第一个
         required: true,
         options:[{
@@ -57,8 +57,8 @@ export default {
         }]
     },{
         type:'checkbox',
-        text: '多选条件',
-        key: 'checkboxtest',
+        label: '多选条件',
+        name: 'checkboxtest',
         defaultValue: ['1','2'],   //多选的默认值是数组
         required: true,
         options: [{
@@ -73,8 +73,8 @@ export default {
         }]
     },{
         type: 'select',
-        text: '下拉框条件',
-        key: 'selecttest',
+        label: '下拉框条件',
+        name: 'selecttest',
         defaultValue: 'adwd',
         required: true,
         width:"500px",
@@ -90,16 +90,16 @@ export default {
         }]
     },{
         type: 'text',
-        text: '输入框文案',
-        key: 'texttest',
+        label: '输入框文案',
+        name: 'texttest',
         defaultValue: 'adwd',
         width:"500px",
         required: true,
         placeholder: '这里是提示文案'     //支持提示文案
     },{
         type: 'textarea',
-        text: 'textarea文案',
-        key: 'textarea',
+        label: 'textarea文案',
+        name: 'textarea',
         width:"500px",
         height:"200px",
         required: true,
@@ -108,8 +108,8 @@ export default {
     }],
     options2:[{
         type:'radio',  //类型
-        text:'单选条件',  //文案
-        key: 'radiotest2',    //生成数据对应的字段
+        label:'单选条件',  //文案
+        name: 'radiotest2',    //生成数据对应的字段
         defaultValue: 1,    //默认选中的值，如果不填默认选第一个
         required: true,
         options:[{
@@ -124,8 +124,8 @@ export default {
         }]
     },{
         type:'checkbox',
-        text: '多选条件',
-        key: 'checkboxtest2',
+        label: '多选条件',
+        name: 'checkboxtest2',
         defaultValue: ['1','2'],   //多选的默认值是数组
         required: true,
         options: [{
@@ -140,8 +140,8 @@ export default {
         }]
     },{
         type: 'select',
-        text: '下拉框条件',
-        key: 'selecttest2',
+        label: '下拉框条件',
+        name: 'selecttest2',
         defaultValue: 'adwd',
         required: true,
         width:"500px",
@@ -157,16 +157,16 @@ export default {
         }]
     },{
         type: 'text',
-        text: '输入框文案',
-        key: 'texttest2',
+        label: '输入框文案',
+        name: 'texttest2',
         defaultValue: 'adwd',
         width:"500px",
         required: true,
         placeholder: '这里是提示文案'     //支持提示文案
     },{
         type: 'textarea',
-        text: 'textarea文案',
-        key: 'textarea2',
+        label: 'textarea文案',
+        name: 'textarea2',
         width:"500px",
         height:"200px",
         required: true,
