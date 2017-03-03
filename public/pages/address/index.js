@@ -14,10 +14,12 @@ export default class AddressSelectorView extends Component {
 
     getData () {
         let data = Address.getData();
-        Notification.info({
-            message: '获取地址的信息为：'+JSON.stringify(data),
-            duration: 4000 // 单位毫秒
-        });
+        // Notification.info({
+        //     message: '获取地址的信息为：'+JSON.stringify(data),
+        //     duration: 4000 // 单位毫秒
+        // });
+        console.info(JSON.stringify(data));
+        console.info(JSON.stringify(this.state.address1));
     }
 
     clearData () {
@@ -29,9 +31,7 @@ export default class AddressSelectorView extends Component {
     }
 
     addressChange (e) {
-        this.setState({
-            address1 : e
-        });
+        console.info(e);
     }
 
     render () {
@@ -81,6 +81,9 @@ export default class AddressSelectorView extends Component {
                     <div className="f-l field-demo">
                         <h5>回调函数：onChange</h5>
                         <Address
+                            defaultProvince="山西省" 
+                            defaultCity = "大同市"
+                            defaultArea="南郊区"
                             onChange = {(e) => this.addressChange(e)}
                             name="test3"
                         />

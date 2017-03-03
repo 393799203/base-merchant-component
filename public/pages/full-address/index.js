@@ -10,10 +10,11 @@ export default class FullAddressView extends Component {
 
     getData(){
         var data = FullAddress.getData();
-        Notification.info({
-            message: '获取地址的信息为：'+JSON.stringify(data),
-            duration: 4000 // 单位毫秒
-        });
+        // Notification.info({
+        //     message: '获取地址的信息为：'+JSON.stringify(data),
+        //     duration: 4000 // 单位毫秒
+        // });
+        console.info(JSON.stringify(data));
     }
 
     resetData () {
@@ -78,6 +79,10 @@ export default class FullAddressView extends Component {
                     <div className="f-l field-demo">
                         <h5>回调函数：onChange</h5>
                         <FullAddress
+                            defaultProvince="山西省" 
+                            defaultCity = "大同市"
+                            defaultArea="南郊区"
+                            defaultStreet="test"
                             onChange = {(e) => this.addressChange(e)}
                             name="test3"
                         />

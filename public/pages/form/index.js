@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import Form from 'source_path/form';
 import Readme from './README.md';
 
+import SellerInfo from './demo/sellerInfo';
+import CompanyLegal from './demo/companyLegal';
+import CompanyCert from './demo/companyCert';
+
 //详细配置信息见test.js
 import testData from './config.js'
 import './index.less'
@@ -27,6 +31,10 @@ export default class FormComponentView extends Component {
 		Form.clearData("textForm");
 	}
 
+	validate(){
+		console.info(Form.validate("textForm"));
+	}
+
 	//查询表单改变
     onQueryChange(data){
         console.info(data);
@@ -42,7 +50,12 @@ export default class FormComponentView extends Component {
 					1. 示例
 				</h2>
 				<div className="m-b m-t">
-					<button
+					<SellerInfo />
+
+					<CompanyLegal />
+
+					<CompanyCert />
+					{/*<button
 						className="btn btn-success-custom w-sm m-r" 
 						onClick={ (e) => { this.getData() }}>
 						获取数据
@@ -57,10 +70,15 @@ export default class FormComponentView extends Component {
 						onClick={ (e) => { this.clearData() }}>
 						清除数据
 					</button>
+					<button
+						className="btn btn-danger-custom w-sm m-r" 
+						onClick={ (e) => { this.validate() }}>
+						校验数据
+					</button>
 					<Form 
-						data = {testData.options} 
+						data = {testData.options.concat()} 
 						prefixcls="field-test"
-						form='textForm'/>
+						form='textForm'/>*/}
 				</div>
 				<div dangerouslySetInnerHTML={{ __html: Readme }}>
 					

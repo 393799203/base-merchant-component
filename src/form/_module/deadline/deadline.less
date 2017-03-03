@@ -1,0 +1,58 @@
+.mc-deadline{
+	.f-l{
+		float:left;
+	}
+
+	.mc-field-deadline{
+		float:left;
+		.mc-checkbox-input{
+		    display:none;
+
+		    & + label {
+		        display: inline;
+		        font-size: 13px;
+		        color:#555555;
+		        cursor: pointer;
+		        margin-left: 10px;
+		    	line-height: 40px;
+		    }
+
+		    & + label:before {
+			    content: "";
+			    display: inline-block;
+			    width: 16px;
+			    height: 16px;
+			    border: 1px solid #DEDEDE;
+			    border-radius: 4px;
+			    cursor: pointer;
+		        vertical-align: text-top;
+		        margin-right: 3px;
+			}
+
+			&:checked + label:before {
+			    content: "\e601";
+			    color: #419BF9;
+			    font-size: 12px;
+			    text-align: center;
+			    line-height: 13px;
+			    border: 1px solid #419BF9;
+			}
+
+		    &:disabled + label,
+		    &:disabled + label::before {
+		        cursor: not-allowed;
+		    }
+		    &:disabled + label::before {
+		        background-color:#F5F5F5;
+		    }
+		    &:disabled:checked + label::before {
+		       	content: "\e601";
+			    color: #DEDEDE;
+			    border: 1px solid #DEDEDE;
+			    font-size: 12px;
+			    text-align: center;
+			    line-height: 13px;
+		    }
+		}
+	}
+}

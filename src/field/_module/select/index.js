@@ -183,7 +183,7 @@ export default class Select extends Component {
     }
 
     render () {
-        const { options, id, name, placeholder, attrs, events, disabled, fieldId } = this.props;
+        const { options, id, placeholder, attrs, events, disabled, fieldId } = this.props;
 
         return (
             <div className='mc-field-select' >
@@ -191,8 +191,6 @@ export default class Select extends Component {
                     {...attrs}
                     {...events}
                     className='mc-field-error mc-select-input'
-                    name={name}
-                    ref={name}
                     placeholder={placeholder}
                     id={id || fieldId}
                     disabled={disabled}

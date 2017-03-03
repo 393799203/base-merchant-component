@@ -104,13 +104,14 @@ export default class FullAddress extends Component {
             defaultArea: props.defaultArea || '',
             defaultStreet: props.defaultStreet || '',
             name: props.name,
-            placeholder: props.placeholder || '请填写详细地址'
+            placeholder: props.placeholder || '请填写详细地址',
+            isChange: true
         };
     }
 
     componentWillMount () {
         const props = this.props;
-        this.fullAddressId = FullAddress.uniqueId('form_');
+        this.fullAddressId = FullAddress.uniqueId('fullAddress_');
         FullAddress.add(this, props.form);
     }
 
@@ -119,54 +120,68 @@ export default class FullAddress extends Component {
     }
 
     getData () {
-        const form = this.props.form;
         const name = this.props.name;
-
-        const address = Address.getData(form) || {};
+        const address = Address.getData(name) || {};
         const fullAddress = address[name] || {};
 
-        const street = Field.getData(form) || {};
-
+        const street = Field.getData(name) || {};
         Object.assign(fullAddress, street);
 
         return fullAddress;
     }
 
     clearData () {
-        const form = this.props.form;
-        Address.clearData(form);
-        Field.clearData(form);
+        this.setState({
+            isChange: false
+        }, () => {
+            const name = this.props.name;
+            Address.clearData(name);
+            Field.clearData(name);
+        });
     }
 
     resetData () {
-        const form = this.props.form;
-        Address.resetData(form);
-        Field.resetData(form);
+        this.setState({
+            isChange: false
+        }, () => {
+            const name = this.props.name;
+            Address.resetData(name);
+            Field.resetData(name);
+        });
     }
 
     changeAddress (e) {
-        const form = this.props.form;
-        const street = Field.getData(form) || {};
-        Object.assign(street, e);
+        if (this.state.isChange) {
+            const name = this.props.name;
+            const street = Field.getData(name) || {};
+            Object.assign(street, e);
 
-        const onChange = this.props.onChange;
-        if (typeof onChange === 'function') {
-            this.props.onChange(street);
+            const onChange = this.props.onChange;
+            if (typeof onChange === 'function') {
+                this.props.onChange(street);
+            }
+        } else {
+            this.setState({
+                isChange: true
+            });
         }
     }
 
     changeStreet (e) {
-        const form = this.props.form;
-        const name = this.props.name;
+        if (this.state.isChange) {
+            const name = this.props.name;
+            const address = Address.getData(name) || {};
+            const fullAddress = address[name] || {};
+            Object.assign(fullAddress, { street: e });
 
-        const address = Address.getData(form) || {};
-        const fullAddress = address[name] || {};
-
-        Object.assign(fullAddress, { street: e });
-
-        const onChange = this.props.onChange;
-        if (typeof onChange === 'function') {
-            this.props.onChange(fullAddress);
+            const onChange = this.props.onChange;
+            if (typeof onChange === 'function') {
+                this.props.onChange(fullAddress);
+            }
+        } else {
+            this.setState({
+                isChange: true
+            });
         }
     }
 
@@ -178,7 +193,6 @@ export default class FullAddress extends Component {
             defaultCity,
             defaultArea,
             defaultStreet,
-            form,
             name,
             placeholder
         } = this.state;
@@ -197,7 +211,7 @@ export default class FullAddress extends Component {
                     defaultProvince={defaultProvince}
                     defaultCity={defaultCity}
                     defaultArea={defaultArea}
-                    form={form}
+                    form={name}
                     provinceDisabled={provinceDisabled}
                     cityDisabled={cityDisabled}
                     areaDisabled={areaDisabled}
@@ -213,7 +227,7 @@ export default class FullAddress extends Component {
                         onChange={e => this.changeStreet(e)}
                         placeholder={placeholder}
                         disabled={streetDisabled}
-                        form={form}
+                        form={name}
                     />
                 </div>
             </div>

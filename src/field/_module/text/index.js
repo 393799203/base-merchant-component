@@ -150,7 +150,16 @@ export default class Text extends Component {
     }
 
     render () {
-        const { type, id, name, placeholder, disabled, fieldId, attrs = { }, events = { } } = this.props;
+        const {
+            type,
+            id,
+            placeholder,
+            disabled,
+            fieldId,
+            attrs = { },
+            events = { }
+        } = this.props;
+
         return (
             <div className='mc-field-text'>
                 {type === 'textarea' ?
@@ -160,8 +169,6 @@ export default class Text extends Component {
                         {...attrs}
                         {...events}
                         className='mc-field-error mc-textarea-input'
-                        name={name || ''}
-                        ref={name}
                         value={this.state.value || ''}
                         placeholder={placeholder}
                         onChange={e => this.handleChange(e)}
@@ -174,8 +181,6 @@ export default class Text extends Component {
                         {...attrs}
                         {...events}
                         className='mc-field-error mc-text-input'
-                        name={name || ''}
-                        ref={name}
                         value={this.state.value || ''}
                         placeholder={placeholder || ''}
                         onChange={e => this.handleChange(e)}
