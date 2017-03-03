@@ -25,6 +25,7 @@ export default class Table extends Component {
                         <th
                             key={item.title || item.key || index}
                             className={`mc-table-${item.key}`}
+                            style={{ textAlign: `${item.align || 'center'}` }}
                             {...item.colAttrs}
                             {...item.thAttrs}
                         >
@@ -90,6 +91,7 @@ export default class Table extends Component {
                         {columns.map((col, index) =>
                             <td
                                 key={col.title || item[col.key] || index}
+                                style={{ textAlign: `${col.align || 'center'}` }}
                                 {...col.colAttrs}
                                 {...col.tdAttrs}
                             >
@@ -135,7 +137,7 @@ export default class Table extends Component {
                     { this.getTbody(columns, datas, tbodyCbs) }
                 </table>
                 { datas && datas.length ? null : <div className='nullinfo'>暂无数据</div> }
-                {(pageConfig && typeof pageConfig.currentPage !== 'undefined') ? <div style={{ marginTop: '10px' }}><Pagination {...pageConfig} /></div> : null }
+                {(pageConfig && typeof pageConfig.currentPage !== 'undefined') ? <div style={{ marginTop: '15px' }}><Pagination {...pageConfig} /></div> : null }
             </div>
         );
     }

@@ -10,21 +10,25 @@
 	},{
 	    key: "price",
 	    title: "优惠卷价格",
+	    align: "right",
 	    isSort: true,
 	    tplData: "哈哈哈，我只是一个提示框而已啦~",
 	    tpl:true
 	},{
 	    key: "sock",
 	    title: "库存",
+	    align: "right",
 	    isSort: true
 	},{
 	    key: "num",
 	    title: "商品数量",
+	    align: "right",
 	    tpl: true,
 	    tplData: "哈哈哈，我只是一个提示框而已啦~"
 	},{
 	    key: "singlePrice",
-	    title: "客单价"
+	    title: "客单价",
+	    align: "right"
 	},{
 	    key: "opreat",
 	    title: "操作",
@@ -138,6 +142,7 @@
 | ------------ | ------------- | ------------ |------------ |
 | title        | 标头描述文字  |  string | - |
 | key        | 对应datas回填字段的键值  |  string |- |
+| align        | 对齐方式, 可选 'center', 'left', 'right'  |  string | 'center' |
 | colAttrs        | 	当前自定义属性  |  object |- |
 | thAttrs        | 标头自定义属性  |  object |- |
 | tdAttrs        | 该列数据的自定义属性，通常用来控制样式或者传递data-*  |  array |- |
