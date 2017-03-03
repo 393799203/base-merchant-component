@@ -118,7 +118,16 @@ export default class BarCharts extends Component {
     render () {
         return (
             <div>
-                <div id={this.domId} className={this.props.className} style={{ 'width': this.props.width || '100%', 'height': this.props.height || '400' }}>loading...</div>
+                <div
+                    id={this.domId}
+                    className={this.props.className}
+                    style={{
+                        width: this.props.width || '100%',
+                        height: this.props.height || '400'
+                    }}
+                >
+                    loading...
+                </div>
             </div>
         );
     }
