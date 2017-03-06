@@ -43,6 +43,7 @@ import FormView from './pages/form';
 import ProcessBarView from './pages/process-bar';
 import WrapperView from './pages/wrapper';
 import MenuCateView from './pages/menu-cate';
+import DropdownView from './pages/dropdown';
 
 export default (
     <Router history={hashHistory}>
@@ -70,6 +71,7 @@ export default (
             <Route path='button' component={ButtonView} />
             <Route path='process-bar' component={ProcessBarView} />
             <Route path='wrapper' component={WrapperView} />
+            <Route path='dropdown' component={DropdownView} />
 
             <Route path='field' component={FieldView} />
             <Route path='form' component={FormView} />
@@ -88,7 +90,7 @@ export default (
             <Route path='fulladdress' component={FullAddressView} />
             <Route path='verifyidenty' component={VerifyIdentyView} />
             <Route path='verifyphone' component={VerifyPhoneView} />
-            <Route path='menu' component={MenuCateView} />
+            <Route path='menucate' component={MenuCateView} />
 
         </Route>
     </Router>

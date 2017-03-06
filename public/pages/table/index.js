@@ -9,20 +9,24 @@ const TableColumns = [{
 },{
     key: "price",
     title: "优惠卷价格",
+    align: "right",
     isSort: true,
     tplData: "哈哈哈，我只是一个提示框而已啦~",
     tpl:true
 },{
     key: "sock",
     title: "库存",
+    align: "right",
     isSort: true
 },{
     key: "num",
     title: "商品数量",
+    align: "right",
     tpl: true,
     tplData: "哈哈哈，我只是一个提示框而已啦~"
 },{
     key: "singlePrice",
+    align: "right",
     title: "客单价"
 },{
     key: "opreat",

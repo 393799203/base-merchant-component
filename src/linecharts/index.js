@@ -12,8 +12,8 @@
  */
 
 import React, { Component } from 'react';
-import Util from '../_module/js/util';
 import echarts from 'echarts';
+import Util from '../_module/js/util';
 
 // require('./style/index.less');
 // 指定图表的配置项和数据
@@ -52,8 +52,7 @@ const MchartsType = 'line',
     MchartsAreaStyle = { normal: {} };
 
 export default class LineCharts extends Component {
-
-    constructor(props) {
+    constructor (props) {
         super(props);
         this.domId = props.id || 'chartId_' + ~~(Math.random() * 100000);
         this.state = {

@@ -87,6 +87,9 @@ export default [
     }, {
         title: '按钮 - Button',
         link: '#/button'
+    }, {
+        title: '下拉 - Dropdown',
+        link: '#/dropdown'
     }
 ];
 

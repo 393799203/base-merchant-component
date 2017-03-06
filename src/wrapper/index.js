@@ -10,9 +10,9 @@ export default class Wrapper extends Component {
                     <img
                         className='loading-img'
                         alt='加载中...'
-                        src='https://s10.mogucdn.com/p2/170210/81209932_1el794igh9akdce29fed0j912iddf_32x32.gif'
-                        width='32'
-                        height='32'
+                        src='https://s10.mogujie.com/img/fpay/ubzlo_ieyden3fha3teobtmiytambqgqyde_24x24.gif'
+                        width='22'
+                        height='22'
                     />
                 </div>
                 {this.props.children}

@@ -1,4 +1,4 @@
-{	
+{
 	"env": {
 	    "browser": true,
 	    "es6": true
@@ -33,6 +33,7 @@
 		"react/jsx-indent-props": ["warn", 4],
 		"react/no-find-dom-node": ["off"],
 		"no-restricted-syntax": ["error", "WithStatement"],
-		"prefer-spread": ["off"]
+		"prefer-spread": ["off"],
+		"jsx-a11y/tabindex-no-positive": [0]
 	}
 }
