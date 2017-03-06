@@ -6,19 +6,25 @@ module.exports = function (config) {
         browsers: ['Chrome'],
         files: [
             'http://up.f2e.mogujie.org/static/theme-forest/css/base.css',
+            'http://up.f2e.mogujie.org/static/theme-forest/css/theme.css',
             'https://s10.mogucdn.com/__static/template/pc/common/assets/lib/jquery-1.7.2.js',
-            'spec/setup.js',
-            'tests.webpack.js'
+            'test/setup.js',
+            'test/**/index.js'
         ],
         frameworks: [
             'jasmine'
         ],
         preprocessors: {
-            'tests.webpack.js': ['webpack', 'sourcemap']
+            'test/**/index.js': ['webpack', 'sourcemap']
         },
         webpack: {
             cache: true,
             devtool: 'inline-source-map',
+            resolve: {
+                alias: {
+                    'source_path': path.resolve(__dirname + '/src'),
+                }
+            },
             externals: {
                 'jsdom': 'window',
                 'cheerio': 'window',
@@ -29,8 +35,8 @@ module.exports = function (config) {
             module: {
                 preLoaders: [
                     {
-                        test: /\.spec.js$/,
-                        include: /spec/,
+                        test: /\.js$/,
+                        include: /test/,
                         exclude: /(bower_components|node_modules)/,
                         loader: 'babel',
                         query: {
@@ -38,9 +44,9 @@ module.exports = function (config) {
                         }
                     },
                     {
-                        test: /\.js?$/,
+                        test: /\.jsx?$/,
                         include: /src/,
-                        exclude: /(node_modules|bower_components|spec)/,
+                        exclude: /(node_modules|bower_components|test)/,
                         loader: 'babel-istanbul',
                         query: {
                             cacheDirectory: true
@@ -49,7 +55,7 @@ module.exports = function (config) {
                 ],
                 loaders: [
                     {
-                        test: /\.js$/,
+                        test: /\.jsx?$/,
                         include: path.resolve(__dirname, '../src'),
                         exclude: /(bower_components|node_modules)/,
                         loader: 'babel',
@@ -86,6 +92,7 @@ module.exports = function (config) {
         plugins: [
             webpack,
             'karma-jasmine',
+            'karma-sourcemap-loader',
             'karma-chrome-launcher',
             'karma-coverage',
             'karma-html-reporter'

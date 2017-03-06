@@ -3,7 +3,7 @@
  * Date : 16/12/21
  * Description :
  */
-import React, {Component}from 'react';
+import React, {Component} from 'react';
 import Pager from '../../src/pager';
 import { mount } from 'enzyme';
 
@@ -43,7 +43,7 @@ function setoff() {
 }
 
 //默认状态的测试用例
-describe('pager default',()=>{
+describe('Pager Component',()=>{
 
     beforeAll(()=>{
         setup();

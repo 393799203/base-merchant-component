@@ -257,6 +257,7 @@ class ImageUploader extends Component {
     finish () {
         const me = this;
         const { success, fail, finish } = me.props;
+
         if (me.isEmptyQueue(me.failQueue)) {
             /** @desc no failed upload images */
             success && success(me.successQueue);

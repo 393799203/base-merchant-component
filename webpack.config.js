@@ -88,6 +88,5 @@ function getEntries(){
         if (['_module', '_theme', 'less'].indexOf(i) > -1) {return;}
         entries['./dist/'+i+'/'] = [path.resolve(__dirname,'./src/'+i+'/'+'index.js')];
     });
-    console.log(entries)
     return entries;
 }
