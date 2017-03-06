@@ -1,6 +1,7 @@
 @import "../../_theme/less/include/_variables";
 @modal-prefix-cls: mc-table;
 .@{modal-prefix-cls} {
+    width: 100%;
     font-family: Tahoma,"Hiragino Sans GB","Microsoft yahei",serif;
     width: 100%;
     thead{
@@ -13,15 +14,11 @@
             font-weight: normal;
             margin-right:1px;
         }
-        .sort, .sort:after{
-            display: inline;
-            width: 0;
-            height: 0;
-            border-color: transparent;
-            border-style: solid;
+        .sort {
             position: relative;
+            padding: 0 5px;
         }
-        .up{
+        .up {
             top: 2px;
             border-width: 0 4px 6px;
             border-color: transparent transparent #ddd;
@@ -30,7 +27,7 @@
             height: 0;
             border-style: solid
         }
-        .up_active{
+        .up_active {
             border-color:transparent transparent #555;
             top: 2px;
             border-width: 0 4px 6px;
@@ -39,7 +36,7 @@
             height: 0;
             border-style: solid
         }
-        .down{
+        .down {
             position: absolute;
             top: 10px;
             border-width: 6px 4px 0;
@@ -48,7 +45,7 @@
             height: 0;
             border-style: solid
         }
-        .down_active{
+        .down_active {
             position: absolute;
             top: 10px;
             border-width: 6px 4px 0;
