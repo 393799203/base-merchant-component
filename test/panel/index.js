@@ -4,7 +4,7 @@ import Panel from 'source_path/panel';
 
 describe('Panel Component', () => {
     it('panel test', () => {
-        const clickHandler = jasmine.createSpy('clickHandler');
+        const clickHandler = sinon.spy();
         const elem = (
             <span>
                 <span className='panel-header-option-1'>时间:2017-01-01</span>
@@ -18,9 +18,9 @@ describe('Panel Component', () => {
             </Panel>
         );
 
-        expect(wrapper.find('.mc-panel').hasClass('my-panel')).toEqual(true);
-        expect(wrapper.find('.mc-panel-header').contains(elem)).toEqual(true);
+        expect(wrapper.find('.mc-panel').hasClass('my-panel')).to.equal(true);
+        expect(wrapper.find('.mc-panel-header').contains(elem)).to.equal(true);
         wrapper.find('.mc-panel').simulate('click');
-        expect(clickHandler).toHaveBeenCalled();
+        expect(clickHandler.called).to.equal(true);
     });
 });

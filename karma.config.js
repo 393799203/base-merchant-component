@@ -11,7 +11,7 @@ module.exports = function (config) {
             'test/setup.js',
             'test/**/index.js'
         ],
-        frameworks: ['mocha'],
+        frameworks: ['mocha', 'chai', 'sinon'],
         preprocessors: {
             'test/**/index.js': ['webpack', 'sourcemap']
         },
@@ -89,8 +89,9 @@ module.exports = function (config) {
         },
         plugins: [
             webpack,
-            'karma-chai',
             'karma-mocha',
+            'karma-chai',
+            'karma-sinon',
             'karma-sourcemap-loader',
             'karma-chrome-launcher',
             'karma-coverage',

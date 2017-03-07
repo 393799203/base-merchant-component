@@ -34,7 +34,7 @@ function setup(config={}) {
     instance = mount(<MyPager {...config}/>, wrapper);
     instanceNode = instance.node;
     pager = instanceNode.refs.pager;
-    // spyOn(instanceNode, 'changePage');
+    // sinon.spy(instanceNode, 'changePage');
 }
 
 function setoff() {

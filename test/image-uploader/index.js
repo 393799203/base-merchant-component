@@ -4,36 +4,37 @@ import ImageUploader from 'source_path/image-uploader';
 
 describe('Image Uploader Component', () => {
     let upload = {};
-    upload = {
-        before: (files) => {
-            console.log('before', files);
-        },
-        progress: (e, file, xhr) => {
+    let wrapper;
 
-        },
-        success: (list) => {
+    beforeEach(() => {
+        upload = {
+            before: (files) => {
+                console.log('before', files);
+            },
+            progress: (e, file, xhr) => {
 
-        },
-        fail: (list) => {
+            },
+            success: (list) => {
+            },
+            fail: (list) => {
+                console.log('失败', list);
+            },
+            finish: (list) => {
+                console.log('完成');
+            }
+        };
 
-        },
-        finish: (list) => {
+        sinon.spy(upload, 'before');
+        sinon.spy(upload, 'progress');
+        sinon.spy(upload, 'success');
+        sinon.spy(upload, 'fail');
+        sinon.spy(upload, 'finish');
+    });
 
-        }
-    };
-
-    beforeAll(() => {
-        spyOn(upload, 'before');
-        spyOn(upload, 'progress');
-        spyOn(upload, 'success');
-        spyOn(upload, 'fail');
-        spyOn(upload, 'finish');
-    }); 
-    
     it('single image upload', () => {
-        const wrapper = shallow(
+        const wrapper = mount(
             <ImageUploader
-                before={upload.before}
+                before={() => upload.before()}
                 progress={(e, file, xhr) => upload.progress(e, file, xhr)}
                 success={(a) => upload.success(a)}
                 fail={upload.fail}
@@ -53,12 +54,7 @@ describe('Image Uploader Component', () => {
             }
         });
 
-        expect(upload.before).toHaveBeenCalled();
-        expect(upload.fail).toHaveBeenCalled();
-        expect(upload.finish).toHaveBeenCalled();
-    });
-
-    it('mutiple image upload', () => {
-
+        expect(upload.before.called).to.be.true;
+        expect(upload.fail.called).to.be.true;
     });
 });
