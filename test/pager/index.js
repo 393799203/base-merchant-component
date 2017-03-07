@@ -6,6 +6,7 @@
 import React, {Component} from 'react';
 import Pager from '../../src/pager';
 import { mount } from 'enzyme';
+import { expect } from 'chai'; 
 
 class MyPager extends Component {
     constructor (props) {
@@ -43,72 +44,71 @@ function setoff() {
 }
 
 //默认状态的测试用例
-describe('Pager Component',()=>{
-
-    beforeAll(()=>{
+describe('Pager Component', () => {
+    before(() => {
         setup();
     });
 
-    afterAll(()=>{
+    after(() => {
         setoff();
     });
 
     it('default props',() => {
-        expect(pager.props.currentPage).toBe(1);
-        expect(pager.props.totalPage).toBe(1);
+        expect(pager.props.currentPage).to.equal(1);
+        expect(pager.props.totalPage).to.equal(1);
     });
 
     it('default disabled',() => {
-        expect( instance.find('a.btn-pre').hasClass('disabled') ).toBe(true);
-        expect( instance.find('a.btn-next').hasClass('disabled') ).toBe(true);
+        expect( instance.find('a.btn-pre').hasClass('disabled') ).to.be.true;
+        expect( instance.find('a.btn-next').hasClass('disabled') ).to.be.true;
     });
 
     it('click pre', () => {
         instance.find('a.btn-pre').simulate('click');
-        expect(pager.props.currentPage).toBe(1);
-        expect(pager.props.totalPage).toBe(1);
+        expect(pager.props.currentPage).to.equal(1);
+        expect(pager.props.totalPage).to.equal(1);
     });
 
     it('click next', () => {
         instance.find('a.btn-next').simulate('click');
-        expect(pager.props.currentPage).toBe(1);
-        expect(pager.props.totalPage).toBe(1);
+        expect(pager.props.currentPage).to.equal(1);
+        expect(pager.props.totalPage).to.equal(1);
     });
 });
 
 
 //正常状态的测试用例
 describe('normal case', () => {
-    beforeAll(() => {
+    before(() => {
         setup({
             currentPage : 1,
             totalPage : 3
         });
     });
 
-    afterAll(()=>{
+    after(() => {
         setoff();
     });
 
-    it('default props',()=>{
-        expect(pager.props.currentPage).toBe(1);
-        expect(pager.props.totalPage).toBe(3);
+    it('default props', ()=> {
+        expect(pager.props.currentPage).to.equal(1);
+        expect(pager.props.totalPage).to.equal(3);
     });
 
-    it('default button status',()=>{
-        expect( instance.find('a.btn-pre').hasClass('disabled') ).toBe(true);
-        expect( instance.find('a.btn-next').hasClass('disabled') ).toBe(false);
+    it('default button status',() => {
+        expect( instance.find('a.btn-pre').hasClass('disabled') ).to.equal(true);
+        expect( instance.find('a.btn-next').hasClass('disabled') ).to.equal(false);
     });
 
-    it('click pre',()=>{
+    it('click pre', () => {
         instance.find('a.btn-pre').simulate('click');
-        expect(pager.props.currentPage).toBe(1);
-        expect(pager.props.totalPage).toBe(3);
+        expect(pager.props.currentPage).to.equal(1);
+        expect(pager.props.totalPage).to.equal(3);
     });
 
-    it('click next',()=>{
+    it('click next', () => {
         instance.find('a.btn-next').simulate('click');
-        expect(pager.props.currentPage).toBe(2);
-        expect(pager.props.totalPage).toBe(3);
+        expect(pager.props.currentPage).to.equal(2);
+        expect(pager.props.totalPage).to.equal(3);
     });
 });
