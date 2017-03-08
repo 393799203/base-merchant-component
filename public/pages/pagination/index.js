@@ -14,6 +14,7 @@ export default class PaginationView extends Component {
     componentDidMount () {
     }
     changePage (current) {
+        debugger;
         this.setState({ currentPage: current });
     }
     render () {
@@ -33,6 +34,7 @@ export default class PaginationView extends Component {
                     totalPage={totalPage}
                     currentPage={currentPage}
                     onChangePage={onChangePage}
+                    link='http://www.mogujie.com?q='
                 />
                 <br />
                 <div dangerouslySetInnerHTML={{ __html: Readme }} />

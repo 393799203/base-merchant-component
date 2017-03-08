@@ -36,9 +36,9 @@ const calculateBtns = function (currentPage, totalPage, displayNum) {
     return pageBtns;
 };
 
-const renderPageBtn = function (pageBtns, currentPage, totalPage, onChangePage, link) {
+const renderPageBtn = function (pageBtns, currentPage, totalPage, onChangePage, link, className) {
     return (
-        <div className='mc-pagination'>
+        <div className={`mc-pagination ${className}`}>
             {
                 pageBtns.map((item, index) => {
                     let btnElem;
@@ -103,17 +103,18 @@ const renderPageBtn = function (pageBtns, currentPage, totalPage, onChangePage, 
 
 export default class Pagination extends Component {
     render () {
-        const { totalPage, currentPage, displayNum, onChangePage, link } = this.props;
+        const { totalPage, currentPage, displayNum, onChangePage, link, className } = this.props;
         const pageBtns = calculateBtns(currentPage, totalPage, displayNum);
         return (
             <div>
-                { renderPageBtn(pageBtns, currentPage, totalPage, onChangePage, link) }
+                { renderPageBtn(pageBtns, currentPage, totalPage, onChangePage, link, className) }
             </div>
         );
     }
 }
 
 Pagination.defaultProps = {
+    className: '',
     currentPage: 1,     // 当前页码
     totalPage: 1,   // 总共有多少页
     displayNum: 4, // 显示数字的页码数
@@ -122,6 +123,7 @@ Pagination.defaultProps = {
 };
 
 Pagination.propTypes = {
+    className: PropTypes.string,
     currentPage: PropTypes.number.isRequired,
     totalPage: PropTypes.number.isRequired,
     displayNum: PropTypes.number,

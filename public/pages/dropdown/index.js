@@ -33,10 +33,10 @@ export default class DropdownView extends Component {
                     options: [
                         {
                             id: 21,
-                            text: '下拉选项21',
-                        },{
+                            text: '下拉选项21'
+                        }, {
                             id: 22,
-                            text: '下拉选项22',
+                            text: '下拉选项22'
                         }
 
                     ]
@@ -74,8 +74,8 @@ export default class DropdownView extends Component {
             <div className='m-b-lg m-l m-r'>
                 <h1>
                     下拉 - Dropdown
-                    <a href="mactt://message/user/00639" style={{border: 'none'}} className="m-l-lg btn-info-custom btn">
-                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
+                    <a href='mactt://message/user/00639' style={{border: 'none'}} className='m-l-lg btn-info-custom btn'>
+                        <i className='fa fa-comments m-r-xs'></i>遇到问题？联系作者
                     </a>
                 </h1>
                 <h2>

@@ -70,7 +70,7 @@ module.exports = function (config) {
                 ]
             }
         },
-        reporters: ['progress','mocha','coverage'],
+        reporters: ['mocha','coverage'],
         coverageReporter: {
             dir: 'report',
             reporters: [
