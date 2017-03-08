@@ -70,7 +70,7 @@ module.exports = function (config) {
                 ]
             }
         },
-        reporters: ['progress','html','coverage'],
+        reporters: ['progress','mocha','coverage'],
         coverageReporter: {
             dir: 'report',
             reporters: [
@@ -95,7 +95,7 @@ module.exports = function (config) {
             'karma-sourcemap-loader',
             'karma-chrome-launcher',
             'karma-coverage',
-            'karma-html-reporter'
+            'karma-mocha-reporter'
         ],
         failOnEmptyTestSuite : false
     });

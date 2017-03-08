@@ -3,10 +3,10 @@
  * Date : 16/12/21
  * Description :
  */
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Pager from '../../src/pager';
 import { mount } from 'enzyme';
-import { expect } from 'chai'; 
+import { expect } from 'chai';
 
 class MyPager extends Component {
     constructor (props) {
@@ -17,11 +17,10 @@ class MyPager extends Component {
         };
     }
     changePage (currentPage) {
-        console.log(this.state)
         this.setState({ currentPage });
     }
-    render(){
-        return <Pager {...this.state} ref="pager" onChangePage={ page => this.changePage(page) }/>
+    render () {
+        return <Pager {...this.state} ref='pager' onChangePage={ page => this.changePage(page) } />
     }
 }
 
@@ -29,22 +28,22 @@ let instance;
 let instanceNode;
 let pager;
 
-function setup(config={}) {
-    //wrapper 已在setup.js 中定义
-    instance = mount(<MyPager {...config}/>, wrapper);
+function setup (config = {}) {
+    // wrapper 已在setup.js 中定义
+    instance = mount(<MyPager {...config} />, window.wrapper);
     instanceNode = instance.node;
     pager = instanceNode.refs.pager;
     // sinon.spy(instanceNode, 'changePage');
 }
 
-function setoff() {
+function setoff () {
     instance && instance.unmount();
     instance = null;
     pager = null;
 }
 
-//默认状态的测试用例
-describe('Pager Component', () => {
+// 默认状态的测试用例
+describe ('Pager Component', () => {
     before(() => {
         setup();
     });
@@ -90,12 +89,12 @@ describe('normal case', () => {
         setoff();
     });
 
-    it('default props', ()=> {
+    it('default props', () => {
         expect(pager.props.currentPage).to.equal(1);
         expect(pager.props.totalPage).to.equal(3);
     });
 
-    it('default button status',() => {
+    it('default button status', () => {
         expect( instance.find('a.btn-pre').hasClass('disabled') ).to.equal(true);
         expect( instance.find('a.btn-next').hasClass('disabled') ).to.equal(false);
     });
