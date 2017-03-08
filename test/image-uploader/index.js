@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import { shallow, mount } from 'enzyme';
 import ImageUploader from 'source_path/image-uploader';
@@ -58,3 +59,4 @@ describe('Image Uploader Component', () => {
         expect(upload.fail.called).to.be.true;
     });
 });
+/* eslint-enable */
