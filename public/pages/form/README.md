@@ -274,4 +274,4 @@ export default class FormComponentView extends Component {
 | getData    |   获取表单信息    | form (默认为空)          | 对象       |
 | clearData    |   重置表单信息    | form  (默认为空)            | 对象       |
 | resetData    |   清除表单信息    | form  (默认为空)            | 对象       |
-| resetData    |   清除表单信息    | form  (默认为空)            | 对象       |
+| validate    |   校验表单信息    | form  (默认为空)            | 对象       |

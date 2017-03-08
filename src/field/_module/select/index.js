@@ -9,7 +9,6 @@ export default class Select extends Component {
         onValidate: () => {
             return true;
         },
-        defaultValue: '',
         placeholder: '',
         name: '',
         id: '',
@@ -99,7 +98,7 @@ export default class Select extends Component {
                 }
             });
 
-            if (options.length >= 1) {
+            if (!defaultValue && options.length) {
                 defaultValue = this.props.options[0].value;
             }
             return { value: defaultValue };

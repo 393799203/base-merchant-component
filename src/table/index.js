@@ -79,7 +79,7 @@ export default class Table extends Component {
     }
 
     // 获取表格内容
-    getTbody (columns, datas, tbodyCbs) {
+    getTbody (columns, datas, tbodyCbs, func) {
         const { showIndex, forRender } = this.props;
 
         return (
@@ -95,7 +95,14 @@ export default class Table extends Component {
                                 {...col.colAttrs}
                                 {...col.tdAttrs}
                             >
-                                {(typeof col.renderBody === 'function') ? col.renderBody(item[col.key], item, tbodyCbs, forRender, rowIndex) : item[col.key]}
+                                {(typeof col.renderBody === 'function') ?
+                                    col.renderBody(item[col.key], item, tbodyCbs, forRender, rowIndex)
+                                    :
+                                    (typeof func[col.key] === 'function') ?
+                                        func[col.key](item[col.key], item, tbodyCbs, forRender, rowIndex)
+                                        :
+                                        item[col.key]
+                                }
                             </td>
                         )}
                     </tr>
@@ -128,13 +135,13 @@ export default class Table extends Component {
 
     render () {
         const { prefixCls, tableClass, columns, datas } = this.props;
-        const { tableExtend, theadCbs, tbodyCbs, pageConfig } = this.props;
+        const { tableExtend, theadCbs, tbodyCbs, pageConfig, func } = this.props;
 
         return (
             <div className='mc-module-table'>
                 <table className={`${prefixCls} ${tableClass}`} {...tableExtend}>
                     { this.getThead(columns, theadCbs) }
-                    { this.getTbody(columns, datas, tbodyCbs) }
+                    { this.getTbody(columns, datas, tbodyCbs, func) }
                 </table>
                 { datas && datas.length ? null : <div className='nullinfo'>暂无数据</div> }
                 {(pageConfig && typeof pageConfig.currentPage !== 'undefined') ? <div style={{ marginTop: '15px' }}><Pagination {...pageConfig} /></div> : null }
@@ -149,7 +156,8 @@ Table.defaultProps = {
     datas: [],
     showIndex: false,
     indexTitle: '序号',
-    prefixCls: 'mc-table'
+    prefixCls: 'mc-table',
+    func: {}
 };
 
 Table.propTypes = {
@@ -164,5 +172,6 @@ Table.propTypes = {
     tableExtend: PropTypes.object,
     sort: PropTypes.func,
     forRender: PropTypes.object,
-    pageConfig: PropTypes.object
+    pageConfig: PropTypes.object,
+    func: PropTypes.object
 };

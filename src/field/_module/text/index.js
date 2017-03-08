@@ -10,7 +10,6 @@ export default class Text extends Component {
         onValidate: () => {
             return true;
         },
-        defaultValue: '',
         placeholder: '',
         name: '',
         id: '',
@@ -156,8 +155,8 @@ export default class Text extends Component {
             placeholder,
             disabled,
             fieldId,
-            attrs = { },
-            events = { }
+            attrs,
+            events
         } = this.props;
 
         return (

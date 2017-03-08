@@ -43,6 +43,7 @@ export default class Field extends Component {
         errorMsg: PropTypes.string,
         className: PropTypes.string,
         required: PropTypes.bool,
+        labelStyle: PropTypes.object,
         error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
     };
 
@@ -132,7 +133,7 @@ export default class Field extends Component {
         Field.add(this, this.props.form);
     }
 
-    componentWillReceiveProps (nextProps) { // 当Field里有raw类型的组件时这里性能好差
+    componentWillReceiveProps (nextProps) {
         if (nextProps.error !== this.props.error) {
             this.setState({
                 error: nextProps.error
@@ -233,8 +234,18 @@ export default class Field extends Component {
     }
 
     render () {
-        const { className, required, label, subInfo, errorMsg, type } = this.props;
-        const error = this.props.error || this.state.error;
+        const {
+            className,
+            required,
+            label,
+            subInfo,
+            errorMsg,
+            type,
+            labelStyle
+        } = this.props;
+
+        const error = this.state.error;
+
         return (
             <div
                 className='mc-module-field'
@@ -242,8 +253,8 @@ export default class Field extends Component {
             >
                 <div className={`mc-field-group clearfix ${className || ''} ${error ? 'mc-field-invaild' : ''}`} dataId={this.fieldId}>
                     {/* 标题 */}
-                    {label ?
-                        <div className='mc-field-label'>
+                    { label ?
+                        <div className='mc-field-label' style={labelStyle}>
                             <label htmlFor={this.fieldId}>
                                 { required ? <span className='require'>*</span> : ''}
                                 {label}
@@ -280,9 +291,13 @@ export default class Field extends Component {
                     </div>
 
                     {/* 子标题 */}
-                    <div className='mc-field-subInfo'>
-                        <label htmlFor={this.fieldId}> {subInfo} </label>
-                    </div>
+                    {subInfo ?
+                        <div className='mc-field-subInfo'>
+                            <label htmlFor={this.fieldId}> {subInfo} </label>
+                        </div>
+                        :
+                        null
+                    }
                 </div>
             </div>
         );

@@ -90,6 +90,17 @@ export default class TableView extends Component {
     eidt (e, id) {
         alert('你点我啦~' + id)
     }
+
+    renderName(text, item, tbodyCbs, forRender, rowIndex){
+        return (
+            <a onClick={ e => tbodyCbs[0]( e , record.id ) } href="javascript:;" className="table-link" title="编辑">
+                <label className="label label-info">
+                    <span className="fa fa-pencil">点我点我</span>
+                </label>
+            </a>
+        )
+    }
+
     render () {
         return (
             <div className='mb-lg ml mr'>
@@ -113,6 +124,9 @@ export default class TableView extends Component {
                   pageConfig={this.state.pageConfig}
                   tbodyCbs={[this.eidt.bind(this)]}
                   sort={this.sortData.bind(this)}
+                  func={{
+                    name: (text, item, tbodyCbs, forRender, rowIndex) => this.renderName(text, item, tbodyCbs, forRender, rowIndex)
+                  }}
                 />
                 <div dangerouslySetInnerHTML={{ __html: Readme }} />
             </div>

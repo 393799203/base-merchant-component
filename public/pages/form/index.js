@@ -6,6 +6,8 @@ import Readme from './README.md';
 import SellerInfo from './demo/sellerInfo';
 import CompanyLegal from './demo/companyLegal';
 import CompanyCert from './demo/companyCert';
+import Login from './demo/login';
+
 
 //详细配置信息见test.js
 import testData from './config.js'
@@ -56,6 +58,8 @@ export default class FormComponentView extends Component {
 					<CompanyLegal />
 
 					<CompanyCert />
+
+					
 					{/*<button
 						className="btn btn-success-custom w-sm m-r" 
 						onClick={ (e) => { this.getData() }}>
