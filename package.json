@@ -13,17 +13,15 @@
   "homepage": "",
   "license": "MIT",
   "scripts": {
-    "pack": "webpack --optimize-minimize --config webpack.pack.config.js",
-    "dev": "node ./scripts/server.js",
-    "test-dev": "karma start karma.config.js",
-    "test": "karma start --single-run --no-auto-watch karma.config.js",
-    "build": "webpack --optimize-minimize -p",
-    "buildDemo": "webpack --optimize-minimize --config webpack.build.config.js",
+    "test": "karma start karma.config.js",
+    "pubtest": "karma start --single-run --no-auto-watch karma.config.js",
+    "build": "WEBPACK_ENV=BUILD webpack --optimize-minimize",
     "babel": "babel src --out-dir lib && node ./scripts/copy.js",
     "pubnpm": "node scripts/checker.js && npm publish",
-    "prepub": "rm -rf lib && rm -rf dist",
-    "pub": "npm run test && npm run babel && npm run build && npm run buildDemo && npm run pubnpm",
-    "upframe": "./node_modules/@meili/framework-update/update.sh"
+    "prepub": "rm -rf demo && rm -rf lib && rm -rf dist",
+    "pub": "npm run prepub && npm run pubtest && npm run babel && npm run build && npm run buildDemo && npm run pubnpm",
+    "dev": "WEBPACK_ENV=DEMO_DEV webpack-dev-server --port 3000 --devtool eval --progress --colors --hot --inline --content-base demo",
+    "buildDemo": "WEBPACK_ENV=DEMO_BUILD webpack --optimize-minimize"
   },
   "dependencies": {
     "babel-eslint": "^7.1.1",
@@ -110,7 +108,7 @@
     "sinon": "^1.17.7",
     "style-loader": "^0.13.0",
     "webpack": "^1.14.0",
-    "webpack-dev-server": "^1.14.0"
+    "webpack-dev-server": "^1.16.3"
   },
   "babel": {
     "presets": [

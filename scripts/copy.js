@@ -1,3 +1,4 @@
+/* eslint-disable */
 var fs = require('fs')
 var path = require('path')
 var stat = fs.stat;
@@ -21,11 +22,11 @@ var copy = function( src, dst ){
         if( err ){
             throw err;
         }
-        
+
         paths.forEach(function( path ){
             var _src = src + '/' + path,
                 _dst = dst + '/'+ path,
-                readable, writable;  
+                readable, writable;
 
             stat( _src, function( err, st ){
                 if( err ){
@@ -39,11 +40,11 @@ var copy = function( src, dst ){
                         // 创建读取流
                         readable = fs.createReadStream( _src );
                         // 创建写入流
-                        writable = fs.createWriteStream( _dst );   
+                        writable = fs.createWriteStream( _dst );
                         // 通过管道来传输流
                         readable.pipe( writable );
                     }
-                    
+
                 }
                 // 如果是目录则递归调用自身
                 else if( st.isDirectory() ){
@@ -65,3 +66,5 @@ var exists = function(src, dst, callback){
     });
 }
 getEntries();
+
+/* eslint-enable */
