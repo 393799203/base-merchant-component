@@ -203,20 +203,52 @@ describe('Image Uploader Component', () => {
         });
     });
 
+    describe('async before upload validate success', function () {
+        before((done) => {
+            upload = {
+                before: (files) => {
+                    return new Promise((resolve, reject) => {
+                        resolve();
+                    });
+                },
+                finish: () => {
+                    done();
+                }
+            };
+
+            sinon.spy(upload, 'before');
+            sinon.spy(upload, 'finish');
+            sinon.spy(ImageUploader.prototype, 'start');
+
+            wrapper = shallow(
+                <ImageUploader before={upload.before} finish={upload.finish} />
+            );
+
+            wrapper.find('input[type="file"]').simulate('change', file);
+        });
+
+        after(() => {
+            ImageUploader.prototype.start.restore();
+        });
+
+        it('async before upload validate success', () => {
+            expect(upload.before.called).to.be.true;
+            expect(ImageUploader.prototype.start.called).to.be.true;
+        });
+    });
+
     describe('async before upload validate fail', function () {
         before((done) => {
             upload = {
                 before: (files) => {
                     return new Promise((resolve, reject) => {
-                        setTimeout(function () {
-                            reject();
-                            done();
-                        });
+                        reject();
+                        done();
                     });
                 }
             };
 
-            sinon.stub(upload, 'before', upload.before);
+            sinon.spy(upload, 'before');
             sinon.spy(ImageUploader.prototype, 'start');
 
             wrapper = shallow(
@@ -233,39 +265,6 @@ describe('Image Uploader Component', () => {
         it('async before upload validate', () => {
             expect(upload.before.called).to.be.true;
             expect(ImageUploader.prototype.start.called).to.be.false;
-        });
-    });
-
-    describe('async before upload validate success', function () {
-        before((done) => {
-            upload = {
-                before: (files) => {
-                    return new Promise((resolve, reject) => {
-                        setTimeout(function () {
-                            resolve();
-                            done();
-                        });
-                    });
-                }
-            };
-
-            sinon.stub(upload, 'before', upload.before);
-            sinon.spy(ImageUploader.prototype, 'start');
-
-            wrapper = shallow(
-                <ImageUploader before={upload.before} />
-            );
-
-            wrapper.find('input[type="file"]').simulate('change', file);
-        });
-
-        after(() => {
-            ImageUploader.prototype.start.restore();
-        });
-
-        it('async before upload validate success', () => {
-            expect(upload.before.called).to.be.true;
-            expect(ImageUploader.prototype.start.called).to.be.true;
         });
     });
 
