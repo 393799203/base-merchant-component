@@ -40,7 +40,7 @@ const defaultOption = {
 export default class BarCharts extends Component {
     constructor (props) {
         super(props);
-        this.domId = props.id || 'chartId_' + JSON.parse((Math.random() * 100000).toFixed(0));
+        this.domId = props.id || `chartId_${(Math.random() * 100000).toFixed(0)}`;
         this.state = {
             chartsData: this.props.data,
             extend: this.props.extend

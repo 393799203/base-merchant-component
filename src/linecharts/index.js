@@ -11,13 +11,13 @@
  * @param {needArea}    图表外层容器的id | boolean | 是否需要阴影 |
  */
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import echarts from 'echarts';
 import Util from '../_module/js/util';
 
 // require('./style/index.less');
 // 指定图表的配置项和数据
-let defaultOption = {
+const defaultOption = {
     title: {
         text: 'LineCharts 折线图示例'
     },
@@ -47,22 +47,26 @@ let defaultOption = {
     },
     series: []
 };
-const MchartsType = 'line',
-    MchartsStack = '总量',
-    MchartsAreaStyle = { normal: {} };
+const MchartsType = 'line';
+const MchartsStack = '总量';
+const MchartsAreaStyle = { normal: {} };
 
 export default class LineCharts extends Component {
     constructor (props) {
         super(props);
-        this.domId = props.id || 'chartId_' + ~~(Math.random() * 100000);
+        this.domId = props.id || `chartId_${(Math.random() * 100000).toFixed(0)}`;
         this.state = {
-            chartsData: this.props.data,
-            extend: this.props.extend,
-            needArea: this.props.needArea
+            chartsData: props.data,
+            extend: props.extend,
+            needArea: props.needArea
         };
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentDidMount () {
+        this.mergeData();
+    }
+
+    componentWillReceiveProps (nextProps) {
         this.setState({
             chartsData: nextProps.data,
             extend: nextProps.extend,
@@ -72,62 +76,65 @@ export default class LineCharts extends Component {
         });
     }
 
-    //合并图标数据
-    mergeData() {
-        let _self = this;
-        let chartsData = _self.state.chartsData;
-        let tempSeries = chartsData.series || [],
-            tempXaxis = chartsData.xAxis || {},
-            newOptionData = _self.state.extend,
-            renderOption = {};
+    // 合并图标数据
+    mergeData () {
+        const self = this;
+        const chartsData = self.state.chartsData;
+        const tempSeries = chartsData.series || [];
+        const tempXaxis = chartsData.xAxis || {};
+        const newOptionData = self.state.extend;
+        let renderOption = {};
 
         tempSeries.map((item, index) => {
-            tempSeries[index].type = MchartsType; //拼接类型
-            tempSeries[index].stack = MchartsStack; //Y轴显示总量
-            tempSeries[index].areaStyle = _self.state.needArea ? MchartsAreaStyle : {}; //Y轴显示总量
-            defaultOption.legend.data.push(item.name); //拼接选项提示
-            defaultOption.series = tempSeries; //合并Series
-            defaultOption.xAxis = tempXaxis; //合并xAxis
+            tempSeries[index].type = MchartsType; // 拼接类型
+            tempSeries[index].stack = MchartsStack; // Y轴显示总量
+            tempSeries[index].areaStyle = self.state.needArea ? MchartsAreaStyle : {}; // Y轴显示总量
+            defaultOption.legend.data.push(item.name); // 拼接选项提示
+            defaultOption.series = tempSeries; // 合并Series
+            defaultOption.xAxis = tempXaxis; // 合并xAxis
         });
 
         renderOption = Util.extend({}, defaultOption, newOptionData);
-        if (!_self.myChart) {
-            _self.myChart = echarts.init(document.getElementById(_self.domId));
+        if (!self.myChart) {
+            self.myChart = echarts.init(document.getElementById(self.domId));
             // 支持绑定事件
-            const userEvents = _self.props.events;
+            const userEvents = self.props.events;
             if (userEvents) {
-                for (let event in userEvents) {
+                for (const event in userEvents) {
                     if (typeof event === 'string' && typeof userEvents[event] === 'function') {
-                        _self.myChart.on(event, userEvents[event]);
+                        self.myChart.on(event, userEvents[event]);
                     }
                 }
             }
             // 自适应宽度
-            if (!_self.hasonResize) {
-                _self.hasonResize = true;
+            if (!self.hasonResize) {
+                self.hasonResize = true;
 
                 window.addEventListener('resize', () => {
-                    _self.myChart.resize();
+                    self.myChart.resize();
                 });
             }
         }
-        _self.myChart.showLoading();
-        console.log(renderOption.series[0].areaStyle);
-
-        _self.myChart.setOption(renderOption);
-        _self.myChart.hideLoading();
+        self.myChart.showLoading();
+        self.myChart.setOption(renderOption);
+        self.myChart.hideLoading();
     }
 
-    componentDidMount() {
-        this.mergeData();
-    }
-
-    render() {
-        let state = this.state;
+    render () {
         return (
             <div>
-                <div id={this.domId} className={this.props.className} style={{ 'width': this.props.width || '100%', 'height': this.props.height || 400 }}>loading...</div>
+                <div id={this.domId} className={this.props.className} style={{ width: this.props.width || '100%', height: this.props.height || 400 }}>loading...</div>
             </div>
-        )
+        );
     }
 }
+
+LineCharts.propTypes = {
+    id: PropTypes.string,
+    className: PropTypes.string,
+    width: PropTypes.string,
+    height: PropTypes.string,
+    data: PropTypes.object,
+    extend: PropTypes.object,
+    needArea: PropTypes.bool
+};

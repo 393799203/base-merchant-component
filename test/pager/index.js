@@ -1,8 +1,10 @@
+/* eslint-disable */
 /**
  * Author : yingu
  * Date : 16/12/21
  * Description :
  */
+
 import React, { Component } from 'react';
 import Pager from '../../src/pager';
 import { mount } from 'enzyme';
@@ -111,3 +113,5 @@ describe('normal case', () => {
         expect(pager.props.totalPage).to.equal(3);
     });
 });
+
+/* eslint-enable */

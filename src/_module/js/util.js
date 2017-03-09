@@ -28,61 +28,65 @@ const util = {
         const cloneObj = JSON.stringify(obj);
         return JSON.parse(cloneObj);
     },
-    extend(){
-        var options, name, src, copy, copyIsArray, clone,
-            target = arguments[0] || {},
-            i = 1,
-            length = arguments.length,
-            deep = false;
+    extend (...arg) {
+        let options;
+        let name;
+        let src;
+        let copy;
+        let copyIsArray;
+        let clone;
+        let target = arg[0] || {};
+        let i = 1;
+        let deep = false;
+        const length = arg.length;
 
         // Handle a deep copy situation
-        if ( typeof target === "boolean" ) {
+        if (typeof target === 'boolean') {
             deep = target;
-            target = arguments[1] || {};
+            target = arg[1] || {};
             // skip the boolean and the target
             i = 2;
         }
 
         // Handle case when target is a string or something (possible in deep copy)
-        if ( typeof target !== "object" && !Util.isFunction(target) ) {
+        if (typeof target !== 'object' && typeof target !== 'function') {
             target = {};
         }
 
         // extend jQuery itself if only one argument is passed
-        if ( length === i ) {
+        if (length === i) {
             target = this;
-            --i;
+            i -= 1;
         }
 
-        for ( ; i < length; i++ ) {
+        for (; i < length; i++) {
             // Only deal with non-null/undefined values
-            if ( (options = arguments[ i ]) != null ) {
+            options = arg[i];
+            if (options !== null) {
                 // Extend the base object
-                for ( name in options ) {
-                    src = target[ name ];
-                    copy = options[ name ];
+                for (name in options) {
+                    if (Object.prototype.hasOwnProperty.call(options, name)) {
+                        src = target[name];
+                        copy = options[name];
+                        if (target !== copy) {
+                            // Recurse if we're merging plain objects or arrays
+                            copyIsArray = copy.constructor === Array;
+                            if (deep && copy && (copy.constructor === Object || copyIsArray)) {
+                                if (copyIsArray) {
+                                    copyIsArray = false;
+                                    clone = src && src.constructor === Array ? src : [];
+                                } else {
+                                    clone = src && src.constructor === Object ? src : {};
+                                }
 
-                    // Prevent never-ending loop
-                    if ( target === copy ) {
-                        continue;
-                    }
+                                // Never move original objects, clone them
+                                target[name] = util.extend(deep, clone, copy);
 
-                    // Recurse if we're merging plain objects or arrays
-                    if ( deep && copy && ( Util.isPlainObject(copy) || (copyIsArray = Util.isArray(copy)) ) ) {
-                        if ( copyIsArray ) {
-                            copyIsArray = false;
-                            clone = src && Util.isArray(src) ? src : [];
-
-                        } else {
-                            clone = src && Util.isPlainObject(src) ? src : {};
+                                // Don't bring in undefined values
+                            } else if (copy !== undefined) {
+                                target[name] = copy;
+                            }
                         }
-
-                        // Never move original objects, clone them
-                        target[ name ] = Util.extend( deep, clone, copy );
-
-                        // Don't bring in undefined values
-                    } else if ( copy !== undefined ) {
-                        target[ name ] = copy;
                     }
                 }
             }
@@ -91,6 +95,27 @@ const util = {
         // Return the modified object
         return target;
     },
+
+    // extend (target, ...args) {
+    //     if (target == null) {
+    //         throw new TypeError('Cannot convert undefined or null to object');
+    //     }
+
+    //     const to = Object(target);
+
+    //     for (let index = 1; index < args.length; index++) {
+    //         const nextSource = args[index];
+    //         if (nextSource != null) { // Skip over if undefined or null
+    //             for (const nextKey in nextSource) {
+    //                 // Avoid bugs when hasOwnProperty is shadowed
+    //                 if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+    //                     to[nextKey] = JSON.parse(JSON.stringify(nextSource[nextKey]));
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     return to;
+    // },
     dateFormat (timestamp, fmt) { // 时间格式化
         if (timestamp) { // 后端存储的时间戳单位为秒
             const d = new Date(timestamp * 1000);

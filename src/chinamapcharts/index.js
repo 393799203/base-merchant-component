@@ -10,14 +10,15 @@
  * @param {id}          图表外层容器的id | object | chartsId_随机数 |
  */
 
-import React, { Component } from 'react';
-import Util from '../_module/js/util';
+import React, { Component, PropTypes } from 'react';
 import echarts from 'echarts';
+import Util from '../_module/js/util';
+
 
 require('./style/index.less');
 require('./ChinaJson.js');
 // 指定图表的配置项和数据
-let defaultOption = {
+const defaultOption = {
     title: {
         text: 'iphone销量',
         subtext: '纯属虚构',
@@ -52,29 +53,32 @@ let defaultOption = {
     },
     series: []
 };
-const MchartsType = 'map',
-    MchartsMapType = 'china',
-    MchartsLabel = {
-        normal: {
-            show: true
-        },
-        emphasis: {
-            show: true
-        }
-    };
+const MchartsType = 'map';
+const MchartsMapType = 'china';
+const MchartsLabel = {
+    normal: {
+        show: true
+    },
+    emphasis: {
+        show: true
+    }
+};
 
 export default class ChinaMapCharts extends Component {
-
-    constructor(props) {
+    constructor (props) {
         super(props);
-        this.domId = props.id || 'chartId_' + ~~(Math.random() * 100000);
+        this.domId = props.id || `chartId_${(Math.random() * 100000).toFixed(0)}`;
         this.state = {
-            chartsData: this.props.data,
-            extend: this.props.extend
+            chartsData: props.data,
+            extend: props.extend
         };
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentDidMount () {
+        this.mergeData();
+    }
+
+    componentWillReceiveProps (nextProps) {
         this.setState({
             chartsData: nextProps.data,
             extend: nextProps.extend
@@ -83,58 +87,63 @@ export default class ChinaMapCharts extends Component {
         });
     }
 
-    //合并图标数据
-    mergeData() {
-        let _self = this;
-        let chartsData = _self.state.chartsData;
-        let tempSeries = chartsData.series || [],
-            newOptionData = _self.state.extend,
-            renderOption = {};
+    // 合并图标数据
+    mergeData () {
+        const self = this;
+        const chartsData = self.state.chartsData;
+        const tempSeries = chartsData.series || [];
+        const newOptionData = self.state.extend;
+        let renderOption = {};
 
         tempSeries.map((item, index) => {
-            tempSeries[index].type = MchartsType; //拼接类型
-            tempSeries[index].mapType = MchartsMapType; //拼接类型
-            tempSeries[index].label = MchartsLabel; //拼接类型
-            defaultOption.legend.data.push(item.name); //拼接选项提示
-            defaultOption.series = tempSeries; //合并Series
+            tempSeries[index].type = MchartsType; // 拼接类型
+            tempSeries[index].mapType = MchartsMapType; // 拼接类型
+            tempSeries[index].label = MchartsLabel; // 拼接类型
+            defaultOption.legend.data.push(item.name); // 拼接选项提示
+            defaultOption.series = tempSeries; // 合并Series
         });
 
         renderOption = Util.extend({}, defaultOption, newOptionData);
-        if (!_self.myChart) {
-            _self.myChart = echarts.init(document.getElementById(_self.domId));
+        if (!self.myChart) {
+            self.myChart = echarts.init(document.getElementById(self.domId));
             // 支持绑定事件
-            const userEvents = _self.props.events;
+            const userEvents = self.props.events;
             if (userEvents) {
-                for (let event in userEvents) {
+                for (const event in userEvents) {
                     if (typeof event === 'string' && typeof userEvents[event] === 'function') {
-                        _self.myChart.on(event, userEvents[event]);
+                        self.myChart.on(event, userEvents[event]);
                     }
                 }
             }
             // 自适应宽度
-            if (!_self.hasonResize) {
-                _self.hasonResize = true;
+            if (!self.hasonResize) {
+                self.hasonResize = true;
 
                 window.addEventListener('resize', () => {
-                    _self.myChart.resize();
+                    self.myChart.resize();
                 });
             }
         }
-        _self.myChart.showLoading();
-        _self.myChart.setOption(renderOption);
-        _self.myChart.hideLoading();
+        self.myChart.showLoading();
+        self.myChart.setOption(renderOption);
+        self.myChart.hideLoading();
     }
 
-    componentDidMount() {
-        this.mergeData();
-    }
-
-    render() {
-        let state = this.state;
+    render () {
         return (
             <div>
-                <div id={this.domId} className={this.props.className} style={{ 'width': this.props.width || '100%', 'height': this.props.height || 400 }}>loading...</div>
+                <div id={this.domId} className={this.props.className} style={{ width: this.props.width || '100%', height: this.props.height || 400 }}>loading...</div>
             </div>
-        )
+        );
     }
 }
+
+ChinaMapCharts.propTypes = {
+    id: PropTypes.string,
+    className: PropTypes.string,
+    width: PropTypes.string,
+    height: PropTypes.string,
+    data: PropTypes.object,
+    extend: PropTypes.object
+};
+

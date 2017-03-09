@@ -5,7 +5,7 @@ export default class Wrapper extends Component {
     render () {
         const { className, isLoading } = this.props;
         return (
-            <div className={className}>
+            <div className={`mc-loading-wrapper ${className}`}>
                 <div className={isLoading ? 'inner-wrapper-show' : 'inner-wrapper-hide'}>
                     <img
                         className='loading-img'
@@ -22,7 +22,7 @@ export default class Wrapper extends Component {
 }
 
 Wrapper.defaultProps = {
-    className: 'mc-loading-wrapper',
+    className: '',
     isLoading: false
 };
 
