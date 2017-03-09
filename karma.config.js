@@ -1,7 +1,7 @@
 /* eslint-disable */
+var path = require('path');
 var webpackConfig = require('./webpack.config.js');
 
-// webpack 配置
 webpackConfig.cache = true;
 webpackConfig.devtool = 'inline-source-map';
 webpackConfig.externals = {
@@ -12,15 +12,7 @@ webpackConfig.externals = {
     'react/lib/ReactContext': 'window'
 };
 
-webpackConfig.preLoaders = [{
-        test: /\.jsx?$/,
-        include: /test/,
-        exclude: /(bower_components|node_modules)/,
-        loader: 'babel',
-        query: {
-            cacheDirectory: true
-        }
-    },
+webpackConfig.module.preLoaders = [
     {
         test: /\.jsx?$/,
         include: /src/,
@@ -32,7 +24,6 @@ webpackConfig.preLoaders = [{
     }
 ];
 
-// karma 配置
 module.exports = function (config) {
     config.set({
         browsers: ['Chrome'],
@@ -48,10 +39,12 @@ module.exports = function (config) {
             'test/**/index.js': ['webpack', 'sourcemap']
         },
         webpack: webpackConfig,
-        reporters: [ 'mocha', 'coverage'],
+        reporters: ['mocha','coverage'],
         coverageReporter: {
-            type: 'html',
-            dir: 'report/'
+            dir: 'report',
+            reporters: [
+                {type: 'html', subdir: './'}
+            ]
         },
         plugins: [
             'karma-webpack',
