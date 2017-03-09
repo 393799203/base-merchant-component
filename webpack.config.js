@@ -88,7 +88,7 @@ var config = {
     }
 }
 
-// demo 代码: dev && build 配置
+/* [分支1] demo 代码: dev && build 配置 */
 if (env === 'DEMO_DEV' ||  env === 'DEMO_BUILD') {
     // 入口文件
     config.entry = [path.resolve(public_path, 'main.js')];
@@ -99,7 +99,7 @@ if (env === 'DEMO_DEV' ||  env === 'DEMO_BUILD') {
     // plugins
     if (env === 'DEMO_DEV' ) config.plugins = [pluginCssExtract, pluginUglifyJs, pluginHtmlwebpack];
     if (env === 'DEMO_BUILD') config.plugins = [pluginCssExtract, pluginHtmlwebpack];
-// 组件源码：打包到 dist目录下
+/* [分支2] 组件源码：打包到 dist目录下 */
 } else if (env === 'BUILD') {
     // 入口文件
     config.entry = getEntries();
@@ -109,6 +109,7 @@ if (env === 'DEMO_DEV' ||  env === 'DEMO_BUILD') {
     config.externals = {'react': 'React', 'react-dom': 'ReactDOM', './React': 'React', './React-dom': 'ReactDOM'};
     // loaders
     config.module.loaders.push({test: /\.(css|less)$/, loader:'style-loader!css-loader!less-loader'} );
+/* [分支3] karma webpack 配置 */
 } else {
     config.module.loaders.push({test: /\.(css|less)$/, loader:'style-loader!css-loader!less-loader'} );
 }
