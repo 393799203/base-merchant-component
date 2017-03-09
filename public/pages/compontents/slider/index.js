@@ -12,6 +12,9 @@ class SliderDemo extends Component {
             )
         });
     }
+    afterChange () {
+        console.log('afterChange');
+    }
     render () {
         const me = this;
         return (
@@ -27,7 +30,7 @@ class SliderDemo extends Component {
                 </h2>
                 <div>
                     <h4>1. 带箭头的轮播器</h4>
-                    <Slider className='slider-demo' arrows>
+                    <Slider className='slider-demo' arrows afterChange={me.afterChange}>
                         {me.renderList(6)}
                     </Slider>
                 </div>

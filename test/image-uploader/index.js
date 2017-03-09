@@ -45,7 +45,6 @@ const fileList = {
 
 let upload = {};
 let wrapper;
-let instance;
 
 describe('Image Uploader Component', () => {
     describe('single image upload failed', function () {
