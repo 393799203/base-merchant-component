@@ -27,15 +27,16 @@ class ImageUploader extends Component {
         /**
          * @func bind a global uploaded callback function on window
         */
-        const { success, fail } = this.props;
+        const { success, fail, finish } = this.props;
 
         window[this.callbackName] = (result) => {
             const resp = JSON.parse(result);
             if (resp.status.code === 1001) {
-                success(resp.result);
+                success && success(resp.result);
             } else {
-                fail(resp.result);
+                fail && fail(resp.result);
             }
+            finish && finish();
         };
     }
 
@@ -134,20 +135,18 @@ class ImageUploader extends Component {
              * @desc when before is an async function,
              * wait the success callback before exec the next
             */
-            if (typeof before.then === 'function') {
-                before(files).then(() => {
+            const result = before(files);
+            if (result && typeof result.then === 'function') { // async before function
+                result.then(() => {
                     me.enQueue(me.queue, files);
                     me.start();
                 });
-            } else {
-                const result = before(files);
-                if (result !== false) {
-                    /**
-                     * @desc when before function returns false, stop executing next steps
-                    */
-                    me.enQueue(me.queue, files);
-                    me.start();
-                }
+            } else if (result !== false) {
+                /**
+                 * @desc when before function returns false, stop executing next steps
+                */
+                me.enQueue(me.queue, files);
+                me.start();
             }
         } else {
             me.enQueue(me.queue, files);
@@ -266,7 +265,6 @@ class ImageUploader extends Component {
         }
 
         finish && finish();
-
         me.clearQueue();
     }
 

@@ -70,7 +70,7 @@ module.exports = function (config) {
                 ]
             }
         },
-        reporters: ['progress','mocha','coverage'],
+        reporters: ['mocha','coverage'],
         coverageReporter: {
             dir: 'report',
             reporters: [
@@ -97,6 +97,9 @@ module.exports = function (config) {
             'karma-coverage',
             'karma-mocha-reporter'
         ],
-        failOnEmptyTestSuite : false
+        failOnEmptyTestSuite: false,
+        client: {
+            mocha: { timeout: 6000 }
+        }
     });
 };
