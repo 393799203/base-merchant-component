@@ -223,7 +223,7 @@ export default class FullAddress extends Component {
                     <Field
                         type='text'
                         name='street'
-                        attrs={{style}}
+                        attrs={{ style }}
                         className='input-location'
                         defaultValue={defaultStreet}
                         onChange={e => this.changeStreet(e)}

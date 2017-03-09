@@ -76,6 +76,13 @@ export default class Form extends Component {
         Form.add(this, this.props.form);
     }
 
+    componentWillReceiveProps (nextProps) {
+        if (JSON.stringify(nextProps.data) !== JSON.stringify(this.props.data)) {
+            this.state.options = nextProps.data || [];
+        }
+    }
+
+
     componentWillUnmount () {
         Form.remove(this.props.form);
     }

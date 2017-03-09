@@ -128,6 +128,53 @@ export default class Address extends Component {
         Address.remove(this, this.props.form);
     }
 
+    // 调用接口获取数据
+    getAddressData (parentId) {
+        return Util.fetch({
+            url: this.props.url,
+            type: 'GET',
+            contentType: 'application/json',
+            dataType: 'jsonp',
+            data: { level: 1, parentId }
+        }).then((resData) => {
+            if (resData.returnCode === 'success') {
+                return resData.data;
+            }
+            return [];
+        });
+    }
+
+    // 获取下拉列表的数据&选中项
+    getOptionsList (datas, select, type) {
+        let options = []; // 省级下拉列表数据
+        let selectList = {};
+        let resultSelect = '-1';
+
+        // 组装provinceOptions，获取默认选中的数据
+        options = datas.map((item) => {
+            if (select === item.placeZh) {
+                selectList = {
+                    text: item.placeZh,
+                    value: item.placeZh,
+                    key: item.id
+                };
+                resultSelect = select;
+            }
+            return {
+                text: item.placeZh,
+                value: item.placeZh,
+                key: item.id
+            };
+        });
+        options.unshift({ text: type, value: '-1' });
+
+        return {
+            options,
+            selectList,
+            select: resultSelect
+        };
+    }
+
     getData () {
         const { provinceList, cityList, areaList } = this.state;
         return {
@@ -185,60 +232,13 @@ export default class Address extends Component {
         }
     }
 
-    // 调用接口获取数据
-    getAddressData (parentId) {
-        return Util.fetch({
-            url: this.props.url,
-            type: 'GET',
-            contentType: 'application/json',
-            dataType: 'jsonp',
-            data: { level: 1, parentId }
-        }).then((resData) => {
-            if (resData.returnCode === 'success') {
-                return resData.data;
-            }
-            return [];
-        });
-    }
-
-    // 获取下拉列表的数据&选中项
-    getOptionsList (datas, select, type){
-        let options = []; // 省级下拉列表数据
-        let selectList = {};
-        let resultSelect = '-1';
-
-        // 组装provinceOptions，获取默认选中的数据
-        options = datas.map((item) => {
-            if (select === item.placeZh) {
-                selectList = {
-                    text: item.placeZh,
-                    value: item.placeZh,
-                    key: item.id
-                };
-                resultSelect=select;
-            }
-            return {
-                text: item.placeZh,
-                value: item.placeZh,
-                key: item.id
-            };
-        });
-        options.unshift({ text: type, value: '-1' });
-
-        return {
-            options,
-            selectList,
-            select: resultSelect
-        }
-    }
-
     // 渲染province
     renderProvice () {
         this.getAddressData(0).then((resData) => {
             const resultData = this.getOptionsList(resData || [], this.state.province, '省');
-            let provinceOptions = resultData.options; // 省级下拉列表数据
-            let provinceList = resultData.selectList;
-            let province = resultData.select;
+            const provinceOptions = resultData.options; // 省级下拉列表数据
+            const provinceList = resultData.selectList;
+            const province = resultData.select;
 
             // 如果传入的province不再下拉列表中，则默认为空
             if (provinceList && provinceList.text) {
@@ -273,10 +273,10 @@ export default class Address extends Component {
     // 渲染city
     renderCity (provinceList) {
         this.getAddressData(provinceList.key).then((resData) => {
-            const resultData = this.getOptionsList( resData || [], this.state.city, '市');
-            let cityOptions = resultData.options; // 省级下拉列表数据
-            let cityList = resultData.selectList;
-            let city = resultData.select;
+            const resultData = this.getOptionsList(resData || [], this.state.city, '市');
+            const cityOptions = resultData.options; // 省级下拉列表数据
+            const cityList = resultData.selectList;
+            const city = resultData.select;
 
             // 如果传入的province不再下拉列表中，则默认为空
             if (cityList && cityList.text) {
@@ -310,10 +310,10 @@ export default class Address extends Component {
     // 渲染area
     renderArea (cityList) {
         this.getAddressData(cityList.key).then((resData) => {
-            const resultData = this.getOptionsList( resData || [], this.state.area, '区');
-            let areaOptions = resultData.options; // 省级下拉列表数据
-            let areaList = resultData.selectList;
-            let area = resultData.select;
+            const resultData = this.getOptionsList(resData || [], this.state.area, '区');
+            const areaOptions = resultData.options; // 省级下拉列表数据
+            const areaList = resultData.selectList;
+            const area = resultData.select;
 
             // 如果传入的province不再下拉列表中，则默认为空
             this.setState({
@@ -330,7 +330,7 @@ export default class Address extends Component {
     }
 
     render () {
-        let {
+        const {
             province,
             provinceOptions,
             city,
@@ -339,7 +339,7 @@ export default class Address extends Component {
             areaOptions
         } = this.state;
 
-        let {
+        const {
             provinceDisabled,
             cityDisabled,
             areaDisabled,

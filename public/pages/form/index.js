@@ -8,15 +8,24 @@ import CompanyLegal from './demo/companyLegal';
 import CompanyCert from './demo/companyCert';
 import Login from './demo/login';
 
-
 //详细配置信息见test.js
-import testData from './config.js'
+import config from './config.js';
+import config2 from './config2.js'
 import './index.less'
 
 export default class FormComponentView extends Component {
 	constructor () {
 		super();
+		this.state = {
+			data: []
+		}
 	}
+
+	componentWillMount () {
+        this.setState({
+        	data: config.options.concat()
+        })
+    }
 	
 	//获取表单数据
 	getData(){
@@ -43,6 +52,20 @@ export default class FormComponentView extends Component {
         console.info(data);
     }
 
+    changeData () {
+    	this.setState({
+    		data: config.options2.concat()
+    	})
+    }
+
+    sexChange (e) {
+    	const data = this.state.data;
+    	data.
+    	this.setState({
+
+    	})
+    }
+
 	render () {
 		return (
 			<div className='mb-lg ml mr'>
@@ -59,8 +82,12 @@ export default class FormComponentView extends Component {
 
 					<CompanyCert />
 
-					
-					{/*<button
+					<button
+						className="btn btn-success-custom w-sm m-r" 
+						onClick={ (e) => { this.changeData() }}>
+						改变表单配置
+					</button>
+					<button
 						className="btn btn-success-custom w-sm m-r" 
 						onClick={ (e) => { this.getData() }}>
 						获取数据
@@ -81,9 +108,10 @@ export default class FormComponentView extends Component {
 						校验数据
 					</button>
 					<Form 
-						data = {testData.options.concat()} 
+						data = {this.state.data} 
 						prefixcls="field-test"
-						form='textForm'/>*/}
+						form='textForm'
+					/>
 				</div>
 				<div dangerouslySetInnerHTML={{ __html: Readme }}>
 					
