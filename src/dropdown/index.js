@@ -37,7 +37,7 @@ export default class Dropdown extends Component {
                 onBlur={() => { this.hideMenu(); }}
             >
                 <div
-                    className={showMenu ? 'mc-trigger active' : 'mc-trigger'}
+                    className={showMenu ? 'mc-trigger clearfix active' : 'mc-trigger clearfix'}
                     onClick={() => { this.toggleMenu(); }}
                 >
                     {this.props.children}

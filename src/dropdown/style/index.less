@@ -2,11 +2,19 @@
 	position: relative;
 	top: 0;
 	left: 0;
+	outline: none;
+    user-select: none;
+	.mc-trigger {
+		cursor: pointer;
+	}
 	.mc-menu {
 		display: none;
+		width: 100%;
+		color: #555;
 		background: #fff;
 		border: 1px solid #dee5e7;
 		position: absolute;
+		z-index: 999;
 		&.active {
 			display: block;
 		}
@@ -17,14 +25,18 @@
 		left: 0;
 		.mc-item-name {
 			display: block;
+			position: relative;
 			padding: 10px 15px;
+			line-height: 1.5;
+			color: #555;
 			cursor: pointer;
 			clear: none;
+			text-align: center;
 			transition: all 0.2s;
 			&.has-options:after {
+				position: absolute;
+				right: 10px;
 				content: '﹥';
-				float: right;
-				margin-left: 30px;
 			}
 			&:hover {
 				background: #F3F5F8;
@@ -42,6 +54,8 @@
 				display: block;
 				padding: 10px 15px;
 				cursor: pointer;
+				text-align: center;
+				line-height: 1.5;
 				transition: all 0.2s;
 				&:hover {
 					background: #F3F5F8;
