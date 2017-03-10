@@ -1,0 +1,197 @@
+#J_Body {
+	position: relative;
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+    background: #fff;
+}
+#J_Sider {
+	display: table-cell;
+	width: 200px;
+	height: 100%;
+    vertical-align: top;
+    overflow-x: hidden;
+    border-right: 1px solid #eee;
+    padding-bottom: 20px;
+    background: #fbfbfb;
+    &::-webkit-scrollbar {
+		display: none;
+    }
+}
+#J_Content {
+	display: table-cell;
+	padding: 20px;
+}
+/* header css */
+.app-header-bg (@color) {
+	@color-dker: "color-@{color}-dker";
+	@color-dk: "color-@{color}-dk";
+	@color-base: "color-@{color}-base";
+	@color-lt: "color-@{color}-lt";
+	@color-lter: "color-@{color}-lter";
+
+	&.bg-@{color} {
+		background: @@color-base;
+		.app-brand,
+		.app-menu,
+		.app-menu .menu-item,
+		.app-menu .menu-item a,
+		.app-user,
+		.app-user a {
+			color: #fff;
+		}
+		.app-menu {
+			.menu-item {
+				&.active {
+					background: @@color-dk;
+				}
+				&:hover {
+					background: @@color-dk;
+				}
+			}
+		}
+	}
+}
+
+.app-header {
+	width: 100%;
+}
+.app-header-fixed {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 10;
+}
+.app-header, .app-brand, .app-menu, .app-user {
+	height: 50px;
+	line-height: 50px;
+}
+.app-header {
+	.clearfix();
+	background: #fff;
+	.app-brand {
+		width: 200px;
+		float: left;
+		display: block;
+		text-align: center;
+		color: @font-color-dk;
+		font-size: @font-size-xl;
+		font-weight: bold;
+	}
+	.app-menu {
+		float: left;
+		margin-left: 20px;
+		.menu-item {
+			float: left;
+			display: block;
+			padding: 0 15px;
+			color: @font-color-base;
+			a {
+				display: block;
+				color: @font-color-base;
+			}
+			transition: background 0.3s;
+			&.active {
+				background: @color-light-base;
+			}
+			&:hover {
+				background: @color-light-base;
+			}
+		}
+	}
+	.app-user {
+		float: right;
+		display: block;
+		padding: 0 15px;
+		color: @font-color-base;
+		a {
+			display: block;
+			color: @font-color-base;
+		}
+	}
+	.app-header-bg(info);
+	.app-header-bg(dark);
+	.app-header-bg(danger);
+	.app-header-bg(warning);
+	.app-header-bg(success);
+}
+
+
+/* sider css */
+.app-sider-fixed {
+	position: fixed;
+	top: 50px;
+	height: 100%;
+}
+.app-sider {
+	.menu-item-trigger {
+		padding: 10px 15px;
+		transition: all 0.3s;
+		&:hover {
+			background: darken(@color-light-base, 1%);
+		}
+		&.active {
+			background: lighten(@color-light-base, 2%);
+		}
+		&.active:hover {
+			background: darken(@color-light-base, 1%);
+		}
+	}
+	a.menu-item-wrapper {
+		padding: 10px 15px;
+		transition: all 0.3s;
+		&:hover {
+			background: darken(@color-light-base, 1%);
+		}
+		&.active {
+			background: darken(@color-light-base, 1%);
+		}
+		&.active:hover {
+			background: darken(@color-light-base, 1%);
+		}
+	}
+	.app-sider-inner {
+		position: relative;
+		height: 100%;
+		padding-bottom: 70px;
+		overflow-y: auto;
+		&::-webkit-scrollbar {
+			display: none;
+    	}
+	}
+	.menu-item-wrapper {
+		display: block;
+		color: @font-color-dk;
+		font-size: @font-size-md;
+		font-weight: bold;
+		cursor: pointer;
+		&.active {
+			background: lighten(@color-light-base, 2%);
+		}
+		.iconfont {
+			display: inline-block;
+			margin-right: 15px;
+			&.menu-arrow {
+				margin: 0;
+			}
+		}
+		.sub-menu {
+			display: none;
+			&.active {
+				display: block;
+			}
+			.sub-item-name {
+				display: block;
+				padding: 10px 15px 10px 40px;
+				color: @font-color-base;
+				font-size: @font-size-md;
+				font-weight: 400;
+				transition: all 0.3s;
+				&:hover, &.active {
+					color: @color-success-dk;
+					background: darken(@color-light-base, 1%);
+				}
+			}
+		}
+	}
+}
