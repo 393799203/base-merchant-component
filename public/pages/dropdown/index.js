@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import Dropdown from 'source_path/dropdown';
 import Notification from 'source_path/notification';
@@ -71,22 +72,22 @@ export default class DropdownView extends Component {
         const { options, options1 } = this.state;
 
         return (
-            <div className='m-b-lg m-l m-r'>
-                <h1>
+            <div className='mb-lg ml mr'>
+                <h2 className='pb-5 b-b dashed'>
                     下拉 - Dropdown
-                    <a href='mactt://message/user/00639' style={{border: 'none'}} className='m-l-lg btn-info-custom btn'>
-                        <i className='fa fa-comments m-r-xs'></i>遇到问题？联系作者
+                    <a href='mactt://message/user/00639' style={{border: 'none', boxShadow: 'none'}} className='ml-lg btn-info-border btn'>
+                        <i className='fa fa-comments mr-xs'></i>遇到问题？联系作者
                     </a>
-                </h1>
-                <h2>
-                    1. 示例
                 </h2>
-                <div className='w-sm inline'>
+                <h3>
+                    1. 示例
+                </h3>
+                <div className='w inline-block'>
                     <Dropdown options={options1} handleClick={this.handleClick}>
                         <a className='btn btn-danger-custom'>我是下拉</a>
                     </Dropdown>
                 </div>
-                <div className='w-sm inline'>
+                <div className='w inline-block'>
                     <Dropdown options={options} handleClick={this.handleClick}>
                         <a className='btn btn-danger'>我有子选项</a>
                     </Dropdown>
@@ -96,3 +97,4 @@ export default class DropdownView extends Component {
         );
     }
 }
+/* eslint-enable */

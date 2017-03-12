@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { Component } from 'react';
 import Modal from 'source_path/modal';
 import Readme from './README.md';
@@ -45,39 +47,39 @@ export default class ModalView extends Component {
 	render () {
 		var { md } = this.state;
 		return (
-			<div className="m-l m-r m-b-xxl">
-				<h1>
+			<div className="ml mr mb-xxl">
+				<h2 className='pb-5 b-b dashed'>
 					弹框（小店） - Modal
-					<a href="mactt://message/user/03084" style={{border: 'none'}} className="m-l-lg btn-info-custom btn">
-                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
+					<a href="mactt://message/user/03084" style={{border: 'none', boxShadow: 'none'}} className="ml-lg btn-info-border btn">
+                        <i className="fa fa-comments mr-xs"></i>遇到问题？联系作者
                     </a>
-				</h1>
-				<h2>
-					1. 示例
 				</h2>
-				<div className="m-b m-t">
+				<h3>
+					1. 示例
+				</h3>
+				<div className="mb mt">
 					<button
-						className="btn btn-success-custom w m-r" 
+						className="btn btn-success-border w mr" 
 						onClick={ (e) => { this.showModal() }}>
 						Modal.alert()
 					</button>
 					
 
 					<button
-						className="btn btn-info-custom w" 
+						className="btn btn-info-border w" 
 						onClick={ (e) => { this.showTipModal() }}>
 						Modal.tip()
 					</button>
 					
 
 					<button
-						className="btn btn-danger-custom w m-l" 
+						className="btn btn-danger-border w ml" 
 						onClick={ (e) => { this.showConfirmModal() }}>
 						Modal.confirm()
 					</button>
 
 					<button
-						className="btn btn-primary-custom w m-l" 
+						className="btn btn-primary-border w ml" 
 						onClick={ (e) => { this.openModal() }}>
 						Modal.open()
 					</button>
@@ -90,3 +92,4 @@ export default class ModalView extends Component {
 		)
 	}
 }
+/* eslint-enable */

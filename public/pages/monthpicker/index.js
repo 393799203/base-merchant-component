@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { Component } from 'react';
 import Monthpicker from 'source_path/monthpicker';
 import Notification from 'source_path/notification';
@@ -30,24 +32,24 @@ export default class MonthpickerView extends Component {
 
 	render () {
 		return (
-			<div className="m-l m-r m-b-xxl mc-date-picker">
-				<h1>
+			<div className="ml mr mb-xxl mc-date-picker">
+				<h2 className='pb-5 b-b dashed'>
 					月份选择 - Monthpicker
-					<a href="mactt://message/user/01825" style={{border: 'none'}} className="m-l-lg btn-info-custom btn">
-                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
+					<a href="mactt://message/user/01825" style={{border: 'none', boxShadow: 'none'}} className="ml-lg btn-info-border btn">
+                        <i className="fa fa-comments mr-xs"></i>遇到问题？联系作者
                     </a>
-				</h1>
-				<h2>
-					1. 示例
 				</h2>
-				<div className="m-t-30">
+				<h3>
+					1. 示例
+				</h3>
+				<div className="mt-30">
 					<div className="date-picker-demo clearfix">
-						<div className='f-l'>
+						<div className='fl'>
 							<h4>默认情况时间选择器</h4>
 							<Monthpicker />
 						</div>
 
-						<div className='f-l sub-demo'>
+						<div className='fl sub-demo'>
 							<h4>禁用时间选择器（disabled）、添加水印（placeholder）</h4>
 							<Monthpicker 
 								disabled 
@@ -57,20 +59,20 @@ export default class MonthpickerView extends Component {
 
 					<div className="date-picker-demo clearfix">
 						<h4>配置的日期格式（format），设置默认值（defaultValue）</h4>
-						<div className='f-l'>
+						<div className='fl'>
 							<h5>默认时间格式：yyyy-MM</h5>
 							<Monthpicker 
 								defaultValue={"2016-11"} />
 						</div>
 
-						<div className="f-l sub-demo">
+						<div className="fl sub-demo">
 							<h5>设置时间格式：yyyy/MM</h5>
 							<Monthpicker 
 								format={"yyyy/MM"}
 								defaultValue={1486197669000}/>
 						</div>
 
-						<div className="f-l sub-demo">
+						<div className="fl sub-demo">
 							<h5>设置时间格式：yyyy年MM月</h5>
 							<Monthpicker 
 								format={"yyyy年MM月"}
@@ -80,13 +82,13 @@ export default class MonthpickerView extends Component {
 
 					<div className="date-picker-demo clearfix">
 						<h4>事件：不可选择的日期（disabledDate），回调函数（onChange）</h4>
-						<div className='f-l'>
+						<div className='fl'>
 							<h5>设置不可选择的日期</h5>
 							<Monthpicker
 								disabledDate={(value) => this.disabledDate(value)} />
 						</div>
 
-						<div className="f-l sub-demo">
+						<div className="fl sub-demo">
 							<h5>时间发生变化的回调，发生在用户选择时间时</h5>
 							<Monthpicker 
 								onChange={value => this.onChange(value)} />
@@ -100,3 +102,4 @@ export default class MonthpickerView extends Component {
 		)
 	}
 }
+/* eslint-enable */

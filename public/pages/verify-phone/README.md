@@ -1,4 +1,4 @@
-## 2. 使用说明
+### 2. 使用说明
 
 ```
 import React, { Component } from 'react'
@@ -11,17 +11,14 @@ export default class VerifyIdentyView extends Component {
     
     render () {
         return (
-            <div className="m-l m-r m-b-xxl">
-                <VerifyPhone 
-                        phoneConfig={{title:"新手机号码填写",phoneLabel:"新手机号码：",msgContent:"111"}}/>
-            </div>
+            <VerifyPhone phoneConfig={{title:"新手机号码填写",phoneLabel:"新手机号码：",msgContent:"111"}}/>
         )
     }
 }
 
 ```
 	
-## 3. 属性 - Props
+### 3. 属性 - Props
 
 | props        | 说明           | 类型         |   默认值       |
 | ------------ | ------------- | ------------ | ------------  |
@@ -34,7 +31,7 @@ export default class VerifyIdentyView extends Component {
 | submit | 点击提交出发的事件          | 方法   |  function   |
 | getResult | 点击提交先出发验证，然后出发getResult方法   | 方法  |  function   |
 
-## 4. 方法 - Function
+### 4. 方法 - Function
 
 | 方法名        |   说明    | 参数          | 返回值         |
 | ------------ | ------------- | ------------- | ------------ |

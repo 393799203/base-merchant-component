@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component, PropTypes } from 'react';
 import Notification from 'source_path/notification';
 import ImageUploader from 'source_path/image-uploader';
@@ -15,16 +16,16 @@ import './style/index.less';
 class ImageUploaderDemo extends Component {
     render () {
         return (
-            <div className="m-b-lg m-l m-r image-uploader-demo">
-                <h1>
+            <div className="mb-lg ml mr image-uploader-demo">
+                <h2 className='pb-5 b-b dashed'>
                     图片上传 - ImageUploader
-                    <a href="mactt://message/user/01173" style={{border: 'none'}} className="m-l-lg btn-info-custom btn">
-                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
+                    <a href="mactt://message/user/01173" style={{border: 'none'}} className="m-l-lg btn-info-border btn">
+                        <i className="fa fa-comments mr-xs"></i>遇到问题？联系作者
                     </a>
-                </h1>
-                <h2>
-                    1. 示例
                 </h2>
+                <h3>
+                    1. 示例
+                </h3>
                 <SingleUpload />
                 <MultiUpload />
                 <SingleUploadWithProgress />
@@ -37,3 +38,4 @@ class ImageUploaderDemo extends Component {
 }
 
 export default ImageUploaderDemo;
+/* eslint-enable */

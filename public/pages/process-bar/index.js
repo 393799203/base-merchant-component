@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import { ProcessBar } from 'source_path/process-bar';
 import README from './README.md';
@@ -14,23 +15,23 @@ export default class ProcessBarView extends Component {
     }
     render () {
         return (
-            <div className='m-b-lg m-l m-r'>
-                <h1>
+            <div className='mb-lg ml mr'>
+                <h2 className='pb-5 b-b dashed'>
                     进度条 - ProcessBar
-                    <a href="mactt://message/user/02017" style={{border: 'none'}} className="m-l-lg btn-info-custom btn">
-                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
+                    <a href="mactt://message/user/02017" style={{border: 'none', boxShadow: 'none'}} className="ml-lg btn-info-border btn">
+                        <i className="fa fa-comments mr-xs"></i>遇到问题？联系作者
                     </a>
-                </h1>
-                <h2>
-                    1. 示例
                 </h2>
-                <div className='m-t m-b'>
+                <h3>
+                    1. 示例
+                </h3>
+                <div className='mt mb'>
                     <ProcessBar
                         stepTp={this.state.stepTp6}
                         stepBt={this.state.stepBt6}
                         cur={3}
                     />
-                    <div className='m-t-lg'>
+                    <div className='mt-lg'>
                         <ProcessBar
                             stepBt={this.state.stepBt3}
                             cur={1}
@@ -42,3 +43,4 @@ export default class ProcessBarView extends Component {
         );
     }
 }
+/* eslint-enable */

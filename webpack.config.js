@@ -46,6 +46,14 @@ var pluginCssExtract = new ExtractTextPlugin('bundle.css');
 
 var config = {
     module: {
+        preLoaders: [
+            {
+                test: /\.jsx?$/,
+                exclude: [/node_modules/, /public/, /test/],
+                loader: 'eslint',
+                query: { cacheDirectory: true}
+            }
+        ],
         loaders: [
             {
                 test: /\.jsx?$/,

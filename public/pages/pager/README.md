@@ -1,4 +1,4 @@
-## 2 示例代码
+### 2 示例代码
     import React, { Component } from 'react';
     import Pager from '@meili/base-merchant-component/lib/pager';
 
@@ -28,7 +28,7 @@
         }
     }
 
-## 3. 参数说明
+### 3. 参数说明
 
 | 参数        |  是否必填        |说明           | 类型         |  备注       |   默认       |  
 | ------------ |------------ | ------------- | ------------ | ------------  |------------  |

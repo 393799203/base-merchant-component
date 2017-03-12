@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import Slider from 'source_path/slider';
 import './style/index.less';
@@ -18,16 +19,16 @@ class SliderDemo extends Component {
     render () {
         const me = this;
         return (
-            <div className='m-b-lg m-l m-r'>
-                <h1>
+            <div className='mb-lg ml mr'>
+                <h2 className='pb-5 b-b dashed'>
                     轮播器 - Slider
-                    <a href="mactt://message/user/01173" style={{border: 'none'}} className="m-l-lg btn-info-custom btn">
-                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
+                    <a href="mactt://message/user/01173" style={{border: 'none', boxShadow: 'none'}} className="ml-lg btn-info-border btn">
+                        <i className="fa fa-comments mr-xs"></i>遇到问题？联系作者
                     </a>
-                </h1>
-                <h2>
-                    1. 示例
                 </h2>
+                <h3>
+                    1. 示例
+                </h3>
                 <div>
                     <h4>1. 带箭头的轮播器</h4>
                     <Slider className='slider-demo' arrows afterChange={me.afterChange}>
@@ -59,3 +60,5 @@ class SliderDemo extends Component {
 }
 
 export default SliderDemo;
+/* eslint-enable */
+

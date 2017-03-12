@@ -1,4 +1,4 @@
-## 2. 使用说明
+### 2. 使用说明
 #### 引入方式:
 ```
 import React, { Component } from 'react';
@@ -16,7 +16,7 @@ import Slider from '@meili/base-merchant-component/lib/slider';
 </Slider>
 ```
 
-## 3. - 参数说明
+### 3. - 参数说明
 
 | 参数        |  必填        |说明           | 类型         |  备注       |   默认值      |  
 | ------------ |------------ | ------------- | ------------ | ------------  |------------  |

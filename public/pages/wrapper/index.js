@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import Wrapper from 'source_path/wrapper';
 import Readme from './README.md';
@@ -18,25 +19,25 @@ export default class WrapperView extends Component {
     render () {
         const { isLoading } = this.state;
         return (
-            <div className='m-b-lg m-l m-r'>
-                <h1>
+            <div className='mb-lg ml mr'>
+                <h2 className='pb-5 b-b dashed'>
                     加载容器 - Wrapper  
-                    <a href="mactt://message/user/00639" style={{border: 'none'}} className="m-l-lg btn-info-custom btn">
-                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
+                    <a href="mactt://message/user/00639" style={{border: 'none', boxShadow: 'none'}} className="ml-lg btn-info-border btn">
+                        <i className="fa fa-comments mr-xs"></i>遇到问题？联系作者
                     </a>
-                </h1>
-                <h2>
-                    1. 示例
                 </h2>
+                <h3>
+                    1. 示例
+                </h3>
                 <div>
                     <button
-                      className='m-b btn btn-primary-custom w-sm m-r'
+                      className='mb btn btn-primary-border w-sm mr'
                       onClick={() => { this.showLoading(); }}
                     >
                         开始加载
                     </button>
                     <button
-                      className='m-b btn btn-success-custom w-sm m-r'
+                      className='mb btn btn-success-border w-sm mr'
                       onClick={() => { this.stopLoading(); }}
                     >
                         停止加载
@@ -57,3 +58,4 @@ export default class WrapperView extends Component {
         );
     }
 }
+/* eslint-enable */

@@ -1,9 +1,11 @@
+/* eslint-disable */
+
 import React, { Component } from 'react';
 
 export default class DataView extends Component {
     render () {
         return (
-            <div>
+            <div className='mt-50'>
                 <iframe
                   style={{ minHeight: '800px' }}
                   width='100%'
@@ -14,3 +16,4 @@ export default class DataView extends Component {
         );
     }
 }
+/* eslint-enable */

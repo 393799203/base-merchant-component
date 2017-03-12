@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import Notification from 'source_path/notification';
 import Readme from './README.md';
@@ -48,49 +49,49 @@ function showCustom () {
 export default class NotificationView extends Component {
     render () {
         return (
-            <div className='m-b-lg m-l m-r'>
-                <h1>
+            <div className='mb-lg ml mr'>
+                <h2 className='pb-5 b-b dashed'>
                     消息提示 - Notification
-                    <a href="mactt://message/user/00639" style={{border: 'none'}} className="m-l-lg btn-info-custom btn">
-                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
+                    <a href="mactt://message/user/00639" style={{border: 'none', boxShadow: 'none'}} className="ml-lg btn-info-border btn">
+                        <i className="fa fa-comments mr-xs"></i>遇到问题？联系作者
                     </a>
-                </h1>
-                <h2>
-                    1. 示例
                 </h2>
-                <div className='m-t'>
+                <h3>
+                    1. 示例
+                </h3>
+                <div>
                     <button
-                      className='m-b btn btn-danger-custom w-sm m-r'
+                      className='mb btn btn-danger-border w-sm mr'
                       onClick={showError}
                     >
                         错误提示
                     </button>
                     <button
-                      className='m-b btn btn-success-custom w-sm m-r'
+                      className='mb btn btn-success-border w-sm mr'
                       onClick={showSuccess}
                     >
                         成功提示
                     </button>
                     <button
-                      className='m-b btn btn-warning-custom w-sm m-r'
+                      className='mb btn btn-warning-border w-sm mr'
                       onClick={showWarn}
                     >
                         警告提示
                     </button>
                     <button
-                      className='m-b btn btn-info-custom w-sm m-r'
+                      className='mb btn btn-info-border w-sm mr'
                       onClick={showInfo}
                     >
                         普通提示
                     </button>
                     <button
-                      className='m-b btn btn-danger w-sm m-r'
+                      className='mb btn btn-danger w-sm mr'
                       onClick={showRight}
                     >
                         右上角错误提示
                     </button>
                     <button
-                      className='m-b btn btn-success w-sm m-r'
+                      className='mb btn btn-success w-sm mr'
                       onClick={showCustom}
                     >
                         自定义位置成功提示
@@ -102,4 +103,5 @@ export default class NotificationView extends Component {
         );
     }
 }
+/* eslint-enable */
 

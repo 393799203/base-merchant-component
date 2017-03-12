@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component, PropTypes } from 'react';
 import Notification from 'source_path/notification';
 import { TabWrapper, Tab } from 'source_path/tab';
@@ -82,16 +83,16 @@ class TabDemo extends Component {
         ];
 
         return (
-            <div className='m-b-lg m-l m-r'>
-                <h1>
+            <div className='mb-lg ml mr'>
+                <h2 className='pb-5 b-b dashed'>
                     选项卡 - Tab
-                    <a href="mactt://message/user/01173" style={{border: 'none'}} className="m-l-lg btn-info-custom btn">
-                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
+                    <a href="mactt://message/user/01173" style={{border: 'none', boxShadow: 'none'}} className="ml-lg btn-info-border btn">
+                        <i className="fa fa-comments mr-xs"></i>遇到问题？联系作者
                     </a>
-                </h1>
-                <h2>
-                    1. 示例
                 </h2>
+                <h3>
+                    1. 示例
+                </h3>
                 <div className='switch-tab'>
                     <div className='example'>
                         <h4>常规</h4>
@@ -145,3 +146,4 @@ class TabDemo extends Component {
 }
 
 export default TabDemo;
+/* eslint-enable */

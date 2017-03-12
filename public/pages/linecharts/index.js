@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import LineCharts from 'source_path/linecharts';
 import Readme from './README.md';
@@ -104,17 +105,17 @@ export default class LineChartsView extends Component {
 	}
 	render() {
 		return (
-			<div className="m-l m-r m-b-xxl">
-				<h1>
+			<div className="ml mr mb-xxl">
+				<h2 className='pb-5 b-b dashed'>
 					图表组件📈，依赖百度的echarts
-				</h1>
-				<h2>
-					1. 折线图示例
 				</h2>
-				<div className="m-t m-b">
+				<h3>
+					1. 折线图示例
+				</h3>
+				<div className="mt mb">
 					<LineCharts className="ocsen" data={this.state.chartsData} extend={this.state.extend} events={this.state.events} needArea={this.state.needArea}></LineCharts>
-					<button onClick={this.changeData.bind(this)} className="btn btn-success-custom w-sm">点击更改数据</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<button onClick={this.needArea.bind(this)} className="btn btn-success-custom w-sm">是否需要阴影</button>
+					<button onClick={this.changeData.bind(this)} className="btn btn-success-border w-sm">点击更改数据</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<button onClick={this.needArea.bind(this)} className="btn btn-success-border w-sm">是否需要阴影</button>
 				</div>
 				<div dangerouslySetInnerHTML={{ __html: Readme }}></div>
 
@@ -124,3 +125,4 @@ export default class LineChartsView extends Component {
 		)
 	}
 }
+/* eslint-enable */

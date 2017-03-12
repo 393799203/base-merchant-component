@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import Panel from 'source_path/panel';
 import './style/index.less';
@@ -12,15 +13,15 @@ class PanelDemo extends Component {
         
         return (
             <div className='m-b-lg m-l m-r'>
-                <h1>
+                <h2 className='pb-5 b-b dashed'>
                     面板 - Panel
-                    <a href="mactt://message/user/01173" style={{border: 'none'}} className="m-l-lg btn-info-custom btn">
-                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
+                    <a href="mactt://message/user/01173" style={{border: 'none', boxShadow: 'none'}} className="ml-lg btn-info-border btn">
+                        <i className="fa fa-comments mr-xs"></i>遇到问题？联系作者
                     </a>
-                </h1>
-                <h2>
-                    1. 示例
                 </h2>
+                <h3>
+                    1. 示例
+                </h3>
                 <Panel title='示例代码' elem={elem}>
                     <p>你的组件内容</p>
                 </Panel>
@@ -31,3 +32,4 @@ class PanelDemo extends Component {
 }
 
 export default PanelDemo;
+/* eslint-enable */

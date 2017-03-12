@@ -1,4 +1,4 @@
-## 2. 使用说明
+### 2. 使用说明
 
 ```
 
@@ -77,7 +77,7 @@ export default class MonthpickerView extends Component {
 
 ```
 	
-## 3. 属性 - Props
+### 3. 属性 - Props
 
 | props        | 说明           | 类型         |   默认值       |
 | ------------ | ------------- | ------------ | ------------  |

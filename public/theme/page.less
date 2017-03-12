@@ -1,26 +1,27 @@
-#J_Body {
+.app-body {
+	padding-top: 50px; 
 	position: relative;
 	display: table;
 	table-layout: fixed;
 	width: 100%;
     background: #fff;
-}
-#J_Sider {
-	display: table-cell;
-	width: 200px;
-	height: 100%;
-    vertical-align: top;
-    overflow-x: hidden;
-    border-right: 1px solid #eee;
-    padding-bottom: 20px;
-    background: #fbfbfb;
-    &::-webkit-scrollbar {
-		display: none;
-    }
-}
-#J_Content {
-	display: table-cell;
-	padding: 20px;
+	.app-sider {
+		display: table-cell;
+		width: 200px;
+		height: 100%;
+	    vertical-align: top;
+	    overflow-x: hidden;
+	    border-right: 1px solid #eee;
+	    padding-bottom: 20px;
+	    background: #fbfbfb;
+	    &::-webkit-scrollbar {
+			display: none;
+	    }
+	}
+	.app-content {
+		display: table-cell;
+		padding: 20px;
+	}
 }
 /* header css */
 .app-header-bg (@color) {
@@ -118,80 +119,25 @@
 
 
 /* sider css */
-.app-sider-fixed {
-	position: fixed;
-	top: 50px;
-	height: 100%;
-}
 .app-sider {
-	.menu-item-trigger {
-		padding: 10px 15px;
-		transition: all 0.3s;
-		&:hover {
-			background: darken(@color-light-base, 1%);
-		}
-		&.active {
-			background: lighten(@color-light-base, 2%);
-		}
-		&.active:hover {
-			background: darken(@color-light-base, 1%);
-		}
-	}
-	a.menu-item-wrapper {
-		padding: 10px 15px;
-		transition: all 0.3s;
-		&:hover {
-			background: darken(@color-light-base, 1%);
-		}
-		&.active {
-			background: darken(@color-light-base, 1%);
-		}
-		&.active:hover {
-			background: darken(@color-light-base, 1%);
-		}
-	}
-	.app-sider-inner {
-		position: relative;
+	.app-sider-content {
+		position: fixed;
+		top: 50px;
+		width: 200px;
 		height: 100%;
-		padding-bottom: 70px;
+		overflow-x: hidden;
 		overflow-y: auto;
+		padding-bottom: 100px;
 		&::-webkit-scrollbar {
 			display: none;
-    	}
+	    }
 	}
-	.menu-item-wrapper {
-		display: block;
-		color: @font-color-dk;
-		font-size: @font-size-md;
-		font-weight: bold;
-		cursor: pointer;
+	.app-sider-item {
 		&.active {
-			background: lighten(@color-light-base, 2%);
+			background: #fff;
 		}
-		.iconfont {
-			display: inline-block;
-			margin-right: 15px;
-			&.menu-arrow {
-				margin: 0;
-			}
-		}
-		.sub-menu {
-			display: none;
-			&.active {
-				display: block;
-			}
-			.sub-item-name {
-				display: block;
-				padding: 10px 15px 10px 40px;
-				color: @font-color-base;
-				font-size: @font-size-md;
-				font-weight: 400;
-				transition: all 0.3s;
-				&:hover, &.active {
-					color: @color-success-dk;
-					background: darken(@color-light-base, 1%);
-				}
-			}
+		&:hover {
+			background: #fff;
 		}
 	}
 }

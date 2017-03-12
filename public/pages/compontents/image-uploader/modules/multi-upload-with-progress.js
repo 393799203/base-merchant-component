@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, {Component, PropTypes} from 'react';
 import Notification from 'source_path/notification';
 import ImageUploader from 'source_path/image-uploader';
@@ -109,3 +110,5 @@ MultiUpload.propTypes = {
 };
 
 export default MultiUpload;
+
+/* eslint-enable */

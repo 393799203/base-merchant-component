@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import Readme from './README.md';
 import './style/index.less';
@@ -48,15 +49,15 @@ export default class FieldView extends Component {
 
 	render () {
 		return (
-			<div className="m-l m-r m-b-xxl mc-field">
-				<h1>
+			<div className="ml mr mb-xxl mc-field">
+				<h2 className='pb-5 b-b dashed mb'>
 					表单 - Field
-					<a href="mactt://message/user/01825" style={{border: 'none'}} className="m-l-lg btn-info-custom btn">
-                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
+					<a href="mactt://message/user/01825" style={{border: 'none', boxShadow: 'none'}} className='ml-lg btn-info-border btn'>
+                        <i className="fa fa-comments mr-xs"></i>遇到问题？联系作者
                     </a>
-				</h1>
+				</h2>
 				<div dangerouslySetInnerHTML={{ __html: Readme }}></div>
-				<div className="m-t-30 mc-field-demo-body">
+				<div className="mt-30 mc-field-demo-body">
 					<TabWrapper navs={nav}>
                         {tabArr}
                     </TabWrapper>
@@ -65,3 +66,4 @@ export default class FieldView extends Component {
 		)
 	}
 }
+/* eslint-enable */

@@ -10,7 +10,7 @@
         }
 
         render () {
-            return <div className="m-b-lg m-l m-r">
+            return <div className="mb-lg ml mr">
         	<div style={{"margin":"10px"}}>
 	            <Tag color={'red'}>文字部分</Tag>
 	            <Tag color={'red'} circle={true}>文字部分</Tag>
@@ -35,7 +35,7 @@
         }
     }
 
-## 3.Tag参数说明
+### 3.Tag参数说明
 | 参数          | 说明                  | 类型         |默认值        |是否必需
 | ----------   | -------------------- | ----------- |------------ | 
 | color        | 颜色（red,green,blue) |    string   |   default   | false
