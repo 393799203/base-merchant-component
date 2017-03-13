@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component, PropTypes } from 'react';
 import Notification from 'source_path/notification';
 import { TabWrapper, Tab } from 'source_path/tab';
@@ -82,16 +83,16 @@ class TabDemo extends Component {
         ];
 
         return (
-            <div className='m-b-lg m-l m-r'>
-                <h1>
+            <div className='mb-lg ml mr'>
+                <h2 className='pb-5 b-b dashed'>
                     选项卡 - Tab
-                    <a href="mactt://message/user/01173" style={{border: 'none'}} className="m-l-lg btn-info-custom btn">
-                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
+                    <a href="mactt://message/user/01173" style={{border: 'none', boxShadow: 'none'}} className="ml-lg btn-info-border btn">
+                        <i className="fa fa-comments mr-xs"></i>遇到问题？联系作者
                     </a>
-                </h1>
-                <h2>
-                    1. 示例
                 </h2>
+                <h3>
+                    1. 示例
+                </h3>
                 <div className='switch-tab'>
                     <div className='example'>
                         <h4>常规</h4>
@@ -101,7 +102,7 @@ class TabDemo extends Component {
                     </div>
                     <div className='example'>
                         <h4>切换方式-hover</h4>
-                        <TabWrapper navs={nav1} trigger='mouseOver'>
+                        <TabWrapper navs={nav1} theme='warning' trigger='mouseOver'>
                             {tabArr}
                         </TabWrapper>
                     </div>
@@ -109,13 +110,13 @@ class TabDemo extends Component {
                 <div className='switch-tab'>
                     <div className='example'>
                         <h4>整体事件触发-onClick</h4>
-                        <TabWrapper navs={nav1} onClick={i => TabDemo.clickHanler(i)}>
+                        <TabWrapper navs={nav1} theme='success' onClick={i => TabDemo.clickHanler(i)}>
                             {tabArr}
                         </TabWrapper>
                     </div>
                     <div className='example'>
                         <h4>整体事件触发-onChange</h4>
-                        <TabWrapper navs={nav1} onChange={(newVal, oldVal) => TabDemo.changeHandler(newVal, oldVal)}>
+                        <TabWrapper navs={nav1} theme='info' onChange={(newVal, oldVal) => TabDemo.changeHandler(newVal, oldVal)}>
                             {tabArr}
                         </TabWrapper>
                     </div>
@@ -131,7 +132,7 @@ class TabDemo extends Component {
                     </div>
                     <div className='example'>
                         <h4>懒加载-lazyload</h4>
-                        <TabWrapper navs={nav1} lazyLoad>
+                        <TabWrapper navs={nav1} theme='dark' lazyLoad>
                             <Tab key='0'>第一个组件的内容</Tab>
                             <Tab key='1'><LazyExample index={2} /></Tab>
                             <Tab key='2'><LazyExample index={3} /></Tab>
@@ -145,3 +146,4 @@ class TabDemo extends Component {
 }
 
 export default TabDemo;
+/* eslint-enable */

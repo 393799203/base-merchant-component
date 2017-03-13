@@ -71,7 +71,7 @@ export default [
         link: '#/charts-pie'
     },
     {
-        title: '中国地图图表 - ChinaMapCharts',
+        title: '中国地图 - ChinaMapCharts',
         link: '#/charts-chinamap'
     },
     {

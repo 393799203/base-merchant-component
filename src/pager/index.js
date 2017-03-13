@@ -24,23 +24,23 @@ export default class Pager extends Component {
         this.props.onChangePage(caculatedPage);
     }
     render () {
-        const { className, preText, nextText, currentPage, totalPage, link, linkParam } = this.props;
+        const { className, preText, nextText, currentPage, totalPage, link, linkParam, size, theme } = this.props;
         const { preLink, nextLink } = formatLink(link, linkParam, currentPage);
         return (
-            <div className={className}>
+            <div className={`mc-pager ${className}`}>
                 <span className='page-count'>{currentPage}/{totalPage}页</span>
                 { /* 上一页 */
                     link ?
                         <a
                             href={link && currentPage !== 1 ? preLink : ''}
-                            className={currentPage === 1 ? 'btn btn-pre disabled' : 'btn btn-pre'}
+                            className={currentPage === 1 ? `btn btn-${size} btn-${theme} btn-pre disabled` : `btn btn-${size} btn-${theme} btn-pre`}
                         >
                             {preText}
                         </a>
                     :
                         <a
                             onClick={(e) => { this.handlePage(e, 'pre', currentPage, totalPage); }}
-                            className={currentPage === 1 ? 'btn btn-pre disabled' : 'btn btn-pre'}
+                            className={currentPage === 1 ? `btn btn-${size} btn-${theme} btn-pre disabled` : `btn btn-${size} btn-${theme} btn-pre`}
                         >
                             {preText}
                         </a>
@@ -49,14 +49,14 @@ export default class Pager extends Component {
                     link ?
                         <a
                             href={link && currentPage !== totalPage ? nextLink : ''}
-                            className={currentPage === totalPage ? 'btn btn-next disabled' : 'btn btn-next'}
+                            className={currentPage === totalPage ? `btn btn-${size} btn-${theme} btn-next disabled` : `btn btn-${size} btn-${theme} btn-next`}
                         >
                             {nextText}
                         </a>
                     :
                         <a
                             onClick={(e) => { this.handlePage(e, 'next', currentPage, totalPage); }}
-                            className={currentPage === totalPage ? 'btn btn-next disabled' : 'btn btn-next'}
+                            className={currentPage === totalPage ? `btn btn-${size} btn-${theme} btn-next disabled` : `btn btn-${size} btn-${theme} btn-next`}
                         >
                             {nextText}
                         </a>
@@ -67,7 +67,9 @@ export default class Pager extends Component {
 }
 
 Pager.defaultProps = {
-    className: 'mc-pager',
+    size: 'sm',
+    theme: 'default',
+    className: '',
     currentPage: 1,      // 当前页码
     totalPage: 1,        // 总共有多少页
     link: '',            // 页面直接跳转链接
@@ -78,6 +80,8 @@ Pager.defaultProps = {
 };
 
 Pager.propTypes = {
+    size: PropTypes.oneOf(['normal', 'xs', 'sm', 'md']),
+    theme: PropTypes.oneOf(['default', 'danger', 'info', 'dark', 'success', 'warning']),
     className: PropTypes.string,
     currentPage: PropTypes.number.isRequired,
     totalPage: PropTypes.number.isRequired,

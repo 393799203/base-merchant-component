@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import AreaCode from 'source_path/area-code';
 import Readme from './README.md';
@@ -22,40 +23,36 @@ export default class AreaCodeView extends Component {
         let {code} = this.state;
 
         return (
-            <div className="m-l m-r m-b-xxl  mc-field">
-                <h1>
+            <div className="ml mr mb-xxl">
+                <h2 className='pb-5 b-b dashed'>
                     手机区号 - AreaCode
-                    <a href="mactt://message/user/00639" style={{border: 'none'}} className="m-l-lg btn-info-custom btn">
+                    <a href="mactt://message/user/00639" style={{border: 'none', boxShadow: 'none'}} className="ml-lg btn-info-border btn">
                         <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
                     </a>
-                </h1>
-                <h2>
-                    1. 示例
                 </h2>
-                <div className='demo clearfix'>
-                    <div className='f-l field-demo'>
-                        <h5>默认属性</h5>
+                <h3>
+                    1. 示例
+                </h3>
+                <div className='clearfix'>
+                    <div className='fl mr'>
+                        <h4>默认属性</h4>
                         <AreaCode />
                     </div>
-                    <div className="f-l field-demo">
-                        <h5>默认值：defaultValue，禁用（disabled）,样式（className）</h5>
+                    <div className="fl mr">
+                        <h4>默认值：defaultValue，禁用（disabled）,样式（className）</h4>
                         <AreaCode
                             disabled={true}
                             className={"area-code-class"}
                             defaultValue={'1684'}
                         />
                     </div>
-                    <div className="f-l field-demo">
-                        <h5>赋值：value（展示的数值以传递的value值为主）,与onChange共用</h5>
+                    <div className="fl">
+                        <h4>赋值：value（展示的数值以传递的value值为主）,与onChange共用</h4>
                         <AreaCode
                             value={code}
                             onChange = {(code) => this.handleChange(code)} 
                         />
                     </div>
-                </div>
-
-                <div className="m-l m-r m-t m-b">
-                    
                 </div>
                 <div dangerouslySetInnerHTML={{ __html: Readme }}>
                     
@@ -64,3 +61,4 @@ export default class AreaCodeView extends Component {
         )
     }
 }
+/* eslint-enable */

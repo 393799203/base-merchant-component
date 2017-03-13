@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react'
 import Form from 'source_path/form';
 import Readme from './README.md';
@@ -42,14 +43,14 @@ export default class FormComponentView extends Component {
 
 	render () {
 		return (
-			<div className="m-l m-r m-b-xxl">
-				<h1>
+			<div className='mb-lg ml mr'>
+                <h2 className='pb-5 b-b dashed'>
 					表单 - Form
-				</h1>
-				<h2>
-					1. 示例
 				</h2>
-				<div className="m-b m-t">
+				<h3>
+					1. 示例
+				</h3>
+				<div className="mb mt">
 					<SellerInfo />
 
 					<CompanyLegal />
@@ -87,3 +88,4 @@ export default class FormComponentView extends Component {
 	  	)
 	}
 }
+/* eslint-enable */

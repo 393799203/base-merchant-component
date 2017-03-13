@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react'
 import VerifyPhone from 'source_path/verify-phone';
 import Readme from './README.md';
@@ -17,14 +18,14 @@ export default class VerifyPhoneView extends Component {
     
     render () {
         return (
-            <div className="m-l m-r m-b-xxl">
-                <h1>
+            <div className='mb-lg ml mr'>
+                <h2 className='pb-5 b-b dashed'>
                     手机验证 - VerifyPhone
-                </h1>
-                <h2>
-                    1. 示例
                 </h2>
-                <div className="m-l m-r m-t m-b" style={{border:"1px solid #eee" , padding:"10px"}}>
+                <h3>
+                    1. 示例
+                </h3>
+                <div className="m" style={{border:"1px solid #eee" , padding:"10px"}}>
                     <VerifyPhone 
                         disabled={false}
                         btnName={"test"}
@@ -39,3 +40,4 @@ export default class VerifyPhoneView extends Component {
         )
     }
 }
+/* eslint-enable */

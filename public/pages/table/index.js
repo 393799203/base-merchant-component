@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import Table from 'source_path/table';
 import Readme from './README.md';
@@ -33,10 +34,8 @@ const TableColumns = [{
     title: "操作",
     renderBody: function(text, record, tbodyCbs){
         return (
-            <a onClick={ e => tbodyCbs[0]( e , record.id ) } href="javascript:;" className="table-link" title="编辑">
-                <label className="label label-info">
-                    <span className="fa fa-pencil">点我点我</span>
-                </label>
+            <a onClick={ e => tbodyCbs[0]( e , record.id ) } href="javascript:;" className="btn btn-info btn-xs" title="编辑">
+                点我点我
             </a>
         )
     }
@@ -93,16 +92,16 @@ export default class TableView extends Component {
     }
     render () {
         return (
-            <div className='m-b-lg m-l m-r'>
-                <h1>
+            <div className='mb-lg ml mr'>
+                <h2 className='pb-5 b-b dashed'>
                     表格 - Table
-                    <a href="mactt://message/user/02845" style={{border: 'none'}} className="m-l-lg btn-info-custom btn">
-                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
+                    <a href="mactt://message/user/02845" style={{border: 'none', boxShadow: 'none'}} className="ml-lg btn-info-border btn">
+                        <i className="fa fa-comments mr-xs"></i>遇到问题？联系作者
                     </a>
-                </h1>
-                <h2>
-                    1. 示例
                 </h2>
+                <h3>
+                    1. 示例
+                </h3>
                 <Table
                   showIndex={false}
                   indexTitle='#'
@@ -120,4 +119,5 @@ export default class TableView extends Component {
         );
     }
 }
+/* eslint-enable */
 

@@ -36,7 +36,7 @@ const calculateBtns = function (currentPage, totalPage, displayNum) {
     return pageBtns;
 };
 
-const renderPageBtn = function (pageBtns, currentPage, totalPage, onChangePage, link, className) {
+const renderPageBtn = function (pageBtns, currentPage, totalPage, onChangePage, link, className, theme, size) {
     return (
         <div className={`mc-pagination ${className}`}>
             {
@@ -44,14 +44,14 @@ const renderPageBtn = function (pageBtns, currentPage, totalPage, onChangePage, 
                     let btnElem;
                     /* 视图情况1: ... 不可点击 */
                     if (item === '...') {
-                        btnElem = <a className='btn disabled' key={index} href='javascript:;'>{item}</a>;
+                        btnElem = <a className={`btn btn-${size} disabled`} key={index} href='javascript:;'>{item}</a>;
                     /* 视图情况2: 上一页按钮，当前页与首页相等时，不可点击 */
                     } else if (item === '<') {
                         if (currentPage === 1) {
-                            btnElem = <a className='btn btn-pre disabled' key={index} href='javascript:;'>{item}</a>;
+                            btnElem = <a className={`btn btn-${size} btn-pre disabled`} key={index} href='javascript:;'>{item}</a>;
                         } else {
                             btnElem = (<a
-                                className='btn btn-pre'
+                                className={`btn btn-${size} btn-pre`}
                                 href={link ? link + (currentPage - 1) : 'javascript:;'}
                                 onClick={(e) => { if (!link) { e.preventDefault(); onChangePage(currentPage - 1); } }}
                                 key={index}
@@ -62,10 +62,10 @@ const renderPageBtn = function (pageBtns, currentPage, totalPage, onChangePage, 
                     /* 视图情况3: 下一页按钮，当前页与尾页相等时，不可点击 */
                     } else if (item === '>') {
                         if (currentPage === totalPage) {
-                            btnElem = <a className='btn btn-next disabled' key={index} href='javascript:;'>{item}</a>;
+                            btnElem = <a className={`btn btn-${size} btn-next disabled`} key={index} href='javascript:;'>{item}</a>;
                         } else {
                             btnElem = (<a
-                                className='btn btn-next'
+                                className={`btn btn-${size} btn-next`}
                                 href={link ? link + (currentPage + 1) : 'javascript:;'}
                                 onClick={(e) => { if (!link) { e.preventDefault(); onChangePage(currentPage + 1); } }}
                                 key={index}
@@ -76,7 +76,7 @@ const renderPageBtn = function (pageBtns, currentPage, totalPage, onChangePage, 
                     /* 视图情况4: 当前页高亮 */
                     } else if (item === currentPage) {
                         btnElem = (<a
-                            className='btn btn-current'
+                            className={`btn btn-${size} btn-${theme}`}
                             href={link ? link + item : 'javascript:;'}
                             onClick={(e) => { if (!link) { e.preventDefault(); onChangePage(item); } }}
                             key={index}
@@ -86,7 +86,7 @@ const renderPageBtn = function (pageBtns, currentPage, totalPage, onChangePage, 
                     /* 视图情况5: 其他 */
                     } else {
                         btnElem = (<a
-                            className='btn'
+                            className={`btn btn-${size}`}
                             href={link ? link + item : 'javascript:;'}
                             onClick={(e) => { if (!link) { e.preventDefault(); onChangePage(item); } }}
                             key={index}
@@ -103,17 +103,19 @@ const renderPageBtn = function (pageBtns, currentPage, totalPage, onChangePage, 
 
 export default class Pagination extends Component {
     render () {
-        const { totalPage, currentPage, displayNum, onChangePage, link, className } = this.props;
+        const { totalPage, currentPage, displayNum, onChangePage, link, className, theme, size } = this.props;
         const pageBtns = calculateBtns(currentPage, totalPage, displayNum);
         return (
             <div>
-                { renderPageBtn(pageBtns, currentPage, totalPage, onChangePage, link, className) }
+                { renderPageBtn(pageBtns, currentPage, totalPage, onChangePage, link, className, theme, size) }
             </div>
         );
     }
 }
 
 Pagination.defaultProps = {
+    size: 'sm',
+    theme: 'danger',
     className: '',
     currentPage: 1,     // 当前页码
     totalPage: 1,   // 总共有多少页
@@ -123,6 +125,8 @@ Pagination.defaultProps = {
 };
 
 Pagination.propTypes = {
+    size: PropTypes.oneOf(['normal', 'xs', 'sm', 'md']),
+    theme: PropTypes.oneOf(['danger', 'info', 'dark', 'success', 'warning']),
     className: PropTypes.string,
     currentPage: PropTypes.number.isRequired,
     totalPage: PropTypes.number.isRequired,

@@ -1,4 +1,4 @@
-## 2. 使用说明
+### 2. 使用说明
 #### 引入方式:
 ```
 import React, { Component } from 'react';
@@ -217,7 +217,7 @@ class MultiUpload extends Component {
 }
 ```
 
-## 3. 参数说明
+### 3. 参数说明
 
 | 参数         |  必填        |  说明          | 类型         |  备注       |   默认值      |
 | ------------ |------------ | ------------- | ------------ | ------------  |------------  |
@@ -233,7 +233,7 @@ class MultiUpload extends Component {
 | singleSuccess |  N  | 单个文件上传成功后的回调 | Function | 多文件上传时使用 | null |
 | singleFail |  N  | 单个文件上传失败后的回调 | Function | 多文件上传时使用 | null |
 
-## 4. API 使用说明
+### 4. API 使用说明
 #### before(fileList)
 
 * fileList: [Object] 为用户选中文件列表，其中的每一个文件会被添加一个key为`fid`的属性标记文件id

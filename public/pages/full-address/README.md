@@ -1,4 +1,4 @@
-## 2. 使用说明
+### 2. 使用说明
 
 ```
 import React, { Component } from 'react'
@@ -26,19 +26,19 @@ export default class FullAddressView extends Component {
 
     render () {
         return (
-            <div className="m-l m-r m-b-xxl mc-field">
+            <div className="ml mr mb-xxl mc-field">
                 <div className='title'>
-                    <button className="m-b btn btn-success-custom m-r" onClick={() => this.getData()}>获取数据</button>
-                    <button className="m-b btn btn-warning-custom m-r" onClick={() => this.clearData()}>清空数据</button>
-                    <button className="m-b btn btn-info-custom m-r" onClick={() => this.resetData()}>重置数据</button>
+                    <button className="mb btn btn-success-custom mr" onClick={() => this.getData()}>获取数据</button>
+                    <button className="mb btn btn-warning-custom mr" onClick={() => this.clearData()}>清空数据</button>
+                    <button className="mb btn btn-info-custom mr" onClick={() => this.resetData()}>重置数据</button>
                 </div>
 
                 <div className='demo clearfix'>
-                    <div className='f-l field-demo'>
+                    <div className='fl field-demo'>
                         <h5>默认情况：</h5>
                         <FullAddress name="test"/>
                     </div>
-                    <div className="f-l field-demo">
+                    <div className="fl field-demo">
                         <h5>基础配置属性：禁用（provinceDisabled、cityDisabled、areaDisabled、streetDisabled）、样式（className、style）</h5>
                         <FullAddress 
                             provinceDisabled={true}
@@ -48,7 +48,7 @@ export default class FullAddressView extends Component {
                             name="test1"
                         />
                     </div>
-                    <div className="f-l field-demo">
+                    <div className="fl field-demo">
                         <h5>赋值属性：defaultProvince、defaultCity、defaultArea、defaultStreet</h5>
                         <FullAddress 
                             defaultProvince="山西省" 
@@ -59,7 +59,7 @@ export default class FullAddressView extends Component {
                         />
                     </div>
 
-                    <div className="f-l field-demo">
+                    <div className="fl field-demo">
                         <h5>回调函数：onChange</h5>
                         <FullAddress
                             onChange = {(e) => this.addressChange(e)}
@@ -67,7 +67,7 @@ export default class FullAddressView extends Component {
                         />
                     </div>
 
-                    <div className="f-l field-demo">
+                    <div className="fl field-demo">
                         <h5>表单属性：form（多个address同时使用时，通过form进行划分，可用于获取数据、清空、重置中,如果没有设置form，则默认为defaultForm，在数据、清空、重置方法中不传入form则是处理整个defaultForm）</h5>
                         <FullAddress 
                             name="test4"
@@ -82,7 +82,7 @@ export default class FullAddressView extends Component {
 
 ```
 	
-## 3. 属性 - Props
+### 3. 属性 - Props
 
 | props        | 说明           | 类型         |   默认值       |
 | ------------ | ------------- | ------------ | ------------  |
@@ -102,7 +102,7 @@ export default class FullAddressView extends Component {
 | placeholder     | 详细地址的水印 | string | "请填写详细地址"   |
 
 
-## 4. 方法 - Function
+### 4. 方法 - Function
 
 > 通过refs获取Modal实例调用的方法
 

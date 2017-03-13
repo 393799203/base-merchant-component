@@ -35,10 +35,8 @@
 	    renderBody: function(text, record, tbodyCbs){
 	        console.log(record)
 	        return (
-	            <a onClick={ e => tbodyCbs[0]( e , record.id ) } href="javascript:;" className="table-link" title="编辑">
-	                <label className="label label-info">
-	                    <span className="fa fa-pencil">点我点我</span>
-	                </label>
+	            <a onClick={ e => tbodyCbs[0]( e , record.id ) } href="javascript:;" className="btn btn-info btn-xs" title="编辑">
+	                点我点我
 	            </a>
 	        )
 	    }

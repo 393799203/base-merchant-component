@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import {Select} from 'source_path/select';
 import Readme from './README.md';
@@ -42,24 +43,24 @@ export default class SelectView extends Component {
     render () {
         let {selectData1, selectData2, selectData3, selectValue, selectDefaultValue} = this.state;
         return (
-            <div className='m-b-lg m-l m-r mc-field mc-select-demo'>
-                <h1>
+            <div className='mb-lg ml mr mc-field mc-select-demo'>
+                <h2 className='pb-5 b-b dashed'>
                     下拉菜单 - Select
-                    <a href="mactt://message/user/02635" style={{border: 'none'}} className="m-l-lg btn-info-custom btn">
-                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
+                    <a href="mactt://message/user/02635" style={{border: 'none', boxShadow: 'none'}} className="ml-lg btn-info-border btn">
+                        <i className="fa fa-comments mr-xs"></i>遇到问题？联系作者
                     </a>
-                </h1>
-                <h2>
-                    1. 示例
                 </h2>
+                <h3>
+                    1. 示例
+                </h3>
                 <div className="title">
-                    <button className="m-b btn btn-success-custom m-r" onClick={() => this.getData()}>获取文本框信息</button>
-                    <button className="m-b btn btn-warning-custom m-r" onClick={() => this.clearData()}>清空文文本框信息</button>
-                    <button className="m-b btn btn-info-custom m-r" onClick={() => this.resetData()}>重置文本框信息</button>
+                    <button className="mb btn btn-success-border mr" onClick={() => this.getData()}>获取文本框信息</button>
+                    <button className="mb btn btn-warning-border mr" onClick={() => this.clearData()}>清空文文本框信息</button>
+                    <button className="mb btn btn-info-border mr" onClick={() => this.resetData()}>重置文本框信息</button>
                 </div>
                 <div className='demo clearfix'>
-                    <div className='f-l field-demo'>
-                        <h5>必填属性：name、options</h5>
+                    <div className='fl field-demo'>
+                        <h4>必填属性：name、options</h4>
                         <Select 
                             className="select-demo"
                             name="select1"
@@ -67,8 +68,8 @@ export default class SelectView extends Component {
                             placeholder={"请选择"}
                         />
                     </div>
-                    <div className="f-l field-demo">
-                        <h5>其他基础配置属性：禁用（disabled）、样式（className）、水印（placeholder）</h5>
+                    <div className="fl field-demo">
+                        <h4>其他基础配置属性：禁用（disabled）、样式（className）、水印（placeholder）</h4>
                         <Select
                             options={selectData2}
                             disabled={true}
@@ -77,8 +78,8 @@ export default class SelectView extends Component {
                             className="select-demo"
                         />
                     </div>
-                    <div className="f-l field-demo">
-                        <h5>赋值属性：value,一般要与onChange事件搭配使用，组件以传递的value值为主，进行赋值，如果传入的value不再options中，则展示数据为空</h5>
+                    <div className="fl field-demo">
+                        <h4>赋值属性：value,一般要与onChange事件搭配使用，组件以传递的value值为主，进行赋值，如果传入的value不再options中，则展示数据为空</h4>
                         <Select 
                             className="select-demo"
                             name="select3"
@@ -88,8 +89,8 @@ export default class SelectView extends Component {
                         />
                     </div>
 
-                    <div className="f-l field-demo">
-                        <h5>赋值属性：defaultValue</h5>
+                    <div className="fl field-demo">
+                        <h4>赋值属性：defaultValue</h4>
                         <Select 
                             className="select-demo"
                             name="select4"
@@ -98,10 +99,10 @@ export default class SelectView extends Component {
                         />
                     </div>
 
-                    <div className="f-l field-demo">
-                        <h5>表单属性：form（多个select同时使用时，通过form进行划分，可用于获取数据、清空、重置中,如果没有设置form，则默认为defaultForm，在数据、清空、重置方法中不传入form则是处理整个defaultForm）</h5>
+                    <div className="fl field-demo">
+                        <h4>表单属性：form（多个select同时使用时，通过form进行划分，可用于获取数据、清空、重置中,如果没有设置form，则默认为defaultForm，在数据、清空、重置方法中不传入form则是处理整个defaultForm）</h4>
                         <Select 
-                            className="select-demo m-t-15"
+                            className="select-demo mt-15"
                             name="select5"
                             defaultValue = {selectDefaultValue}
                             options={selectData3}
@@ -109,7 +110,7 @@ export default class SelectView extends Component {
                         />
 
                         <Select 
-                            className="select-demo m-t-15"
+                            className="select-demo mt-15"
                             name="select6"
                             defaultValue = {selectDefaultValue}
                             options={selectData3}
@@ -117,7 +118,7 @@ export default class SelectView extends Component {
                         />
 
                         <Select 
-                            className="select-demo m-t-15"
+                            className="select-demo mt-15"
                             name="select7"
                             defaultValue = {selectDefaultValue}
                             options={selectData3}
@@ -130,3 +131,4 @@ export default class SelectView extends Component {
         );
     }
 }
+/* eslint-enable */

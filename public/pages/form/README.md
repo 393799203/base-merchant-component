@@ -1,4 +1,4 @@
-## 2. 配置的json格式
+### 2. 配置的json格式
 
 ```
 options:[{
@@ -162,7 +162,7 @@ options:[{
 }]
 ```
 
-## 3. 代码
+### 3. 代码
 
 ```
 
@@ -203,24 +203,24 @@ export default class FormComponentView extends Component {
 
     render () {
         return (
-            <div className="m-l m-r m-b-xxl">
+            <div className="ml mr mb-xxl">
                 <button
-                    className="btn btn-success-custom w-sm m-r" 
+                    className="btn btn-success-custom w-sm mr" 
                     onClick={ (e) => { this.getData() }}>
                     获取数据
                 </button>
                 <button
-                    className="btn btn-info-custom w-sm m-r" 
+                    className="btn btn-info-custom w-sm mr" 
                     onClick={ (e) => { this.resetData() }}>
                     初始化数据
                 </button>
                 <button
-                    className="btn btn-warning-custom w-sm m-r" 
+                    className="btn btn-warning-custom w-sm mr" 
                     onClick={ (e) => { this.clearData() }}>
                     清除数据
                 </button>
                 <button
-                    className="btn btn-danger-custom w-sm m-r" 
+                    className="btn btn-danger-custom w-sm mr" 
                     onClick={ (e) => { this.validate() }}>
                     校验数据
                 </button>
@@ -236,7 +236,7 @@ export default class FormComponentView extends Component {
 
 ```
 
-## 4. 组件属性 - Props
+### 4. 组件属性 - Props
 
 | props        | 说明           | 类型         |   默认值       |
 | ------------ | ------------- | ------------ | ------------  |
@@ -245,7 +245,7 @@ export default class FormComponentView extends Component {
 | prefixcls | 最外层样式 | string | '' |
 
 
-## 4. json属性 - Props
+### 4. json属性 - Props
 
 | props        | 说明           | 类型         |   默认值       |
 | ------------ | ------------- | ------------ | ------------  |
@@ -263,12 +263,11 @@ export default class FormComponentView extends Component {
 | defaultValue | 默认值 | All | - |
 | options | checkbox类型、select类型和radio类型需要传递的一组值，类型为array，数组成员为object | Array | - |
 | attrs | 追加到控件上得自定义属性，以对象形式传递如{readOnly: 'readOnly'} | Object | - |
-
 | onValidate | 自定义表单校验函数 | function | - |
 | onChange | 表单改变的回调函数 | function | - |
 
 
-## 5. 方法 - Function
+### 5. 方法 - Function
 
 | 方法名        |   说明    | 参数          | 返回值         |
 | ------------ | ------------- | ------------- | ------------ |

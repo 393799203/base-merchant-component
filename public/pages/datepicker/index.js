@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import Datepicker from 'source_path/datepicker';
 import Notification from 'source_path/notification';
@@ -30,24 +31,24 @@ export default class DatepickerView extends Component {
 
 	render () {
 		return (
-			<div className="m-l m-r m-b-xxl mc-date-picker">
-				<h1>
+			<div className="ml mr mb-xxl mc-date-picker">
+				<h2 className='pb-5 b-b dashed'>
 					日期选择 - Datepicker
-					<a href="mactt://message/user/01825" style={{border: 'none'}} className="m-l-lg btn-info-custom btn">
-                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
+					<a href="mactt://message/user/01825" style={{border: 'none', boxShadow: 'none'}} className="ml-lg btn-info-border btn">
+                        <i className="fa fa-comments mr-xs"></i>遇到问题？联系作者
                     </a>
-				</h1>
-				<h2>
-					1. 示例
 				</h2>
-				<div className="m-t-30">
+				<h3>
+					1. 示例
+				</h3>
+				<div className="mt-30">
 					<div className="date-picker-demo clearfix">
-						<div className='f-l'>
+						<div className='fl'>
 							<h4>默认情况时间选择器</h4>
 							<Datepicker />
 						</div>
 
-						<div className='f-l sub-demo'>
+						<div className='fl sub-demo'>
 							<h4>禁用时间选择器（disabled）</h4>
 							<Datepicker disabled/>
 						</div>
@@ -55,14 +56,14 @@ export default class DatepickerView extends Component {
 
 					<div className="date-picker-demo clearfix">
 						<h4>展示时分秒（showTime），设置水印（placeholder）</h4>
-						<div className='f-l'>
+						<div className='fl'>
 							<h5>默认为当前时间</h5>
 							<Datepicker 
 								showTime
 								placeholder="请设置水印" />
 						</div>
 
-						<div className="f-l sub-demo">
+						<div className="fl sub-demo">
 							<h5>设置默认时分秒（timeConfig）</h5>
 							<Datepicker
 								showTime
@@ -73,20 +74,20 @@ export default class DatepickerView extends Component {
 
 					<div className="date-picker-demo clearfix">
 						<h4>配置的日期格式（format），设置默认值（defaultValue）</h4>
-						<div className='f-l'>
+						<div className='fl'>
 							<h5>默认时间格式：yyyy-MM-dd</h5>
 							<Datepicker 
 								defaultValue={"2016-11-11"} />
 						</div>
 
-						<div className="f-l sub-demo">
+						<div className="fl sub-demo">
 							<h5>设置时间格式：yyyy/MM/dd</h5>
 							<Datepicker 
 								format={"yyyy/MM/dd"}
 								defaultValue={1486197669000}/>
 						</div>
 
-						<div className="f-l sub-demo">
+						<div className="fl sub-demo">
 							<h5>设置时间格式：yyyy年MM月dd日</h5>
 							<Datepicker 
 								format={"yyyy年MM月dd日"}
@@ -96,13 +97,13 @@ export default class DatepickerView extends Component {
 
 					<div className="date-picker-demo clearfix">
 						<h4>事件：不可选择的日期（disabledDate），回调函数（onChange）</h4>
-						<div className='f-l'>
+						<div className='fl'>
 							<h5>设置不可选择的日期</h5>
 							<Datepicker
 								disabledDate={(value) => this.disabledDate(value)} />
 						</div>
 
-						<div className="f-l sub-demo">
+						<div className="fl sub-demo">
 							<h5>时间发生变化的回调，发生在用户选择时间时</h5>
 							<Datepicker 
 								onChange={value => this.onChange(value)} />
@@ -116,3 +117,4 @@ export default class DatepickerView extends Component {
 		)
 	}
 }
+/* eslint-enable */

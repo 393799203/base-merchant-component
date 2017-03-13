@@ -1,7 +1,9 @@
+/* eslint-disable */
 import React, { Component, PropTypes } from 'react';
-import _menuData from './menu';
-import _busMenuData from './business-menu';
-import HeadNav from './headNav';
+import _menuData from './data.sider.a';
+import _busMenuData from './data.sider.b';
+import { MHeader } from 'source_path/layout';
+import menuOptions from './data.header.js';
 
 _menuData.sort((item1, item2) => {
     const temp1 = item1.link.slice(2, 3).toLowerCase();
@@ -41,11 +43,17 @@ export default class LayoutView extends Component {
     componentDidMount () {
         // 判断默认为哪种类型组件
         this.getCompType();
+        console.log('a');
     }
 
-    getCompType () {
-        const urllast = window.location.hash.indexOf('?') > 0 ? window.location.hash.indexOf('?') : window.location.hash.length;
-        const activeUrl = window.location.hash.slice(0, urllast);
+    getCompType (item) {
+        let activeUrl;
+        if (item && item.link) {
+            activeUrl = item.link;
+        } else {
+            const urllast = window.location.hash.indexOf('?') > 0 ? window.location.hash.indexOf('?') : window.location.hash.length;
+            activeUrl = window.location.hash.slice(0, urllast);
+        }
         let menu = false;
         for (let i = 0; i < _busMenuData.length; i++) {
             if (_busMenuData[i].link === activeUrl) {
@@ -82,28 +90,26 @@ export default class LayoutView extends Component {
     render () {
         const { menuData, activeUrl, keywords } = this.state;
         return (
-            <div className='app-header-fixed app-aside-fixed'>
-                <HeadNav isHome={false} onClick={() => this.getCompType()} />
-                <div>
-                    <div className='app-aside bg-light'>
-                        <div className='aside-wrap' style={{ overflow: 'scroll', paddingBottom: '40px' }}>
-                            <div className='input-group wrapper'>
-                                <input
-                                    value={keywords}
-                                    onChange={(e) => { this.filterData(e); }}
-                                    type='text'
-                                    className='form-control bg-white-only no-border padder ng-pristine ng-valid ng-touched'
-                                    placeholder='搜索'
-                                />
-                                <span className='input-group-btn'>
-                                    <button type='submit' className='btn bg-white-only'>
-                                        <i className='fa fa-search' />
-                                    </button>
-                                </span>
-                            </div>
+            <div>
+                <MHeader menuOptions={menuOptions} type='fixed' theme='danger' menuHandler={this.getCompType.bind(this)} />
+                <div className='app-body'>
+                    <div className='app-sider'>
+                        <div className='app-sider-content bg-light'>
+                            <form className="form-sm pt-15 pl-10">
+                                <div className="form-group">
+                                    <i className="iconfont icon-search form-addon-r"></i>
+                                    <input
+                                        type="text"
+                                        value={keywords}
+                                        onChange={(e) => { this.filterData(e); }}
+                                        className="form-input"
+                                        placeholder='搜索'
+                                    />
+                                </div>
+                            </form>
                             {
                                 menuData.length === 0 ?
-                                    <div className='wrapper text-center'>
+                                    <div className='p-15 text-center'>
                                         <p>还没有这个组件哦～</p>
                                         <p>
                                             <a className='btn btn-sm btn-danger' href='http://gitlab.mogujie.org/Aveng/meili-base-merchant-component' target='_blank'>
@@ -113,16 +119,16 @@ export default class LayoutView extends Component {
                                     </div>
                                 : null
                             }
-                            <ul className='nav' style={{ background: '#edf1f2' }}>
+                            <ul style={{ background: '#edf1f2' }} className='mt-10'>
                                 {
                                     menuData.map((item, index) => {
                                         return (
                                             <li
-                                                className={activeUrl === item.link ? 'active' : ''}
+                                                className={activeUrl === item.link ? 'app-sider-item active' : 'app-sider-item'}
                                                 key={index}
                                                 onClick={() => this.activeMenu(item)}
                                             >
-                                                <a href={item.link}>{item.title}</a>
+                                                <a href={item.link} className='block p-10 text-base'>{item.title}</a>
                                             </li>
                                         );
                                     })
@@ -142,3 +148,4 @@ export default class LayoutView extends Component {
 LayoutView.propTypes = {
     children: PropTypes.node
 };
+/* eslint-enable */

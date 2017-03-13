@@ -45,6 +45,7 @@ export default class Dropdown extends Component {
                 <div className={showMenu ? 'mc-menu active' : 'mc-menu'}>
                     {
                         options.map((item, index) => {
+                            if (!item.id) options[index].id = Math.random().toString(36).substr(2, 16);
                             return (
                                 <div
                                     key={index}
@@ -68,6 +69,7 @@ export default class Dropdown extends Component {
                                             <div className={activeId === item.id ? 'mc-sub-menu active' : 'mc-sub-menu'}>
                                                 {
                                                     item.options.map((subItem, subIndex) => {
+                                                        if (!subItem.id) options[index].options[subIndex].id = Math.random().toString(36).substr(2, 16);
                                                         return (
                                                             <a
                                                                 key={subIndex}

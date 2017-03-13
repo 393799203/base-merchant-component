@@ -1,4 +1,4 @@
-## 2. 使用说明
+### 2. 使用说明
 
 #### 2.1 参数说明
 
@@ -30,20 +30,10 @@
             let {code} = this.state;
 
             return (
-                <div className="m-l m-r m-b-xxl">
-                    <h1>
-                        手机区号 - AreaCode
-                    </h1>
-                    <h2>
-                        1. 示例
-                    </h2>
-                    <div className="m-l m-r m-t m-b">
-                        <AreaCode
-                            defaultValue={code}
-                            onChange = {(code) => this.handleChange(code)} 
-                        />
-                    </div>
-                </div>
+                <AreaCode
+                    defaultValue={code}
+                    onChange = {(code) => this.handleChange(code)} 
+                />
             )
         }
     }

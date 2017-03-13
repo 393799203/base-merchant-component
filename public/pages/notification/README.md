@@ -1,4 +1,4 @@
-## 2. 示例代码
+### 2. 示例代码
 
 #### 2.1 错误提示
 
@@ -49,7 +49,7 @@
 	});
 
 
-## 3. 详细使用说明
+### 3. 详细使用说明
 
 	import React, { Component } from 'react'
 	import Notification from '@meili/base-merchant-component/lib/notification'
@@ -72,7 +72,7 @@
 		}
 	}
 
-## 3. Function
+### 4. Function
 
 > 通过Notification调用的方法，共提供四种类型的提示 (`error`, `success`, `warn`, `info`)；兼容0.x.x版本的`Notification`，`Notification.open = Notification.error`；1.0.0以上版本建议使用以下四种方法。
 

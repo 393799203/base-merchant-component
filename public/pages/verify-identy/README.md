@@ -1,4 +1,4 @@
-## 2. 使用说明
+### 2. 使用说明
 
 ```
 import React, { Component } from 'react'
@@ -8,22 +8,20 @@ export default class VerifyIdentyView extends Component {
     constructor () {
         super();
     }
-    
     render () {
         return (
-            <div className="m-l m-r m-b-xxl">
-                <VerifyIdenty 
-                    hideModule={{identy:false,phone:false}}
-                    identyConfig={{title:"法人代表身份认证",subTitle:"必须保证填写的企业证件与入驻时填写的一致"}}
-                    phoneConfig={{title:"验证一下",subTitle:"验证文案",phoneLabel:"手机号码："}}/>
-            </div>
+            <VerifyIdenty 
+                hideModule={{identy:false,phone:false}}
+                identyConfig={{title:"法人代表身份认证",subTitle:"必须保证填写的企业证件与入驻时填写的一致"}}
+                phoneConfig={{title:"验证一下",subTitle:"验证文案",phoneLabel:"手机号码："}}
+            />
         )
     }
 }
 
 ```
     
-## 3. 属性 - Props
+### 3. 属性 - Props
 
 | props        | 说明           | 类型         |   默认值       |
 | ------------ | ------------- | ------------ | ------------  |
@@ -39,7 +37,7 @@ export default class VerifyIdentyView extends Component {
 | submit | 点击提交出发的事件          | 方法   |  function   |
 | getResult | 点击提交先出发验证，然后出发getResult方法   | 方法  |  function   |
 
-## 4. 方法 - Function
+### 4. 方法 - Function
 
 | 方法名        |   说明    | 参数          | 返回值         |
 | ------------ | ------------- | ------------- | ------------ |

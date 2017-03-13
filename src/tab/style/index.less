@@ -1,3 +1,18 @@
+@import "../../_theme/variables";
+
+.theme-style (@color) {
+    @color-base: "color-@{color}-base";
+    &.mc-tab-@{color} {
+        .mc-tab-nav li {
+            &.active {
+                a {
+                    border-bottom: 2px solid @@color-base;
+                }
+            }
+        }
+    }
+}
+
 .mc-tab-wrapper {
     .mc-tab-nav {
         position: relative;
@@ -11,7 +26,7 @@
             list-style: none;
             &.active {
                 a {
-                    border-bottom: 2px solid #F55;
+                    border-bottom: 2px solid @color-danger-base;
                 }
             }
             a {
@@ -21,4 +36,9 @@
             }
         }
     }
+    .theme-style(danger);
+    .theme-style(info);
+    .theme-style(success);
+    .theme-style(dark);
+    .theme-style(warning);
 }

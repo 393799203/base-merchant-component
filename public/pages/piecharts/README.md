@@ -1,9 +1,9 @@
-## 2. 使用说明
+### 2. 使用说明
 #### 2.1 使用范例
 
 ```javascript
 import React, { Component } from 'react';
-import PieCharts from 'source_path/piecharts';
+import PieCharts from '@meili/base-merchant/component/lib/piecharts';
 
 export default class TeamTalkView extends Component {
 	constructor() {
@@ -67,7 +67,7 @@ export default class TeamTalkView extends Component {
 				'series': [{
 					name: '访问来源1',
 					radius: ['50%', '70%'], //内部空白部分大小， 外部整个圆形大小
-					center: ['15%', '50%'],  //图形位移位置， left top 
+					center: ['15%', '50%'],  //图形位移位置， left top
 					label: {
 						normal: {
 							show: false,
@@ -161,8 +161,8 @@ export default class TeamTalkView extends Component {
 }
 
 ```
-	
-## 3. 属性 - Props --- 
+
+### 3. 属性 - Props ---
 
 | props        | 说明           | 类型         |   默认值       |
 | ------------ | ------------- | ------------ | ------------  |
@@ -174,7 +174,7 @@ export default class TeamTalkView extends Component {
 |{className} |  图表外层容器的class | string | - |
 |{id}        |  图表外层容器的id | string | chartsId_随机数 |
 
-## 4. 方法 - Function
+### 4. 方法 - Function
 
 > 还有很多属性，可以查询百度echarts官网，通过extend来扩展，类型太多，我这不全部列举
 

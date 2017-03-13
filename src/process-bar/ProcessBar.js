@@ -15,7 +15,7 @@ export default class ProcessBar extends Component {
     }
     render () {
         let { cur } = this.state;
-        const { stepTp, stepBt } = this.props;
+        const { stepTp, stepBt, theme, size, className } = this.props;
         let length = Math.max(stepTp.length, stepBt.length);
         const Steps = [];
         cur = cur > 6 ? 6 : cur;
@@ -33,7 +33,7 @@ export default class ProcessBar extends Component {
                         { i >= cur ?
                             <span>{i}</span>
                             :
-                            <span className='icon-check' />
+                            <span className='iconfont icon-check' />
                         }
                     </div>
                     { stepBt[i - 1] ?
@@ -46,7 +46,7 @@ export default class ProcessBar extends Component {
         }
 
         return (
-            <div className={`mc-process mc-process-len${length}`}>
+            <div className={`mc-process-${size} mc-process-${theme} mc-process mc-process-len${length} ${className}`}>
                 <div className={`mc-process-cont mc-process-step${cur}`}>
                     {/* class: step样式不加为全灰，mc-process-step1 为第一步，依次类推 */ }
                     <div className='mc-process-wrap' />
@@ -60,11 +60,17 @@ export default class ProcessBar extends Component {
 }
 
 ProcessBar.propTypes = {
+    size: PropTypes.oneOf(['normal', 'sm', 'xs']),
+    theme: PropTypes.oneOf(['danger', 'info', 'dark', 'success', 'warning']),
+    className: PropTypes.string,
     stepTp: PropTypes.array,
     stepBt: PropTypes.array,
     cur: PropTypes.number
 };
 ProcessBar.defaultProps = {
+    size: 'normal',
+    theme: 'danger',
+    className: '',
     stepTp: [],
     stepBt: [],
     cur: 0

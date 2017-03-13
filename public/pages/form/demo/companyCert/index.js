@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react'
 import Form from 'source_path/form';
 
@@ -36,24 +37,24 @@ export default class CompanyCertView extends Component {
 
 	render () {
 		return (
-			<div className="m-b m-t">
+			<div className="mb mt">
 				<button
-					className="btn btn-success-custom w-sm m-r" 
+					className="btn btn-success-border w-sm mr" 
 					onClick={ (e) => { this.getData() }}>
 					获取数据
 				</button>
 				<button
-					className="btn btn-info-custom w-sm m-r" 
+					className="btn btn-info-border w-sm mr" 
 					onClick={ (e) => { this.resetData() }}>
 					初始化数据
 				</button>
 				<button
-					className="btn btn-warning-custom w-sm m-r" 
+					className="btn btn-warning-border w-sm mr" 
 					onClick={ (e) => { this.clearData() }}>
 					清除数据
 				</button>
 				<button
-					className="btn btn-danger-custom w-sm m-r" 
+					className="btn btn-danger-border w-sm mr" 
 					onClick={ (e) => { this.validate() }}>
 					校验数据
 				</button>
@@ -65,3 +66,4 @@ export default class CompanyCertView extends Component {
 	  	)
 	}
 }
+/* eslint-enable */

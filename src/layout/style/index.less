@@ -1,0 +1,96 @@
+@import '../../_theme/variables';
+@import '../../_theme/utils';
+
+/* header css */
+.mc-header-bg (@color) {
+	@color-dker: "color-@{color}-dker";
+	@color-dk: "color-@{color}-dk";
+	@color-base: "color-@{color}-base";
+	@color-lt: "color-@{color}-lt";
+	@color-lter: "color-@{color}-lter";
+
+	&.bg-@{color} {
+		background: @@color-base;
+		.mc-header-brand,
+		.mc-header-menu,
+		.mc-header-menu .mc-header-menu-item,
+		.mc-header-menu .mc-header-menu-item a,
+		.mc-header-user,
+		.mc-header-user a {
+			color: #fff;
+		}
+		.mc-header-menu {
+			.mc-header-menu-item {
+				&.active {
+					background: @@color-dk;
+				}
+				&:hover {
+					background: @@color-dk;
+				}
+			}
+		}
+	}
+}
+
+.mc-header {
+	width: 100%;
+}
+.mc-header-fixed {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 10;
+}
+.mc-header, .mc-header-brand, .mc-header-menu, .mc-header-user {
+	height: 50px;
+	line-height: 50px;
+}
+.mc-header {
+	.clearfix();
+	background: #fff;
+	.mc-header-brand {
+		width: 200px;
+		float: left;
+		display: block;
+		text-align: center;
+		color: @font-color-dk;
+		font-size: @font-size-xl;
+		font-weight: bold;
+	}
+	.mc-header-menu {
+		float: left;
+		margin-left: 20px;
+		.mc-header-menu-item {
+			float: left;
+			display: block;
+			padding: 0 15px;
+			color: @font-color-base;
+			a {
+				display: block;
+				color: @font-color-base;
+			}
+			transition: background 0.3s;
+			&.active {
+				background: @color-light-base;
+			}
+			&:hover {
+				background: @color-light-base;
+			}
+		}
+	}
+	.mc-header-user {
+		float: right;
+		display: block;
+		padding: 0 15px;
+		color: @font-color-base;
+		a {
+			display: block;
+			color: @font-color-base;
+		}
+	}
+	.mc-header-bg(info);
+	.mc-header-bg(dark);
+	.mc-header-bg(danger);
+	.mc-header-bg(warning);
+	.mc-header-bg(success);
+}

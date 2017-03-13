@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import Field from 'source_path/field';
 import Notification from 'source_path/notification';
@@ -82,18 +83,18 @@ export default class RadioView extends Component {
 	render () {
 		return (
 			<div className="field-demo clearfix">
-				<h2>
+				<h3>
 					1. 示例
-				</h2>
+				</h3>
 				<div className="title">
-					<button className="m-b btn btn-success-custom m-r" onClick={() => this.getData("radio")}>获取文本框信息</button>
-					<button className="m-b btn btn-warning-custom m-r" onClick={() => this.clearData("radio")}>清空文文本框信息</button>
-					<button className="m-b btn btn-info-custom m-r" onClick={() => this.resetData("radio")}>重置文本框信息</button>
-					<button className="m-b btn btn-danger-custom m-r" onClick={() => this.validate("radio")}>提交文本框信息并校验</button>
+					<button className="mb btn btn-success-border mr" onClick={() => this.getData("radio")}>获取文本框信息</button>
+					<button className="mb btn btn-warning-border mr" onClick={() => this.clearData("radio")}>清空文文本框信息</button>
+					<button className="mb btn btn-info-border mr" onClick={() => this.resetData("radio")}>重置文本框信息</button>
+					<button className="mb btn btn-danger-border mr" onClick={() => this.validate("radio")}>提交文本框信息并校验</button>
 				</div>
 				<div className='demo clearfix'>
-					<div className='f-l field-demo'>
-						<h5>必填属性：类型（type）、name、表单复杂的情况下建议设置form给表单归类</h5>
+					<div className='fl field-demo'>
+						<h4>必填属性：类型（type）、name、表单复杂的情况下建议设置form给表单归类</h4>
 						<Field 
 							type="radio"
 					        name="radio"
@@ -102,8 +103,8 @@ export default class RadioView extends Component {
 					        label="必填属性：">
 					    </Field>
 					</div>
-					<div className="f-l field-demo">
-						<h5>其他配置属性：禁用（disabled）、标题（label）、子标题信息（subInfo）、样式（className）</h5>
+					<div className="fl field-demo">
+						<h4>其他配置属性：禁用（disabled）、标题（label）、子标题信息（subInfo）、样式（className）</h4>
 						<Field 
 							type="radio"
 					        name="radio2"
@@ -115,8 +116,8 @@ export default class RadioView extends Component {
 					        subInfo="我是一个表单信息">
 					    </Field>
 					</div>
-					<div className="f-l field-demo">
-						<h5>其他配置属性：必填（required）、校验错误信息（errorMsg）、校验是否展示（error,默认会自动失去焦点校验）</h5>
+					<div className="fl field-demo">
+						<h4>其他配置属性：必填（required）、校验错误信息（errorMsg）、校验是否展示（error,默认会自动失去焦点校验）</h4>
 						<Field 
 							type="radio"
 					        name="radio3"
@@ -131,8 +132,8 @@ export default class RadioView extends Component {
 					    </Field>
 					</div>
 
-					<div className="f-l field-demo">
-						<h5>其他配置属性：校验是否展示（error,默认会自动失去焦点校验）</h5>
+					<div className="fl field-demo">
+						<h4>其他配置属性：校验是否展示（error,默认会自动失去焦点校验）</h4>
 						<Field 
 							type="radio"
 					        name="radio4"
@@ -146,8 +147,8 @@ export default class RadioView extends Component {
 					    </Field>
 					</div>
 
-					<div className="f-l field-demo">
-						<h5>赋值属性：value、defaultValue</h5>
+					<div className="fl field-demo">
+						<h4>赋值属性：value、defaultValue</h4>
 						<Field 
 							type="radio"
 					        name="radio5"
@@ -183,8 +184,8 @@ export default class RadioView extends Component {
 					    </Field>
 					</div>
 
-					<div className="f-l field-demo">
-						<h5>方法：校验（onValidate）、修改数据回调（onChange）</h5>
+					<div className="fl field-demo">
+						<h4>方法：校验（onValidate）、修改数据回调（onChange）</h4>
 						<Field 
 							type="radio"
 					        name="radio8"
@@ -199,8 +200,8 @@ export default class RadioView extends Component {
 					    <div style={{height:"80px"}}></div>
 					</div>
 
-					<div className="f-l field-demo">
-						<h5>{"自定义属性：attrs={{readOnly: 'readOnly'}}"}</h5>
+					<div className="fl field-demo">
+						<h4>{"自定义属性：attrs={{readOnly: 'readOnly'}}"}</h4>
 						<Field 
 							type="radio"
 					        name="radio9"
@@ -213,8 +214,8 @@ export default class RadioView extends Component {
 					    </Field>
 					</div>
 
-					<div className="f-l field-demo">
-						<h5>{"自定义方法：events={{onMouseOver:()=>{}}}"}</h5>
+					<div className="fl field-demo">
+						<h4>{"自定义方法：events={{onMouseOver:()=>{}}}"}</h4>
 						<Field 
 							type="radio"
 					        name="radio10"
@@ -234,3 +235,4 @@ export default class RadioView extends Component {
 		)
 	}
 }
+/* eslint-enable */

@@ -1,9 +1,9 @@
-## 2. 使用说明
+### 2. 使用说明
 #### 2.1 使用范例
 
 ```javascript
 import React, { Component } from 'react';
-import ChinaMapCharts from 'source_path/chinamapcharts';
+import ChinaMapCharts from '@meili/base-merchant/component/lib/chinamapcharts';
 const randomData = function () {
 	return Math.round(Math.random() * 1000);
 };
@@ -115,8 +115,8 @@ export default class TeamTalkView extends Component {
 }
 
 ```
-	
-## 3. 属性 - Props --- 
+
+### 3. 属性 - Props ---
 
 | props        | 说明           | 类型         |   默认值       |
 | ------------ | ------------- | ------------ | ------------  |
@@ -128,7 +128,7 @@ export default class TeamTalkView extends Component {
 |{className} |  图表外层容器的class | string | - |
 |{id}        |  图表外层容器的id | string | chartsId_随机数 |
 
-## 4. 方法 - Function
+### 4. 方法 - Function
 
 > 还有很多属性，可以查询百度echarts官网，通过extend来扩展，类型太多，我这不全部列举
 

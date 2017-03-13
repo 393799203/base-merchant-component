@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import ChinaMapCharts from 'source_path/chinamapcharts';
 import Readme from './README.md';
@@ -96,14 +97,14 @@ export default class TeamTalkView extends Component {
 
 	render() {
 		return (
-			<div className="m-l m-r m-b-xxl">
-				<h1>
+			<div className="ml mr mb-xxl">
+				<h2 className='pb-5 b-b dashed'>
 					图表组件📈，依赖百度的echarts
-				</h1>
-				<h2>
-					1. 中国地图
 				</h2>
-				<div className="m-t m-b">
+				<h3>
+					1. 中国地图
+				</h3>
+				<div className="mt mb">
 					<ChinaMapCharts className="ocsen" data={this.state.chartsData} extend={this.state.extend} events={this.state.events} ></ChinaMapCharts>
 				</div>
 				<div dangerouslySetInnerHTML={{ __html: Readme }}></div>
@@ -111,3 +112,4 @@ export default class TeamTalkView extends Component {
 		)
 	}
 }
+/* eslint-enable */

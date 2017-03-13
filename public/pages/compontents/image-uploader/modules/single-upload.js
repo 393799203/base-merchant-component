@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, {Component, PropTypes} from 'react';
 import Notification from 'source_path/notification';
 import ImageUploader from 'source_path/image-uploader';
@@ -78,3 +79,4 @@ class SingleUpload extends Component {
 }
 
 export default SingleUpload;
+/* eslint-enable */
