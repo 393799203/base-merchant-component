@@ -281,7 +281,7 @@ class ImageUploader extends Component {
                         type !== 'raw' ? <div className='add-file-btn' /> : null
                     }
                 </form>
-                <iframe id={`${cid}`} className='hidden' />
+                <iframe id={`${cid}`} className='hide' />
             </div>
         );
     }

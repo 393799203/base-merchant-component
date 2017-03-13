@@ -90,7 +90,7 @@ class MultiUpload extends Component {
                 }
                     <li className='upload-entry'>
                         <ImageUploader
-                            className={`${uploading ? 'hidden' : null}`}
+                            className={`${uploading ? 'hide' : null}`}
                             inputAttrs = {{ multiple: true }}
                             before={(list) => me.before(list)}
                             progress={(e, file, xhr) => me.progress(e, file, xhr)}

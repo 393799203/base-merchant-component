@@ -62,14 +62,14 @@ class MultiUpload extends Component {
                 }
                     <li className='upload-entry'>
                         <ImageUploader
-                            className={`${uploading ? 'hidden' : null}`}
+                            className={`${uploading ? 'hide' : null}`}
                             inputAttrs = {{ multiple: true }}
                             before={(list) => me.before(list)}
                             success={(a) => me.success(a)}
                             fail={(a, b) => me.fail(a, b)}
                             finish={() => me.finish()}
                         />
-                        <div className={`uploading-img ${uploading ? null : 'hidden'}`}>
+                        <div className={`uploading-img ${uploading ? null : 'hide'}`}>
                             <p>上传中...</p>
                         </div>
                     </li>
