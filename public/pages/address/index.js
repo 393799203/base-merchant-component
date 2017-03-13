@@ -66,6 +66,7 @@ export default class AddressSelectorView extends Component {
                             provinceDisabled={true}
                             cityDisabled={true}
                             areaDisabled={true}
+                            onChange = {(e) => this.addressChange(e)}
                             name="test1"
                         />
                     </div>

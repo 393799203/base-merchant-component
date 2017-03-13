@@ -96,26 +96,26 @@ const util = {
         return target;
     },
 
-    // extend (target, ...args) {
-    //     if (target == null) {
-    //         throw new TypeError('Cannot convert undefined or null to object');
-    //     }
+    assign (target, ...args) {
+        if (target == null) {
+            throw new TypeError('Cannot convert undefined or null to object');
+        }
 
-    //     const to = Object(target);
+        const to = Object(target);
 
-    //     for (let index = 1; index < args.length; index++) {
-    //         const nextSource = args[index];
-    //         if (nextSource != null) { // Skip over if undefined or null
-    //             for (const nextKey in nextSource) {
-    //                 // Avoid bugs when hasOwnProperty is shadowed
-    //                 if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
-    //                     to[nextKey] = JSON.parse(JSON.stringify(nextSource[nextKey]));
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     return to;
-    // },
+        for (let index = 1; index < args.length; index++) {
+            const nextSource = args[index];
+            if (nextSource != null) { // Skip over if undefined or null
+                for (const nextKey in nextSource) {
+                    // Avoid bugs when hasOwnProperty is shadowed
+                    if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+                        to[nextKey] = JSON.parse(JSON.stringify(nextSource[nextKey]));
+                    }
+                }
+            }
+        }
+        return to;
+    },
     dateFormat (timestamp, fmt) { // 时间格式化
         if (timestamp) { // 后端存储的时间戳单位为秒
             const d = new Date(timestamp * 1000);

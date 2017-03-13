@@ -205,13 +205,14 @@ export default class FullAddress extends Component {
         } = this.props;
 
         return (
-            <div className={`${className} full-address-select clearfix`} style={style}>
+            <div className={`${className} full-address-select clearfix`}>
                 <Address
                     onChange={e => this.changeAddress(e)}
                     defaultProvince={defaultProvince}
                     defaultCity={defaultCity}
                     defaultArea={defaultArea}
                     form={name}
+                    style={style}
                     provinceDisabled={provinceDisabled}
                     cityDisabled={cityDisabled}
                     areaDisabled={areaDisabled}
@@ -222,6 +223,7 @@ export default class FullAddress extends Component {
                     <Field
                         type='text'
                         name='street'
+                        attrs={{ style }}
                         className='input-location'
                         defaultValue={defaultStreet}
                         onChange={e => this.changeStreet(e)}

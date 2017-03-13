@@ -76,38 +76,37 @@ export default class Address extends Component {
         defaultProvince: '-1',
         defaultCity: '-1',
         defaultArea: '-1',
+        url: 'http://logistics.mogujie.com/jsonp/getAddressMapActionlet/1',
         onChange: () => {}
     };
 
     static propTypes = {
+        form: PropTypes.string,
+        name: PropTypes.string.isRequired,
         defaultProvince: PropTypes.string,
         defaultCity: PropTypes.string,
         defaultArea: PropTypes.string,
-        onChange: PropTypes.func,
-        style: PropTypes.object,
-        className: PropTypes.string,
-        form: PropTypes.string,
         provinceDisabled: PropTypes.bool,
         cityDisabled: PropTypes.bool,
         areaDisabled: PropTypes.bool,
-        name: PropTypes.string.isRequired
+        style: PropTypes.object,
+        className: PropTypes.string,
+        onChange: PropTypes.func,
+        url: PropTypes.string
     };
 
     constructor (props) {
         super(props);
         Address.instance = this;
         this.state = {
-            onChange: this.props.onChange,
-            style: this.props.style || {},
-            className: this.props.className || '',
-            form: this.props.form,
+            province: props.defaultProvince,
+            city: props.defaultCity,
+            area: props.defaultArea,
 
-            province: props.defaultProvince || '-1',
-            city: props.defaultCity || '-1',
-            area: props.defaultArea || '-1',
             provinceOptions: [],
             cityOptions: [],
             areaOptions: [],
+
             provinceList: {}, // 选中的地址详细信息
             cityList: {},
             areaList: {}
@@ -129,27 +128,10 @@ export default class Address extends Component {
         Address.remove(this, this.props.form);
     }
 
-    getData () {
-        const state = this.state;
-        return {
-            province: {
-                id: state.provinceList.key,
-                name: state.provinceList.value
-            },
-            city: {
-                id: state.cityList.key,
-                name: state.cityList.value
-            },
-            area: {
-                id: state.areaList.key,
-                name: state.areaList.value
-            }
-        };
-    }
-
+    // 调用接口获取数据
     getAddressData (parentId) {
         return Util.fetch({
-            url: 'http://logistics.mogujie.com/jsonp/getAddressMapActionlet/1',
+            url: this.props.url,
             type: 'GET',
             contentType: 'application/json',
             dataType: 'jsonp',
@@ -160,6 +142,55 @@ export default class Address extends Component {
             }
             return [];
         });
+    }
+
+    // 获取下拉列表的数据&选中项
+    getOptionsList (datas, select, type) {
+        let options = []; // 省级下拉列表数据
+        let selectList = {};
+        let resultSelect = '-1';
+
+        // 组装provinceOptions，获取默认选中的数据
+        options = datas.map((item) => {
+            if (select === item.placeZh) {
+                selectList = {
+                    text: item.placeZh,
+                    value: item.placeZh,
+                    key: item.id
+                };
+                resultSelect = select;
+            }
+            return {
+                text: item.placeZh,
+                value: item.placeZh,
+                key: item.id
+            };
+        });
+        options.unshift({ text: type, value: '-1' });
+
+        return {
+            options,
+            selectList,
+            select: resultSelect
+        };
+    }
+
+    getData () {
+        const { provinceList, cityList, areaList } = this.state;
+        return {
+            province: {
+                id: provinceList.key,
+                name: provinceList.value
+            },
+            city: {
+                id: cityList.key,
+                name: cityList.value
+            },
+            area: {
+                id: areaList.key,
+                name: areaList.value
+            }
+        };
     }
 
     clearData () {
@@ -194,11 +225,7 @@ export default class Address extends Component {
                     area: e.value,
                     areaList: e
                 }, () => {
-                    const result = {
-                        province: { id: this.state.provinceList.key, name: this.state.provinceList.value },
-                        city: { id: this.state.cityList.key, name: this.state.cityList.value },
-                        area: { id: this.state.areaList.key, name: this.state.areaList.value }
-                    };
+                    const result = this.getData();
                     this.props.onChange(result);
                 });
             }
@@ -208,42 +235,23 @@ export default class Address extends Component {
     // 渲染province
     renderProvice () {
         this.getAddressData(0).then((resData) => {
-            const provinceDatas = resData || [];
-            let provinceOptions = [];
-            const province = this.state.province;
-            let provinceList = {};
-            let defaultProvince = '-1';
-
-            // 组装provinceOptions，获取默认选中的数据
-            provinceOptions = provinceDatas.map((datas) => {
-                if (province === datas.placeZh) {
-                    defaultProvince = province;
-                    provinceList = {
-                        text: datas.placeZh,
-                        value: datas.placeZh,
-                        key: datas.id
-                    };
-                }
-                return {
-                    text: datas.placeZh,
-                    value: datas.placeZh,
-                    key: datas.id
-                };
-            });
-            provinceOptions.unshift({ text: '省', value: '-1' });
+            const resultData = this.getOptionsList(resData || [], this.state.province, '省');
+            const provinceOptions = resultData.options; // 省级下拉列表数据
+            const provinceList = resultData.selectList;
+            const province = resultData.select;
 
             // 如果传入的province不再下拉列表中，则默认为空
             if (provinceList && provinceList.text) {
                 this.setState({
-                    province: defaultProvince,
+                    province,
                     provinceList,
                     provinceOptions
                 }, () => {
-                    this.renderCity(provinceList, true);// 初始化时不触发onchange
+                    this.renderCity(provinceList);// 初始化时不触发onchange
                 });
             } else {
                 this.setState({
-                    province: defaultProvince,
+                    province,
                     provinceList,
                     provinceOptions,
 
@@ -255,11 +263,7 @@ export default class Address extends Component {
                     areaList: {},
                     areaOptions: [{ text: '区', value: '-1' }]
                 }, () => {
-                    const result = {
-                        province: { id: this.state.provinceList.key, name: this.state.provinceList.value },
-                        city: { id: this.state.cityList.key, name: this.state.cityList.value },
-                        area: { id: this.state.areaList.key, name: this.state.areaList.value }
-                    };
+                    const result = this.getData();
                     this.props.onChange(result);
                 });
             }
@@ -267,39 +271,19 @@ export default class Address extends Component {
     }
 
     // 渲染city
-    renderCity (province) {
-        this.getAddressData(province.key).then((resData) => {
-            const cityDatas = resData || [];
-            let cityOptions = [];
-            const city = this.state.city;
-            let cityList = {};
-            let defaultcity = '-1';
-
-            // 组装provinceOptions，获取默认选中的数据
-            cityOptions = cityDatas.map((datas) => {
-                if (city === datas.placeZh) {
-                    defaultcity = city;
-                    cityList = {
-                        text: datas.placeZh,
-                        value: datas.placeZh,
-                        key: datas.id
-                    };
-                }
-                return {
-                    text: datas.placeZh,
-                    value: datas.placeZh,
-                    key: datas.id
-                };
-            });
-            cityOptions.unshift({ text: '市', value: '-1' });
+    renderCity (provinceList) {
+        this.getAddressData(provinceList.key).then((resData) => {
+            const resultData = this.getOptionsList(resData || [], this.state.city, '市');
+            const cityOptions = resultData.options; // 省级下拉列表数据
+            const cityList = resultData.selectList;
+            const city = resultData.select;
 
             // 如果传入的province不再下拉列表中，则默认为空
             if (cityList && cityList.text) {
                 this.setState({
-                    province: province.text,
-                    provinceList: province,
-
-                    city: defaultcity,
+                    province: provinceList.text,
+                    provinceList,
+                    city,
                     cityOptions,
                     cityList
                 }, () => {
@@ -307,22 +291,16 @@ export default class Address extends Component {
                 });
             } else {
                 this.setState({
-                    province: province.text,
-                    provinceList: province,
-
-                    city: defaultcity,
+                    province: provinceList.text,
+                    provinceList,
+                    city,
                     cityOptions,
                     cityList,
-
                     area: '-1',
                     areaList: {},
                     areaOptions: [{ text: '区', value: '-1' }]
                 }, () => {
-                    const result = {
-                        province: { id: this.state.provinceList.key, name: this.state.provinceList.value },
-                        city: { id: this.state.cityList.key, name: this.state.cityList.value },
-                        area: { id: this.state.areaList.key, name: this.state.areaList.value }
-                    };
+                    const result = this.getData();
                     this.props.onChange(result);
                 });
             }
@@ -330,87 +308,79 @@ export default class Address extends Component {
     }
 
     // 渲染area
-    renderArea (city) {
-        this.getAddressData(city.key).then((resData) => {
-            const areaDatas = resData || [];
-            let areaOptions = [];
-            const area = this.state.area;
-            let areaList = {};
-            let defaultarea = '-1';
-
-            // 组装provinceOptions，获取默认选中的数据
-            areaOptions = areaDatas.map((datas) => {
-                if (area === datas.placeZh) {
-                    defaultarea = area;
-                    areaList = {
-                        text: datas.placeZh,
-                        value: datas.placeZh,
-                        key: datas.id
-                    };
-                }
-                return {
-                    text: datas.placeZh,
-                    value: datas.placeZh,
-                    key: datas.id
-                };
-            });
-            areaOptions.unshift({ text: '区', value: '-1' });
+    renderArea (cityList) {
+        this.getAddressData(cityList.key).then((resData) => {
+            const resultData = this.getOptionsList(resData || [], this.state.area, '区');
+            const areaOptions = resultData.options; // 省级下拉列表数据
+            const areaList = resultData.selectList;
+            const area = resultData.select;
 
             // 如果传入的province不再下拉列表中，则默认为空
             this.setState({
-                city: city.text,
-                cityList: city,
-
-                area: defaultarea,
+                city: cityList.text,
+                cityList,
+                area,
                 areaList,
                 areaOptions
             }, () => {
-                const result = {
-                    province: { id: this.state.provinceList.key, name: this.state.provinceList.value },
-                    city: { id: this.state.cityList.key, name: this.state.cityList.value },
-                    area: { id: this.state.areaList.key, name: this.state.areaList.value }
-                };
+                const result = this.getData();
                 this.props.onChange(result);
             });
         });
     }
 
     render () {
+        const {
+            province,
+            provinceOptions,
+            city,
+            cityOptions,
+            area,
+            areaOptions
+        } = this.state;
+
+        const {
+            provinceDisabled,
+            cityDisabled,
+            areaDisabled,
+            className,
+            style
+        } = this.props;
         return (
-            <div className='address-select'>
+            <div className={`${className} address-select`}>
                 <div className='clearfix' >
                     <div className='address-province float-left'>
                         <Select
-                            disabled={this.props.provinceDisabled}
+                            disabled={provinceDisabled}
                             name='province'
-                            style={this.state.style ? this.state.style : { width: '200px' }}
-                            className={this.state.className}
-                            value={this.state.province}
-                            options={this.state.provinceOptions}
+                            style={style}
+                            className={className}
+                            value={province}
+                            options={provinceOptions}
                             onChange={e => this.handleChange(e, LEVEL_PROVINCE)}
                         />
                     </div>
 
                     <div className='address-city float-left mgL15'>
                         <Select
-                            disabled={this.props.cityDisabled}
+                            disabled={cityDisabled}
                             name='city'
-                            style={this.state.style ? this.state.style : { width: '200px' }}
-                            className={this.state.className}
-                            value={this.state.city}
-                            options={this.state.cityOptions}
+                            style={style}
+                            className={className}
+                            value={city}
+                            options={cityOptions}
                             onChange={e => this.handleChange(e, LEVEL_CITY)}
                         />
                     </div>
 
                     <div className='address-area float-left mgL15'>
                         <Select
-                            disabled={this.props.areaDisabled}
+                            disabled={areaDisabled}
                             name='area'
-                            style={this.state.style ? this.state.style : { width: '200px' }}
-                            className={this.state.className}
-                            value={this.state.area}
-                            options={this.state.areaOptions}
+                            style={style}
+                            className={className}
+                            value={area}
+                            options={areaOptions}
                             onChange={e => this.handleChange(e, LEVEL_AREA)}
                         />
                     </div>

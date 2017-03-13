@@ -19,7 +19,7 @@ import Util from '../_module/js/util';
 // 指定图表的配置项和数据
 const defaultOption = {
     title: {
-        text: 'LineCharts 折线图示例'
+        text: ''
     },
     toolbox: {
         feature: {
