@@ -32,11 +32,34 @@ export default class PaginationView extends Component {
                     1. 示例
                 </h3>
                 <Pagination
+                    size='xs'
+                    theme='success'
                     totalPage={totalPage}
                     currentPage={currentPage}
                     onChangePage={onChangePage}
                 />
                 <br />
+                <Pagination
+                    totalPage={totalPage}
+                    currentPage={currentPage}
+                    onChangePage={onChangePage}
+                />
+                <br />
+                <Pagination
+                    size='normal'
+                    theme='info'
+                    totalPage={totalPage}
+                    currentPage={currentPage}
+                    onChangePage={onChangePage}
+                />
+                <br />
+                <Pagination
+                    size='md'
+                    theme='dark'
+                    totalPage={totalPage}
+                    currentPage={currentPage}
+                    onChangePage={onChangePage}
+                />
                 <div dangerouslySetInnerHTML={{ __html: Readme }} />
             </div>
         );

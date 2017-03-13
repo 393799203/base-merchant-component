@@ -30,15 +30,17 @@
 
 ### 3. 参数说明
 
-| 参数        |  是否必填        |说明           | 类型         |  备注       |   默认       |  
+| 参数        |  是否必填        |说明           | 类型         |  备注       |   默认       |
 | ------------ |------------ | ------------- | ------------ | ------------  |------------  |
+| size      | - |大小,可选`normal`, `xs`, `sm`, `md` | string | - | sm |
+| theme      | - |主题色,可选`default`, `danger`, `info`, `dark`, `success`, `warning` | string | - | default |
 | className | -  | 组件最外层包裹的样式         | string       | 如果你需要重写样式时使用     | mc-pager  |
-| currentPage| 必填    |当前页   | number | - |  1| 
-| totalPage   | 必填    |总页数   | number | - |  1| 
-| onChangePage  | -   |点击上一页，下一页的回调函数   | function | - |  － | 
-| preText  | - |上一页按钮内容   | string，node | 可以传入字符串或者html | < | 
-| nextText  | - |下一页按钮内容   | string，node | 可以传入字符串或者html | > | 
-| link  |- |页面直接跳转链接   | string | 如果link有值，则点击按钮就不执行回调，直接跳转页面 | － | 
-| linkParam  |- |链接拼接参数   | string | 如果 currentPage = 2, link = 'http://www.mogujie.com', linkParam = 'page' 下一页按钮的跳转链接为：'http://www.mogujie.com?page=3' | page | 
+| currentPage| 必填    |当前页   | number | - |  1|
+| totalPage   | 必填    |总页数   | number | - |  1|
+| onChangePage  | -   |点击上一页，下一页的回调函数   | function | - |  － |
+| preText  | - |上一页按钮内容   | string，node | 可以传入字符串或者html | < |
+| nextText  | - |下一页按钮内容   | string，node | 可以传入字符串或者html | > |
+| link  |- |页面直接跳转链接   | string | 如果link有值，则点击按钮就不执行回调，直接跳转页面 | － |
+| linkParam  |- |链接拼接参数   | string | 如果 currentPage = 2, link = 'http://www.mogujie.com', linkParam = 'page' 下一页按钮的跳转链接为：'http://www.mogujie.com?page=3' | page |
 
 

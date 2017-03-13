@@ -70,9 +70,9 @@ changeHandler (newVal, oldVal) {
    });
 }
 
-<TabWrapper 
-	 navs={nav1} 
-	 onClick={i => this.clickHanler(i)} 
+<TabWrapper
+	 navs={nav1}
+	 onClick={i => this.clickHanler(i)}
 	 onChange={(newVal, oldVal) => this.changeHandler(newVal, oldVal)}>
     <Tab key='0'>我是第一个Tab的内容</Tab>
     <Tab key='1'>我的第二个Tab的内容</Tab>
@@ -119,7 +119,7 @@ singleTabClick () {
 </TabWrapper>
 ```
 
-* lazyload 
+* lazyload
 
 ```
 /** TabWrapper的lazyLoad属性应用于所有Tab，all or all not
@@ -137,9 +137,10 @@ singleTabClick () {
 
 ### 3. - 参数说明
 #### 3.1 - TabWrapper
-| 参数        |  必填        |说明           | 类型         |  备注       |   默认值      |  
+| 参数        |  必填        |说明           | 类型         |  备注       |   默认值      |
 | ------------ |------------ | ------------- | ------------ | ------------  |------------  |
 | navs |  Y  | 标签页列表  | [Object] | 需要重写样式时使用 | [] |
+| theme |  N  | 主题色, `danger`, `info`, `dark`, `success`, `warning`  | string | 选中时高亮颜色 | `danger` |
 | className |  N  | 组件顶层样式  | string | 需要重写样式时使用 | '' |
 | trigger |  N  | 组件Tab切换触发方式  | string | 驼峰式写法，如mouseOver | 'click' |
 | lazyLoad |  N  | 子组件是否需要懒加载  | bool |  | false |
@@ -153,9 +154,9 @@ singleTabClick () {
 	* children - nav附加的JSX元素，如Tab的右上角角标等
 
 2. TabWrapper 上还支持onChange，onClick等事件的绑定和处理，这些函数绑定对象为所有nav.当单个nav也在attrs绑定同样的事件时，先触发触发nav自己独有绑定的事件，再触发全局绑定的事件。
- 
+
 #### 3.2 - Tab
-| 参数        |  必填        |说明           | 类型         |  备注       |   默认值      |  
+| 参数        |  必填        |说明           | 类型         |  备注       |   默认值      |
 | ------------ |------------ | ------------- | ------------ | ------------  |------------  |
 | className |  N  | 组件顶层样式  | string | 需要重写样式时使用 | '' |
 | lazyLoad |  N  | 本组件是否需要懒加载  | bool |  | false |

@@ -4,7 +4,7 @@
 ```javascript
 
 import React, { Component } from 'react';
-import LineCharts from 'source_path/linecharts';
+import LineCharts from '@meili/base-merchant/component/lib/linecharts';
 
 export default class LineChartsView extends Component {
 	constructor() {
@@ -61,8 +61,8 @@ export default class LineChartsView extends Component {
 }
 
 ```
-	
-### 3. 属性 - Props --- 
+
+### 3. 属性 - Props ---
 
 | props        | 说明           | 类型         |   默认值       |
 | ------------ | ------------- | ------------ | ------------  |

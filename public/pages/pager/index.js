@@ -36,6 +36,22 @@ export default class PagerView extends Component {
                     onChangePage={onChangePage}
                 />
                 <br />
+                <Pager
+                    size='normal'
+                    theme='danger'
+                    currentPage={currentPage}
+                    totalPage={totalPage}
+                    onChangePage={onChangePage}
+                />
+                <br />
+                <Pager
+                    size='md'
+                    theme='dark'
+                    currentPage={currentPage}
+                    totalPage={totalPage}
+                    onChangePage={onChangePage}
+                />
+                <br />
                 <div dangerouslySetInnerHTML={{ __html: Readme }} />
             </div>
         );

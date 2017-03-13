@@ -3,7 +3,7 @@
 
 ```javascript
 import React, { Component } from 'react';
-import PieCharts from 'source_path/piecharts';
+import PieCharts from '@meili/base-merchant/component/lib/piecharts';
 
 export default class TeamTalkView extends Component {
 	constructor() {
@@ -67,7 +67,7 @@ export default class TeamTalkView extends Component {
 				'series': [{
 					name: '访问来源1',
 					radius: ['50%', '70%'], //内部空白部分大小， 外部整个圆形大小
-					center: ['15%', '50%'],  //图形位移位置， left top 
+					center: ['15%', '50%'],  //图形位移位置， left top
 					label: {
 						normal: {
 							show: false,
@@ -161,8 +161,8 @@ export default class TeamTalkView extends Component {
 }
 
 ```
-	
-### 3. 属性 - Props --- 
+
+### 3. 属性 - Props ---
 
 | props        | 说明           | 类型         |   默认值       |
 | ------------ | ------------- | ------------ | ------------  |

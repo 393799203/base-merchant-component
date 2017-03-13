@@ -33,6 +33,25 @@ export default class ProcessBarView extends Component {
                     />
                     <div className='mt-lg'>
                         <ProcessBar
+                            theme='info'
+                            size='sm'
+                            stepTp={this.state.stepTp6}
+                            stepBt={this.state.stepBt6}
+                            cur={3}
+                        />
+                    </div>
+                    <div className='mt-lg'>
+                        <ProcessBar
+                            size='sm'
+                            theme='success'
+                            stepBt={this.state.stepBt3}
+                            cur={1}
+                        />
+                    </div>
+                    <div className='mt-lg'>
+                        <ProcessBar
+                            size='xs'
+                            theme='warning'
                             stepBt={this.state.stepBt3}
                             cur={1}
                         />

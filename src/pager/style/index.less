@@ -1,60 +1,30 @@
-@import "../../_theme/less/include/_variables";
+@import "../../_theme/variables";
 
 .mc-pager {
 	.page-count {
 		display: inline-block;
 		margin-right: 10px;
 	}
-	.btn {
-		display: inline-block;
-	    padding: 3px 11px 5px 11px;
-	    margin-bottom: 0;
-	    font-size: 14px;
-	    font-weight: normal;
-	    line-height: 1.42857143;
-	    text-align: center;
-	    text-decoration: none;
-	    white-space: nowrap;
-	    vertical-align: middle;
-	    -ms-touch-action: manipulation;
-	    touch-action: manipulation;
-	    cursor: pointer;
-	    -webkit-user-select: none;
-	    -moz-user-select: none;
-	    -ms-user-select: none;
-	    user-select: none;
-	    background-image: none;
-	    border: 1px solid @color-button-border;
-	    border-radius: @button-radius;
+	.btn.btn-pre {
+		border-radius: @btn-border-radius 0 0 @btn-border-radius;
 	}
-	.btn.disabled {
-		cursor: not-allowed;
-    	filter: alpha(opacity=50);
-    	opacity: .5;
-    	-webkit-box-shadow: none;
-    	box-shadow: none;
-	}
-	.btn:hover, .btn:focus {
-    	color: #333;
-    	text-decoration: none;
-	}
-	.btn:focus, 
-	.btn:active:focus {
-    	outline: thin dotted;
-    	outline: 5px auto -webkit-focus-ring-color;
-    	outline-offset: -2px;
-    }
-    .btn:active {
-    	background-image: none;
-    	outline: 0;
-    	-webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    	box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    }
-	.btn-pre {
-		border-radius: @button-radius 0 0 @button-radius;
-	}
-	.btn-next {
+	.btn.btn-next {
 		margin-left: -1px;
-		border-radius: 0 @button-radius @button-radius 0 ;
+		border-radius: 0 @btn-border-radius @btn-border-radius 0 ;
+	}
+	.btn.btn-next.btn-danger {
+		border-left: 1px solid @color-danger-dk;
+	}
+	.btn.btn-next.btn-dark {
+		border-left: 1px solid @color-dark-dk;
+	}
+	.btn.btn-next.btn-info {
+		border-left: 1px solid @color-info-dk;
+	}
+	.btn.btn-next.btn-success {
+		border-left: 1px solid @color-success-dk;
+	}
+	.btn.btn-next.btn-warning {
+		border-left: 1px solid @color-warning-dk;
 	}
 }

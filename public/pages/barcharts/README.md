@@ -3,7 +3,7 @@
 
 ```javascript
 import React, { Component } from 'react';
-import BarCharts from 'source_path/barcharts';
+import BarCharts from '@meili/base-merchant/component/lib/barcharts';
 
 export default class BarChartsView extends Component {
 	constructor() {
@@ -87,8 +87,8 @@ export default class BarChartsView extends Component {
 }
 
 ```
-	
-### 3. 属性 - Props ---  
+
+### 3. 属性 - Props ---
 
 | props        | 说明           | 类型         |   默认值       |
 | ------------ | ------------- | ------------ | ------------  |

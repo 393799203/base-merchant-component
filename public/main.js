@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom';
 import routes from './route';
-import './theme/index.less';
+import '../src/_theme/index.less';
+import './style/index.less';
 
 const root = document.getElementById('main-wrapper');
 

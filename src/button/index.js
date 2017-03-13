@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import './style/index.less';
-import '../_theme/less/button.less';
 
 export default class Button extends Component {
     static defaultProps = {
@@ -11,6 +10,7 @@ export default class Button extends Component {
         isLoading: false
     };
     static propTypes = {
+        children: PropTypes.node,
         value: PropTypes.string,
         className: PropTypes.string,
         handleChange: PropTypes.func,
@@ -20,20 +20,10 @@ export default class Button extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            currentClass: 'xd-btn ',
+            currentClass: 'btn ',
             disabled: props.disabled,
             isLoading: props.isLoading
         };
-    }
-    componentWillReceiveProps (nextProps) {
-        const state = this.state;
-        if ('disabled' in nextProps) {
-            state.disabled = nextProps.disabled;
-        }
-        if ('isLoading' in nextProps) {
-            state.isLoading = nextProps.isLoading;
-        }
-        this.setState(state);
     }
     handleChange (e) {
         let { currentClass } = this.state;
@@ -58,10 +48,10 @@ export default class Button extends Component {
                     ?
                         <div>
                             加载中
-                            <img src='//s17.mogujie.com/img/fpay/ubzlo_ieyden3fha3teobtmiytambqgqyde_24x24.gif' width='12' height='12' alt='加载中' />
+                            <img className='ml-5' src='//s17.mogujie.com/img/fpay/ubzlo_ieyden3fha3teobtmiytambqgqyde_24x24.gif' width='12' height='12' alt='加载中' />
                         </div>
                     :
-                        value
+                        (this.props.children || value)
                 }
             </div>
         );

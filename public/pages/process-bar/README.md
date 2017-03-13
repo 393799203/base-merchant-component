@@ -4,6 +4,8 @@
 
 |参数    |说明         |类型    |默认值
 |--|--|--|--|
+|size|process大小, 可选`normal`, `sm`, `xs`|string|`normal`|
+| theme  | 主题色,可选 `danger`, `info`, `dark`, `success`, `warning` | string | `danger` |
 |cur|当前步骤，如 0, 1|数值|0|
 |数组stepTp|在步骤条上面,可以是dom节点|数组|[`<div>第一步,可以给dom</div>`,'第二步']|
 |数组stepBt|在步骤条下面,可以是dom节点|数组|[`<div>第一步描述<div>可以给dom</div></div>`, '第二步描述']|

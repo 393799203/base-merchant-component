@@ -3,7 +3,7 @@
 
 ```javascript
 import React, { Component } from 'react';
-import ChinaMapCharts from 'source_path/chinamapcharts';
+import ChinaMapCharts from '@meili/base-merchant/component/lib/chinamapcharts';
 const randomData = function () {
 	return Math.round(Math.random() * 1000);
 };
@@ -115,8 +115,8 @@ export default class TeamTalkView extends Component {
 }
 
 ```
-	
-### 3. 属性 - Props --- 
+
+### 3. 属性 - Props ---
 
 | props        | 说明           | 类型         |   默认值       |
 | ------------ | ------------- | ------------ | ------------  |
