@@ -82,7 +82,6 @@ export default class Form extends Component {
         }
     }
 
-
     componentWillUnmount () {
         Form.remove(this.props.form);
     }
