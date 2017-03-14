@@ -94,7 +94,7 @@ export default class TimePicker extends Component {
 
         const className = classNames({
             [props.className]: !!props.className,
-            [`${props.prefixCls} - ${props.size}`]: true
+            [`${props.prefixCls}-${props.size}`]: true
         });
 
         if (props.format.indexOf('ss') < 0) {

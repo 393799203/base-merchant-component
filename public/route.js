@@ -83,30 +83,31 @@ export default (
             <Route path='tooltip' component={TooltipView} />
             <Route path='image-uploader' component={ImageUploaderView} />
             <Route path='table' component={TableView} />
-            <Route path='select' component={SelectView} />
             <Route path='slider' component={SliderView} />
             <Route path='button' component={ButtonView} />
             <Route path='process-bar' component={ProcessBarView} />
             <Route path='wrapper' component={WrapperView} />
             <Route path='dropdown' component={DropdownView} />
 
-            <Route path='field' component={FieldView} />
-            <Route path='form' component={FormView} />
-            <Route path='datepicker' component={DatepickerView} />
-            <Route path='monthpicker' component={MonthpickerView} />
-            <Route path='rangepicker' component={RangepickerView} />
-            <Route path='timepicker' component={TimepickerView} />
+            <Route path='a-select' component={SelectView} />
+            <Route path='a-field' component={FieldView} />
+            <Route path='a-form' component={FormView} />
+            <Route path='a-datepicker' component={DatepickerView} />
+            <Route path='a-monthpicker' component={MonthpickerView} />
+            <Route path='a-rangepicker' component={RangepickerView} />
+            <Route path='a-timepicker' component={TimepickerView} />
+            <Route path='a-areacode' component={AreaCodeView} />
+            <Route path='a-address' component={AddressView} />
+            <Route path='a-fulladdress' component={FullAddressView} />
+            <Route path='a-verifyidenty' component={VerifyIdentyView} />
+            <Route path='a-verifyphone' component={VerifyPhoneView} />
 
             <Route path='teamtalk' component={TeamtalkView} />
             <Route path='charts-bar' component={BarCharts} />
             <Route path='charts-chinamap' component={ChinaMapCharts} />
             <Route path='charts-pie' component={PieCharts} />
             <Route path='charts-line' component={LineCharts} />
-            <Route path='areacode' component={AreaCodeView} />
-            <Route path='address' component={AddressView} />
-            <Route path='fulladdress' component={FullAddressView} />
-            <Route path='verifyidenty' component={VerifyIdentyView} />
-            <Route path='verifyphone' component={VerifyPhoneView} />
+
             <Route path='menucate' component={MenuCateView} />
 
         </Route>

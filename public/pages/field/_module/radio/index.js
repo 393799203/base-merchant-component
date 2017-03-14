@@ -197,7 +197,7 @@ export default class RadioView extends Component {
 					        options={radioOptions}
 					        subInfo="onChange事件获取当前值">
 					    </Field>
-					    <div style={{height:"80px"}}></div>
+					    <div style={{height:"82px"}}></div>
 					</div>
 
 					<div className="f-l field-demo">

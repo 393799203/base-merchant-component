@@ -1,3 +1,6 @@
+@import "../../../_theme/variables";
+@import "../../../_theme/iconfont";
+
 .mc-field-checkbox{
 	height:40px;
 	line-height:40px;
@@ -14,7 +17,7 @@
 	    & + label {
 	        display: inline;
 	        font-size: 13px;
-	        color:#555555;
+	        color:@font-color-base;
 	        cursor: pointer;
 	    }
 
@@ -23,20 +26,21 @@
 		    display: inline-block;
 		    width: 16px;
 		    height: 16px;
-		    border: 1px solid #DEDEDE;
+		    border: 1px solid @color-light-dk;
 		    border-radius: 4px;
 		    cursor: pointer;
             vertical-align: text-top;
             margin-right: 3px;
+            vertical-align: middle;
 		}
 
 		&:checked + label:before {
 		    content: "\e601";
-		    color: #419BF9;
+		    color: @color-info-base;
 		    font-size: 12px;
 		    text-align: center;
 		    line-height: 13px;
-		    border: 1px solid #419BF9;
+		    border: 1px solid @color-info-base;
 		}
 
 	    &:disabled + label,
@@ -44,12 +48,12 @@
 	        cursor: not-allowed;
 	    }
 	    &:disabled + label::before {
-	        background-color:#F5F5F5;
+	        background-color:@color-light-base;
 	    }
 	    &:disabled:checked + label::before {
 	       	content: "\e601";
-		    color: #DEDEDE;
-		    border: 1px solid #DEDEDE;
+		    color: @color-light-dk;
+		    border: 1px solid @color-light-dk;
 		    font-size: 12px;
 		    text-align: center;
 		    line-height: 13px;
@@ -60,16 +64,16 @@
 .mc-field-invaild {
 	.mc-checkbox-error{
 		& + label:before {
-		    box-shadow: 0px 0px 5px #FF8D8D;
-		    border-color: #FF8D8D;
-		    background-color:#FCF5F4;
+		    box-shadow: 0px 0px 5px @color-danger-lter;
+		    border-color: @color-danger-lter;
+		    background-color:@color-danger-lt40;
 		}
 
 		&:checked + label:before {
 		    content: "\e601";
-		    color: #FF8D8D;
-		    box-shadow: 0px 0px 5px #FF8D8D;
-		    border: 1px solid #FF8D8D;
+		    color: @color-danger-lt;
+		    box-shadow: 0px 0px 5px @color-danger-lter;
+		    border: 1px solid @color-danger-lter;
 		    font-size: 12px;
 		    text-align: center;
 		    line-height: 13px;

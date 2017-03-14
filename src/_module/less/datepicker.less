@@ -1,3 +1,5 @@
+@import "../../_theme/variables";
+
 @datepicker-prefix-cls: mc-calendar;
 
 .@{datepicker-prefix-cls} {
@@ -15,7 +17,7 @@
 	padding: 4px 7px;
 	width: 100%;
 	cursor: text;
-	font-size: 14px;
+	font-size: @font-size-base;
 	line-height: 1.5;
 	height:36px;
 	color: #666;
@@ -69,7 +71,7 @@ textarea.@{datepicker-prefix-cls}-picker-input {
 	position: relative;
 	display: inline-block;
 	outline: none;
-	font-size: 14px;
+	font-size: @font-size-base;
 	transition: opacity 0.3s ease;
 }
 .@{datepicker-prefix-cls}-picker > input {
@@ -84,15 +86,15 @@ textarea.@{datepicker-prefix-cls}-picker-input {
 	-webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 	-o-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 	transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-	width: 14px;
-	height: 14px;
+	width: @font-size-base;
+	height: @font-size-base;
 	line-height: 12px;
 	right: 8px;
 	color: #999;
 	top: 50%;
 	margin-top: -6px;
 	display: inline-block;
-	font: normal normal normal 14px/1 FontAwesome;
+	font: normal normal normal @font-size-base/1 FontAwesome;
 	font-size: inherit;
 	text-rendering: auto;
 	-webkit-font-smoothing: antialiased;
@@ -137,7 +139,7 @@ textarea.@{datepicker-prefix-cls}-picker-input {
 	width: 300px;
 	border: 1px solid #DEDEDE;
 	list-style: none;
-	font-size: 14px;
+	font-size: @font-size-base;
 	text-align: left;
 	background-color: #fff;
 	border-radius: 4px;
@@ -270,7 +272,7 @@ textarea.@{datepicker-prefix-cls}-picker-input {
 .@{datepicker-prefix-cls}-date {
 	display: block;
 	margin: 0 auto;
-	color: #555555;
+	color: @font-color-base;
 	border-radius: 18px;
 	width: 36px;
 	height: 36px;
@@ -398,7 +400,7 @@ textarea.@{datepicker-prefix-cls}-picker-input {
 	background-color: #FF2555;
 	border-color: #FF2555;
 	padding: 1px 7px;
-	font-size: 14px;
+	font-size: @font-size-base;
 	border-radius: 6px;
 	position: absolute;
 	bottom: 5px;

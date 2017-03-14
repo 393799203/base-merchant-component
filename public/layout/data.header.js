@@ -7,7 +7,7 @@ export default [
         link: '#/button'
     }, {
         text: '业务组件',
-        link: '#/areacode'
+        link: '#/a-areacode'
     }, {
         text: '组件问题反馈',
         link: 'http://gitlab.mogujie.org/Aveng/meili-base-merchant-component/issues'
