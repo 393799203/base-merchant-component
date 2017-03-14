@@ -4,9 +4,9 @@ import React, { Component } from 'react';
 export default class ButtonView extends Component {
     render () {
         return (
-            <div>
+            <div className='p-t-20 p-l-30 p-r-30'>
                 <h3 className='p-t-50 p-b b-b dashed'>
-                    {this.props.num}、Button
+                    {this.props.num || 1}、Button
                     <a
                       className='btn btn-danger-border btn-xs text-thin m-l'
                       href='http://gitlab.mogujie.org/f2e/merchant-theme/blob/v3.0.0/button.less'
@@ -18,7 +18,7 @@ export default class ButtonView extends Component {
                     组件库中封装了 Button 组件，让 Button 有更多的使用姿势
                     <a href='#/button' className='btn btn-info btn-xs m-l'>查看 Button 组件</a>
                 </blockquote>
-                <h4>{this.props.num}.1、使用方式</h4>
+                <h4>{this.props.num || 1}.1、使用方式</h4>
                 <p className='m-t m-b'>大小为<code>mini</code>的按钮</p>
                 <code>
                     {
@@ -36,7 +36,7 @@ export default class ButtonView extends Component {
                         </button>"
                     }
                 </code>
-                <h4>{this.props.num}.2、支持样式</h4>
+                <h4>{this.props.num || 1}.2、支持样式</h4>
                 <table className='m-t'>
                     <thead>
                         <tr><th>序号</th><th>样式类型</th><th>可选样式</th></tr>
@@ -81,7 +81,7 @@ export default class ButtonView extends Component {
                         </tr>
                     </tbody>
                 </table>
-                <h4>{this.props.num}.3、示例</h4>
+                <h4>{this.props.num || 1}.3、示例</h4>
                 <div className="m-10">
                     <button className='btn btn-mini m-r-5'>
                         <i className="iconfont icon-notice"></i>
@@ -185,7 +185,7 @@ export default class ButtonView extends Component {
                 <div className='m-t'>
                     <button className='btn btn-block btn-info'>block 按钮</button>
                 </div>
-                <h4>{this.props.num}.4、Button addon 示例</h4>
+                <h4>{this.props.num || 1}.4、Button addon 示例</h4>
                 <code>
                     {
                         "<button className='btn btn-mini btn-addon'>\

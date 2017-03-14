@@ -5,6 +5,16 @@ import FullPageView from './layout/tpl.fullPage';
 
 import HomeView from './pages/home';
 import CSSView from './pages/css';
+import CSSAllView from './pages/css/all';
+import CSSBgView from './pages/css/_module/bg';
+import CSSButtonView from './pages/css/_module/button';
+import CSSGridView from './pages/css/_module/grid';
+import CSSIconView from './pages/css/_module/icon';
+import CSSPanelView from './pages/css/_module/panel';
+import CSSTableView from './pages/css/_module/table';
+import CSSTextView from './pages/css/_module/text';
+import CSSUtilView from './pages/css/_module/util';
+
 import DocView from './pages/doc';
 import DataView from './pages/data';
 import RuleView from './pages/rule';
@@ -49,6 +59,15 @@ export default (
         <Route path='/' component={FullPageView}>
             <IndexRoute component={HomeView} />
             <Route path='css' component={CSSView} />
+            <Route path='css/all' component={CSSAllView} />
+            <Route path='css/bg' component={CSSBgView} />
+            <Route path='css/button' component={CSSButtonView} />
+            <Route path='css/grid' component={CSSGridView} />
+            <Route path='css/icon' component={CSSIconView} />
+            <Route path='css/panel' component={CSSPanelView} />
+            <Route path='css/table' component={CSSTableView} />
+            <Route path='css/text' component={CSSTextView} />
+            <Route path='css/util' component={CSSUtilView} />
             <Route path='doc' component={DocView} />
             <Route path='data' component={DataView} />
             <Route path='rule' component={RuleView} />

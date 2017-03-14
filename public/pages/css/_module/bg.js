@@ -4,9 +4,9 @@ import React, { Component } from 'react';
 export default class BgView extends Component {
     render () {
         return (
-            <div>
+            <div className='p-t-20 p-l-30 p-r-30'>
                 <h3 className='p-t-50 p-b b-b dashed'>
-                    {this.props.num}、Background
+                    {this.props.num || 1}、Background
                     <a
                       className='btn btn-danger-border btn-xs text-thin m-l'
                       href='http://gitlab.mogujie.org/f2e/merchant-theme/blob/v3.0.0/background.less'
@@ -14,13 +14,13 @@ export default class BgView extends Component {
                       查看 Background 样式源码
                     </a>
                 </h3>
-                <h4>{this.props.num}.1、使用方式</h4>
+                <h4>{this.props.num || 1}.1、使用方式</h4>
                 <code className='block'>{"<div className='bg-danger lter'>更浅红色背景</div>"}</code>
                 <code className='block'>{"<div className='bg-danger lt'>浅红色背景</div>"}</code>
                 <code className='block'>{"<div className='bg-danger'>红色背景</div>"}</code>
                 <code className='block'>{"<div className='bg-danger dk'>深红色背景</div>"}</code>
                 <code className='block'>{"<div className='bg-danger lter'>更深红色背景</div>"}</code>
-                <h4>{this.props.num}.2、示例</h4>
+                <h4>{this.props.num || 1}.2、示例</h4>
                 <div className='clearfix'>
                     <div className='f-l'>
                         <div style={{width: '170px',height: '50px',lineHeight: '50px'}} className='bg-primary lter text-center'>.bg-primary .lter</div>

@@ -22,9 +22,9 @@ class GridView extends Component {
 
     render () {
         return (
-            <div>
-                <h3 className='p-t p-b b-b dashed'>
-                    {this.props.num}、Grid 栅格布局
+            <div className='p-t-20 p-l-30 p-r-30'>
+                <h3 className='p-t-50 p-b b-b dashed'>
+                    {this.props.num || 1}、Grid 栅格布局
                     <a
                       className='btn btn-danger-border btn-xs text-thin m-l'
                       href='http://gitlab.mogujie.org/f2e/merchant-theme/blob/v3.0.0/grid.less'
@@ -33,7 +33,7 @@ class GridView extends Component {
                     </a>
                 </h3>
                 <h4>
-                    {this.props.num}.1、 基础栅格
+                    {this.props.num || 1}.1、 基础栅格
                 </h4>
                 <div className="row">
                     {this.getChildren(2)}
@@ -51,7 +51,7 @@ class GridView extends Component {
                     {this.getChildren(12)}
                 </div>
                 <h4>
-                    {this.props.num}.2、 左右偏移
+                    {this.props.num || 1}.2、 左右偏移
                 </h4>
                 <div className="row m-t">
                     <div className="col-lg-4 bg-light p-10">
@@ -75,7 +75,7 @@ class GridView extends Component {
                     </div>
                 </div>
                 <h4>
-                    {this.props.num}.3、 排列顺序
+                    {this.props.num || 1}.3、 排列顺序
                 </h4>
                 <p className="m-t">(1) 正向：</p>
                 <div className="row m-t">
