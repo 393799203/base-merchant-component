@@ -4,9 +4,9 @@ import React, { Component } from 'react';
 export default class IconView extends Component {
     render () {
         return (
-            <div>
+            <div className='p-t-20 p-l-30 p-r-30'>
                 <h3 className='p-t-60 p-b b-b dashed'>
-                    {this.props.num}、Iconfont
+                    {this.props.num || 1}、Iconfont
                     <a
                       className='btn btn-danger-border btn-xs text-thin m-l'
                       href='http://gitlab.mogujie.org/f2e/merchant-theme/blob/v3.0.0/iconfont.less'
@@ -14,11 +14,11 @@ export default class IconView extends Component {
                       查看 Iconfont 样式源码
                     </a>
                 </h3>
-                <h4>{this.props.num}.1、使用方式</h4>
+                <h4>{this.props.num || 1}.1、使用方式</h4>
                 <code>{"<i className='iconfont icon-appreciate'></i>"}</code>
                 <p className='m-t m-b'>加<code>.icon-spin</code>可以让icon旋转</p>
                 <code>{"<i className='iconfont icon-loading icon-spin'></i>"}</code>
-                <h4>{this.props.num}.2、所有icon</h4>
+                <h4>{this.props.num || 1}.2、所有icon</h4>
                 <ul className='clearfix'>
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-appreciate'></i>

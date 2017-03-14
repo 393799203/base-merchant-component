@@ -4,9 +4,9 @@ import React, { Component } from 'react';
 export default class TextView extends Component {
     render () {
         return (
-            <div>
+            <div className='p-t-20 p-l-30 p-r-30'>
                 <h3 className='p-t-60 p-b b-b dashed'>
-                    {this.props.num}、Table
+                    {this.props.num || 1}、Table
                     <a
                       className='btn btn-danger-border btn-xs text-thin m-l'
                       href='http://gitlab.mogujie.org/f2e/merchant-theme/blob/v3.0.0/table.less'
@@ -18,9 +18,9 @@ export default class TextView extends Component {
                     组件库中封装了 Table 组件，让 Table 有更多的使用姿势
                     <a href='#/table' className='btn btn-info btn-xs m-l'>查看 Table 组件</a>
                 </blockquote>
-                <h4>{this.props.num}.1、Table 使用方式</h4>
+                <h4>{this.props.num || 1}.1、Table 使用方式</h4>
                 <code className='block'>{"<table className='table table-hover table-stripe'>...</table>"}</code>
-                <h4>{this.props.num}.2、Table 支持样式</h4>
+                <h4>{this.props.num || 1}.2、Table 支持样式</h4>
                 <table className='m-t text-hover'>
                     <thead>
                         <tr><th>序号</th><th>样式类型</th><th>可选样式</th></tr>

@@ -32,14 +32,41 @@ export default class CSSView extends Component {
         loader:'style-loader!css-loader!less-loader'\n\
 }"}
 </pre>
-                <GridView num={1} />
-                <BgView num={2} />
-                <ButtonView num={3} />
-                <TextView num={4} />
-                <TableView num={5} />
-                <PanelView num={6} />
-                <UtilView num={7} />
-                <IconView num={8} />
+                <h3 className='m-t-30'>
+                    分类查看
+                    <a
+                      className='btn btn-danger-border m-l'
+                      href='#/css/all'
+                    >
+                      查看所有
+                    </a>
+                </h3>
+                <div className='clearfix'>
+                    <a href='#/css/grid' style={{width: '25%', height: '100px', lineHeight: '100px'}} className=' text-center text-xl block f-l' >
+                        <div style={{borderRadius: '4px'}} className='bg-info m'>Grid</div>
+                    </a>
+                    <a href='#/css/bg' style={{width: '25%', height: '100px', lineHeight: '100px'}} className=' text-center text-xl block f-l' >
+                        <div style={{borderRadius: '4px'}} className='bg-info m'>Background</div>
+                    </a>
+                    <a href='#/css/button' style={{width: '25%', height: '100px', lineHeight: '100px'}} className=' text-center text-xl block f-l' >
+                        <div style={{borderRadius: '4px'}} className='bg-info m'>Button</div>
+                    </a>
+                    <a href='#/css/icon' style={{width: '25%', height: '100px', lineHeight: '100px'}} className=' text-center text-xl block f-l' >
+                        <div style={{borderRadius: '4px'}} className='bg-info m'>Icon</div>
+                    </a>
+                    <a href='#/css/panel' style={{width: '25%', height: '100px', lineHeight: '100px'}} className='m-t-20 text-center text-xl block f-l' >
+                        <div style={{borderRadius: '4px'}} className='bg-info m'>Panel</div>
+                    </a>
+                    <a href='#/css/table' style={{width: '25%', height: '100px', lineHeight: '100px'}} className='m-t-20 text-center text-xl block f-l' >
+                        <div style={{borderRadius: '4px'}} className='bg-info m'>Table</div>
+                    </a>
+                    <a href='#/css/text' style={{width: '25%', height: '100px', lineHeight: '100px'}} className='m-t-20 text-center text-xl block f-l' >
+                        <div style={{borderRadius: '4px'}} className='bg-info m'>Text</div>
+                    </a>
+                    <a href='#/css/util' style={{width: '25%', height: '100px', lineHeight: '100px'}} className='m-t-20 text-center text-xl block f-l' >
+                        <div style={{borderRadius: '4px'}} className='bg-info m'>Util</div>
+                    </a>
+                </div>
             </div>
         );
     }

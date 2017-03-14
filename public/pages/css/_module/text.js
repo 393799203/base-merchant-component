@@ -4,9 +4,9 @@ import React, { Component } from 'react';
 export default class TextView extends Component {
     render () {
         return (
-            <div>
+            <div className='p-t-20 p-l-30 p-r-30'>
                 <h3 className='p-t-60 p-b b-b dashed'>
-                    {this.props.num}、Text
+                    {this.props.num || 1}、Text
                     <a
                       className='btn btn-danger-border btn-xs text-thin m-l'
                       href='http://gitlab.mogujie.org/f2e/merchant-theme/blob/v3.0.0/text.less'
@@ -14,15 +14,15 @@ export default class TextView extends Component {
                       查看 Text 样式源码
                     </a>
                 </h3>
-                <h4>{this.props.num}.1、Text 使用方式</h4>
+                <h4>{this.props.num || 1}.1、Text 使用方式</h4>
                 <code className='block'>{"<div className='text-h1'>h1 － 展示性文字</div>"}</code>
-                <h4>{this.props.num}.2、Text 示例</h4>
+                <h4>{this.props.num || 1}.2、Text 示例</h4>
                 <div className='text-h1 m-t'><code>.text-h1</code> － 展示性文字 #333 24px 加粗</div>
                 <div className='text-h2 m-t'><code>.text-h2</code> － 我是主标题 #333 20px 加粗</div>
                 <div className='text-h3 m-t'><code>.text-h3</code> － 我是副标题 #555 16px 加粗</div>
                 <div className='text-h4 m-t'><code>.text-h4</code> － 我是小标题 #555 14px</div>
                 <div className='text-p m-t'><code>.text-p</code> － 我是段落文字 #555 13px</div>
-                <h4>{this.props.num}.3、Text 支持样式</h4>
+                <h4>{this.props.num || 1}.3、Text 支持样式</h4>
                 <table className='m-t'>
                     <thead>
                         <tr><th>序号</th><th>样式类型</th><th>可选样式</th></tr>

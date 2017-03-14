@@ -4,9 +4,9 @@ import React, { Component } from 'react';
 export default class UtilView extends Component {
     render () {
         return (
-            <div>
+            <div className='p-t-20 p-l-30 p-r-30'>
                 <h3 className='p-t-50 p-b b-b dashed'>
-                    {this.props.num}、Util CSS
+                    {this.props.num || 1}、Util CSS
                     <a
                       className='btn btn-danger-border btn-xs text-thin m-l'
                       href='http://gitlab.mogujie.org/f2e/merchant-theme/blob/v3.0.0/utils.less'
@@ -14,7 +14,7 @@ export default class UtilView extends Component {
                       查看 Util 样式源码
                     </a>
                 </h3>
-                <h4>{this.props.num}.1、Util 使用方式</h4>
+                <h4>{this.props.num || 1}.1、Util 使用方式</h4>
                 <div className='row'>
                     <div className='col-lg-6'>
                         <table>
