@@ -49,11 +49,11 @@ function showCustom () {
 export default class NotificationView extends Component {
     render () {
         return (
-            <div className='mb-lg ml mr'>
-                <h2 className='pb-5 b-b dashed'>
+            <div className='m-b-lg m-l m-r'>
+                <h2 className='p-b-5 b-b dashed'>
                     消息提示 - Notification
-                    <a href="mactt://message/user/00639" style={{border: 'none', boxShadow: 'none'}} className="ml-lg btn-info-border btn">
-                        <i className="fa fa-comments mr-xs"></i>遇到问题？联系作者
+                    <a href="mactt://message/user/00639" style={{border: 'none', boxShadow: 'none'}} className="m-l-lg btn-info-border btn">
+                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
                     </a>
                 </h2>
                 <h3>
@@ -61,37 +61,37 @@ export default class NotificationView extends Component {
                 </h3>
                 <div>
                     <button
-                      className='mb btn btn-danger-border w-sm mr'
+                      className='m-b btn btn-danger-border w-sm m-r'
                       onClick={showError}
                     >
                         错误提示
                     </button>
                     <button
-                      className='mb btn btn-success-border w-sm mr'
+                      className='m-b btn btn-success-border w-sm m-r'
                       onClick={showSuccess}
                     >
                         成功提示
                     </button>
                     <button
-                      className='mb btn btn-warning-border w-sm mr'
+                      className='m-b btn btn-warning-border w-sm m-r'
                       onClick={showWarn}
                     >
                         警告提示
                     </button>
                     <button
-                      className='mb btn btn-info-border w-sm mr'
+                      className='m-b btn btn-info-border w-sm m-r'
                       onClick={showInfo}
                     >
                         普通提示
                     </button>
                     <button
-                      className='mb btn btn-danger w-sm mr'
+                      className='m-b btn btn-danger w-sm m-r'
                       onClick={showRight}
                     >
                         右上角错误提示
                     </button>
                     <button
-                      className='mb btn btn-success w-sm mr'
+                      className='m-b btn btn-success w-sm m-r'
                       onClick={showCustom}
                     >
                         自定义位置成功提示

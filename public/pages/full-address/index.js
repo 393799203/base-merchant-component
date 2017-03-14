@@ -31,10 +31,10 @@ export default class FullAddressView extends Component {
 
     render () {
         return (
-            <div className='mb-lg ml mr'>
-                <h2 className='pb-5 b-b dashed'>
+            <div className='m-b-lg m-l m-r'>
+                <h2 className='p-b-5 b-b dashed'>
                     全地址 - FullAddress
-                    <a href="mactt://message/user/01825" style={{ border: 'none', boxShadow: 'none' }} className='ml-lg btn-info-border btn'>
+                    <a href="mactt://message/user/01825" style={{ border: 'none', boxShadow: 'none' }} className='m-l-lg btn-info-border btn'>
                         <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
                     </a>
                 </h2>
@@ -42,19 +42,19 @@ export default class FullAddressView extends Component {
                     1. 示例
                 </h3>
                 <div>
-                    <button className="mb btn btn-success-border mr" onClick={() => this.getData()}>获取数据</button>
-                    <button className="mb btn btn-warning-border mr" onClick={() => this.clearData()}>清空数据</button>
-                    <button className="mb btn btn-info-border mr" onClick={() => this.resetData()}>重置数据</button>
+                    <button className="m-b btn btn-success-border m-r" onClick={() => this.getData()}>获取数据</button>
+                    <button className="m-b btn btn-warning-border m-r" onClick={() => this.clearData()}>清空数据</button>
+                    <button className="m-b btn btn-info-border m-r" onClick={() => this.resetData()}>重置数据</button>
                 </div>
 
                 <div className='clearfix'>
-                    <div className='fl'>
+                    <div className='f-l'>
                         <h4>默认情况：</h4>
                         <FullAddress name="test"/>
                     </div>
-                    <div className="fl">
+                    <div className="f-l">
                         <h4>基础配置属性：禁用（provinceDisabled、cityDisabled、areaDisabled、streetDisabled）、样式（className、style）</h4>
-                        <FullAddress 
+                        <FullAddress
                             provinceDisabled={true}
                             cityDisabled={true}
                             areaDisabled={true}
@@ -62,10 +62,10 @@ export default class FullAddressView extends Component {
                             name="test1"
                         />
                     </div>
-                    <div className="fl">
+                    <div className="f-l">
                         <h4>赋值属性：defaultProvince、defaultCity、defaultArea、defaultStreet</h4>
-                        <FullAddress 
-                            defaultProvince="山西省" 
+                        <FullAddress
+                            defaultProvince="山西省"
                             defaultCity = "大同市"
                             defaultArea="南郊区"
                             defaultStreet="test"
@@ -73,10 +73,10 @@ export default class FullAddressView extends Component {
                         />
                     </div>
 
-                    <div className="fl">
+                    <div className="f-l">
                         <h4>回调函数：onChange</h4>
                         <FullAddress
-                            defaultProvince="山西省" 
+                            defaultProvince="山西省"
                             defaultCity = "大同市"
                             defaultArea="南郊区"
                             defaultStreet="test"
@@ -85,16 +85,16 @@ export default class FullAddressView extends Component {
                         />
                     </div>
 
-                    <div className="fl">
+                    <div className="f-l">
                         <h4>表单属性：form（多个address同时使用时，通过form进行划分，可用于获取数据、清空、重置中,如果没有设置form，则默认为defaultForm，在数据、清空、重置方法中不传入form则是处理整个defaultForm）</h4>
-                        <FullAddress 
+                        <FullAddress
                             name="test4"
                             form="formtest"
                         />
                     </div>
                 </div>
                 <div dangerouslySetInnerHTML={{ __html: Readme }}>
-                    
+
                 </div>
             </div>
         )

@@ -26,7 +26,7 @@ export default class FormComponentView extends Component {
         	data: config.options.concat()
         })
     }
-	
+
 	//获取表单数据
 	getData(){
 		var data = Form.getData("textForm");
@@ -68,14 +68,14 @@ export default class FormComponentView extends Component {
 
 	render () {
 		return (
-			<div className='mb-lg ml mr'>
-                <h2 className='pb-5 b-b dashed'>
+			<div className='m-b-lg m-l m-r'>
+                <h2 className='p-b-5 b-b dashed'>
 					表单 - Form
 				</h2>
 				<h3>
 					1. 示例
 				</h3>
-				<div className="mb mt">
+				<div className="m-b m-t">
 					<SellerInfo />
 
 					<CompanyLegal />
@@ -83,38 +83,38 @@ export default class FormComponentView extends Component {
 					<CompanyCert />
 
 					<button
-						className="btn btn-success-custom w-sm m-r" 
+						className="btn btn-success-custom w-sm m-r"
 						onClick={ (e) => { this.changeData() }}>
 						改变表单配置
 					</button>
 					<button
-						className="btn btn-success-custom w-sm m-r" 
+						className="btn btn-success-custom w-sm m-r"
 						onClick={ (e) => { this.getData() }}>
 						获取数据
 					</button>
 					<button
-						className="btn btn-info-custom w-sm m-r" 
+						className="btn btn-info-custom w-sm m-r"
 						onClick={ (e) => { this.resetData() }}>
 						初始化数据
 					</button>
 					<button
-						className="btn btn-warning-custom w-sm m-r" 
+						className="btn btn-warning-custom w-sm m-r"
 						onClick={ (e) => { this.clearData() }}>
 						清除数据
 					</button>
 					<button
-						className="btn btn-danger-custom w-sm m-r" 
+						className="btn btn-danger-custom w-sm m-r"
 						onClick={ (e) => { this.validate() }}>
 						校验数据
 					</button>
-					<Form 
-						data = {this.state.data} 
+					<Form
+						data = {this.state.data}
 						prefixcls="field-test"
 						form='textForm'
 					/>
 				</div>
 				<div dangerouslySetInnerHTML={{ __html: Readme }}>
-					
+
 				</div>
 			</div>
 	  	)

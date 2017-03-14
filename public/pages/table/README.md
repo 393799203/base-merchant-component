@@ -103,7 +103,7 @@
 	                <Table
 	                  showIndex={false}
 	                  indexTitle='#'
-	                  tableClass='table-hover'
+	                  className='table-hover'
 	                  tableExtend={{ id: 'prod-table' }}
 	                  forRender={{ key1: 1, key2: 2 }}
 	                  columns={this.state.columns}
@@ -125,7 +125,8 @@
 | ------------ | ------------- | ------------ |------------ |
 | showIndex        | 是否在第一行显示序号  |  boolean | false |
 | indexTitle        | 序号列的标头  |  string |- |
-| tableClass        | 	表格样式  |  string |- |
+| theme        | 表格主题色，可选`default`, `danger`, `info`, `warning`, `dark`, `success`  |  string |'default' |
+| className        | 	表格样式如: `table-hover`, `table-stripe` |  string |- |
 | tableExtend        | 表格扩展属性，如{ id : 'prod-table' }  |  object |- |
 | columns        | 表头数组  |  array |- |
 | datas        | 表格数据  |  array |- |

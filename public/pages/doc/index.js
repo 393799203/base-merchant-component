@@ -1,8 +1,9 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 
 export default class DocView extends Component {
     render () {
-        return (<div>
+        return (<div className='mt-50'>
             <iframe
               style={{ minHeight: '800px' }}
               width='100%'
@@ -12,3 +13,4 @@ export default class DocView extends Component {
         </div>);
     }
 }
+/* eslint-enable */

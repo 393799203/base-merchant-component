@@ -9,7 +9,6 @@ import DocView from './pages/doc';
 import DataView from './pages/data';
 import RuleView from './pages/rule';
 
-import GridView from './pages/layout/grid';
 import PagerView from './pages/pager';
 import PaginationView from './pages/pagination';
 import NotificationView from './pages/notification';
@@ -55,7 +54,6 @@ export default (
             <Route path='rule' component={RuleView} />
         </Route>
         <Route component={LayoutView}>
-            <Route path='grid' component={GridView} />
             <Route path='panel' component={PanelView} />
             <Route path='tab' component={TabView} />
             <Route path='tag' component={TagView} />

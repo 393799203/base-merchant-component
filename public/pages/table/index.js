@@ -34,7 +34,7 @@ const TableColumns = [{
     title: "操作",
     renderBody: function(text, record, tbodyCbs){
         return (
-            <a onClick={ e => tbodyCbs[0]( e , record.id ) } href="javascript:;" className="btn btn-info btn-xs" title="编辑">
+            <a onClick={ e => tbodyCbs[0]( e , record.id ) } href="javascript:;" className="btn btn-info btn-mini" title="编辑">
                 点我点我
             </a>
         )
@@ -73,6 +73,12 @@ export default class TableView extends Component {
                 currentPage: 1,
                 totalPage: 20,
                 onChangePage: this.changePage.bind(this)
+            },
+            pageConfig1: {
+                theme: 'info',
+                currentPage: 1,
+                totalPage: 20,
+                onChangePage: this.changePage1.bind(this)
             }
         };
     }
@@ -82,6 +88,11 @@ export default class TableView extends Component {
         const { pageConfig } = this.state;
         pageConfig.currentPage = currentPage;
         this.setState({ pageConfig });
+    }
+    changePage1 (currentPage) {
+        const { pageConfig1 } = this.state;
+        pageConfig1.currentPage = currentPage;
+        this.setState({ pageConfig1 });
     }
     // 排序方法
     sortData (key, sortType) { //若要排序则传入排序方法,key标记要排序的列，sortType表示排序类型,cbs返回ASC(升序)、DESC(降序)
@@ -103,30 +114,46 @@ export default class TableView extends Component {
 
     render () {
         return (
-            <div className='mb-lg ml mr'>
-                <h2 className='pb-5 b-b dashed'>
+            <div className='m-b-lg m-l m-r'>
+                <h2 className='p-b-5 b-b dashed'>
                     表格 - Table
-                    <a href="mactt://message/user/02845" style={{border: 'none', boxShadow: 'none'}} className="ml-lg btn-info-border btn">
-                        <i className="fa fa-comments mr-xs"></i>遇到问题？联系作者
+                    <a href="mactt://message/user/02845" style={{border: 'none', boxShadow: 'none'}} className="m-l-lg btn-info-border btn">
+                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
                     </a>
                 </h2>
                 <h3>
                     1. 示例
                 </h3>
                 <Table
-                  showIndex={false}
-                  indexTitle='#'
-                  tableClass='table-hover'
-                  tableExtend={{ id: 'prod-table' }}
-                  forRender={{ key1: 1, key2: 2 }}
-                  columns={this.state.columns}
-                  datas={this.state.data}
-                  pageConfig={this.state.pageConfig}
-                  tbodyCbs={[this.eidt.bind(this)]}
-                  sort={this.sortData.bind(this)}
-                  func={{
-                    name: (text, item, tbodyCbs, forRender, rowIndex) => this.renderName(text, item, tbodyCbs, forRender, rowIndex)
-                  }}
+                    showIndex={false}
+                    indexTitle='#'
+                    className='table-hover'
+                    tableExtend={{ id: 'prod-table' }}
+                    forRender={{ key1: 1, key2: 2 }}
+                    columns={this.state.columns}
+                    datas={this.state.data}
+                    pageConfig={this.state.pageConfig}
+                    tbodyCbs={[this.eidt.bind(this)]}
+                    sort={this.sortData.bind(this)}
+                    func={{
+                        name: (text, item, tbodyCbs, forRender, rowIndex) => this.renderName(text, item, tbodyCbs, forRender, rowIndex)
+                    }}
+                />
+                <Table
+                    theme='info'
+                    showIndex={true}
+                    indexTitle='序号'
+                    className='m-t table-stripe'
+                    tableExtend={{ id: 'prod-table' }}
+                    forRender={{ key1: 1, key2: 2 }}
+                    columns={this.state.columns}
+                    datas={this.state.data}
+                    pageConfig={this.state.pageConfig1}
+                    tbodyCbs={[this.eidt.bind(this)]}
+                    sort={this.sortData.bind(this)}
+                    func={{
+                        name: (text, item, tbodyCbs, forRender, rowIndex) => this.renderName(text, item, tbodyCbs, forRender, rowIndex)
+                    }}
                 />
                 <div dangerouslySetInnerHTML={{ __html: Readme }} />
             </div>

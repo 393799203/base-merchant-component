@@ -1,8 +1,5 @@
 export default [
     {
-        title: '栅格 - Grid',
-        link: '#/grid'
-    }, {
         title: '选项卡 - Tab',
         link: '#/tab'
     }, {

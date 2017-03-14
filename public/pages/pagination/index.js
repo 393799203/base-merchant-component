@@ -21,11 +21,11 @@ export default class PaginationView extends Component {
     render () {
         const {currentPage, totalPage, onChangePage } = this.state;
         return (
-            <div className='mb-lg ml mr'>
-                <h2 className='pb-5 b-b dashed'>
+            <div className='m-b-lg m-l m-r'>
+                <h2 className='p-b-5 b-b dashed'>
                     分页 - Pagination
-                    <a href="mactt://message/user/00639" style={{border: 'none', boxShadow: 'none'}} className="ml-lg btn-info-border btn">
-                        <i className="fa fa-comments mr-xs"></i>遇到问题？联系作者
+                    <a href="mactt://message/user/00639" style={{border: 'none', boxShadow: 'none'}} className="m-l-lg btn-info-border btn">
+                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
                     </a>
                 </h2>
                 <h3>

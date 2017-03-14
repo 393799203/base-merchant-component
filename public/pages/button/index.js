@@ -22,25 +22,25 @@ export default class ButtonView extends Component {
     render () {
         let {isLoading} = this.state;
         return (
-            <div className='mb-lg ml mr'>
-                <h2 className='pb-5 b-b dashed'>
+            <div className='m-b-lg m-l m-r'>
+                <h2 className='p-b-5 b-b dashed'>
                     按钮 -  Button
-                    <a href="mactt://message/user/02635" style={{border: 'none', boxShadow: 'none'}} className="ml-lg btn-info-border btn">
-                        <i className="fa fa-comments mr-xs"></i>遇到问题？联系作者
+                    <a href="mactt://message/user/02635" style={{border: 'none', boxShadow: 'none'}} className="m-l-lg btn-info-border btn">
+                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
                     </a>
                 </h2>
                 <h3>1、使用示例</h3>
-                <table className='mt-15'>
+                <table className='m-t-15'>
                     <tbody>
                         <tr>
                             <td>
-                                <h4 className='mb'>
+                                <h4 className='m-b'>
                                     1.  普通按钮，支持回调函数
                                 </h4>
                                 <Button value='点击我' handleChange={this.handleChange.bind(this)}/>
                             </td>
                             <td>
-                                <h4 className='mb'>
+                                <h4 className='m-b'>
                                     2. 禁止点击的按钮
                                 </h4>
                                 <Button value='点击我' disabled={true}/>
@@ -48,13 +48,13 @@ export default class ButtonView extends Component {
                         </tr>
                         <tr>
                             <td>
-                                <h4 className='mb'>
+                                <h4 className='m-b'>
                                     3. 点击后变成加载状态的按钮
                                 </h4>
                                 <Button value='点击我' isLoading = {isLoading} handleChange = {this.changeStatus.bind(this)}/>
                             </td>
                             <td>
-                                <h4 className='mb'>
+                                <h4 className='m-b'>
                                     4. 支持自定义按钮文字内容
                                 </h4>
                                 <Button>
@@ -64,42 +64,42 @@ export default class ButtonView extends Component {
                         </tr>
                         <tr>
                             <td colSpan='2'>
-                                <h4 className='mb'>
+                                <h4 className='m-b'>
                                     5. 不同尺寸按钮
                                 </h4>
-                                <Button value='点击我' className="btn btn-mini mr"/>
-                                <Button value='点击我' className="btn btn-xs mr"/>
-                                <Button value='点击我' className="btn btn-sm mr"/>
-                                <Button value='点击我' className="btn mr"/>
-                                <Button value='点击我' className="btn btn-md mr"/>
-                                <Button value='点击我' className="btn btn-lg mr"/>
+                                <Button value='点击我' className="btn btn-mini m-r"/>
+                                <Button value='点击我' className="btn btn-xs m-r"/>
+                                <Button value='点击我' className="btn btn-sm m-r"/>
+                                <Button value='点击我' className="btn m-r"/>
+                                <Button value='点击我' className="btn btn-md m-r"/>
+                                <Button value='点击我' className="btn btn-lg m-r"/>
                                 <Button value='点击我' className="btn btn-block mt"/>
                             </td>
                         </tr>
                         <tr>
                             <td colSpan='2'>
-                                <h4 className='mb'>
+                                <h4 className='m-b'>
                                     6. 不同颜色按钮
                                 </h4>
-                                <Button value='点击我' className="btn btn-mini btn-danger mr"/>
-                                <Button value='点击我' className="btn btn-xs btn-info mr"/>
-                                <Button value='点击我' className="btn btn-sm btn-warning mr"/>
-                                <Button value='点击我' className="btn mr"/>
-                                <Button value='点击我' className="btn btn-md btn-success mr"/>
-                                <Button value='点击我' className="btn btn-lg btn-dark mr"/>
+                                <Button value='点击我' className="btn btn-mini btn-danger m-r"/>
+                                <Button value='点击我' className="btn btn-xs btn-info m-r"/>
+                                <Button value='点击我' className="btn btn-sm btn-warning m-r"/>
+                                <Button value='点击我' className="btn m-r"/>
+                                <Button value='点击我' className="btn btn-md btn-success m-r"/>
+                                <Button value='点击我' className="btn btn-lg btn-dark m-r"/>
                             </td>
                         </tr>
                         <tr>
                             <td colSpan='2'>
-                                <h4 className='mb'>
+                                <h4 className='m-b'>
                                     7. 不同颜色线条按钮
                                 </h4>
-                                <Button value='点击我' className="btn btn-mini btn-danger-border mr"/>
-                                <Button value='点击我' className="btn btn-xs btn-info-border mr"/>
-                                <Button value='点击我' className="btn btn-sm btn-warning-border mr"/>
-                                <Button value='点击我' className="btn mr"/>
-                                <Button value='点击我' className="btn btn-md btn-success-border mr"/>
-                                <Button value='点击我' className="btn btn-lg btn-dark-border mr"/>
+                                <Button value='点击我' className="btn btn-mini btn-danger-border m-r"/>
+                                <Button value='点击我' className="btn btn-xs btn-info-border m-r"/>
+                                <Button value='点击我' className="btn btn-sm btn-warning-border m-r"/>
+                                <Button value='点击我' className="btn m-r"/>
+                                <Button value='点击我' className="btn btn-md btn-success-border m-r"/>
+                                <Button value='点击我' className="btn btn-lg btn-dark-border m-r"/>
                             </td>
                         </tr>
                     </tbody>

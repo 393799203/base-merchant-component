@@ -9,7 +9,7 @@ export default class SellerInfoView extends Component {
 	constructor () {
 		super();
 	}
-	
+
 	//获取表单数据
 	getData(){
 		var data = Form.getData("sellerInfo");
@@ -37,29 +37,29 @@ export default class SellerInfoView extends Component {
 
 	render () {
 		return (
-			<div className="mb mt">
+			<div className="m-b m-t">
 				<button
-					className="btn btn-success-border w-sm mr" 
+					className="btn btn-success-border w-sm m-r"
 					onClick={ (e) => { this.getData() }}>
 					获取数据
 				</button>
 				<button
-					className="btn btn-info-border w-sm mr" 
+					className="btn btn-info-border w-sm m-r"
 					onClick={ (e) => { this.resetData() }}>
 					初始化数据
 				</button>
 				<button
-					className="btn btn-warning-border w-sm mr" 
+					className="btn btn-warning-border w-sm m-r"
 					onClick={ (e) => { this.clearData() }}>
 					清除数据
 				</button>
 				<button
-					className="btn btn-danger-border w-sm mr" 
+					className="btn btn-danger-border w-sm m-r"
 					onClick={ (e) => { this.validate() }}>
 					校验数据
 				</button>
-				<Form 
-					data = {testData.options.concat()} 
+				<Form
+					data = {testData.options.concat()}
 					prefixcls="field-test"
 					form='sellerInfo'/>
 			</div>
