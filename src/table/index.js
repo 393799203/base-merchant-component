@@ -134,12 +134,12 @@ export default class Table extends Component {
     }
 
     render () {
-        const { prefixCls, tableClass, columns, datas } = this.props;
+        const { className, columns, datas, theme } = this.props;
         const { tableExtend, theadCbs, tbodyCbs, pageConfig, func } = this.props;
 
         return (
             <div className='mc-module-table'>
-                <table className={`${prefixCls} ${tableClass}`} {...tableExtend}>
+                <table className={`mc-table ${className} table-${theme}`} {...tableExtend}>
                     { this.getThead(columns, theadCbs) }
                     { this.getTbody(columns, datas, tbodyCbs, func) }
                 </table>
@@ -151,22 +151,22 @@ export default class Table extends Component {
 }
 
 Table.defaultProps = {
-    tableClass: '',
+    theme: 'default',
+    className: '',
     columns: [],
     datas: [],
     showIndex: false,
     indexTitle: '序号',
-    prefixCls: 'mc-table',
     func: {}
 };
 
 Table.propTypes = {
-    tableClass: PropTypes.string,
+    theme: PropTypes.oneOf(['default', 'danger', 'info', 'success', 'warning', 'dark']),
+    className: PropTypes.string,
     columns: PropTypes.array.isRequired,
     datas: PropTypes.array.isRequired,
     showIndex: PropTypes.bool,
     indexTitle: PropTypes.string,
-    prefixCls: PropTypes.string,
     theadCbs: PropTypes.array,
     tbodyCbs: PropTypes.array,
     tableExtend: PropTypes.object,

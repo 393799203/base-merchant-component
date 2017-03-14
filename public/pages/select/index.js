@@ -43,32 +43,32 @@ export default class SelectView extends Component {
     render () {
         let {selectData1, selectData2, selectData3, selectValue, selectDefaultValue} = this.state;
         return (
-            <div className='mb-lg ml mr mc-field mc-select-demo'>
-                <h2 className='pb-5 b-b dashed'>
+            <div className='m-b-lg m-l m-r mc-field mc-select-demo'>
+                <h2 className='p-b-5 b-b dashed'>
                     下拉菜单 - Select
-                    <a href="mactt://message/user/02635" style={{border: 'none', boxShadow: 'none'}} className="ml-lg btn-info-border btn">
-                        <i className="fa fa-comments mr-xs"></i>遇到问题？联系作者
+                    <a href="mactt://message/user/02635" style={{border: 'none', boxShadow: 'none'}} className="m-l-lg btn-info-border btn">
+                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
                     </a>
                 </h2>
                 <h3>
                     1. 示例
                 </h3>
                 <div className="title">
-                    <button className="mb btn btn-success-border mr" onClick={() => this.getData()}>获取文本框信息</button>
-                    <button className="mb btn btn-warning-border mr" onClick={() => this.clearData()}>清空文文本框信息</button>
-                    <button className="mb btn btn-info-border mr" onClick={() => this.resetData()}>重置文本框信息</button>
+                    <button className="m-b btn btn-success-border m-r" onClick={() => this.getData()}>获取文本框信息</button>
+                    <button className="m-b btn btn-warning-border m-r" onClick={() => this.clearData()}>清空文文本框信息</button>
+                    <button className="m-b btn btn-info-border m-r" onClick={() => this.resetData()}>重置文本框信息</button>
                 </div>
                 <div className='demo clearfix'>
-                    <div className='fl field-demo'>
+                    <div className='f-l field-demo'>
                         <h4>必填属性：name、options</h4>
-                        <Select 
+                        <Select
                             className="select-demo"
                             name="select1"
                             options={selectData1}
                             placeholder={"请选择"}
                         />
                     </div>
-                    <div className="fl field-demo">
+                    <div className="f-l field-demo">
                         <h4>其他基础配置属性：禁用（disabled）、样式（className）、水印（placeholder）</h4>
                         <Select
                             options={selectData2}
@@ -78,9 +78,9 @@ export default class SelectView extends Component {
                             className="select-demo"
                         />
                     </div>
-                    <div className="fl field-demo">
+                    <div className="f-l field-demo">
                         <h4>赋值属性：value,一般要与onChange事件搭配使用，组件以传递的value值为主，进行赋值，如果传入的value不再options中，则展示数据为空</h4>
-                        <Select 
+                        <Select
                             className="select-demo"
                             name="select3"
                             value = {selectValue}
@@ -89,9 +89,9 @@ export default class SelectView extends Component {
                         />
                     </div>
 
-                    <div className="fl field-demo">
+                    <div className="f-l field-demo">
                         <h4>赋值属性：defaultValue</h4>
-                        <Select 
+                        <Select
                             className="select-demo"
                             name="select4"
                             defaultValue = {selectDefaultValue}
@@ -99,26 +99,26 @@ export default class SelectView extends Component {
                         />
                     </div>
 
-                    <div className="fl field-demo">
+                    <div className="f-l field-demo">
                         <h4>表单属性：form（多个select同时使用时，通过form进行划分，可用于获取数据、清空、重置中,如果没有设置form，则默认为defaultForm，在数据、清空、重置方法中不传入form则是处理整个defaultForm）</h4>
-                        <Select 
-                            className="select-demo mt-15"
+                        <Select
+                            className="select-demo m-t-15"
                             name="select5"
                             defaultValue = {selectDefaultValue}
                             options={selectData3}
                             form="selectform"
                         />
 
-                        <Select 
-                            className="select-demo mt-15"
+                        <Select
+                            className="select-demo m-t-15"
                             name="select6"
                             defaultValue = {selectDefaultValue}
                             options={selectData3}
                             form="selectform"
                         />
 
-                        <Select 
-                            className="select-demo mt-15"
+                        <Select
+                            className="select-demo m-t-15"
                             name="select7"
                             defaultValue = {selectDefaultValue}
                             options={selectData3}

@@ -22,8 +22,9 @@ const elem = [
 
 ### 3. - 参数说明
 
-| 参数        |  必填        |说明           | 类型         |  备注       |   默认值      |  
+| 参数        |  必填        |说明           | 类型         |  备注       |   默认值      |
 | ------------ |------------ | ------------- | ------------ | ------------  |------------  |
+| theme |  N  | Panel主题色 可选：`default`, `danger`, `info`, `warning`, `dark`, `success`  | string | - | 'default' |
 | title |  Y  | Panel的表头名称  | string or jsx element |  | '' |
 | className |  N  | 组件顶层样式  | string | 需要重写样式时使用 | '' |
 | elem | N | 表头额外添加的其他元素 | string or jsx element |  | null |

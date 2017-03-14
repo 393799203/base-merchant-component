@@ -95,7 +95,7 @@ export default class LayoutView extends Component {
                 <div className='app-body'>
                     <div className='app-sider'>
                         <div className='app-sider-content bg-light'>
-                            <form className="form-sm pt-15 pl-10">
+                            <form className="form-sm p-t-15 p-l-10">
                                 <div className="form-group">
                                     <i className="iconfont icon-search form-addon-r"></i>
                                     <input
@@ -119,7 +119,7 @@ export default class LayoutView extends Component {
                                     </div>
                                 : null
                             }
-                            <ul style={{ background: '#edf1f2' }} className='mt-10'>
+                            <ul style={{ background: '#edf1f2' }} className='m-t-10'>
                                 {
                                     menuData.map((item, index) => {
                                         return (

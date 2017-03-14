@@ -23,10 +23,10 @@ export default class AreaCodeView extends Component {
         let {code} = this.state;
 
         return (
-            <div className="ml mr mb-xxl">
-                <h2 className='pb-5 b-b dashed'>
+            <div className="m-l m-r m-b-xxl">
+                <h2 className='p-b-5 b-b dashed'>
                     手机区号 - AreaCode
-                    <a href="mactt://message/user/00639" style={{border: 'none', boxShadow: 'none'}} className="ml-lg btn-info-border btn">
+                    <a href="mactt://message/user/00639" style={{border: 'none', boxShadow: 'none'}} className="m-l-lg btn-info-border btn">
                         <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
                     </a>
                 </h2>
@@ -34,11 +34,11 @@ export default class AreaCodeView extends Component {
                     1. 示例
                 </h3>
                 <div className='clearfix'>
-                    <div className='fl mr'>
+                    <div className='f-l m-r'>
                         <h4>默认属性</h4>
                         <AreaCode />
                     </div>
-                    <div className="fl mr">
+                    <div className="f-l m-r">
                         <h4>默认值：defaultValue，禁用（disabled）,样式（className）</h4>
                         <AreaCode
                             disabled={true}
@@ -46,16 +46,16 @@ export default class AreaCodeView extends Component {
                             defaultValue={'1684'}
                         />
                     </div>
-                    <div className="fl">
+                    <div className="f-l">
                         <h4>赋值：value（展示的数值以传递的value值为主）,与onChange共用</h4>
                         <AreaCode
                             value={code}
-                            onChange = {(code) => this.handleChange(code)} 
+                            onChange = {(code) => this.handleChange(code)}
                         />
                     </div>
                 </div>
                 <div dangerouslySetInnerHTML={{ __html: Readme }}>
-                    
+
                 </div>
             </div>
         )

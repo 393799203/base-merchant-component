@@ -15,10 +15,10 @@ export default class VerifyIdentyView extends Component {
     getResult(e){
         console.info(e);
     }
-    
+
     render () {
         return (
-            <div className='mb-lg ml mr'>
+            <div className='mb-lg ml m-r'>
                 <h2 className='pb-5 b-b dashed'>
                     身份认证 - VerifyIdenty
                 </h2>
@@ -26,7 +26,7 @@ export default class VerifyIdentyView extends Component {
                     1. 示例
                 </h3>
                 <div className="m" style={{border:"1px solid #eee" , padding:"10px"}}>
-                    <VerifyIdenty 
+                    <VerifyIdenty
                         disabled={false}
                         btnName={"weewe"}
                         className={"test"}
@@ -36,7 +36,7 @@ export default class VerifyIdentyView extends Component {
                     <button className="btn btn-success-border" style={{position:"relative",top:"-30px",left:"115px" , padding:"4px 12px",borderRadius:"4px"}} onClick={()=>this.clearData()}>清空</button>
                 </div>
                 <div dangerouslySetInnerHTML={{ __html: Readme }}>
-                    
+
                 </div>
             </div>
         )
