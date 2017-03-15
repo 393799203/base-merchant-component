@@ -56,12 +56,12 @@ export default class FieldView extends Component {
                         <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
                     </a>
 				</h2>
-				<div dangerouslySetInnerHTML={{ __html: Readme }}></div>
-				<div className="m-t-30 mc-field-demo-body">
+				<div className="mt-30 mc-field-demo-body">
 					<TabWrapper navs={nav}>
                         {tabArr}
                     </TabWrapper>
 				</div>
+				<div dangerouslySetInnerHTML={{ __html: Readme }}></div>
 			</div>
 		)
 	}

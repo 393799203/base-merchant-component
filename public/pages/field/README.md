@@ -1,3 +1,5 @@
+### 3. 属性－Props
+
 | props   | 说明    | 类型    | 默认值  |
 | ------- |--------|---------|-------|
 | type | 控件类型:'text','textarea','select','checkbox','radio','raw'(自定义控件) | String | - |
