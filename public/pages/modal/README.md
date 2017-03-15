@@ -215,7 +215,10 @@
                         <button className="btn btn-sm btn-primary-border mr" onClick={ (e) => this.closeModal(modalId) }>取消</button>
                         <button className="btn btn-sm btn-primary" onClick={ (e) => this.closeModal(modalId) }>确认</button>
                     </div>
-                )
+                ),
+                isAbsolute: false,
+                showMask: true,
+                closeByMask: false
             });
 			this.setState({ modalId: modalId });
 		}

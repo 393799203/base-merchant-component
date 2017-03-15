@@ -23,65 +23,109 @@ const footer = (
 
 
 // test start
-describe ('Modal Component Test', () => {
+describe ('Modal.alert Component Test', () => {
 
-    const arg1 = {
-        title: '自定义弹出层'
-    };
+    it('show alert', () => {
 
-    const arg2 = {
-        title: '自定义弹出层',
-        body: body
-    }
+        const spyOpen = sinon.spy(api, 'alert');
+        // spyOpen.withArgs(arg1);
+        const option = {theme: 'warning'};
+        const callback = function (){
+            console.log('回调成功');
+        };
 
-    const arg3 = {
-        title: '自定义弹出层',
-        body: body,
-        footer: footer
-    }
+        api.alert( '这是一个alert', callback, option);
 
-    const argIsAbsolute = {
-        title: '自定义弹出层',
-        body: body,
-        footer: footer,
-        isAbsolute: true
-    };
+        expect($('.mc-modal').length).to.equal(1);
+        expect($('.mc-modal-header').length).to.equal(0);
+        expect($('.mc-modal-body').length).to.equal(1);
+        expect($('.mc-modal-footer').length).to.equal(1);
+        expect($('.mc-modal-mask').length).to.equal(1);
+        expect($('.mc-modal-footer .btn-sm').length).to.equal(1);
 
-    const argNotShowMask = {
+        $('.mc-modal-footer .btn-sm').click();
+        setTimeout(function(){
+            expect($('.mc-modal').length).to.equal(0);
+        },500)
+
+        Modal.closeAll();
+    })
+
+});
+
+
+describe ('Modal.confirm Component Test', () => {
+
+    it('show confirm', () => {
+
+        const spyOpen = sinon.spy(api, 'confirm');
+        const option = {theme: 'warning'};
+        const callback = function (){
+            console.log('回调成功');
+        };
+
+        api.confirm( '这是一个confirm', callback, option);
+
+        expect($('.mc-modal').length).to.equal(1);
+        expect($('.mc-modal-header').length).to.equal(0);
+        expect($('.mc-modal-body').length).to.equal(1);
+        expect($('.mc-modal-footer').length).to.equal(1);
+        expect($('.mc-modal-mask').length).to.equal(1);
+        expect($('.mc-modal-footer .btn-sm').length).to.equal(2);
+
+        $('.mc-modal-footer .btn-sm').click();
+        setTimeout(function(){
+            expect($('.mc-modal').length).to.equal(0);
+        },500)
+
+
+        Modal.closeAll();
+    })
+});
+
+describe ('Modal.tip Component Test', () => {
+
+    it('show tip', () => {
+
+        Modal.tip('2000ms 后消失', 2000);
+
+        expect($('.mc-modal').length).to.equal(1);
+        expect($('.mc-modal-body').length).to.equal(1);
+
+        setTimeout(function(){
+            expect($('.mc-modal').length).to.equal(0);
+        },2020)
+
+        Modal.closeAll();
+    })
+});
+
+describe ('Modal.open Component Test', () => {
+
+    const arg = {
         title: '自定义弹出层',
         body: body,
         footer: footer,
         isAbsolute: true,
-        showMask: false
-    }
-
-    const argCloseByMask = {
-        title: '自定义弹出层',
-        body: body,
-        footer: footer,
+        showMask: true,
         closeByMask: true
-    }
+    };
 
+     it('show open', () => {
+         const spyOpen = sinon.spy(api, 'open');
+         spyOpen.withArgs(arg);
 
-    it('show head', () => {
+         api.open(arg);
+         expect($('.mc-modal').length).to.equal(1);
+         expect($('.mc-modal-header').length).to.equal(1);
+         expect($('.mc-modal-body').length).to.equal(1);
+         expect($('.mc-modal-footer').length).to.equal(1);
+         expect($('.mc-modal-mask').length).to.equal(1);
 
-        const spyOpen = sinon.spy(api, 'open');
-        spyOpen.withArgs(arg1);
+         //closeByMask test
+         $('.mc-modal-mask').click();
+         expect($('.mc-modal').length).to.equal(0);
 
-        api.open(arg1);
-        expect($('.mc-modal').length).to.equal(1);
-        expect($('.mc-modal-header').length).to.equal(1);
-    })
-
-    it('show body', () => {
-
-        const spyOpen = sinon.spy(api, 'open');
-        spyOpen.withArgs(arg2);
-
-        api.open(arg2);
-        expect($('.mc-modal').length).to.equal(1);
-        expect($('.mc-modal-header').length).to.equal(1);
-        expect($('.mc-modal-body').length).to.equal(1);
-    })
-
+         Modal.closeAll();
+     })
 });

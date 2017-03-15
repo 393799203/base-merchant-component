@@ -10,7 +10,7 @@ export default class ModalView extends Component {
 			this.state = { modalId: ''}
 	}
 	showTipModal () {
-		Modal.tip('2000ms 后消失', 2000);
+		Modal.tip('2000ms 后消失', 20000);
 	}
 	showModal () {
 		Modal.alert('这是alert提示');
@@ -21,7 +21,7 @@ export default class ModalView extends Component {
 	}
 	showConfirmModal () {
 		Modal.confirm('这是确认弹出层', () => {
-			Modal.close();
+			Modal.closeAll();
 		})
 	}
 	openModal () {
