@@ -10,7 +10,12 @@ export default class FullPageView extends Component {
 
         return (
             <div>
-                <MHeader menuOptions={menuOptions} type='fixed' theme={isHome ? 'default': 'danger'} />
+                <MHeader
+                    menuOptions={menuOptions}
+                    userOptions={[{text: '退出', link: 'http://aaaa.com'}]}
+                    type='fixed'
+                    theme={isHome ? 'default': 'danger'}
+                />
                 <div
                     style={
                         isHome ?
@@ -20,7 +25,7 @@ export default class FullPageView extends Component {
                                 top: '0',
                                 minHeight: '100%',
                                 background: 'linear-gradient(135deg, #FF2555, #fa5b78, #f9bec8)'
-                            } 
+                            }
                             :
                             { background: '#fefefe' }
                     }

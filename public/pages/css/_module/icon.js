@@ -5,7 +5,7 @@ export default class IconView extends Component {
     render () {
         return (
             <div className='p-t-20 p-l-30 p-r-30'>
-                <h3 className='p-t-60 p-b b-b dashed'>
+                <h3 className='p-t-50 p-b b-b dashed'>
                     {this.props.num || 1}、Iconfont
                     <a
                       className='btn btn-danger-border btn-xs text-thin m-l'
