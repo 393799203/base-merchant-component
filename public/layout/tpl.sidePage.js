@@ -128,7 +128,7 @@ export default class LayoutView extends Component {
                                                 key={index}
                                                 onClick={() => this.activeMenu(item)}
                                             >
-                                                <a href={item.link} className='block p-10 text-base'>{item.title}</a>
+                                                <a href={item.link} className='block p-15 text-base'>{item.title}</a>
                                             </li>
                                         );
                                     })

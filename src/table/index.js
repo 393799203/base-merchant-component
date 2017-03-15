@@ -42,7 +42,7 @@ export default class Table extends Component {
                                             <i className={((self.state.sortType === 'DESC' && self.state.flagKey === item.key) ? 'down down_active' : 'down')} />
                                         </span>
                                         {/* 如果有提示框，则在头部添加提示框*/}
-                                        {item.tpl ?
+                                        {item.tplData ?
                                             <Tooltip
                                                 tooltip={item.tplData}
                                                 position='bottom'
@@ -59,7 +59,7 @@ export default class Table extends Component {
                                             : item.title
                                         }
                                         {/* 如果有提示框，则在头部添加提示框*/}
-                                        {item.tpl ?
+                                        {item.tplData ?
                                             <Tooltip
                                                 tooltip={item.tplData}
                                                 position='bottom'
@@ -96,10 +96,10 @@ export default class Table extends Component {
                                 {...col.tdAttrs}
                             >
                                 {(typeof col.renderBody === 'function') ?
-                                    col.renderBody(item[col.key], item, tbodyCbs, forRender, rowIndex)
+                                    col.renderBody(item[col.key], item, rowIndex, tbodyCbs, forRender)
                                     :
                                     (typeof func[col.key] === 'function') ?
-                                        func[col.key](item[col.key], item, tbodyCbs, forRender, rowIndex)
+                                        func[col.key](item[col.key], item, rowIndex, tbodyCbs, forRender)
                                         :
                                         item[col.key]
                                 }

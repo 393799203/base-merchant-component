@@ -67,39 +67,39 @@ export default class ButtonView extends Component {
                                 <h4 className='m-b'>
                                     5. 不同尺寸按钮
                                 </h4>
-                                <Button value='点击我' className="btn btn-mini m-r"/>
-                                <Button value='点击我' className="btn btn-xs m-r"/>
-                                <Button value='点击我' className="btn btn-sm m-r"/>
-                                <Button value='点击我' className="btn m-r"/>
-                                <Button value='点击我' className="btn btn-md m-r"/>
-                                <Button value='点击我' className="btn btn-lg m-r"/>
-                                <Button value='点击我' className="btn btn-block mt"/>
+                                <Button value='.btn-mini' className="btn btn-mini m-r"/>
+                                <Button value='.btn-xs' className="btn btn-xs m-r"/>
+                                <Button value='.btn-sm' className="btn btn-sm m-r"/>
+                                <Button value='.btn' className="btn m-r"/>
+                                <Button value='.btn-md' className="btn btn-md m-r"/>
+                                <Button value='.btn-lg' className="btn btn-lg m-r"/>
+                                <Button value='.btn-block' className="btn btn-block m-t"/>
                             </td>
                         </tr>
                         <tr>
                             <td colSpan='2'>
                                 <h4 className='m-b'>
-                                    6. 不同颜色按钮
+                                    6. 填充按钮
                                 </h4>
-                                <Button value='点击我' className="btn btn-mini btn-danger m-r"/>
-                                <Button value='点击我' className="btn btn-xs btn-info m-r"/>
-                                <Button value='点击我' className="btn btn-sm btn-warning m-r"/>
-                                <Button value='点击我' className="btn m-r"/>
-                                <Button value='点击我' className="btn btn-md btn-success m-r"/>
-                                <Button value='点击我' className="btn btn-lg btn-dark m-r"/>
+                                <Button value='.btn-danger' className="btn btn-mini btn-danger m-r"/>
+                                <Button value='.btn-info' className="btn btn-xs btn-info m-r"/>
+                                <Button value='.btn-warning' className="btn btn-sm btn-warning m-r"/>
+                                <Button value='.btn' className="btn m-r"/>
+                                <Button value='.btn-success' className="btn btn-md btn-success m-r"/>
+                                <Button value='.btn-dark' className="btn btn-lg btn-dark m-r"/>
                             </td>
                         </tr>
                         <tr>
                             <td colSpan='2'>
                                 <h4 className='m-b'>
-                                    7. 不同颜色线条按钮
+                                    7. 线条按钮
                                 </h4>
-                                <Button value='点击我' className="btn btn-mini btn-danger-border m-r"/>
-                                <Button value='点击我' className="btn btn-xs btn-info-border m-r"/>
-                                <Button value='点击我' className="btn btn-sm btn-warning-border m-r"/>
-                                <Button value='点击我' className="btn m-r"/>
-                                <Button value='点击我' className="btn btn-md btn-success-border m-r"/>
-                                <Button value='点击我' className="btn btn-lg btn-dark-border m-r"/>
+                                <Button value='.btn-danger-border' className="btn btn-mini btn-danger-border m-r"/>
+                                <Button value='.btn-info-border' className="btn btn-xs btn-info-border m-r"/>
+                                <Button value='.btn-warning-border' className="btn btn-sm btn-warning-border m-r"/>
+                                <Button value='.btn' className="btn m-r"/>
+                                <Button value='.btn-success-border' className="btn btn-md btn-success-border m-r"/>
+                                <Button value='.btn-dark-border' className="btn btn-lg btn-dark-border m-r"/>
                             </td>
                         </tr>
                     </tbody>
