@@ -54,13 +54,16 @@
 
 .@{datepicker-prefix-cls}-picker-input[disabled],
 fieldset[disabled] .@{datepicker-prefix-cls}-picker-input {
-	background-color: @color-light-base;
+	background-color: @btn-disabled-color;
+	border-color: @color-light-dk;
 	opacity: 1;
 	cursor: not-allowed;
 }
 .@{datepicker-prefix-cls}-picker-input[disabled]:hover,
 fieldset[disabled] .@{datepicker-prefix-cls}-picker-input:hover {
 	border-color: @color-light-dk;
+	background-color: @btn-disabled-color;
+	box-shadow: none;
 }
 textarea.@{datepicker-prefix-cls}-picker-input {
 	max-width: 100%;

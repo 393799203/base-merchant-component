@@ -1,18 +1,36 @@
+@import "../../_theme/variables";
+
 .mc-select-box{
     width:100%;
     position: relative;
     line-height: 36px;
+    
+    *:focus{
+        outline: 0 !important;
+    }
 
     .mc-select-input{
         input{
-            border: 1px solid #DEDEDE;
+            border: 1px solid @btn-border-color;
             border-radius: 5px;
-            color: #555;
+            color: @font-color-base;
             width: 100%;
             padding-left: 15px;
             font-size: 13px;
             cursor: pointer;
             height: 36px;
+        }
+
+        input:focus {
+            box-shadow: 0px 0px 5px @color-info-base;
+            border-color: @color-info-base;
+            background-color:@color-white;
+        }
+
+        input:hover {
+            box-shadow: 0px 0px 5px @color-info-base;
+            border-color: @color-info-base;
+            background-color:@color-white;
         }
 
         .select-arrow{
@@ -26,7 +44,7 @@
         &.mc-select-dropDown{
             .select-arrow{
                 top: 15px;
-                border-top: 4px solid #666;
+                border-top: 4px solid @font-color-base;
                 border-left: 4px solid transparent;
                 border-right: 4px solid transparent;
                 border-bottom: 4px solid transparent;
@@ -37,7 +55,7 @@
             background: #F3F5F8;
             .select-arrow{
                 top: 11px;
-                border-bottom: 4px solid #666;
+                border-bottom: 4px solid @font-color-base;
                 border-left: 4px solid transparent;
                 border-right: 4px solid transparent;
                 border-top: 4px solid transparent;
@@ -47,13 +65,25 @@
         &.mc-select-disabled{
 
             input{
-                background: #F3F5F8;
-                color: #BBB;
+                background: @btn-disabled-color;
+                color: @color-light-dk;
                 cursor: not-allowed;
+            }
+
+            input:focus {
+                box-shadow: none;
+                border-color: @btn-border-color;
+                background-color: @btn-disabled-color;
+            }
+
+            input:hover {
+                box-shadow: none;
+                border-color: @btn-border-color;
+                background-color: @btn-disabled-color;
             }
             
             .select-arrow{
-                border-top: 4px solid #BBB;
+                border-top: 4px solid @color-light-dk;
             }
         }
     }
@@ -66,11 +96,11 @@
         &.drop-box{
             width: 100%;
             z-index: 99;
-            background: #fff;
+            background: @color-white;
             position: absolute;
             top: 36px;
             left: 0;
-            border: 1px solid #DEDEDE;
+            border: 1px solid @btn-border-color;
             border-radius: 5px;
             -moz-box-shadow:2px 2px 3px #eee,-2px 2px 3px #eee; 
             -webkit-box-shadow:2px 2px 3px #eee,-2px 2px 3px #eee; 
@@ -79,7 +109,7 @@
         ul{
             width: 100%; 
             padding-left: 0;
-            border-bottom: 1px solid #DEDEDE;
+            border-bottom: 1px solid @btn-border-color;
             margin-bottom: 0;
             max-height: 300px;
             overflow-y: auto;
@@ -93,7 +123,7 @@
             &:hover{
                 background: #F3F5F8; 
                 .sub-arrow em{
-                    border-left: 5px solid #F3F5F8;
+                    border-left: 5px solid @btn-border-color;
                 }
             }
         }
@@ -102,7 +132,7 @@
             top: 0;
             left: 100%;
             background: #fff;
-            border: 1px solid #DEDEDE;
+            border: 1px solid @btn-border-color;
             padding-left: 0;
             width: 100%;
             border-radius: 0 5px 5px 0;
@@ -118,7 +148,7 @@
             display: block;
             width: 0;
             height: 0;
-            border-left: 5px solid #666;
+            border-left: 5px solid @font-color-base;
             border-top: 5px solid transparent;
             border-right: 5px solid transparent;
             border-bottom: 5px solid transparent;
