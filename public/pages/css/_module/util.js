@@ -22,10 +22,10 @@ export default class UtilView extends Component {
                             <tbody>
                                 <tr>
                                     <td colSpan='2' className='text-left'>
-                                        <div className='m-b-5'>margin 缩写为 <code>m</code>;</div>
-                                        <div className='m-b-5'>各个方向 <code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code> 缩写为：<code>t</code>, <code>r</code>, <code>b</code>, <code>l</code>;</div>
-                                        <div className='m-b-5'>支持多个尺寸：<code>5</code>，<code>10</code>，<code>15</code>，<code>20</code> ...</div>
-                                        <div className='m-b-5'>所以 <code>margin-bottom: 5px</code> 为 <code>.m-b-5</code></div>
+                                        <div className='m-b-5'>1、margin 缩写为 <code>m</code>;</div>
+                                        <div className='m-b-5'>2、各个方向 <code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code> 缩写为：<code>t</code>, <code>r</code>, <code>b</code>, <code>l</code>;</div>
+                                        <div className='m-b-5'>3、支持多个尺寸：<code>5</code>，<code>10</code>，<code>15</code>，<code>20</code> ...</div>
+                                        <div className='m-b-5'>4、<code>margin-bottom: 5px</code> 为 <code>.m-b-5</code></div>
                                         <div className='m-b-5'>5、样式名后接<code>-important</code> 为加 <code>!important</code>样式, 如<code>.m-l-5-important</code>为<code>margin-left: 5px !important</code></div>
                                         <div className=''>
                                             6、<a className='text-info' href='http://gitlab.mogujie.org/f2e/merchant-theme/blob/v3.0.0/utils.less'>更多使用</a>
@@ -96,7 +96,7 @@ export default class UtilView extends Component {
                                         <div className='m-b-5'>1、padding 缩写为 <code>p</code>;</div>
                                         <div className='m-b-5'>2、各个方向 <code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code> 缩写为：<code>t</code>, <code>r</code>, <code>b</code>, <code>l</code>;</div>
                                         <div className='m-b-5'>3、支持多个尺寸：<code>5</code>，<code>10</code>，<code>15</code>，<code>20</code> ...;</div>
-                                        <div className='m-b-5'>4、所以 <code>padding-bottom: 5px</code> 为 <code>.p-b-5</code>;</div>
+                                        <div className='m-b-5'>4、<code>padding-bottom: 5px</code> 为 <code>.p-b-5</code>;</div>
                                         <div className='m-b-5'>5、样式名后接<code>-important</code> 为加 <code>!important</code>样式, 如<code>.p-l-5-important</code>为<code>padding-left: 5px !important</code></div>
                                         <div className=''>
                                             6、<a className='text-info' href='http://gitlab.mogujie.org/f2e/merchant-theme/blob/v3.0.0/utils.less'>更多使用</a>

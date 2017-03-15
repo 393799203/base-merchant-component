@@ -40,7 +40,7 @@ export default class MHeader extends Component {
                                     !item.options || (item.options && item.options.length === 0) ?
                                         <a href={item.link} onClick={() => { menuHandler(item, index); }}>{item.text}</a>
                                     :
-                                        <Dropdown options={item.options} handleClick={menuHandler}>
+                                        <Dropdown options={item.options} handleClick={menuHandler} className='mc-header-menu-dropdown'>
                                             <a href='javascript:;'>{item.text}</a>
                                         </Dropdown>
                                 }
@@ -51,20 +51,20 @@ export default class MHeader extends Component {
                 {
                     userOptions.length === 0 ?
                         <div className='mc-header-user'>
-                            {user.avatar ? <img src={user.avatar} className='mc-header-user-avatar' alt='' /> : null}
+                            {user.avatar ? <img src={user.avatar} className='mc-header-user-avatar' height='40px' width='40px' alt='' /> : null}
                             <div className='mc-header-user-name'>
                                 {user.uname ? user.uname : null}
                             </div>
                         </div>
                     :
-                        <Dropdown options={userOptions}>
-                            <div className='mc-header-user'>
-                                {user.avatar ? <img src={user.avatar} className='mc-header-user-avatar' alt='' /> : null}
+                        <div className='mc-header-user'>
+                            <Dropdown options={userOptions} className='mc-header-user-dropdown'>
+                                {user.avatar ? <img src={user.avatar} className='mc-header-user-avatar' height='40px' width='40px' alt='' /> : null}
                                 <div className='mc-header-user-name'>
                                     {user.uname ? user.uname : null}
                                 </div>
-                            </div>
-                        </Dropdown>
+                            </Dropdown>
+                        </div>
                 }
             </div>
         );
