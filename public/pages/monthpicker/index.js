@@ -42,7 +42,7 @@ export default class MonthpickerView extends Component {
 				<h3>
 					1. 示例
 				</h3>
-				<div className="mt-30">
+				<div>
 					<div className="date-picker-demo clearfix">
 						<div className='f-l'>
 							<h4>默认情况时间选择器</h4>

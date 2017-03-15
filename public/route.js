@@ -89,8 +89,8 @@ export default (
             <Route path='wrapper' component={WrapperView} />
             <Route path='dropdown' component={DropdownView} />
 
-            <Route path='a-select' component={SelectView} />
-            <Route path='a-field' component={FieldView} />
+            <Route path='b-select' component={SelectView} />
+            <Route path='b-field' component={FieldView} />
             <Route path='a-form' component={FormView} />
             <Route path='a-datepicker' component={DatepickerView} />
             <Route path='a-monthpicker' component={MonthpickerView} />
