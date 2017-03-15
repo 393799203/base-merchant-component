@@ -10,7 +10,7 @@
 
 #### 3.1 Modal.alert(msg, callback, options) 
 
-> 如果 第二个参数 callback 类型不是 function，则方法解析参数规则为 Modal.tip(msg, options)
+> 如果 第二个参数为确定时的回调函数, 当callback 类型不是 function时，则方法解析参数规则为 Modal.tip(msg, options)
 
 #### 3.1.1 返回值
 
@@ -47,7 +47,7 @@
 
 #### 3.2 Modal.tip(msg, callback, delay, options) 
 
-> 如果 第二个参数 callback 类型不是 function，则方法解析参数规则为 Modal.tip(msg, delay, options)
+> 如果 第二个参数为确定时的回调函数, 当callback 类型不是 function时，则方法解析参数规则为 Modal.tip(msg, delay, options)
 
 #### 3.2.1 返回值
 
@@ -110,6 +110,18 @@
 			var modalId = Modal.confirm('这是确认弹出层', () => {
 				Modal.close(modalId);
 			});
+			
+			/**
+             * Open a confirm modal
+             * @param {string} msg
+             * @param {function} [callback=_.noop]
+             * @param {object} [params] Modal设置（title、class、id,theme等）
+             */
+			Modal.confirm('这是确认弹出层', () => {
+            			Modal.close();  // 回调方法
+            		}, {
+            		    theme: 'warning'
+            		})
 		}
 		render () {
 			return (
@@ -134,12 +146,17 @@
 | ------------ | ------------- | ------------ | ------------  |
 | title        | 弹出层title          | string       | -        |
 | body         | 内容区               | html         | -        |
-| className    | 样式名               | string       | -        | 
-| callback     | 关闭回调函数          | function     | － | 
-| beforeClose  | 关闭前执行函数         | function     | － | 
+| footer       | 按钮操作区           | html       | -        |
 | isAbsolute   | 是否绝对定位          | boolean     | false | 
 | showMask     | 是否显示透明遮层       | boolean | true | 
 | closeByMask  | 是否点击透明遮层关闭弹出层   | boolean | false | 
+| theme  | 皮肤（alert, confirm中起作用）   | string | 'primary' | 
+| callback     | 关闭回调函数（alert, confirm点确定时的回调; tip消失后的回调）         | function     | － | 
+| beforeClose  | 关闭前执行函数         | function     | － | 
+| className    | 样式名(v1.0.0 废弃不用)               | string       | -        | 
+
+
+** 皮肤可选项有 'primary', 'danger', 'info', 'warning', 'bark'; 默认为theme
 
 #### 3.4.3 使用示例
 	
@@ -187,14 +204,19 @@
 		}
 		openModal () {
 			var modalId = Modal.open({
-				title: '自定义弹出层',
-				body: (
-					<div>
-						<p>这是内容区</p>
-						<button onClick={ (e) => this.closeModal(modalId) }>关闭</button>
-					</div>
-				)
-			});
+                title: '自定义弹出层',
+                body: (
+                    <div>
+                        <p>这是内容区</p>
+                    </div>
+                ),
+                footer: (
+                    <div>
+                        <button className="btn btn-sm btn-primary-border mr" onClick={ (e) => this.closeModal(modalId) }>取消</button>
+                        <button className="btn btn-sm btn-primary" onClick={ (e) => this.closeModal(modalId) }>确认</button>
+                    </div>
+                )
+            });
 			this.setState({ modalId: modalId });
 		}
 		closeModal () {

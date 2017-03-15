@@ -13,7 +13,6 @@ class ModalController extends Component {
     static instance = null;
     static layoutStyle = {};
     static v = '0.2.0';
-
     /**
      * Open a modal
      * @param {object} params Modal设置（title、class、id等）
@@ -31,7 +30,8 @@ class ModalController extends Component {
             // options for modal controller
             isAbsolute: false,
             showMask: true,
-            closeByMask: false
+            closeByMask: false,
+            theme: 'primary'
         };
 
         if (options.classes !== undefined) {
@@ -102,7 +102,7 @@ class ModalController extends Component {
     static alert (msg, callback, params) {
         let options = params;
         let cb = callback;
-        const cls = `${ModalController.prefix}btn primary`;
+        const theme = (options && options.theme) || 'danger';  // 默认红色
 
         if (!_.isFunction(cb)) {
             options = options || cb;
@@ -117,7 +117,7 @@ class ModalController extends Component {
             ),
             footer: (
                 <div>
-                    <button className={cls} style={{ marginRight: 0 }} onClick={cb} > {options && options.confirm ? options.confirm : '确定'}</button>
+                    <button className={`btn btn-sm btn-${theme}`} style={{ marginRight: 0 }} onClick={cb} > {options && options.confirm ? options.confirm : '确定'}</button>
                 </div>
             ),
             closeByMask: false,
@@ -132,17 +132,17 @@ class ModalController extends Component {
     /**
      * Open a confirm modal
      * @param {string} msg
-     * @param {function} [cb=_.noop]
+     * @param {function} [callback=_.noop]
      * @param {object} [params] Modal设置（title、class、id等）
      */
-    static confirm (msg, cb, params) {
+    static confirm (msg, callback, params) {
         let options = params;
-        let callback = cb;
-        if (!_.isFunction(callback)) {
-            options = options || callback;
-            callback = _.noop;
+        let cb = callback;
+        if (!_.isFunction(cb)) {
+            options = options || cb;
+            cb = _.noop;
         }
-        const prefix = ModalController.prefix;
+        const theme = (options && options.theme) || 'danger';  // 默认红色
         const defaultOptions = {
             body: (
                 <div style={styles.alertWrap}>
@@ -151,14 +151,14 @@ class ModalController extends Component {
             ),
             footer: (
                 <div>
-                    <button className={`${prefix}btn`} onClick={ModalController.close}>取消
+                    <button className={`btn btn-sm btn-${theme}-border mr`} onClick={ModalController.close}>取消
                     </button>
-                    <button className={`${prefix}btn primary`} style={{ marginRight: 0 }} onClick={callback}>{(options && options.confirm) || '确定'}
+                    <button className={`btn btn-sm btn-${theme}`} onClick={cb}>{(options && options.confirm) || '确定'}
                     </button>
                 </div>
             ),
             closeByMask: false,
-            callback
+            cb
         };
 
         options = _.extend(defaultOptions, options);
@@ -227,20 +227,20 @@ class ModalController extends Component {
         });
     }
 
-    static noConflict () {
-        window.ReactModal = previousReactModal;
-
-        return ModalController;
-    }
-
-    static withPrefix (prefix) {
-        if (ModalController.prefix !== prefix) {
-            ModalController.prefix = prefix;
-            ModalController.forceUpdate();
-        }
-
-        return ModalController;
-    }
+    // static noConflict () {
+    //     window.ReactModal = previousReactModal;
+    //
+    //     return ModalController;
+    // }
+    //
+    // static withPrefix (prefix) {
+    //     if (ModalController.prefix !== prefix) {
+    //         ModalController.prefix = prefix;
+    //         ModalController.forceUpdate();
+    //     }
+    //
+    //     return ModalController;
+    // }
     // Private method
     static activeComponent () {
         let activeID;
@@ -297,15 +297,6 @@ class ModalController extends Component {
         ModalController.instance = null;
     }
 
-    /*
-    componentWillUpdate() {
-     console.time('ModalController render');
-     },
-
-     componentDidUpdate() {
-     console.timeEnd('ModalController render');
-     },
-     */
 
     handleMaskClick () {
         const activeModal = _.last(ModalController.modals);
@@ -333,13 +324,13 @@ class ModalController extends Component {
                 _.extend(modalMaskStyle, styles.modalWithoutMask);
             }
 
-            if (activeModal.isAbsolute) {
-                modalWrapStyle.position = 'absolute';
-
-                const scrollTop = window.pageYOffset || document.body.scrollTop;
-                const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-                ModalController.layoutStyle.top = scrollTop + (windowHeight / 2);
-            }
+            // if (activeModal.isAbsolute) {
+            //     modalWrapStyle.position = 'absolute';
+            //
+            //     const scrollTop = window.pageYOffset || document.body.scrollTop;
+            //     const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+            //     ModalController.layoutStyle.top = scrollTop + (windowHeight / 2);
+            // }
         }
 
         const modalsArr = modals.map((modal) => {
@@ -351,7 +342,7 @@ class ModalController extends Component {
         return (
             <div className={`${ModalController.prefix}modal-wrap`} style={modalWrapStyle}>
 
-                <div style={modalMaskStyle} onClick={this.handleMaskClick} />
+                <div className={`${ModalController.prefix}modal-mask`} style={modalMaskStyle} onClick={this.handleMaskClick} />
 
                 {modalsArr}
             </div>
@@ -382,9 +373,6 @@ class Modal extends Component {
             height: 0
         };
     }
-    componentDidMount () {
-        this.locate();
-    }
 
     shouldComponentUpdate (nextProps, nextState) {
         if (nextProps.active !== this.props.active) {
@@ -405,48 +393,51 @@ class Modal extends Component {
         return false;
     }
 
+    componentWillUpdate () {
+    }
+
     componentDidUpdate () {
-        this.locate();
     }
 
-    locate () {
-        // console.time('Modal ' + this.props.data.id + ' locate');
+    /*
+        locate () {
+            // console.time('Modal ' + this.props.data.id + ' locate');
 
-        const modalDOM = ReactDom.findDOMNode(this);
-        const height = modalDOM.offsetHeight;
-        const width = modalDOM.offsetWidth;
-        const state = this.state;
+            const modalDOM = ReactDom.findDOMNode(this);
+            const height = modalDOM.offsetHeight;
+            const width = modalDOM.offsetWidth;
+            const state = this.state;
 
-        if (Math.abs(width - state.width) > 3 || Math.abs(height - state.height) > 3) {
-            // console.log('Modal ' + this.props.data.id + ' need relocate');
-            let marginTop = height / -2;
-            if (marginTop + ModalController.layoutStyle.top < 0) {
-                marginTop = -ModalController.layoutStyle.top;
-            }
-            // @woer 弹出层高度太大的时候兼容
-            // console.log(height + "弹出层高度");
-            // console.log($(window).height() + "屏幕高度");
-            // console.log(marginTop);
-
-            // var screenHeight = $(window).height();
-            // if(!ModalController.layoutStyle.top){
-            //   (height > screenHeight) && (marginTop = $(window).height()/-2)
-            // }
-
-            this.setState({
-                width,
-                height,
-                style: {
-                    marginTop,
-                    marginLeft: width / -2
-                    // maxHeight: screenHeight,
-                    // overflowY: 'scroll'
+            if (Math.abs(width - state.width) > 3 || Math.abs(height - state.height) > 3) {
+                // console.log('Modal ' + this.props.data.id + ' need relocate');
+                let marginTop = height / -2;
+                if (marginTop + ModalController.layoutStyle.top < 0) {
+                    marginTop = -ModalController.layoutStyle.top;
                 }
-            });
-        }
-        // console.timeEnd('Modal ' + this.props.data.id + ' locate');
-    }
+                // @woer 弹出层高度太大的时候兼容
+                // console.log(height + "弹出层高度");
+                // console.log($(window).height() + "屏幕高度");
+                // console.log(marginTop);
 
+                // var screenHeight = $(window).height();
+                // if(!ModalController.layoutStyle.top){
+                //   (height > screenHeight) && (marginTop = $(window).height()/-2)
+                // }
+
+                this.setState({
+                    width,
+                    height,
+                    style: {
+                        marginTop,
+                        marginLeft: width / -2
+                        // maxHeight: screenHeight,
+                        // overflowY: 'scroll'
+                    }
+                });
+            }
+            // console.timeEnd('Modal ' + this.props.data.id + ' locate');
+        }
+    */
     close () {
         ModalController.close(this.props.data.id);
     }

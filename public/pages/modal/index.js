@@ -9,16 +9,20 @@ export default class ModalView extends Component {
 			super();
 			this.state = { modalId: ''}
 	}
-	showModal () {
-		Modal.alert('这是弹出提示');
-	}
 	showTipModal () {
 		Modal.tip('2000ms 后消失', 2000);
 	}
+	showModal () {
+		Modal.alert('这是alert提示');
+
+		// setTimeout(function(){
+		// 	Modal.updateTitle('kkskdkdkdk');
+		// },1000)
+	}
 	showConfirmModal () {
-		Modal.confirm('msg', () => {
+		Modal.confirm('这是确认弹出层', () => {
 			Modal.close();
-		});
+		})
 	}
 	openModal () {
 		var modalId = Modal.open({
@@ -30,12 +34,11 @@ export default class ModalView extends Component {
 			),
 			footer: (
 				<div>
-					<button className="mc-btn" onClick={ (e) => this.closeModal(modalId) }>取消</button>
-					<button className="mc-btn primary" onClick={ (e) => this.closeModal(modalId) } style={{marginRight:0}}>确认</button>
+					<button className="btn btn-sm btn-primary-border mr" onClick={ (e) => this.closeModal(modalId) }>取消</button>
+					<button className="btn btn-sm btn-primary" onClick={ (e) => this.closeModal(modalId) }>确认</button>
 				</div>
 			)
 		});
-		console.log(Modal);
 		this.setState({ modalId: modalId });
 	}
 	closeModal () {
@@ -59,18 +62,16 @@ export default class ModalView extends Component {
 				</h3>
 				<div className="mb mt">
 					<button
-						className="btn btn-success-border w mr" 
-						onClick={ (e) => { this.showModal() }}>
-						Modal.alert()
-					</button>
-					
-
-					<button
-						className="btn btn-info-border w" 
+						className="btn btn-info-border w"
 						onClick={ (e) => { this.showTipModal() }}>
 						Modal.tip()
 					</button>
-					
+
+					<button
+						className="btn btn-success-border w ml"
+						onClick={ (e) => { this.showModal() }}>
+						Modal.alert()
+					</button>
 
 					<button
 						className="btn btn-danger-border w ml" 
