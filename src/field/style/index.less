@@ -1,3 +1,5 @@
+@import "../../_theme/variables";
+
 .mc-field-group{
 	*:focus{
 		outline: 0 !important;
@@ -8,10 +10,10 @@
 		width:126px;
 		text-align:right;
 		font-size:13px;
-		color:#555555;
-		height:38px;
+		color:@font-color-base;
+		height:40px;
+		line-height:40px;
 		padding-right: 9px;
-		padding-top:5px;
 	}
 
 	.mc-field-body{
@@ -25,7 +27,7 @@
 		height:40px;
 		line-height:40px;
 		font-size:12px;
-		color:#999;
+		color:@font-color-lter;
 		margin-left:10px;
 	}
 
@@ -34,12 +36,12 @@
 	}
 
 	:-moz-placeholder, ::-moz-placeholder, input:-ms-input-placeholder, textarea:-ms-input-placeholder, input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
-	    color: #999999;  
+	    color: @font-color-lter;  
 	}
 
 	.require{
 		font-size:20px;
-		color:#FF4666;
+		color:@color-danger-base;
 		margin-right:5px;
 		vertical-align: sub;
 	}
@@ -47,9 +49,9 @@
 
 .mc-field-invaild {
 	.mc-field-error{
-		box-shadow: 0px 0px 5px #FF8D8D;
-	    border-color: #FF8D8D;
-	    background-color:#FCF5F4;
+		box-shadow: 0px 0px 5px @color-danger-lt;
+	    border-color: @color-danger-lt;
+	    background-color:@color-danger-lt40;
 	}
 
 	.mc-field-errorMsg{
@@ -62,9 +64,9 @@
 
     .mc-field-errormsg{
     	font-size: 13px;
-	    color: #BA7F22;
-	    background: #FFEB9A;
-		border: 1px solid rgba(136,79,25,0.10);
+	    color: @color-warning-dk;
+	    background: @color-warning-lt40;
+		border: 1px solid @color-warning-lter;
 		border-radius: 4px;
 	    padding: 5px;
 	    line-height: 25px;
@@ -81,7 +83,7 @@
     	.mc-field-arrow-color{
 		    display: inline-block;
 		    border-width: 8px;
-		    border-color: transparent #FFEB9A transparent transparent;
+		    border-color: transparent @color-warning-lt40 transparent transparent;
 		    border-style: dashed solid dashed dashed;
 		    border-left: none;
 		    margin-top: 8px;
@@ -90,7 +92,7 @@
 		.mc-field-arrow-border{
 		    display: inline-block;
 		    border-width: 8px;
-		    border-color: transparent rgba(136,79,25,0.10) transparent transparent;
+		    border-color: transparent @color-warning-lter transparent transparent;
 		    border-style: dashed solid dashed dashed;
 		    border-left: none;
 		    margin-left: -8px;
@@ -99,7 +101,7 @@
 		.mc-field-arrow{
 		    display: inline-block;
 		    border-width: 8px;
-		    border-color: transparent #FFEB9A transparent transparent;
+		    border-color: transparent @color-warning-lt40 transparent transparent;
 		    border-style: dashed solid dashed dashed;
 		    border-left: none;
 		    margin-left: -7px;

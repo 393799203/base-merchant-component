@@ -25,16 +25,16 @@ export default [
         link: '#/tooltip'
     }, {
         title: '日期 - Datepicker',
-        link: '#/datepicker'
+        link: '#/a-datepicker'
     }, {
         title: '月份 - Monthpicker',
-        link: '#/monthpicker'
+        link: '#/a-monthpicker'
     }, {
         title: '日期区间 - Rangepicker',
-        link: '#/rangepicker'
+        link: '#/a-rangepicker'
     }, {
         title: '时间 - Timepicker',
-        link: '#/timepicker'
+        link: '#/a-timepicker'
     }, {
         title: '图片上传 - ImageUploader',
         link: '#/image-uploader'
@@ -46,10 +46,10 @@ export default [
         link: '#/slider'
     }, {
         title: '下拉框 - Select',
-        link: '#/select'
+        link: '#/a-select'
     }, {
         title: '表单 - Field',
-        link: '#/field'
+        link: '#/a-field'
     },
     {
         title: 'TT - Teamtalk',

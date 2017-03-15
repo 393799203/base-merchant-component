@@ -1,3 +1,5 @@
+@import "../../../_theme/variables";
+
 .mc-field-select{
 	select::-ms-expand { 
         display: none; 
@@ -7,9 +9,9 @@
 		width: 300px;
         height: 36px;
         line-height: 1.5;
-        border: 1px solid #DEDEDE;
+        border: 1px solid @color-light-dk;
         border-radius: 4px;
-        color: #555555;
+        color: @font-color-base;
         font-size:13px;
         padding:0px 20px 0px 5px;
 
@@ -23,15 +25,15 @@
         -webkit-tap-highlight-color: rgba(0,0,0,0);
 
         &:focus {
-            box-shadow: 0px 0px 5px #8CC4FF;
-		    border-color: #8CC4FF;
+            box-shadow: 0px 0px 5px @color-info-base;
+		    border-color: @color-info-base;
 		    background-color:#fff;
         }
 	}
 
 	.mc-select-input .disabled, .mc-select-input[disabled] {
-        background-color: #F3F5F8;
+        background-color: @color-light-base;
         cursor: not-allowed;
-        color: #BBBBBB;
+        color: @color-light-dk;
     }
 }

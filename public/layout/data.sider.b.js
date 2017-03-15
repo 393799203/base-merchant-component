@@ -3,22 +3,22 @@ export default [{
     link: '#/teamtalk'
 }, {
     title: '手机区号 - AreaCode',
-    link: '#/areacode'
+    link: '#/a-areacode'
 }, {
     title: '地址 - Address',
-    link: '#/address'
+    link: '#/a-address'
 }, {
     title: '全地址 - FullAddress',
-    link: '#/fulladdress'
+    link: '#/a-fulladdress'
 }, {
     title: '身份认证 - VerifyIdenty',
-    link: '#/verifyidenty'
+    link: '#/a-verifyidenty'
 }, {
     title: '手机验证 - VerifyPhone',
-    link: '#/verifyphone'
+    link: '#/a-verifyphone'
 }, {
     title: '表单配置 - Form',
-    link: '#/form'
+    link: '#/a-form'
 }, {
     title: '类目菜单 - MenuCate',
     link: '#/menucate'

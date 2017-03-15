@@ -1,3 +1,5 @@
+@import "../../_theme/variables";
+
 @datepicker-prefix-cls: mc-calendar;
 
 /* 时间弹出层浮框内容 */
@@ -5,13 +7,13 @@
 	position: relative;
 	outline: none;
 	width: 300px;
-	border: 1px solid #DEDEDE;
+	border: 1px solid @btn-border-color;
 	list-style: none;
-	font-size: 14px;
+	font-size: @font-size-base;
 	text-align: left;
 	background-color: #fff;
-	border-radius: 4px;
-	box-shadow: 0 3px 6px 0px rgba(0,0,0,0.5);
+	border-radius: @btn-border-radius;
+	box-shadow: 0 3px 6px 0px @btn-border-color;
 	background-clip: padding-box;
 	line-height: 1.5;
 }
@@ -24,7 +26,7 @@
 	z-index: 10;
 	position: absolute;
 	outline: none;
-	border-radius: 3px;
+	border-radius: @btn-border-radius;
 }
 .@{datepicker-prefix-cls}-month-panel-hidden {
 	display: none;
@@ -34,10 +36,10 @@
 	line-height: 34px;
 	text-align: center;
 	user-select: none;
-	border-bottom: 1px solid #e9e9e9;
+	border-bottom: 1px solid @btn-border-color;
 }
 .@{datepicker-prefix-cls}-month-panel-header a:hover {
-	color: #FF2555;
+	color: @color-dark-base;
 }
 .@{datepicker-prefix-cls}-month-panel-header .@{datepicker-prefix-cls}-month-panel-century-select,
 .@{datepicker-prefix-cls}-month-panel-header .@{datepicker-prefix-cls}-month-panel-decade-select,
@@ -46,7 +48,7 @@
 	padding: 0 2px;
 	font-weight: bold;
 	display: inline-block;
-	color: #666;
+	color: @font-color-base;
 	line-height: 34px;
 }
 .@{datepicker-prefix-cls}-month-panel-header .@{datepicker-prefix-cls}-month-panel-century-select-arrow,
@@ -65,7 +67,7 @@
 .@{datepicker-prefix-cls}-month-panel-header .@{datepicker-prefix-cls}-month-panel-next-year-btn {
 	position: absolute;
 	top: 0;
-	color: #999;
+	color: @font-color-lter;
 	font-family: Arial, "Hiragino Sans GB", "Microsoft Yahei", "Microsoft Sans Serif", sans-serif;
 	padding: 0 5px;
 	font-size: 16px;
@@ -100,32 +102,33 @@
 .@{datepicker-prefix-cls}-month-panel-month {
 	display: inline-block;
 	margin: 0 auto;
-	color: #666;
+	color: @font-color-base;
 	background: transparent;
 	text-align: center;
 	height: 24px;
 	line-height: 24px;
 	padding: 0 6px;
-	border-radius: 4px;
+	border-radius: @btn-border-radius;
 	transition: background 0.3s ease;
 }
 .@{datepicker-prefix-cls}-month-panel-month:hover {
-	background: #ffbebe;
+	background: @color-danger-lter;
+	color:#fff;
 	cursor: pointer;
 }
 .@{datepicker-prefix-cls}-month-panel-selected-cell .@{datepicker-prefix-cls}-month-panel-month {
-	background: #FF2555;
+	background: @color-danger-base;
 	color: #fff;
 }
 .@{datepicker-prefix-cls}-month-panel-selected-cell .@{datepicker-prefix-cls}-month-panel-month:hover {
-	background: #FF2555;
+	background: @color-danger-base;
 	color: #fff;
 }
 
 .@{datepicker-prefix-cls}-month-panel-cell-disabled .@{datepicker-prefix-cls}-month-panel-month {
 	cursor: not-allowed;
-	color: #bcbcbc;
-	background: #f3f3f3;
+	color: @color-light-dker;
+	background: @btn-disabled-color;
 	border-radius: 0;
 	width: auto;
 }

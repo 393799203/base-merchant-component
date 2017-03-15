@@ -1,3 +1,6 @@
+@import "../../../_theme/variables";
+@import "../../../_theme/iconfont";
+
 .mc-field-radio{
 	height:40px;
 	line-height:40px;
@@ -14,23 +17,24 @@
 	    & + label {
 	        display: inline;
 	        font-size: 13px;
-	        color:#555555;
+	        color:@font-color-base;
 	        cursor: pointer;
 	    }
 
 	    & + label:before {
-		    content: "\e671";
+		    content: "\e6d7";
 		    font-size: 16px;
-		    color:#DEDEDE;
+		    color:@color-light-dk;
 		    display: inline-block;
 		    cursor: pointer;
             margin-right: 3px;
+            vertical-align: middle;
 		}
 
 		&:checked + label:before {
-			content: "\e626";
+			content: "\e75b";
 		    font-size: 16px;
-		    color:#419BF9;
+		    color:@color-info-base;
 		    display: inline-block;
 		    cursor: pointer;
             margin-right: 3px;
@@ -41,7 +45,7 @@
 	        cursor: not-allowed;
 	    }
 	    &:disabled:checked + label::before {
-		    color: #DEDEDE;
+		    color: @color-light-base;
 	    }
 	}
 }
@@ -49,11 +53,11 @@
 .mc-field-invaild {
 	.mc-radio-error{
 		& + label:before {
-			color: #FF8D8D;
+			color: @color-danger-lter;
 		}
 
 		&:checked + label:before {
-		    color: #FF8D8D;
+		    color: @color-danger-lter;
 		}
 	}
 }

@@ -216,7 +216,7 @@ export default class CheckboxView extends Component {
 					        className='field-text'
 					        subInfo="校验onValidate方法">
 					    </Field>
-					    <div style={{height:"40px"}}></div>
+					    <div style={{height:"41px"}}></div>
 					</div>
 
 					<div className="f-l field-demo">

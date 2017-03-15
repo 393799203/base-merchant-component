@@ -1,4 +1,5 @@
-@datepicker-prefix-cls: mc-calendar;
+@import "../../_theme/variables";
+@import "../../_theme/iconfont";
 
 .mc-time-picker {
 	box-sizing: border-box;
@@ -31,14 +32,14 @@
 .mc-time-picker-panel.slide-mc-leave.slide-mc-leave-active.mc-time-picker-panel-placement-bottomRight {
 	animation-name: antSlideUpOut;
 }
-.@{datepicker-prefix-cls}-time .mc-time-picker-panel {
+.mc-time-picker-panel {
 	min-width: 168px;
 }
 .mc-time-picker {
 	position: relative;
 	display: inline-block;
 	outline: none;
-	font-size: 14px;
+	font-size: @font-size-base;
 	transition: opacity 0.3s ease;
 }
 .mc-time-picker-input {
@@ -48,45 +49,49 @@
 	width: 100%;
 	height: 34px;
 	cursor: text;
-	font-size: 14px;
+	font-size: @font-size-base;
 	line-height: 1.5;
-	color: #666;
+	color: @font-color-base;
 	background-color: #fff;
 	background-image: none;
-	border: 1px solid #d9d9d9;
-	border-radius: 3px;
+	border: 1px solid @btn-border-color;
+	border-radius: @btn-border-radius;
 	-webkit-transition: border .2s cubic-bezier(0.645, 0.045, 0.355, 1), background .2s cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow .2s cubic-bezier(0.645, 0.045, 0.355, 1);
 	-o-transition: border .2s cubic-bezier(0.645, 0.045, 0.355, 1), background .2s cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow .2s cubic-bezier(0.645, 0.045, 0.355, 1);
 	transition: border .2s cubic-bezier(0.645, 0.045, 0.355, 1), background .2s cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow .2s cubic-bezier(0.645, 0.045, 0.355, 1);
 	width: 120px;
 }
 .mc-time-picker-input::-moz-placeholder {
-	color: #ccc;
+	color: @font-color-lter;
 	opacity: 1;
 }
 .mc-time-picker-input:-ms-input-placeholder {
-	color: #ccc;
+	color: @font-color-lter;
 }
 .mc-time-picker-input::-webkit-input-placeholder {
-	color: #ccc;
+	color: @font-color-lter;
 }
 .mc-time-picker-input:hover {
-	border-color: rgba(127, 189, 232, 0.68);
+	border-color: @color-info-base;
+	outline: 0;
+	box-shadow: 0px 0px 5px @color-info-base;
 }
 .mc-time-picker-input:focus {
-	border-color: rgba(127, 189, 232, 0.68);
+	border-color: @color-info-base;
 	outline: 0;
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(52, 151, 219, 0.6);
+	box-shadow: 0px 0px 5px @color-info-base;
 }
 .mc-time-picker-input[disabled],
 fieldset[disabled] .mc-time-picker-input {
-	background-color: #f3f5f7;
+	background-color: @btn-disabled-color;
 	opacity: 1;
 	cursor: not-allowed;
 }
 .mc-time-picker-input[disabled]:hover,
 fieldset[disabled] .mc-time-picker-input:hover {
-	border-color: #e1e1e1;
+	box-shadow: 0px 0px 5px @btn-border-color;
+    border-color: @btn-border-color;
+    background-color: @btn-disabled-color;
 }
 textarea.mc-time-picker-input {
 	max-width: 100%;
@@ -115,7 +120,7 @@ textarea.mc-time-picker-input {
 	height: 12px;
 	line-height: 12px;
 	right: 8px;
-	color: #999;
+	color: @font-color-base;
 	top: 50%;
     margin-top: -6px;
     background: url(http://s16.mogucdn.com/p1/170210/idid_ifqwimlcmnsgmzdgmqzdambqgyyde_28x108.png);
@@ -127,15 +132,14 @@ textarea.mc-time-picker-input {
 	display: inline-block;
 	position: relative;
 	outline: none;
-	border: 1px solid #d9d9d9;
+	border: 1px solid @btn-border-color;
 	list-style: none;
 	font-size: 12px;
 	text-align: left;
 	background-color: #fff;
 	border-radius: 3px;
-	box-shadow: 0 0 4px rgba(0, 0, 0, 0.17);
+	box-shadow: 0 0 4px @btn-border-color;
 	background-clip: padding-box;
-	border: 1px solid #ccc;
 	line-height: 1.5;
 }
 .mc-time-picker-panel-input {
@@ -151,7 +155,7 @@ textarea.mc-time-picker-input {
 	box-sizing: border-box;
 	position: relative;
 	padding: 6px;
-	border-bottom: 1px solid #e9e9e9;
+	border-bottom: 1px solid @btn-border-color;
 }
 .mc-time-picker-panel-input-invalid {
 	border-color: red;
@@ -169,17 +173,16 @@ textarea.mc-time-picker-input {
 	margin: 0;
 }
 .mc-time-picker-panel-clear-btn:after {
-	content: "\F00D";
-	font: normal normal normal 14px/1 FontAwesome;
+	.iconfont();
+	content: "\e646";
 	font-size: 12px;
-	color: #ccc;
+	color: @font-color-base;
 	display: inline-block;
 	line-height: 1;
 	width: 20px;
-	transition: color 0.3s ease;
 }
 .mc-time-picker-panel-clear-btn:hover:after {
-	color: #999;
+	color: @font-color-lter;
 }
 .mc-time-picker-panel-narrow .mc-time-picker-panel-input-wrap {
 	max-width: 111px;
@@ -187,7 +190,7 @@ textarea.mc-time-picker-input {
 .mc-time-picker-panel-select {
 	float: left;
 	font-size: 12px;
-	border: 1px solid #e9e9e9;
+	border: 1px solid @btn-border-color;
 	border-width: 0 1px;
 	margin-left: -1px;
 	box-sizing: border-box;
@@ -227,101 +230,17 @@ textarea.mc-time-picker-input {
 	transition: background 0.3s ease;
 }
 .mc-time-picker-panel-select li:hover {
-	background: #f9caca;
+	background: @color-danger-lter;
+	color: @color-white;
 }
 .mc-time-picker-panel-select li.mc-time-picker-panel-select-option-selected {
-	background: #ffbebe;
+	background: @color-danger-base;
+	color: @color-white;
 }
 .mc-time-picker-panel-select li.mc-time-picker-panel-select-option-disabled {
-	color: #ccc;
+	color: @btn-disabled-color;
 }
 .mc-time-picker-panel-select li.mc-time-picker-panel-select-option-disabled:hover {
 	background: transparent;
 	cursor: not-allowed;
-}
-
-
-
-
-
-
-.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input-wrap {
-	direction: rtl;
-}
-.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input-wrap .@{datepicker-prefix-cls}-date-input-wrap,
-.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input-wrap .@{datepicker-prefix-cls}-time-picker-wrap {
-	direction: ltr;
-	display: inline-block;
-}
-.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input-wrap .mc-time-picker-panel,
-.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input-wrap .@{datepicker-prefix-cls}-clear-btn {
-	direction: ltr;
-}
-.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input,
-.@{datepicker-prefix-cls}-time .mc-time-picker-input {
-	position: relative;
-	display: inline-block;
-	padding: 4px 7px;
-	width: 100%;
-	height: 34px;
-	cursor: text;
-	font-size: 14px;
-	line-height: 1.5;
-	color: #666;
-	background-color: #fff;
-	background-image: none;
-	border: 1px solid #d9d9d9;
-	border-radius: 3px;
-	-webkit-transition: border .2s cubic-bezier(0.645, 0.045, 0.355, 1), background .2s cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow .2s cubic-bezier(0.645, 0.045, 0.355, 1);
-	-o-transition: border .2s cubic-bezier(0.645, 0.045, 0.355, 1), background .2s cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow .2s cubic-bezier(0.645, 0.045, 0.355, 1);
-	transition: border .2s cubic-bezier(0.645, 0.045, 0.355, 1), background .2s cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow .2s cubic-bezier(0.645, 0.045, 0.355, 1);
-	height: 22px;
-	width: 96px;
-	margin-right: 6px;
-}
-.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input::-moz-placeholder,
-.@{datepicker-prefix-cls}-time .mc-time-picker-input::-moz-placeholder {
-	color: #ccc;
-	opacity: 1;
-}
-.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input:-ms-input-placeholder,
-.@{datepicker-prefix-cls}-time .mc-time-picker-input:-ms-input-placeholder {
-	color: #ccc;
-}
-.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input::-webkit-input-placeholder,
-.@{datepicker-prefix-cls}-time .mc-time-picker-input::-webkit-input-placeholder {
-	color: #ccc;
-}
-.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input:hover,
-.@{datepicker-prefix-cls}-time .mc-time-picker-input:hover {
-	border-color: #FF2555;
-}
-.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input:focus,
-.@{datepicker-prefix-cls}-time .mc-time-picker-input:focus {
-	border-color: #FF2555;
-	outline: 0;
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(52, 151, 219, 0.6);
-}
-.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input[disabled],
-.@{datepicker-prefix-cls}-time .mc-time-picker-input[disabled],
-fieldset[disabled] .@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input,
-fieldset[disabled] .@{datepicker-prefix-cls}-time .mc-time-picker-input {
-	background-color: #f3f5f7;
-	opacity: 1;
-	cursor: not-allowed;
-}
-.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input[disabled]:hover,
-.@{datepicker-prefix-cls}-time .mc-time-picker-input[disabled]:hover,
-fieldset[disabled] .@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input:hover,
-fieldset[disabled] .@{datepicker-prefix-cls}-time .mc-time-picker-input:hover {
-	border-color: #e1e1e1;
-}
-textarea.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input,
-textarea.@{datepicker-prefix-cls}-time .mc-time-picker-input {
-	max-width: 100%;
-	height: auto;
-	vertical-align: bottom;
-}
-.@{datepicker-prefix-cls}-time .mc-time-picker-icon {
-	display: none;
 }
