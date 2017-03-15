@@ -3,6 +3,10 @@
 @import "../../_theme/variables";
 @import "../../_theme/iconfont";
 
+*:focus{
+    outline: 0 !important;
+}
+
 .@{datepicker-prefix-cls}-decade-panel {
 	left: 0;
 	top: 0;
@@ -100,6 +104,7 @@
 }
 .@{datepicker-prefix-cls}-decade-panel-decade:hover {
 	background: @color-danger-lter;
+	color:#fff !important;
 	cursor: pointer;
 }
 .@{datepicker-prefix-cls}-decade-panel-selected-cell .@{datepicker-prefix-cls}-decade-panel-decade {
@@ -108,7 +113,7 @@
 }
 .@{datepicker-prefix-cls}-decade-panel-selected-cell .@{datepicker-prefix-cls}-decade-panel-decade:hover {
 	background: @color-danger-base;
-	color: #fff;
+	color: #fff !important;
 }
 .@{datepicker-prefix-cls}-decade-panel-last-century-cell .@{datepicker-prefix-cls}-decade-panel-decade,
 .@{datepicker-prefix-cls}-decade-panel-next-century-cell .@{datepicker-prefix-cls}-decade-panel-decade {
