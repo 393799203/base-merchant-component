@@ -25,7 +25,7 @@ class PanelDemo extends Component {
                 <Panel title='示例代码' elem={elem}>
                     <p>你的组件内容</p>
                 </Panel>
-                <Panel title='示例代码' elem={elem} theme='info' className='mt'>
+                <Panel title='示例代码' elem={elem} theme='info' className='m-t'>
                     <p>你的组件内容</p>
                 </Panel>
                 <div dangerouslySetInnerHTML={{ __html: Readme }} />
