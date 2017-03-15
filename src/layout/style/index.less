@@ -78,7 +78,6 @@
 			}
 			.mc-header-menu-dropdown {
 				.mc-menu {
-					min-width: 120px;
 					left: -15px;
 				}
 			}
@@ -104,8 +103,13 @@
 			margin-top: 5px;
 
 		}
-		.mc-header-user-dropdown .mc-trigger {
-			height: 50px;
+		.mc-header-user-dropdown {
+			.mc-trigger {
+				height: 50px;
+			}
+			.mc-menu {
+				min-width: 80px;
+			}
 		}
 	}
 	.mc-header-bg(info);
