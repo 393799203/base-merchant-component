@@ -25,13 +25,14 @@ const footer = (
 // test start
 describe ('Modal.alert Component Test', () => {
 
-    it('show alert', () => {
+    it('show alert', (done) => {
 
-        const spyOpen = sinon.spy(api, 'alert');
+        // const spyOpen = sinon.spy(api, 'alert');
         // spyOpen.withArgs(arg1);
         const option = {theme: 'warning'};
         const callback = function (){
             console.log('回调成功');
+            done();
         };
 
         api.alert( '这是一个alert', callback, option);
@@ -46,7 +47,7 @@ describe ('Modal.alert Component Test', () => {
         $('.mc-modal-footer .btn-sm').click();
         setTimeout(function(){
             expect($('.mc-modal').length).to.equal(0);
-        },500)
+        },10);
 
         Modal.closeAll();
     })
@@ -62,6 +63,7 @@ describe ('Modal.confirm Component Test', () => {
         const option = {theme: 'warning'};
         const callback = function (){
             console.log('回调成功');
+            done();
         };
 
         api.confirm( '这是一个confirm', callback, option);
@@ -85,16 +87,15 @@ describe ('Modal.confirm Component Test', () => {
 
 describe ('Modal.tip Component Test', () => {
 
-    it('show tip', () => {
+    it('show tip some seconds, close by default', () => {
+        const clock = sinon.useFakeTimers();
 
         Modal.tip('2000ms 后消失', 2000);
-
         expect($('.mc-modal').length).to.equal(1);
         expect($('.mc-modal-body').length).to.equal(1);
 
-        setTimeout(function(){
-            expect($('.mc-modal').length).to.equal(0);
-        },2020)
+        clock.tick(2020);
+        expect($('.mc-modal').length).to.equal(0);
 
         Modal.closeAll();
     })
