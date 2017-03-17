@@ -11,7 +11,7 @@ const selectOptions = [
         value: 0         //选项的值
     },
     {
-        text: '单选2',    
+        text: '单选2',
         value: 1
     },{
         text: '单选3',
@@ -25,7 +25,7 @@ const selectOptions2 = [
         value: 0         //选项的值
     },
     {
-        text: '单选2',    
+        text: '单选2',
         value: 1
     },{
         text: '单选3',
@@ -82,7 +82,7 @@ export default class SelectView extends Component {
 		    duration: 2000 // 单位毫秒
 		});
     }
-	
+
 	render () {
 		return (
 			<div className="field-demo clearfix">
@@ -90,15 +90,15 @@ export default class SelectView extends Component {
 					1. 示例
 				</h3>
 				<div className="title">
-					<button className="mb btn btn-success-border mr" onClick={() => this.getData("select")}>获取文本框信息</button>
-					<button className="mb btn btn-warning-border mr" onClick={() => this.clearData("select")}>清空文文本框信息</button>
-					<button className="mb btn btn-info-border mr" onClick={() => this.resetData("select")}>重置文本框信息</button>
-					<button className="mb btn btn-danger-border mr" onClick={() => this.validate("select")}>提交文本框信息并校验</button>
+					<button className="m-b btn btn-success-border m-r" onClick={() => this.getData("select")}>获取文本框信息</button>
+					<button className="m-b btn btn-warning-border m-r" onClick={() => this.clearData("select")}>清空文文本框信息</button>
+					<button className="m-b btn btn-info-border m-r" onClick={() => this.resetData("select")}>重置文本框信息</button>
+					<button className="m-b btn btn-danger-border m-r" onClick={() => this.validate("select")}>提交文本框信息并校验</button>
 				</div>
 				<div className='demo clearfix'>
-					<div className='fl field-demo'>
+					<div className='f-l field-demo'>
 						<h4>必填属性：类型（type）、name、表单复杂的情况下建议设置form给表单归类</h4>
-						<Field 
+						<Field
 							type="select"
 					        name="select1"
 					        form="select"
@@ -106,9 +106,9 @@ export default class SelectView extends Component {
 					        label="必填属性：">
 					    </Field>
 					</div>
-					<div className="fl field-demo">
+					<div className="f-l field-demo">
 						<h4>其他配置属性：禁用（disabled）、标题（label）、子标题信息（subInfo）、样式（className）</h4>
-						<Field 
+						<Field
 							type="select"
 					        name="select2"
 					        form="select"
@@ -119,9 +119,9 @@ export default class SelectView extends Component {
 					        label="必填属性：">
 					    </Field>
 					</div>
-					<div className="fl field-demo">
+					<div className="f-l field-demo">
 						<h4>其他配置属性：必填（required）、校验错误信息（errorMsg）、校验是否展示（error）</h4>
-						<Field 
+						<Field
 							type="select"
 					        name="select3"
 					        form="select"
@@ -135,9 +135,9 @@ export default class SelectView extends Component {
 					    </Field>
 					</div>
 
-					<div className="fl field-demo">
+					<div className="f-l field-demo">
 						<h4>其他配置属性：校验是否展示（error,默认会自动失去焦点校验）</h4>
-						<Field 
+						<Field
 							type="select"
 					        name="select4"
 					        form="select"
@@ -151,9 +151,9 @@ export default class SelectView extends Component {
 					    </Field>
 					</div>
 
-					<div className="fl field-demo">
+					<div className="f-l field-demo">
 						<h4>赋值属性：value、defaultValue、defaultChecked</h4>
-						<Field 
+						<Field
 							type="select"
 					        name="select5"
 					        form="select"
@@ -165,7 +165,7 @@ export default class SelectView extends Component {
 					        className="field-select"
 					        label="赋值属性：">
 					    </Field>
-					    <Field 
+					    <Field
 							type="select"
 					        name="select6"
 					        form="select"
@@ -176,7 +176,7 @@ export default class SelectView extends Component {
 					        className="field-select"
 					        label="赋值属性：">
 					    </Field>
-					    <Field 
+					    <Field
 							type="select"
 					        name="select7"
 					        form="select"
@@ -190,9 +190,9 @@ export default class SelectView extends Component {
 					    </Field>
 					</div>
 
-					<div className="fl field-demo">
+					<div className="f-l field-demo">
 						<h4>方法：校验（onValidate）、修改数据回调（onChange）</h4>
-						<Field 
+						<Field
 							type="select"
 					        name="select8"
 					        form="select"
@@ -204,7 +204,7 @@ export default class SelectView extends Component {
 					        className="field-select"
 					        label="必填属性：">
 					    </Field>
-					    <Field 
+					    <Field
 							type="select"
 					        name="select8"
 					        form="select"
@@ -219,9 +219,9 @@ export default class SelectView extends Component {
 					    <div style={{height:"40px"}}></div>
 					</div>
 
-					<div className="fl field-demo">
+					<div className="f-l field-demo">
 						<h4>{"自定义属性：attrs={{style: {width:'100px'}}}"}</h4>
-						<Field 
+						<Field
 							type="select"
 					        name="select9"
 					        form="select"
@@ -233,9 +233,9 @@ export default class SelectView extends Component {
 					    </Field>
 					</div>
 
-					<div className="fl field-demo">
+					<div className="f-l field-demo">
 						<h4>{"自定义方法：events={{onClick:()=>{}}}"}</h4>
-						<Field 
+						<Field
 							type="select"
 					        name="select10"
 					        form="select"

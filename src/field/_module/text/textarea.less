@@ -1,25 +1,45 @@
+@import "../../../_theme/variables";
+
 .mc-field-text{
 	.mc-textarea-input{
 		height:100px;
 		width:450px;
-		border:1px solid #DEDEDE;
+		border:1px solid @color-light-dk;
 		border-radius:4px;
-		background-color:#fff;
+		background-color:@color-white;
 		font-size:13px;
-		color:#555555;
+		color:@font-color-base;
 		padding:10px;
 		resize:none;
 
+		&:hover {
+            box-shadow: 0px 0px 5px @color-info-base;
+		    border-color: @color-info-base;
+		    background-color:@color-white;
+        }
+
 		&:focus {
-            box-shadow: 0px 0px 5px #8CC4FF;
-		    border-color: #8CC4FF;
-		    background-color:#fff;
+            box-shadow: 0px 0px 5px @color-info-base;
+		    border-color: @color-info-base;
+		    background-color:@color-white;
         }
 	}
 
 	.mc-textarea-input[disabled] {
-        background-color: #F3F5F8;
+        background-color: @color-light-base;
         cursor: not-allowed;
-        color: #BBBBBB;
+        color: @color-light-dk;
+
+        &:focus {
+            box-shadow: none;
+		    border-color: @color-light-dk;
+		    background-color: @color-light-base;
+        }
+
+        &:hover {
+            box-shadow: none;
+		    border-color: @color-light-dk;
+		    background-color: @color-light-base;
+        }
     }
 }

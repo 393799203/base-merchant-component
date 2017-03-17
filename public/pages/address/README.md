@@ -35,21 +35,21 @@ export default class AddressSelectorView extends Component {
 
     render () {
         return (
-            <div className='ml mr mb-xxl mc-field'>
+            <div className='m-l m-r m-b-xxl mc-field'>
                 <div className='title'>
-                    <button className="mb btn btn-success-custom mr" onClick={() => this.getData()}>获取数据</button>
-                    <button className="mb btn btn-warning-custom mr" onClick={() => this.clearData()}>清空数据</button>
-                    <button className="mb btn btn-info-custom mr" onClick={() => this.resetData()}>重置数据</button>
+                    <button className="m-b btn btn-success-custom m-r" onClick={() => this.getData()}>获取数据</button>
+                    <button className="m-b btn btn-warning-custom m-r" onClick={() => this.clearData()}>清空数据</button>
+                    <button className="m-b btn btn-info-custom m-r" onClick={() => this.resetData()}>重置数据</button>
                 </div>
 
                 <div className='demo clearfix'>
-                    <div className='fl field-demo'>
+                    <div className='f-l field-demo'>
                         <h5>默认情况：</h5>
                         <Address name="test"/>
                     </div>
-                    <div className="fl field-demo">
+                    <div className="f-l field-demo">
                         <h5>基础配置属性：禁用（provinceDisabled、cityDisabled、areaDisabled）、样式（className、style）</h5>
-                        <Address 
+                        <Address
                             style={{width:'200px'}}
                             className='mc-addressSelector'
                             provinceDisabled={true}
@@ -58,17 +58,17 @@ export default class AddressSelectorView extends Component {
                             name="test1"
                         />
                     </div>
-                    <div className="fl field-demo">
+                    <div className="f-l field-demo">
                         <h5>赋值属性：defaultProvince、defaultCity、defaultArea</h5>
-                        <Address 
-                            defaultProvince="山西省" 
+                        <Address
+                            defaultProvince="山西省"
                             defaultCity = "大同市"
                             defaultArea="南郊区"
                             name="test2"
                         />
                     </div>
 
-                    <div className="fl field-demo">
+                    <div className="f-l field-demo">
                         <h5>回调函数：onChange</h5>
                         <Address
                             onChange = {(e) => this.addressChange(e)}
@@ -76,9 +76,9 @@ export default class AddressSelectorView extends Component {
                         />
                     </div>
 
-                    <div className="fl field-demo">
+                    <div className="f-l field-demo">
                         <h5>表单属性：form（多个address同时使用时，通过form进行划分，可用于获取数据、清空、重置中,如果没有设置form，则默认为defaultForm，在数据、清空、重置方法中不传入form则是处理整个defaultForm）</h5>
-                        <Address 
+                        <Address
                             name="test4"
                             form="formtest"
                         />
@@ -90,7 +90,7 @@ export default class AddressSelectorView extends Component {
 }
 
 ```
-    
+
 ### 3. 属性 - Props
 
 | props        | 说明           | 类型         |   默认值       |

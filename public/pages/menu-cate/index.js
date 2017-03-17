@@ -79,17 +79,17 @@ export default class MenuView extends Component {
     render () {
         var { md } = this.state;
         return (
-            <div className="ml mr mb-xxl">
-                <h2 className='pb-5 b-b dashed'>
+            <div className="m-l m-r m-b-xxl">
+                <h2 className='p-b-5 b-b dashed'>
                     类目菜单（小店） - MenuCate
-                    <a href="mactt://message/user/03084" style={{border: 'none', boxShadow: 'none'}} className="ml-lg btn-info-border btn">
+                    <a href="mactt://message/user/03084" style={{border: 'none', boxShadow: 'none'}} className="m-l-lg btn-info-border btn">
                         <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
                     </a>
                 </h2>
                 <h3>
                     1. 示例1
                 </h3>
-                <div className="mb mt">
+                <div className="m-b m-t">
                     <h4>示例1: 默认样式</h4>
                     <Menu menus={this.state.menus} />
 

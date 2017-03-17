@@ -6,12 +6,12 @@ export default class HomeView extends Component {
     }
     render () {
         return (
-            <div className='text-center w-900 m-auto pt-60'>
-                <p className='text-thin text-white text-h2 mt-60 pt-60'>
+            <div className='text-center w-900 m-auto p-t-60'>
+                <p className='text-thin text-white text-h2 m-t-60 p-t-60'>
                     商家后台组件是基于 React@0.14 封装的一套组件， 主要用于 美丽说商家后台、蘑菇街商家后台（小店）快速构建页面。
                     react 组件化，实现快速开发，管理升级，从而达到更加高效地支撑业务。
                 </p>
-                <p className='mt-60 pt-30'>
+                <p className='m-t-60 p-t-30'>
                     <a
                       className='btn btn-lg'
                       href='#/button'

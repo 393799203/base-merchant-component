@@ -15,23 +15,23 @@ export default class ProcessBarView extends Component {
     }
     render () {
         return (
-            <div className='mb-lg ml mr'>
-                <h2 className='pb-5 b-b dashed'>
+            <div className='m-b-lg m-l m-r'>
+                <h2 className='p-b-5 b-b dashed'>
                     进度条 - ProcessBar
-                    <a href="mactt://message/user/02017" style={{border: 'none', boxShadow: 'none'}} className="ml-lg btn-info-border btn">
-                        <i className="fa fa-comments mr-xs"></i>遇到问题？联系作者
+                    <a href="mactt://message/user/02017" style={{border: 'none', boxShadow: 'none'}} className="m-l-lg btn-info-border btn">
+                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
                     </a>
                 </h2>
                 <h3>
                     1. 示例
                 </h3>
-                <div className='mt mb'>
+                <div className='m-t m-b'>
                     <ProcessBar
                         stepTp={this.state.stepTp6}
                         stepBt={this.state.stepBt6}
                         cur={3}
                     />
-                    <div className='mt-lg'>
+                    <div className='m-t-lg'>
                         <ProcessBar
                             theme='info'
                             size='sm'
@@ -40,7 +40,7 @@ export default class ProcessBarView extends Component {
                             cur={3}
                         />
                     </div>
-                    <div className='mt-lg'>
+                    <div className='m-t-lg'>
                         <ProcessBar
                             size='sm'
                             theme='success'
@@ -48,7 +48,7 @@ export default class ProcessBarView extends Component {
                             cur={1}
                         />
                     </div>
-                    <div className='mt-lg'>
+                    <div className='m-t-lg'>
                         <ProcessBar
                             size='xs'
                             theme='warning'

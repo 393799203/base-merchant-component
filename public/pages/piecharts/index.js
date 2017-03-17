@@ -65,7 +65,7 @@ export default class TeamTalkView extends Component {
 				'series': [{
 					name: '访问来源1',
 					radius: ['50%', '70%'], //内部空白部分大小， 外部整个圆形大小
-					center: ['15%', '50%'],  //图形位移位置， left top 
+					center: ['15%', '50%'],  //图形位移位置， left top
 					label: {
 						normal: {
 							show: false,
@@ -141,14 +141,14 @@ export default class TeamTalkView extends Component {
 	}
 	render() {
 		return (
-			<div className="ml mr mb-xxl">
-				<h2 className='pb-5 b-b dashed'>
+			<div className="m-l m-r m-b-xxl">
+				<h2 className='p-b-5 b-b dashed'>
 					图表组件📈，依赖百度的echarts
 				</h2>
 				<h3>
 					1. 饼状图表
 				</h3>
-				<div className="mt mb">
+				<div className="m-t m-b">
 					<PieCharts className="ocsen" data={this.state.chartsData1} extend={this.state.extend} events={this.state.events} ></PieCharts>
 					<br />
 					<PieCharts className="ocsen" data={this.state.chartsData2} extend={this.state.extend} events={this.state.events} ></PieCharts>

@@ -16,11 +16,11 @@ import './style/index.less';
 class ImageUploaderDemo extends Component {
     render () {
         return (
-            <div className="mb-lg ml mr image-uploader-demo">
-                <h2 className='pb-5 b-b dashed'>
+            <div className="m-b-lg m-l m-r image-uploader-demo">
+                <h2 className='p-b-5 b-b dashed'>
                     图片上传 - ImageUploader
                     <a href="mactt://message/user/01173" style={{border: 'none'}} className="m-l-lg btn-info-border btn">
-                        <i className="fa fa-comments mr-xs"></i>遇到问题？联系作者
+                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
                     </a>
                 </h2>
                 <h3>

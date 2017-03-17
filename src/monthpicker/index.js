@@ -9,6 +9,7 @@ import DatepickerMinix from '../_module/js/datepicker';
 import '../_module/less/datepicker.less';
 import '../_module/less/monthpicker.less';
 import '../_module/less/yearpicker.less';
+import '../_module/less/decadepicker.less';
 
 export default class MonthPicker extends Component {
     static defaultProps = {

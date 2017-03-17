@@ -5,11 +5,20 @@ import FullPageView from './layout/tpl.fullPage';
 
 import HomeView from './pages/home';
 import CSSView from './pages/css';
+import CSSAllView from './pages/css/all';
+import CSSBgView from './pages/css/_module/bg';
+import CSSButtonView from './pages/css/_module/button';
+import CSSGridView from './pages/css/_module/grid';
+import CSSIconView from './pages/css/_module/icon';
+import CSSPanelView from './pages/css/_module/panel';
+import CSSTableView from './pages/css/_module/table';
+import CSSTextView from './pages/css/_module/text';
+import CSSUtilView from './pages/css/_module/util';
+
 import DocView from './pages/doc';
 import DataView from './pages/data';
 import RuleView from './pages/rule';
 
-import GridView from './pages/layout/grid';
 import PagerView from './pages/pager';
 import PaginationView from './pages/pagination';
 import NotificationView from './pages/notification';
@@ -50,12 +59,20 @@ export default (
         <Route path='/' component={FullPageView}>
             <IndexRoute component={HomeView} />
             <Route path='css' component={CSSView} />
+            <Route path='css/all' component={CSSAllView} />
+            <Route path='css/bg' component={CSSBgView} />
+            <Route path='css/button' component={CSSButtonView} />
+            <Route path='css/grid' component={CSSGridView} />
+            <Route path='css/icon' component={CSSIconView} />
+            <Route path='css/panel' component={CSSPanelView} />
+            <Route path='css/table' component={CSSTableView} />
+            <Route path='css/text' component={CSSTextView} />
+            <Route path='css/util' component={CSSUtilView} />
             <Route path='doc' component={DocView} />
             <Route path='data' component={DataView} />
             <Route path='rule' component={RuleView} />
         </Route>
         <Route component={LayoutView}>
-            <Route path='grid' component={GridView} />
             <Route path='panel' component={PanelView} />
             <Route path='tab' component={TabView} />
             <Route path='tag' component={TagView} />
@@ -66,30 +83,31 @@ export default (
             <Route path='tooltip' component={TooltipView} />
             <Route path='image-uploader' component={ImageUploaderView} />
             <Route path='table' component={TableView} />
-            <Route path='select' component={SelectView} />
             <Route path='slider' component={SliderView} />
             <Route path='button' component={ButtonView} />
             <Route path='process-bar' component={ProcessBarView} />
             <Route path='wrapper' component={WrapperView} />
             <Route path='dropdown' component={DropdownView} />
 
-            <Route path='field' component={FieldView} />
-            <Route path='form' component={FormView} />
-            <Route path='datepicker' component={DatepickerView} />
-            <Route path='monthpicker' component={MonthpickerView} />
-            <Route path='rangepicker' component={RangepickerView} />
-            <Route path='timepicker' component={TimepickerView} />
+            <Route path='b-select' component={SelectView} />
+            <Route path='b-field' component={FieldView} />
+            <Route path='a-form' component={FormView} />
+            <Route path='a-datepicker' component={DatepickerView} />
+            <Route path='a-monthpicker' component={MonthpickerView} />
+            <Route path='a-rangepicker' component={RangepickerView} />
+            <Route path='a-timepicker' component={TimepickerView} />
+            <Route path='a-areacode' component={AreaCodeView} />
+            <Route path='a-address' component={AddressView} />
+            <Route path='a-fulladdress' component={FullAddressView} />
+            <Route path='a-verifyidenty' component={VerifyIdentyView} />
+            <Route path='a-verifyphone' component={VerifyPhoneView} />
 
             <Route path='teamtalk' component={TeamtalkView} />
             <Route path='charts-bar' component={BarCharts} />
             <Route path='charts-chinamap' component={ChinaMapCharts} />
             <Route path='charts-pie' component={PieCharts} />
             <Route path='charts-line' component={LineCharts} />
-            <Route path='areacode' component={AreaCodeView} />
-            <Route path='address' component={AddressView} />
-            <Route path='fulladdress' component={FullAddressView} />
-            <Route path='verifyidenty' component={VerifyIdentyView} />
-            <Route path='verifyphone' component={VerifyPhoneView} />
+
             <Route path='menucate' component={MenuCateView} />
 
         </Route>

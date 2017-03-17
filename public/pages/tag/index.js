@@ -9,11 +9,11 @@ export default class TagView extends Component {
 	}
 
     render () {
-        return <div className='mb-lg ml mr'>
-        	<h2 className='pb-5 b-b dashed'>
+        return <div className='m-b-lg m-l m-r'>
+        	<h2 className='p-b-5 b-b dashed'>
                 标签 - Tag
-                <a href="mactt://message/user/01385" style={{border: 'none', boxShadow: 'none'}} className="ml-lg btn-info-border btn">
-                    <i className="fa fa-comments mr-xs"></i>遇到问题？联系作者
+                <a href="mactt://message/user/01385" style={{border: 'none', boxShadow: 'none'}} className="m-l-lg btn-info-border btn">
+                    <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
                 </a>
             </h2>
             <h3>

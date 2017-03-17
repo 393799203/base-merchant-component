@@ -4,17 +4,17 @@ import './style/index.less';
 class Panel extends Component {
     render () {
         const me = this;
-        const { className, children, title, elem, ...otherAttrs } = me.props;
+        const { theme, className, children, title, elem, ...otherAttrs } = me.props;
 
         return (
-            <div className={`mc-panel ${className}`} {...otherAttrs}>
-                <div className='mc-panel-header'>
+            <div className={`mc-panel ${className} panel-${theme}`} {...otherAttrs}>
+                <div className='panel-header'>
                     <h3 className='mc-title'>
                         {title}
                     </h3>
                     {elem}
                 </div>
-                <div className='mc-panel-body'>
+                <div className='panel-body'>
                     {
                         children
                     }
@@ -25,12 +25,14 @@ class Panel extends Component {
 }
 
 Panel.defaultProps = {
+    theme: 'default',
     className: '',
     title: '',
     elem: null
 };
 
 Panel.PropTypes = {
+    theme: PropTypes.oneOf(['default', 'danger', 'info', 'warning', 'dark', 'success']),
     className: PropTypes.string,
     title: PropTypes.oneOfType([
         PropTypes.string,

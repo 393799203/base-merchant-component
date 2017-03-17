@@ -97,14 +97,14 @@ export default class TeamTalkView extends Component {
 
 	render() {
 		return (
-			<div className="ml mr mb-xxl">
+			<div className="m-l m-r m-b-xxl">
 				<h2 className='pb-5 b-b dashed'>
 					图表组件📈，依赖百度的echarts
 				</h2>
 				<h3>
 					1. 中国地图
 				</h3>
-				<div className="mt mb">
+				<div className="m-t m-b">
 					<ChinaMapCharts className="ocsen" data={this.state.chartsData} extend={this.state.extend} events={this.state.events} ></ChinaMapCharts>
 				</div>
 				<div dangerouslySetInnerHTML={{ __html: Readme }}></div>

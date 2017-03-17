@@ -49,19 +49,19 @@ export default class FieldView extends Component {
 
 	render () {
 		return (
-			<div className="ml mr mb-xxl mc-field">
-				<h2 className='pb-5 b-b dashed mb'>
+			<div className="m-l m-r m-b-xxl mc-field">
+				<h2 className='p-b-5 b-b dashed m-b'>
 					表单 - Field
-					<a href="mactt://message/user/01825" style={{border: 'none', boxShadow: 'none'}} className='ml-lg btn-info-border btn'>
-                        <i className="fa fa-comments mr-xs"></i>遇到问题？联系作者
+					<a href="mactt://message/user/01825" style={{border: 'none', boxShadow: 'none'}} className='m-l-lg btn-info-border btn'>
+                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
                     </a>
 				</h2>
-				<div dangerouslySetInnerHTML={{ __html: Readme }}></div>
 				<div className="mt-30 mc-field-demo-body">
 					<TabWrapper navs={nav}>
                         {tabArr}
                     </TabWrapper>
 				</div>
+				<div dangerouslySetInnerHTML={{ __html: Readme }}></div>
 			</div>
 		)
 	}

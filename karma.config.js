@@ -32,11 +32,11 @@ module.exports = function (config) {
             'http://up.f2e.mogujie.org/static/theme-forest/css/theme.css',
             'https://s10.mogucdn.com/__static/template/pc/common/assets/lib/jquery-1.7.2.js',
             'test/setup.js',
-            'test/modal/index.js'
+            'test/*/index.js'
         ],
         frameworks: ['mocha', 'chai', 'sinon'],
         preprocessors: {
-            'test/modal/index.js': ['webpack', 'sourcemap']
+            'test/*/index.js': ['webpack', 'sourcemap']
         },
         webpack: webpackConfig,
         reporters: ['mocha','coverage'],

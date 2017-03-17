@@ -105,8 +105,8 @@ if (env === 'DEMO_DEV' ||  env === 'DEMO_BUILD') {
     // loaders
     config.module.loaders.push({test: /\.(css|less)$/, loader: ExtractTextPlugin.extract('style', '!css!less')} );
     // plugins
-    if (env === 'DEMO_DEV' ) config.plugins = [pluginCssExtract, pluginUglifyJs, pluginHtmlwebpack];
-    if (env === 'DEMO_BUILD') config.plugins = [pluginCssExtract, pluginHtmlwebpack];
+    if (env === 'DEMO_DEV' ) config.plugins = [pluginCssExtract, pluginHtmlwebpack];
+    if (env === 'DEMO_BUILD') config.plugins = [pluginCssExtract, pluginUglifyJs, pluginHtmlwebpack];
 /* [分支2] 组件源码：打包到 dist目录下 */
 } else if (env === 'BUILD') {
     // 入口文件

@@ -1,5 +1,11 @@
+@import "../../_theme/variables";
+
 @datepicker-prefix-cls: mc-calendar;
 
+*:focus{
+    outline: 0 !important;
+}
+    
 .@{datepicker-prefix-cls} {
 	box-sizing: border-box;
 }
@@ -15,13 +21,13 @@
 	padding: 4px 7px;
 	width: 100%;
 	cursor: text;
-	font-size: 14px;
+	font-size: @font-size-base;
 	line-height: 1.5;
 	height:36px;
-	color: #666;
-	background-color: #fff;
+	color: @font-color-base;
+	background-color: @color-white;
 	background-image: none;
-	border: 1px solid #d9d9d9;
+	border: 1px solid @color-light-dk;
 	-webkit-transition: border .2s cubic-bezier(0.645, 0.045, 0.355, 1), background .2s cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow .2s cubic-bezier(0.645, 0.045, 0.355, 1);
 	-o-transition: border .2s cubic-bezier(0.645, 0.045, 0.355, 1), background .2s cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow .2s cubic-bezier(0.645, 0.045, 0.355, 1);
 	transition: border .2s cubic-bezier(0.645, 0.045, 0.355, 1), background .2s cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow .2s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -30,32 +36,38 @@
 }
 
 .@{datepicker-prefix-cls}-picker-input::-moz-placeholder {
-	color: #ccc;
+	color: @font-color-lter;
 	opacity: 1;
 }
 .@{datepicker-prefix-cls}-picker-input:-ms-input-placeholder {
-	color: #ccc;
+	color: @font-color-lter;
 }
 .@{datepicker-prefix-cls}-picker-input::-webkit-input-placeholder {
-	color: #ccc;
+	color: @font-color-lter;
 }
 .@{datepicker-prefix-cls}-picker-input:hover {
-	border-color: #FF2555;
+	box-shadow: 0px 0px 5px @color-info-base;
+    border-color: @color-info-base;
+    background-color:@color-white;
 }
 .@{datepicker-prefix-cls}-picker-input:focus {
-	border-color: #FF2555;
-	outline: 0;
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(52, 151, 219, 0.6);
+	box-shadow: 0px 0px 5px @color-info-base;
+    border-color: @color-info-base;
+    background-color:@color-white;
 }
+
 .@{datepicker-prefix-cls}-picker-input[disabled],
 fieldset[disabled] .@{datepicker-prefix-cls}-picker-input {
-	background-color: #f3f5f7;
+	background-color: @btn-disabled-color;
+	border-color: @color-light-dk;
 	opacity: 1;
 	cursor: not-allowed;
 }
 .@{datepicker-prefix-cls}-picker-input[disabled]:hover,
 fieldset[disabled] .@{datepicker-prefix-cls}-picker-input:hover {
-	border-color: #e1e1e1;
+	border-color: @color-light-dk;
+	background-color: @btn-disabled-color;
+	box-shadow: none;
 }
 textarea.@{datepicker-prefix-cls}-picker-input {
 	max-width: 100%;
@@ -69,7 +81,7 @@ textarea.@{datepicker-prefix-cls}-picker-input {
 	position: relative;
 	display: inline-block;
 	outline: none;
-	font-size: 14px;
+	font-size: @font-size-base;
 	transition: opacity 0.3s ease;
 }
 .@{datepicker-prefix-cls}-picker > input {
@@ -84,15 +96,15 @@ textarea.@{datepicker-prefix-cls}-picker-input {
 	-webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 	-o-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 	transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-	width: 14px;
-	height: 14px;
+	width: @font-size-base;
+	height: @font-size-base;
 	line-height: 12px;
 	right: 8px;
-	color: #999;
+	color: @font-color-lter;
 	top: 50%;
 	margin-top: -6px;
 	display: inline-block;
-	font: normal normal normal 14px/1 FontAwesome;
+	font: normal normal normal @font-size-base/1 FontAwesome;
 	font-size: inherit;
 	text-rendering: auto;
 	-webkit-font-smoothing: antialiased;
@@ -135,11 +147,11 @@ textarea.@{datepicker-prefix-cls}-picker-input {
 	position: relative;
 	outline: none;
 	width: 300px;
-	border: 1px solid #DEDEDE;
+	border: 1px solid @btn-border-color;
 	list-style: none;
-	font-size: 14px;
+	font-size: @font-size-base;
 	text-align: left;
-	background-color: #fff;
+	background-color: @color-white;
 	border-radius: 4px;
 	box-shadow: 0 3px 6px 0px rgba(0,0,0,0.5);
 	background-clip: padding-box;
@@ -149,7 +161,7 @@ textarea.@{datepicker-prefix-cls}-picker-input {
 .@{datepicker-prefix-cls}-input-wrap {
 	height: 34px;
 	padding: 6px;
-	border-bottom: 1px solid #e9e9e9;
+	border-bottom: 1px solid @btn-border-color;
 }
 
 .@{datepicker-prefix-cls}-input {
@@ -172,10 +184,10 @@ textarea.@{datepicker-prefix-cls}-picker-input {
 	line-height: 34px;
 	text-align: center;
 	user-select: none;
-	border-bottom: 1px solid #e9e9e9;
+	border-bottom: 1px solid @btn-border-color;
 }
 .@{datepicker-prefix-cls}-header a:hover {
-	color: #FF2555;
+	color: @color-danger-base;
 }
 .@{datepicker-prefix-cls}-header .@{datepicker-prefix-cls}-century-select,
 .@{datepicker-prefix-cls}-header .@{datepicker-prefix-cls}-decade-select,
@@ -184,7 +196,7 @@ textarea.@{datepicker-prefix-cls}-picker-input {
 	padding: 0 2px;
 	font-weight: bold;
 	display: inline-block;
-	color: #666;
+	color: @font-color-base;
 	line-height: 34px;
 }
 .@{datepicker-prefix-cls}-header .@{datepicker-prefix-cls}-century-select-arrow,
@@ -203,7 +215,7 @@ textarea.@{datepicker-prefix-cls}-picker-input {
 .@{datepicker-prefix-cls}-header .@{datepicker-prefix-cls}-next-year-btn {
 	position: absolute;
 	top: 0;
-	color: #999;
+	color: @font-color-lter;
 	font-family: Arial, "Hiragino Sans GB", "Microsoft Yahei", "Microsoft Sans Serif", sans-serif;
 	padding: 0 5px;
 	font-size: 16px;
@@ -227,9 +239,91 @@ textarea.@{datepicker-prefix-cls}-picker-input {
 	right: 29px;
 }
 
+.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input-wrap {
+	direction: rtl;
+}
+.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input-wrap .@{datepicker-prefix-cls}-date-input-wrap,
+.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input-wrap .@{datepicker-prefix-cls}-time-picker-wrap {
+	direction: ltr;
+	display: inline-block;
+}
+
+.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input-wrap .mc-time-picker-panel,
+.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input-wrap .@{datepicker-prefix-cls}-clear-btn {
+	direction: ltr;
+}
+
+.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input,
+.@{datepicker-prefix-cls}-time .mc-time-picker-input {
+	position: relative;
+	display: inline-block; 
+	padding: 4px 7px;
+	width: 100%;
+	height: 34px;
+	cursor: text;
+	font-size: @font-size-base;
+	line-height: 1.5;
+	color: #666;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid @btn-border-color;
+	border-radius: @btn-border-radius;
+    -webkit-transition: border .2s cubic-bezier(0.645, 0.045, 0.355, 1), background .2s cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow .2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -o-transition: border .2s cubic-bezier(0.645, 0.045, 0.355, 1), background .2s cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow .2s cubic-bezier(0.645, 0.045, 0.355, 1);
+	transition: border .2s cubic-bezier(0.645, 0.045, 0.355, 1), background .2s cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow .2s cubic-bezier(0.645, 0.045, 0.355, 1);
+	height: 22px;
+	width: 96px;
+	margin-right: 6px;
+}
+.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input::-moz-placeholder,
+.@{datepicker-prefix-cls}-time .mc-time-picker-input::-moz-placeholder {
+	color: @font-color-lter;
+	opacity: 1;
+}
+.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input:-ms-input-placeholder,
+.@{datepicker-prefix-cls}-time .mc-time-picker-input:-ms-input-placeholder {
+	color: @font-color-lter;
+}
+.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input::-webkit-input-placeholder,
+.@{datepicker-prefix-cls}-time .mc-time-picker-input::-webkit-input-placeholder {
+	color: @font-color-lter;
+}
+.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input:hover,
+.@{datepicker-prefix-cls}-time .mc-time-picker-input:hover {
+	border-color: @color-danger-base;
+}
+.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input:focus,
+.@{datepicker-prefix-cls}-time .mc-time-picker-input:focus {
+	border-color: @color-danger-base;
+	outline: 0;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(52, 151, 219, 0.6);
+}
+.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input[disabled],
+.@{datepicker-prefix-cls}-time .mc-time-picker-input[disabled],
+fieldset[disabled] .@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input,
+fieldset[disabled] .@{datepicker-prefix-cls}-time .mc-time-picker-input {
+	background-color: @btn-disabled-color;
+	opacity: 1;
+	cursor: not-allowed;
+}
+.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input[disabled]:hover,
+.@{datepicker-prefix-cls}-time .mc-time-picker-input[disabled]:hover,
+fieldset[disabled] .@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input:hover,
+fieldset[disabled] .@{datepicker-prefix-cls}-time .mc-time-picker-input:hover {
+	border-color: @btn-disabled-color;
+}
+textarea.@{datepicker-prefix-cls}-time .@{datepicker-prefix-cls}-input,
+textarea.@{datepicker-prefix-cls}-time .mc-time-picker-input {
+	max-width: 100%;
+	height: auto;
+	vertical-align: bottom;
+}
+.@{datepicker-prefix-cls}-time .mc-time-picker-icon {
+	display: none;
+}
+
 
 /* 时间弹出层内部样式－body */
-
 .@{datepicker-prefix-cls}-calendar-body {
 	padding: 4px 8px;
 }
@@ -270,7 +364,7 @@ textarea.@{datepicker-prefix-cls}-picker-input {
 .@{datepicker-prefix-cls}-date {
 	display: block;
 	margin: 0 auto;
-	color: #555555;
+	color: @font-color-base;
 	border-radius: 18px;
 	width: 36px;
 	height: 36px;
@@ -282,47 +376,48 @@ textarea.@{datepicker-prefix-cls}-picker-input {
 	transition: background 0.3s ease;
 }
 .@{datepicker-prefix-cls}-date:hover {
-	background: #ffbebe;
+	background: @color-danger-lter;
 	cursor: pointer;
+	color:#fff;
 }
 .@{datepicker-prefix-cls}-date:active {
 	color: #fff;
-	background: #FF2555;
+	background: @color-danger-base;
 }
 .@{datepicker-prefix-cls}-today .@{datepicker-prefix-cls}-date {
-	border-color: #FF2555;
+	border-color: @color-danger-base;
 	font-weight: bold;
-	color: #FF2555;
+	color: @color-danger-base;
 }
 .@{datepicker-prefix-cls}-last-month-cell .@{datepicker-prefix-cls}-date,
 .@{datepicker-prefix-cls}-next-month-btn-day .@{datepicker-prefix-cls}-date {
 	color: #ccc;
 }
 .@{datepicker-prefix-cls}-selected-day .@{datepicker-prefix-cls}-date {
-	background: #FF2555;
+	background: @color-danger-base;
 	color: #fff;
 	border: 1px solid transparent;
 }
 .@{datepicker-prefix-cls}-selected-day .@{datepicker-prefix-cls}-date:hover {
-	background: #FF2555;
+	background: @color-danger-base;
 }
 .@{datepicker-prefix-cls}-disabled-cell .@{datepicker-prefix-cls}-date {
 	cursor: not-allowed;
-	color: #bcbcbc;
-	background: #f3f3f3;
+	color: @color-light-dk;
+	background: @btn-disabled-color;
 	border-radius: 0;
 	width: auto;
 }
 .@{datepicker-prefix-cls}-disabled-cell .@{datepicker-prefix-cls}-date:hover {
-	background: #f3f3f3;
+	background: @btn-disabled-color;
 }
 .@{datepicker-prefix-cls}-disabled-cell-first-of-row .@{datepicker-prefix-cls}-date {
-	border-top-left-radius: 4px;
-	border-bottom-left-radius: 4px;
+	border-top-left-radius: @btn-border-radius;
+	border-bottom-left-radius: @btn-border-radius;
 }
 .@{datepicker-prefix-cls}-disabled-cell-last-of-row .@{datepicker-prefix-cls}-date {
-	border-top-right-radius: 4px;
-	border-bottom-right-radius: 4px;
+	border-top-right-radius: @btn-border-radius;
+	border-bottom-right-radius: @btn-border-radius;
 }
 /* 时间弹出层内部样式－body */
 
@@ -333,7 +428,7 @@ textarea.@{datepicker-prefix-cls}-picker-input {
 	padding: 0 15px;
 	height: 38px;
 	line-height: 38px;
-	border-top: 1px solid #e9e9e9;
+	border-top: 1px solid @btn-border-color;
 }
 .@{datepicker-prefix-cls}-footer-btn {
 	text-align: center;
@@ -351,7 +446,7 @@ textarea.@{datepicker-prefix-cls}-picker-input {
 }
 .@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-today-btn-disabled,
 .@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-clear-btn-disabled {
-	color: #ccc;
+	color: @font-color-base;
 	cursor: not-allowed;
 }
 .@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-clear-btn {
@@ -370,7 +465,7 @@ textarea.@{datepicker-prefix-cls}-picker-input {
     background-size: 100%;
 }
 .@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-clear-btn:hover:before {
-	color: #999;
+	color: @font-color-lter;
 }
 .@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-ok-btn {
 	display: inline-block;
@@ -394,11 +489,11 @@ textarea.@{datepicker-prefix-cls}-picker-input {
 	transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 	transform: translate3d(0, 0, 0);
 	position: relative\0;
-	color: #fff;
-	background-color: #FF2555;
-	border-color: #FF2555;
+	color: @color-white;
+	background-color: @color-danger-base;
+	border-color: @color-danger-base;
 	padding: 1px 7px;
-	font-size: 14px;
+	font-size: @font-size-base;
 	border-radius: 6px;
 	position: absolute;
 	bottom: 5px;
@@ -426,15 +521,15 @@ textarea.@{datepicker-prefix-cls}-picker-input {
 	cursor: not-allowed;
 }
 .@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-ok-btn:hover {
-	color: #ffffff;
-	background-color: #ff7676;
-	border-color: #FF2555;
+	color: @color-white;
+	background-color: @color-danger-lter;
+	border-color: @color-danger-base;
 }
 .@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-ok-btn:active,
 .@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-ok-btn.active {
 	color: #f2f2f2;
-	background-color: #ff7676;
-	border-color: #FF2555;
+	background-color: @color-danger-lter;
+	border-color: @color-danger-base;
 }
 .@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-ok-btn:active,
 .@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-ok-btn.active {
@@ -452,9 +547,9 @@ fieldset[disabled] .@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-ok-btn:ac
 .@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-ok-btn.disabled.active,
 .@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-ok-btn[disabled].active,
 fieldset[disabled] .@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-ok-btn.active {
-	color: #ccc;
-	background-color: #f3f5f7;
-	border-color: #d9d9d9;
+	color: @color-light-dk;
+	background-color: @btn-disabled-color;
+	border-color: @btn-disabled-color;
 }
 .@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-ok-btn:hover,
 .@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-ok-btn:active,

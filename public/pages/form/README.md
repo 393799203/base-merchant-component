@@ -28,8 +28,8 @@ options:[{
         leastImg: 1 // 最少上传图片数量
     },
     name: 'uploadBoxtest'
-    label:'上传图片', 
-    text: '上传图片', 
+    label:'上传图片',
+    text: '上传图片',
     subInfo:'我是一个小文案',
     errorMsg: '校验失败的提示',
     required: true
@@ -83,27 +83,27 @@ options:[{
     subInfo:'我是一个小文案',
     required: true,
     defaultValue:1486197669000,
-    name: 'datepickertest' 
+    name: 'datepickertest'
 },{
     type:'deadline',  //截止如期
-    label:'身份证截止日期', 
+    label:'身份证截止日期',
     subInfo:'我是一个小文案',
     required: true,
     defaultValue:1486197669000,
-    name: 'deadlinetest' 
+    name: 'deadlinetest'
 },
 //以下为表单的基础控件，可以参照field的属性
 {
-    type:'radio',  
+    type:'radio',
     label:'单选条件',
     name: 'radiotest',
-    defaultValue: 1,  
+    defaultValue: 1,
     required: true,
     options:[{
-        label:'单选1', 
-        value: 0      
+        label:'单选1',
+        value: 0
     },{
-        label: '单选2',    
+        label: '单选2',
         value: 1
     },{
         label: '单选3',
@@ -175,7 +175,7 @@ export default class FormComponentView extends Component {
     constructor () {
         super();
     }
-    
+
     //获取表单数据
     getData(){
         var data = Form.getData("textForm");
@@ -203,29 +203,29 @@ export default class FormComponentView extends Component {
 
     render () {
         return (
-            <div className="ml mr mb-xxl">
+            <div className="m-l m-r m-b-xxl">
                 <button
-                    className="btn btn-success-custom w-sm mr" 
+                    className="btn btn-success-custom w-sm m-r"
                     onClick={ (e) => { this.getData() }}>
                     获取数据
                 </button>
                 <button
-                    className="btn btn-info-custom w-sm mr" 
+                    className="btn btn-info-custom w-sm m-r"
                     onClick={ (e) => { this.resetData() }}>
                     初始化数据
                 </button>
                 <button
-                    className="btn btn-warning-custom w-sm mr" 
+                    className="btn btn-warning-custom w-sm m-r"
                     onClick={ (e) => { this.clearData() }}>
                     清除数据
                 </button>
                 <button
-                    className="btn btn-danger-custom w-sm mr" 
+                    className="btn btn-danger-custom w-sm m-r"
                     onClick={ (e) => { this.validate() }}>
                     校验数据
                 </button>
-                <Form 
-                    data = {testData.options.concat()} 
+                <Form
+                    data = {testData.options.concat()}
                     prefixcls="field-test"
                     form='textForm'/>
             </div>

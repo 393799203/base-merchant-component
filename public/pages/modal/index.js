@@ -14,10 +14,6 @@ export default class ModalView extends Component {
 	}
 	showModal () {
 		Modal.alert('这是alert提示');
-
-		// setTimeout(function(){
-		// 	Modal.updateTitle('kkskdkdkdk');
-		// },1000)
 	}
 	showConfirmModal () {
 		Modal.confirm('这是确认弹出层', () => {
@@ -46,21 +42,21 @@ export default class ModalView extends Component {
 		if (!modalId) { return; }
 		Modal.close( modalId );
 	}
-	
+
 	render () {
 		var { md } = this.state;
 		return (
-			<div className="ml mr mb-xxl">
-				<h2 className='pb-5 b-b dashed'>
+			<div className="m-l m-r m-b-xxl">
+				<h2 className='p-b-5 b-b dashed'>
 					弹框（小店） - Modal
-					<a href="mactt://message/user/03084" style={{border: 'none', boxShadow: 'none'}} className="ml-lg btn-info-border btn">
-                        <i className="fa fa-comments mr-xs"></i>遇到问题？联系作者
+					<a href="mactt://message/user/03084" style={{border: 'none', boxShadow: 'none'}} className="m-l-lg btn-info-border btn">
+                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
                     </a>
 				</h2>
 				<h3>
 					1. 示例
 				</h3>
-				<div className="mb mt">
+				<div className="m-b m-t">
 					<button
 						className="btn btn-info-border w"
 						onClick={ (e) => { this.showTipModal() }}>
@@ -72,22 +68,21 @@ export default class ModalView extends Component {
 						onClick={ (e) => { this.showModal() }}>
 						Modal.alert()
 					</button>
-
 					<button
-						className="btn btn-danger-border w ml" 
+						className="btn btn-danger-border w m-l"
 						onClick={ (e) => { this.showConfirmModal() }}>
 						Modal.confirm()
 					</button>
 
 					<button
-						className="btn btn-primary-border w ml" 
+						className="btn btn-primary-border w m-l"
 						onClick={ (e) => { this.openModal() }}>
 						Modal.open()
 					</button>
-					
+
 				</div>
 				<div dangerouslySetInnerHTML={{ __html: Readme }}>
-					
+
 				</div>
 			</div>
 		)

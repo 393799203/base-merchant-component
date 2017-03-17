@@ -15,10 +15,10 @@ export default class VerifyPhoneView extends Component {
     clearData(){
         VerifyPhone.clearData();
     }
-    
+
     render () {
         return (
-            <div className='mb-lg ml mr'>
+            <div className='mb-lg ml m-r'>
                 <h2 className='pb-5 b-b dashed'>
                     手机验证 - VerifyPhone
                 </h2>
@@ -26,7 +26,7 @@ export default class VerifyPhoneView extends Component {
                     1. 示例
                 </h3>
                 <div className="m" style={{border:"1px solid #eee" , padding:"10px"}}>
-                    <VerifyPhone 
+                    <VerifyPhone
                         disabled={false}
                         btnName={"test"}
                         getResult={(data)=>this.getResult(data)}/>
@@ -34,7 +34,7 @@ export default class VerifyPhoneView extends Component {
                     <button className="btn btn-success-custom" style={{position:"relative",top:"-50px",left:"175px" , padding:"4px 12px",borderRadius:"4px"}} onClick={()=>this.clearData()}>清空</button>
                 </div>
                 <div dangerouslySetInnerHTML={{ __html: Readme }}>
-                    
+
                 </div>
             </div>
         )

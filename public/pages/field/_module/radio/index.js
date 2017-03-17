@@ -10,7 +10,7 @@ const radioOptions = [
 	    value: 0         //选项的值
 	},
 	{
-	    label: '单选2',    
+	    label: '单选2',
 	    value: 1,
 	},{
 	    label: '单选3',
@@ -24,7 +24,7 @@ const radioOptions2 = [
 	    value: 0         //选项的值
 	},
 	{
-	    label: '单选2',    
+	    label: '单选2',
 	    value: 1,
 	    defaultChecked:true
 	},{
@@ -60,7 +60,7 @@ export default class RadioView extends Component {
 			return false;
 		}
 	}
-	
+
     onValidate (value) {
     	value = Number(value);
     	return !isNaN(value) && Math.floor(value) === value;
@@ -72,7 +72,7 @@ export default class RadioView extends Component {
 		    duration: 2000 // 单位毫秒
 		});
     }
-	
+
     onMouseOver(){
     	Notification.info({
 		    message: '我是自定义的onMouseOver事件',
@@ -87,15 +87,15 @@ export default class RadioView extends Component {
 					1. 示例
 				</h3>
 				<div className="title">
-					<button className="mb btn btn-success-border mr" onClick={() => this.getData("radio")}>获取文本框信息</button>
-					<button className="mb btn btn-warning-border mr" onClick={() => this.clearData("radio")}>清空文文本框信息</button>
-					<button className="mb btn btn-info-border mr" onClick={() => this.resetData("radio")}>重置文本框信息</button>
-					<button className="mb btn btn-danger-border mr" onClick={() => this.validate("radio")}>提交文本框信息并校验</button>
+					<button className="m-b btn btn-success-border m-r" onClick={() => this.getData("radio")}>获取文本框信息</button>
+					<button className="m-b btn btn-warning-border m-r" onClick={() => this.clearData("radio")}>清空文文本框信息</button>
+					<button className="m-b btn btn-info-border m-r" onClick={() => this.resetData("radio")}>重置文本框信息</button>
+					<button className="m-b btn btn-danger-border m-r" onClick={() => this.validate("radio")}>提交文本框信息并校验</button>
 				</div>
 				<div className='demo clearfix'>
-					<div className='fl field-demo'>
+					<div className='f-l field-demo'>
 						<h4>必填属性：类型（type）、name、表单复杂的情况下建议设置form给表单归类</h4>
-						<Field 
+						<Field
 							type="radio"
 					        name="radio"
 					        form="radio"
@@ -103,9 +103,9 @@ export default class RadioView extends Component {
 					        label="必填属性：">
 					    </Field>
 					</div>
-					<div className="fl field-demo">
+					<div className="f-l field-demo">
 						<h4>其他配置属性：禁用（disabled）、标题（label）、子标题信息（subInfo）、样式（className）</h4>
-						<Field 
+						<Field
 							type="radio"
 					        name="radio2"
 					        form="radio"
@@ -116,9 +116,9 @@ export default class RadioView extends Component {
 					        subInfo="我是一个表单信息">
 					    </Field>
 					</div>
-					<div className="fl field-demo">
+					<div className="f-l field-demo">
 						<h4>其他配置属性：必填（required）、校验错误信息（errorMsg）、校验是否展示（error,默认会自动失去焦点校验）</h4>
-						<Field 
+						<Field
 							type="radio"
 					        name="radio3"
 					        form="radio"
@@ -132,9 +132,9 @@ export default class RadioView extends Component {
 					    </Field>
 					</div>
 
-					<div className="fl field-demo">
+					<div className="f-l field-demo">
 						<h4>其他配置属性：校验是否展示（error,默认会自动失去焦点校验）</h4>
-						<Field 
+						<Field
 							type="radio"
 					        name="radio4"
 					        form="radio"
@@ -147,9 +147,9 @@ export default class RadioView extends Component {
 					    </Field>
 					</div>
 
-					<div className="fl field-demo">
+					<div className="f-l field-demo">
 						<h4>赋值属性：value、defaultValue</h4>
-						<Field 
+						<Field
 							type="radio"
 					        name="radio5"
 					        form="radio"
@@ -160,7 +160,7 @@ export default class RadioView extends Component {
 					        className='field-text'
 					        subInfo="赋值defaultValue">
 					    </Field>
-					    <Field 
+					    <Field
 							type="radio"
 					        name="radio6"
 					        form="radio"
@@ -171,7 +171,7 @@ export default class RadioView extends Component {
 					        className='field-text'
 					        subInfo="赋值option中的defaultChecked">
 					    </Field>
-					    <Field 
+					    <Field
 							type="radio"
 					        name="radio7"
 					        form="radio"
@@ -184,9 +184,9 @@ export default class RadioView extends Component {
 					    </Field>
 					</div>
 
-					<div className="fl field-demo">
+					<div className="f-l field-demo">
 						<h4>方法：校验（onValidate）、修改数据回调（onChange）</h4>
-						<Field 
+						<Field
 							type="radio"
 					        name="radio8"
 					        form="radio"
@@ -197,12 +197,12 @@ export default class RadioView extends Component {
 					        options={radioOptions}
 					        subInfo="onChange事件获取当前值">
 					    </Field>
-					    <div style={{height:"80px"}}></div>
+					    <div style={{height:"82px"}}></div>
 					</div>
 
-					<div className="fl field-demo">
+					<div className="f-l field-demo">
 						<h4>{"自定义属性：attrs={{readOnly: 'readOnly'}}"}</h4>
-						<Field 
+						<Field
 							type="radio"
 					        name="radio9"
 					        form="radio"
@@ -214,9 +214,9 @@ export default class RadioView extends Component {
 					    </Field>
 					</div>
 
-					<div className="fl field-demo">
+					<div className="f-l field-demo">
 						<h4>{"自定义方法：events={{onMouseOver:()=>{}}}"}</h4>
-						<Field 
+						<Field
 							type="radio"
 					        name="radio10"
 					        form="radio"
@@ -229,7 +229,7 @@ export default class RadioView extends Component {
 					</div>
 				</div>
 				<div dangerouslySetInnerHTML={{ __html: Readme }}>
-			
+
 				</div>
 			</div>
 		)

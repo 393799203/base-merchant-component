@@ -60,7 +60,7 @@ export default class RawView extends Component {
     	this.setState({
     		date3:''
     	})
-    }    
+    }
 
     handleDateChange( date , type ){
     	console.info(date);
@@ -68,7 +68,7 @@ export default class RawView extends Component {
     	if(!date && type=="date2"){
     		error = true
     	}
-        this.setState({ 
+        this.setState({
         	[type]: date ,
         	error: error
         });
@@ -81,15 +81,15 @@ export default class RawView extends Component {
 					1. 示例
 				</h3>
 				<div className="title">
-					<button className="mb btn btn-success-border mr" onClick={() => this.getData("raw")}>获取文本框信息</button>
-					<button className="mb btn btn-warning-border mr" onClick={() => this.clearData("raw")}>清空文文本框信息</button>
-					<button className="mb btn btn-info-border mr" onClick={() => this.resetData("raw")}>重置文本框信息</button>
-					<button className="mb btn btn-danger-border mr" onClick={() => this.validate("raw")}>提交文本框信息并校验</button>
+					<button className="m-b btn btn-success-border m-r" onClick={() => this.getData("raw")}>获取文本框信息</button>
+					<button className="m-b btn btn-warning-border m-r" onClick={() => this.clearData("raw")}>清空文文本框信息</button>
+					<button className="m-b btn btn-info-border m-r" onClick={() => this.resetData("raw")}>重置文本框信息</button>
+					<button className="m-b btn btn-danger-border m-r" onClick={() => this.validate("raw")}>提交文本框信息并校验</button>
 				</div>
 
 				<div className='demo clearfix'>
 					<div className='fl field-demo'>
-						<h5>必填属性：类型（type）、name、自定义表单体、表单复杂的情况下建议设置form给表单归类</h5>
+						<h4>必填属性：类型（type）、name、自定义表单体、表单复杂的情况下建议设置form给表单归类</h4>
 						<Field 
 						 	type="raw"
 	                        label="必填属性："
@@ -97,15 +97,15 @@ export default class RawView extends Component {
 	                        form="raw"
 	                        onData={ () => this.getFieldData("date") }
 	                    >
-	                        <Datepicker 
+	                        <Datepicker
 	                            onChange={ (e) => this.handleDateChange(e,'date') }
 	                            format="yyyy-MM-dd HH:mm:ss"
 	                            value={ this.state.date }
 	                            showTime/>
 	                    </Field>
 					</div>
-					<div className="fl field-demo">
-						<h5>其他配置属性：标题（label）、子标题信息（subInfo）、必填（required）、校验错误信息（errorMsg）、校验是否展示（error）</h5>
+					<div className="f-l field-demo">
+						<h4>其他配置属性：标题（label）、子标题信息（subInfo）、必填（required）、校验错误信息（errorMsg）、校验是否展示（error）</h4>
 						<Field 
 						 	type="raw"
 	                        label="配置属性1："
@@ -125,7 +125,7 @@ export default class RawView extends Component {
 	                    </Field>
 					</div>
 					<div className="fl field-demo">
-						<h5>方法：将值填入表单中（onData）、校验（onValidate）、重置（onReset）、清空（onClear）</h5>
+						<h4>方法：将值填入表单中（onData）、校验（onValidate）、重置（onReset）、清空（onClear）</h4>
 						<Field 
 						 	type="raw"
 	                        label="方法onData："
@@ -137,7 +137,7 @@ export default class RawView extends Component {
 	                        onClear={ () => this.clearField() }
 	                        required
 	                    >
-	                        <Datepicker 
+	                        <Datepicker
 	                            onChange={ (e) => this.handleDateChange(e,'date3') }
 	                            value={ this.state.date3 }
 	                            showTime/>
