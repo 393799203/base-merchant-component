@@ -10,7 +10,7 @@
 
 #### 3.1 Modal.alert(msg, callback, options) 
 
-> 如果 第二个参数为确定时的回调函数, 当callback 类型不是 function时，则方法解析参数规则为 Modal.tip(msg, options)
+> 如果 第二个参数为点击确定按钮时的回调函数, 当callback 类型不是 function时，则方法解析参数规则为 Modal.tip(msg, options)
 
 #### 3.1.1 返回值
 
@@ -47,7 +47,7 @@
 
 #### 3.2 Modal.tip(msg, callback, delay, options) 
 
-> 如果 第二个参数为确定时的回调函数, 当callback 类型不是 function时，则方法解析参数规则为 Modal.tip(msg, delay, options)
+> 如果 第二个参数为点击确定按钮时的回调函数, 当callback 类型不是 function时，则方法解析参数规则为 Modal.tip(msg, delay, options)
 
 #### 3.2.1 返回值
 
