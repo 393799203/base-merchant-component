@@ -58,24 +58,24 @@ export default class ModalView extends Component {
 				</h3>
 				<div className="m-b m-t">
 					<button
-						className="btn btn-info-border w"
+						className="btn btn-info-border"
 						onClick={ (e) => { this.showTipModal() }}>
 						Modal.tip()
 					</button>
 
 					<button
-						className="btn btn-success-border w ml"
+						className="btn btn-success-border m-l"
 						onClick={ (e) => { this.showModal() }}>
 						Modal.alert()
 					</button>
 					<button
-						className="btn btn-danger-border w m-l"
+						className="btn btn-danger-border m-l"
 						onClick={ (e) => { this.showConfirmModal() }}>
 						Modal.confirm()
 					</button>
 
 					<button
-						className="btn btn-primary-border w m-l"
+						className="btn btn-primary-border m-l"
 						onClick={ (e) => { this.openModal() }}>
 						Modal.open()
 					</button>
