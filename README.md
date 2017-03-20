@@ -1,5 +1,18 @@
 ### @meili/base-merchant-component Changelog
 
+#### v1.2.0
+* 组件样式库拆分，支持不同主题颜色组件：info, warning, danger, success
+* 增加基础组件 - Dropdown
+* 增加基础组件 - 图表组件
+	* china map
+	* line chart
+	* bar chart
+	* pie chart
+* 增加业务组件 － Form
+* 增加业务组件 － Menu
+* 增加组件测试用例
+
+
 #### v1.1.1
 * AreaCode 手机区号组件：修复组件内部依赖路径
 * Table 表格组件：修复组件内部依赖路径

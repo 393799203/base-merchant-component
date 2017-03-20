@@ -93,8 +93,8 @@ describe ('Pagination Component', () => {
         expect(pagination.props.totalPage).to.equal(20);
     });
 
-    it('curent btn has btn-current class', () => {
-        expect(instance.find('a.btn').at(1).hasClass('btn-current')).to.be.true;
+    it('curent btn has btn-danger class', () => {
+        expect(instance.find('a.btn').at(1).hasClass('btn-danger')).to.be.true;
     });
 
     it('currentPage is last page next btn disabled', () => {
