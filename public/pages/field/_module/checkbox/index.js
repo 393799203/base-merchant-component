@@ -104,17 +104,15 @@ export default class CheckboxView extends Component {
 				</div>
 				<div className='demo clearfix'>
 					<div className='f-l field-demo'>
-						<h4>必填属性：类型（type）、name、表单复杂的情况下建议设置form给表单归类</h4>
+						<h4>必填属性：类型（type）、name、选择数据列表（options）</h4>
 						<Field
 							type="checkbox"
 					        name="checkbox"
-					        form="checkbox"
-					        options={checkboxOptions}
-					        label="必填属性：">
+					        options={checkboxOptions}>
 					    </Field>
 					</div>
 					<div className="f-l field-demo">
-						<h4>其他配置属性：禁用（disabled）、标题（label）、子标题信息（subInfo）、样式（className）</h4>
+						<h4>其他配置属性：表单复杂的情况下建议设置form给表单归类(form)、禁用（disabled）、标题（label）、子标题信息（subInfo）、样式（className）</h4>
 						<Field
 							type="checkbox"
 					        name="checkbox2"
