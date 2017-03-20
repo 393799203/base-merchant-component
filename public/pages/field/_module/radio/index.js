@@ -94,17 +94,15 @@ export default class RadioView extends Component {
 				</div>
 				<div className='demo clearfix'>
 					<div className='f-l field-demo'>
-						<h4>必填属性：类型（type）、name、表单复杂的情况下建议设置form给表单归类</h4>
+						<h4>必填属性：类型（type）、name、选择列表（options）</h4>
 						<Field
 							type="radio"
 					        name="radio"
-					        form="radio"
-					        options={radioOptions}
-					        label="必填属性：">
+					        options={radioOptions}>
 					    </Field>
 					</div>
 					<div className="f-l field-demo">
-						<h4>其他配置属性：禁用（disabled）、标题（label）、子标题信息（subInfo）、样式（className）</h4>
+						<h4>其他配置属性：表单复杂的情况下建议设置form给表单归类（form）、禁用（disabled）、标题（label）、子标题信息（subInfo）、样式（className）</h4>
 						<Field
 							type="radio"
 					        name="radio2"
