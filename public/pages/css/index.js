@@ -42,29 +42,32 @@ export default class CSSView extends Component {
                     </a>
                 </h3>
                 <div className='clearfix'>
-                    <a href='#/css/grid' style={{width: '25%', height: '100px', lineHeight: '100px'}} className=' text-center text-xl block f-l' >
+                    <a href='#/css/grid' style={{width: '33.33%', height: '100px', lineHeight: '100px'}} className=' text-center text-xl block f-l' >
                         <div style={{borderRadius: '4px'}} className='bg-info m'>Grid</div>
                     </a>
-                    <a href='#/css/bg' style={{width: '25%', height: '100px', lineHeight: '100px'}} className=' text-center text-xl block f-l' >
+                    <a href='#/css/bg' style={{width: '33.33%', height: '100px', lineHeight: '100px'}} className=' text-center text-xl block f-l' >
                         <div style={{borderRadius: '4px'}} className='bg-info m'>Background</div>
                     </a>
-                    <a href='#/css/button' style={{width: '25%', height: '100px', lineHeight: '100px'}} className=' text-center text-xl block f-l' >
+                    <a href='#/css/button' style={{width: '33.33%', height: '100px', lineHeight: '100px'}} className=' text-center text-xl block f-l' >
                         <div style={{borderRadius: '4px'}} className='bg-info m'>Button</div>
                     </a>
-                    <a href='#/css/icon' style={{width: '25%', height: '100px', lineHeight: '100px'}} className=' text-center text-xl block f-l' >
+                    <a href='#/css/icon' style={{width: '33.33%', height: '100px', lineHeight: '100px'}} className='m-t-20 text-center text-xl block f-l' >
                         <div style={{borderRadius: '4px'}} className='bg-info m'>Icon</div>
                     </a>
-                    <a href='#/css/panel' style={{width: '25%', height: '100px', lineHeight: '100px'}} className='m-t-20 text-center text-xl block f-l' >
+                    <a href='#/css/panel' style={{width: '33.33%', height: '100px', lineHeight: '100px'}} className='m-t-20 text-center text-xl block f-l' >
                         <div style={{borderRadius: '4px'}} className='bg-info m'>Panel</div>
                     </a>
-                    <a href='#/css/table' style={{width: '25%', height: '100px', lineHeight: '100px'}} className='m-t-20 text-center text-xl block f-l' >
+                    <a href='#/css/table' style={{width: '33.33%', height: '100px', lineHeight: '100px'}} className='m-t-20 text-center text-xl block f-l' >
                         <div style={{borderRadius: '4px'}} className='bg-info m'>Table</div>
                     </a>
-                    <a href='#/css/text' style={{width: '25%', height: '100px', lineHeight: '100px'}} className='m-t-20 text-center text-xl block f-l' >
+                    <a href='#/css/text' style={{width: '33.33%', height: '100px', lineHeight: '100px'}} className='m-t-20 text-center text-xl block f-l' >
                         <div style={{borderRadius: '4px'}} className='bg-info m'>Text</div>
                     </a>
-                    <a href='#/css/util' style={{width: '25%', height: '100px', lineHeight: '100px'}} className='m-t-20 text-center text-xl block f-l' >
+                    <a href='#/css/util' style={{width: '33.33%', height: '100px', lineHeight: '100px'}} className='m-t-20 text-center text-xl block f-l' >
                         <div style={{borderRadius: '4px'}} className='bg-info m'>Util</div>
+                    </a>
+                    <a href='#/css/form' style={{width: '33.33%', height: '100px', lineHeight: '100px'}} className='m-t-20 text-center text-xl block f-l' >
+                        <div style={{borderRadius: '4px'}} className='bg-info m'>Form</div>
                     </a>
                 </div>
             </div>
