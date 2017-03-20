@@ -14,6 +14,7 @@ import CSSPanelView from './pages/css/_module/panel';
 import CSSTableView from './pages/css/_module/table';
 import CSSTextView from './pages/css/_module/text';
 import CSSUtilView from './pages/css/_module/util';
+import CSSFormView from './pages/css/_module/form';
 
 import DocView from './pages/doc';
 import DataView from './pages/data';
@@ -68,6 +69,7 @@ export default (
             <Route path='css/table' component={CSSTableView} />
             <Route path='css/text' component={CSSTextView} />
             <Route path='css/util' component={CSSUtilView} />
+            <Route path='css/form' component={CSSFormView} />
             <Route path='doc' component={DocView} />
             <Route path='data' component={DataView} />
             <Route path='rule' component={RuleView} />
