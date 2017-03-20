@@ -19,7 +19,7 @@ describe('Panel Component', () => {
         );
 
         expect(wrapper.find('.mc-panel').hasClass('my-panel')).to.equal(true);
-        expect(wrapper.find('.mc-panel-header').contains(elem)).to.equal(true);
+        expect(wrapper.find('.panel-header').contains(elem)).to.equal(true);
         wrapper.find('.mc-panel').simulate('click');
         expect(clickHandler.called).to.equal(true);
     });

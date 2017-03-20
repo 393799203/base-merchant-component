@@ -2,7 +2,7 @@
 
 ```
 import React, { Component } from 'react';
-import Menu from 'source_path/menu-cate';
+import Menu from '@meili/base-merchant-component/lib/menu-cate';
 
 export default class MenuView extends Component {
     constructor () {
@@ -80,7 +80,7 @@ export default class MenuView extends Component {
     }
 
     render () {
-    
+
         return (
             <div >
                <h2>示例1: 默认样式</h2>
@@ -97,7 +97,7 @@ export default class MenuView extends Component {
 
 
 ```
-	
+
 ### 3. 属性 - Props
 
 | props        | 说明           | 类型         |   默认值       |
