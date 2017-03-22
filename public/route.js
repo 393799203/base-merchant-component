@@ -39,6 +39,7 @@ import AddressView from './pages/address';
 import FullAddressView from './pages/full-address';
 import VerifyIdentyView from './pages/verify-identy';
 import VerifyPhoneView from './pages/verify-phone';
+import LayoutDemoView from './pages/layout';
 
 import DatepickerView from './pages/datepicker';
 import MonthpickerView from './pages/monthpicker';
@@ -103,6 +104,7 @@ export default (
             <Route path='a-fulladdress' component={FullAddressView} />
             <Route path='a-verifyidenty' component={VerifyIdentyView} />
             <Route path='a-verifyphone' component={VerifyPhoneView} />
+            <Route path='layout' component={LayoutDemoView} />
 
             <Route path='teamtalk' component={TeamtalkView} />
             <Route path='charts-bar' component={BarCharts} />

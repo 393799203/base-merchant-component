@@ -108,7 +108,19 @@
 				height: 50px;
 			}
 			.mc-menu {
-				min-width: 80px;
+				min-width: 92px;
+			}
+		}
+	}
+	&.bg-light {
+		.mc-header-menu {
+			.mc-header-menu-item {
+				&.active {
+					background: darken(@color-light-base, 5%);
+				}
+				&:hover {
+					background: darken(@color-light-base, 5%);
+				}
 			}
 		}
 	}
@@ -117,4 +129,164 @@
 	.mc-header-bg(danger);
 	.mc-header-bg(warning);
 	.mc-header-bg(success);
+}
+
+/* side css */
+.mc-sider-bg (@color) {
+	@color-dker: "color-@{color}-dker";
+	@color-dk: "color-@{color}-dk";
+	@color-base: "color-@{color}-base";
+	@color-lt: "color-@{color}-lt";
+	@color-lter: "color-@{color}-lter";
+	&.bg-@{color} {
+		color: #fff;
+		background: @color-base;
+		.menu-item-trigger {
+			&:hover {
+				background: @@color-dk;
+			}
+			&.active {
+				background: @@color-lt;
+			}
+			&.active:hover {
+				background: @@color-dk;
+			}
+		}
+		a.menu-item-wrapper {
+			&:hover {
+				background: @@color-dk;
+			}
+			&.active {
+				background: @@color-dk;
+			}
+			&.active:hover {
+				background: @@color-dk;
+			}
+		}
+		.menu-item-wrapper {
+			color: #fff;
+			&.active {
+				background: @@color-lt;
+			}
+			.sub-menu {
+				.sub-item-name {
+					color: #fff;
+					&:hover, &.active {
+						color: #fff;
+						background: @@color-dk;
+					}
+				}
+			}
+		}
+	}
+}
+
+.mc-sider {
+	width: 200px;
+	height: 100%;
+	background: #fff;
+	&::-webkit-scrollbar {
+		display: none;
+    }
+    .menu-item-trigger {
+		padding: 10px 15px;
+		transition: all 0.3s;
+		&:hover {
+			background: darken(@color-light-base, 1%);
+		}
+		&.active {
+			background: lighten(@color-light-base, 2%);
+		}
+		&.active:hover {
+			background: darken(@color-light-base, 1%);
+		}
+	}
+	a.menu-item-wrapper {
+		padding: 10px 15px;
+		transition: all 0.3s;
+		&:hover {
+			background: darken(@color-light-base, 1%);
+		}
+		&.active {
+			background: darken(@color-light-base, 1%);
+		}
+		&.active:hover {
+			background: darken(@color-light-base, 1%);
+		}
+	}
+	.app-sider-inner {
+		position: relative;
+		height: 100%;
+		padding-bottom: 70px;
+		overflow-y: auto;
+		&::-webkit-scrollbar {
+			display: none;
+    	}
+	}
+	.menu-item-wrapper {
+		display: block;
+		color: @font-color-dk;
+		font-size: @font-size-md;
+		font-weight: bold;
+		cursor: pointer;
+		&.active {
+			background: lighten(@color-light-base, 2%);
+		}
+		.iconfont {
+			display: inline-block;
+			margin-right: 15px;
+			&.menu-arrow {
+				margin: 0;
+			}
+		}
+		.sub-menu {
+			display: none;
+			&.active {
+				display: block;
+			}
+			.sub-item-name {
+				display: block;
+				padding: 10px 15px 10px 40px;
+				color: @font-color-base;
+				font-size: @font-size-md;
+				font-weight: 400;
+				transition: all 0.3s;
+				&:hover, &.active {
+					color: @font-color-dk;
+					background: darken(@color-light-base, 1%);
+				}
+			}
+		}
+	}
+	&.bg-light {
+		background: lighten(@color-light-base, 1%);
+		a.menu-item-wrapper {
+			&.active {
+				background: darken(@color-light-base, 3%);
+			}
+		}
+		.menu-item-wrapper {
+			.sub-menu {
+				.sub-item-name {
+					&:hover, &.active {
+						background: darken(@color-light-base, 3%);
+					}
+				}
+			}
+		}
+	}
+	.mc-sider-bg(danger);
+	.mc-sider-bg(info);
+	.mc-sider-bg(success);
+	.mc-sider-bg(dark);
+	.mc-sider-bg(warning);
+}
+
+.mc-sider-fixed {
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 9;
+	padding: 50px 0;
+
 }

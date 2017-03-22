@@ -41,7 +41,9 @@ export default class MHeader extends Component {
                                         <a href={item.link} onClick={() => { menuHandler(item, index); }}>{item.text}</a>
                                     :
                                         <Dropdown options={item.options} handleClick={menuHandler} className='mc-header-menu-dropdown'>
-                                            <a href='javascript:;'>{item.text}</a>
+                                            <a href='javascript:;'>
+                                                {item.text} <i className='iconfont icon-triangledownfill' style={{ fontSize: '12px' }} />
+                                            </a>
                                         </Dropdown>
                                 }
                             </li>
@@ -61,7 +63,7 @@ export default class MHeader extends Component {
                             <Dropdown options={userOptions} className='mc-header-user-dropdown'>
                                 {user.avatar ? <img src={user.avatar} className='mc-header-user-avatar' height='40px' width='40px' alt='' /> : null}
                                 <div className='mc-header-user-name'>
-                                    {user.uname ? user.uname : null}
+                                    {user.uname ? <span>{user.uname} <i className='iconfont icon-triangledownfill' style={{ fontSize: '12px' }} /></span> : null}
                                 </div>
                             </Dropdown>
                         </div>
@@ -73,7 +75,7 @@ export default class MHeader extends Component {
 
 MHeader.defaultProps = {
     type: 'fixed',
-    theme: 'default',
+    theme: 'dark',
     className: '',
     brand: {
         text: '商家后台',
@@ -87,7 +89,7 @@ MHeader.defaultProps = {
 
 MHeader.propTypes = {
     type: PropTypes.oneOf(['default', 'fixed']),
-    theme: PropTypes.oneOf(['default', 'danger', 'info', 'dark', 'success', 'warning']),
+    theme: PropTypes.oneOf(['default', 'danger', 'info', 'dark', 'success', 'warning', 'light']),
     brand: PropTypes.object,
     className: PropTypes.string,
     menuOptions: PropTypes.array,
