@@ -10,7 +10,18 @@ export default class Item extends Component {
         };
     }
     componentDidMount () {
-        const { menuItem, activeLink } = this.props;
+        this.getActiveIndex(this.props);
+    }
+    componentWillReceiveProps (nextProps) {
+        this.setState({
+            showMenu: false,
+            activeIndex: -9999
+        }, () => {
+            this.getActiveIndex(nextProps);
+        });
+    }
+    getActiveIndex (props) {
+        const { menuItem, activeLink = window.location.href } = props;
         const matchedLink = [];
         if (!menuItem.options) {
             if (activeLink.indexOf(menuItem.link) > -1) {

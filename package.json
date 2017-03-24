@@ -1,6 +1,6 @@
 {
   "name": "@meili/base-merchant-component",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "unified platform boilerplate generator.",
   "repository": {
     "type": "git",
@@ -91,10 +91,5 @@
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.3"
   },
-  "testResult": {
-    "statements": 87.53,
-    "branches": 81.19,
-    "functions": 83.01,
-    "lines": 76.94
-  }
+  "testResult": {"statements":87.53,"branches":81.19,"functions":83.01,"lines":76.94}
 }
