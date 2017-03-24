@@ -22,5 +22,8 @@ export default [{
 }, {
     title: '类目菜单 - MenuCate',
     link: '#/menucate'
+}, {
+    title: '布局 - Layout',
+    link: '#/layout'
 }];
 

@@ -1,5 +1,10 @@
 ### @meili/base-merchant-component Changelog
 
+#### v1.2.1
+* 修复图表组件 - china map 图表线条错误bug
+* 增加业务组件 -  Layout
+
+
 #### v1.2.0
 * 组件样式库拆分，支持不同主题颜色组件：info, warning, danger, success
 * 增加基础组件 - Dropdown
