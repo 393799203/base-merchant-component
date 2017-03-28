@@ -268,7 +268,8 @@ export default class Select extends Component {
         e.stopPropagation();
 
         this.setState({
-            inputText: e.target.value
+            inputText: e.target.value,
+            value: ''
         }, () => {
             const filterData = this.filterData();
             this.setState({

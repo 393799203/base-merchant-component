@@ -123,5 +123,38 @@
 	    }
 	}
 
+### 4、如果 `MSider` 用于单页应用，需要手动触发当前选中导航，如下 layout.js
+
+> 监听 `hashHistory` 路由变化，将选中路由赋值给 `MSider` 的 `activeLink` 属性
+
+	import { hashHistory } from 'react-router';
+	import React, { Component } from 'react';
+	import { MSider } from '@meili/base-merchant-component/lib/layout';
+
+	export default class LayoutView extends Component {
+	    constructor (props) {
+	        super(props);
+	        this.state = {
+	            activeLink: window.location.href
+	        }
+	    }
+	    componentDidMount () {
+	        hashHistory.listen((event) => {
+	            this.setState({activeLink: window.location.href});
+	        });
+	    }
+	    render () {
+	        const { activeLink } = this.state;
+	        return (
+	            <div>
+	                ...
+	                <MSider
+	                    activeLink={activeLink}
+	                    ....
+	                />
+	            </div>
+	        );
+	    }
+	}
 
 
