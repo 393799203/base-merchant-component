@@ -1,5 +1,12 @@
 ### @meili/base-merchant-component Changelog
 
+#### v1.2.2
+* 基础组件 select － fix select 清除输入框中值后没有真正清除值 bug
+* 基础组件 modal - fix modal wrap z-index 过高覆盖 notification bug
+* 基础组件 tab - 增加可配置选中 tab index feature
+* 业务组件 layout {msider} - fix 单页应用时 hash 变化没有选中当前选中路由 bug
+* fix 组件入口文件 index.js 中导出组件 代码 bug
+
 #### v1.2.1
 * 修复图表组件 - china map 图表线条错误bug
 * 增加业务组件 -  Layout
