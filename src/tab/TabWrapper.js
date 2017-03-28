@@ -13,6 +13,13 @@ class TabWrapper extends Component {
         this.triggerEventName = `on${trigger[0].toUpperCase()}${trigger.slice(1)}`;
     }
 
+    componentWillMount () {
+        const active = this.props.active;
+        this.setState({
+            active
+        });
+    }
+
     getChildTabs () {
         /**
          * @desc 获取tab wrapper下的tab元素
@@ -104,6 +111,7 @@ class TabWrapper extends Component {
 
 TabWrapper.defaultProps = {
     navs: [],
+    active: 0,
     theme: 'danger',
     className: '',
     lazyLoad: false,
@@ -113,6 +121,7 @@ TabWrapper.defaultProps = {
 TabWrapper.propTypes = {
     theme: PropTypes.oneOf(['danger', 'info', 'dark', 'success', 'warning']),
     navs: PropTypes.array.isRequired,
+    active: PropTypes.number,
     className: PropTypes.string,
     lazyLoad: PropTypes.bool,
     trigger: PropTypes.string

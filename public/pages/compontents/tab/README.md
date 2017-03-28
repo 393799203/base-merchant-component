@@ -140,6 +140,7 @@ singleTabClick () {
 | 参数        |  必填        |说明           | 类型         |  备注       |   默认值      |
 | ------------ |------------ | ------------- | ------------ | ------------  |------------  |
 | navs |  Y  | 标签页列表  | [Object] | 需要重写样式时使用 | [] |
+| active |  N  | 默认激活的Tab  | number | 设置展示选中的Tab | 默认值: 0 |
 | theme |  N  | 主题色, `danger`, `info`, `dark`, `success`, `warning`  | string | 选中时高亮颜色 | `danger` |
 | className |  N  | 组件顶层样式  | string | 需要重写样式时使用 | '' |
 | trigger |  N  | 组件Tab切换触发方式  | string | 驼峰式写法，如mouseOver | 'click' |
