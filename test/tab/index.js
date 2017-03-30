@@ -60,14 +60,15 @@ describe('Tab Component', () => {
     it('common tab fuction', () => {
         // 基础功能测试
         const wrapper = shallow(
-            <TabWrapper navs={nav1}>
+            <TabWrapper navs={nav1} active={1}>
                 {tabArr}
             </TabWrapper>
         );
 
         expect(wrapper.find(Tab).length).to.equal(3);
-        wrapper.find('.mc-tab-nav li a').at(1).simulate('click'); // change tab index to 1
         expect(wrapper.state('active')).to.equal(1);
+        wrapper.find('.mc-tab-nav li a').at(2).simulate('click'); // change tab index to 1
+        expect(wrapper.state('active')).to.equal(2);
     });
 
     it('non child render', () => { // no tab render
