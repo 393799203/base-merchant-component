@@ -149,10 +149,15 @@ export default class Address extends Component {
         let options = []; // 省级下拉列表数据
         let selectList = {};
         let resultSelect = '-1';
-
         // 组装provinceOptions，获取默认选中的数据
+
         options = datas.map((item) => {
-            if (select === item.placeZh) {
+            const subSelect = item.placeZh.substring(0, item.placeZh.length - 1);
+            const addSelect = item.placeZh + type;
+
+            if (select === item.placeZh
+                || select === subSelect
+                || select === addSelect) {
                 selectList = {
                     text: item.placeZh,
                     value: item.placeZh,
