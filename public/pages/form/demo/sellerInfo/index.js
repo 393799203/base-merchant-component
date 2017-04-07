@@ -61,6 +61,7 @@ export default class SellerInfoView extends Component {
 				<Form
 					data = {testData.options.concat()}
 					prefixcls="field-test"
+					defaultValue={testData.defaultValue}
 					form='sellerInfo'/>
 			</div>
 	  	)

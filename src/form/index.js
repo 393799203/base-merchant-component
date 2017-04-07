@@ -26,6 +26,7 @@ const modules = {
 export default class Form extends Component {
     static propTypes = {
         data: PropTypes.array,
+        defaultValue: PropTypes.object,
         form: PropTypes.string.isRequired,
         prefixcls: PropTypes.string
     };
@@ -68,7 +69,8 @@ export default class Form extends Component {
         this.state = {
             options: props.data || [],
             form: props.form || '',
-            prefixcls: props.prefixcls || ''
+            prefixcls: props.prefixcls || '',
+            defaultValue: props.defaultValue || {}
         };
     }
 
@@ -109,17 +111,21 @@ export default class Form extends Component {
             <div className={`${state.prefixcls} mc-form mc-form-row`}>
                 {options.length > 0 ?
                     options.map((item, index) => {
+                        const defaultValue = this.state.defaultValue[item.name] || item.defaultValue;
+                        console.info(defaultValue);
                         const FormCom = modules[item.type] || null;
                         return (
                             <div key={index} className={`mc-form-${item.key} mc-form-col-lg-${item.grid || 12} mc-form-field`}>
                                 {FormCom ?
                                     <FormCom
                                         {...item}
+                                        defaultValue={defaultValue}
                                         form={state.form}
                                     />
                                     :
                                     <Field
                                         {...item}
+                                        defaultValue={defaultValue}
                                         form={state.form}
                                     />
                                 }
