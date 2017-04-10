@@ -7,7 +7,7 @@ import Readme from './README.md';
 export default class ModalView extends Component {
 	constructor () {
 			super();
-			this.state = { modalId: ''}
+			this.state = { openModal: '',  goodsList:[ ]}
 	}
 	showTipModal () {
 		Modal.tip('2000ms 后消失', 2000);
@@ -21,28 +21,84 @@ export default class ModalView extends Component {
 		})
 	}
 	openModal () {
-		var modalId = Modal.open({
+		var self = this;
+		var str = self.rendBody();
+
+		var openModal = Modal.open({
 			title: '自定义弹出层',
-			body: (
-				<div>
-					<p>这是内容区</p>
-				</div>
-			),
+			body: str,
 			footer: (
 				<div>
-					<button className="btn btn-sm btn-primary-border mr" onClick={ (e) => this.closeModal(modalId) }>取消</button>
-					<button className="btn btn-sm btn-primary" onClick={ (e) => this.closeModal(modalId) }>确认</button>
+					<button className="btn btn-sm btn-primary-border m-r" onClick={ (e) => this.closeOpenModal(openModal) }>取消</button>
+					<button className="btn btn-sm btn-primary" onClick={ (e) => this.closeOpenModal(openModal) }>确认</button>
 				</div>
 			)
 		});
-		this.setState({ modalId: modalId });
+		this.setState({ openModal: openModal });
+
 	}
-	closeModal () {
-		var modalId = this.state.modalId;
-		if (!modalId) { return; }
-		Modal.close( modalId );
+	closeOpenModal () {
+		var openModal = this.state.openModal;
+		if (!openModal) { return; }
+		Modal.close( openModal );
+	}
+	rendBody () {
+		var self = this;
+		return (
+			<div>
+				<p>这是内容区</p>
+				<button className="btn btn-sm btn-primary-border m-r" onClick={ (e) => this.getAjax() }>测试,获取ajax数据</button>
+				<ul>
+					{
+						self.state.goodsList.map(function(item, i){
+							return (
+								<li key={i} >
+									id:{item.id}, name:{item.name}, price: {item.price}
+									<a href="javascript:void(0)" onClick={(e) => self.handleDelete(item.id, item.name)} >删除</a>
+								</li>
+							);
+						})
+					}
+				</ul>
+			</div>
+		);
+	}
+	getAjax () {
+		var self = this;
+		let list = [
+			{id: 1, name: '连衣裙', price: 329.00},
+			{id: 2, name: '上衣', price: 120.00},
+			{id: 3, name: '裤子', price: 80.00}
+		];
+		this.setState({goodsList: list});
+		// setTimeout是为了让 setSate立即执行
+		setTimeout(function(){
+			let str = self.rendBody();
+			Modal.updateBody(str, self.state.openModal);
+			Modal.updateTitle('获取完数据',self.state.openModal);
+		}, 0);
+
 	}
 
+	handleDelete (id,name) {
+		let self = this;
+
+		let confirm1 = Modal.confirm(`id:${id} name: ${name}, 确定要删除吗?`, () => {
+			let list = self.state.goodsList.filter((item) => {
+				return item.id !== id;
+			});
+
+			self.setState({
+				goodsList: list
+			});
+			// setTimeout是为了让 setSate立即执行
+			setTimeout(function(){
+				let str = self.rendBody();
+				Modal.updateBody(str, self.state.openModal);
+				Modal.close(confirm1);
+			}, 0);
+		})
+	}
 	render () {
 		var { md } = this.state;
 		return (
