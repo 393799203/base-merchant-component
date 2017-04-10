@@ -20,8 +20,7 @@ export default class UploadList extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            value: props.defaultValue,
-            error: false
+            value: props.defaultValue
         };
 
         UploadList.instance = this;
@@ -35,14 +34,9 @@ export default class UploadList extends Component {
         const value = this.state.value;
         const required = this.props.required;
         if (!(value && value.length && value[0].img) && required) {
-            this.setState({
-                error: true
-            });
-        } else {
-            this.setState({
-                error: false
-            });
+            return false;
         }
+        return true;
     }
 
     onReset () {
@@ -61,7 +55,7 @@ export default class UploadList extends Component {
         this.setState({
             value: e
         }, () => {
-            this.onValidate();
+            Field.validate(this.props.form);
         });
     }
 
@@ -80,8 +74,7 @@ export default class UploadList extends Component {
         } = this.props;
 
         const {
-            value,
-            error
+            value
         } = this.state;
 
         return (
@@ -96,7 +89,6 @@ export default class UploadList extends Component {
                 form={form}
                 subInfo={subInfo}
                 errorMsg={errorMsg}
-                error={error}
                 required={required}
             >
                 <UploadImgList
