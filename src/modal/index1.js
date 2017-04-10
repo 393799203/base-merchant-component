@@ -1,3 +1,4 @@
+/*老的js文件,暂留,2017-5月后可删除*/
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 import _ from 'underscore';
