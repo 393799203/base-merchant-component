@@ -12,22 +12,22 @@ export default class SellerInfoView extends Component {
 
 	//获取表单数据
 	getData(){
-		var data = Form.getData("company");
+		var data = Form.getData("companyLegal");
 		console.info(JSON.stringify(data));
 	}
 
 	//初始化表单数据
 	resetData(){
-		Form.resetData("company");
+		Form.resetData("companyLegal");
 	}
 
 	//清除表单数据
 	clearData(){
-		Form.clearData("company");
+		Form.clearData("companyLegal");
 	}
 
 	validate(){
-		console.info(Form.validate("company"));
+		console.info(Form.validate("companyLegal"));
 	}
 
 	//查询表单改变
@@ -61,7 +61,7 @@ export default class SellerInfoView extends Component {
 				<Form
 					data = {testData.options.concat()}
 					prefixcls="field-test"
-					form='company'/>
+					form='companyLegal'/>
 			</div>
 	  	)
 	}

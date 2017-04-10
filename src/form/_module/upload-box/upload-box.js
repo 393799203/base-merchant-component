@@ -20,8 +20,7 @@ export default class UploadBox extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            value: props.defaultValue,
-            error: false
+            value: this.changeImgList(props.defaultValue || [{}])
         };
 
         UploadBox.instance = this;
@@ -35,14 +34,10 @@ export default class UploadBox extends Component {
         const value = this.state.value;
         const required = this.props.required;
         if (required && !(value && value.length && value[0].img)) {
-            this.setState({
-                error: true
-            });
-            return;
+            return false;
         }
-        this.setState({
-            error: false
-        });
+
+        return true;
     }
 
     onReset () {
@@ -57,11 +52,25 @@ export default class UploadBox extends Component {
         });
     }
 
+    changeImgList (list) {
+        let result = [];
+        if (list && typeof list === 'string') {
+            result[0] = { img: list };
+        } else if (list && list.length && typeof list[0] === 'string') {
+            for (let i = 0; i < list.length; i++) {
+                result[i] = { img: list[i] };
+            }
+        } else {
+            result = list;
+        }
+        return result;
+    }
+
     picChange (e) {
         this.setState({
             value: e
         }, () => {
-            this.onValidate();
+            Field.validate(this.props.form);
         });
     }
 
@@ -80,8 +89,7 @@ export default class UploadBox extends Component {
         } = this.props;
 
         const {
-            value,
-            error
+            value
         } = this.state;
 
         return (
@@ -95,7 +103,6 @@ export default class UploadBox extends Component {
                 name={name}
                 form={form}
                 subInfo={subInfo}
-                error={error}
                 errorMsg={errorMsg}
                 required={required}
             >

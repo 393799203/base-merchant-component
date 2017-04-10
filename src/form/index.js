@@ -112,7 +112,6 @@ export default class Form extends Component {
                 {options.length > 0 ?
                     options.map((item, index) => {
                         const defaultValue = this.state.defaultValue[item.name] || item.defaultValue;
-                        console.info(defaultValue);
                         const FormCom = modules[item.type] || null;
                         return (
                             <div key={index} className={`mc-form-${item.key} mc-form-col-lg-${item.grid || 12} mc-form-field`}>

@@ -46,7 +46,7 @@ export default class VerifyPhone extends Component {
 
     static getData (form) {
         const formName = (form || VerifyPhone.instance.props.form) || 'verifyPhone';
-        if (Field.validate(formName)) {
+        if (!(Field.validate(formName))) {
             return false;
         }
         const data = Field.getData(formName);
