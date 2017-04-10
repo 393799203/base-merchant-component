@@ -19,7 +19,7 @@
 #### 2.2 使用示例
 
 	import React, { Component } from 'react';
-	import Tooltip from '@meili/base-merchant-component/lib/toolTip';
+	import Tooltip from '@meili/base-merchant-component/lib/tooltip';
 
 	export default class ToolTipView extends Component {
 		constructor () {

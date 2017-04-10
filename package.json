@@ -24,6 +24,7 @@
     "buildDemo": "WEBPACK_ENV=DEMO_BUILD webpack"
   },
   "dependencies": {
+    "react": "^0.14.8",
     "classnames": "^2.2.5",
     "echarts": "^3.4.0",
     "gregorian-calendar": "^4.1.2",
