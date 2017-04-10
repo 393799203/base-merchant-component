@@ -43,7 +43,6 @@ export default class LayoutView extends Component {
     componentDidMount () {
         // 判断默认为哪种类型组件
         this.getCompType();
-        console.log('a');
     }
 
     getCompType (item) {

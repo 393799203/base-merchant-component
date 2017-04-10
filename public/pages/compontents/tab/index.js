@@ -96,7 +96,7 @@ class TabDemo extends Component {
                 <div className='switch-tab'>
                     <div className='example'>
                         <h4>常规</h4>
-                        <TabWrapper navs={nav1}>
+                        <TabWrapper navs={nav1} active={1}>
                             {tabArr}
                         </TabWrapper>
                     </div>

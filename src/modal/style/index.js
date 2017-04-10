@@ -6,7 +6,7 @@ const style = {
         right: 0,
         bottom: 0,
         left: 0,
-        zIndex: 1025
+        zIndex: 999
     },
 
     modalWithoutMask: {

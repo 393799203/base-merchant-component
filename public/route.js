@@ -14,6 +14,7 @@ import CSSPanelView from './pages/css/_module/panel';
 import CSSTableView from './pages/css/_module/table';
 import CSSTextView from './pages/css/_module/text';
 import CSSUtilView from './pages/css/_module/util';
+import CSSFormView from './pages/css/_module/form';
 
 import DocView from './pages/doc';
 import DataView from './pages/data';
@@ -38,6 +39,7 @@ import AddressView from './pages/address';
 import FullAddressView from './pages/full-address';
 import VerifyIdentyView from './pages/verify-identy';
 import VerifyPhoneView from './pages/verify-phone';
+import LayoutDemoView from './pages/layout';
 
 import DatepickerView from './pages/datepicker';
 import MonthpickerView from './pages/monthpicker';
@@ -68,6 +70,7 @@ export default (
             <Route path='css/table' component={CSSTableView} />
             <Route path='css/text' component={CSSTextView} />
             <Route path='css/util' component={CSSUtilView} />
+            <Route path='css/form' component={CSSFormView} />
             <Route path='doc' component={DocView} />
             <Route path='data' component={DataView} />
             <Route path='rule' component={RuleView} />
@@ -101,6 +104,7 @@ export default (
             <Route path='a-fulladdress' component={FullAddressView} />
             <Route path='a-verifyidenty' component={VerifyIdentyView} />
             <Route path='a-verifyphone' component={VerifyPhoneView} />
+            <Route path='layout' component={LayoutDemoView} />
 
             <Route path='teamtalk' component={TeamtalkView} />
             <Route path='charts-bar' component={BarCharts} />

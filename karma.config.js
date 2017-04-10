@@ -43,7 +43,8 @@ module.exports = function (config) {
         coverageReporter: {
             dir: 'report',
             reporters: [
-                {type: 'html', subdir: './'}
+                {type: 'html', subdir: './'},
+                { type: 'text-summary', subdir: '.', file: 'test-summary.txt' }
             ]
         },
         plugins: [

@@ -12,22 +12,22 @@ export default class CompanyCertView extends Component {
 
 	//获取表单数据
 	getData(){
-		var data = Form.getData("company");
+		var data = Form.getData("companyCert");
 		console.info(JSON.stringify(data));
 	}
 
 	//初始化表单数据
 	resetData(){
-		Form.resetData("company");
+		Form.resetData("companyCert");
 	}
 
 	//清除表单数据
 	clearData(){
-		Form.clearData("company");
+		Form.clearData("companyCert");
 	}
 
 	validate(){
-		console.info(Form.validate("company"));
+		console.info(Form.validate("companyCert"));
 	}
 
 	//查询表单改变
@@ -61,7 +61,7 @@ export default class CompanyCertView extends Component {
 				<Form
 					data = {testData.options.concat()}
 					prefixcls="field-test"
-					form='company'/>
+					form='companyCert'/>
 			</div>
 	  	)
 	}

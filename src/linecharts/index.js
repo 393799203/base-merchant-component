@@ -21,11 +21,6 @@ const defaultOption = {
     title: {
         text: ''
     },
-    toolbox: {
-        feature: {
-            saveAsImage: {}
-        }
-    },
     tooltip: {
         // trigger: 'axis',
         // axisPointer: {            // 坐标轴指示器，坐标轴触发有效

@@ -42,7 +42,14 @@
         if (item.key === 'checked') {
             item.renderHead = (text, item) => {
                 return (
-                    <input type='checkbox' className='form-checkbox' />
+                    <label className="form-checkbox">
+                        <input
+                            type="checkbox"
+                            checked={this.state.checkedAll}
+                            onChange={() => this.handleChange(item, -1)}
+                        />
+                        <span></span>
+                    </label>
                 )
             }
         }
@@ -181,22 +188,26 @@
                 if (item.key === 'checked') {
                     item.renderHead = (text, item) => {
                         return (
-                            <input
-                                checked={this.state.checkedAll}
-                                type='checkbox'
-                                className='form-checkbox'
-                                onChange={() => this.handleChange(item, -1)}
-                            />
+                            <label className="form-checkbox">
+                                <input
+                                    type="checkbox"
+                                    checked={this.state.checkedAll}
+                                    onChange={() => this.handleChange(item, -1)}
+                                />
+                                <span></span>
+                            </label>
                         )
                     }
                     item.renderBody = (text, item, index) => {
                         return (
-                            <input
-                                type='checkbox'
-                                className='form-checkbox'
-                                checked={item.checked}
-                                onChange={() => this.handleChange(item, index)}
-                            />
+                            <label className="form-checkbox">
+                                <input
+                                    type="checkbox"
+                                    checked={item.checked}
+                                    onChange={() => this.handleChange(item, index)}
+                                />
+                                <span></span>
+                            </label>
                         )
                     }
                 }
