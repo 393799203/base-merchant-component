@@ -181,7 +181,6 @@ export default class UploadImgList extends Component {
         const {
             disabled
         } = this.props;
-
         return (
             <div className={className ? `${className} fl upload-img-list-wrapper` : 'fl upload-img-list-wrapper'}>
                 {
@@ -275,7 +274,7 @@ export default class UploadImgList extends Component {
                                             :
                                             <Datepicker
                                                 className='ml40 mt10'
-                                                value={endTime}
+                                                value={endTime * 1000}
                                                 format='yyyy-MM-dd'
                                                 onChange={date => this.onChange(date, index)}
                                                 disabledDate={e => this.disabledDate(e)}
