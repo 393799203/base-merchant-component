@@ -1,5 +1,9 @@
 ### @meili/base-merchant-component Changelog
 
+#### v1.2.5
+* 基础组件 linecharts － 修改默认配置
+* 基础组件 datepicker － fix 赋默认值bug
+
 #### v1.2.4
 * 基础组件 modal
 	* 去掉对underscore的引用
