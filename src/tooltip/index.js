@@ -3,7 +3,7 @@ import RcTooltip from 'rc-tooltip';
 
 import './style/index.less';
 
-class ToolTip extends Component {
+class Tooltip extends Component {
     constructor (props) {
         super(props);
 
@@ -54,17 +54,17 @@ class ToolTip extends Component {
     }
 }
 
-ToolTip.propTypes = {
+Tooltip.propTypes = {
     placement: React.PropTypes.string.isRequired,
     tooltip: React.PropTypes.string,
     children: React.PropTypes.any
 };
 
-ToolTip.defaultProps = {
+Tooltip.defaultProps = {
     prefixCls: 'mc-tooltip',
     placement: 'top',
     mouseEnterDelay: 0.1,
     mouseLeaveDelay: 0.1
 };
 
-module.exports = ToolTip;
+module.exports = Tooltip;

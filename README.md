@@ -1,5 +1,15 @@
 ### @meili/base-merchant-component Changelog
 
+#### v1.2.3
+* 基础组件 table － 增加 columns width 属性
+* 基础组件 tooltip － fix readme 中引用方式错误 bug
+* 业务组件 form
+	* 上传图片两个组件的校验
+	* 修改手机号码校验
+	* 添加全局defaultValue属性，映射赋默认值
+* 基础组件 lineCharts － 删除默认配置中的下载按钮
+* 业务组件 address - 名称中是否包含省、市、区字眼进行兼容
+
 #### v1.2.2
 * 基础组件 select － fix select 清除输入框中值后没有真正清除值 bug
 * 基础组件 modal - fix modal wrap z-index 过高覆盖 notification bug
