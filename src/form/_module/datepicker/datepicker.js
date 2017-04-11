@@ -29,7 +29,7 @@ export default class Datepicker extends Component {
     }
 
     onData () {
-        return this.state.value.getTime();
+        return this.state.value;
     }
 
     onValidate () {
@@ -49,8 +49,14 @@ export default class Datepicker extends Component {
     }
 
     changeDate (e) {
+        let time = e;
+        if (time) {
+            time = new Date(time);
+            time = parseInt(time.getTime().toString(), 10);
+            time = parseInt(time / 1000, 10);
+        }
         this.setState({
-            value: e
+            value: time
         });
     }
 
