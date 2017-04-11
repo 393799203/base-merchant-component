@@ -29,7 +29,7 @@ export default class Datepicker extends Component {
     }
 
     onData () {
-        return this.state.value;
+        return this.state.value.getTime();
     }
 
     onValidate () {
@@ -90,7 +90,7 @@ export default class Datepicker extends Component {
                     {...attrs}
                     disabled={disabled}
                     style={style}
-                    value={value}
+                    value={value * 1000}
                     onChange={e => this.changeDate(e)}
                 />
             </Field>
