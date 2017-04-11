@@ -93,5 +93,5 @@
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.3"
   },
-  "testResult": {"statements":87.55,"branches":81.19,"functions":83.06,"lines":77}
+  "testResult": {"statements":86.71,"branches":79.44,"functions":81.86,"lines":76.51}
 }
