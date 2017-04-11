@@ -97,9 +97,9 @@ class Modal extends Component {
             footer: (
                 <div>
                     { isAlert ?
-                        '' : <button className={`btn btn-sm btn-${theme}-border m-r`} onClick={Modal.close}>取消</button>
+                        '' : <button className={`btn btn-sm btn-${theme}-border m-r modal-btn`} onClick={Modal.close}>取消</button>
                     }
-                    <button className={`btn btn-sm btn-${theme}`} onClick={cb}>确定</button>
+                    <button className={`btn btn-sm btn-${theme} modal-btn`} onClick={cb}>确定</button>
                 </div>
             ),
             closeByMask: false,
