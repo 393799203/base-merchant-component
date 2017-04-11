@@ -25,7 +25,7 @@ export default class Table extends Component {
                         <th
                             key={item.title || item.key || index}
                             className={`mc-table-${item.key}`}
-                            style={{ textAlign: `${item.align || 'center'}` }}
+                            style={{ textAlign: `${item.align || 'center'}`, width: `${item.width || 'auto'}` }}
                             {...item.colAttrs}
                             {...item.thAttrs}
                         >
@@ -91,7 +91,7 @@ export default class Table extends Component {
                         {columns.map((col, index) =>
                             <td
                                 key={col.title || item[col.key] || index}
-                                style={{ textAlign: `${col.align || 'center'}` }}
+                                style={{ textAlign: `${col.align || 'center'}`, width: `${col.width || 'auto'}` }}
                                 {...col.colAttrs}
                                 {...col.tdAttrs}
                             >
