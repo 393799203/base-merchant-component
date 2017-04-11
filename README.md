@@ -1,5 +1,12 @@
 ### @meili/base-merchant-component Changelog
 
+#### v1.2.4
+* 基础组件 modal
+	* 去掉对underscore的引用
+	* 完善markdown文档
+	* 增加updateBody和updateFooter方法
+* 业务组件 form － 修改uploadImgList的时间选中bug
+
 #### v1.2.3
 * 基础组件 table － 增加 columns width 属性
 * 基础组件 tooltip － fix readme 中引用方式错误 bug
