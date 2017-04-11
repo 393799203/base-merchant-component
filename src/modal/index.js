@@ -285,8 +285,7 @@ class Modal extends Component {
     }
 
     handleMaskClick () {
-        const activeModal = _.last(Modal.modals);   // Modal.modals[Modal.modals.length-1];
-
+        const activeModal = _.last(Modal.optionArr);   // Modal.optionArr[Modal.optionArr.length-1];
         if (activeModal && activeModal.closeByMask) {
             Modal.closeAll();
         }
