@@ -32,7 +32,9 @@ export default class ModalView extends Component {
 					<button className="btn btn-sm btn-primary-border m-r" onClick={ (e) => this.closeOpenModal(openModal) }>取消</button>
 					<button className="btn btn-sm btn-primary" onClick={ (e) => this.closeOpenModal(openModal) }>确认</button>
 				</div>
-			)
+			),
+			showMask: true,
+			closeByMask: true
 		});
 		this.setState({ openModal: openModal });
 
