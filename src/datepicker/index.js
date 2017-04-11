@@ -51,7 +51,7 @@ export default class DatePicker extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            value: DatepickerMinix.parseDateFromValue(props, props.value), // 将传入的value格式转换成
+            value: DatepickerMinix.parseDateFromValue(props, props.value || props.defaultValue), // 将传入的value格式转换成
             open: false
         };
     }

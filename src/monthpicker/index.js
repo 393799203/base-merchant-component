@@ -42,7 +42,7 @@ export default class MonthPicker extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            value: DatepickerMinix.parseDateFromValue(props, props.value),
+            value: DatepickerMinix.parseDateFromValue(props, props.value || props.defaultValue),
             open: false
         };
     }
