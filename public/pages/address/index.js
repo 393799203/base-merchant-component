@@ -73,7 +73,7 @@ export default class AddressSelectorView extends Component {
                     <div className="f-l">
                         <h4>赋值属性：defaultProvince、defaultCity、defaultArea</h4>
                         <Address
-                            defaultProvince="山西省"
+                            defaultProvince="山西"
                             defaultCity = "大同市"
                             defaultArea="南郊区"
                             name="test2"

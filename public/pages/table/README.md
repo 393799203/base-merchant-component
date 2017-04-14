@@ -89,6 +89,7 @@
 | title        | 标头描述文字  |  string | - |
 | key        | 对应datas回填字段的键值  |  string |- |
 | align        | 对齐方式, 可选 'center', 'left', 'right'  |  string | 'center' |
+| width        | 宽度  |  string | 'auto' |
 | isSort        | 排序  | boolean  | true排序，不排序不传即可|
 | tplData        | 显示框内容  | string  | 若要显示提示框，传入提示框内容|
 | renderHead        | 该列表头回填内容函数, 参数依次为 text, item  |-  |- |

@@ -21,11 +21,6 @@ const defaultOption = {
     title: {
         text: ''
     },
-    toolbox: {
-        feature: {
-            saveAsImage: {}
-        }
-    },
     tooltip: {
         // trigger: 'axis',
         // axisPointer: {            // 坐标轴指示器，坐标轴触发有效
@@ -48,7 +43,7 @@ const defaultOption = {
     series: []
 };
 const MchartsType = 'line';
-const MchartsStack = '总量';
+// const MchartsStack = '总量';
 const MchartsAreaStyle = { normal: {} };
 
 export default class LineCharts extends Component {
@@ -87,7 +82,7 @@ export default class LineCharts extends Component {
 
         tempSeries.map((item, index) => {
             tempSeries[index].type = MchartsType; // 拼接类型
-            tempSeries[index].stack = MchartsStack; // Y轴显示总量
+            // tempSeries[index].stack = MchartsStack; // Y轴显示总量
             tempSeries[index].areaStyle = self.state.needArea ? MchartsAreaStyle : {}; // Y轴显示总量
             defaultOption.legend.data.push(item.name); // 拼接选项提示
             defaultOption.series = tempSeries; // 合并Series

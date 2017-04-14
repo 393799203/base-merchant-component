@@ -23,6 +23,9 @@ const style = {
         WebkitTransition: 'box-shadow 300ms ease',
         MozTransition: 'box-shadow 300ms ease',
         transition: 'box-shadow 300ms ease',
+        WebkitTransform: 'translate(-50%, -50%)',
+        MozTransform: 'translate(-50%, -50%)',
+        transform: 'translate(-50%, -50%)',
         zIndex: 0
     },
 

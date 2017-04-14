@@ -15,7 +15,7 @@ export default {
         type: 'text',
         label: '身份证姓名：',
         name: 'companyIdentityName',
-        // defaultValue: '飞飞',
+        defaultValue: '飞飞',
         required: true,
         placeholder: '请输入身份证姓名',
         errorMsg:"请输入身份证姓名姓名"
@@ -23,7 +23,7 @@ export default {
         type: 'text',
         label: '身份证号码：',
         name: 'companyIdentityId',
-        // defaultValue: '',
+        defaultValue: '',
         required: true,
         placeholder: '请输入身份证号码',
         errorMsg:"请输入身份证号码"
