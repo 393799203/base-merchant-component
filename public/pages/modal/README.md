@@ -1,8 +1,8 @@
 ### 2. 方法
 
-1. #### 警告：Modal.alert(msg, callback, options)
+* #### 警告：Modal.alert(msg, callback, options)
 * #### 提示：Modal.tip(msg, callback, delay, options)
-* #### 确认：Modal.comfirm(msg, callback, options)
+* #### 确认：Modal.confirm(msg, callback, options)
 * #### 自定义：Modal.open(options)
 * #### 关闭：Modal.close(id)
 
