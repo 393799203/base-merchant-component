@@ -1,5 +1,9 @@
 ### @meili/base-merchant-component Changelog
 
+#### v1.2.6
+* 业务组件 form － 修改时间类型默认值
+* 基础组件 modal － 修改样式覆盖问题
+
 #### v1.2.5
 * 基础组件 linecharts － 修改默认配置
 * 基础组件 datepicker － fix 赋默认值bug
