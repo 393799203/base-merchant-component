@@ -181,7 +181,7 @@
      * @param1 footer 类型:jsx
      * @param2 modalId 类型: Modal的id值
      */
-    Modal.updateTitle(footer,modalId);
+    Modal.updateFooter(footer,modalId);
 			
 #### 3.4.4使用示例1
 	
