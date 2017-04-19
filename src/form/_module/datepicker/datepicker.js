@@ -49,8 +49,14 @@ export default class Datepicker extends Component {
     }
 
     changeDate (e) {
+        let time = e;
+        if (time) {
+            time = new Date(time);
+            time = parseInt(time.getTime().toString(), 10);
+            time = parseInt(time / 1000, 10);
+        }
         this.setState({
-            value: e
+            value: time
         });
     }
 
@@ -90,7 +96,7 @@ export default class Datepicker extends Component {
                     {...attrs}
                     disabled={disabled}
                     style={style}
-                    value={value}
+                    value={value * 1000}
                     onChange={e => this.changeDate(e)}
                 />
             </Field>

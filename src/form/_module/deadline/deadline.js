@@ -69,9 +69,16 @@ export default class Deadline extends Component {
         });
     }
 
-    changeDate (e) {
+    changeDate (date) {
+        let time = '';
+        if (date) {
+            time = new Date(date);
+            time = parseInt(time.getTime().toString(), 10);
+            time = parseInt(time / 1000, 10);
+        }
+
         this.setState({
-            value: e,
+            value: time,
             deadlineType: false
         }, () => {
             Field.validate(this.props.form);
@@ -125,8 +132,8 @@ export default class Deadline extends Component {
                             {...attrs}
                             disabled={disabled || deadlineType}
                             style={style}
-                            value={value}
-                            onChange={e => this.changeDate(e)}
+                            value={value * 1000}
+                            onChange={date => this.changeDate(date)}
                         />
                     </div>
 
