@@ -22,9 +22,9 @@ import Slider from '@meili/base-merchant-component/lib/slider';
 | ------------ |------------ | ------------- | ------------ | ------------  |------------  |
 | className |  N  | 组件顶层样式  | string  | 需要重写样式时使用 | '' |
 | initial |  N  | 图片开始滚动的起始位置  | number |  | 0 |
-| slideShow | N | 展示的图片的数量 | numer |  | 1 |
-| slideMove | N | 每次移动图片的数量 | numer |  | 1 |
-| duration | N | 补间动画的时间 | numer | 单位:ms | 300 |
+| slideShow | N | 展示的图片的数量 | number |  | 1 |
+| slideMove | N | 每次移动图片的数量 | number |  | 1 |
+| duration | N | 补间动画的时间 | number | 单位:ms | 300 |
 | arrows | N | 是否显示左右箭头 | bool |  | false |
 | prevArrow | N | 左箭头组件 | ReactElement | 重写左箭头时使用，覆盖默认的左箭头 | null |
 | nextArrow | N | 右箭头组件 | ReactElement | 重写右箭头时使用，覆盖默认的右箭头 | null |

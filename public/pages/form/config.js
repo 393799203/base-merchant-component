@@ -6,10 +6,7 @@ export default {
         required: true,
         disabled:false,
         value: '',
-        defaultValue:[{
-            url:"http://s2.mogucdn.com/p2/170227/67813645_7al3ek6hl0keklag08jbe4ccf108a_167x167.png",
-            endTime:"1486197669"
-        }],
+        defaultValue:[{url:"http://s2.mogucdn.com/p2/170227/67813645_7al3ek6hl0keklag08jbe4ccf108a_167x167.png"}],
         name: 'uploadListtest',    //生成数据对应的字段
         attrs:{
 
@@ -38,14 +35,14 @@ export default {
         label:'时间组件',  //文案
         subInfo:'我是一个小文案',
         required: true,
-        defaultValue:1486197669,
+        defaultValue:1486197669000,
         name: 'datepickertest'    //生成数据对应的字段
     },{
         type:'deadline',  //类型
         label:'身份证截止日期',  //文案
         subInfo:'我是一个小文案',
         required: true,
-        defaultValue:1486197669,
+        defaultValue:1486197669000,
         name: 'deadlinetest'    //生成数据对应的字段
     },{
         type:'radio',  //类型
