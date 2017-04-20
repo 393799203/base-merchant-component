@@ -1,8 +1,8 @@
 ### 2. 方法
 
-1. #### 警告：Modal.alert(msg, callback, options)
+* #### 警告：Modal.alert(msg, callback, options)
 * #### 提示：Modal.tip(msg, callback, delay, options)
-* #### 确认：Modal.comfirm(msg, callback, options)
+* #### 确认：Modal.confirm(msg, callback, options)
 * #### 自定义：Modal.open(options)
 * #### 关闭：Modal.close(id)
 
@@ -181,7 +181,7 @@
      * @param1 footer 类型:jsx
      * @param2 modalId 类型: Modal的id值
      */
-    Modal.updateTitle(footer,modalId);
+    Modal.updateFooter(footer,modalId);
 			
 #### 3.4.4使用示例1
 	
