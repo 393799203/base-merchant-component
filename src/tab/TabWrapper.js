@@ -20,6 +20,14 @@ class TabWrapper extends Component {
         });
     }
 
+    componentWillReceiveProps (nextProps) {
+        if (this.props.active !== nextProps.active) {
+            this.setState({
+                active: nextProps.active
+            });
+        }
+    }
+
     getChildTabs () {
         /**
          * @desc 获取tab wrapper下的tab元素

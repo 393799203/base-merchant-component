@@ -135,6 +135,42 @@ singleTabClick () {
 </TabWrapper>
 ```
 
+* 手动改变Tab
+
+
+```
+// 第一种方式，不会触发Tab上绑定的事件
+change () {
+    this.setState({
+        active: 2
+    });
+}
+
+<TabWrapper navs={navs} active={this.state.active}>
+    <Tab key='0'>1</Tab>
+    <Tab key='1'>2</Tab>
+    <Tab key='2'>3</Tab>
+</TabWrapper>
+
+
+// 第二种方式，正常触发回调
+
+initRef (r) {
+    this.tab = r;
+}
+
+change () { // 调用组件内部函数
+    this.tab.changeTab(2);
+}
+
+<TabWrapper navs={navs} ref={(ref) => this.initRef(ref)}>
+    <Tab key='0'>1</Tab>
+    <Tab key='1'>2</Tab>
+    <Tab key='2'>3</Tab>
+</TabWrapper>
+
+```
+
 ### 3. - 参数说明
 #### 3.1 - TabWrapper
 | 参数        |  必填        |说明           | 类型         |  备注       |   默认值      |

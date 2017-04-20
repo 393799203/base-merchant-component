@@ -54,6 +54,13 @@ class LazyExample extends Component {
 }
 
 class TabDemo extends Component {
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            active: 1
+        };
+    }
+    
     static clickHanler (i) {
         Notification.info({
             message: `你点击了第${i + 1}个tab`,
@@ -73,6 +80,14 @@ class TabDemo extends Component {
             message: '点击tab内容的时候触发了事件',
             duration: 3000
         });
+    }
+
+    componentDidMount () {
+        setTimeout(() => {
+            this.setState({
+                active: 0
+            });
+        }, 3000);
     }
 
     render () {
@@ -96,7 +111,7 @@ class TabDemo extends Component {
                 <div className='switch-tab'>
                     <div className='example'>
                         <h4>常规</h4>
-                        <TabWrapper navs={nav1} active={1}>
+                        <TabWrapper navs={nav1} active={this.state.active}>
                             {tabArr}
                         </TabWrapper>
                     </div>
