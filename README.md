@@ -1,5 +1,14 @@
 ### @meili/base-merchant-component Changelog
 
+#### v1.2.7
+* 基础组件 tooltip － 升级依赖库 rc-animate,fix api 过期的warning
+* 基础组件 modal － 修改说明文档里的updateFooter名称
+* 基础组件 Tab － 支持两种手动切换方式：响应触发和静默触发
+* 基础组件 lazyload - 新增组件
+	* 支持页面以及overflow容器中使用
+ 	* 支持去抖和节流
+ 	* 支持load once
+
 #### v1.2.6
 * 业务组件 form － 修改时间类型默认值
 * 基础组件 modal － 修改样式覆盖问题
