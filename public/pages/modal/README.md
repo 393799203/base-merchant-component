@@ -37,7 +37,7 @@
 			Modal.alert('这是弹出提示');
 		}
 		render () {
-			return (
+			ovrnreturn (
 				<div>
 					<button onClick={ (e) => { this.alertModal() }}>显示弹出框</button>
 				</div>

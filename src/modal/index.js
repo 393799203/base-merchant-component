@@ -362,6 +362,12 @@ class ModalComponent extends Component {
             footer: modal.footer
         };
     }
+
+    componentDidMount () {
+        const node = ReactDom.findDOMNode(this);
+        node.focus();
+    }
+
     shouldComponentUpdate (nextProps, nextState) {
         if (nextProps.isActive !== this.props.isActive) {
             return true;
@@ -376,12 +382,7 @@ class ModalComponent extends Component {
 
         return false;
     }
-
     componentWillUpdate () {
-
-    }
-
-    componentDidUpdate () {
 
     }
 
@@ -408,7 +409,7 @@ class ModalComponent extends Component {
         const modalClassName = `mc-modal ${className}`;
 
         return (
-            <div id={id} className={modalClassName} style={modalStyle}>
+            <div id={id} ref={id} className={modalClassName} style={modalStyle} tabIndex='0'>
                 {title && (
                     <div className='mc-modal-header' style={styles.modalHeader}>
                         <h2 className='mc-modal-title' style={styles.modalTitle}>{title}</h2>
