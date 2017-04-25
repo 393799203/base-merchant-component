@@ -162,7 +162,11 @@ class Modal extends Component {
     static close (id) {
         let index = -1;
         if (typeof id === 'string') {
-            index = Modal.optionArr.findIndex((modal) => { return modal.id === id; });
+            Modal.optionArr.forEach((modal, i) => {
+                if (modal.id === id) {
+                    index = i;
+                }
+            });
 
             if (index < 0) {
                 // console.log('modal with ID %s not found', id);
