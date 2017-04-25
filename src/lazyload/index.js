@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import { addEvent, delEvent } from './event';
 import util from './util';
 
-let lazyLoadHandler = null;
-
 class LazyLoad extends Component {
     constructor (props) {
         super(props);
@@ -12,25 +10,35 @@ class LazyLoad extends Component {
             show: false
         };
         this.dom = null;
+        this.parent = null;
         this.scrollHandler = () => this.scrollEventHandler();
     }
 
     componentDidMount () {
         const me = this;
         const { props } = me;
+        const { dom } = me;
         let { throttle, debounce } = props;
+
         if (throttle) {
             throttle = typeof throttle === 'number' ? throttle : undefined;
-            lazyLoadHandler = util.throttle(this.scrollHandler, throttle);
+            me.scrollHandler = util.throttle(this.scrollHandler, throttle);
         } else if (debounce) {
             debounce = typeof debounce === 'number' ? debounce : undefined;
-            lazyLoadHandler = util.debounce(this.scrollHandler, debounce);
-        } else {
-            lazyLoadHandler = this.scrollHandler;
+            me.scrollHandler = util.debounce(this.scrollHandler, debounce);
         }
 
-        addEvent(window, 'scroll', lazyLoadHandler);
-        addEvent(window, 'resize', lazyLoadHandler);
+        if (props.overflow) {
+            const parent = util.getScrollParent(dom);
+            me.parent = parent;
+            addEvent(parent, 'scroll', me.scrollHandler);
+            addEvent(parent, 'resize', me.scrollHandler);
+        } else {
+            addEvent(window, 'scroll', me.scrollHandler);
+            addEvent(window, 'resize', me.scrollHandler);
+        }
+
+        me.scrollHandler();
     }
 
     componentWillUnmount () {
@@ -45,10 +53,10 @@ class LazyLoad extends Component {
         return Object.prototype.toString.call(arg) === '[object Array]';
     }
 
-    scrollEventHandler () {
+    isAppeared () {
         const me = this;
         const { props, dom } = me;
-        const { offset, once } = props;
+        const { offset, overflow } = props;
         const clientHeight = window.innerHeight || document.documentElement.clientHeight;
         const rect = dom.getBoundingClientRect();
         let topOffset;
@@ -60,7 +68,34 @@ class LazyLoad extends Component {
             topOffset = bottomOffset = offset;
         }
 
-        if (rect.top - topOffset <= clientHeight && rect.top + rect.height + bottomOffset >= 0) {
+        if (overflow) {
+            return me.isOverflowAppeared(rect, [topOffset, bottomOffset]);
+        }
+
+        return rect.top - topOffset <= clientHeight && rect.top + rect.height + bottomOffset >= 0;
+    }
+
+    isOverflowAppeared (rect, offset) {
+        const me = this;
+        const [topOffset = 0, bottomOffset = 0] = offset;
+        const parent = me.parent;
+        const pRect = parent.getBoundingClientRect();
+        const { top: pTop, height: pHeight } = pRect;
+        const { top = 0, height = 0 } = rect;
+
+        if (pTop + pHeight + topOffset >= top && topOffset + height + bottomOffset >= pTop) {
+            return true;
+        }
+
+        return false;
+    }
+
+    scrollEventHandler () {
+        const me = this;
+        const { props } = me;
+        const { once } = props;
+
+        if (me.isAppeared()) {
             me.setState({
                 show: true
             }, () => {
@@ -72,8 +107,15 @@ class LazyLoad extends Component {
     }
 
     unmount () {
-        delEvent(window, 'scroll', lazyLoadHandler);
-        delEvent(window, 'resize', lazyLoadHandler);
+        const { parent, props } = this;
+
+        if (props.overflow) {
+            delEvent(parent, 'scroll', this.scrollHandler);
+            delEvent(parent, 'resize', this.scrollHandler);
+        } else {
+            delEvent(window, 'scroll', this.scrollHandler);
+            delEvent(window, 'resize', this.scrollHandler);
+        }
     }
 
     render () {
@@ -98,19 +140,34 @@ class LazyLoad extends Component {
 }
 
 LazyLoad.propTypes = {
+    className: PropTypes.string,
     offset: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.number),
         PropTypes.number
     ]),
+    overflow: PropTypes.bool,
     once: PropTypes.bool,
     height: PropTypes.number,
     width: PropTypes.number,
-    placeholder: PropTypes.element
+    placeholder: PropTypes.element,
+    throttle: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.bool
+    ]),
+    debounce: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.bool
+    ])
 };
 
 LazyLoad.defaultProps = {
+    className: '',
     offset: 200,
-    once: false
+    once: true,
+    overflow: false,
+    debounce: false,
+    throttle: false,
+    placeholder: null
 };
 
 export default LazyLoad;

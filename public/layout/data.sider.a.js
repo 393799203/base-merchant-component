@@ -42,6 +42,9 @@ export default [
         title: '提示层信息 - Tooltip',
         link: '#/tooltip'
     }, {
+        title: '懒加载 - LazyLoad',
+        link: '#/lazyload'
+    }, {
         title: '图片上传 - ImageUploader',
         link: '#/image-uploader'
     }, {

@@ -58,7 +58,6 @@ const getScrollParent = (node) => {
         if (!parent.parentNode) {
             return node.ownerDocument || document.documentElement;
         }
-
         const style = window.getComputedStyle(parent);
         const position = style.position;
         const overflow = style.overflow;
@@ -69,7 +68,7 @@ const getScrollParent = (node) => {
             continue;
         }
 
-        if (overflowRegex.test(overflow) && overflowRegex.test(overflowX) && overflowRegex.test(overflowY)) {
+        if (overflowRegex.test(overflow) || overflowRegex.test(overflowX) || overflowRegex.test(overflowY)) {
             return parent;
         }
 

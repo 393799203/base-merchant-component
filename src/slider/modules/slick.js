@@ -15,7 +15,7 @@ class Slick extends Component {
             slideStyle: {},
             listStyle: {}
         };
-        this.onWindowResized = () => this.onWindowResized;
+        this.resizeHandler = () => this.onWindowResized();
         this.sliderList = null;
         this.sliderWrapper = null;
         this.tc = null;
@@ -44,9 +44,9 @@ class Slick extends Component {
         me.autoplay(); // whether autoplay
         me.mounted = true;
         if (window.addEventListener) {
-            window.addEventListener('resize', me.onWindowResized);
+            window.addEventListener('resize', me.resizeHandler);
         } else {
-            window.attachEvent('onresize', me.onWindowResized);
+            window.attachEvent('onresize', me.resizeHandler);
         }
     }
 
@@ -58,9 +58,9 @@ class Slick extends Component {
             window.clearInterval(me.tc);
         }
         if (window.removeEventListener) {
-            window.removeEventListener('resize', me.onWindowResized);
+            window.removeEventListener('resize', me.resizeHandler);
         } else {
-            window.detachEvent('onresize', me.onWindowResized);
+            window.detachEvent('onresize', me.resizeHandler);
         }
     }
 

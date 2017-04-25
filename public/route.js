@@ -29,6 +29,9 @@ import TagView from './pages/tag';
 import PanelView from './pages/compontents/panel';
 import ImageUploaderView from './pages/compontents/image-uploader';
 import SliderView from './pages/compontents/slider';
+import LazyLoadView from './pages/compontents/lazyload';
+import LazyLoadRegularDemo from './pages/compontents/lazyload/regular-demo';
+import LazyLoadOverflowDemo from './pages/compontents/lazyload/overflow-demo';
 import TeamtalkView from './pages/teamtalk';
 import BarCharts from './pages/barcharts';
 import ChinaMapCharts from './pages/chinamapcharts';
@@ -84,6 +87,9 @@ export default (
             <Route path='notification' component={NotificationView} />
             <Route path='modal' component={ModalView} />
             <Route path='tooltip' component={TooltipView} />
+            <Route path='lazyload' component={LazyLoadView} />
+            <Route path='lazyload-regular' component={LazyLoadRegularDemo} />
+            <Route path='lazyload-overflow' component={LazyLoadOverflowDemo} />
             <Route path='image-uploader' component={ImageUploaderView} />
             <Route path='table' component={TableView} />
             <Route path='slider' component={SliderView} />
