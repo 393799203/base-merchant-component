@@ -116,12 +116,14 @@ export default class ModalView extends Component {
 				</h3>
 				<div className="m-b m-t">
 					<button
+						tabIndex='2'
 						className="btn btn-info-border"
 						onClick={ (e) => { this.showTipModal() }}>
 						Modal.tip()
 					</button>
 
 					<button
+						tabIndex='3'
 						className="btn btn-success-border m-l"
 						onClick={ (e) => { this.showModal() }}>
 						Modal.alert()
@@ -131,8 +133,8 @@ export default class ModalView extends Component {
 						onClick={ (e) => { this.showConfirmModal() }}>
 						Modal.confirm()
 					</button>
-
 					<button
+						tabIndex='4'
 						className="btn btn-primary-border m-l"
 						onClick={ (e) => { this.openModal() }}>
 						Modal.open()
