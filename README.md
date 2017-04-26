@@ -1,5 +1,10 @@
 ### @meili/base-merchant-component Changelog
 
+#### v1.2.8
+* 基础组件 modal
+	* 解决了按enter键，不断出现弹框的bug
+	* 因为ie下数组对findIndex不支持，改为forEach
+
 #### v1.2.7
 * 基础组件 tooltip － 升级依赖库 rc-animate,fix api 过期的warning
 * 基础组件 modal － 修改说明文档里的updateFooter名称
