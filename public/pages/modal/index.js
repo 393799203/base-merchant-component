@@ -34,7 +34,7 @@ export default class ModalView extends Component {
 				</div>
 			),
 			showMask: true,
-			closeByMask: false
+			closeByMask: true
 		});
 		this.setState({ openModal: openModal });
 

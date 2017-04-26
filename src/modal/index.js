@@ -413,7 +413,7 @@ class ModalComponent extends Component {
         const modalClassName = `mc-modal ${className}`;
 
         return (
-            <div id={id} ref={id} className={modalClassName} style={modalStyle} tabIndex='0'>
+            <div id={id} className={modalClassName} style={modalStyle} tabIndex='0'>
                 {title && (
                     <div className='mc-modal-header' style={styles.modalHeader}>
                         <h2 className='mc-modal-title' style={styles.modalTitle}>{title}</h2>
