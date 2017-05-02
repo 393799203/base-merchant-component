@@ -8,11 +8,11 @@ import Readme from './README.md';
 const checkboxOptions = [
        {
         label: '多选1',
-        value: 0
+        value: true
        },
        {
         label: '多选2',
-        value: 1
+        value: false
        },
        {
         label: '多选3',
@@ -22,20 +22,20 @@ const checkboxOptions = [
 ]
 
 const checkboxOptions2 = [
-       {
+    {
         label: '多选1',
-        value: 0,
+        value: true,
         defaultChecked:true
-       },
-       {
+    },
+    {
         label: '多选2',
-        value: 1
-       },
-       {
+        value: false
+    },
+    {
         label: '多选3',
         value: 2,
         defaultChecked:true
-       }
+    }
 ]
 
 export default class CheckboxView extends Component {
@@ -48,6 +48,7 @@ export default class CheckboxView extends Component {
 
 	getData(form){
 		var data = Field.getData(form);
+		console.info(JSON.stringify(data));
 		Notification.info({
 		    message: '获取文本框的信息为：'+JSON.stringify(data),
 		    duration: 2000 // 单位毫秒
@@ -108,6 +109,7 @@ export default class CheckboxView extends Component {
 						<Field
 							type="checkbox"
 					        name="checkbox"
+					        defaultValue={[2]}
 					        options={checkboxOptions}>
 					    </Field>
 					</div>
