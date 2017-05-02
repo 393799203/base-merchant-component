@@ -210,7 +210,7 @@ export default class Checkbox extends Component {
             <div className='mc-field-checkbox'>
                 {
                     options.map((option) => {
-                        const optionValue = String(option.value);
+                        const optionValue = option.value;
                         return (
                             <div
                                 className={`mc-checkbox-nice ${option.className || ''}`}
@@ -221,11 +221,11 @@ export default class Checkbox extends Component {
                                 <input
                                     type='checkbox'
                                     className='mc-checkbox-error mc-checkbox-input'
-                                    checked={Boolean(this.state.checked[optionValue])}
+                                    checked={Boolean(this.state.checked[String(optionValue)])}
                                     {...attrs}
                                     disabled={disabled}
                                     id={option.id}
-                                    value={optionValue}
+                                    value={String(optionValue)}
                                     onChange={() => this.handleChange(optionValue)}
                                 />
 
