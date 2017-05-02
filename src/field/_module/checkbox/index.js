@@ -63,6 +63,7 @@ export default class Checkbox extends Component {
         super(props);
         const inputValue = this.initValue();
         this.state = inputValue;
+        Checkbox.instance = this;
     }
 
     componentWillMount () {
@@ -80,20 +81,35 @@ export default class Checkbox extends Component {
 
     initValue () {
         const checked = {};
-        let values = [];
+        const values = [];
         const options = this.props.options;
+        const props = this.props;
 
-        if (this.props.value && this.props.value.length) {
-            this.props.value.forEach((item) => {
-                checked[item] = true;
-            });
-            values = this.props.value;
-        } else if (this.props.defaultValue && this.props.defaultValue.length) {
-            this.props.defaultValue.forEach((item) => {
-                checked[item] = true;
-            });
-            values = this.props.defaultValue;
-        } else if (this.props.options.length) {
+        if (typeof props.value !== 'undefined' && Array.isArray(props.value)) {
+            let i = 0;
+            let j = 0;
+            for (i = 0; i < props.value.length; i++) {
+                for (j = 0; j < options.length; j++) {
+                    const item = options[j];
+                    if (item.value === props.value[i]) {
+                        checked[item.value] = true;
+                        values.push(item.value);
+                    }
+                }
+            }
+        } else if (typeof props.defaultValue !== 'undefined' && Array.isArray(props.defaultValue)) {
+            let i = 0;
+            let j = 0;
+            for (i = 0; i < props.defaultValue.length; i++) {
+                for (j = 0; j < options.length; j++) {
+                    const item = options[j];
+                    if (item.value === props.defaultValue[i]) {
+                        checked[item.value] = true;
+                        values.push(item.value);
+                    }
+                }
+            }
+        } else if (Array.isArray(props.options)) {
             options.map((option) => {
                 if (option.defaultChecked) {
                     checked[option.value] = true;
@@ -102,7 +118,10 @@ export default class Checkbox extends Component {
             });
         }
 
-        return { checked, value: values };
+        return {
+            checked,
+            value: values
+        };
     }
 
     updateValue (nextProps) {
@@ -112,10 +131,13 @@ export default class Checkbox extends Component {
         }
         const checked = {};
         if (Array.isArray(newValue)) {
-            newValue.forEach((item) => {
+            newValue.map((item) => {
                 return checked[item] === true;
             });
-            this.setState({ value: newValue, checked });
+            this.setState({
+                value: newValue,
+                checked
+            });
         }
     }
 
@@ -123,18 +145,32 @@ export default class Checkbox extends Component {
         const checked = {};
         const props = this.props;
         const options = props.options;
-        let values = [];
+        const values = [];
 
         if (typeof props.value !== 'undefined' && Array.isArray(props.value)) {
-            props.value.forEach((item) => {
-                checked[item] = true;
-            });
-            values = props.value;
+            let i = 0;
+            let j = 0;
+            for (i = 0; i < props.value.length; i++) {
+                for (j = 0; j < options.length; j++) {
+                    const item = options[j];
+                    if (item.value === props.value[i]) {
+                        checked[item.value] = true;
+                        values.push(item.value);
+                    }
+                }
+            }
         } else if (typeof props.defaultValue !== 'undefined' && Array.isArray(props.defaultValue)) {
-            props.defaultValue.forEach((item) => {
-                checked[item] = true;
-            });
-            values = props.defaultValue;
+            let i = 0;
+            let j = 0;
+            for (i = 0; i < props.defaultValue.length; i++) {
+                for (j = 0; j < options.length; j++) {
+                    const item = options[j];
+                    if (item.value === props.defaultValue[i]) {
+                        checked[item.value] = true;
+                        values.push(item.value);
+                    }
+                }
+            }
         } else if (Array.isArray(props.options)) {
             options.map((option) => {
                 if (option.defaultChecked) {
@@ -163,7 +199,7 @@ export default class Checkbox extends Component {
 
     validate () {
         let isValid = true;
-        const value = this.state.value;
+        const value = this.state.value || [];
         if (this.props.required && value.length === 0) {
             isValid = false;
         }
@@ -187,7 +223,6 @@ export default class Checkbox extends Component {
                 }
             }
         }
-
         this.setState({
             value, checked
         }, () => {
@@ -205,7 +240,6 @@ export default class Checkbox extends Component {
             fieldId,
             disabled
         } = this.props;
-
         return (
             <div className='mc-field-checkbox'>
                 {
