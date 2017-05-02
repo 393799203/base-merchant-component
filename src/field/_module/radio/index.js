@@ -18,11 +18,11 @@ export default class Radio extends Component {
         attrs: PropTypes.object,
         events: PropTypes.object,
         onValidate: PropTypes.func,
-        defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+        defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]),
         name: PropTypes.string,
         id: PropTypes.string,
         onChange: PropTypes.func,
-        value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+        value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]),
         options: PropTypes.array,
         fieldId: PropTypes.string,
         disabled: PropTypes.bool,
@@ -186,7 +186,7 @@ export default class Radio extends Component {
             <div className='mc-field-radio'>
                 {
                     options.map((option) => {
-                        const optionValue = typeof option.value !== 'undefined' ? String(option.value) : '';
+                        const optionValue = typeof option.value !== 'undefined' ? option.value : '';
                         return (
                             <div
                                 className={`mc-radio-nice ${option.className || ''}`}
@@ -197,11 +197,11 @@ export default class Radio extends Component {
                                 <input
                                     type='radio'
                                     className='mc-radio-error mc-radio-input'
-                                    checked={this.state.value.toString() === optionValue}
+                                    checked={this.state.value.toString() === String(optionValue)}
                                     {...attrs}
                                     disabled={disabled}
                                     id={option.id}
-                                    value={optionValue}
+                                    value={String(optionValue)}
                                     onChange={() => this.handleChange(optionValue)}
                                 />
                                 <label className='yy-iconfont' htmlFor={option.id || fieldId}>{option.label || option.text}</label>

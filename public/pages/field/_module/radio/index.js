@@ -7,11 +7,11 @@ import Readme from './README.md';
 const radioOptions = [
 	{
 	    label:'单选1',    //选项文案
-	    value: 0         //选项的值
+	    value: true         //选项的值
 	},
 	{
 	    label: '单选2',
-	    value: 1,
+	    value: false,
 	},{
 	    label: '单选3',
 	    value: 2
@@ -40,7 +40,8 @@ export default class RadioView extends Component {
 	}
 
 	getData(form){
-		var data = Field.getData(form);
+		var data = Field.getData();
+		console.info(data);
 		Notification.info({
 		    message: '获取文本框的信息为：'+JSON.stringify(data),
 		    duration: 2000 // 单位毫秒
@@ -97,7 +98,7 @@ export default class RadioView extends Component {
 						<h4>必填属性：类型（type）、name、选择列表（options）</h4>
 						<Field
 							type="radio"
-					        name="radio"
+					        name="1111111111"
 					        options={radioOptions}>
 					    </Field>
 					</div>
@@ -105,7 +106,7 @@ export default class RadioView extends Component {
 						<h4>其他配置属性：表单复杂的情况下建议设置form给表单归类（form）、禁用（disabled）、标题（label）、子标题信息（subInfo）、样式（className）</h4>
 						<Field
 							type="radio"
-					        name="radio2"
+					        name="22222"
 					        form="radio"
 					        label="配置属性1："
 					        disabled
@@ -175,7 +176,7 @@ export default class RadioView extends Component {
 					        form="radio"
 					        label="配置属性5："
 					        required
-					        value="2"
+					        value={2}
 					        options={radioOptions}
 					        className='field-text'
 					        subInfo="赋值value">
