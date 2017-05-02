@@ -161,7 +161,7 @@ export default class CheckboxView extends Component {
 					        label="配置属性3："
 					        required
 					        options={checkboxOptions}
-					        defaultValue={["2"]}
+					        defaultValue={[2]}
 					        className='field-text'
 					        subInfo="赋值defaultValue">
 					    </Field>
@@ -182,7 +182,7 @@ export default class CheckboxView extends Component {
 					        form="checkbox"
 					        label="配置属性5："
 					        required
-					        value={["2"]}
+					        value={[2]}
 					        options={checkboxOptions}
 					        className='field-text'
 					        subInfo="赋值value">

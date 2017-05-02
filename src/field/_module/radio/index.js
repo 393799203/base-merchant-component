@@ -18,11 +18,11 @@ export default class Radio extends Component {
         attrs: PropTypes.object,
         events: PropTypes.object,
         onValidate: PropTypes.func,
-        defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+        defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]),
         name: PropTypes.string,
         id: PropTypes.string,
         onChange: PropTypes.func,
-        value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+        value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]),
         options: PropTypes.array,
         fieldId: PropTypes.string,
         disabled: PropTypes.bool,
@@ -79,25 +79,33 @@ export default class Radio extends Component {
 
     initValue () {
         const props = this.props;
-
-        if (typeof props.value !== 'undefined') {
-            return {
-                value: props.value
-            };
-        } else if (typeof props.defaultValue !== 'undefined') {
-            return {
-                value: props.defaultValue
-            };
-        }
         const obj = {};
         const options = props.options;
-        options.map((option) => {
-            if (option.defaultChecked) {
-                obj.value = option.value;
+
+        if (options.length > 0) {
+            options.map((option) => {
+                if (option.defaultChecked) {
+                    obj.value = option.value;
+                }
+            });
+
+            if (typeof props.value !== 'undefined') {
+                options.map((option) => {
+                    if (option.value === props.value) {
+                        obj.value = option.value;
+                    }
+                });
+            } else if (typeof props.defaultValue !== 'undefined') {
+                options.map((option) => {
+                    if (option.value === props.defaultValue) {
+                        obj.value = option.value;
+                    }
+                });
             }
-        });
-        if (typeof obj.value === 'undefined' && options.length > 0) {
-            obj.value = options[0].value; // 如果没有默认checked的值，则用第一个作为默认值
+
+            if (typeof obj.value === 'undefined') {
+                obj.value = options[0].value; // 如果没有默认checked的值，则用第一个作为默认值
+            }
         }
         return obj;
     }
@@ -114,20 +122,30 @@ export default class Radio extends Component {
 
     resetData () {
         const props = this.props;
+        const options = props.options;
         let value = '';
-        if (typeof props.value !== 'undefined') {
-            value = props.value;
-        } else if (typeof props.defaultValue !== 'undefined') {
-            value = props.defaultValue;
-        } else if (props.options.length) {  // 遍历options，取出默认checked的值
-            const options = props.options;
+        if (options.length) {  // 遍历options，取出默认checked的值
             options.map((option) => {
                 if (option.defaultChecked) {
                     value = option.value;
                 }
             });
 
-            if (typeof value === 'undefined' && options.length > 0) {
+            if (typeof props.value !== 'undefined') {
+                options.map((option) => {
+                    if (option.value === props.value) {
+                        value = option.value;
+                    }
+                });
+            } else if (typeof props.defaultValue !== 'undefined') {
+                options.map((option) => {
+                    if (option.value === props.defaultValue) {
+                        value = option.value;
+                    }
+                });
+            }
+
+            if (value === '') {
                 value = options[0].value; // 如果没有默认checked的值，则用第一个作为默认值
             }
         }
