@@ -79,25 +79,33 @@ export default class Radio extends Component {
 
     initValue () {
         const props = this.props;
-
-        if (typeof props.value !== 'undefined') {
-            return {
-                value: props.value
-            };
-        } else if (typeof props.defaultValue !== 'undefined') {
-            return {
-                value: props.defaultValue
-            };
-        }
         const obj = {};
         const options = props.options;
-        options.map((option) => {
-            if (option.defaultChecked) {
-                obj.value = option.value;
+
+        if (options.length > 0) {
+            options.map((option) => {
+                if (option.defaultChecked) {
+                    obj.value = option.value;
+                }
+            });
+
+            if (typeof props.value !== 'undefined') {
+                options.map((option) => {
+                    if (option.value === props.value) {
+                        obj.value = option.value;
+                    }
+                });
+            } else if (typeof props.defaultValue !== 'undefined') {
+                options.map((option) => {
+                    if (option.value === props.defaultValue) {
+                        obj.value = option.value;
+                    }
+                });
             }
-        });
-        if (typeof obj.value === 'undefined' && options.length > 0) {
-            obj.value = options[0].value; // 如果没有默认checked的值，则用第一个作为默认值
+
+            if (typeof obj.value === 'undefined') {
+                obj.value = options[0].value; // 如果没有默认checked的值，则用第一个作为默认值
+            }
         }
         return obj;
     }
@@ -114,20 +122,30 @@ export default class Radio extends Component {
 
     resetData () {
         const props = this.props;
+        const options = props.options;
         let value = '';
-        if (typeof props.value !== 'undefined') {
-            value = props.value;
-        } else if (typeof props.defaultValue !== 'undefined') {
-            value = props.defaultValue;
-        } else if (props.options.length) {  // 遍历options，取出默认checked的值
-            const options = props.options;
+        if (options.length) {  // 遍历options，取出默认checked的值
             options.map((option) => {
                 if (option.defaultChecked) {
                     value = option.value;
                 }
             });
 
-            if (typeof value === 'undefined' && options.length > 0) {
+            if (typeof props.value !== 'undefined') {
+                options.map((option) => {
+                    if (option.value === props.value) {
+                        value = option.value;
+                    }
+                });
+            } else if (typeof props.defaultValue !== 'undefined') {
+                options.map((option) => {
+                    if (option.value === props.defaultValue) {
+                        value = option.value;
+                    }
+                });
+            }
+
+            if (value === '') {
                 value = options[0].value; // 如果没有默认checked的值，则用第一个作为默认值
             }
         }
@@ -186,7 +204,7 @@ export default class Radio extends Component {
             <div className='mc-field-radio'>
                 {
                     options.map((option) => {
-                        const optionValue = typeof option.value !== 'undefined' ? option.value : '';
+                        const optionValue = typeof option.value !== 'undefined' ? String(option.value) : '';
                         return (
                             <div
                                 className={`mc-radio-nice ${option.className || ''}`}
@@ -197,11 +215,11 @@ export default class Radio extends Component {
                                 <input
                                     type='radio'
                                     className='mc-radio-error mc-radio-input'
-                                    checked={this.state.value.toString() === String(optionValue)}
+                                    checked={this.state.value.toString() === optionValue}
                                     {...attrs}
                                     disabled={disabled}
                                     id={option.id}
-                                    value={String(optionValue)}
+                                    value={optionValue}
                                     onChange={() => this.handleChange(optionValue)}
                                 />
                                 <label className='yy-iconfont' htmlFor={option.id || fieldId}>{option.label || option.text}</label>

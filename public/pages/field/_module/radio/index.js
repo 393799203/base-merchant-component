@@ -40,7 +40,7 @@ export default class RadioView extends Component {
 	}
 
 	getData(form){
-		var data = Field.getData();
+		var data = Field.getData(form);
 		console.info(data);
 		Notification.info({
 		    message: '获取文本框的信息为：'+JSON.stringify(data),
@@ -155,7 +155,7 @@ export default class RadioView extends Component {
 					        label="配置属性3："
 					        required
 					        options={radioOptions}
-					        defaultValue={2}
+					        defaultValue={5}
 					        className='field-text'
 					        subInfo="赋值defaultValue">
 					    </Field>
