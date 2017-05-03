@@ -9,7 +9,6 @@ import IconView from './_module/icon';
 import PanelView from './_module/panel';
 import UtilView from './_module/util';
 import FormView from './_module/form';
-import './style/index.less';
 
 export default class CSSAllView extends Component {
     render () {

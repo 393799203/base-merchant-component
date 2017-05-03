@@ -8,7 +8,6 @@ import TableView from './_module/table';
 import IconView from './_module/icon';
 import PanelView from './_module/panel';
 import UtilView from './_module/util';
-import './style/index.less';
 
 export default class CSSView extends Component {
     render () {

@@ -20,10 +20,11 @@
     "pubnpm": "node scripts/checker.js && npm publish",
     "prepub": "rm -rf demo && rm -rf lib && rm -rf dist",
     "pub": "npm run prepub && npm run pubtest && npm run babel && npm run build && npm run buildDemo && npm run pubnpm",
-    "dev": "WEBPACK_ENV=DEMO_DEV webpack-dev-server --port 5000 --devtool eval --progress --colors --hot --inline --content-base demo",
+    "dev": "WEBPACK_ENV=DEMO_DEV webpack-dev-server --port 5000 --public dev.meili-inc.com:5000 --devtool eval --progress --colors --hot --inline --content-base demo",
     "buildDemo": "WEBPACK_ENV=DEMO_BUILD webpack"
   },
   "dependencies": {
+    "@meili/merchant-theme": "^1.0.0",
     "classnames": "^2.2.5",
     "echarts": "^3.4.0",
     "gregorian-calendar": "^4.1.2",
@@ -94,5 +95,10 @@
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.3"
   },
-  "testResult": {"statements":86.64,"branches":79.26,"functions":81.91,"lines":76.45}
+  "testResult": {
+    "statements": 86.64,
+    "branches": 79.26,
+    "functions": 81.91,
+    "lines": 76.45
+  }
 }

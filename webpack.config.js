@@ -50,7 +50,7 @@ var config = {
             {
                 test: /\.jsx?$/,
                 exclude: [/node_modules/, /public/, /test/],
-                loader: 'eslint',
+                loader: 'eslint-loader',
                 query: { cacheDirectory: true}
             }
         ],
@@ -91,23 +91,27 @@ var config = {
     resolve: {
         alias: {
             'source_path': src_path,
+            '@meili/merchant-theme': path.join(__dirname, '/node_modules/@meili/merchant-theme')
         },
         extensions: ['', '.js', '.jsx']
     }
 }
 
-/* [分支1] demo 代码: dev && build 配置 */
+/* [场景1] demo 代码: dev && build 配置 */
 if (env === 'DEMO_DEV' ||  env === 'DEMO_BUILD') {
     // 入口文件
     config.entry = [path.resolve(public_path, 'main.js')];
     // 出口文件
     config.output = {path: demo_path, filename: 'bundle.js'};
     // loaders
-    config.module.loaders.push({test: /\.(css|less)$/, loader: ExtractTextPlugin.extract('style', '!css!less')} );
+    config.module.loaders.push({
+        test: /\.(css|less)$/,
+        loader: ExtractTextPlugin.extract('style', '!css!less')
+    });
     // plugins
     if (env === 'DEMO_DEV' ) config.plugins = [pluginCssExtract, pluginHtmlwebpack];
     if (env === 'DEMO_BUILD') config.plugins = [pluginCssExtract, pluginUglifyJs, pluginHtmlwebpack];
-/* [分支2] 组件源码：打包到 dist目录下 */
+/* [场景2] 组件源码：打包到 dist目录下 */
 } else if (env === 'BUILD') {
     // 入口文件
     config.entry = getEntries();
@@ -116,10 +120,16 @@ if (env === 'DEMO_DEV' ||  env === 'DEMO_BUILD') {
     // externals
     config.externals = {'react': 'React', 'react-dom': 'ReactDOM', './React': 'React', './React-dom': 'ReactDOM'};
     // loaders
-    config.module.loaders.push({test: /\.(css|less)$/, loader:'style-loader!css-loader!less-loader'} );
-/* [分支3] karma webpack 配置 */
+    config.module.loaders.push({
+        test: /\.(css|less)$/,
+        loader:'style-loader!css-loader!less-loader'
+    });
+/* [场景3] karma webpack 配置 */
 } else {
-    config.module.loaders.push({test: /\.(css|less)$/, loader:'style-loader!css-loader!less-loader'} );
+    config.module.loaders.push({
+        test: /\.(css|less)$/,
+        loader:'style-loader!css-loader!less-loader'
+    });
 }
 
 module.exports = config;
