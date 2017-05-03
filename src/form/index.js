@@ -10,6 +10,8 @@ import Datepicker from './_module/datepicker/datepicker';
 import Deadline from './_module/deadline/deadline';
 import UploadBox from './_module/upload-box/upload-box';
 import UploadList from './_module/upload-list/upload-list';
+import LabelList from './_module/label-list/label-list';
+import ModuleTitle from './_module/module-title/module-title';
 
 import './style/index.less';
 import './style/grid.less';
@@ -20,7 +22,9 @@ const modules = {
     datepicker: Datepicker,
     deadline: Deadline,
     uploadBox: UploadBox,
-    uploadList: UploadList
+    uploadList: UploadList,
+    labelList: LabelList,
+    moduleTitle: ModuleTitle
 };
 
 export default class Form extends Component {

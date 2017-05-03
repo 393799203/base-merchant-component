@@ -1,5 +1,11 @@
 export default {
     options:[{
+        type:'labelList',  //类型
+        value:[
+            "1.化妆品生产厂商的化妆品卫生许可证复印件;",
+            "2.化妆品生产厂商的化妆品生产许可证复印件；"
+        ]
+    },{
         type:'uploadList',  //类型
         label:'上传列表',  //文案
         subInfo:'我是一个小文案',

@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Form from 'source_path/form';
 import Readme from './README.md';
 
+import Quality from './demo/quality';
 import SellerInfo from './demo/sellerInfo';
 import CompanyLegal from './demo/companyLegal';
 import CompanyCert from './demo/companyCert';
@@ -76,6 +77,8 @@ export default class FormComponentView extends Component {
 					1. 示例
 				</h3>
 				<div className="m-b m-t">
+					<Quality />
+					
 					<SellerInfo />
 
 					<CompanyLegal />
