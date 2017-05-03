@@ -14,22 +14,30 @@ export default class CSSView extends Component {
         return (
             <div className='m-60'>
                 <h2 className='p-t p-b b-b dashed'>
-                    商家主题样式
+                    主题样式
                     <a
                       className='btn btn-danger-border w m-l'
-                      href='http://gitlab.mogujie.org/Aveng/meili-merchant-theme'
+                      href='http://gitlab.mogujie.org/Aveng/meili-merchant-theme/tree/develop'
                     >
-                      查看 Gitlab 源码 develop 分支
+                      查看 Gitlab 源码
                     </a>
                 </h2>
+                <p className='m-t text-md'>
+                    主题样式 <code>@meili/merchant-theme</code> 提供了<code>reset</code>, <code>variables</code>, <code>grid</code>, <code>form</code> <code>...</code> 等基础变量，工具样式以及页面元素样式，让你无需自定义样式就可以完成一个页面的开发。
+                </p>
+                <p className='m-t-10 text-md'>
+                    主题样式 <code>@meili/merchant-theme</code>
+                    支持 <code>cdn</code> 引入和 <code>npm</code> 安装两种使用方式, 如果使用 <code>cdn</code>,只需要 在页面中使用 <code>link</code> 标签引入 cdn 地址即可，
+                    具体文件 cdn 路径 <a className='text-info' href='http://aveng.meili-inc.com/doc/%40meili%2Fmerchant-theme?ver='>在组件平台上查看 @meili/merchant-theme</a>
+                </p>
                 <h3>
-                    1、安装
+                    1、npm 安装
                 </h3>
 <pre>
     $ npm i @meili/merchant-theme --save
 </pre>
                 <h3>
-                    2、使用
+                    2、npm 使用
                 </h3>
                 <blockquote className='m-t'>
                     主题样式源码文件为less, 安装 npm 包后, 然后在webpack中增加loader
@@ -50,10 +58,10 @@ export default class CSSView extends Component {
         }\n\
 }"}
 </pre>
-<p>这样你在 <code>less</code> 文件中就可以按如下方式引用<code>@meili/merchant-theme</code>中的具体文件了：</p>
-<pre className='m-t-10'>@import '~@meili/merchant-theme/lib/variables.less';</pre>
+<p className='m-t m-b'>这样你在 <code>less</code> 文件中就可以按如下方式引用<code>@meili/merchant-theme</code>中的具体文件了：</p>
+<pre>@import '~@meili/merchant-theme/lib/variables.less';</pre>
                 <h3 className='m-t-30'>
-                    分类查看
+                    3、样式API
                     <a
                       className='btn btn-danger-border m-l'
                       href='#/css/all'
@@ -61,7 +69,7 @@ export default class CSSView extends Component {
                       查看所有
                     </a>
                 </h3>
-                <div className='clearfix'>
+                <div className='clearfix' style={{margin: '0 -15px'}}>
                     <a href='#/css/grid' style={{width: '33.33%', height: '100px', lineHeight: '100px'}} className=' text-center text-xl block f-l' >
                         <div style={{borderRadius: '4px'}} className='bg-info m'>Grid</div>
                     </a>
