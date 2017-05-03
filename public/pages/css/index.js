@@ -14,16 +14,25 @@ export default class CSSView extends Component {
         return (
             <div className='m-60'>
                 <h2 className='p-t p-b b-b dashed'>
-                    商家主题样式 - v3.0.0
+                    商家主题样式
                     <a
                       className='btn btn-danger-border w m-l'
-                      href='http://gitlab.mogujie.org/f2e/merchant-theme.git'
+                      href='http://gitlab.mogujie.org/Aveng/meili-merchant-theme'
                     >
-                      查看 Gitlab 源码 v3.0.0 分支
+                      查看 Gitlab 源码 develop 分支
                     </a>
                 </h2>
+                <h3>
+                    1、安装
+                </h3>
+<pre>
+    $ npm i @meili/merchant-theme --save
+</pre>
+                <h3>
+                    2、使用
+                </h3>
                 <blockquote className='m-t'>
-                    主题样式源码文件为less, 使用时将样式源码放在项目样式文件夹中, 引入 index.less (样式主文件), 然后在webpack中增加loader
+                    主题样式源码文件为less, 安装 npm 包后, 然后在webpack中增加loader
                 </blockquote>
 <pre>
     {"{\n\
@@ -31,6 +40,18 @@ export default class CSSView extends Component {
         loader:'style-loader!css-loader!less-loader'\n\
 }"}
 </pre>
+                <blockquote className='m-t'>
+                    如果你使用的<code>less-loader</code>低于<code>4.0</code>版本，又想在 <code>less</code> 文件中 <code>@import</code> node_modules 中 <code>@meili/merchant-theme</code> 目录下的 <code>less</code> 文件, 则需要在 webpack 中配置 alias
+                </blockquote>
+<pre>
+    resolve: {"{\n\
+        alias: {\n\
+            '@meili/merchant-theme': path.join(__dirname, '/node_modules/@meili/merchant-theme')\n\
+        }\n\
+}"}
+</pre>
+<p>这样你在 <code>less</code> 文件中就可以按如下方式引用<code>@meili/merchant-theme</code>中的具体文件了：</p>
+<pre className='m-t-10'>@import '~@meili/merchant-theme/lib/variables.less';</pre>
                 <h3 className='m-t-30'>
                     分类查看
                     <a

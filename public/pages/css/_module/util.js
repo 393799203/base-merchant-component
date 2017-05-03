@@ -9,7 +9,7 @@ export default class UtilView extends Component {
                     {this.props.num || 1}、Util CSS
                     <a
                       className='btn btn-danger-border btn-xs text-thin m-l'
-                      href='http://gitlab.mogujie.org/f2e/merchant-theme/blob/v3.0.0/utils.less'
+                      href='http://gitlab.mogujie.org/Aveng/meili-merchant-theme/blob/develop/lib/utils.less'
                     >
                       查看 Util 样式源码
                     </a>

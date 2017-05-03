@@ -9,7 +9,7 @@ export default class PanelView extends Component {
                     {this.props.num || 1}、Panel
                     <a
                       className='btn btn-danger-border btn-xs text-thin m-l'
-                      href='http://gitlab.mogujie.org/f2e/merchant-theme/blob/v3.0.0/panel.less'
+                      href='http://gitlab.mogujie.org/Aveng/meili-merchant-theme/blob/develop/lib/panel.less'
                     >
                       查看 Panel 样式源码
                     </a>

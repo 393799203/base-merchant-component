@@ -9,7 +9,7 @@ export default class TextView extends Component {
                     {this.props.num || 1}、Table
                     <a
                       className='btn btn-danger-border btn-xs text-thin m-l'
-                      href='http://gitlab.mogujie.org/f2e/merchant-theme/blob/v3.0.0/table.less'
+                      href='http://gitlab.mogujie.org/Aveng/meili-merchant-theme/blob/develop/lib/table.less'
                     >
                       查看 Table 样式源码
                     </a>

@@ -9,7 +9,7 @@ export default class BgView extends Component {
                     {this.props.num || 1}、Background
                     <a
                       className='btn btn-danger-border btn-xs text-thin m-l'
-                      href='http://gitlab.mogujie.org/f2e/merchant-theme/blob/v3.0.0/background.less'
+                      href='http://gitlab.mogujie.org/Aveng/meili-merchant-theme/blob/develop/lib/background.less'
                     >
                       查看 Background 样式源码
                     </a>

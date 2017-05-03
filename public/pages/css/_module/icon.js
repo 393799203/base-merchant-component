@@ -9,7 +9,7 @@ export default class IconView extends Component {
                     {this.props.num || 1}、Iconfont
                     <a
                       className='btn btn-danger-border btn-xs text-thin m-l'
-                      href='http://gitlab.mogujie.org/f2e/merchant-theme/blob/v3.0.0/iconfont.less'
+                      href='http://gitlab.mogujie.org/Aveng/meili-merchant-theme/blob/develop/lib/iconfont.less'
                     >
                       查看 Iconfont 样式源码
                     </a>

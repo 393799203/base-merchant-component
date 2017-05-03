@@ -9,7 +9,7 @@ export default class ButtonView extends Component {
                     {this.props.num || 1}、Button
                     <a
                       className='btn btn-danger-border btn-xs text-thin m-l'
-                      href='http://gitlab.mogujie.org/f2e/merchant-theme/blob/v3.0.0/button.less'
+                      href='http://gitlab.mogujie.org/Aveng/meili-merchant-theme/blob/develop/lib/button.less'
                     >
                       查看 Button 样式源码
                     </a>
