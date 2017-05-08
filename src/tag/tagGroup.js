@@ -17,7 +17,7 @@ export default class TagGroup extends Component {
         this.addData(name, options);
         this.setState({ options });
     }
-    componentWillUnMount () {
+    componentWillUnmount () {
         const { name } = this.props;
         this.removeData(name);
     }
