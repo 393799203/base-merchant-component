@@ -1,5 +1,17 @@
 ### @meili/base-merchant-component Changelog
 
+#### v1.2.9
+* 基础组件 tag
+	* 修改 tag 组件，有 api 变动
+	* 新增 tagGroup 组件，支持选中，取消选中，获取数据等功能
+* 基础组件 popover － 新增 popover 组件
+* 基础组件 field
+	* 修复表单组件 checkbox 与 radio，getData方法获得返回值为字符串的问题
+    * 修改表单组件 checkbox 重置功能问题
+* 去除 underscore 依赖
+* 修改主题库 `@meili/merchant-theme` 引用方式为 npm
+* 修改主题库文档说明
+
 #### v1.2.8
 * 基础组件 modal
 	* 解决了按enter键，不断出现弹框的bug

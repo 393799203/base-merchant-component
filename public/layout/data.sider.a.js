@@ -80,6 +80,9 @@ export default [
     }, {
         title: '下拉 - Dropdown',
         link: '#/dropdown'
+    }, {
+        title: '浮块提示 - Popover',
+        link: '#/popover'
     }
 ];
 
