@@ -22,6 +22,7 @@ const merchantComponent = {
     Panel: require('./panel'),
     PieCharts: require('./piecharts'),
     ProcessBar: require('./process-bar'),
+    Popover: require('./popover'),
     Rangepicker: require('./rangepicker'),
     Select: require('./select'),
     Slider: require('./slider'),

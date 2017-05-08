@@ -52,7 +52,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-favorfill'></i>
-                        <div className='name'>favor_fill</div>
+                        <div className='name'>favorfill</div>
                         <div className='fontclass'>.icon-favorfill</div>
                     </li>
 
@@ -70,7 +70,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-locationfill'></i>
-                        <div className='name'>location_fill</div>
+                        <div className='name'>locationfill</div>
                         <div className='fontclass'>.icon-locationfill</div>
                     </li>
 
@@ -88,37 +88,37 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-roundcheckfill'></i>
-                        <div className='name'>round_check_fill</div>
+                        <div className='name'>roundcheckfill</div>
                         <div className='fontclass'>.icon-roundcheckfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-roundcheck'></i>
-                        <div className='name'>round_check</div>
+                        <div className='name'>roundcheck</div>
                         <div className='fontclass'>.icon-roundcheck</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-roundclosefill'></i>
-                        <div className='name'>round_close_fill</div>
+                        <div className='name'>roundclosefill</div>
                         <div className='fontclass'>.icon-roundclosefill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-roundclose'></i>
-                        <div className='name'>round_close</div>
+                        <div className='name'>roundclose</div>
                         <div className='fontclass'>.icon-roundclose</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-roundrightfill'></i>
-                        <div className='name'>round_right_fill</div>
+                        <div className='name'>roundrightfill</div>
                         <div className='fontclass'>.icon-roundrightfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-roundright'></i>
-                        <div className='name'>round_right</div>
+                        <div className='name'>roundright</div>
                         <div className='fontclass'>.icon-roundright</div>
                     </li>
 
@@ -136,7 +136,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-timefill'></i>
-                        <div className='name'>time_fill</div>
+                        <div className='name'>timefill</div>
                         <div className='fontclass'>.icon-timefill</div>
                     </li>
 
@@ -154,7 +154,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-warnfill'></i>
-                        <div className='name'>warn_fill</div>
+                        <div className='name'>warnfill</div>
                         <div className='fontclass'>.icon-warnfill</div>
                     </li>
 
@@ -166,7 +166,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-camerafill'></i>
-                        <div className='name'>camera_fill</div>
+                        <div className='name'>camerafill</div>
                         <div className='fontclass'>.icon-camerafill</div>
                     </li>
 
@@ -178,7 +178,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-commentfill'></i>
-                        <div className='name'>comment_fill</div>
+                        <div className='name'>commentfill</div>
                         <div className='fontclass'>.icon-commentfill</div>
                     </li>
 
@@ -190,7 +190,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-likefill'></i>
-                        <div className='name'>like_fill</div>
+                        <div className='name'>likefill</div>
                         <div className='fontclass'>.icon-likefill</div>
                     </li>
 
@@ -202,7 +202,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-notificationfill'></i>
-                        <div className='name'>notification_fill</div>
+                        <div className='name'>notificationfill</div>
                         <div className='fontclass'>.icon-notificationfill</div>
                     </li>
 
@@ -220,7 +220,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-samefill'></i>
-                        <div className='name'>same_fill</div>
+                        <div className='name'>samefill</div>
                         <div className='fontclass'>.icon-samefill</div>
                     </li>
 
@@ -316,7 +316,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-questionfill'></i>
-                        <div className='name'>question_fill</div>
+                        <div className='name'>questionfill</div>
                         <div className='fontclass'>.icon-questionfill</div>
                     </li>
 
@@ -328,7 +328,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-shopfill'></i>
-                        <div className='name'>shop_fill</div>
+                        <div className='name'>shopfill</div>
                         <div className='fontclass'>.icon-shopfill</div>
                     </li>
 
@@ -340,7 +340,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-wangfill'></i>
-                        <div className='name'>wang_fill</div>
+                        <div className='name'>wangfill</div>
                         <div className='fontclass'>.icon-wangfill</div>
                     </li>
 
@@ -370,13 +370,13 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-pulldown'></i>
-                        <div className='name'>pull_down</div>
+                        <div className='name'>pulldown</div>
                         <div className='fontclass'>.icon-pulldown</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-pullup'></i>
-                        <div className='name'>pull_up</div>
+                        <div className='name'>pullup</div>
                         <div className='fontclass'>.icon-pullup</div>
                     </li>
 
@@ -394,13 +394,13 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-moreandroid'></i>
-                        <div className='name'>more_android</div>
+                        <div className='name'>moreandroid</div>
                         <div className='fontclass'>.icon-moreandroid</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-deletefill'></i>
-                        <div className='name'>delete_fill</div>
+                        <div className='name'>deletefill</div>
                         <div className='fontclass'>.icon-deletefill</div>
                     </li>
 
@@ -418,7 +418,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-qrcode'></i>
-                        <div className='name'>qr_code</div>
+                        <div className='name'>qrcode</div>
                         <div className='fontclass'>.icon-qrcode</div>
                     </li>
 
@@ -448,19 +448,19 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-cartfill'></i>
-                        <div className='name'>cart_fill</div>
+                        <div className='name'>cartfill</div>
                         <div className='fontclass'>.icon-cartfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-discoverfill'></i>
-                        <div className='name'>discover_fill</div>
+                        <div className='name'>discoverfill</div>
                         <div className='fontclass'>.icon-discoverfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-homefill'></i>
-                        <div className='name'>home_fill</div>
+                        <div className='name'>homefill</div>
                         <div className='fontclass'>.icon-homefill</div>
                     </li>
 
@@ -472,7 +472,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-addressbook'></i>
-                        <div className='name'>address_book</div>
+                        <div className='name'>addressbook</div>
                         <div className='fontclass'>.icon-addressbook</div>
                     </li>
 
@@ -520,19 +520,19 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-friendaddfill'></i>
-                        <div className='name'>friend_add_fill</div>
+                        <div className='name'>friendaddfill</div>
                         <div className='fontclass'>.icon-friendaddfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-friendadd'></i>
-                        <div className='name'>friend_add</div>
+                        <div className='name'>friendadd</div>
                         <div className='fontclass'>.icon-friendadd</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-friendfamous'></i>
-                        <div className='name'>friend_famous</div>
+                        <div className='name'>friendfamous</div>
                         <div className='fontclass'>.icon-friendfamous</div>
                     </li>
 
@@ -574,7 +574,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-squarecheckfill'></i>
-                        <div className='name'>square_check_fill</div>
+                        <div className='name'>squarecheckfill</div>
                         <div className='fontclass'>.icon-squarecheckfill</div>
                     </li>
 
@@ -586,7 +586,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-squarecheck'></i>
-                        <div className='name'>square_check</div>
+                        <div className='name'>squarecheck</div>
                         <div className='fontclass'>.icon-squarecheck</div>
                     </li>
 
@@ -598,13 +598,13 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-roundaddfill'></i>
-                        <div className='name'>round_add_fill</div>
+                        <div className='name'>roundaddfill</div>
                         <div className='fontclass'>.icon-roundaddfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-roundadd'></i>
-                        <div className='name'>round_add</div>
+                        <div className='name'>roundadd</div>
                         <div className='fontclass'>.icon-roundadd</div>
                     </li>
 
@@ -616,13 +616,13 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-notificationforbidfill'></i>
-                        <div className='name'>notification_forbid_fill</div>
+                        <div className='name'>notificationforbidfill</div>
                         <div className='fontclass'>.icon-notificationforbidfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-explorefill'></i>
-                        <div className='name'>explore_fill</div>
+                        <div className='name'>explorefill</div>
                         <div className='fontclass'>.icon-explorefill</div>
                     </li>
 
@@ -646,7 +646,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-selectionfill'></i>
-                        <div className='name'>selection_fill</div>
+                        <div className='name'>selectionfill</div>
                         <div className='fontclass'>.icon-selectionfill</div>
                     </li>
 
@@ -658,13 +658,13 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-appreciatefill'></i>
-                        <div className='name'>appreciate_fill</div>
+                        <div className='name'>appreciatefill</div>
                         <div className='fontclass'>.icon-appreciatefill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-infofill'></i>
-                        <div className='name'>info_fill</div>
+                        <div className='name'>infofill</div>
                         <div className='fontclass'>.icon-infofill</div>
                     </li>
 
@@ -682,13 +682,13 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-mobiletao'></i>
-                        <div className='name'>mobile_tao</div>
+                        <div className='name'>mobiletao</div>
                         <div className='fontclass'>.icon-mobiletao</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-forwardfill'></i>
-                        <div className='name'>forward_fill</div>
+                        <div className='name'>forwardfill</div>
                         <div className='fontclass'>.icon-forwardfill</div>
                     </li>
 
@@ -700,7 +700,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-rechargefill'></i>
-                        <div className='name'>recharge_fill</div>
+                        <div className='name'>rechargefill</div>
                         <div className='fontclass'>.icon-rechargefill</div>
                     </li>
 
@@ -724,13 +724,13 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-voicefill'></i>
-                        <div className='name'>voice_fill</div>
+                        <div className='name'>voicefill</div>
                         <div className='fontclass'>.icon-voicefill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-friendfavor'></i>
-                        <div className='name'>friend_favor</div>
+                        <div className='name'>friendfavor</div>
                         <div className='fontclass'>.icon-friendfavor</div>
                     </li>
 
@@ -748,7 +748,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-wefill'></i>
-                        <div className='name'>we_fill</div>
+                        <div className='name'>wefill</div>
                         <div className='fontclass'>.icon-wefill</div>
                     </li>
 
@@ -760,25 +760,25 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-lightauto'></i>
-                        <div className='name'>light_auto</div>
+                        <div className='name'>lightauto</div>
                         <div className='fontclass'>.icon-lightauto</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-lightforbid'></i>
-                        <div className='name'>light_forbid</div>
+                        <div className='name'>lightforbid</div>
                         <div className='fontclass'>.icon-lightforbid</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-lightfill'></i>
-                        <div className='name'>light_fill</div>
+                        <div className='name'>lightfill</div>
                         <div className='fontclass'>.icon-lightfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-camerarotate'></i>
-                        <div className='name'>camera_rotate</div>
+                        <div className='name'>camerarotate</div>
                         <div className='fontclass'>.icon-camerarotate</div>
                     </li>
 
@@ -790,25 +790,25 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-barcode'></i>
-                        <div className='name'>bar_code</div>
+                        <div className='name'>barcode</div>
                         <div className='fontclass'>.icon-barcode</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-flashlightclose'></i>
-                        <div className='name'>flashlight_close</div>
+                        <div className='name'>flashlightclose</div>
                         <div className='fontclass'>.icon-flashlightclose</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-flashlightopen'></i>
-                        <div className='name'>flashlight_open</div>
+                        <div className='name'>flashlightopen</div>
                         <div className='fontclass'>.icon-flashlightopen</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-searchlist'></i>
-                        <div className='name'>search_list</div>
+                        <div className='name'>searchlist</div>
                         <div className='fontclass'>.icon-searchlist</div>
                     </li>
 
@@ -844,7 +844,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-mobilefill'></i>
-                        <div className='name'>mobile_fill</div>
+                        <div className='name'>mobilefill</div>
                         <div className='fontclass'>.icon-mobilefill</div>
                     </li>
 
@@ -856,7 +856,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-countdownfill'></i>
-                        <div className='name'>countdown_fill</div>
+                        <div className='name'>countdownfill</div>
                         <div className='fontclass'>.icon-countdownfill</div>
                     </li>
 
@@ -868,7 +868,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-noticefill'></i>
-                        <div className='name'>notice_fill</div>
+                        <div className='name'>noticefill</div>
                         <div className='fontclass'>.icon-noticefill</div>
                     </li>
 
@@ -886,7 +886,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-upstagefill'></i>
-                        <div className='name'>upstage_fill</div>
+                        <div className='name'>upstagefill</div>
                         <div className='fontclass'>.icon-upstagefill</div>
                     </li>
 
@@ -898,7 +898,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-babyfill'></i>
-                        <div className='name'>baby_fill</div>
+                        <div className='name'>babyfill</div>
                         <div className='fontclass'>.icon-babyfill</div>
                     </li>
 
@@ -910,7 +910,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-brandfill'></i>
-                        <div className='name'>brand_fill</div>
+                        <div className='name'>brandfill</div>
                         <div className='fontclass'>.icon-brandfill</div>
                     </li>
 
@@ -922,7 +922,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-choicenessfill'></i>
-                        <div className='name'>choiceness_fill</div>
+                        <div className='name'>choicenessfill</div>
                         <div className='fontclass'>.icon-choicenessfill</div>
                     </li>
 
@@ -934,7 +934,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-clothesfill'></i>
-                        <div className='name'>clothes_fill</div>
+                        <div className='name'>clothesfill</div>
                         <div className='fontclass'>.icon-clothesfill</div>
                     </li>
 
@@ -946,7 +946,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-creativefill'></i>
-                        <div className='name'>creative_fill</div>
+                        <div className='name'>creativefill</div>
                         <div className='fontclass'>.icon-creativefill</div>
                     </li>
 
@@ -976,7 +976,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-newfill'></i>
-                        <div className='name'>new_fill</div>
+                        <div className='name'>newfill</div>
                         <div className='fontclass'>.icon-newfill</div>
                     </li>
 
@@ -988,19 +988,19 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-pullleft'></i>
-                        <div className='name'>pull_left</div>
+                        <div className='name'>pullleft</div>
                         <div className='fontclass'>.icon-pullleft</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-pullright'></i>
-                        <div className='name'>pull_right</div>
+                        <div className='name'>pullright</div>
                         <div className='fontclass'>.icon-pullright</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-rankfill'></i>
-                        <div className='name'>rank_fill</div>
+                        <div className='name'>rankfill</div>
                         <div className='fontclass'>.icon-rankfill</div>
                     </li>
 
@@ -1018,7 +1018,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-cameraadd'></i>
-                        <div className='name'>camera_add</div>
+                        <div className='name'>cameraadd</div>
                         <div className='fontclass'>.icon-cameraadd</div>
                     </li>
 
@@ -1030,13 +1030,13 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-friendfill'></i>
-                        <div className='name'>friend_fill</div>
+                        <div className='name'>friendfill</div>
                         <div className='fontclass'>.icon-friendfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-cameraaddfill'></i>
-                        <div className='name'>camera_add_fill</div>
+                        <div className='name'>cameraaddfill</div>
                         <div className='fontclass'>.icon-cameraaddfill</div>
                     </li>
 
@@ -1048,7 +1048,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-paintfill'></i>
-                        <div className='name'>paint_fill</div>
+                        <div className='name'>paintfill</div>
                         <div className='fontclass'>.icon-paintfill</div>
                     </li>
 
@@ -1060,19 +1060,19 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-picfill'></i>
-                        <div className='name'>pic_fill</div>
+                        <div className='name'>picfill</div>
                         <div className='fontclass'>.icon-picfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-refresharrow'></i>
-                        <div className='name'>refresh_arrow</div>
+                        <div className='name'>refresharrow</div>
                         <div className='fontclass'>.icon-refresharrow</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-markfill'></i>
-                        <div className='name'>mark_fill</div>
+                        <div className='name'>markfill</div>
                         <div className='fontclass'>.icon-markfill</div>
                     </li>
 
@@ -1084,7 +1084,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-presentfill'></i>
-                        <div className='name'>present_fill</div>
+                        <div className='name'>presentfill</div>
                         <div className='fontclass'>.icon-presentfill</div>
                     </li>
 
@@ -1102,7 +1102,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-peoplefill'></i>
-                        <div className='name'>people_fill</div>
+                        <div className='name'>peoplefill</div>
                         <div className='fontclass'>.icon-peoplefill</div>
                     </li>
 
@@ -1114,7 +1114,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-servicefill'></i>
-                        <div className='name'>service_fill</div>
+                        <div className='name'>servicefill</div>
                         <div className='fontclass'>.icon-servicefill</div>
                     </li>
 
@@ -1132,7 +1132,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-repairfill'></i>
-                        <div className='name'>repair_fill</div>
+                        <div className='name'>repairfill</div>
                         <div className='fontclass'>.icon-repairfill</div>
                     </li>
 
@@ -1144,7 +1144,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-attentionfill'></i>
-                        <div className='name'>attention_fill</div>
+                        <div className='name'>attentionfill</div>
                         <div className='fontclass'>.icon-attentionfill</div>
                     </li>
 
@@ -1156,7 +1156,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-commandfill'></i>
-                        <div className='name'>command_fill</div>
+                        <div className='name'>commandfill</div>
                         <div className='fontclass'>.icon-commandfill</div>
                     </li>
 
@@ -1168,7 +1168,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-communityfill'></i>
-                        <div className='name'>community_fill</div>
+                        <div className='name'>communityfill</div>
                         <div className='fontclass'>.icon-communityfill</div>
                     </li>
 
@@ -1228,19 +1228,19 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-backwardfill'></i>
-                        <div className='name'>backward_fill</div>
+                        <div className='name'>backwardfill</div>
                         <div className='fontclass'>.icon-backwardfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-forwardfill1'></i>
-                        <div className='name'>forward_fill</div>
+                        <div className='name'>forwardfill1</div>
                         <div className='fontclass'>.icon-forwardfill1</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-playfill'></i>
-                        <div className='name'>play_fill</div>
+                        <div className='name'>playfill</div>
                         <div className='fontclass'>.icon-playfill</div>
                     </li>
 
@@ -1252,7 +1252,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-tagfill'></i>
-                        <div className='name'>tag_fill</div>
+                        <div className='name'>tagfill</div>
                         <div className='fontclass'>.icon-tagfill</div>
                     </li>
 
@@ -1276,13 +1276,13 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-backdelete'></i>
-                        <div className='name'>back_delete</div>
+                        <div className='name'>backdelete</div>
                         <div className='fontclass'>.icon-backdelete</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-hotfill'></i>
-                        <div className='name'>hot_fill</div>
+                        <div className='name'>hotfill</div>
                         <div className='fontclass'>.icon-hotfill</div>
                     </li>
 
@@ -1300,13 +1300,13 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-radiobox'></i>
-                        <div className='name'>radio_box</div>
+                        <div className='name'>radiobox</div>
                         <div className='fontclass'>.icon-radiobox</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-rounddown'></i>
-                        <div className='name'>round_down</div>
+                        <div className='name'>rounddown</div>
                         <div className='fontclass'>.icon-rounddown</div>
                     </li>
 
@@ -1318,7 +1318,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-writefill'></i>
-                        <div className='name'>write_fill</div>
+                        <div className='name'>writefill</div>
                         <div className='fontclass'>.icon-writefill</div>
                     </li>
 
@@ -1330,7 +1330,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-radioboxfill'></i>
-                        <div className='name'>radio_box_fill</div>
+                        <div className='name'>radioboxfill</div>
                         <div className='fontclass'>.icon-radioboxfill</div>
                     </li>
 
@@ -1348,7 +1348,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-add1'></i>
-                        <div className='name'>add</div>
+                        <div className='name'>add1</div>
                         <div className='fontclass'>.icon-add1</div>
                     </li>
 
@@ -1408,13 +1408,13 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-activityfill'></i>
-                        <div className='name'>activity_fill</div>
+                        <div className='name'>activityfill</div>
                         <div className='fontclass'>.icon-activityfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-crownfill'></i>
-                        <div className='name'>crown_fill</div>
+                        <div className='name'>crownfill</div>
                         <div className='fontclass'>.icon-crownfill</div>
                     </li>
 
@@ -1426,19 +1426,19 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-goodsfill'></i>
-                        <div className='name'>goods_fill</div>
+                        <div className='name'>goodsfill</div>
                         <div className='fontclass'>.icon-goodsfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-messagefill'></i>
-                        <div className='name'>message_fill</div>
+                        <div className='name'>messagefill</div>
                         <div className='fontclass'>.icon-messagefill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-profilefill'></i>
-                        <div className='name'>profile_fill</div>
+                        <div className='name'>profilefill</div>
                         <div className='fontclass'>.icon-profilefill</div>
                     </li>
 
@@ -1450,7 +1450,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-sponsorfill'></i>
-                        <div className='name'>sponsor_fill</div>
+                        <div className='name'>sponsorfill</div>
                         <div className='fontclass'>.icon-sponsorfill</div>
                     </li>
 
@@ -1462,19 +1462,19 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-upblock'></i>
-                        <div className='name'>up_block</div>
+                        <div className='name'>upblock</div>
                         <div className='fontclass'>.icon-upblock</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-weblock'></i>
-                        <div className='name'>we_block</div>
+                        <div className='name'>weblock</div>
                         <div className='fontclass'>.icon-weblock</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-weunblock'></i>
-                        <div className='name'>we_unblock</div>
+                        <div className='name'>weunblock</div>
                         <div className='fontclass'>.icon-weunblock</div>
                     </li>
 
@@ -1492,25 +1492,25 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-myfill'></i>
-                        <div className='name'>my_fill</div>
+                        <div className='name'>myfill</div>
                         <div className='fontclass'>.icon-myfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-emojifill'></i>
-                        <div className='name'>emoji_fill</div>
+                        <div className='name'>emojifill</div>
                         <div className='fontclass'>.icon-emojifill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-emojiflashfill'></i>
-                        <div className='name'>emoji_flash_fill</div>
+                        <div className='name'>emojiflashfill</div>
                         <div className='fontclass'>.icon-emojiflashfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-flashbuyfill-copy'></i>
-                        <div className='name'>flashbuy_fill</div>
+                        <div className='name'>flashbuyfill-copy</div>
                         <div className='fontclass'>.icon-flashbuyfill-copy</div>
                     </li>
 
@@ -1522,25 +1522,25 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-goodsfavor'></i>
-                        <div className='name'>goods_favor</div>
+                        <div className='name'>goodsfavor</div>
                         <div className='fontclass'>.icon-goodsfavor</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-musicfill'></i>
-                        <div className='name'>music_fill</div>
+                        <div className='name'>musicfill</div>
                         <div className='fontclass'>.icon-musicfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-musicforbidfill'></i>
-                        <div className='name'>music_forbid_fill</div>
+                        <div className='name'>musicforbidfill</div>
                         <div className='fontclass'>.icon-musicforbidfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-xiamiforbid'></i>
-                        <div className='name'>xiami_forbid</div>
+                        <div className='name'>xiamiforbid</div>
                         <div className='fontclass'>.icon-xiamiforbid</div>
                     </li>
 
@@ -1552,55 +1552,55 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-roundleftfill'></i>
-                        <div className='name'>round_left_fill</div>
+                        <div className='name'>roundleftfill</div>
                         <div className='fontclass'>.icon-roundleftfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-triangledownfill'></i>
-                        <div className='name'>triangle_down_fill</div>
+                        <div className='name'>triangledownfill</div>
                         <div className='fontclass'>.icon-triangledownfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-triangleupfill'></i>
-                        <div className='name'>triangle_up_fill</div>
+                        <div className='name'>triangleupfill</div>
                         <div className='fontclass'>.icon-triangleupfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-roundleftfill-copy'></i>
-                        <div className='name'>round_left_fill</div>
+                        <div className='name'>roundleftfill-copy</div>
                         <div className='fontclass'>.icon-roundleftfill-copy</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-pulldown1'></i>
-                        <div className='name'>pull_down</div>
+                        <div className='name'>pulldown1</div>
                         <div className='fontclass'>.icon-pulldown1</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-emojilight'></i>
-                        <div className='name'>emoji_light</div>
+                        <div className='name'>emojilight</div>
                         <div className='fontclass'>.icon-emojilight</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-keyboardlight'></i>
-                        <div className='name'>keyboard_light</div>
+                        <div className='name'>keyboardlight</div>
                         <div className='fontclass'>.icon-keyboardlight</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-recordfill'></i>
-                        <div className='name'>record_fill</div>
+                        <div className='name'>recordfill</div>
                         <div className='fontclass'>.icon-recordfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-recordlight'></i>
-                        <div className='name'>record_light</div>
+                        <div className='name'>recordlight</div>
                         <div className='fontclass'>.icon-recordlight</div>
                     </li>
 
@@ -1612,19 +1612,19 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-roundaddlight'></i>
-                        <div className='name'>round_add_light</div>
+                        <div className='name'>roundaddlight</div>
                         <div className='fontclass'>.icon-roundaddlight</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-soundlight'></i>
-                        <div className='name'>sound_light</div>
+                        <div className='name'>soundlight</div>
                         <div className='fontclass'>.icon-soundlight</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-cardboardfill'></i>
-                        <div className='name'>cardboard_fill</div>
+                        <div className='name'>cardboardfill</div>
                         <div className='fontclass'>.icon-cardboardfill</div>
                     </li>
 
@@ -1636,7 +1636,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-formfill'></i>
-                        <div className='name'>form_fill</div>
+                        <div className='name'>formfill</div>
                         <div className='fontclass'>.icon-formfill</div>
                     </li>
 
@@ -1648,19 +1648,19 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-sortlight'></i>
-                        <div className='name'>sort_light</div>
+                        <div className='name'>sortlight</div>
                         <div className='fontclass'>.icon-sortlight</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-cardboardforbid'></i>
-                        <div className='name'>cardboard_forbid</div>
+                        <div className='name'>cardboardforbid</div>
                         <div className='fontclass'>.icon-cardboardforbid</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-circlefill'></i>
-                        <div className='name'>circle_fill</div>
+                        <div className='name'>circlefill</div>
                         <div className='fontclass'>.icon-circlefill</div>
                     </li>
 
@@ -1672,49 +1672,49 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-attentionforbid'></i>
-                        <div className='name'>attention_forbid</div>
+                        <div className='name'>attentionforbid</div>
                         <div className='fontclass'>.icon-attentionforbid</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-attentionforbidfill'></i>
-                        <div className='name'>attention_forbid_fill</div>
+                        <div className='name'>attentionforbidfill</div>
                         <div className='fontclass'>.icon-attentionforbidfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-attentionfavorfill'></i>
-                        <div className='name'>attention_favor_fill</div>
+                        <div className='name'>attentionfavorfill</div>
                         <div className='fontclass'>.icon-attentionfavorfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-attentionfavor'></i>
-                        <div className='name'>attention_favor</div>
+                        <div className='name'>attentionfavor</div>
                         <div className='fontclass'>.icon-attentionfavor</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-piclight'></i>
-                        <div className='name'>pic_light</div>
+                        <div className='name'>piclight</div>
                         <div className='fontclass'>.icon-piclight</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-shoplight'></i>
-                        <div className='name'>shop_light</div>
+                        <div className='name'>shoplight</div>
                         <div className='fontclass'>.icon-shoplight</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-voicelight'></i>
-                        <div className='name'>voice_light</div>
+                        <div className='name'>voicelight</div>
                         <div className='fontclass'>.icon-voicelight</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-attentionfavorfill-copy'></i>
-                        <div className='name'>attention_favor_fill</div>
+                        <div className='name'>attentionfavorfill-copy</div>
                         <div className='fontclass'>.icon-attentionfavorfill-copy</div>
                     </li>
 
@@ -1732,25 +1732,25 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-peoplelist'></i>
-                        <div className='name'>people_list</div>
+                        <div className='name'>peoplelist</div>
                         <div className='fontclass'>.icon-peoplelist</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-goodsnewfill'></i>
-                        <div className='name'>goods_new_fill</div>
+                        <div className='name'>goodsnewfill</div>
                         <div className='fontclass'>.icon-goodsnewfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-goodsnew'></i>
-                        <div className='name'>goods_new</div>
+                        <div className='name'>goodsnew</div>
                         <div className='fontclass'>.icon-goodsnew</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-medalfill'></i>
-                        <div className='name'>medal_fill</div>
+                        <div className='name'>medalfill</div>
                         <div className='fontclass'>.icon-medalfill</div>
                     </li>
 
@@ -1762,19 +1762,19 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-newsfill'></i>
-                        <div className='name'>news_fill</div>
+                        <div className='name'>newsfill</div>
                         <div className='fontclass'>.icon-newsfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-newshotfill'></i>
-                        <div className='name'>news_hot_fill</div>
+                        <div className='name'>newshotfill</div>
                         <div className='fontclass'>.icon-newshotfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-newshot'></i>
-                        <div className='name'>news_hot</div>
+                        <div className='name'>newshot</div>
                         <div className='fontclass'>.icon-newshot</div>
                     </li>
 
@@ -1786,7 +1786,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-videofill'></i>
-                        <div className='name'>video_fill</div>
+                        <div className='name'>videofill</div>
                         <div className='fontclass'>.icon-videofill</div>
                     </li>
 
@@ -1798,7 +1798,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-askfill'></i>
-                        <div className='name'>ask_fill</div>
+                        <div className='name'>askfill</div>
                         <div className='fontclass'>.icon-askfill</div>
                     </li>
 
@@ -1816,7 +1816,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-skinfill'></i>
-                        <div className='name'>skin_fill</div>
+                        <div className='name'>skinfill</div>
                         <div className='fontclass'>.icon-skinfill</div>
                     </li>
 
@@ -1828,13 +1828,13 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-moneybagfill'></i>
-                        <div className='name'>money_bag_fill</div>
+                        <div className='name'>moneybagfill</div>
                         <div className='fontclass'>.icon-moneybagfill</div>
                     </li>
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-usefullfill'></i>
-                        <div className='name'>usefull_fill</div>
+                        <div className='name'>usefullfill</div>
                         <div className='fontclass'>.icon-usefullfill</div>
                     </li>
 
@@ -1846,7 +1846,7 @@ export default class IconView extends Component {
 
                     <li className='f-l text-center m'>
                         <i className='text-lg iconfont icon-moneybag'></i>
-                        <div className='name'>money_bag</div>
+                        <div className='name'>moneybag</div>
                         <div className='fontclass'>.icon-moneybag</div>
                     </li>
 

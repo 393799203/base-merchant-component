@@ -59,6 +59,8 @@ import WrapperView from './pages/wrapper';
 import MenuCateView from './pages/menu-cate';
 import DropdownView from './pages/dropdown';
 
+import PopoverView from './pages/popover';
+
 export default (
     <Router history={hashHistory}>
         <Route path='/' component={FullPageView}>
@@ -97,6 +99,7 @@ export default (
             <Route path='process-bar' component={ProcessBarView} />
             <Route path='wrapper' component={WrapperView} />
             <Route path='dropdown' component={DropdownView} />
+            <Route path='popover' component={PopoverView} />
 
             <Route path='b-select' component={SelectView} />
             <Route path='b-field' component={FieldView} />

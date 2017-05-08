@@ -1,0 +1,122 @@
+.mc-popover {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    .mc-popover-wrapper {
+        display: none;
+        text-align: left;
+        position: absolute;
+        padding: 10px;
+        z-index: 10;
+        background: #fff;
+        height: auto;
+        border: 1px solid #e2e2e2;
+        cursor: default;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+        .mc-popover-content {
+            padding: 5px;
+            position: relative;
+            z-index: 2;
+            font-size: 12px;
+            color: #333;
+            font-weight: normal;
+            display: block;
+            min-width: 180px;
+        }
+        &.left:before {
+            content: '';
+            display: inline-block;
+            height: 0;
+            width: 0;
+            position: absolute;
+            top: 4px;
+            right: -16px;
+            z-index: 10;
+            border: 8px solid transparent;
+            border-left: 8px solid #e2e2e2;
+        }
+        &.left .mc-popover-triangle {
+            display: inline-block;
+            height: 0;
+            width: 0;
+            position: absolute;
+            top: 5px;
+            right: -14px;
+            z-index: 11;
+            border: 7px solid transparent;
+            border-left: 7px solid #fff;
+        }
+        &.right:before {
+            content: '';
+            display: inline-block;
+            height: 0;
+            width: 0;
+            position: absolute;
+            top: 4px;
+            left: -16px;
+            z-index: 10;
+            border: 8px solid transparent;
+            border-right: 8px solid #e2e2e2;
+        }
+        &.right .mc-popover-triangle {
+            display: inline-block;
+            height: 0;
+            width: 0;
+            position: absolute;
+            top: 5px;
+            left: -14px;
+            z-index: 11;
+            border: 7px solid transparent;
+            border-right: 7px solid #fff;
+        }
+        &.top:before {
+            content: '';
+            display: inline-block;
+            height: 0;
+            width: 0;
+            position: absolute;
+            bottom: -16px;
+            left: 10px;
+            z-index: 10;
+            border: 8px solid transparent;
+            border-top: 8px solid #e2e2e2;
+        }
+        &.top .mc-popover-triangle {
+            display: inline-block;
+            height: 0;
+            width: 0;
+            position: absolute;
+            left: 11px;
+            bottom: -14px;
+            z-index: 11;
+            border: 7px solid transparent;
+            border-top: 7px solid #fff;
+        }
+        &.bottom:before {
+            content: '';
+            display: inline-block;
+            height: 0;
+            width: 0;
+            position: absolute;
+            top: -16px;
+            left: 10px;
+            z-index: 10;
+            border: 8px solid transparent;
+            border-bottom: 8px solid #e2e2e2;
+        }
+        &.bottom .mc-popover-triangle {
+            display: inline-block;
+            height: 0;
+            width: 0;
+            position: absolute;
+            left: 11px;
+            top: -14px;
+            z-index: 11;
+            border: 7px solid transparent;
+            border-bottom: 7px solid #fff;
+        }
+    }
+    &:hover .mc-popover-wrapper {
+        display: block;
+    }
+}
