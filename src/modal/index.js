@@ -80,10 +80,21 @@ class Modal extends Component {
         let option = params;
         let cb = callback;
         const isAlert = type === 'alert';
+        let okText = '确定';
+        let noText = '取消';
+
 
         if (!_.isFunction(cb)) {
             option = option || cb;
             cb = _.noop;
+        }
+        if (option) {
+            if (option.ensureText) {
+                okText = option.ensureText;
+            }
+            if (option.cancelText) {
+                noText = option.cancelText;
+            }
         }
 
         const theme = (option && option.theme) || 'primary';
@@ -97,9 +108,9 @@ class Modal extends Component {
             footer: (
                 <div>
                     { isAlert ?
-                        '' : <button className={`btn btn-sm btn-${theme}-border m-r modal-btn`} onClick={Modal.close}>取消</button>
+                        '' : <button className={`btn btn-sm btn-${theme}-border m-r modal-btn`} onClick={Modal.close}>{noText}</button>
                     }
-                    <button className={`btn btn-sm btn-${theme} modal-btn`} onClick={cb}>确定</button>
+                    <button className={`btn btn-sm btn-${theme} modal-btn`} onClick={cb}>{okText}</button>
                 </div>
             ),
             closeByMask: false,
