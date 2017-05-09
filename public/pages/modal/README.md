@@ -95,7 +95,7 @@
 | ------------ | ------------- | ------------ | ------------  |
 | msg        | 提示内容           | string       | -        |
 | callback    | 点击确定按钮的回调函数      | function       | -    |
-| options     | 其他配置（ 参考 Modal.open() 说明）   | object | － | 
+| options     | 其他配置（ 参考 Modal.open() 说明）   | object | {ensureText: '确定', cancelText: '取消'} | 
 
 #### 3.3.3 使用示例
 	
@@ -154,6 +154,8 @@
 | showMask     | 是否显示透明遮层       | boolean | true | 
 | closeByMask  | 是否点击透明遮层关闭弹出层   | boolean | false | 
 | theme  | 皮肤 （v1.0.0新增）   | string | 'primary' | 
+| ensureText  | 确认文案（仅对confirm、alert适用）   | string | '确定' 
+| cancelText  | 取消文案（仅对confirm适用）   | string | '取消' | 
 
 
 ** 皮肤可选项有 'primary', 'danger', 'info', 'warning', 'bark'; 默认为theme

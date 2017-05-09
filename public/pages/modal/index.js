@@ -18,7 +18,7 @@ export default class ModalView extends Component {
 	showConfirmModal () {
 		Modal.confirm('这是确认弹出层', () => {
 			Modal.closeAll();
-		})
+		});
 	}
 	openModal () {
 		var self = this;
