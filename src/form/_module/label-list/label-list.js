@@ -2,11 +2,11 @@ import React, { Component, PropTypes } from 'react';
 
 export default class LabelList extends Component {
     static defaultProps = {
-        value: {}
+        defaultValue: {}
     };
 
     static propTypes = {
-        value: PropTypes.array
+        defaultValue: PropTypes.array
     };
 
     constructor (props) {
@@ -18,20 +18,19 @@ export default class LabelList extends Component {
 
     render () {
         const {
-            value
+            defaultValue
         } = this.props;
 
         return (
             <div>
-                {value && value.length ?
-                    value.map((item, index) => {
+                {defaultValue && defaultValue.length ?
+                    defaultValue.map((item, index) => {
                         return (
                             <label
                                 key={index}
                                 htmlFor={index}
                                 style={{
                                     display: 'block',
-                                    height: '40px',
                                     lineHeight: '40px',
                                     fontSize: '13px',
                                     color: '#555'
