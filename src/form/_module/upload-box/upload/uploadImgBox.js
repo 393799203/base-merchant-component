@@ -53,7 +53,11 @@ export default class uploadImgBox extends Component {
     }
 
     changeImgList (list) {
-        let result = [];
+        let result = [{}];
+        if(!list){
+            return result;
+        }
+        
         if (list && typeof list === 'string') {
             result[0] = { img: list };
         } else if (list && list.length && typeof list[0] === 'string') {
@@ -149,7 +153,7 @@ export default class uploadImgBox extends Component {
         } = this.state;
         return (
             <div className={`${className} fl upload-img-box-wrapper`} >
-                {
+                {imgList && imgList.length ?
                     imgList.map((item, index) => {
                         return (
                             <div className='upload-container-box' key={index}>
@@ -200,6 +204,8 @@ export default class uploadImgBox extends Component {
                             </div>
                         );
                     })
+                    :
+                    null
                 }
                 {imgList.length < mostImg || mostImg === '-1' ?
                     <div className='upload-container-box'>

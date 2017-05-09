@@ -183,7 +183,7 @@ export default class UploadImgList extends Component {
         } = this.props;
         return (
             <div className={className ? `${className} fl upload-img-list-wrapper` : 'fl upload-img-list-wrapper'}>
-                {
+                {imgList && imgList.length ?
                     imgList.map((item, index) => {
                         let endTime = item.endTime;
                         if (isNaN(endTime) || endTime === '0') {
@@ -285,6 +285,8 @@ export default class UploadImgList extends Component {
                             </div>
                         );
                     })
+                    :
+                    null
                 }
                 {imgList.length < mostImg || mostImg === '-1' ?
                     <div className='upload-container-list'>
