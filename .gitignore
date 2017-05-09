@@ -6,6 +6,5 @@ tmp
 node_modules
 /coverage
 npm-debug.log
-/demo/*
 report
 /src/_theme/*

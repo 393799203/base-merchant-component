@@ -98,6 +98,7 @@ export default class LayoutView extends Component {
                                 <div className="form-group">
                                     <i className="iconfont icon-search form-addon-r"></i>
                                     <input
+                                        style={{width: '144px'}}
                                         type="text"
                                         value={keywords}
                                         onChange={(e) => { this.filterData(e); }}

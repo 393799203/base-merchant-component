@@ -1,5 +1,9 @@
 ### @meili/base-merchant-component Changelog
 
+#### v1.2.10
+* 基础组件 modal － modal.confirm 增加确认和取消时的文字配置
+* 业务组件 form － 添加 label 控件
+
 #### v1.2.9
 * 基础组件 tag
 	* 修改 tag 组件，有 api 变动

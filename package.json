@@ -1,6 +1,6 @@
 {
   "name": "@meili/base-merchant-component",
-  "version": "1.2.9",
+  "version": "1.2.10",
   "description": "unified platform boilerplate generator.",
   "repository": {
     "type": "git",
@@ -8,7 +8,7 @@
   },
   "author": "qianqiao",
   "maintainers": "qianqiao",
-  "keyword": "react,component,label",
+  "keyword": "react,component,label,meili makeup",
   "site": "",
   "homepage": "",
   "license": "MIT",
@@ -94,5 +94,5 @@
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.3"
   },
-  "testResult": {"statements":86.64,"branches":79.26,"functions":81.91,"lines":76.45}
+  "testResult": {"statements":86.59,"branches":79.11,"functions":81.91,"lines":76.41}
 }
