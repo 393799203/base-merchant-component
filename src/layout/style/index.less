@@ -1,6 +1,29 @@
 @import '~@meili/merchant-theme/lib/variables.less';
 @import '~@meili/merchant-theme/lib/utils.less';
 
+@keyframes slideDown {
+  	from {
+	    max-height: 0;
+	    overflow: hidden;
+	}
+	10% {
+	  	max-height: 10px;
+	}
+	30% {
+	  	max-height: 40px;
+	}
+	50% {
+	  	max-height: 500px;
+	}
+	70% {
+	  	max-height: 700px;
+	}
+	to {
+	    max-height: 1000px;
+	    overflow: auto;
+	}
+}
+
 /* header css */
 .mc-header-bg (@color) {
 	@color-dker: "color-@{color}-dker";
@@ -169,6 +192,8 @@
 				background: @@color-lt;
 			}
 			.sub-menu {
+				overflow: auto;
+				animation: slideDown 0.5s ease-in;
 				.sub-item-name {
 					color: #fff;
 					&:hover, &.active {
@@ -240,10 +265,8 @@
 			}
 		}
 		.sub-menu {
-			display: none;
-			&.active {
-				display: block;
-			}
+			overflow: auto;
+			animation: slideDown 0.5s ease-in;
 			.sub-item-name {
 				display: block;
 				padding: 10px 15px 10px 40px;
@@ -288,5 +311,5 @@
 	top: 0;
 	z-index: 9;
 	padding: 50px 0;
-
+	overflow: auto;
 }

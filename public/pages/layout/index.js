@@ -37,7 +37,7 @@ export default class LayoutView extends Component {
                         <MSider type='default' theme='default' menuOptions={[{text: '导航一', link: '#/link1', icon: 'global', options: [{text: '子导航一', link: '#/layout'},{text: '子导航二', link: '#link1-2'}]}, {text: '导航二', link: '#/link2', icon: 'favor'}]} />
                     </div>
                     <div className='fl m-l'>
-                        <MSider type='default' theme='info' menuOptions={[{text: '导航一', link: '#/link1', icon: 'global', options: [{text: '子导航一', link: '#/layout'},{text: '子导航二', link: '#link1-2'}]}, {text: '导航二', link: '#/link2', icon: 'favor'}]} />
+                        <MSider type='default' theme='info' menuOptions={[{text: '导航一', link: '#/link1', icon: 'global', options: [{text: '子导航一', link: '#/layout'},{text: '子导航二', link: '#link1-2'}, {text: '子导航四', link: '#/layout-1'},{text: '子导航五', link: '#link1-2'}, {text: '子导航四', link: '#/layout-1'},{text: '子导航五', link: '#/layout'}, {text: '子导航四', link: '#/layout-1'},{text: '子导航五', link: '#link1-2'}]}, {text: '导航二', link: '#/link2', icon: 'favor'}]} />
                     </div>
                     <div className='fl m-l'>
                         <MSider type='default' theme='warning' menuOptions={[{text: '导航一', link: '#/link1', icon: 'global', options: [{text: '子导航一', link: '#/layout'},{text: '子导航二', link: '#link1-2'}]}, {text: '导航二', link: '#/link2', icon: 'favor'}]} />
