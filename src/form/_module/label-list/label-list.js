@@ -31,7 +31,6 @@ export default class LabelList extends Component {
                                 htmlFor={index}
                                 style={{
                                     display: 'block',
-                                    height: '40px',
                                     lineHeight: '40px',
                                     fontSize: '13px',
                                     color: '#555'
