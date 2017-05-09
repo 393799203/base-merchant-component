@@ -90,7 +90,7 @@ export default class LayoutView extends Component {
         const { menuData, activeUrl, keywords } = this.state;
         return (
             <div>
-                <MHeader menuOptions={menuOptions} type='fixed' theme='danger' menuHandler={this.getCompType.bind(this)} />
+                <MHeader brand={{text: 'Makeup', link: '#/'}} menuOptions={menuOptions} type='fixed' theme='danger' menuHandler={this.getCompType.bind(this)} />
                 <div className='app-body'>
                     <div className='app-sider'>
                         <div className='app-sider-content bg-light'>

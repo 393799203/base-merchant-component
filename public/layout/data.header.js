@@ -1,6 +1,6 @@
 export default [
     {
-        text: 'CSS',
+        text: 'CSS 主题库',
         link: '#/css'
     }, {
         text: '基础组件',
@@ -17,11 +17,5 @@ export default [
     }, {
         text: '商家文档',
         link: '#/doc'
-    }, {
-        text: '商家数据',
-        link: '#/data'
-    }, {
-        text: '商家规范',
-        link: '#/rule'
     }
 ];
