@@ -1,6 +1,6 @@
 {
   "name": "@meili/base-merchant-component",
-  "version": "1.2.10",
+  "version": "1.2.11",
   "description": "unified platform boilerplate generator.",
   "repository": {
     "type": "git",
@@ -35,9 +35,7 @@
     "rc-time-picker": "~1.1.5",
     "rc-tooltip": "^3.4.3",
     "reqwest": "^2.0.5",
-    "react-addons-transition-group": "^0.14.8",
-    "velocity-animate": "^1.4.2",
-    "velocity-react": "1.2.2"
+    "velocity-animate": "^1.4.2"
   },
   "devDependencies": {
     "babel-cli": "^6.5.1",
@@ -94,5 +92,10 @@
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.3"
   },
-  "testResult": {"statements":86.59,"branches":79.11,"functions":81.91,"lines":76.41}
+  "testResult": {
+    "statements": 86.59,
+    "branches": 79.11,
+    "functions": 81.91,
+    "lines": 76.41
+  }
 }

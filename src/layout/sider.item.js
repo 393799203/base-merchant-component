@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import { VelocityTransitionGroup } from 'velocity-react';
 
 export default class Item extends Component {
     constructor (props) {
@@ -80,33 +79,28 @@ export default class Item extends Component {
                                         <i className='iconfont icon-right menu-arrow fr' />
                                 }
                             </div>
-                            <VelocityTransitionGroup
-                                enter={{ animation: 'slideDown' }}
-                                leave={{ animation: 'slideUp' }}
-                            >
-                                {
-                                    showMenu ?
-                                        <div className='sub-menu active'>
+                            {
+                                showMenu ?
+                                    <div className='sub-menu active'>
 
-                                            {
-                                                menuItem.options.map((item, index) => {
-                                                    return (
-                                                        <a
-                                                            key={index}
-                                                            className={activeIndex === index ? 'sub-item-name active' : 'sub-item-name'}
-                                                            href={item.link ? item.link : ''}
-                                                            target={item.target ? '_blank' : ''}
-                                                        >
-                                                            {item.text}
-                                                        </a>
-                                                    );
-                                                })
-                                            }
+                                        {
+                                            menuItem.options.map((item, index) => {
+                                                return (
+                                                    <a
+                                                        key={index}
+                                                        className={activeIndex === index ? 'sub-item-name active' : 'sub-item-name'}
+                                                        href={item.link ? item.link : ''}
+                                                        target={item.target ? '_blank' : ''}
+                                                    >
+                                                        {item.text}
+                                                    </a>
+                                                );
+                                            })
+                                        }
 
-                                        </div>
-                                    : null
-                                }
-                            </VelocityTransitionGroup>
+                                    </div>
+                                : null
+                            }
                         </div>
                     :
                         <a
