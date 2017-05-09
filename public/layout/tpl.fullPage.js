@@ -11,6 +11,7 @@ export default class FullPageView extends Component {
         return (
             <div>
                 <MHeader
+                    brand={{text: 'Makeup', link: '#/'}}
                     menuOptions={menuOptions}
                     userOptions={[{text: '退出', link: 'http://aaaa.com'}]}
                     type='fixed'
