@@ -1,5 +1,10 @@
 ### @meili/base-merchant-component Changelog
 
+#### v1.2.11
+* fix 第三方 velocity-react 依赖 react ^15.0 bug
+* 业务组件 form - 增加校验
+
+
 #### v1.2.10
 * 基础组件 modal － modal.confirm 增加确认和取消时的文字配置
 * 业务组件 form － 添加 label 控件
