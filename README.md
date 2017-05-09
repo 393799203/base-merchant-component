@@ -1,5 +1,11 @@
 ### @meili/base-merchant-component Changelog
 
+#### v1.2.12
+* 业务组件 form - fix eslint error
+* 业务组件 layout
+	* msider 高度不够时增加样式 overflow:auto
+	* msider 去除第三方 velocity-react 动画依赖，改为 css3 animate
+
 #### v1.2.11
 * fix 第三方 velocity-react 依赖 react ^15.0 bug
 * 业务组件 form - 增加校验
