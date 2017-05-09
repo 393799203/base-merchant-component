@@ -186,7 +186,7 @@ export default class UploadImgList extends Component {
                 {
                     imgList.map((item, index) => {
                         let endTime = item.endTime;
-                        if (isNaN(endTime)) {
+                        if (isNaN(endTime) || endTime === '0') {
                             endTime = '';
                         }
                         return (
@@ -274,7 +274,7 @@ export default class UploadImgList extends Component {
                                             :
                                             <Datepicker
                                                 className='ml40 mt10'
-                                                value={endTime * 1000}
+                                                value={endTime ? endTime * 1000 : ''}
                                                 format='yyyy-MM-dd'
                                                 onChange={date => this.onChange(date, index)}
                                                 disabledDate={e => this.disabledDate(e)}
