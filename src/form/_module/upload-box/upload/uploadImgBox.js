@@ -54,10 +54,9 @@ export default class uploadImgBox extends Component {
 
     changeImgList (list) {
         let result = [{}];
-        if(!list){
+        if (!list) {
             return result;
         }
-        
         if (list && typeof list === 'string') {
             result[0] = { img: list };
         } else if (list && list.length && typeof list[0] === 'string') {
