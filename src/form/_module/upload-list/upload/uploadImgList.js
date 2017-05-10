@@ -235,7 +235,7 @@ export default class UploadImgList extends Component {
                                     <div className='demoImg' />
                                 }
 
-                                <div className='item-group'>
+                                <div className='item-group upload-img-time'>
                                     <label htmlFor='endtime' className='endtime-label fl'>
                                         <span className='require'>*</span>
                                         到期时间:
