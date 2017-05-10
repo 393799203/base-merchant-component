@@ -33,6 +33,10 @@ const merchantComponent = {
     Tooltip: require('./tooltip'),
     VerifyIdenty: require('./verify-identy'),
     VerifyPhone: require('./verify-phone'),
+    Switch: require('./switch'),
+    Tree: require('./tree'),
+    SliderBar: require('./sliderbar'),
+    Rate: require('./rate'),
     Wrapper: require('./wrapper')
 };
 
