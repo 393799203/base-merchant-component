@@ -83,6 +83,18 @@ export default [
     }, {
         title: '浮块提示 - Popover',
         link: '#/popover'
+    }, {
+        title: '树形控件 - Tree',
+        link: '#/Tree'
+    }, {
+        title: '滑动输入条 - SliderBar',
+        link: '#/SliderBar'
+    }, {
+        title: '开关 - Switch',
+        link: '#/Switch'
+    }, {
+        title: '评分 - Rate',
+        link: '#/Rate'
     }
 ];
 

@@ -42,6 +42,10 @@ import AddressView from './pages/address';
 import FullAddressView from './pages/full-address';
 import VerifyIdentyView from './pages/verify-identy';
 import VerifyPhoneView from './pages/verify-phone';
+import SwitchView from './pages/switch';
+import RateView from './pages/rate';
+import SliderBarView from './pages/sliderBar';
+import TreeView from './pages/tree';
 import LayoutDemoView from './pages/layout';
 
 import DatepickerView from './pages/datepicker';
@@ -100,6 +104,10 @@ export default (
             <Route path='wrapper' component={WrapperView} />
             <Route path='dropdown' component={DropdownView} />
             <Route path='popover' component={PopoverView} />
+            <Route path='switch' component={SwitchView} />
+            <Route path='rate' component={RateView} />
+            <Route path='sliderBar' component={SliderBarView} />
+            <Route path='tree' component={TreeView} />
 
             <Route path='b-select' component={SelectView} />
             <Route path='b-field' component={FieldView} />
