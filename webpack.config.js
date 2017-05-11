@@ -8,6 +8,7 @@ var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 var precss = require('precss');
 var env = process.env.WEBPACK_ENV;
+
 // 路径定义
 var public_path = path.resolve(__dirname, 'public');
 var demo_path = path.resolve(__dirname, 'demo');
@@ -41,6 +42,7 @@ var pluginHtmlwebpack = new HtmlwebpackPlugin({
     inject: 'body'
 });
 
+// 插件 -- css优化
 var OptimizeCssAssets = new OptimizeCssAssetsPlugin({
     cssProcessor: require('cssnano'),
     cssProcessorOptions: { discardComments: {removeAll: true } }
@@ -91,7 +93,10 @@ var config = {
             }
         ]
     },
-    postcss: [autoprefixer, precss],
+    postcss: [
+        autoprefixer({browsers: ['last 3 versions', '> 1%']}),
+        precss
+    ],
     resolve: {
         alias: {
             'source_path': src_path,
@@ -110,7 +115,7 @@ if (env === 'DEMO_DEV' ||  env === 'DEMO_BUILD') {
     // loaders
     config.module.loaders.push({
         test: /\.(css|less)$/,
-        loader: ExtractTextPlugin.extract('style', '!css!less')
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!less-loader')
     });
     // plugins
     if (env === 'DEMO_DEV' ) config.plugins = [pluginCssExtract, pluginHtmlwebpack, OptimizeCssAssets];
@@ -126,13 +131,13 @@ if (env === 'DEMO_DEV' ||  env === 'DEMO_BUILD') {
     // loaders
     config.module.loaders.push({
         test: /\.(css|less)$/,
-        loader:'style-loader!css-loader!less-loader'
+        loader:'style-loader!css-loader!postcss-loader!less-loader'
     });
 /* [场景3] karma webpack 配置 */
 } else {
     config.module.loaders.push({
         test: /\.(css|less)$/,
-        loader:'style-loader!css-loader!less-loader'
+        loader:'style-loader!css-loader!postcss-loader!less-loader'
     });
 }
 
