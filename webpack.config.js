@@ -4,10 +4,10 @@ var path = require('path');
 var webpack = require('webpack');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 var precss = require('precss');
 var env = process.env.WEBPACK_ENV;
-
 // 路径定义
 var public_path = path.resolve(__dirname, 'public');
 var demo_path = path.resolve(__dirname, 'demo');
@@ -41,6 +41,10 @@ var pluginHtmlwebpack = new HtmlwebpackPlugin({
     inject: 'body'
 });
 
+var OptimizeCssAssets = new OptimizeCssAssetsPlugin({
+    cssProcessor: require('cssnano'),
+    cssProcessorOptions: { discardComments: {removeAll: true } }
+});
 // 插件 -- css提取
 var pluginCssExtract = new ExtractTextPlugin('bundle.css');
 
@@ -109,8 +113,8 @@ if (env === 'DEMO_DEV' ||  env === 'DEMO_BUILD') {
         loader: ExtractTextPlugin.extract('style', '!css!less')
     });
     // plugins
-    if (env === 'DEMO_DEV' ) config.plugins = [pluginCssExtract, pluginHtmlwebpack];
-    if (env === 'DEMO_BUILD') config.plugins = [pluginCssExtract, pluginUglifyJs, pluginHtmlwebpack];
+    if (env === 'DEMO_DEV' ) config.plugins = [pluginCssExtract, pluginHtmlwebpack, OptimizeCssAssets];
+    if (env === 'DEMO_BUILD') config.plugins = [pluginCssExtract, pluginUglifyJs, pluginHtmlwebpack, OptimizeCssAssets];
 /* [场景2] 组件源码：打包到 dist目录下 */
 } else if (env === 'BUILD') {
     // 入口文件
