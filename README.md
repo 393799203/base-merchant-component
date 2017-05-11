@@ -1,5 +1,10 @@
 ### @meili/base-merchant-component Changelog
 
+#### v1.2.13
+* 业务组件 form - 修改样式
+* 业务组件 layout
+	* msider 单页应用时改变路由时，直接改变选中导航，不重置折叠导航
+
 #### v1.2.12
 * 业务组件 form - fix eslint error
 * 业务组件 layout

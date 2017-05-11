@@ -12,12 +12,51 @@ export default class Item extends Component {
         this.getActiveIndex(this.props);
     }
     componentWillReceiveProps (nextProps) {
-        this.setState({
-            showMenu: false,
-            activeIndex: -9999
-        }, () => {
-            this.getActiveIndex(nextProps);
+        // this.setState({
+        //     showMenu: false,
+        //     activeIndex: -9999
+        // }, () => {
+        //     this.getActiveIndex(nextProps);
+        // });
+
+        const { menuItem, activeLink = window.location.href } = nextProps;
+        const matchedLink = [];
+        if (!menuItem.options) {
+            if (activeLink.indexOf(menuItem.link) > -1) {
+                this.setState({
+                    activeIndex: 9999
+                });
+            } else {
+                this.setState({
+                    activeIndex: -9999
+                });
+            }
+            return;
+        }
+        menuItem.options.map((item, index) => {
+            if (activeLink.indexOf(item.link) > -1) {
+                matchedLink.push({ item, index });
+            }
         });
+        if (matchedLink.length === 1) {
+            this.setState({
+                activeIndex: matchedLink[0].index
+            });
+        } else if (matchedLink.length > 1) {
+            const sortLink = matchedLink.sort((a, b) => {
+                if (a.item.link.length > b.item.link.length) {
+                    return -1;
+                }
+                return 1;
+            });
+            this.setState({
+                activeIndex: sortLink[0].index
+            });
+        } else {
+            this.setState({
+                activeIndex: -9999
+            });
+        }
     }
     getActiveIndex (props) {
         const { menuItem, activeLink = window.location.href } = props;
@@ -25,7 +64,7 @@ export default class Item extends Component {
         if (!menuItem.options) {
             if (activeLink.indexOf(menuItem.link) > -1) {
                 this.setState({
-                    showMenu: true
+                    activeIndex: 9999
                 });
             }
             return;
@@ -89,8 +128,8 @@ export default class Item extends Component {
                                                     <a
                                                         key={index}
                                                         className={activeIndex === index ? 'sub-item-name active' : 'sub-item-name'}
-                                                        href={item.link ? item.link : ''}
-                                                        target={item.target ? '_blank' : ''}
+                                                        href={item.link || ''}
+                                                        target={item.target || ''}
                                                     >
                                                         {item.text}
                                                     </a>
@@ -104,7 +143,7 @@ export default class Item extends Component {
                         </div>
                     :
                         <a
-                            className={showMenu ? `menu-item-wrapper active ${className}` : `menu-item-wrapper ${className}`}
+                            className={activeIndex === 9999 ? `menu-item-wrapper active ${className}` : `menu-item-wrapper ${className}`}
                             href={menuItem.link}
                             target={menuItem.target || ''}
                         >
