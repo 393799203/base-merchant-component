@@ -80,14 +80,14 @@ class TabWrapper extends Component {
 
     render () {
         const me = this;
-        const { navs, className, theme } = me.props;
+        const { navs, className, theme, type } = me.props;
         const { active } = me.state;
         const childrens = me.getChildTabs();
         const eName = me.triggerEventName;
 
         return (
             <div className={`mc-tab-wrapper mc-tab-${theme} ${className}`}>
-                <ul className='mc-tab-nav clearfix'>
+                <ul className={`mc-tab-nav mc-tab-${type} clearfix`}>
                     {
                         navs.map((item, i) => {
                             let itemProps = {};
@@ -123,7 +123,8 @@ TabWrapper.defaultProps = {
     theme: 'danger',
     className: '',
     lazyLoad: false,
-    trigger: 'click'
+    trigger: 'click',
+    type: 'normal'
 };
 
 TabWrapper.propTypes = {
@@ -132,7 +133,8 @@ TabWrapper.propTypes = {
     active: PropTypes.number,
     className: PropTypes.string,
     lazyLoad: PropTypes.bool,
-    trigger: PropTypes.string
+    trigger: PropTypes.string,
+    type: PropTypes.oneOf(['normal', 'card', 'block'])
 };
 
 export default TabWrapper;

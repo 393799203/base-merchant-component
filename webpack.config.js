@@ -99,8 +99,8 @@ var config = {
     ],
     resolve: {
         alias: {
-            'source_path': src_path,
-            '@meili/merchant-theme': path.join(__dirname, '/node_modules/@meili/merchant-theme')
+            'source_path': src_path
+            //'@meili/merchant-theme': path.join(__dirname, '/node_modules/@meili/merchant-theme')
         },
         extensions: ['', '.js', '.jsx']
     }

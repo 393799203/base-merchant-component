@@ -125,13 +125,13 @@ class TabDemo extends Component {
                 <div className='switch-tab'>
                     <div className='example'>
                         <h4>整体事件触发-onClick</h4>
-                        <TabWrapper navs={nav1} theme='success' onClick={i => TabDemo.clickHanler(i)}>
+                        <TabWrapper navs={nav1} theme='success' type='block' onClick={i => TabDemo.clickHanler(i)}>
                             {tabArr}
                         </TabWrapper>
                     </div>
                     <div className='example'>
                         <h4>整体事件触发-onChange</h4>
-                        <TabWrapper navs={nav1} theme='info' onChange={(newVal, oldVal) => TabDemo.changeHandler(newVal, oldVal)}>
+                        <TabWrapper navs={nav1} theme='info' type='card' onChange={(newVal, oldVal) => TabDemo.changeHandler(newVal, oldVal)}>
                             {tabArr}
                         </TabWrapper>
                     </div>

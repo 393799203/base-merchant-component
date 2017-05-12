@@ -176,11 +176,12 @@ change () { // 调用组件内部函数
 | 参数        |  必填        |说明           | 类型         |  备注       |   默认值      |
 | ------------ |------------ | ------------- | ------------ | ------------  |------------  |
 | navs |  Y  | 标签页列表  | [Object] | 需要重写样式时使用 | [] |
-| active |  N  | 默认激活的Tab  | number | 设置展示选中的Tab | 默认值: 0 |
+| active |  N  | 默认激活的Tab  | Number | 设置展示选中的Tab | 默认值: 0 |
+| type |  Y  | 选项卡的类型  | String | 选项卡提供三种类型的基础切换样式 `normal, block, card` | 'normal' |
 | theme |  N  | 主题色, `danger`, `info`, `dark`, `success`, `warning`  | string | 选中时高亮颜色 | `danger` |
-| className |  N  | 组件顶层样式  | string | 需要重写样式时使用 | '' |
-| trigger |  N  | 组件Tab切换触发方式  | string | 驼峰式写法，如mouseOver | 'click' |
-| lazyLoad |  N  | 子组件是否需要懒加载  | bool |  | false |
+| className |  N  | 组件顶层样式  | String | 需要重写样式时使用 | '' |
+| trigger |  N  | 组件Tab切换触发方式  | String | 驼峰式写法，如mouseOver | 'click' |
+| lazyLoad |  N  | 子组件是否需要懒加载  | Bool |  | false |
 
 
 备注：
@@ -195,8 +196,8 @@ change () { // 调用组件内部函数
 #### 3.2 - Tab
 | 参数        |  必填        |说明           | 类型         |  备注       |   默认值      |
 | ------------ |------------ | ------------- | ------------ | ------------  |------------  |
-| className |  N  | 组件顶层样式  | string | 需要重写样式时使用 | '' |
-| lazyLoad |  N  | 本组件是否需要懒加载  | bool |  | false |
+| className |  N  | 组件顶层样式  | String | 需要重写样式时使用 | '' |
+| lazyLoad |  N  | 本组件是否需要懒加载  | Bool |  | false |
 
 
 备注：

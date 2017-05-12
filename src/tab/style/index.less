@@ -3,10 +3,11 @@
 .theme-style (@color) {
     @color-base: "color-@{color}-base";
     &.mc-tab-@{color} {
-        .mc-tab-nav li {
+        .mc-tab-nav.mc-tab-normal li {
             &.active {
+                border-bottom: 2px solid @@color-base;
                 a {
-                    border-bottom: 2px solid @@color-base;
+                    color: @@color-base;
                 }
             }
         }
@@ -16,23 +17,61 @@
 .mc-tab-wrapper {
     .mc-tab-nav {
         position: relative;
-        border-bottom: 1px solid #E5E5E5;
         padding: 0;
         li {
             position: relative;
-            top: 1px;
             float: left;
-            margin-right: 40px;
+            height: 42px;
+            line-height: 42px;
+            padding: 0 20px;
             list-style: none;
-            &.active {
-                a {
-                    border-bottom: 2px solid @color-danger-base;
-                }
-            }
             a {
                 display: block;
                 color: #333;
-                padding-bottom: 5px;
+            }
+        }
+        &.mc-tab-normal {
+            border-bottom: 1px solid #E5E5E5;
+            li {
+                &.active {
+                    top: 1px;
+                    border-bottom: 2px solid @color-primary-base;
+                    a {
+                        color: @color-primary-base;
+                    }
+                }
+                
+            }
+        }
+        &.mc-tab-card {
+            display: inline-block;
+            border: 1px solid #DEDEDE;
+            background-color: #F3F5F8;
+            li {
+                border-left: 1px solid #DEDEDE;
+                &:first-child {
+                    border-left: none;
+                }
+                &.active {
+                    top: 1px;
+                    border-bottom: 2px solid @color-primary-base;
+                }
+            }
+        }
+        &.mc-tab-block {
+            display: inline-block;
+            border: 1px solid #2A2E3F;
+            li {
+                border-left: 1px solid #2A2E3F;
+                &:first-child {
+                    border-left: none;
+                }
+                &.active {
+                    background-color: #2A2E3F;
+                    a {
+                        color: @color-white;
+                    }
+                }
             }
         }
     }
