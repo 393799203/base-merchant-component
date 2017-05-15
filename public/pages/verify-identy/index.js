@@ -21,6 +21,9 @@ export default class VerifyIdentyView extends Component {
             <div className='mb-lg ml m-r'>
                 <h2 className='pb-5 b-b dashed'>
                     身份认证 - VerifyIdenty
+                    <a href='mactt://message/uname/youyou' style={{ border: 'none', boxShadow: 'none' }} className='m-l-lg btn-info-border btn'>
+                        <i className='fa fa-comments m-r-xs'></i>遇到问题？联系作者
+                    </a>
                 </h2>
                 <h3>
                     1. 示例

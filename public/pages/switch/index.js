@@ -52,8 +52,8 @@ export default class SwitchView extends Component {
         return (
             <div className='m-b-lg m-l m-r'>
                 <h2 className='p-b-5 b-b dashed'>
-                    表格 - Table
-                    <a href="mactt://message/user/01325" style={{border: 'none', boxShadow: 'none'}} className="m-l-lg btn-info-border btn">
+                    开关 - Switch
+                    <a href="mactt://message/uname/qianxin" style={{border: 'none', boxShadow: 'none'}} className="m-l-lg btn-info-border btn">
                         <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
                     </a>
                 </h2>

@@ -75,7 +75,7 @@ export default class DropdownView extends Component {
             <div className='m-b-lg ml m-r'>
                 <h2 className='p-b-5 b-b dashed'>
                     下拉 - Dropdown
-                    <a href='mactt://message/user/00639' style={{border: 'none', boxShadow: 'none'}} className='m-l-lg btn-info-border btn'>
+                    <a href='mactt://message/uname/qianqiao' style={{border: 'none', boxShadow: 'none'}} className='m-l-lg btn-info-border btn'>
                         <i className='fa fa-comments m-r-xs'></i>遇到问题？联系作者
                     </a>
                 </h2>

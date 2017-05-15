@@ -100,6 +100,9 @@ export default class TeamTalkView extends Component {
 			<div className="m-l m-r m-b-xxl">
 				<h2 className='pb-5 b-b dashed'>
 					图表组件📈，依赖百度的echarts
+					<a href='mactt://message/uname/youyou' style={{ border: 'none', boxShadow: 'none' }} className='m-l-lg btn-info-border btn'>
+                        <i className='fa fa-comments m-r-xs'></i>遇到问题？联系作者
+                    </a>
 				</h2>
 				<h3>
 					1. 中国地图

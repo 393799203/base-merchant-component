@@ -71,7 +71,10 @@ export default class FormComponentView extends Component {
 		return (
 			<div className='m-b-lg m-l m-r'>
                 <h2 className='p-b-5 b-b dashed'>
-					表单 - Form
+					页面配置 - Form
+					<a href="mactt://message/uname/youyou" style={{border: 'none', boxShadow: 'none'}} className='m-l-lg btn-info-border btn'>
+                        <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
+                    </a>
 				</h2>
 				<h3>
 					1. 示例

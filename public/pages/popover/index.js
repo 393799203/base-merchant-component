@@ -8,7 +8,7 @@ export default class PopoverView extends Component {
         return <div className='m-b-lg m-l m-r'>
         	<h2 className='p-b-5 b-b dashed'>
                 浮块提示 － Popover
-                <a href="mactt://message/user/00639" style={{border: 'none', boxShadow: 'none'}} className="m-l-lg btn-info-border btn">
+                <a href="mactt://message/uname/qianqiao" style={{border: 'none', boxShadow: 'none'}} className="m-l-lg btn-info-border btn">
                     <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
                 </a>
             </h2>
