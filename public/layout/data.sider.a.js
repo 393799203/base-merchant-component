@@ -54,9 +54,6 @@ export default [
         title: '图片轮播 - Slider',
         link: '#/slider'
     }, {
-        title: 'TT - Teamtalk',
-        link: '#/teamtalk'
-    }, {
         title: '折线图表 - LineCharts',
         link: '#/charts-line'
     }, {

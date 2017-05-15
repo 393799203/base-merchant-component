@@ -17,7 +17,7 @@ export default class RateView extends Component {
             <div>
                 <h2 className='p-b-5 b-b dashed'>
                         评分 - Rate
-                    <a href='mactt://message/user/01325' style={{ border: 'none', boxShadow: 'none' }} className="m-l-lg btn-info-border btn">
+                    <a href='mactt://message/uname/qianxin' style={{ border: 'none', boxShadow: 'none' }} className="m-l-lg btn-info-border btn">
                         <i className='fa fa-comments m-r-xs'></i>遇到问题？联系作者
                     </a>
                     </h2>
