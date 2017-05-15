@@ -19,7 +19,7 @@ class ImageUploaderDemo extends Component {
             <div className="m-b-lg m-l m-r image-uploader-demo">
                 <h2 className='p-b-5 b-b dashed'>
                     图片上传 - ImageUploader
-                    <a href="mactt://message/uname/yuxin" style={{border: 'none'}} className="m-l-lg btn-info-border btn">
+                    <a href="mactt://message/user/yuxin" style={{border: 'none'}} className="m-l-lg btn-info-border btn">
                         <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
                     </a>
                 </h2>

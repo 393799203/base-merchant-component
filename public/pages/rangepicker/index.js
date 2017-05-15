@@ -34,7 +34,7 @@ export default class RangepickerView extends Component {
 			<div className="m-l m-r m-b-xxl mc-date-picker">
 				<h2 className='p-b-5 b-b dashed'>
 					日期区间 - Rangepicker
-					<a href="mactt://message/user/01825" style={{border: 'none', boxShadow: 'none'}} className="m-l-lg btn-info-border btn">
+					<a href="mactt://message/user/youyou" style={{border: 'none', boxShadow: 'none'}} className="m-l-lg btn-info-border btn">
                         <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
                     </a>
 				</h2>

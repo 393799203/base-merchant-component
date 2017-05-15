@@ -10,7 +10,7 @@ export default class TeamtalkView extends Component {
             <div className='m-b-lg m-l m-r'>
                 <h2 className='p-b-5 b-b dashed'>
                     TT - Teamtalk
-                    <a href='mactt://message/user/01828' style={{ border: 'none', boxShadow: 'none' }} className='m-l-lg btn-info-border btn'>
+                    <a href='mactt://message/user/ziyi' style={{ border: 'none', boxShadow: 'none' }} className='m-l-lg btn-info-border btn'>
                         <i className='fa fa-comments m-r-xs'></i>遇到问题？联系作者
                     </a>
                 </h2>
