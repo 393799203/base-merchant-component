@@ -16,7 +16,7 @@ export default class ToolTipView extends Component {
             <div className='m-b-lg m-l m-r'>
                 <h2 className='pb-5 b-b dashed'>
                     提示信息层 - toolTip
-                    <a href="mactt://message/user/qingcang" style={{border: 'none', boxShadow: 'none'}} className="m-l-lg btn-info-border btn">
+                    <a href="mactt://message/uname/qingcang" style={{border: 'none', boxShadow: 'none'}} className="m-l-lg btn-info-border btn">
                         <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
                     </a>
                 </h2>

@@ -15,7 +15,7 @@ class PanelDemo extends Component {
             <div className='m-b-lg m-l m-r'>
                 <h2 className='pb-5 b-b dashed'>
                     面板 - Panel
-                    <a href="mactt://message/user/yuxin" style={{border: 'none', boxShadow: 'none'}} className="ml-lg btn-info-border btn">
+                    <a href="mactt://message/uname/yuxin" style={{border: 'none', boxShadow: 'none'}} className="ml-lg btn-info-border btn">
                         <i className="fa fa-comments m-r-xs"></i>遇到问题？联系作者
                     </a>
                 </h2>
