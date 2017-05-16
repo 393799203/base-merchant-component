@@ -33,37 +33,37 @@ import LazyLoadView from './pages/compontents/lazyload';
 import LazyLoadRegularDemo from './pages/compontents/lazyload/regular-demo';
 import LazyLoadOverflowDemo from './pages/compontents/lazyload/overflow-demo';
 import TeamtalkView from './pages/teamtalk';
-import BarCharts from './pages/barcharts';
-import ChinaMapCharts from './pages/chinamapcharts';
-import PieCharts from './pages/piecharts';
-import LineCharts from './pages/linecharts';
 import AreaCodeView from './pages/area-code';
-import AddressView from './pages/address';
-import FullAddressView from './pages/full-address';
-import VerifyIdentyView from './pages/verify-identy';
-import VerifyPhoneView from './pages/verify-phone';
 import SwitchView from './pages/switch';
 import RateView from './pages/rate';
 import SliderBarView from './pages/sliderBar';
 import TreeView from './pages/tree';
 import LayoutDemoView from './pages/layout';
-
-import DatepickerView from './pages/datepicker';
-import MonthpickerView from './pages/monthpicker';
-import RangepickerView from './pages/rangepicker';
-import TimepickerView from './pages/timepicker';
 import ModalView from './pages/modal';
 import TableView from './pages/table';
 import SelectView from './pages/select';
 import ButtonView from './pages/button';
-import FieldView from './pages/field';
-import FormView from './pages/form';
-import ProcessBarView from './pages/process-bar';
 import WrapperView from './pages/wrapper';
 import MenuCateView from './pages/menu-cate';
 import DropdownView from './pages/dropdown';
-
 import PopoverView from './pages/popover';
+
+// youyou demo 
+import DatepickerView from './pages/yy-component-demo/datepicker';
+import MonthpickerView from './pages/yy-component-demo/monthpicker';
+import RangepickerView from './pages/yy-component-demo/rangepicker';
+import TimepickerView from './pages/yy-component-demo/timepicker';
+import BarCharts from './pages/yy-component-demo/barcharts';
+import ChinaMapCharts from './pages/yy-component-demo/chinamapcharts';
+import PieCharts from './pages/yy-component-demo/piecharts';
+import LineCharts from './pages/yy-component-demo/linecharts';
+import FieldView from './pages/yy-component-demo/field';
+import FormView from './pages/yy-component-demo/form';
+import AddressView from './pages/yy-component-demo/address';
+import FullAddressView from './pages/yy-component-demo/full-address';
+import VerifyIdentyView from './pages/yy-component-demo/verify-identy';
+import VerifyPhoneView from './pages/yy-component-demo/verify-phone';
+import ProcessBarView from './pages/yy-component-demo/process-bar';
 
 export default (
     <Router history={hashHistory}>
@@ -100,7 +100,6 @@ export default (
             <Route path='table' component={TableView} />
             <Route path='slider' component={SliderView} />
             <Route path='button' component={ButtonView} />
-            <Route path='process-bar' component={ProcessBarView} />
             <Route path='wrapper' component={WrapperView} />
             <Route path='dropdown' component={DropdownView} />
             <Route path='popover' component={PopoverView} />
@@ -108,29 +107,28 @@ export default (
             <Route path='rate' component={RateView} />
             <Route path='sliderBar' component={SliderBarView} />
             <Route path='tree' component={TreeView} />
-
-            <Route path='b-select' component={SelectView} />
-            <Route path='b-field' component={FieldView} />
-            <Route path='a-form' component={FormView} />
-            <Route path='a-datepicker' component={DatepickerView} />
-            <Route path='a-monthpicker' component={MonthpickerView} />
-            <Route path='a-rangepicker' component={RangepickerView} />
-            <Route path='a-timepicker' component={TimepickerView} />
-            <Route path='a-areacode' component={AreaCodeView} />
-            <Route path='a-address' component={AddressView} />
-            <Route path='a-fulladdress' component={FullAddressView} />
-            <Route path='a-verifyidenty' component={VerifyIdentyView} />
-            <Route path='a-verifyphone' component={VerifyPhoneView} />
-            <Route path='layout' component={LayoutDemoView} />
-
             <Route path='teamtalk' component={TeamtalkView} />
-            <Route path='charts-bar' component={BarCharts} />
-            <Route path='charts-chinamap' component={ChinaMapCharts} />
-            <Route path='charts-pie' component={PieCharts} />
-            <Route path='charts-line' component={LineCharts} />
-
+            <Route path='layout' component={LayoutDemoView} />
             <Route path='menucate' component={MenuCateView} />
+            <Route path='select' component={SelectView} />
+            <Route path='areacode' component={AreaCodeView} />
 
+            
+            <Route path='yy-a-datepicker' component={DatepickerView} />
+            <Route path='yy-a-monthpicker' component={MonthpickerView} />
+            <Route path='yy-a-rangepicker' component={RangepickerView} />
+            <Route path='yy-a-timepicker' component={TimepickerView} />
+            <Route path='yy-b-field' component={FieldView} />
+            <Route path='yy-c-bar' component={BarCharts} />
+            <Route path='yy-c-chinamap' component={ChinaMapCharts} />
+            <Route path='yy-c-pie' component={PieCharts} />
+            <Route path='yy-c-line' component={LineCharts} />
+            <Route path='yy-d-process-bar' component={ProcessBarView} />
+            <Route path='yy-a-form' component={FormView} />
+            <Route path='yy-b-address' component={AddressView} />
+            <Route path='yy-b-fulladdress' component={FullAddressView} />
+            <Route path='yy-c-verifyidenty' component={VerifyIdentyView} />
+            <Route path='yy-c-verifyphone' component={VerifyPhoneView} />
         </Route>
     </Router>
 );

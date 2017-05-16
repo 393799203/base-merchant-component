@@ -6,8 +6,8 @@ import { MHeader } from 'source_path/layout';
 import menuOptions from './data.header.js';
 
 _menuData.sort((item1, item2) => {
-    const temp1 = item1.link.slice(2, 3).toLowerCase();
-    const temp2 = item2.link.slice(2, 3).toLowerCase();
+    const temp1 = item1.link.slice(2, item1.length).toLowerCase();
+    const temp2 = item2.link.slice(2, item2.length).toLowerCase();
     if (temp1 > temp2) {
         return 1;
     }
@@ -18,8 +18,8 @@ _menuData.sort((item1, item2) => {
 });
 
 _busMenuData.sort((item1, item2) => {
-    const temp1 = item1.link.slice(2, 3).toLowerCase();
-    const temp2 = item2.link.slice(2, 3).toLowerCase();
+    const temp1 = item1.link.slice(2, item1.length).toLowerCase();
+    const temp2 = item2.link.slice(2, item2.length).toLowerCase();
     if (temp1 > temp2) {
         return 1;
     }

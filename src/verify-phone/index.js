@@ -252,7 +252,7 @@ export default class VerifyPhone extends Component {
                         </div>
 
                         <button
-                            className={orSend || disabled ? 'disabled fl' : 'fl'}
+                            className={orSend || disabled ? 'disabled fl btn btn-danger btn-sm' : 'fl btn btn-danger btn-sm'}
                             onClick={orSend || disabled ? () => {} : () => this.sendPhoneCode()}
                         >
                             {lastTime === 0 ?
@@ -273,7 +273,7 @@ export default class VerifyPhone extends Component {
                         label='手机验证码：'
                     />
                 </div>
-                <button className={disabled ? 'disabled ml120' : 'ml120 '} onClick={disabled ? () => {} : () => this.savePhone()}>
+                <button className={disabled ? 'disabled ml120 btn btn-danger btn-sm' : 'ml120 btn btn-danger btn-sm'} onClick={disabled ? () => {} : () => this.savePhone()}>
                     {btnName || '提交'}
                 </button>
             </div>

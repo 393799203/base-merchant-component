@@ -12,31 +12,106 @@
 import React, { Component, PropTypes } from 'react';
 import echarts from 'echarts';
 import Util from '../_module/js/util';
+
 /* 指定图表的配置项和数据 */
-const MchartsType = 'bar';
 const defaultOption = {
     title: {
-        text: 'BarCharts 柱状图示例'
+        text: ''
     },
-    tooltip: {},
-    toolbox: {
-        feature: {
-            saveAsImage: {}
-        }
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        },
+        backgroundColor: '#fff',
+        borderColor: '#d5d8df',
+        borderWidth: 1,
+        textStyle: {
+            fontSize: 12,
+            color: '#555',
+            textAlign: 'center'
+        },
+        padding: 10
     },
-    grid: {
-        left: '3%',
-        right: '4%',
-        bottom: '3%',
-        containLabel: true
+    textStyle: {
+        fontSize: 13,
+        color: '#555'
     },
     legend: {
-        data: []
+        data: [],
+        bottom: 0,
+        itemGrp: 20,
+        selectedMode: true,
+        itemWidth: 10
+    },
+    color: [
+        new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            offset: 0, color: '#FFD174' // 0% 处的颜色
+        }, {
+            offset: 1, color: '#FF904B' // 100% 处的颜色
+        }], false),
+        new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            offset: 0, color: '#74D6FF' // 0% 处的颜色
+        }, {
+            offset: 1, color: '#4D7EFF' // 100% 处的颜色
+        }], false),
+        new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            offset: 0, color: '#AF74FF' // 0% 处的颜色
+        }, {
+            offset: 1, color: '#CE4DFF' // 100% 处的颜色
+        }], false),
+        new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            offset: 0, color: '#8AEFA3' // 0% 处的颜色
+        }, {
+            offset: 1, color: '#71DD9C' // 100% 处的颜色
+        }], false),
+        new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            offset: 0, color: '#FD8282' // 0% 处的颜色
+        }, {
+            offset: 1, color: '#FF6363' // 100% 处的颜色
+        }], false),
+        new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            offset: 0, color: '#EDF02E' // 0% 处的颜色
+        }, {
+            offset: 1, color: '#FFF678' // 100% 处的颜色
+        }], false),
+        new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            offset: 0, color: '#7DE580' // 0% 处的颜色
+        }, {
+            offset: 1, color: '#20B223' // 100% 处的颜色
+        }], false),
+        new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            offset: 0, color: '#37ABB9' // 0% 处的颜色
+        }, {
+            offset: 1, color: '#1F93C3' // 100% 处的颜色
+        }], false),
+        new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            offset: 0, color: '#3A4AB0' // 0% 处的颜色
+        }, {
+            offset: 1, color: '#321AB2' // 100% 处的颜色
+        }], false),
+        new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            offset: 0, color: '#833F3F' // 0% 处的颜色
+        }, {
+            offset: 1, color: '#68225A' // 100% 处的颜色
+        }], false)
+    ],
+    grid: {
+        padding: 0,
+        containLabel: true,
+        left: 15,
+        right: 15,
+        borderColor: '#DDDDDD'
     },
     xAxis: [],
     yAxis: [],
     series: []
 };
+
+const series = {
+    type: 'bar'
+};
+
 export default class BarCharts extends Component {
     constructor (props) {
         super(props);
@@ -86,7 +161,7 @@ export default class BarCharts extends Component {
             };
         }
         tempSeries.map((item, index) => {
-            tempSeries[index].type = MchartsType;      /* 拼接类型 */
+            tempSeries[index] = Util.extend(tempSeries[index], series);
             defaultOption.legend.data.push(item.name);      /* 拼接选项提示 */
             defaultOption.series = tempSeries;      /* 合并Series */
             defaultOption.xAxis = tempXaxis;      /* 合并xAxis */
