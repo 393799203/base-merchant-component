@@ -133,7 +133,7 @@ export default class Phone extends Component {
                         <label htmlFor={phoneConfig.phoneLabel || '原手机号'} className='title'>{phoneConfig.phoneLabel || '原手机号：'}</label>
                         <label htmlFor={phoneText} className='num'>{phoneText}</label>
                         <button
-                            className={orSend || disabled ? 'disabled' : ''}
+                            className={orSend || disabled ? 'disabled btn btn-danger btn-sm' : 'btn btn-danger btn-sm'}
                             onClick={orSend || disabled ? () => {} : () => this.sendPhoneCode()}
                         >
                             {lastTime === 0 ?

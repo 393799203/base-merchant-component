@@ -208,7 +208,7 @@ export default class VerifyIdenty extends Component {
 
                 <button
                     onClick={disabled ? () => {} : e => this.submit(e)}
-                    className={disabled ? 'disabled' : ''}
+                    className={disabled ? 'disabled btn btn-danger btn-sm' : 'btn btn-danger btn-sm'}
                 >
                     {btnName || '提交'}
                 </button>

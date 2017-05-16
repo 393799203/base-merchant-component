@@ -1,22 +1,7 @@
 export default [
     {
-        title: '日期 - Datepicker',
-        link: '#/a-datepicker'
-    }, {
-        title: '月份 - Monthpicker',
-        link: '#/a-monthpicker'
-    }, {
-        title: '日期区间 - Rangepicker',
-        link: '#/a-rangepicker'
-    }, {
-        title: '时间 - Timepicker',
-        link: '#/a-timepicker'
-    }, {
-        title: '表单 - Field',
-        link: '#/b-field'
-    }, {
         title: '下拉框 - Select',
-        link: '#/b-select'
+        link: '#/select'
     }, {
         title: '选项卡 - Tab',
         link: '#/tab'
@@ -54,21 +39,6 @@ export default [
         title: '图片轮播 - Slider',
         link: '#/slider'
     }, {
-        title: '折线图表 - LineCharts',
-        link: '#/charts-line'
-    }, {
-        title: '柱状图表 - BarCharts',
-        link: '#/charts-bar'
-    }, {
-        title: '饼状图表 - PieCharts',
-        link: '#/charts-pie'
-    }, {
-        title: '中国地图 - ChinaMapCharts',
-        link: '#/charts-chinamap'
-    }, {
-        title: '步骤条 - ProcessBar',
-        link: '#/process-bar'
-    }, {
         title: '加载容器 - Wrapper',
         link: '#/wrapper'
     }, {
@@ -92,6 +62,36 @@ export default [
     }, {
         title: '评分 - Rate',
         link: '#/Rate'
+    }, {
+        title: '日期 - Datepicker',
+        link: '#/yy-a-datepicker'
+    }, {
+        title: '月份 - Monthpicker',
+        link: '#/yy-a-monthpicker'
+    }, {
+        title: '日期区间 - Rangepicker',
+        link: '#/yy-a-rangepicker'
+    }, {
+        title: '时间 - Timepicker',
+        link: '#/yy-a-timepicker'
+    }, {
+        title: '表单 - Field',
+        link: '#/yy-b-field'
+    }, {
+        title: '折线图表 - LineCharts',
+        link: '#/yy-c-line'
+    }, {
+        title: '柱状图表 - BarCharts',
+        link: '#/yy-c-bar'
+    }, {
+        title: '饼状图表 - PieCharts',
+        link: '#/yy-c-pie'
+    }, {
+        title: '中国地图 - ChinaMapCharts',
+        link: '#/yy-c-chinamap'
+    }, {
+        title: '步骤条 - ProcessBar',
+        link: '#/yy-d-process-bar'
     }
 ];
 

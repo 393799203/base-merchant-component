@@ -14,53 +14,99 @@ import React, { Component, PropTypes } from 'react';
 import echarts from 'echarts';
 import Util from '../_module/js/util';
 
-
-require('./style/index.less');
 require('./ChinaJson.js');
+
 // 指定图表的配置项和数据
 const defaultOption = {
     title: {
-        text: 'iphone销量',
-        subtext: '纯属虚构',
-        left: 'center'
+        text: '',
+        subtext: '',
+        sublink: '',
+        left: 'center',
+        top: 'top'
     },
     tooltip: {
-        trigger: 'item'
-    },
-    visualMap: {
-        min: 0,
-        max: 2500,
-        left: 'left',
-        top: 'bottom',
-        text: ['高', '低'],           // 文本，默认为数值文本
-        calculable: true
+        trigger: 'item',
+        backgroundColor: '#fff',
+        borderColor: '#d5d8df',
+        borderWidth: 1,
+        textStyle: {
+            fontSize: 12,
+            color: '#555',
+            textAlign: 'center'
+        },
+        padding: 10
     },
     toolbox: {
-        show: true,
+        show: false,
         orient: 'vertical',
         left: 'right',
         top: 'center',
         feature: {
-            dataView: { readOnly: false },
+            dataView: {
+                readOnly: false
+            },
             restore: {},
             saveAsImage: {}
         }
     },
-    legend: {
-        orient: 'vertical',
+    visualMap: {
         left: 'left',
-        data: []
+        top: 'bottom',
+        text: ['高', '低'],
+        calculable: true,
+        color: ['#FFAB42', '#FFDEB4'],
+        realtime: true
+    },
+    textStyle: {
+        color: '#555'
+    },
+    color: ['#FFBB66', '#C05EFF', '#60A9FF', '#7DE59F', '#FF6D6D'],
+    legend: {
+        data: [],
+        bottom: 0,
+        itemGrp: 20,
+        selectedMode: true,
+        itemWidth: 10
+    },
+    grid: {
+        padding: 0,
+        containLabel: true,
+        left: 15,
+        right: 15,
+        borderColor: '#DDDDDD'
     },
     series: []
 };
-const MchartsType = 'map';
-const MchartsMapType = 'china';
-const MchartsLabel = {
-    normal: {
-        show: true
+
+const series = {
+    type: 'map',
+    mapType: 'china',
+    selectedMode: 'single',
+    showLegendSymbol: false, // 是否在地图中展示data的颜色图标
+    itemStyle: {
+        emphasis: {
+            label: {
+                show: true
+            },
+            areaColor: '#FF6868',
+            color: '#FF6868',
+            borderColor: '#FF6868'
+        }
     },
-    emphasis: {
-        show: true
+    avoidLabelOverlap: false,
+    label: {
+        normal: {
+            show: false
+        },
+        emphasis: {
+            show: true
+        }
+    },
+    labelLine: {
+        normal: {
+            show: false
+        }
     }
 };
 
@@ -70,7 +116,8 @@ export default class ChinaMapCharts extends Component {
         this.domId = props.id || `chartId_${(Math.random() * 100000).toFixed(0)}`;
         this.state = {
             chartsData: props.data,
-            extend: props.extend
+            extend: props.extend,
+            seriesExtend: props.seriesExtend
         };
     }
 
@@ -81,24 +128,26 @@ export default class ChinaMapCharts extends Component {
     componentWillReceiveProps (nextProps) {
         this.setState({
             chartsData: nextProps.data,
-            extend: nextProps.extend
+            extend: nextProps.extend,
+            seriesExtend: nextProps.seriesExtend
         }, () => {
             this.mergeData();
         });
     }
 
-    // 合并图标数据
+    // 添加配置
     mergeData () {
         const self = this;
         const chartsData = self.state.chartsData;
         const tempSeries = chartsData.series || [];
+
         const newOptionData = self.state.extend;
+
         let renderOption = {};
 
+        // 合并series的配置和数据
         tempSeries.map((item, index) => {
-            tempSeries[index].type = MchartsType; // 拼接类型
-            tempSeries[index].mapType = MchartsMapType; // 拼接类型
-            tempSeries[index].label = MchartsLabel; // 拼接类型
+            tempSeries[index] = Util.extend(tempSeries[index], series, this.props.seriesExtend || {});
             defaultOption.legend.data.push(item.name); // 拼接选项提示
             defaultOption.series = tempSeries; // 合并Series
         });
@@ -132,7 +181,16 @@ export default class ChinaMapCharts extends Component {
     render () {
         return (
             <div>
-                <div id={this.domId} className={this.props.className} style={{ width: this.props.width || '100%', height: this.props.height || 400 }}>loading...</div>
+                <div
+                    id={this.domId}
+                    className={this.props.className}
+                    style={{
+                        width: this.props.width || '100%',
+                        height: this.props.height || 400
+                    }}
+                >
+                    loading...
+                </div>
             </div>
         );
     }
@@ -144,6 +202,7 @@ ChinaMapCharts.propTypes = {
     width: PropTypes.string,
     height: PropTypes.string,
     data: PropTypes.object,
-    extend: PropTypes.object
+    extend: PropTypes.object,
+    seriesExtend: PropTypes.object
 };
 

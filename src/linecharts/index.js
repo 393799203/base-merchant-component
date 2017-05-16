@@ -8,43 +8,138 @@
  * @param {events}      绑定事件，参照百度Echarts官网 | object |  |
  * @param {className}   图表外层容器的class | string | up-charts |
  * @param {id}          图表外层容器的id | string | chartsId_随机数 |
- * @param {needArea}    图表外层容器的id | boolean | 是否需要阴影 |
  */
 
 import React, { Component, PropTypes } from 'react';
 import echarts from 'echarts';
 import Util from '../_module/js/util';
 
-// require('./style/index.less');
 // 指定图表的配置项和数据
 const defaultOption = {
     title: {
         text: ''
     },
     tooltip: {
-        // trigger: 'axis',
-        // axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-        //     type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-        // }
+        trigger: 'axis',
+        axisPointer: {
+            lineStyle: {
+                color: '#999999'
+            },
+            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        },
+        backgroundColor: '#fff',
+        borderColor: '#d5d8df',
+        borderWidth: 1,
+        textStyle: {
+            fontSize: 12,
+            color: '#555',
+            textAlign: 'center'
+        },
+        padding: 10
+    },
+    toolbox: {
+        show: true,
+        orient: 'horizontal',
+        right: '0',
+        top: '0',
+        feature: {
+            mark: {
+                show: true
+            },
+            dataView: {
+                show: false,
+                readOnly: false
+            },
+            magicType: {
+                show: false,
+                type: ['line', 'bar']
+            },
+            saveAsImage: {
+                show: false
+            }
+        }
+    },
+    color: ['#FFBB66', '#C05EFF', '#60A9FF', '#7DE59F', '#FF6D6D', '#FFF678', '#20B223', '#1F93C3', '#321AB2', '#68225A'],
+    textStyle: {
+        fontSize: 14,
+        color: '#333'
     },
     grid: {
-        left: '3%',
-        right: '4%',
-        bottom: '3%',
-        containLabel: true
+        padding: 0,
+        containLabel: true,
+        left: 15,
+        right: 15,
+        borderColor: '#DDDDDD'
     },
     legend: {
-        data: []
+        data: [],
+        bottom: 0,
+        itemGrp: 20,
+        selectedMode: true,
+        itemWidth: 10
     },
-    xAxis: {},
-    yAxis: {
-        type: 'value'
-    },
+    xAxis: [
+        {
+            boundaryGap: ['10%', '10%'],
+            type: 'category',
+            data: [],
+            nameGap: '65',
+            splitLine: {
+                show: false
+            },
+            axisTick: {
+                show: false
+            },
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: '#eee'
+                }
+            },
+            axisLabel: {
+                textStyle: {
+                    color: '#666'
+                }
+            }
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value',
+            nameTextStyle: {
+                color: '#666'
+            },
+            scale: true,
+            axisTick: {
+                show: false
+            },
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: '#eee'
+                },
+                onZero: false
+            },
+            axisLabel: {
+                textStyle: {
+                    color: '#666'
+                }
+            }
+        }
+    ],
     series: []
 };
-const MchartsType = 'line';
-// const MchartsStack = '总量';
-const MchartsAreaStyle = { normal: {} };
+
+const series = {
+    type: 'line',
+    smooth: true,
+    symbol: 'none',
+    lineStyle: {
+        normal: {
+            width: '3'
+        }
+    }
+};
 
 export default class LineCharts extends Component {
     constructor (props) {
@@ -53,7 +148,7 @@ export default class LineCharts extends Component {
         this.state = {
             chartsData: props.data,
             extend: props.extend,
-            needArea: props.needArea
+            seriesExtend: props.seriesExtend
         };
     }
 
@@ -65,7 +160,7 @@ export default class LineCharts extends Component {
         this.setState({
             chartsData: nextProps.data,
             extend: nextProps.extend,
-            needArea: nextProps.needArea
+            seriesExtend: nextProps.seriesExtend
         }, () => {
             this.mergeData();
         });
@@ -81,9 +176,7 @@ export default class LineCharts extends Component {
         let renderOption = {};
 
         tempSeries.map((item, index) => {
-            tempSeries[index].type = MchartsType; // 拼接类型
-            // tempSeries[index].stack = MchartsStack; // Y轴显示总量
-            tempSeries[index].areaStyle = self.state.needArea ? MchartsAreaStyle : {}; // Y轴显示总量
+            tempSeries[index] = Util.extend(tempSeries[index], series, this.props.seriesExtend || {});
             defaultOption.legend.data.push(item.name); // 拼接选项提示
             defaultOption.series = tempSeries; // 合并Series
             defaultOption.xAxis = tempXaxis; // 合并xAxis
@@ -131,5 +224,5 @@ LineCharts.propTypes = {
     height: PropTypes.string,
     data: PropTypes.object,
     extend: PropTypes.object,
-    needArea: PropTypes.bool
+    seriesExtend: PropTypes.object
 };

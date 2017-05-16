@@ -14,34 +14,106 @@ import React, { Component, PropTypes } from 'react';
 import echarts from 'echarts';
 import Util from '../_module/js/util';
 
-
-// require('./style/index.less');
 // 指定图表的配置项和数据
 const defaultOption = {
     title: {
-        text: 'PieCharts实例图标'
+        text: ''
     },
     tooltip: {
         trigger: 'item',
+        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        },
+        backgroundColor: '#fff',
+        borderColor: '#d5d8df',
+        borderWidth: 1,
+        textStyle: {
+            fontSize: 12,
+            color: '#555',
+            textAlign: 'center'
+        },
+        padding: 10,
         formatter: '{a} <br/>{b} : {c} ({d}%)'
     },
     legend: {
-        x: 'center',
-        y: 'bottom',
-        data: []
+        data: [],
+        bottom: 0,
+        itemGrp: 20,
+        selectedMode: true,
+        itemWidth: 10
     },
-    toolbox: {
-        show: true,
-        feature: {
-            saveAsImage: { show: true }
-        }
+    textStyle: {
+        fontSize: 13,
+        color: '#555'
     },
+    grid: {
+        padding: 0,
+        containLabel: true,
+        left: 15,
+        right: 15,
+        borderColor: '#DDDDDD'
+    },
+    color: [
+        new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            offset: 0, color: '#FFD174' // 0% 处的颜色
+        }, {
+            offset: 1, color: '#FF904B' // 100% 处的颜色
+        }], false),
+        new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            offset: 0, color: '#74D6FF' // 0% 处的颜色
+        }, {
+            offset: 1, color: '#4D7EFF' // 100% 处的颜色
+        }], false),
+        new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            offset: 0, color: '#AF74FF' // 0% 处的颜色
+        }, {
+            offset: 1, color: '#CE4DFF' // 100% 处的颜色
+        }], false),
+        new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            offset: 0, color: '#8AEFA3' // 0% 处的颜色
+        }, {
+            offset: 1, color: '#71DD9C' // 100% 处的颜色
+        }], false),
+        new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            offset: 0, color: '#FD8282' // 0% 处的颜色
+        }, {
+            offset: 1, color: '#FF6363' // 100% 处的颜色
+        }], false),
+        new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            offset: 0, color: '#EDF02E' // 0% 处的颜色
+        }, {
+            offset: 1, color: '#FFF678' // 100% 处的颜色
+        }], false),
+        new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            offset: 0, color: '#7DE580' // 0% 处的颜色
+        }, {
+            offset: 1, color: '#20B223' // 100% 处的颜色
+        }], false),
+        new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            offset: 0, color: '#37ABB9' // 0% 处的颜色
+        }, {
+            offset: 1, color: '#1F93C3' // 100% 处的颜色
+        }], false),
+        new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            offset: 0, color: '#3A4AB0' // 0% 处的颜色
+        }, {
+            offset: 1, color: '#321AB2' // 100% 处的颜色
+        }], false),
+        new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            offset: 0, color: '#833F3F' // 0% 处的颜色
+        }, {
+            offset: 1, color: '#68225A' // 100% 处的颜色
+        }], false)
+    // '#FFBB66','#C05EFF','#60A9FF','#7DE59F','#FF6D6D'
+    ],
     calculable: true,
-    series: [
-    ]
+    series: []
 };
-const MchartsType = 'pie';
-const MchartsSelectedMode = 'single';
+
+const series = {
+    type: 'pie',
+    selectedMode: 'single'
+};
 
 export default class PieCharts extends Component {
 
@@ -76,8 +148,7 @@ export default class PieCharts extends Component {
         let renderOption = {};
 
         tempSeries.map((item, index) => {
-            tempSeries[index].type = MchartsType; // 拼接类型
-            tempSeries[index].selectedMode = MchartsSelectedMode; // 点击的动画
+            tempSeries[index] = Util.extend(tempSeries[index], series);
             defaultOption.legend.data.push(item.name); // 拼接选项提示
             defaultOption.series = tempSeries; // 合并Series
         });

@@ -1,0 +1,5 @@
+```
+
+<ChinaMapCharts data={chartsData}></ChinaMapCharts>
+
+```
