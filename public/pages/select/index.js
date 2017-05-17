@@ -53,11 +53,6 @@ export default class SelectView extends Component {
                 <h3>
                     1. 示例
                 </h3>
-                <div className="title">
-                    <button className="m-b btn btn-success-border m-r" onClick={() => this.getData()}>获取文本框信息</button>
-                    <button className="m-b btn btn-warning-border m-r" onClick={() => this.clearData()}>清空文文本框信息</button>
-                    <button className="m-b btn btn-info-border m-r" onClick={() => this.resetData()}>重置文本框信息</button>
-                </div>
                 <div className='demo clearfix'>
                     <div className='f-l field-demo'>
                         <h4>必填属性：name、options</h4>
@@ -100,6 +95,11 @@ export default class SelectView extends Component {
                     </div>
 
                     <div className="f-l field-demo">
+                         <div className="title">
+                            <button className="m-b btn btn-success-border m-r" onClick={() => this.getData()}>获取文本框信息</button>
+                            <button className="m-b btn btn-warning-border m-r" onClick={() => this.clearData()}>清空文文本框信息</button>
+                            <button className="m-b btn btn-info-border m-r" onClick={() => this.resetData()}>重置文本框信息</button>
+                        </div>
                         <h4>表单属性：form（多个select同时使用时，通过form进行划分，可用于获取数据、清空、重置中,如果没有设置form，则默认为defaultForm，在数据、清空、重置方法中不传入form则是处理整个defaultForm）</h4>
                         <Select
                             className="select-demo m-t-15"
@@ -123,6 +123,34 @@ export default class SelectView extends Component {
                             defaultValue = {selectDefaultValue}
                             options={selectData3}
                             form="selectform"
+                        />
+                         <Select
+                            className="select-demo m-t-15"
+                            name="select8"
+                            defaultValue = {["0","1"]}
+                            model="multiple"
+                            options={selectData3}
+                            form="selectform"
+                        />
+                    </div>
+                    <div className="f-l field-demo">
+                         <h4>表单属性：多选模式</h4>
+                         <Select
+                            className="select-demo"
+                            name="select6"
+                            defaultValue = {["0","1"]}
+                            options={selectData1}
+                            placeholder={"请选择"}
+                            model="multiple"
+                        /><br/>
+                        <Select 
+                            className="select-demo"
+                            name="select6"
+                            defaultValue = {["0","1"]}
+                            options={selectData1}
+                            placeholder={"请选择"}
+                            model="multiple"
+                            disabled = {true}
                         />
                     </div>
                 </div>
