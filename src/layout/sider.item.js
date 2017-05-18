@@ -97,7 +97,7 @@ export default class Item extends Component {
         this.setState({ showMenu: !showMenu });
     }
     render () {
-        const { menuItem, className } = this.props;
+        const { menuItem, className, siderHandler } = this.props;
         const { showMenu, activeIndex } = this.state;
 
         return (
@@ -130,6 +130,7 @@ export default class Item extends Component {
                                                         className={activeIndex === index ? 'sub-item-name active' : 'sub-item-name'}
                                                         href={item.link || ''}
                                                         target={item.target || ''}
+                                                        onClick={() => { siderHandler(menuItem, item, index); }}
                                                     >
                                                         {item.text}
                                                     </a>
@@ -146,6 +147,7 @@ export default class Item extends Component {
                             className={activeIndex === 9999 ? `menu-item-wrapper active ${className}` : `menu-item-wrapper ${className}`}
                             href={menuItem.link}
                             target={menuItem.target || ''}
+                            onClick={() => { siderHandler(menuItem); }}
                         >
                             <i className={`iconfont icon-${menuItem.icon}`} />
                             {menuItem.text}
@@ -160,12 +162,14 @@ export default class Item extends Component {
 Item.defaultProps = {
     menuItem: {},
     className: '',
-    activeLink: window.location.href
+    activeLink: window.location.href,
+    siderHandler: () => {}
 };
 
 Item.propTypes = {
     menuItem: PropTypes.object,
     className: PropTypes.string,
-    activeLink: PropTypes.string
+    activeLink: PropTypes.string,
+    siderHandler: PropTypes.func
 };
 
