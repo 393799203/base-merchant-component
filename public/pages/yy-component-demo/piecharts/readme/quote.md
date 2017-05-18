@@ -1,4 +1,4 @@
 ```
-import PieCharts from '@meili/base-merchant/component/lib/piecharts';
+import PieCharts from '@meili/base-merchant-component/lib/piecharts';
 
 ```

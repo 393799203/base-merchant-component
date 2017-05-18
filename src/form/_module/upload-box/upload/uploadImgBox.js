@@ -150,6 +150,7 @@ export default class uploadImgBox extends Component {
             mostImg,
             demoImg
         } = this.state;
+        const uploadUrl = window.location.href.indexOf('meilishuo.com') > -1 ? '//media.meilishuo.com/image/put?appKey=144' : '//media.xiaodian.com/image/put?appKey=144';
         return (
             <div className={`${className} fl upload-img-box-wrapper`} >
                 {imgList && imgList.length ?
@@ -167,6 +168,7 @@ export default class uploadImgBox extends Component {
                                     :
                                     <div className='upload-update-btn'>
                                         <UploadImg
+                                            url={uploadUrl}
                                             before={files => this.before(files, index)}
                                             success={a => this.success(a, index)}
                                             fail={(a, b) => this.fail(a, b, index)}
