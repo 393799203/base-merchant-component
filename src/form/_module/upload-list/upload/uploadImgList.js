@@ -19,8 +19,7 @@ export default class UploadImgList extends Component {
         mostImg: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
         leastImg: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
         disabledDate: PropTypes.func,
-        disabled: PropTypes.bool,
-        uploadUrl: PropTypes.string
+        disabled: PropTypes.bool
     };
 
     constructor (props) {
@@ -32,8 +31,7 @@ export default class UploadImgList extends Component {
             demoImg: props.demoImg || '', // 模版图片
             mostImg: props.mostImg || -1,
             leastImg: props.leastImg || 1,
-            disabledDate: props.disabledDate || noop,
-            uploadUrl: props.uploadUrl || 'http://media.xiaodian.com/image/put?appKey=144'
+            disabledDate: props.disabledDate || noop
         };
     }
 
@@ -183,6 +181,7 @@ export default class UploadImgList extends Component {
         const {
             disabled
         } = this.props;
+        const uploadUrl = window.location.href.indexOf('meilishuo.com') > -1 ? '//media.meilishuo.com/image/put?appKey=144' : '//media.xiaodian.com/image/put?appKey=144';
         return (
             <div className={className ? `${className} fl upload-img-list-wrapper` : 'fl upload-img-list-wrapper'}>
                 {imgList && imgList.length ?
@@ -204,7 +203,7 @@ export default class UploadImgList extends Component {
                                     :
                                     <div className='upload-update-btn'>
                                         <UploadImg
-                                            url={this.state.uploadUrl}
+                                            url={uploadUrl}
                                             before={files => this.before(files, index)}
                                             success={a => this.success(a, index)}
                                             fail={(a, b) => this.fail(a, b, index)}

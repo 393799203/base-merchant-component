@@ -11,9 +11,6 @@ export default {
     },{
         type:'uploadBox',  //类型
         required: true,
-        attrs:{
-            uploadUrl:'http://media.meilishuo.com/image/put?appKey=144'
-        },
         defaultValue:["http://s2.mogucdn.com/p2/170227/67813645_7al3ek6hl0keklag08jbe4ccf108a_167x167.png"],
         name: 'uploadBoxtest'    //生成数据对应的字段
     },{
