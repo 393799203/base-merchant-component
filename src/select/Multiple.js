@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Icon from 'source_path/icon';
+import Icon from '../icon';
 import Option from './Option';
 import './style/index.less';
 
