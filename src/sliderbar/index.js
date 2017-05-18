@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Tooltip from 'source_path/tooltip';
+import Tooltip from '../tooltip';
 import Handle from './Handle';
 import Slider from './Slider';
 import Range from './Range';

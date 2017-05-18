@@ -1,6 +1,9 @@
 ### @meili/base-merchant-component Changelog
 
-#### v1.3.0
+#### v1.3.1
+* 修复 v1.3.0 版本中的 undefined source_path bug
+
+#### v1.3.0 `该版本有明显bug, 已废弃, 请勿安装该版本`
 * 新增基础组件 rate
 * 新增基础组件 sliderBar
 * 新增基础组件 switch
