@@ -61,6 +61,9 @@ export default class Option extends Component {
                 onClick={e => this.handleChange(optionData, '', e)}
                 onMouseEnter={() => this.toggleValue('showSubOption')}
                 onMouseLeave={() => this.toggleValue('showSubOption')}
+                onMouseDown={(e) => {
+                    e.preventDefault();
+                }}
             >
                 {optionData.text}
                 <span className={hasSubOption ? 'sub-arrow' : ''} style={{ top: `${leftValue + 12}px` }}><em /></span>

@@ -4,8 +4,8 @@
 
 | 参数        | 说明           | 类型         |  备注       |   默认       |  
 | ------------ | ------------- | ------------ | ------------  |------------  |
-| value   | 值    | string       |  选中的值   |   －  |
-| defaultValue   | 默认值    | string       |  默认选中项的value   |   请选择  |
+| value   | 值    | string/string[]    |  选中的值<br>string[]仅在Multiple模式下支持  |   －  |
+| defaultValue   | 默认值    | string/string[]     |  默认选中项的value<br>string[]仅在Multiple模式下支持  |   请选择  |
 | options       | 选项数据    | array       | -    |  []   |
 | className       | css选择器    | string       | -    |     |
 | onChange       | 取实际选中的选项    | function       | 默认参数是选中的选项，如{text:'选项1',value:0}  |     |
@@ -13,7 +13,7 @@
 | id     | id   | string | - |   | 
 | form | 下拉框所属的form组，如果不传则默认归集到同一组 | String   | - |
 | name |  下拉框描述字段的名称 | String  | - |
-
+| model | 模式 | ["combobox,Multiple"] | combobox单选、Multiple多选 | Multiple |
 
 
 #### 2.2 使用示例

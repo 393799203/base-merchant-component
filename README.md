@@ -1,5 +1,10 @@
 ### @meili/base-merchant-component Changelog
 
+#### v1.2.14
+* 基础组件 select
+	* 增加多选模式
+	* 组件新增model参数，默认为combobox单选模式
+	
 #### v1.2.13
 * 业务组件 form - 修改样式
 * 业务组件 layout
