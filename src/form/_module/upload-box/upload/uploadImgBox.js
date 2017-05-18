@@ -16,7 +16,8 @@ export default class uploadImgBox extends Component {
         className: PropTypes.string,
         demoImg: PropTypes.string,
         mostImg: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-        leastImg: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        leastImg: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+        uploadUrl: PropTypes.string
     };
 
     constructor (props) {
@@ -28,7 +29,8 @@ export default class uploadImgBox extends Component {
             mostImg: props.mostImg || '-1',
             leastImg: props.leastImg || 1,
             demoImg: props.demoImg || '',
-            returnData: this.changeImgList(props.imgList) || []
+            returnData: this.changeImgList(props.imgList) || [],
+            uploadUrl: props.uploadUrl || 'http://media.xiaodian.com/image/put?appKey=144'
         };
     }
 
@@ -167,6 +169,7 @@ export default class uploadImgBox extends Component {
                                     :
                                     <div className='upload-update-btn'>
                                         <UploadImg
+                                            url={this.state.uploadUrl}
                                             before={files => this.before(files, index)}
                                             success={a => this.success(a, index)}
                                             fail={(a, b) => this.fail(a, b, index)}
