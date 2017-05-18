@@ -82,14 +82,6 @@ class TabDemo extends Component {
         });
     }
 
-    componentDidMount () {
-        setTimeout(() => {
-            this.setState({
-                active: 0
-            });
-        }, 3000);
-    }
-
     render () {
         const tabArr = [
             <Tab key='0'>我是第一个Tab的内容</Tab>,
