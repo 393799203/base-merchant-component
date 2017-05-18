@@ -71,6 +71,7 @@
 | className        |  侧边栏自定义样式 |  string |- |
 | menuOptions| 侧边栏导航数据，支持下拉导航 具体查看`menuOptions` 说明 |  array |- |
 | activeLink| 当前选中链接|string| window.location.href|
+| siderHandler | 点击导航的回调事件 |  func |- |
 
 #### MSider 中 menuOptions参数说明
 

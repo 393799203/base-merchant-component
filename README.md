@@ -1,10 +1,18 @@
 ### @meili/base-merchant-component Changelog
 
-#### v1.2.14
+#### v1.3.0
+* 新增基础组件 rate
+* 新增基础组件 sliderBar
+* 新增基础组件 switch
+* 基础组件 tab － 新增三种样式
 * 基础组件 select
 	* 增加多选模式
 	* 组件新增model参数，默认为combobox单选模式
-	
+* 基础组件 echarts - 图表组件升级优化
+* 业务组件 form - 图片上传增加蘑菇街、美丽说区分
+* 业务组件 layout - 修改样式
+
+
 #### v1.2.13
 * 业务组件 form - 修改样式
 * 业务组件 layout

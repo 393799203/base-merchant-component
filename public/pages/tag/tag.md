@@ -1,7 +1,7 @@
 ### 1.2、Tag 基本用法
 
 	import React, { Component } from 'react'
-    import Popover  from '@meili/base-merchant-component/lib/popover';
+    import {Tag}  from '@meili/base-merchant-component/lib/tag';
 
     class TagView extends Component {
         render () {
