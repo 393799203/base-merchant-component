@@ -18,24 +18,28 @@ export default class TreeView extends React.Component {
                     <h3>
                         1. 示例
                     </h3>
-          <table className="text-left">
-            <tbody>
-              <tr>
-                <td style={{"width":"50%"}}>
-                  <h4>基本</h4>
-                  <NormalTree />
-                  </td>
-                <td><h4>拖拽</h4><DraggabelTree /></td>
-              </tr>
-              <tr>
-                <td><h4>可搜索</h4><SearchTree /></td>
-                <td><h4>连接线</h4><LineTree /></td>
-              </tr>
-              <tr>
-                <td><h4>异步数据加载</h4><AsyncTree /></td>
-              </tr>
-              </tbody>
-          </table>
+                    <div className="clearfix">
+          <div style={{width:"50%",height:"300px",float:"left",border:"1px solid #ccc",overflowY:"scroll",boxSizing:"border-box",padding:"20px"}}>
+            <h4>基本</h4>
+            <NormalTree />
+          </div>
+          <div style={{width:"50%",height:"300px",float:"left",border:"1px solid #ccc",marginLeft:"-1px",overflowY:"scroll",boxSizing:"border-box",padding:"20px"}}>
+            <h4>拖拽</h4>
+            <DraggabelTree />
+          </div>
+          <div style={{width:"50%",height:"300px",float:"left",border:"1px solid #ccc",marginTop:"-1px",overflowY:"scroll",boxSizing:"border-box",padding:"20px"}}>
+            <h4>可搜索</h4>
+            <SearchTree />
+          </div>
+          <div style={{width:"50%",height:"300px",float:"left",border:"1px solid #ccc",marginTop:"-1px",marginLeft:"-1px",overflowY:"scroll",boxSizing:"border-box",padding:"20px"}}>
+            <h4>连接线</h4>
+            <LineTree />
+          </div>
+          <div style={{width:"50%",height:"300px",float:"left",border:"1px solid #ccc",marginTop:"-1px",overflowY:"scroll",boxSizing:"border-box",padding:"20px"}}>
+            <h4>异步数据加载</h4>
+            <AsyncTree />
+          </div>
+          </div>
           <div dangerouslySetInnerHTML={{ __html: Readme }}></div>
         </div>
       )
