@@ -5,6 +5,7 @@
 		'transform-es3-member-expression-literals',
 		'transform-es3-property-literals',
       	'add-module-exports',
-      	'transform-object-assign'
+      	'transform-object-assign',
+		'es6-promise'
     ]
 }
