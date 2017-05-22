@@ -1,7 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 
-import './index.less';
-
 export default class Checkbox extends Component {
     static defaultProps = {
         attrs: {},
@@ -241,30 +239,31 @@ export default class Checkbox extends Component {
             disabled
         } = this.props;
         return (
-            <div className='mc-field-checkbox'>
+            <div className='mc-field-checkbox m-t-10'>
                 {
-                    options.map((option) => {
+                    options.map((option, index) => {
                         const optionValue = option.value;
                         return (
-                            <div
-                                className={`mc-checkbox-nice ${option.className || ''}`}
-                                key={optionValue}
+                            <label
+                                htmlFor={fieldId}
+                                className={`form-checkbox mc-checkbox-nice m-r-10 ${option.className || ''} ${disabled ? 'disabled' : ''}`}
+                                key={index}
                                 {...events}
+                                disabled={disabled}
                                 onClick={disabled ? () => {} : () => this.handleChange(optionValue)}
                             >
                                 <input
                                     type='checkbox'
-                                    className='mc-checkbox-error mc-checkbox-input'
+                                    className='mc-checkbox-input'
                                     checked={Boolean(this.state.checked[String(optionValue)])}
                                     {...attrs}
-                                    disabled={disabled}
                                     id={option.id}
                                     value={String(optionValue)}
-                                    onChange={() => this.handleChange(optionValue)}
+                                    onChange={() => {}}
                                 />
-
-                                <label className='yy-iconfont' htmlFor={option.id || fieldId}>{option.label || option.text}</label>
-                            </div>
+                                <span className='mc-checkbox-error' />
+                                {option.label || option.text}
+                            </label>
                         );
                     })
                 }

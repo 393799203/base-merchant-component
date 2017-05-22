@@ -1,7 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 
-import './index.less';
-
 export default class Radio extends Component {
     static defaultProps = {
         attrs: {},
@@ -201,29 +199,31 @@ export default class Radio extends Component {
         } = this.props;
 
         return (
-            <div className='mc-field-radio'>
+            <div className='mc-field-radio m-t-10'>
                 {
-                    options.map((option) => {
+                    options.map((option, index) => {
                         const optionValue = typeof option.value !== 'undefined' ? String(option.value) : '';
                         return (
-                            <div
-                                className={`mc-radio-nice ${option.className || ''}`}
-                                key={optionValue}
+                            <label
+                                htmlFor={fieldId}
+                                className={`form-radio mc-radio-nice m-r-10 ${option.className || ''} ${disabled ? 'disabled' : ''}`}
+                                key={index}
                                 {...events}
+                                disabled={disabled}
                                 onClick={disabled ? () => {} : () => this.handleChange(optionValue)}
                             >
                                 <input
                                     type='radio'
-                                    className='mc-radio-error mc-radio-input'
+                                    className='mc-radio-input'
                                     checked={this.state.value.toString() === optionValue}
                                     {...attrs}
-                                    disabled={disabled}
                                     id={option.id}
                                     value={optionValue}
-                                    onChange={() => this.handleChange(optionValue)}
+                                    onChange={() => {}}
                                 />
-                                <label className='yy-iconfont' htmlFor={option.id || fieldId}>{option.label || option.text}</label>
-                            </div>
+                                <span className='mc-radio-error' />
+                                {option.label || option.text}
+                            </label>
                         );
                     })
                 }
