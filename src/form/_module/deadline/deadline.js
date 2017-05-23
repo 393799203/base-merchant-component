@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import DatepickerCom from '../../../datepicker';
-import './deadline.less';
 import Field from '../../../field';
 
 export default class Deadline extends Component {
@@ -136,7 +135,7 @@ export default class Deadline extends Component {
                         />
                     </div>
 
-                    <div className='f-l m-t-10'>
+                    <div className='f-l'>
                         <label
                             htmlFor={'长期'}
                             className={'form-checkbox m-l-10'}

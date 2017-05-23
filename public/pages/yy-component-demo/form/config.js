@@ -1,7 +1,7 @@
 export default {
     options:[{
         type:'labelList',  //类型
-        value:[
+        defaultValue:[
             "1.化妆品生产厂商的化妆品卫生许可证复印件;",
             "2.化妆品生产厂商的化妆品生产许可证复印件；"
         ]
