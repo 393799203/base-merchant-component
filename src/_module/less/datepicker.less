@@ -113,6 +113,10 @@ textarea.@{datepicker-prefix-cls}-picker-input {
     background-position: 0px 0px;
     background-size: 100%;
 }
+
+.@{datepicker-prefix-cls}-picker-icon:before{
+	
+}
 /* 时间弹出浮层后input框样式 */
 
 /* 时间弹出层浮框外层 */
@@ -460,9 +464,13 @@ textarea.@{datepicker-prefix-cls}-time .mc-time-picker-input {
 	line-height: 20px;
 	top: 7px;
 	margin: 0;
-	background: url(http://s16.mogucdn.com/p1/170210/idid_ifqwimlcmnsgmzdgmqzdambqgyyde_28x108.png);
     background-position: 0px -20px;
     background-size: 100%;
+}
+.@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-clear-btn:before{
+	content: "\E646";
+    font-family: iconfont!important;
+    color: #d5d8df;
 }
 .@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-clear-btn:hover:before {
 	color: @font-color-lter;
