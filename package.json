@@ -24,7 +24,7 @@
     "buildDemo": "WEBPACK_ENV=DEMO_BUILD webpack"
   },
   "dependencies": {
-    "@meili/merchant-theme": "^1.0.0",
+    "@meili/merchant-theme": "^1.0.1",
     "classnames": "^2.2.5",
     "echarts": "^3.4.0",
     "gregorian-calendar": "^4.1.2",

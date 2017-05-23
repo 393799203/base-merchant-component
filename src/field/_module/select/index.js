@@ -1,7 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 
-import './index.less';
-
 export default class Select extends Component {
     static defaultProps = {
         attrs: {},
@@ -189,7 +187,7 @@ export default class Select extends Component {
                 <select
                     {...attrs}
                     {...events}
-                    className='mc-field-error mc-select-input'
+                    className='mc-field-error form-select'
                     placeholder={placeholder}
                     id={id || fieldId}
                     disabled={disabled}

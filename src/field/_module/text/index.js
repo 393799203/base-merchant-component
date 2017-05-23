@@ -1,8 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 
-import './index.less';
-import './textarea.less';
-
 export default class Text extends Component {
     static defaultProps = {
         attrs: {},
@@ -167,7 +164,7 @@ export default class Text extends Component {
                         disabled={disabled}
                         {...attrs}
                         {...events}
-                        className='mc-field-error mc-textarea-input'
+                        className='mc-field-error form-textarea'
                         value={this.state.value || ''}
                         placeholder={placeholder}
                         onChange={e => this.handleChange(e)}
@@ -179,7 +176,7 @@ export default class Text extends Component {
                         disabled={disabled}
                         {...attrs}
                         {...events}
-                        className='mc-field-error mc-text-input'
+                        className='mc-field-error form-input'
                         value={this.state.value || ''}
                         placeholder={placeholder || ''}
                         onChange={e => this.handleChange(e)}

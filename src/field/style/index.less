@@ -48,12 +48,6 @@
 }
 
 .mc-field-invaild {
-	.mc-field-error{
-		box-shadow: 0px 0px 5px @color-danger-lt;
-	    border-color: @color-danger-lt;
-	    background-color:@color-danger-lt40;
-	}
-
 	.mc-field-errorMsg{
 		display: inline-table;
 		position: absolute;
@@ -62,7 +56,7 @@
 	    width:300px;
     }
 
-    .mc-field-errormsg{
+    .mc-field-errormsg-content{
     	font-size: 13px;
 	    color: @color-warning-dk;
 	    background: @color-warning-lt40;
@@ -107,4 +101,16 @@
 		    margin-left: -7px;
 		}
     }
+
+    .mc-field-error{
+		box-shadow: 0px 0px 5px @color-danger-lt;
+	    border-color: @color-danger-lt;
+	    background-color:@color-danger-lt40;
+	}
+
+    .mc-radio-error, .mc-checkbox-error{
+		box-shadow: 0px 0px 5px @color-danger-lter;
+	    border-color: @color-danger-lter !important;
+	    background-color:@color-danger-lt40;
+	}
 }

@@ -284,7 +284,7 @@ export default class Field extends Component {
                                     <span className='mc-field-arrow-border' />
                                     <span className='mc-field-arrow' />
                                 </div>
-                                <p className='mc-field-errormsg'>{errorMsg}</p>
+                                <p className='mc-field-errormsg-content'>{errorMsg}</p>
                             </div>
                             : null
                         }
