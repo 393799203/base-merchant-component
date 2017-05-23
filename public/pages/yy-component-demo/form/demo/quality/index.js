@@ -61,7 +61,6 @@ export default class QualityView extends Component {
 				<Form
 					data = {testData.options.concat()}
 					prefixcls="field-test"
-					defaultValue={testData.defaultValue}
 					form='quality'/>
 			</div>
 	  	)

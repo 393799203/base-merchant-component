@@ -11,11 +11,6 @@ export default {
         type:'address',  //类型
         label:'公司住所：',  //文案
         required: true,
-        // defaultValue:{
-        //     province: "上海",
-        //     city:"上海市",
-        //     area:"卢湾区"
-        // },
         name: 'address',
         subInfo:"必须跟营业执照上相同",
         placeholder: '请输入公司住所',
