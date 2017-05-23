@@ -1,5 +1,17 @@
 ### @meili/base-merchant-component Changelog
 
+#### v1.4.1
+* 修复 field 组件样式 bug
+
+
+#### v1.4.0 `该版本 field 组件样式有明显bug, 如果使用该版本请避免使用 field 组件`
+* 新增基础组件 tree
+* 新增基础组件 treeSelect
+* 基础组件field - 组件样式抽离
+	* radio&checkbox布局变更
+	* 时间相关组件使用主题库icon
+	* 删除组件icon，引用主题库
+
 #### v1.3.1
 * 修复 v1.3.0 版本中的 undefined source_path bug
 
