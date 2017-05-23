@@ -51,10 +51,14 @@ export default [
         title: '浮块提示 - Popover',
         link: '#/popover'
     },
-    // {
-    //     title: '树形控件 - Tree',
-    //     link: '#/Tree'
-    // },
+    {
+        title: '树形控件 - Tree',
+        link: '#/Tree'
+    },
+    {
+        title: '树形选择 - TreeSelect',
+        link: '#/Tree-select'
+    },
     {
         title: '滑动输入条 - SliderBar',
         link: '#/SliderBar'

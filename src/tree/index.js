@@ -40,7 +40,7 @@ Tree.propTypes = {
     /** checkable状态下节点选择完全受控（父子节点选中状态不再关联）*/
     checkStrictly: PropTypes.bool,
     /** 是否支持选中 */
-    checkable: PropTypes.bool,
+    checkable: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
     /** 默认展开所有树节点 */
     defaultExpandAll: PropTypes.bool,
     /** 默认展开指定的树节点 */
