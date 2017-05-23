@@ -9,7 +9,6 @@ import Raw from './_module/raw';
 import Select from './_module/select';
 import Text from './_module/text';
 import './style/index.less';
-import '../_module/less/icon-font/iconfont.less';
 import Util from '../_module/js/util.js';
 
 const DEFAULT_FORM = 'defaultKey';
