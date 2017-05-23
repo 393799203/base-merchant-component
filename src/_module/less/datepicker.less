@@ -1,4 +1,5 @@
 @import "~@meili/merchant-theme/lib/variables.less";
+@import "~@meili/merchant-theme/lib/iconfont.less";
 
 @datepicker-prefix-cls: mc-calendar;
 
@@ -468,8 +469,8 @@ textarea.@{datepicker-prefix-cls}-time .mc-time-picker-input {
     background-size: 100%;
 }
 .@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-clear-btn:before{
+	.iconfont();
 	content: "\E646";
-    font-family: iconfont!important;
     color: #d5d8df;
 }
 .@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-clear-btn:hover:before {
