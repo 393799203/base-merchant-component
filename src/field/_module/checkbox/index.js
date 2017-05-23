@@ -239,7 +239,7 @@ export default class Checkbox extends Component {
             disabled
         } = this.props;
         return (
-            <div className='mc-field-checkbox m-t-10'>
+            <div className='mc-field-checkbox'>
                 {
                     options.map((option, index) => {
                         const optionValue = option.value;
