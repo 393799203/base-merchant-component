@@ -65,6 +65,7 @@
 	transition: border .2s cubic-bezier(0.645, 0.045, 0.355, 1), background .2s cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow .2s cubic-bezier(0.645, 0.045, 0.355, 1);
 	width: 120px;
 }
+
 .mc-time-picker-input::-moz-placeholder {
 	color: @font-color-lter;
 	opacity: 1;
@@ -127,9 +128,14 @@ textarea.mc-time-picker-input {
 	color: @font-color-base;
 	top: 50%;
     margin-top: -6px;
-    background: url(http://s16.mogucdn.com/p1/170210/idid_ifqwimlcmnsgmzdgmqzdambqgyyde_28x108.png);
     background-position: 0px -33px;
     background-size: 100%;
+}
+
+.mc-time-picker-icon:before {
+	content: "\E65F";
+    font-family: iconfont!important;
+    color: #d5d8df;
 }
 
 .mc-time-picker-panel-inner {

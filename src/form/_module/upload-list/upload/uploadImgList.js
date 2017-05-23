@@ -242,35 +242,38 @@ export default class UploadImgList extends Component {
                                         <span className='require'>*</span>
                                         到期时间:
                                     </label>
-                                    <div className='brand-tab clearfix'>
-                                        <div
-                                            className='mc-radio-nice'
-                                            onClick={() => this.changeType(index, '-1')}
-                                        >
-                                            <input
-                                                type='radio'
-                                                className='mc-radio-error mc-radio-input'
-                                                checked={(endTime === '-1')}
+                                    <div className='brand-tab clearfix m-t'>
+                                        <div className='m-t-5'>
+                                            <label
+                                                htmlFor={'长期'}
+                                                className={'form-radio radio-sm m-r-10'}
+                                                onClick={disabled ? noop : () => this.changeType(index, '-1')}
                                                 disabled={disabled}
-                                                onChange={noop}
-                                            />
-                                            <label htmlFor='长期' className='yy-iconfont'>长期</label>
-                                        </div>
+                                            >
+                                                <input
+                                                    type='radio'
+                                                    checked={(endTime === '-1')}
+                                                    onChange={noop}
+                                                />
+                                                <span className='mc-radio-error' />
+                                                长期
+                                            </label>
 
-                                        <div
-                                            className='mc-radio-nice'
-                                            onClick={() => this.changeType(index, '')}
-                                        >
-                                            <input
-                                                type='radio'
-                                                className='mc-radio-error mc-radio-input'
-                                                checked={!(endTime === '-1')}
+                                            <label
+                                                htmlFor={'短期'}
+                                                className={'form-radio radio-sm m-r-10'}
+                                                onClick={disabled ? noop : () => this.changeType(index, '')}
                                                 disabled={disabled}
-                                                onChange={noop}
-                                            />
-                                            <label htmlFor={'短期'} className='yy-iconfont'>短期</label>
+                                            >
+                                                <input
+                                                    type='radio'
+                                                    checked={!(endTime === '-1')}
+                                                    onChange={noop}
+                                                />
+                                                <span className='mc-radio-error' />
+                                                短期
+                                            </label>
                                         </div>
-
                                         {endTime === '-1' ?
                                             null
                                             :

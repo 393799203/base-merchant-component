@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import DatepickerCom from '../../../datepicker';
-import '../../../_module/less/icon-font/iconfont.less';
 import './deadline.less';
 import Field from '../../../field';
 
@@ -126,7 +125,7 @@ export default class Deadline extends Component {
                 errorMsg={errorMsg}
                 required={required}
             >
-                <div className='mc-deadline'>
+                <div className='mc-deadline clearfix'>
                     <div className='f-l'>
                         <DatepickerCom
                             {...attrs}
@@ -137,13 +136,21 @@ export default class Deadline extends Component {
                         />
                     </div>
 
-                    <div className='mc-field-deadline' onClick={disabled ? () => {} : () => this.handleDateChange()}>
-                        <input
-                            type='checkbox'
-                            className='mc-checkbox-error mc-checkbox-input'
-                            checked={deadlineType}
-                        />
-                        <label htmlFor={'长期'} className='yy-iconfont'>长期</label>
+                    <div className='f-l m-t-10'>
+                        <label
+                            htmlFor={'长期'}
+                            className={'form-checkbox m-l-10'}
+                            disabled={disabled}
+                            onClick={disabled ? () => {} : () => this.handleDateChange()}
+                        >
+                            <input
+                                type='checkbox'
+                                checked={deadlineType}
+                                onChange={() => {}}
+                            />
+                            <span className='mc-checkbox-error' />
+                            长期
+                        </label>
                     </div>
                 </div>
             </Field>
