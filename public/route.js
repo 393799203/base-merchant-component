@@ -38,6 +38,7 @@ import SwitchView from './pages/switch';
 import RateView from './pages/rate';
 import SliderBarView from './pages/sliderBar';
 import TreeView from './pages/tree';
+import TreeSelectView from './pages/tree-select';
 import LayoutDemoView from './pages/layout';
 import ModalView from './pages/modal';
 import TableView from './pages/table';
@@ -48,7 +49,7 @@ import MenuCateView from './pages/menu-cate';
 import DropdownView from './pages/dropdown';
 import PopoverView from './pages/popover';
 
-// youyou demo 
+// youyou demo
 import DatepickerView from './pages/yy-component-demo/datepicker';
 import MonthpickerView from './pages/yy-component-demo/monthpicker';
 import RangepickerView from './pages/yy-component-demo/rangepicker';
@@ -107,13 +108,13 @@ export default (
             <Route path='rate' component={RateView} />
             <Route path='sliderBar' component={SliderBarView} />
             <Route path='tree' component={TreeView} />
+            <Route path='tree-select' component={TreeSelectView} />
             <Route path='teamtalk' component={TeamtalkView} />
             <Route path='layout' component={LayoutDemoView} />
             <Route path='menucate' component={MenuCateView} />
             <Route path='select' component={SelectView} />
             <Route path='areacode' component={AreaCodeView} />
 
-            
             <Route path='yy-a-datepicker' component={DatepickerView} />
             <Route path='yy-a-monthpicker' component={MonthpickerView} />
             <Route path='yy-a-rangepicker' component={RangepickerView} />

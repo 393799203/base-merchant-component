@@ -56,6 +56,10 @@ export default [
         link: '#/Tree'
     },
     {
+        title: '树形选择 - TreeSelect',
+        link: '#/Tree-select'
+    },
+    {
         title: '滑动输入条 - SliderBar',
         link: '#/SliderBar'
     }, {
