@@ -243,7 +243,7 @@ export default class UploadImgList extends Component {
                                         到期时间:
                                     </label>
                                     <div className='brand-tab clearfix m-t'>
-                                        <div className='m-t-5'>
+                                        <div className='m-b-5'>
                                             <label
                                                 htmlFor={'长期'}
                                                 className={'form-radio radio-sm m-r-10'}

@@ -199,7 +199,7 @@ export default class Radio extends Component {
         } = this.props;
 
         return (
-            <div className='mc-field-radio m-t-10'>
+            <div className='mc-field-radio'>
                 {
                     options.map((option, index) => {
                         const optionValue = typeof option.value !== 'undefined' ? String(option.value) : '';
