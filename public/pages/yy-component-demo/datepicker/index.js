@@ -25,8 +25,10 @@ export default class DatepickerView extends Component {
 	}
 
 	disabledDate(value){
-		var currenDate = new Date();
-		return value.getTime() < currenDate.getTime();
+		if(value){
+			var currenDate = new Date();
+			return value.getTime() < currenDate.getTime();
+		}
 	}
 
 	render () {
@@ -100,6 +102,7 @@ export default class DatepickerView extends Component {
 						<div className='f-l'>
 							<h5>设置不可选择的日期</h5>
 							<Datepicker
+								onChange={value => this.onChange(value)}
 								disabledDate={(value) => this.disabledDate(value)} />
 						</div>
 
