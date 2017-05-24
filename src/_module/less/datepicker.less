@@ -457,7 +457,6 @@ textarea.@{datepicker-prefix-cls}-time .mc-time-picker-input {
 .@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-clear-btn {
 	position: absolute;
 	right: 5px;
-	text-indent: -76px;
 	overflow: hidden;
 	width: 15px;
 	height: 15px;
@@ -465,15 +464,18 @@ textarea.@{datepicker-prefix-cls}-time .mc-time-picker-input {
 	line-height: 20px;
 	top: 7px;
 	margin: 0;
-    background-position: 0px -20px;
-    background-size: 100%;
 }
-.@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-clear-btn:before{
-	.iconfont();
-	content: "\E646";
-    color: #d5d8df;
+
+.@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-clear-btn:after{
+    .iconfont();
+	content: "\e646";
+	font-size: 12px;
+	color: @font-color-base;
+	display: inline-block;
+	line-height: 1;
+	width: 20px;
 }
-.@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-clear-btn:hover:before {
+.@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-clear-btn:hover:after {
 	color: @font-color-lter;
 }
 .@{datepicker-prefix-cls} .@{datepicker-prefix-cls}-ok-btn {
