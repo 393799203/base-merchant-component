@@ -120,7 +120,7 @@ if (env === 'DEMO_DEV' ||  env === 'DEMO_BUILD') {
     // plugins
     if (env === 'DEMO_DEV' ) config.plugins = [pluginCssExtract, pluginHtmlwebpack, OptimizeCssAssets];
     if (env === 'DEMO_BUILD') config.plugins = [pluginCssExtract, pluginUglifyJs, pluginHtmlwebpack, OptimizeCssAssets];
-/* [场景2] 组件源码：打包到 dist目录下 */
+/* [场景2] 组件源码：打包到 dist目录下 (发布组件时，暂时去掉了 npm run build) */
 } else if (env === 'BUILD') {
     // 入口文件
     config.entry = getEntries();
