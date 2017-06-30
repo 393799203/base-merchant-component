@@ -1,4 +1,4 @@
-### @meili/base-merchant-component Changelog
+### base-merchant-component Changelog
 
 #### v1.4.1
 * 修复 field 组件样式 bug
@@ -149,7 +149,7 @@
 
 #### 使用
 
-	npm install @meili/base-merchant-component --save
+	npm install base-merchant-component --save
 
 #### 项目简介
 
@@ -165,10 +165,6 @@
 v1.0.0的版本是使用商家后台新的UI规范开发的一套新的组件，api兼容0.x.x版本。
 
 #### 组件开发
-
-##### 1、gitlab代码提交规范
-
-[fork & mr](http://doc.f2e.meili-inc.com/merchant/gitlab.html)
 
 组件开发不用关注打包
 
@@ -209,7 +205,7 @@ v1.0.0的版本是使用商家后台新的UI规范开发的一套新的组件，
 
     src
 	├── index.js  # 组件注册文件，开发一个组件后在此文件注册，
-	│             # 用户可以通过 import {xx} from @meili/base-merchant-component 引用，
+	│             # 用户可以通过 import {xx} from base-merchant-component 引用，
 	│             # 尽管不推荐此种用法
 	│  
 	└── tab
